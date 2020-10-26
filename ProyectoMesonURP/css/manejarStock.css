@@ -1,0 +1,32 @@
+.my-custom-scrollbar {
+    position: relative;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+.title-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.stock-options {
+    display: flex;
+    justify-content: space-evenly;
+}
+.width-auto {
+    width: 173px;
+    text-transform: capitalize;
+}
+.margin-5 {
+    margin-right: 5px;
+}
+
+.background-green {
+    background-color: #214E3F;
+}
+.div-movflex {
+    display: flex;
+    margin-top: 17px;
+    margin-bottom: 17px;
+}

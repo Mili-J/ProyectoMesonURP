@@ -1,0 +1,305 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{041EE549-38CB-43FC-B104-ACEAFE4EFF27}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoMesonURP</RootNamespace>
+    <AssemblyName>ProyectoMesonURP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44342</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\atlas.css" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\clndr.css" />
+    <Content Include="css\fabochart.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\graph.css" />
+    <Content Include="css\Home.css" />
+    <Content Include="css\icon-font.min.css" />
+    <Content Include="css\manejarStock.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\pages\signin.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style1.css" />
+    <Content Include="css\sweetalert2.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
+    <Content Include="Home.aspx" />
+    <Content Include="img\back.jpg" />
+    <Content Include="img\baseline_exit_to_app_white_18dp.png" />
+    <Content Include="img\baseline_highlight_off_black_18dp.png" />
+    <Content Include="img\basura-b.png" />
+    <Content Include="img\correcto-b.png" />
+    <Content Include="img\correcto.png" />
+    <Content Include="img\decano.PNG" />
+    <Content Include="img\delete.png" />
+    <Content Include="img\director.PNG" />
+    <Content Include="img\editar-b.png" />
+    <Content Include="img\editar.png" />
+    <Content Include="img\eliminar-b.png" />
+    <Content Include="img\eliminar.png" />
+    <Content Include="img\enviar-b.png" />
+    <Content Include="img\enviar_1.png" />
+    <Content Include="img\favicon.png" />
+    <Content Include="img\gal-1.jpeg" />
+    <Content Include="img\gal-10.jpeg" />
+    <Content Include="img\gal-11.jpeg" />
+    <Content Include="img\gal-12.jpeg" />
+    <Content Include="img\gal-13.jpeg" />
+    <Content Include="img\gal-14.jpeg" />
+    <Content Include="img\gal-2.jpeg" />
+    <Content Include="img\gal-3.jpeg" />
+    <Content Include="img\gal-4.jpeg" />
+    <Content Include="img\gal-5.jpeg" />
+    <Content Include="img\gal-6.jpeg" />
+    <Content Include="img\gal-7.jpeg" />
+    <Content Include="img\gal-8.jpeg" />
+    <Content Include="img\gal-9.jpeg" />
+    <Content Include="img\house-1.jpeg" />
+    <Content Include="img\house-2.jpeg" />
+    <Content Include="img\house-3.jpeg" />
+    <Content Include="img\house-4.jpeg" />
+    <Content Include="img\house-5.jpeg" />
+    <Content Include="img\house-6.jpeg" />
+    <Content Include="img\icons8-eye-30.png" />
+    <Content Include="img\logo-bbc.png" />
+    <Content Include="img\logo-bi.png" />
+    <Content Include="img\logo-forbes.png" />
+    <Content Include="img\logo-techcrunch.png" />
+    <Content Include="img\meson-1.PNG" />
+    <Content Include="img\meson-10.png" />
+    <Content Include="img\meson-11.png" />
+    <Content Include="img\meson-12.png" />
+    <Content Include="img\meson-13.png" />
+    <Content Include="img\meson-14.png" />
+    <Content Include="img\meson-15.png" />
+    <Content Include="img\meson-16.png" />
+    <Content Include="img\meson-17.png" />
+    <Content Include="img\meson-2.PNG" />
+    <Content Include="img\meson-3.PNG" />
+    <Content Include="img\meson-4.PNG" />
+    <Content Include="img\meson-5.png" />
+    <Content Include="img\meson-6.png" />
+    <Content Include="img\meson-7.png" />
+    <Content Include="img\meson-8.png" />
+    <Content Include="img\meson-9.png" />
+    <Content Include="img\MesonURP_icono.ico" />
+    <Content Include="img\MesonURP_logofinal.png" />
+    <Content Include="img\MesonURP_logofinal2.png" />
+    <Content Include="img\ojo-b.png" />
+    <Content Include="img\ojo.png" />
+    <Content Include="img\realtor-1.jpeg" />
+    <Content Include="img\realtor-2.jpeg" />
+    <Content Include="img\realtor-3.jpeg" />
+    <Content Include="img\recibido-b.png" />
+    <Content Include="img\recibido.png" />
+    <Content Include="img\rector.PNG" />
+    <Content Include="img\search.png" />
+    <Content Include="img\sprite.svg" />
+    <Content Include="img\story-1.jpeg" />
+    <Content Include="img\story-2.jpeg" />
+    <Content Include="img\text.txt" />
+    <Content Include="img\univ-1.png" />
+    <Content Include="img\univ-2.png" />
+    <Content Include="img\UNIVERSIDAD-RICARDO-PALMA-18.jpg" />
+    <Content Include="img\urp1.jpg" />
+    <Content Include="img\ver-w.png" />
+    <Content Include="img\ver.png" />
+    <Content Include="js\amcharts.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\cbpFWTabs.js" />
+    <Content Include="js\Chart.js" />
+    <Content Include="js\clndr.js" />
+    <Content Include="js\imagezoom.js" />
+    <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="js\jquery-1.7.2.min.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.flot.js" />
+    <Content Include="js\jquery.fn.gantt.js" />
+    <Content Include="js\jquery.nicescroll.js" />
+    <Content Include="js\jspdf.debug.js" />
+    <Content Include="js\light.js" />
+    <Content Include="js\menu_jquery.js" />
+    <Content Include="js\moment-2.2.1.js" />
+    <Content Include="js\owl.carousel.js" />
+    <Content Include="js\pie-chart.js" />
+    <Content Include="js\scripts.js" />
+    <Content Include="js\serial.js" />
+    <Content Include="js\signin.js" />
+    <Content Include="js\simpleCart.min.js" />
+    <Content Include="js\site.js" />
+    <Content Include="js\sweetalert.js" />
+    <Content Include="js\sweetalert2.all.min.js" />
+    <Content Include="js\underscore-min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master.Master" />
+    <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CTR\CTR.csproj">
+      <Project>{6216590e-7a1d-4779-9e96-55b408de3f0e}</Project>
+      <Name>CTR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{afa2235a-79ea-4c66-a0cd-34c79ba7bbd3}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{32959a1c-004a-49ab-b6fc-11f631c91a7a}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54369</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44342/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
