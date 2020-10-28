@@ -19,9 +19,9 @@
     <header class="header">
         <img src="/img/MesonURP_logofinal.png" alt="MesónURP logo" class="header__logo" />
         <div class="right-header">
-            <h3 class="heading-3 header-13px">Haz tu reserva:</h3>
+            <h3 class="heading-3 header-13px">Bienvenido:</h3>
             <h1 class="heading-1 header-13px">Mesón del Estudiante</h1>
-            <button class="btn header__btn">Reservar</button>
+            <input type="button" id="btnIniciarSesion" class="btn header__btn" runat="server" value="Iniciar Sesión" onclick="window.location.href = 'Login';"/>
         </div>
     </header>
     <div class="realtors">
@@ -49,32 +49,6 @@
         <label for="navi-toggle" class="navigation__button">
             <span class="navigation__icon">&nbsp;</span>
         </label>
-        <div class="navigation__background">&nbsp;</div>
-        <form id="form1" class="navigation__nav form-login-style" runat="server">
-            <h1>Bienvenido</h1>
-            <div class="login-fields">
-                <p class="title-login">
-                    <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="#CC0000"></asp:Label></p>
-                <p>
-                    <asp:Label ID="lblMensajeAyuda" runat="server" Text=""></asp:Label></p>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input input-login-style" type="text" id="correo" placeholder="Nombre" name="correo" value="" runat="server" />
-                    <asp:RegularExpressionValidator ID="RevCorreo" runat="server" ErrorMessage="Por favor ingrese su correo" ControlToValidate="correo" ForeColor="#CC0000" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="correo" ErrorMessage="Campo Obligatorio" ValidationGroup="iniciarSesionV" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input  input-login-style" type="password" id="contraseña" placeholder="Contraseña" name="contraseña" value="" runat="server" />
-                    <asp:RegularExpressionValidator ID="revContraseña" runat="server" ErrorMessage="Por favor ingrese solo letras o números" ControlToValidate="contraseña" ForeColor="#CC0000" ValidationExpression="([a-zA-Z0-9]{1,})" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="contraseña" ErrorMessage="Campo Obligatorio" ValidationGroup="iniciarSesionV" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <!-- /login-fields -->
-           <%-- <div class="col-xs-12 p-0 text-right">
-                <asp:Button ID="btnLogin" ValidationGroup="iniciarSesionV" class="btn-login-style" runat="server" Text="Ingresar" OnClick="goToIndex" />
-            </div>--%>
-            <p class="form-message">No estás registrado? <a href="#">Crea una cuenta</a></p>
-            <!-- .actions -->
-        </form>
     </div>
     <section class="features">
         <div class="feature">

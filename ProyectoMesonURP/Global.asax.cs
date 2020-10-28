@@ -48,7 +48,9 @@ namespace ProyectoMesonURP
         private static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapPageRoute("Home", "Home", "~/Home.aspx", true);
-   
+            routes.MapPageRoute("Login", "Login", "~/Login.aspx", true);
+
+
         }
     }
 }
