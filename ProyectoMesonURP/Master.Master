@@ -142,9 +142,7 @@
         <div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
         <div class="menu">
             <ul id="menu">
-                <li  id="menuEncargado" runat="server"><a href="Dashboard"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
-                <li  id="menuAdmi" runat="server"><a href="DashboardAdmi"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
-                <li  id="menuASistema" runat="server"><a href="DashboardAdmiSistema"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
+                <li  id="menuEncargado" runat="server"><a href="Dashboard"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>              
                 <li id="menuOrdenCompra" runat="server"><a href="GestionarOC"><i class="lnr lnr-cart"></i><span>Orden de Compra</span></a></li>
                 <li id="menuCambiarCont" runat="server"><a href="ActualizarContraseña"><i class="lnr lnr-pencil"></i><span>Cambiar Contraseña</span></a></li>
                 <li id="menuProveedor" runat="server"><a href="gestionarProveedor"><i class="fa fa-file-text-o"></i><span>Gestionar Proveedor</span></a></li>
@@ -164,9 +162,7 @@
                 <li id="menuCategoria" runat="server"><a href="GestionarCategoria"><i class="lnr lnr-chart-bars"></i><span>Gestionar Categoría</span></a></li>
                 <li id="menuUsuarios" runat="server"><a href="GestionarUsuario"><i class="lnr lnr-users"></i><span>Gestionar Usuarios</span></a></li>
                 <li id="menuInsumo" runat="server"><a href="GestionarInsumo"><i class="fa fa-file-text-o"></i><span>Gestionar Insumo</span></a></li>
-                
-
-            </ul>
+             </ul>
 
              
 

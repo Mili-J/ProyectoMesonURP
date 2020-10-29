@@ -33,8 +33,7 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
 					</div>
-					
-					
+										
 					<div class="wrap-input100 validate-input" data-validate="Se requiere la contraseña">
 						<input id="password" class="input100" type="password" name="pass" runat="server"/>
 						<%--<asp:RegularExpressionValidator ID="revContraseña" runat="server" ErrorMessage="Por favor ingrese solo letras o números" ControlToValidate="password" ForeColor="#CC0000" ValidationExpression="([a-zA-Z0-9]{1,})" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
