@@ -27,7 +27,7 @@
 					</span>				
 					
 					<div class="wrap-input100 validate-input" data-validate = "Se requiere email válido: ex@abc.xyz">
-						<input id="email" class="input100" type="text" name="email" runat="server">
+						<input id="usuario" class="input100" type="text" name="email" runat="server">
 					<%--	<asp:RegularExpressionValidator ID="RevCorreo" runat="server" ErrorMessage="Por favor ingrese su correo" ControlToValidate="email" ForeColor="#CC0000" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
 						<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="email" ErrorMessage="Campo Obligatorio" ValidationGroup="iniciarSesionV" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
 						<span class="focus-input100"></span>

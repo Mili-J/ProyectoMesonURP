@@ -90,6 +90,7 @@
     <Content Include="css\pages\Login\animate.css" />
     <Content Include="css\pages\Login\animsition.min.css" />
     <Content Include="css\pages\Login\daterangepicker.css" />
+    <Content Include="Dashboard.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
@@ -229,6 +230,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -353,20 +361,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CTR\CTR.csproj">
-      <Project>{6216590e-7a1d-4779-9e96-55b408de3f0e}</Project>
-      <Name>CTR</Name>
+    <ProjectReference Include="..\CTR2\CTR2.csproj">
+      <Project>{41d3861b-3344-41c3-96b6-0dc4ff9ada56}</Project>
+      <Name>CTR2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{afa2235a-79ea-4c66-a0cd-34c79ba7bbd3}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{32959a1c-004a-49ab-b6fc-11f631c91a7a}</Project>
-      <Name>DTO</Name>
+    <ProjectReference Include="..\DTO2\DTO2.csproj">
+      <Project>{aeb2a706-6617-4641-9c3f-065caf57222d}</Project>
+      <Name>DTO2</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -24,13 +24,13 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.HtmlControls.HtmlForm formLogin;
 
         /// <summary>
-        /// Control email.
+        /// Control usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText email;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText usuario;
 
         /// <summary>
         /// Control password.

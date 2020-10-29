@@ -16,33 +16,38 @@ namespace DAO
         }
 
 
-        public bool Login(DTO_Usuario objUsuario, DTO_Persona objPersona)
+        public DTO_Usuario Login(DTO_Usuario objUsuario)
         {
+            DTO_Usuario dto = new DTO_Usuario();
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Iniciar_Sesion", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@correo", objPersona.P_correo));
+                SqlCommand cmd = new SqlCommand("SP_Iniciar_Sesion", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@codigo", objUsuario.U_codigo));
                 cmd.Parameters.Add(new SqlParameter("@contraseña", objUsuario.U_contraseña));
                 cmd.ExecuteNonQuery();
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if(count == 0)
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    conexion.Close();
-                    return false;
-                }
-                else
-                {
-                    conexion.Close();
-                    return true;
+                    dto.U_idUsuario = reader.GetInt32(0);
+                    dto.U_codigo = reader.GetString(1);
+                    dto.U_contraseña = reader.GetString(2);
+                    dto.TU_idTipoUsuario = reader.GetInt32(3);
+                    dto.P_idPersona = reader.GetInt32(4);
+                    dto.P_nombres = reader.GetString(5);
+                    dto.P_aPaterno = reader.GetString(6);
+                    dto.P_aMaterno = reader.GetString(7);
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            conexion.Close();
+            return dto;
         }
     }
 }
