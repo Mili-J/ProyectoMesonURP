@@ -203,6 +203,7 @@
     <Content Include="js\sweetalert.js" />
     <Content Include="js\sweetalert2.all.min.js" />
     <Content Include="js\underscore-min.js" />
+    <Content Include="Transformar_Insumo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +225,13 @@
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transformar_Insumo.aspx.cs">
+      <DependentUpon>Transformar_Insumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transformar_Insumo.aspx.designer.cs">
+      <DependentUpon>Transformar_Insumo.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master.Master" />
