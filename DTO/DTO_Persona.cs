@@ -12,8 +12,8 @@ namespace DTO
         public string P_aMaterno { get; set; }
         public string P_celular { get; set; }
         public string P_correo { get; set; }
+        public string P_tipoDoc { get; set; }
         public string P_numeroDoc { get; set; }
         public byte[] P_imagen { get; set; }
-        public int TD_idTipoDocumento { get; set; }
     }
 }
