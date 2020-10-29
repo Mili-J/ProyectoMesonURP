@@ -53,7 +53,6 @@
                                         <img src="../img/MesonURP_logofinal2.png" class="img-responsive2" alt="" />
                                     </a>
                                 </div>
-
                                 <div class="top_left">
                                     <h2>
                                         <strong>
@@ -142,30 +141,36 @@
         <div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
         <div class="menu">
             <ul id="menu">
-                <li  id="menuEncargado" runat="server"><a href="Dashboard"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
-                <li  id="menuAdmi" runat="server"><a href="DashboardAdmi"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
-                <li  id="menuASistema" runat="server"><a href="DashboardAdmiSistema"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
-                <li id="menuOrdenCompra" runat="server"><a href="GestionarOC"><i class="lnr lnr-cart"></i><span>Orden de Compra</span></a></li>
-                <li id="menuCambiarCont" runat="server"><a href="ActualizarContraseña"><i class="lnr lnr-pencil"></i><span>Cambiar Contraseña</span></a></li>
-                <li id="menuProveedor" runat="server"><a href="gestionarProveedor"><i class="fa fa-file-text-o"></i><span>Gestionar Proveedor</span></a></li>
-                <li id="menuGestionarMerma" runat="server"><a href="GestionarMerma"><i class="lnr lnr-pencil"></i><span>Gestionar Merma</span></a></li>
-                <li id="menuStock" runat="server"><a href="#"><i class="fa fa-table"></i><span>Stock</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="submenuStock">
-                        <li id="lblmenuManejoStock"><a href="ManejarStock">Manejar Stock</a></li>
-                        <li id="lblmenuMovimientosStock"><a href="consultarMovimientos">Consultar Movimientos</a></li>
+                <li  id="menuDashboard" runat="server"><a href="Dashboard"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>              
+                <li id="menuCotizacion" runat="server"><a href="#"><i class="fa fa-table"></i><span>Cotización</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul id="submenuCotizacion">
+                        <li id="lblSolicitarCotizacion"><a href="#">Solicitar Cotización</a></li>
+                        <li id="lblGenerarOC"><a href="#">Generar OC</a></li>
                     </ul>
-                </li>
-                <li id="menuReportes" runat="server"><a href="#"><i class="lnr lnr-file-empty"></i><span>Reportes</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="menu-academico-sub">
-                        <li id="lblReporteCompras"><a href="ReporteCompras">Generar Reporte de Compras</a></li>
-                        <li id="lblReportesMovimientos"><a href="ReporteMovimientos">Generar Reporte de Movimientos</a></li>
+                </li>                
+                <li id="menuStock" runat="server"><a href="#"><i class="lnr lnr-pencil"></i><span>Manejar Stock</span></a></li>
+                <li id="menuInsumosOC" runat="server"><a href="#"><i class="fa fa-table"></i><span>Orden de Compra</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul id="submenuInsumosOC">
+                        <li id="lblGestionarOC"><a href="#">Gestionar OC</a></li>
+                        <li id="lblRecepciona"><a href="#">Recepcionar Insumo</a></li>
                     </ul>
-                </li>
-                <li id="menuCategoria" runat="server"><a href="GestionarCategoria"><i class="lnr lnr-chart-bars"></i><span>Gestionar Categoría</span></a></li>
-                <li id="menuUsuarios" runat="server"><a href="GestionarUsuario"><i class="lnr lnr-users"></i><span>Gestionar Usuarios</span></a></li>
-                <li id="menuInsumo" runat="server"><a href="GestionarInsumo"><i class="fa fa-file-text-o"></i><span>Gestionar Insumo</span></a></li>
-                
-
+                </li>                 
+               <li id="menuReceta" runat="server"><a href="#"><i class="fa fa-table"></i><span>Receta</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul id="submenuReceta">
+                        <li id="lblGestionarReceta"><a href="#">Gestionar Receta</a></li>
+                        <li id="lblGestionarCategoriaReceta"><a href="#">Gestionar Categoría Receta</a></li>
+                    </ul>
+                </li>   
+                <li id="menuSepararIngredientes" runat="server"><a href="#"><i class="lnr lnr-pencil"></i><span>Separar Ingredientes</span></a></li>
+                <li id="menuProveedor" runat="server"><a href="#"><i class="lnr lnr-chart-bars"></i><span>Gestionar Proveedor</span></a></li>
+               <li id="menuInsumo" runat="server"><a href="#"><i class="fa fa-table"></i><span>Insumo</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul id="submenuInsumo">
+                        <li id="lblGestionarInsumo"><a href="#">Gestionar Insumo</a></li>
+                        <li id="lblGestionarCategoriaInsumo"><a href="#">Gestionar Categoría Insumo</a></li>
+                    </ul>
+                </li>   
+                <li id="menuMovimiento" runat="server"><a href="#"><i class="lnr lnr-users"></i><span>Consultar Movimiento</span></a></li>
+             
             </ul>
 
              

@@ -69,67 +69,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
 
         /// <summary>
-        /// Control menuEncargado.
+        /// Control menuDashboard.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuEncargado;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuDashboard;
 
         /// <summary>
-        /// Control menuAdmi.
+        /// Control menuCotizacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuAdmi;
-
-        /// <summary>
-        /// Control menuASistema.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuASistema;
-
-        /// <summary>
-        /// Control menuOrdenCompra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuOrdenCompra;
-
-        /// <summary>
-        /// Control menuCambiarCont.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuCambiarCont;
-
-        /// <summary>
-        /// Control menuProveedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuProveedor;
-
-        /// <summary>
-        /// Control menuGestionarMerma.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuGestionarMerma;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuCotizacion;
 
         /// <summary>
         /// Control menuStock.
@@ -141,31 +96,40 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuStock;
 
         /// <summary>
-        /// Control menuReportes.
+        /// Control menuInsumosOC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuReportes;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuInsumosOC;
 
         /// <summary>
-        /// Control menuCategoria.
+        /// Control menuReceta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuCategoria;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuReceta;
 
         /// <summary>
-        /// Control menuUsuarios.
+        /// Control menuSepararIngredientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuUsuarios;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuSepararIngredientes;
+
+        /// <summary>
+        /// Control menuProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuProveedor;
 
         /// <summary>
         /// Control menuInsumo.
@@ -175,5 +139,14 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuInsumo;
+
+        /// <summary>
+        /// Control menuMovimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuMovimiento;
     }
 }
