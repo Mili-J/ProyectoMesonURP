@@ -191,6 +191,7 @@
     <Content Include="img\urp1.jpg" />
     <Content Include="img\ver-w.png" />
     <Content Include="img\ver.png" />
+    <Content Include="index.html" />
     <Content Include="js\amcharts.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />

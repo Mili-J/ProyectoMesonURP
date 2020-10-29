@@ -18,9 +18,38 @@ namespace ProyectoMesonURP
                 switch (dto.TU_idTipoUsuario)
                 {
                     case 1:
-                        //PONER INVISIBLE ADMINISTAR
+                        menuCotizacion.Visible = true;
+                        menuReceta.Visible = true;
+                        menuProveedor.Visible = true;
+                        menuMovimiento.Visible = true;
+                        menuDashboard.Visible = true;
+                        menuInsumo.Visible = false;
+                        menuInsumosOC.Visible = false;
+                        menuStock.Visible = false;
+                        menuSepararIngredientes.Visible = false;
+                        
                         break;
                     case 2:
+                        menuCotizacion.Visible = false;
+                        menuReceta.Visible = false;
+                        menuProveedor.Visible = false;
+                        menuMovimiento.Visible = false;
+                        menuDashboard.Visible = false;
+                        menuInsumo.Visible = true;
+                        menuInsumosOC.Visible = true;
+                        menuStock.Visible = true;
+                        menuSepararIngredientes.Visible = false;
+                        break;
+                    case 3:
+                        menuCotizacion.Visible = false;
+                        menuReceta.Visible = true;
+                        menuProveedor.Visible = false;
+                        menuMovimiento.Visible = false;
+                        menuDashboard.Visible = false;
+                        menuInsumo.Visible = false;
+                        menuInsumosOC.Visible = false;
+                        menuStock.Visible = false;
+                        menuSepararIngredientes.Visible = true;
                         break;
                     default:
                         break;
