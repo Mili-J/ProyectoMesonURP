@@ -228,6 +228,7 @@
     <Content Include="js\sweetalert2.all.min.js" />
     <Content Include="js\underscore-min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="Web.config" />
@@ -256,6 +257,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manejar_Stock_Prueba.aspx.cs">
+      <DependentUpon>Manejar_Stock_Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manejar_Stock_Prueba.aspx.designer.cs">
+      <DependentUpon>Manejar_Stock_Prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
