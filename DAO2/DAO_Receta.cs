@@ -32,6 +32,17 @@ namespace DAO
                 throw ex;
             }
         }
-
+        public DataTable DAO_Consultar_Receta()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA", conexion);
+            comando.CommandType = CommandType.StoredProcedure;           
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

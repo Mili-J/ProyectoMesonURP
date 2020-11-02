@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -16,6 +16,20 @@
             <ContentTemplate>
                 <div class="form-three widget-shadow">
                     <div class="form-horizontal" runat="server">
+
+                        <asp:GridView ID="gvIngredienteReceta" runat="server" DataKeyNames="I_nombreIngrediente,I_nombreInsumo,IR_cantidad,IR_formatoMedida" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" />
+                                <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
+                                <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
+                                <asp:BoundField HeaderText="Formato Medida" DataField="IR_formatoMedida"/>
+                                <asp:TemplateField HeaderText="Seleccionar">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnSeleccionar" runat="server" OnClick="btnSeleccionar_Click" Text="Seleccionar" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                         <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del Insumo</label>
                         <div class="col-sm-8">
@@ -61,7 +75,7 @@
                         <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Formato Cocina</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlFormatoCocina" runat="server" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="Selection_Change">
+                            <asp:DropDownList ID="ddlFormatoCocina" runat="server" CssClass="form-control1" AutoPostBack="true" >
                                 <asp:ListItem Text="" Value="">Seleccione un formato</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="validationInsumos" runat="server" ControlToValidate="ddlInsumos" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -87,7 +101,7 @@
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                       <ContentTemplate>
                          <p class="center-button">
-                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click"/>
+                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" />
 <%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
                         </p>
                       </ContentTemplate>
