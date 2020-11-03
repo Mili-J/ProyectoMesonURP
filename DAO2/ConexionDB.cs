@@ -10,7 +10,9 @@ namespace DAO
         {
             get
             {
-                return "data source=DESKTOP-GJ83E50\\MSSQLSERVER01; initial catalog=BD_MesonURP; integrated security=SSPI;";
+
+                return "Data Source =DESKTOP-65T58I3\\SQLEXPRESS; Initial Catalog = BD_MesonURP; Integrated Security = True";
+
             }
         }
     }
