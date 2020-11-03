@@ -10,10 +10,17 @@ namespace CTR
     public class CTR_Receta
     {
         DAO_Receta dao_receta;
-        public DataTable CTR_Consultar_Receta()
+        public CTR_Receta()
         {
             dao_receta = new DAO_Receta();
+        }
+        public DataTable CTR_Consultar_Receta()
+        {
             return dao_receta.DAO_Consultar_Receta();
+        }
+        public DataTable CTR_Consultar_Recetas_X_Categoria(int categoria)
+        {
+            return dao_receta.DAO_Consultar_Receta_X_Categoria(categoria);
         }
     }
 }

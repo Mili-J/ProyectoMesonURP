@@ -35,8 +35,21 @@ namespace DAO
         public DataTable DAO_Consultar_Receta()
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA", conexion);
+            SqlCommand comando = new SqlCommand("SP_ConsultarRecetas", conexion);
             comando.CommandType = CommandType.StoredProcedure;           
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+        public DataTable DAO_Consultar_Receta_X_Categoria(int categoria)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarRecetasXCategoria", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@CR_idCategoriaReceta", categoria);
             comando.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(comando);

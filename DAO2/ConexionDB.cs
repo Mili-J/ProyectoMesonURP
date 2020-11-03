@@ -10,7 +10,7 @@ namespace DAO
         {
             get
             {
-                return  "Data Source = (Local); initial catalog=BD_MesonURP; integrated security=true;"; 
+                return "Data Source = CARLOS; initial catalog=BD_MesonURP; integrated security=true;"; 
             }
         }
     }
