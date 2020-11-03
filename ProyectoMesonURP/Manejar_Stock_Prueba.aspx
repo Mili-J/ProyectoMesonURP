@@ -23,13 +23,13 @@
                     <asp:BoundField HeaderText="Descripcion" DataField="R_descripcion"/>
                     <asp:TemplateField HeaderText="Transformar">
                         <ItemTemplate>
-                            <asp:Button ID="btnTransformar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  OnClick="btnTransformar_Click" Text="Transformar" />
+                            <asp:Button ID="btnTransformar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  Text="Transformar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     
                     <asp:TemplateField HeaderText="Seleccionar">
                         <ItemTemplate>
-                            <asp:Button ID="btnSeleccionarPlato" runat="server" CommandName="SeleccionarPlato" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  OnClick="btnSeleccionarPlato_Click" Text="Seleccionar" />
+                            <asp:Button ID="btnSeleccionarPlato" runat="server" CommandName="SeleccionarPlato" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"   Text="Seleccionar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -48,13 +48,13 @@
                     <asp:BoundField HeaderText="Descripcion" DataField="R_descripcion"/>
                     <asp:TemplateField HeaderText="Transformar">
                         <ItemTemplate>
-                            <asp:Button ID="btnTransformar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  OnClick="btnTransformar_Click" Text="Transformar" />
+                            <asp:Button ID="btnTransformar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"   Text="Transformar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     
                     <asp:TemplateField HeaderText="Seleccionar">
                         <ItemTemplate>
-                            <asp:Button ID="btnSeleccionarEntrada" runat="server" CommandName="SeleccionarEntrada" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  OnClick="btnSeleccionarEntrada_Click" Text="Seleccionar" />
+                            <asp:Button ID="btnSeleccionarEntrada" runat="server" CommandName="SeleccionarEntrada" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"   Text="Seleccionar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -75,7 +75,7 @@
                     
                     <asp:TemplateField HeaderText="Quitar">
                         <ItemTemplate>
-                            <asp:Button ID="btnQuitar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  OnClick="btnQuitar_Click" Text="Quitar" />
+                            <asp:Button ID="btnQuitar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Quitar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

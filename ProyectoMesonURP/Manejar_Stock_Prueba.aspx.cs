@@ -33,26 +33,8 @@ namespace ProyectoMesonURP
 
         }
 
-        protected void btnTransformar_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
-        protected void btnQuitar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnSeleccionarEntrada_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnSeleccionarPlato_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void gvPlatoFondo_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -81,7 +63,20 @@ namespace ProyectoMesonURP
 
         protected void gvEntrada_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            if (e.CommandName == "SeleccionarEntrada")
+            {
+                if (dt.Rows.Count == 0)
+                {
+                    dt.Columns.Add("R_nombreReceta");
+                    dt.Columns.Add("NumRaciones");
+                }
+                DataRow dr = dt.NewRow();
+                dr[0] = gvPlatoFondo.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
+                dr[1] = txtNumRaciones.Text;
+                dt.Rows.Add(dr);
+                gvMenu.DataSource = dt;
+                gvMenu.DataBind();
+            }
         }
 
         protected void gvMenu_RowCommand(object sender, GridViewCommandEventArgs e)
