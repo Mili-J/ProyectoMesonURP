@@ -22,9 +22,6 @@
  		<!-- nouislider -->
  		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/nouislider.min.css"/>
 
- 		<!-- Font Awesome Icon -->
- 		<link rel="stylesheet" href="css/GestionarReceta/font-awesome.min.css">
-
  		<!-- Custom stlylesheet -->
  		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/style.css"/>--%>
 

@@ -23,8 +23,7 @@ namespace ProyectoMesonURP
         }
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            Repeater1.DataSource = _Cr.CargarRecetaxNombre(txtBuscarReceta.Text);
-            Repeater1.DataBind();
+
         }
         protected void rbCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
