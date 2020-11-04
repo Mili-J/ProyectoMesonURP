@@ -12,23 +12,26 @@
         </div>
         <div class="forms">
             <h3 class="title1"></h3>
-            <asp:UpdatePanel ID="panelEgreso" runat="server">
-                        <ContentTemplate>
+            
             <div class="form-three widget-shadow">
                 <div class="form-horizontal" runat="server">
-                    <asp:Image ID="Imagen" CssClass="img-fluid" runat="server" Width="156px" class="auto-style1" Height="160px" />
-                        <br />
-                        <br />
-                        <label class="control-label">&nbsp; Selecciona la imagen</label>
-                        <br />
-                        <asp:FileUpload ID="idFoto" CssClass="form-control underlined" runat="server" Width="418px" />
-                    
-                             <div class="form-group">
-                            <asp:Button ID="btnCargarFoto" CssClass="btn btn-primary" runat="server" Text="Cargar Foto" OnClick="btnCargarFoto_Click" />
-                             <asp:Label ID="lblValArchivoAdjunto" runat="server" Visible="False"></asp:Label>
-                             <asp:Label ID="lbl_mensaje_2" runat="server"></asp:Label>
+                    <div class="row">
+                        <div class="form-group">
+                            <asp:Image ID="ImagenPreview" ImageUrl="https://img.icons8.com/fluent/48/000000/image.png" runat="server" />
+                            <br />
+                             <br />
+                            <label class="col-sm-2 control-label">Selecciona la imagen</label>
+                            <asp:FileUpload ID="fuImagen" accept=".jpg" runat="server" CssClass="form-control1 "/>
+                            <br />
+                            <asp:TextBox ID="txtNombreImagen" runat="server" CssClass="form-control"></asp:TextBox>
+                            <br />
+                            <p class="center-button">
+                                <asp:Button ID="btnCargar" runat="server" Text="Cargar" class="btn btn-danger" OnClick="btnCargar_Click"/>
+                        </p>
                             </div>
                         </div>
+                    <asp:UpdatePanel ID="panelEgreso" runat="server">
+                        <ContentTemplate>
                     <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
@@ -39,42 +42,40 @@
                         <label for="focusedinput" class="col-sm-2 control-label">N° porciones</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtPorciones" runat="server" placeholder="Seleccione la cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
-                            <asp:RequiredFieldValidator ID="validationCantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
+                           </div>
                     </div>
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="Selection_Change">
+                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" CssClass="form-control1" > 
                                 <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Descripción</i></label>
                         <div class="col-sm-8">
-                            <asp:TextBox disabled="True" ID="txtUnidadMedida" runat="server" placeholder="Unidad de Medida" CssClass="form-control1" />
+                            <asp:TextBox ID="txtDescripcion" runat="server" placeholder="Descripcion" CssClass="form-control1" />
                     </div>
                     </div>
                      <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlIngredientes" runat="server" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="Selection_Change">
+                            <asp:DropDownList ID="ddlIngredientes" runat="server" CssClass="form-control1" AutoPostBack="true" Width="739px" > <%--OnSelectedIndexChanged="Selection_Change"--%>
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                     
                             <asp:Button ID="btnAñadirIngrediente" runat="server" CssClass="btn btn-primary" OnClick="btnAñadirIngrediente_Click" Text="Añadir" Width="94px" />
                             
-                            <asp:RequiredFieldValidator ID="validationIngredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
-                    </div>
+                    </div></div>
                     <asp:UpdatePanel ID="PanelAñadir" runat="server">
                       <ContentTemplate>
                          <p class="center-button">
-                             &nbsp;<asp:Button ID="btnAñadirInsumo0" runat="server" CssClass="btn btn-primary" OnClick="btnAñadirInsumo_Click" Text="Añadir" Width="94px" />
-                             <asp:Button runat="server" CssClass="btn btn-primary" OnClick="btnQuitarInsumo_Click" Text="Quitar" />
+                             <%--<asp:Button ID="btnAñadirInsumo0" runat="server" CssClass="btn btn-primary" OnClick="btnAñadirInsumo_Click" Text="Añadir" Width="94px" />
+                             <asp:Button runat="server" CssClass="btn btn-primary" OnClick="btnQuitarInsumo_Click" Text="Quitar" />--%>
                         </p>
                       </ContentTemplate>
                     </asp:UpdatePanel>
@@ -101,7 +102,7 @@
                         <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
                     <hr />   
                             <p class="center-button">
-                                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnEgresar_ServerClick">Guardar</button>
+                                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
                                 <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'Gestionar Receta';" onserverclick="btnRegresar_ServerClick"  class="btn btn-primary" />
                                 <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
                             </p>
@@ -110,8 +111,10 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-         
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
     <script>
+
         function SoloNumeroIntDouble(ev) {
             var tecla = (document.all) ? ev.keyCode : ev.which;
             if (tecla == 8 || tecla == 13 || tecla == 0) return true;
@@ -121,8 +124,10 @@
         }
     </script>
     <!-- Alertas -->
-    <script src="js/sweetalert.js"></script>
+    <script src="js/sweetalert.js">
+    </script>
     <script>
+       
         function alertaCantidad() {
             Swal.fire({
                 title: 'Oh, no!',

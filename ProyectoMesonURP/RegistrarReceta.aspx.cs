@@ -1,9 +1,9 @@
 ﻿using CTR;
 using DTO;
 using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
-
+using System.Web.UI;
 
 namespace ProyectoMesonURP
 {
@@ -35,64 +35,84 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
         }
-
-        protected void btnCargarFoto_Click(object sender, EventArgs e)
-        {
-            insertarFotoReceta();
-        }
-        private Byte[] imagen_bytes(System.Drawing.Image foto)
-        {
-            if (!(foto == null))
-            {
-                MemoryStream ms = new MemoryStream();
-                foto.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return ms.GetBuffer();
-            }
-            else
-                return null;
-        }
-        private System.Drawing.Image bytes_imagen(Byte[] foto)
-        {
-            if (!(foto == null))
-            {
-                MemoryStream ms = new MemoryStream(foto);
-                System.Drawing.Image resultado = System.Drawing.Image.FromStream(ms);
-                return resultado;
-            }
-            else
-                return null;
-        }
-        public void insertarFotoReceta()
+        protected void ddlCategoriaReceta_Change(object sender, EventArgs e)
         {
 
-            Boolean correcto = false;
-            if (idFoto.HasFile)
-            {
-                String extencionArchivo = Path.GetExtension(idFoto.FileName).ToLower();
-                String[] extencionesPermitidas = { ".png", ".jpg", ".jpeg" };
-                for (int i = 0; i < extencionesPermitidas.Length; i++)
-                {
-                    if (extencionArchivo == extencionesPermitidas[i])
-                    {
-                        correcto = true;
-                    }
-                }
-                if (correcto)
-                {
-                    ViewState["@R_imagenReceta"] = Path.GetFileName(idFoto.FileName);
-                    idFoto.SaveAs(Server.MapPath("~/img/") + ViewState["@R_imagenReceta"].ToString());
-                    Imagen.ImageUrl = "~/img/" + ViewState["@R_imagenReceta"];
-                    Imagen.DataBind();
-                }
-            }
+            //if (ddlCategoriaReceta.SelectedIndex != 0)
+            //{
+            //    txtUnidadMedida.Text = _Cm.BuscarMedida(Convert.ToInt32(ddlInsumos.SelectedValue));
+            //    txtOculto.Text = _Cmxi.VerificarStockMin(Convert.ToInt32(ddlInsumos.SelectedValue));
+            //}
+            //else
+            //{
+                
+            //    ScriptManager.RegisterClientScriptBlock(this.PanelAñadir, this.PanelAñadir.GetType(), "alertaSeleccionar", "alertaSeleccionar();", true);
+            //    return;
+            //}
+
+        }
+        protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            
+        }
+        protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
         {
-            System.Drawing.Image rfoto = System.Drawing.Image.FromFile(Server.MapPath("~/img/") + ViewState["@Photo"]);
-            _Dr.R_nombreReceta = txtnombre.Text;
-            _Dr.R_imagenReceta = imagen_bytes(rfoto);
-            _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
-            _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+           
+
+        }
+        protected void btnGuardar_ServerClick(object sender, EventArgs e)
+        {
+            
+                _Dr.R_nombreReceta = txtnombre.Text;
+                _Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
+                _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
+                 _Dr.CR_idCategoriaReceta = 1;
+                _Dr.R_descripcion = txtDescripcion.Text;
+             
+                _Cr.RegistrarReceta(_Dr);
+            
+        }
+        protected void btnRegresar_ServerClick(object sender, EventArgs e)
+        {
+            
+        }
+        protected void btnLimpiar_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCargar_Click(object sender, EventArgs e)
+        {
+            int tamaño = fuImagen.PostedFile.ContentLength;
+            byte[] ImagenOriginal = new byte[tamaño];
+
+            fuImagen.PostedFile.InputStream.Read(ImagenOriginal, 0, tamaño);
+
+            Bitmap ImagenOriginalBinaria = new Bitmap(fuImagen.PostedFile.InputStream);
+
+            string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(ImagenOriginal);
+
+            ImagenPreview.ImageUrl = ImagenDataURL64;
+
+        }
+        private Byte[] imagen_bytes(System.Web.UI.WebControls.Image foto)
+        {
+
+            if (!(foto == null))
+            {
+                int tamaño = fuImagen.PostedFile.ContentLength;
+                byte[] ImagenOriginal = new byte[tamaño];
+                fuImagen.PostedFile.InputStream.Read(ImagenOriginal, 0, tamaño);
+                return ImagenOriginal;
+
+
+            }
+            else
+                return null;
 
         }
     }
