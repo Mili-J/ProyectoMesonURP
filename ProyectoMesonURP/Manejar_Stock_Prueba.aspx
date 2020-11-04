@@ -1,13 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Manejar_Stock_Prueba.aspx.cs" Inherits="ProyectoMesonURP.Manejar_Stock_Prueba" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Manejar_Stock_Prueba.aspx.cs" Inherits="ProyectoMesonURP.Manejar_Stock_Prueba" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <div class="women_main">
          <div>
              <asp:TextBox ID="txtNumRaciones" runat="server" TextMode="Number" OnTextChanged="txtNumRaciones_TextChanged" AutoPostBack="true"></asp:TextBox>
          </div>
@@ -82,6 +80,5 @@
             </asp:GridView>
             </div>
         </div>
-    </form>
-</body>
-</html>
+         </div>
+         </asp:Content>

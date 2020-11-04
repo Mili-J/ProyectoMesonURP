@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 using DTO;
 
 namespace DAO
@@ -38,7 +40,7 @@ namespace DAO
                 throw ex;
             }
         }
-        public DataTable DAO_Consultar_Receta()
+        public DataTable DAO_Consultar_Recetas()
         {
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarRecetas", conexion);
@@ -67,25 +69,74 @@ namespace DAO
         public DataTable DAO_Consultar_Recetas_Disponibles(int racion)
         {
             //TODO
-            //><
+            //<>
             int i = 0;
-            DataTable dtRecetas = DAO_Consultar_Receta(),dtIngredientesxReceta;
-            DTO_IngredienteXReceta aux;
+            DataTable dtRecetas = DAO_Consultar_Recetas(),dtIngredientesxReceta,dtDisponibles = new DataTable();
+            DTO_IngredienteXReceta dto_ingredientexreceta;
             DTO_Ingrediente dto_ingrediente;
+            object[] recetas, ingredientesxrecetas;
+            bool valor=true;
+            List<DTO_Receta> recetasDisponibles = new List<DTO_Receta>();
+            List<DTO_Receta> prueba = new List<DTO_Receta>();
+
+
             while (i<dtRecetas.Rows.Count)
             {
-                dto_receta.R_idReceta = i + 1;
+                dto_receta = new DTO_Receta();
+                recetas = dtRecetas.Rows[i].ItemArray;            
+                dto_receta = DAO_Consultar_Receta(Convert.ToInt32(recetas[0]));
                 dtIngredientesxReceta = dao_ingredientexreceta.DAO_Consultar_Insumo_x_Receta(dto_receta);
                 int j = 0;
-                while (j <dtIngredientesxReceta.Rows.Count)
+                while (j <dtIngredientesxReceta.Rows.Count&&valor==true)
                 {
-                    dto_ingrediente = dao_ingrediente.DAO_Consultar_IngredienteXID(j);
+                    ingredientesxrecetas = dtIngredientesxReceta.Rows[j].ItemArray;
+                    dto_ingrediente = dao_ingrediente.DAO_Consultar_IngredienteXID(Convert.ToInt32(ingredientesxrecetas[4]));
+                    dto_ingredientexreceta = dao_ingredientexreceta.DAO_Consultar_IngredienteXReceta(Convert.ToInt32(ingredientesxrecetas[3]), Convert.ToInt32(ingredientesxrecetas[4]));
+                    if(dto_ingredientexreceta.IR_Cantidad*racion<=dto_ingrediente.I_cantidad)
+                    {
+                        valor = true;
+                        if (j== dtIngredientesxReceta.Rows.Count-1)
+                        {
+
+                            recetasDisponibles.Add(dto_receta);
+                        }
+                    }
+                    else
+                    {
+                        valor = false;
+                        break;
+                    }
+
                     j++;
+                   
                 }
+                prueba.Add(dto_receta);
                 i++;
             }
 
-            return new DataTable();
+            return dtDisponibles;
+        }
+
+        public DTO_Receta DAO_Consultar_Receta(int i)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarReceta", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", i);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+
+            if (reader.Read())
+            {
+                dto_receta.R_idReceta = i;
+                dto_receta.R_nombreReceta = reader[1].ToString();
+                dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
+                dto_receta.R_descripcion = Convert.ToString(reader[3]);
+                dto_receta.R_imagenReceta = 0;
+                dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[5]);
+            }
+            conexion.Close();
+            return dto_receta;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ProyectoMesonURP
     public partial class Manejar_Stock_Prueba : System.Web.UI.Page
     {
         CTR_Receta ctr_receta;
-        DataTable dtPlatoFondo,dtEntrada;
+        DataTable dtPlatoFondo,dtEntrada,dtSopa;
         static DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,10 +23,12 @@ namespace ProyectoMesonURP
             {
                 dtPlatoFondo = ctr_receta.CTR_Consultar_Recetas_X_Categoria(1);
                 dtEntrada = ctr_receta.CTR_Consultar_Recetas_X_Categoria(2);
+                dtSopa = ctr_receta.CTR_Consultar_Recetas_X_Categoria(3);
                 //---------------------------------------------------------
                 gvPlatoFondo.DataSource = dtPlatoFondo;
                 gvPlatoFondo.DataBind();
                 //---------------------------------------------------------
+                dtEntrada.Merge(dtSopa);
                 gvEntrada.DataSource = dtEntrada;
                 gvEntrada.DataBind();
             }
@@ -71,7 +73,7 @@ namespace ProyectoMesonURP
                     dt.Columns.Add("NumRaciones");
                 }
                 DataRow dr = dt.NewRow();
-                dr[0] = gvPlatoFondo.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
+                dr[0] = gvEntrada.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
                 dr[1] = txtNumRaciones.Text;
                 dt.Rows.Add(dr);
                 gvMenu.DataSource = dt;
@@ -86,7 +88,12 @@ namespace ProyectoMesonURP
 
         protected void txtNumRaciones_TextChanged(object sender, EventArgs e)
         {
-            int racion = Convert.ToInt32(txtNumRaciones.Text);  
+            //int racion = Convert.ToInt32(txtNumRaciones.Text);
+            //DTO_IngredienteXReceta a = new CTR_IngredienteXReceta().CTR_Consultar_IngredienteXReceta(1,5);
+            //gvPlatoFondo.DataSource = ctr_receta.CTR__Consultar_Recetas_Disponibles(racion);
+            //gvPlatoFondo.DataBind();
+            //int racionss = 1 + 1;
+
         }
     }  
 }

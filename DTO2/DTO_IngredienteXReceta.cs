@@ -8,8 +8,8 @@ namespace DTO
     {
         public int IR_idIngredienteReceta { get; set; }
         public int IR_Cantidad { get; set; }
-        public int IR_formato { get; set; }
-        public int I_idIngrediente { get; set; }
+        public string IR_formatoMedida { get; set; }
         public int R_idReceta { get; set; }
+        public int I_idIngrediente { get; set; }
     }
 }
