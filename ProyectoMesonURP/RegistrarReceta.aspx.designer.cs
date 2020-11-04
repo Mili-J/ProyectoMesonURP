@@ -24,31 +24,67 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.UpdatePanel panelEgreso;
 
         /// <summary>
-        /// Control txtFecha.
+        /// Control Imagen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFecha;
+        protected global::System.Web.UI.WebControls.Image Imagen;
 
         /// <summary>
-        /// Control validationFecha.
+        /// Control idFoto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator validationFecha;
+        protected global::System.Web.UI.WebControls.FileUpload idFoto;
 
         /// <summary>
-        /// Control txtCantidad.
+        /// Control btnCargarFoto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
+        protected global::System.Web.UI.WebControls.Button btnCargarFoto;
+
+        /// <summary>
+        /// Control lblValArchivoAdjunto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValArchivoAdjunto;
+
+        /// <summary>
+        /// Control lbl_mensaje_2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_mensaje_2;
+
+        /// <summary>
+        /// Control txtnombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtnombre;
+
+        /// <summary>
+        /// Control txtPorciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPorciones;
 
         /// <summary>
         /// Control validationCantidad.
@@ -60,6 +96,60 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.RequiredFieldValidator validationCantidad;
 
         /// <summary>
+        /// Control ddlCategoriaReceta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaReceta;
+
+        /// <summary>
+        /// Control RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
+        /// Control txtUnidadMedida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUnidadMedida;
+
+        /// <summary>
+        /// Control ddlIngredientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIngredientes;
+
+        /// <summary>
+        /// Control btnAñadirIngrediente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAñadirIngrediente;
+
+        /// <summary>
+        /// Control validationIngredientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validationIngredientes;
+
+        /// <summary>
         /// Control PanelAñadir.
         /// </summary>
         /// <remarks>
@@ -69,22 +159,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.UpdatePanel PanelAñadir;
 
         /// <summary>
-        /// Control btnAñadirInsumo.
+        /// Control btnAñadirInsumo0.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAñadirInsumo;
+        protected global::System.Web.UI.WebControls.Button btnAñadirInsumo0;
 
         /// <summary>
-        /// Control gvInsumosEgreso.
+        /// Control gvIngredientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvInsumosEgreso;
+        protected global::System.Web.UI.WebControls.GridView gvIngredientes;
 
         /// <summary>
         /// Control lblIndex.
@@ -96,12 +186,12 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Label lblIndex;
 
         /// <summary>
-        /// Control btnEgresar.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnEgresar;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGuardar;
     }
 }

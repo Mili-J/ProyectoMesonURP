@@ -14,17 +14,17 @@ namespace ProyectoMesonURP
         {
             if (!IsPostBack)
             {
-                DTO_Usuario dto = (DTO_Usuario)Session["Usuario"];
-                switch (dto.TU_idTipoUsuario)
-                {
-                    case 1:
-                        //PONER INVISIBLE ADMINISTAR
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        break;
-                }
+                //DTO_Usuario dto = (DTO_Usuario)Session["Usuario"];
+                //switch (dto.TU_idTipoUsuario)
+                //{
+                //    case 1:
+                //        //PONER INVISIBLE ADMINISTAR
+                //        break;
+                //    case 2:
+                //        break;
+                //    default:
+                //        break;
+                //}
             }
         }
     }

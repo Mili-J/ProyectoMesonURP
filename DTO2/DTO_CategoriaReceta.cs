@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_CategoriaReceta
+    public class DTO_CategoriaReceta
     {
+        public int @CR_idCategoriaReceta { get; set; }
+        public string @CR_nombreCategoria  { get; set; }
     }
 }

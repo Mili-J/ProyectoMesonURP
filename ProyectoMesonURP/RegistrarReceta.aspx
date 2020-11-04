@@ -16,68 +16,84 @@
                         <ContentTemplate>
             <div class="form-three widget-shadow">
                 <div class="form-horizontal" runat="server">
-                   <%-- <div class="form-group">
-                        <label for="selector1" class="col-sm-2 control-label">Insumo</label>
-                        <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlInsumos" runat="server" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="Selection_Change">
-                                <asp:ListItem Text="" Value="">Seleccione un insumo</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="validationInsumos" runat="server" ControlToValidate="ddlInsumos" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:Image ID="Imagen" CssClass="img-fluid" runat="server" Width="156px" class="auto-style1" Height="160px" />
+                        <br />
+                        <br />
+                        <label class="control-label">&nbsp; Selecciona la imagen</label>
+                        <br />
+                        <asp:FileUpload ID="idFoto" CssClass="form-control underlined" runat="server" Width="418px" />
+                    
+                             <div class="form-group">
+                            <asp:Button ID="btnCargarFoto" CssClass="btn btn-primary" runat="server" Text="Cargar Foto" OnClick="btnCargarFoto_Click" />
+                             <asp:Label ID="lblValArchivoAdjunto" runat="server" Visible="False"></asp:Label>
+                             <asp:Label ID="lbl_mensaje_2" runat="server"></asp:Label>
+                            </div>
                         </div>
-                    </div>--%>
                     <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control1" />
-                            <asp:RequiredFieldValidator ID="validationFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
+                            <asp:TextBox ID="txtnombre" runat="server" CssClass="form-control1" />
+                           </div>
                     </div>
                     <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">N° porciones</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtCantidad" runat="server" placeholder="Seleccione la cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
+                            <asp:TextBox ID="txtPorciones" runat="server" placeholder="Seleccione la cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
                             <asp:RequiredFieldValidator ID="validationCantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-                    <%--<div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Cantidad máxima a egresar</label>
+                    <div class="form-group">
+                        <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
-                            <asp:TextBox disabled="false" ID="txtOculto" runat="server" CssClass="form-control1" placeholder="Cantidad máxima a egresar" />
+                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="Selection_Change">
+                                <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
-                    </div>--%>
-                   <%-- <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Unidad de Medida</label>
+
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Descripción</i></label>
                         <div class="col-sm-8">
                             <asp:TextBox disabled="True" ID="txtUnidadMedida" runat="server" placeholder="Unidad de Medida" CssClass="form-control1" />
                     </div>
-                    </div>--%>
+                    </div>
+                     <div class="form-group">
+                        <label for="selector1" class="col-sm-2 control-label">Ingredientes</label>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="ddlIngredientes" runat="server" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="Selection_Change">
+                                <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
+                            </asp:DropDownList>
+                    
+                            <asp:Button ID="btnAñadirIngrediente" runat="server" CssClass="btn btn-primary" OnClick="btnAñadirIngrediente_Click" Text="Añadir" Width="94px" />
+                            
+                            <asp:RequiredFieldValidator ID="validationIngredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
                     <asp:UpdatePanel ID="PanelAñadir" runat="server">
                       <ContentTemplate>
                          <p class="center-button">
-                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirInsumo" OnClick="btnAñadirInsumo_Click"/>
-<%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
+                             &nbsp;<asp:Button ID="btnAñadirInsumo0" runat="server" CssClass="btn btn-primary" OnClick="btnAñadirInsumo_Click" Text="Añadir" Width="94px" />
+                             <asp:Button runat="server" CssClass="btn btn-primary" OnClick="btnQuitarInsumo_Click" Text="Quitar" />
                         </p>
                       </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-                <div class="panel panel-widget forms-panel">
+              <div class="panel panel-widget forms-panel">
                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
                         <div class="form-title color-white">
                             <h4>Ingredientes</h4>
                         </div>
-                  <%--  <asp:UpdatePanel ID="panel" runat="server">
-                        <ContentTemplate>--%>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <asp:GridView ID="gvInsumosEgreso" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" OnRowDataBound="gvInsumos_OnRowDataBound"
-                                DataKeyNames="Fecha,Nombre insumo,Cantidad,Unidad de Medida" 
-                                CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvInsumosEgreso_SelectedIndexChanged">
+                            <asp:GridView ID="gvIngredientes" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvIngredientes_OnRowDataBound"
+                                DataKeyNames="Nombre ingrediente,Cantidad,Unidad de Medida,Editar"
+                                CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvIngredientes_SelectedIndexChanged">
                                 
-
                                 <Columns>
-                                    <asp:BoundField HeaderText="Fecha" Datafield="Fecha" />
-                                    <asp:BoundField HeaderText="Nombre insumo" Datafield="Nombre insumo" />
+                                    <asp:BoundField  HeaderText="Nombre ingrediente" Datafield="Nombre insumo" />
                                     <asp:BoundField HeaderText="Cantidad" Datafield="Cantidad" />
                                     <asp:BoundField HeaderText="Unidad de Medida" Datafield="Unidad de Medida" />
+                                    
                                 </Columns>
                                 <SelectedRowStyle BackColor="LightGreen" />
                             </asp:GridView>
@@ -85,19 +101,16 @@
                         <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
                     <hr />   
                             <p class="center-button">
-                                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEgresar" onserverclick="btnEgresar_ServerClick">Egresar</button>
-                                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'ManejarStock';" onserverclick="btnRegresar_ServerClick"  class="btn btn-primary" />
-                                <asp:Button CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarInsumo_Click" />
+                                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnEgresar_ServerClick">Guardar</button>
+                                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'Gestionar Receta';" onserverclick="btnRegresar_ServerClick"  class="btn btn-primary" />
+                                <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
                             </p>
-                     <%--   </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                        </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
-          </div>
-            </ContentTemplate>
-                    </asp:UpdatePanel>
-        </div>
-    </div>
+         
     <script>
         function SoloNumeroIntDouble(ev) {
             var tecla = (document.all) ? ev.keyCode : ev.which;

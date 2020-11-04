@@ -11,6 +11,23 @@
     <!-- Custom CSS -->
     <link href="css/manejarStock.css" rel="stylesheet" />
     <link href="css/Home.css" rel="stylesheet" />
+
+    <!-- Bootstrap -->
+ 		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/bootstrap.min.css"/>
+
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/slick-theme.css"/>
+
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/nouislider.min.css"/>
+
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="css/GestionarReceta/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="css/GestionarReceta/style.css"/>
+
     <!-- Graph CSS -->
     <link href="../css/font-awesome.css" rel="stylesheet" />
     <!-- jQuery -->
