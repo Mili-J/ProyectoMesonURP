@@ -86,7 +86,7 @@ namespace ProyectoMesonURP
 
         protected void txtNumRaciones_TextChanged(object sender, EventArgs e)
         {
-           
+            int racion = Convert.ToInt32(txtNumRaciones.Text);  
         }
     }  
 }

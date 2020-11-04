@@ -6,6 +6,7 @@ namespace DTO
 {
     public class DTO_Ingrediente
     {
+        public int I_idIngrediente { get; set; }
         public string I_nombreIngrediente { get; set; }
         public decimal I_pesoUnitario { get; set; }
         public decimal I_cantidad { get; set; }

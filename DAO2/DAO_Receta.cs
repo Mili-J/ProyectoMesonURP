@@ -8,9 +8,15 @@ namespace DAO
     public class DAO_Receta
     {
         SqlConnection conexion;
+        DAO_IngredienteXReceta dao_ingredientexreceta;
+        DTO_Receta dto_receta;
+        DAO_Ingrediente dao_ingrediente;
         public DAO_Receta()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
+            dao_ingredientexreceta = new DAO_IngredienteXReceta();
+            dto_receta = new DTO_Receta();
+            dao_ingrediente = new DAO_Ingrediente();
         }
 
         public void InsertReceta(DTO_Receta objDTO)
@@ -56,6 +62,30 @@ namespace DAO
             da.Fill(dt);
             conexion.Close();
             return dt;
+        }
+        
+        public DataTable DAO_Consultar_Recetas_Disponibles(int racion)
+        {
+            //TODO
+            //><
+            int i = 0;
+            DataTable dtRecetas = DAO_Consultar_Receta(),dtIngredientesxReceta;
+            DTO_IngredienteXReceta aux;
+            DTO_Ingrediente dto_ingrediente;
+            while (i<dtRecetas.Rows.Count)
+            {
+                dto_receta.R_idReceta = i + 1;
+                dtIngredientesxReceta = dao_ingredientexreceta.DAO_Consultar_Insumo_x_Receta(dto_receta);
+                int j = 0;
+                while (j <dtIngredientesxReceta.Rows.Count)
+                {
+                    dto_ingrediente = dao_ingrediente.DAO_Consultar_IngredienteXID(j);
+                    j++;
+                }
+                i++;
+            }
+
+            return new DataTable();
         }
     }
 }

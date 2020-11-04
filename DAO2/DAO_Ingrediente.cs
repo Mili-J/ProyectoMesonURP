@@ -44,5 +44,26 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+        public DTO_Ingrediente DAO_Consultar_IngredienteXID(int i)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarIngrediente", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@I_idIngrediente", i);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+
+            if(reader.Read())
+            {
+                dto_ingrediente.I_idIngrediente = i;
+                dto_ingrediente.I_nombreIngrediente = reader[1].ToString();
+                dto_ingrediente.I_pesoUnitario = Convert.ToDecimal(reader[2]);
+                dto_ingrediente.I_cantidad = Convert.ToDecimal(reader[3]);
+                dto_ingrediente.I_idInsumo = Convert.ToInt32(reader[4]);
+                dto_ingrediente.E_idEquivalencia = Convert.ToInt32(reader[5]);
+            }
+            conexion.Close();
+            return dto_ingrediente;
+        }
     }
 }

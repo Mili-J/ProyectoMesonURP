@@ -10,9 +10,11 @@ namespace DAO
     public class DAO_IngredienteXReceta
     {
         SqlConnection conexion;
+        DTO_IngredienteXReceta dto_ingredientexreceta;
         public DAO_IngredienteXReceta()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
+            dto_ingredientexreceta = new DTO_IngredienteXReceta();
         }
         public DataTable DAO_Consultar_Insumo_x_Receta(DTO_Receta objReceta)
         {
@@ -27,6 +29,12 @@ namespace DAO
             da.Fill(dt);
             conexion.Close();
             return dt;
+        }
+        public DTO_IngredienteXReceta DAO_Consultar_IngredienteXReceta(int idReceta)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("",conexion);
+            return dto_ingredientexreceta;
         }
     }
 }
