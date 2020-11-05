@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="women_main">
         <!-- start content -->
         <div class="grids">
@@ -24,9 +25,7 @@
                 <div class="container">
                     <!-- row -->
                     <div class="row">
-                        <!-- ASIDE -->
                         <div id="aside" class="col-md-3">
-                            <!-- aside Widget -->
                             <div class="aside">
                                 <h3 class="aside-title">CATEGORIAS</h3>
                                 <div class="checkbox-filter">
@@ -49,14 +48,11 @@
                         <div id="store" class="col-md-9">
                             <!-- store top filter -->
 
-                            <!-- /store top filter -->
-
                             <!-- store products -->
 
                             <div class="row">
                                 <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemCreated="Repeater1_ItemCreated" OnItemDataBound="Repeater1_ItemDataBound">
                                     <ItemTemplate>
-                                        <!-- product -->
                                         <div class="col-md-4 col-xs-6">
                                             <div class="product">
                                                 <div class="product-img">
@@ -80,7 +76,7 @@
                                                         <i class="fa fa-star"></i>
                                                     </div>
                                                     <div class="product-btns">
-                                                        <%--													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                        <%--<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>--%>
                                                         <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                                         <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="Actualizar Receta" />
