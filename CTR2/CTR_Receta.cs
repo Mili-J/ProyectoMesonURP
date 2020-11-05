@@ -1,15 +1,15 @@
-﻿using DAO;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using DAO;
 using DTO;
-
 using System.Data;
-
 
 namespace CTR
 {
     public class CTR_Receta
     {
         DAO_Receta objDAO;
-
         public CTR_Receta()
         {
             objDAO = new DAO_Receta();
@@ -21,6 +21,26 @@ namespace CTR
         public DataTable CargarRecetaxNombre(string @nombreReceta)
         {
             return objDAO.SelectRecetaxNombre(@nombreReceta);
+        }
+        public DataTable CTR_Consultar_Recetas()
+        {
+            return objDAO.DAO_Consultar_Recetas();
+        }
+        public DataTable CTR_Consultar_Recetas_X_Categoria(int categoria)
+        {
+            return objDAO.DAO_Consultar_Recetas_X_Categoria(categoria);
+        }
+        public DataTable CTR__Consultar_Recetas_Disponibles(int racion,int caso)
+        {
+            return objDAO.DAO_Consultar_Recetas_Disponibles(racion,caso);
+        }
+        public DTO_Receta CTR_Consultar_Receta(int i)
+        {
+            return objDAO.DAO_Consultar_Receta(i);
+        }
+        public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
+        {
+            return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
         }
     }
 }
