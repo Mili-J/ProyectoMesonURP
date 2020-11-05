@@ -33,22 +33,13 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.GridView gvIngredienteReceta;
 
         /// <summary>
-        /// txtInsumo control.
+        /// ddlInsumo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsumo;
-
-        /// <summary>
-        /// validationFecha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator validationFecha;
+        protected global::System.Web.UI.WebControls.DropDownList ddlInsumo;
 
         /// <summary>
         /// txtCantidad control.
@@ -60,15 +51,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
 
         /// <summary>
-        /// txtPesoTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPesoTotal;
-
-        /// <summary>
         /// txtMedida control.
         /// </summary>
         /// <remarks>
@@ -78,31 +60,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtMedida;
 
         /// <summary>
-        /// txtIngrediente control.
+        /// ddlIngrediente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIngrediente;
+        protected global::System.Web.UI.WebControls.DropDownList ddlIngrediente;
 
         /// <summary>
-        /// ddlFormatoCocina control.
+        /// txtFormatoC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFormatoCocina;
-
-        /// <summary>
-        /// validationInsumos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator validationInsumos;
+        protected global::System.Web.UI.WebControls.TextBox txtFormatoC;
 
         /// <summary>
         /// txtCantidadI control.

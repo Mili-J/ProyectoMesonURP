@@ -10,8 +10,7 @@ namespace DAO
     public class DAO_Insumo
     {
         SqlConnection conexion;
-       
-       
+        string I_medidaInsumo = "";
 
         public DAO_Insumo()
         {
@@ -33,6 +32,22 @@ namespace DAO
             conexion.Close();
             return dt;
         }
-       
+        public string DAO_Consultar_Medida_x_Insumo(DTO_Insumo objInsumo)
+        {
+            
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_SELECT_MEDIDA_X_INSUMO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objInsumo.I_idInsumo));
+            SqlDataReader reader = cmd.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                I_medidaInsumo = (string)reader[0];
+            }
+            conexion.Close();
+            return I_medidaInsumo;
+
+        }
     }
 }

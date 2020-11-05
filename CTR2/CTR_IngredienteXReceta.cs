@@ -16,5 +16,11 @@ namespace CTR
             dao_ing_x_receta = new DAO_IngredienteXReceta();
             return dao_ing_x_receta.DAO_Consultar_Insumo_x_Receta(objReceta);
         }
+
+        public DataSet CTR_Consultar_IxR(DTO_Receta objReceta)
+        {
+            dao_ing_x_receta = new DAO_IngredienteXReceta();
+            return dao_ing_x_receta.DAO_Consultar_IxR(objReceta);
+        }
     }
 }
