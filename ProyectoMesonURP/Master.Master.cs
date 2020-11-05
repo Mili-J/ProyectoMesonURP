@@ -23,10 +23,10 @@ namespace ProyectoMesonURP
                         menuProveedor.Visible = true;
                         menuMovimiento.Visible = true;
                         menuDashboard.Visible = true;
-                        menuInsumo.Visible = false;
-                        menuInsumosOC.Visible = false;
-                        menuStock.Visible = false;
-                        menuSepararIngredientes.Visible = false;
+                        menuInsumo.Visible = true;
+                        menuInsumosOC.Visible = true;
+                        menuStock.Visible = true;
+                        menuSepararIngredientes.Visible = true;
                         
                         break;
                     case 2:

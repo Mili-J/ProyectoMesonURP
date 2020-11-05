@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAO
 {
-    class DAO_IngredienteXReceta
+    public class DAO_IngredienteXReceta
     {
     }
 }
