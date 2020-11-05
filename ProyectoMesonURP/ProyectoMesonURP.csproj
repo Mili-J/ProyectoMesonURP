@@ -229,6 +229,7 @@
     <Content Include="js\underscore-min.js" />
     <Content Include="Login.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
+    <Content Include="MenuDelDia.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="Web.config" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MenuDelDia.aspx.cs">
+      <DependentUpon>MenuDelDia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuDelDia.aspx.designer.cs">
+      <DependentUpon>MenuDelDia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrarReceta.aspx.cs">
