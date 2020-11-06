@@ -65,5 +65,22 @@ namespace DAO
                 throw ex;
             }
         }
+
+        public DataTable BuscarInsumoP(int IdInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Buscar_Insumo_Prueba", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", IdInsumo);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

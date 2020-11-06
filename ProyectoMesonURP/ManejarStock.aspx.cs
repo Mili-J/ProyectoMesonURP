@@ -16,7 +16,12 @@ namespace ProyectoMesonURP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarStockInsumo();
+            if (!Page.IsPostBack)
+            {
+                dto_i = new DTO_Insumo();
+                CargarStockInsumo();
+            }
+            
         }
 
         protected void btnBuscar_ServerClick(object sender, EventArgs e)
@@ -69,10 +74,9 @@ namespace ProyectoMesonURP
         {
             if (e.CommandName == "SolicitarCo")
             {
-                int idIN = Convert.ToInt32(gvInsumos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
-                dto_i.I_idInsumo = idIN;
-                Session.Add("InsumoActual", dto_i);
-                Response.Redirect("Solicitar_Cotizacion");
+                int idIN = Convert.ToInt32(gvInsumos2.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
+                Session.Add("InsumoSeleccionado", idIN);
+                Response.Redirect("SC_Prueba.aspx");
 
             }
         }

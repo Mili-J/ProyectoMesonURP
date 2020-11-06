@@ -27,5 +27,9 @@ namespace CTR
         {
             return dao_insumo.BuscarInsumo(nombreInsumo);
         }
+        public DataTable BuscarInsumoP(int idInsumo)
+        {
+            return dao_insumo.BuscarInsumoP(idInsumo);
+        }
     }
 }
