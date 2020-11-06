@@ -1,10 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO;
+using DTO;
 
 namespace CTR
 {
-    class CTR_CategoriaReceta
+    
+    public class CTR_CategoriaReceta
     {
+        DAO_CategoriaReceta dao_categoriareceta;
+        public CTR_CategoriaReceta()
+        {
+            dao_categoriareceta = new DAO_CategoriaReceta();
+        }
+        public DTO_CategoriaReceta CTR_Consultar_CategoriaXReceta(int i)
+        {
+            return dao_categoriareceta.DAO_Consultar_CategoriaXReceta(i);
+        }
     }
 }
