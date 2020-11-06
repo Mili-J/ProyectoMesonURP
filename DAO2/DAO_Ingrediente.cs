@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
@@ -7,7 +9,7 @@ using DTO;
 
 namespace DAO
 {
-    class DAO_Ingrediente
+    public class DAO_Ingrediente
     {
         DTO_Ingrediente dto_ingrediente;
         SqlConnection conexion;
@@ -15,6 +17,22 @@ namespace DAO
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
             dto_ingrediente = new DTO_Ingrediente();
+        }
+
+        public DataSet SelectIngrediente()
+        {
+            try
+            {
+                SqlDataAdapter unComando = new SqlDataAdapter("SP_SELECT_INGREDIENTE", conexion);
+                unComando.SelectCommand.CommandType = CommandType.StoredProcedure;
+                DataSet dSet = new DataSet();
+                unComando.Fill(dSet);
+                return dSet;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public void DAO_Registrar_Ingrediente(DTO_Ingrediente dto_ingrediente)
         {
@@ -53,7 +71,7 @@ namespace DAO
             comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
 
-            if(reader.Read())
+            if (reader.Read())
             {
                 dto_ingrediente.I_idIngrediente = i;
                 dto_ingrediente.I_nombreIngrediente = reader[1].ToString();

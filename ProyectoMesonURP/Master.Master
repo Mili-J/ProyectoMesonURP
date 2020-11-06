@@ -11,6 +11,7 @@
     <!-- Custom CSS -->
     <link href="css/manejarStock.css" rel="stylesheet" />
     <link href="css/Home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
     <!-- Graph CSS -->
     <link href="../css/font-awesome.css" rel="stylesheet" />
     <!-- jQuery -->
@@ -93,102 +94,52 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="fo-top-di">
-            <div class="foot-top">
-
-                <div class="col-md-6 s-c">
-                    <li>
-                        <div class="fooll">
-                            <h1>Contáctanos</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="social-ic">
-                            <ul>
-                                <li><a href="#"><i class="facebok"></i></a></li>
-                                <li><a href="#"><i class="twiter"></i></a></li>
-                                <li><a href="#"><i class="goog"></i></a></li>
-                                <li><a href="#"><i class="be"></i></a></li>
-                                <div class="clearfix"></div>
-                            </ul>
-                        </div>
-                    </li>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-6 s-c">
-                    <div class="stay">
-                        <div class="stay-left">
-                            <asp:TextBox runat="server" class="form-control1" type="text" placeholder="Tu correo electrónico"></asp:TextBox>
-                        </div>
-                        <div class="btn-1">
-                            <button runat="server" class="btn btn-primary">Enviar</button>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+        <div class="fo-top-di">           
+            <div class="footer">
+                <div class="clearfix"></div>
+                <p>© 2020 MesónURP  | <a href="http://www.urp.edu.pe//">Universidad Ricardo Palma</a></p>
             </div>
-            <div class="clearfix"></div>
         </div>
-        <div class="footer">
-            <div class="clearfix"></div>
-            <p>© 2020 MesónURP  | <a href="http://www.urp.edu.pe//">Universidad Ricardo Palma</a></p>
-        </div>
-    </div>
-    <div class="sidebar-menu">
-        <header class="logo1">
-            <a href="#" class="sidebar-icon"><span class="fa fa-bars"></span></a>
-            
-        </header>
-        <div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
-        <div class="menu">
-            <ul id="menu">
-                <li  id="menuDashboard" runat="server"><a href="Dashboard"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>              
-                <li id="menuCotizacion" runat="server"><a href="#"><i class="fa fa-table"></i><span>Cotización</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="submenuCotizacion">
-                        <li id="lblSolicitarCotizacion"><a href="#">Solicitar Cotización</a></li>
-                        <li id="lblGenerarOC"><a href="#">Generar OC</a></li>
-                    </ul>
-                </li>                
-                <li id="menuStock" runat="server"><a href="#"><i class="lnr lnr-pencil"></i><span>Manejar Stock</span></a></li>
-                <li id="menuInsumosOC" runat="server"><a href="#"><i class="fa fa-table"></i><span>Orden de Compra</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="submenuInsumosOC">
-                        <li id="lblGestionarOC"><a href="#">Gestionar OC</a></li>
-                        <li id="lblRecepciona"><a href="#">Recepcionar Insumo</a></li>
-                    </ul>
-                </li>                 
-               <li id="menuReceta" runat="server"><a href="#"><i class="fa fa-table"></i><span>Receta</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="submenuReceta">
-                        <li id="lblGestionarReceta"><a href="#">Gestionar Receta</a></li>
-                        <li id="lblGestionarCategoriaReceta"><a href="#">Gestionar Categoría Receta</a></li>
-                    </ul>
-                </li>   
-                <li id="menuSepararIngredientes" runat="server"><a href="#"><i class="lnr lnr-pencil"></i><span>Separar Ingredientes</span></a></li>
-                <li id="menuProveedor" runat="server"><a href="#"><i class="lnr lnr-chart-bars"></i><span>Gestionar Proveedor</span></a></li>
-               <li id="menuInsumo" runat="server"><a href="#"><i class="fa fa-table"></i><span>Insumo</span> <span class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="submenuInsumo">
-                        <li id="lblGestionarInsumo"><a href="#">Gestionar Insumo</a></li>
-                        <li id="lblGestionarCategoriaInsumo"><a href="#">Gestionar Categoría Insumo</a></li>
-                    </ul>
-                </li>   
-                <li id="menuMovimiento" runat="server"><a href="#"><i class="lnr lnr-users"></i><span>Consultar Movimiento</span></a></li>
-             <li id="menuMenuDelDia" runat="server"><a href="MenuDelDia.aspx"><i class="lnr lnr-users"></i><span>Menu del dia</span></a></li>
-            </ul>
+        <div class="sidebar-menu">
+            <header class="logo1">
+                <a href="#" class="sidebar-icon"><span class="fa fa-bars"></span></a>
+            </header>
+            <div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
+            <div class="menu">
+                <ul id="menu">
+                    <li id="menuDashboard" runat="server"><a href="Dashboard"><i class="fa fa-tachometer"></i><span>Inicio</span></a></li>
+                    <li id="menuCotizacion" runat="server"><a href="#"><i class="fa fa-table"></i><span>Cotización</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="submenuCotizacion">
+                            <li id="lblSolicitarCotizacion"><a href="#">Solicitar Cotización</a></li>
+                            <li id="lblGenerarOC"><a href="#">Generar OC</a></li>
+                        </ul>
+                    </li>
+                    <li id="menuStock" runat="server"><a href="ManejarStock"><i class="lnr lnr-pencil"></i><span>Manejar Stock</span></a></li>
+                    <li id="menuInsumosOC" runat="server"><a href="#"><i class="fa fa-table"></i><span>Orden de Compra</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="submenuInsumosOC">
+                            <li id="lblGestionarOC"><a href="#">Gestionar OC</a></li>
+                            <li id="lblRecepciona"><a href="#">Recepcionar Insumo</a></li>
+                        </ul>
+                    </li>
+                    <li id="menuReceta" runat="server"><a href="#"><i class="fa fa-table"></i><span>Receta</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="submenuReceta">
+                            <li id="lblGestionarReceta"><a href="GestionarReceta">Gestionar Receta</a></li>
+                            <li id="lblGestionarCategoriaReceta"><a href="#">Gestionar Categoría Receta</a></li>
+                        </ul>
+                    </li>
+                    <li id="menuSepararIngredientes" runat="server"><a href="#"><i class="lnr lnr-pencil"></i><span>Separar Ingredientes</span></a></li>
+                    <li id="menuProveedor" runat="server"><a href="#"><i class="lnr lnr-chart-bars"></i><span>Gestionar Proveedor</span></a></li>
+                    <li id="menuInsumo" runat="server"><a href="#"><i class="fa fa-table"></i><span>Insumo</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="submenuInsumo">
+                            <li id="lblGestionarInsumo"><a href="#">Gestionar Insumo</a></li>
+                            <li id="lblGestionarCategoriaInsumo"><a href="#">Gestionar Categoría Insumo</a></li>
+                        </ul>
+                    </li>
+                    <li id="menuMovimiento" runat="server"><a href="#"><i class="lnr lnr-users"></i><span>Consultar Movimiento</span></a></li>
+                    <li id="menuMenuDelDia" runat="server"><a href="MenuDelDia.aspx"><i class="lnr lnr-users"></i><span>Menu del dia</span></a></li>
 
-             
-
-
-           <%-- <div class="cerrar-sesion">
-                   
-                  <button class="btn btn-link" runat="server" onClick="btnSalida_Click">
-                       <img src="img/baseline_exit_to_app_white_18dp.png" />
-                  </button>
-            </div>--%>
-                <%--<div class="cerrar-sesion">
-                    <asp:LinkButton class="btn btn-link" runat="server" OnClick="btnSalida_Click">
-                 <img src="img/baseline_exit_to_app_white_18dp.png" /></asp:LinkButton>
-                </div>--%>
+                </ul>
             </div>
-          <%--  <div class="sidebar-background">
-            </div>--%>
         </div>
         <div class="clearfix"></div>
         <!--js -->
@@ -200,10 +151,7 @@
         </script>
         <script src="../js/jquery.nicescroll.js"></script>
         <script src="../js/scripts.js"></script>
-        <!-- Bootstrap Core JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
-        <!-- /Bootstrap Core JavaScript -->
-        <!-- real-time -->
         <script src="../js/jquery.fn.gantt.js"></script>
         <script src="../js/menu_jquery.js"></script>
     </form>

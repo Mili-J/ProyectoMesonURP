@@ -82,6 +82,12 @@
     <Content Include="css\fabochart.css" />
     <Content Include="css\flexslider.css" />
     <Content Include="css\font-awesome.css" />
+    <Content Include="css\GestionarReceta\bootstrap.min.css" />
+    <Content Include="css\GestionarReceta\font-awesome.min.css" />
+    <Content Include="css\GestionarReceta\nouislider.min.css" />
+    <Content Include="css\GestionarReceta\slick-theme.css" />
+    <Content Include="css\GestionarReceta\slick.css" />
+    <Content Include="css\GestionarReceta\style.css" />
     <Content Include="css\graph.css" />
     <Content Include="css\Home.css" />
     <Content Include="css\icon-font.min.css" />
@@ -108,6 +114,7 @@
     <Content Include="css\sweetalert2.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="Home.aspx" />
@@ -198,6 +205,12 @@
     <Content Include="js\cbpFWTabs.js" />
     <Content Include="js\Chart.js" />
     <Content Include="js\clndr.js" />
+    <Content Include="js\GestionarReceta\bootstrap.min.js" />
+    <Content Include="js\GestionarReceta\jquery.min.js" />
+    <Content Include="js\GestionarReceta\jquery.zoom.min.js" />
+    <Content Include="js\GestionarReceta\main.js" />
+    <Content Include="js\GestionarReceta\nouislider.min.js" />
+    <Content Include="js\GestionarReceta\slick.min.js" />
     <Content Include="js\imagezoom.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
@@ -228,6 +241,7 @@
     <Content Include="js\sweetalert2.all.min.js" />
     <Content Include="js\underscore-min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
     <Content Include="RegistrarReceta.aspx" />
@@ -241,6 +255,13 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarReceta.aspx.cs">
+      <DependentUpon>GestionarReceta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarReceta.aspx.designer.cs">
+      <DependentUpon>GestionarReceta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,6 +279,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManejarStock.aspx.cs">
+      <DependentUpon>ManejarStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManejarStock.aspx.designer.cs">
+      <DependentUpon>ManejarStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manejar_Stock_Prueba.aspx.cs">
       <DependentUpon>Manejar_Stock_Prueba.aspx</DependentUpon>

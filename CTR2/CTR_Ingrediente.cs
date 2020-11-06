@@ -1,10 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DAO;
+using System.Data;
 
 namespace CTR
 {
-    class CTR_Ingrediente
+    public class CTR_Ingrediente
     {
+        DAO_Ingrediente objDAO;
+
+        public CTR_Ingrediente()
+        {
+            objDAO = new DAO_Ingrediente();
+        }
+        public DataSet CargarIngredientes()
+        {
+            return objDAO.SelectIngrediente();
+        }
     }
 }

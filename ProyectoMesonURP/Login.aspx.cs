@@ -18,13 +18,9 @@ namespace ProyectoMesonURP
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            try
+            try 
             {
-                if (password.Value == "" || usuario.Value == "")
-                {
-                    //MENSAJE DE QUE ESTAN VACIOS LOS CAMPOS
-                    return;
-                }
+                
                 DTO_Usuario dto = new DTO_Usuario()
                 {
                     U_contraseña = password.Value,
@@ -39,7 +35,8 @@ namespace ProyectoMesonURP
                 }
                 else
                 {
-                    //MENSAJE DE QUE SU USUARIO NO EXISTE
+                    ScriptManager.RegisterClientScriptBlock(this.PanelLogin, this.PanelLogin.GetType(), "alertLogin1", "alertLogin1();", true);
+
                 }
             }
             catch (Exception)
