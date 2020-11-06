@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using DTO;
+using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_Equivalencia
+    public class DAO_MedidaXFormatoCocina
     {
         SqlConnection conexion;
-        DTO_Equivalencia dto_eq;
+        DTO_MedidaXFormatoCocina dto_medidaxfc;
         int MXFC_idMedidaFCocina = 0;
 
-        public DAO_Equivalencia()
+        public DAO_MedidaXFormatoCocina()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
-            dto_eq = new DTO_Equivalencia();
+            dto_medidaxfc = new DTO_MedidaXFormatoCocina();
         }
         public int DAO_Consultar_Medida_x_FCocina(DTO_MedidaXFormatoCocina objMedidaFC)
         {
@@ -35,5 +37,6 @@ namespace DAO
             return MXFC_idMedidaFCocina;
 
         }
+
     }
 }

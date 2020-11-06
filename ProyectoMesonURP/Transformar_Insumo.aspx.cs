@@ -23,6 +23,7 @@ namespace ProyectoMesonURP
         DataSet dtInsumoR;
         DataSet dtIngredienteR;
         string medidaC = "";
+        int cantidadC = 0;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -80,7 +81,21 @@ namespace ProyectoMesonURP
             }
             return "no hay";
         }
-        
+
+        public int SelectCantidadI(int idIngrediente)
+        {
+            foreach (DataRow row in dt_ing_x_receta.Rows)
+            {
+                int idI = Convert.ToInt32(row["I_idIngrediente"]);
+                if (idIngrediente == idI)
+                {
+                    return cantidadC = Convert.ToInt32(row["IR_cantidad"]);
+                }
+
+            }
+            return 0;
+        }
+
 
         protected void ddlInsumo_SelectedIndexChanged1(object sender, EventArgs e)
         {
@@ -97,8 +112,8 @@ namespace ProyectoMesonURP
             if (ddlInsumo.SelectedValue != "")
             {
                 int idIng = int.Parse(ddlIngrediente.SelectedValue);
-
                 txtFormatoC.Text = SelectMedidaI(idIng);
+                txtCantidadI.Text = SelectCantidadI(idIng).ToString();
             }
         }
     }
