@@ -21,7 +21,7 @@ namespace ProyectoMesonURP
         }
         public void ListarCategoriaReceta()
         {
-            ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
+         //   ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
             ddlCategoriaReceta.DataTextField = "CR_nombreCategoria";
             ddlCategoriaReceta.DataValueField = "CR_idCategoriaReceta";
             ddlCategoriaReceta.DataBind();
@@ -73,7 +73,7 @@ namespace ProyectoMesonURP
                  _Dr.CR_idCategoriaReceta = 1;
                 _Dr.R_descripcion = txtDescripcion.Text;
              
-                _Cr.RegistrarReceta(_Dr);
+            //    _Cr.RegistrarReceta(_Dr);
             
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)

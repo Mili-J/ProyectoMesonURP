@@ -213,7 +213,7 @@ namespace DAO
                 dto_receta.R_nombreReceta = reader[1].ToString();
                 dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
                 dto_receta.R_descripcion = Convert.ToString(reader[3]);
-                dto_receta.R_imagenReceta = 0;
+                dto_receta.R_imagenReceta = null;
                 dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[5]);
             }
             conexion.Close();
