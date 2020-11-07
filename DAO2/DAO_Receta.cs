@@ -20,11 +20,8 @@ namespace DAO
             dto_receta = new DTO_Receta();
             dao_ingrediente = new DAO_Ingrediente();
         }
-
         public void InsertReceta(DTO_Receta objDTO)
         {
-            //try
-            //{
                 conexion.Open();
                 SqlCommand unComando = new SqlCommand("SP_INSERT_RECETA", conexion);
                 unComando.CommandType = CommandType.StoredProcedure;
@@ -36,27 +33,6 @@ namespace DAO
                 
                 unComando.ExecuteNonQuery();
                 conexion.Close();
-            //}
-            //catch (System.Data.SqlClient.SqlException)
-            //{
-                
-            //}
-        }
-        public DataTable SelectReceta()
-        {
-            try
-            {
-                DataTable dtable = new DataTable();
-                SqlCommand unComando = new SqlCommand("SP_SELECT_RECETA", conexion);
-                unComando.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter data = new SqlDataAdapter(unComando);
-                data.Fill(dtable);
-                return dtable;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
         public DataTable SelectRecetaxNombre(string @nombreReceta)
         {

@@ -5,8 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="women_main">
-        <!-- start content -->
-        <div class="grids">
+        <!-- start content --><div class="grids">
             <div class="progressbar-heading grids-heading title-flex">
                 <h2 class="tittle-margin5">Gestionar Receta</h2>
             </div>
@@ -18,7 +17,8 @@
                 </div>
                 <div class="stock-options">
                          <div class="width-auto margin-5">
-                            <button type="button" class="btn btn-primary btn-flex" style="display: flex; margin-left: 6px;">     
+                            <button type="button" class="btn btn-primary btn-flex" style="display: flex; margin-left: 6px;"
+                                OnClick="btnRegistrarReceta_Click">     
                                 <span class="material-icons margin-5" style="margin-right: 6px;">add_circle_outline</span>
                                 <h>Registrar Receta</h>
                             </button>
@@ -49,8 +49,14 @@
                         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemCreated="Repeater1_ItemCreated" OnItemDataBound="Repeater1_ItemDataBound">
                             <ItemTemplate>
                                 <div class="card" style="width: 18rem">
-                                    <img class="card-img-top" alt="Imagen de Referencia" src="data:image/png;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>" alt="" class="sg-img">
+                                    <img class="card-img-top" alt="Imagen de Referencia" 
+                                        src="data:image/png;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                    
+                                        
+                                    
                                     <div class="card-body">
+                                            <asp:Label ID="lblIdReceta" runat="server"  Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+
                                         <h5 class="card-title">
                                             <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
                                         </h5>
@@ -63,8 +69,8 @@
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CR_nombreCategoria") %>' />
                                         </p>
                                         <div>
-                                            <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="Actualizar Receta" />
-                                            <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="Eliminar Receta" />
+                                            <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="ActualizarReceta" />
+                                            <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" />
 
                                         </div>
                                     </div>

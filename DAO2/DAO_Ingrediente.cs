@@ -18,7 +18,6 @@ namespace DAO
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
             dto_ingrediente = new DTO_Ingrediente();
         }
-
         public DataSet SelectIngrediente()
         {
             try
@@ -82,6 +81,28 @@ namespace DAO
             }
             conexion.Close();
             return dto_ingrediente;
+        }
+        public string SelectNombreIngrediente(int I_idIngrediente)
+        {
+            string nombre = "";
+            try
+            {
+                SqlCommand unComando = new SqlCommand("SP_SELECT_NOMBRE_INGREDIENTE", conexion);
+                unComando.CommandType = CommandType.StoredProcedure;
+                conexion.Open();
+                unComando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                SqlDataReader dReader = unComando.ExecuteReader();
+                if (dReader.Read())
+                {
+                    nombre = dReader["I_nombreIngrediente"].ToString();
+                }
+                conexion.Close();
+                return nombre;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
