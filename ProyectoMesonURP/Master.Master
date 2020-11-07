@@ -137,7 +137,7 @@
                     </li>
                     <li id="menuMovimiento" runat="server"><a href="#"><i class="lnr lnr-users"></i><span>Consultar Movimiento</span></a></li>
                     <li id="menuMenuDelDia" runat="server"><a href="MenuDelDia.aspx"><i class="lnr lnr-users"></i><span>Menu del dia</span></a></li>
-
+                    <li id="menuMenu" runat="server"><a href="CalendariaMenu.aspx"><i class="lnr lnr-users"></i><span>Menu del dia</span></a></li>
                 </ul>
             </div>
         </div>

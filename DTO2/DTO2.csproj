@@ -60,6 +60,8 @@
     <Compile Include="DTO_InsumoXProveedor.cs" />
     <Compile Include="DTO_Medida.cs" />
     <Compile Include="DTO_MedidaXFormato.cs" />
+    <Compile Include="DTO_Menu.cs" />
+    <Compile Include="DTO_MenuXReceta.cs" />
     <Compile Include="DTO_Merma.cs" />
     <Compile Include="DTO_Movimiento.cs" />
     <Compile Include="DTO_OC.cs" />

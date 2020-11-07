@@ -28,6 +28,7 @@ namespace ProyectoMesonURP
                         menuStock.Visible = true;
                         menuSepararIngredientes.Visible = true;
                         menuMenuDelDia.Visible = true;
+                        menuMenu.Visible = true;
                         
                         break;
                     case 2:
