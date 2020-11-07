@@ -17,6 +17,7 @@ namespace ProyectoMesonURP
         DTO_Menu dto_menu;
         CTR_MenuXReceta ctr_menuxreceta;
         CTR_Receta ctr_receta;
+        bool hay;
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_menu = new CTR_Menu();
@@ -32,7 +33,10 @@ namespace ProyectoMesonURP
         protected void CalendarioMenu_SelectionChanged(object sender, EventArgs e)
         {
             string fecha = CalendarioMenu.SelectedDate.ToShortDateString();
+            if (ctr_menu.CTR_HayMenu(Convert.ToDateTime(fecha))) hay = true;
+            else hay = false;
             Session.Add("fecha",fecha);
+            Session.Add("hay",hay);
             Response.Redirect("SeleccionarMenuDia.aspx");
         }
 
