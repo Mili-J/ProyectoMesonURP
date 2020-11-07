@@ -52,6 +52,7 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("Dashboard", "Dashboard", "~/Dashboard.aspx", true);
             routes.MapPageRoute("ManejarStock", "ManejarStock", "~/ManejarStock.aspx", true);
             routes.MapPageRoute("RegistrarReceta", "RegistrarReceta", "~/RegistrarReceta.aspx", true);
+            routes.MapPageRoute("ActualizarReceta", "ActualizarReceta", "~/ActualizarReceta.aspx", true);
 
         }
     }

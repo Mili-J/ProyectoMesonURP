@@ -11,7 +11,7 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class RegistrarReceta
+    public partial class ActualizarReceta
     {
 
         /// <summary>

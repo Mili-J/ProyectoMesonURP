@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_Ingrediente
+    public class DTO_Ingrediente
     {
+        public int I_idIngrediente { get; set; }
+        public string I_nombreIngrediente { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestionar Receta | Registrar Receta" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistrarReceta.aspx.cs" Inherits="ProyectoMesonURP.RegistrarReceta" EnableEventValidation="false"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActualizarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ActualizarReceta"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -7,7 +7,7 @@
         <!-- start content -->
         <div class="grids">
             <div class="progressbar-heading grids-heading title-flex">
-                <h2 class="tittle-margin5">Registrar Receta</h2>
+                <h2 class="tittle-margin5">Actualizar Receta</h2>
             </div>
         </div>
         <div class="forms">
@@ -22,7 +22,7 @@
                             <asp:FileUpload ID="fuImagen" accept=".jpg" runat="server" CssClass="form-control1 " />
                             <br />
                             <p class="center-button">
-                                <asp:Button ID="btnCargar" runat="server" Text="Cargar" class="btn btn-danger" OnClick="btnCargar_Click" />
+                                <asp:Button ID="btnCargar" runat="server" Text="Cargar" class="btn btn-danger" /><%--OnClick="btnCargar_Click" --%>
                             </p>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                       <p class="center-button">
                           <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
                           <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'Gestionar Receta';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
-                          <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
+                          <input type="reset" name="res-1" value="Limpiar" runat="server"  class="btn btn-danger" /> <%--onserverclick="btnLimpiar_ServerClick"--%>
                       </p>
                   </div>
                       </div>
@@ -184,4 +184,3 @@
             }
         </script>
 </asp:Content>
-
