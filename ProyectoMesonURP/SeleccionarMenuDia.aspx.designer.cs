@@ -51,6 +51,24 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList DdlFondo;
 
         /// <summary>
+        /// Control reapeterEntradas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater reapeterEntradas;
+
+        /// <summary>
+        /// Control repeaterFondo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
+
+        /// <summary>
         /// Control btnAceptar.
         /// </summary>
         /// <remarks>

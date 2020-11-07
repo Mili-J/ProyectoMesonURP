@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using CTR;
 using DTO;
 using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Reflection.Emit;
 
 namespace ProyectoMesonURP
 {
@@ -26,6 +29,9 @@ namespace ProyectoMesonURP
             ctr_menu = new CTR_Menu();
             if (!IsPostBack)
             {
+
+                
+        
                 string fecha = Session["fecha"].ToString();
                 txtFecha.Text = fecha;
                 //-----------------------------------
@@ -38,6 +44,24 @@ namespace ProyectoMesonURP
                 DdlFondo.DataTextField = "R_nombreReceta";
                 DdlFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
                 DdlFondo.DataBind();
+                //-----------------------------------
+                reapeterEntradas.DataSource= ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);
+                reapeterEntradas.DataBind();
+                //-----------------------------------
+                repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
+                repeaterFondo.DataBind();
+
+                //byte[]  aa = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/pescadofrito.jpg");
+                //ctr_receta.pruebaa(aa,1);
+
+                //byte[] ab = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/arrozconpollo.jpg");
+                //ctr_receta.pruebaa(ab, 4);
+                //byte[] ac = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/causalimeniaweb.jpg");
+                //ctr_receta.pruebaa(ac, 5);
+                //byte[] ad = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/Sopa-de-pollo.jpg");
+                //ctr_receta.pruebaa(ad, 6);
+                //byte[] ae = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/lomo-saltado-3.jpg");
+                //ctr_receta.pruebaa(ae, 7);
             }
         }
 
@@ -60,6 +84,15 @@ namespace ProyectoMesonURP
             //--------------------------------------
             Response.Redirect("CalendariaMenu.aspx");
         }
+
+        //protected void btnprueba_Click(object sender, EventArgs e)
+        //{          
+        //    int i = int.Parse(txtid.Text);
+        //    byte[] aa = new byte[1000];
+        //            aa = ctr_receta.prueba(i);
+        //    string sb64 = Convert.ToBase64String(aa);     
+        //    Image1.ImageUrl = "data:image;base64," + sb64;
+        //}
 
         protected void btnRegresar_Click(object sender, EventArgs e)
         {

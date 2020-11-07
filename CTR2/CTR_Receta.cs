@@ -42,5 +42,13 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
         }
+        public byte[]prueba(int i)
+        {
+            return objDAO.prueba(i);
+        }
+        public void pruebaa(byte[]a,int i)
+        {
+            objDAO.actualizarfoto(a,i);
+        }
     }
 }
