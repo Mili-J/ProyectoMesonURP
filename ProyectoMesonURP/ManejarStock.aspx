@@ -19,6 +19,7 @@
                                         </span>
                                     </button>
                             </div>
+                           </div>
                                <div class="panel panel-widget forms-panel">
                                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                     <div class="form-title color-white">
@@ -57,24 +58,40 @@
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                      <asp:GridView ID="gvInsumos2" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
                                         CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadmin,I_cantidad,El_nombreEstado" 
-                                        Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None" OnRowCommand="gvInsumos2_RowCommand" OnSelectedIndexChanged="gvInsumos2_SelectedIndexChanged">
+                                        Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None" OnSelectedIndexChanged="gvInsumos2_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                             <asp:BoundField Datafield="I_NombreInsumo" HeaderText="Nombre insumo" />
                                             <asp:BoundField Datafield="I_cantidadmin" HeaderText="Stock minimo" />
                                             <asp:BoundField Datafield="I_cantidad" HeaderText="Stock actual" />
                                             <asp:BoundField Datafield="El_nombreEstado" HeaderText="Estado" />
-                                            <asp:TemplateField HeaderText="Solicitar">
+                                            <%--<asp:TemplateField HeaderText="Solicitar">
                                             <ItemTemplate>
                                                 <asp:ImageButton ID="btnSolicitar" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="SolicitarCo" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                             </ItemTemplate>
-                                                </asp:TemplateField>
+                                                </asp:TemplateField>--%>
+                                            <asp:TemplateField HeaderText="Solicitar">
+                                                <ItemTemplate>
+                                                    <asp:CheckBox ID="chkBox" runat="server" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
                                     </div>
-                                    </div>
-                                </div>
-                                </div>
+                                  </div>
+                               </div>
+                            <hr /> 
+                            <div class="form-group2">
+                            <asp:UpdatePanel ID="PanelSolicitar" runat="server">
+                                <ContentTemplate>
+                                     <p class="center-button">
+                                        <asp:Button CssClass="btn btn-primary" runat="server" Text="Solicitar" ID="btnSolicitar" OnClick="btnSolicitar_Click"/>
+                       
+                                      </p>
+                                </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                            
                         <div class="clearfix"></div>
                      </div>
                   </div>

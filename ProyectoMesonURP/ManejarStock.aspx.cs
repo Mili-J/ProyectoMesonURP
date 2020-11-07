@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using CTR;
 using DTO;
 
@@ -41,6 +42,33 @@ namespace ProyectoMesonURP
 
             }
         }
+
+        protected void btnSolicitar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                CheckBox chk;
+                DataTable dt = new DataTable();
+                dt.Columns.Add("I_idInsumo");
+                foreach (GridViewRow grvRow in gvInsumos2.Rows)
+                {
+                    chk = (CheckBox)grvRow.FindControl("chkBox");
+                    if (chk.Checked)
+                    {
+                        int d = Convert.ToInt32(gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_idInsumo"].ToString());
+                        dt.Rows.Add(d);
+                    }
+                }
+                Session.Add("InsumosSeleccionados", dt);
+                Response.Redirect("SC_Prueba.aspx");
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ingrese un insumo para la busqueda');", true);
+
+            }
+        }
         public void CargarStockInsumo()
         {
             gvInsumos.DataSource = _CI.ListarInsumo();
@@ -69,16 +97,6 @@ namespace ProyectoMesonURP
         {
 
         }
-
-        protected void gvInsumos2_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "SolicitarCo")
-            {
-                int idIN = Convert.ToInt32(gvInsumos2.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
-                Session.Add("InsumoSeleccionado", idIN);
-                Response.Redirect("SC_Prueba.aspx");
-
-            }
-        }
+        
     }
 }
