@@ -23,18 +23,15 @@
                                 <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                 <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
                                 <asp:BoundField HeaderText="Formato Medida" DataField="IR_formatoMedida"/>
-                                <asp:TemplateField HeaderText="Seleccionar">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btnSeleccionar" runat="server" OnClick="btnSeleccionar_Click" Text="Seleccionar" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                               
                             </Columns>
                         </asp:GridView>
                         <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Nombre del Insumo</label>
+                        <label for="selector1" class="col-sm-2 control-label">Insumo</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtInsumo" runat="server" CssClass="form-control1" />
-                            <asp:RequiredFieldValidator ID="validationFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged1">
+                                <asp:ListItem Text="" Value="">Seleccione un insumo</asp:ListItem>
+                            </asp:DropDownList>                           
                         </div>
                         </div>
 
@@ -47,18 +44,11 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Peso Total</label>
-                        <div class="col-sm-8">
-                            <asp:TextBox ID="txtPesoTotal" runat="server" CssClass="form-control1" />
-<%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                        </div>
-                        </div>
-
-                        <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtMedida" runat="server" CssClass="form-control1" />
 <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                            <asp:TextBox ID="txtMedida" runat="server"></asp:TextBox>
+                            
                         </div>
                         </div> 
 
@@ -67,7 +57,8 @@
                         <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Ingrediente</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtIngrediente" runat="server" CssClass="form-control1" />
+                            <%--<asp:TextBox ID="txtIngrediente" runat="server" CssClass="form-control1" />--%>
+                            <asp:DropDownList ID="ddlIngrediente" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlIngrediente_SelectedIndexChanged"></asp:DropDownList>
 <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                         </div>
                         </div>
@@ -75,10 +66,7 @@
                         <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Formato Cocina</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlFormatoCocina" runat="server" CssClass="form-control1" AutoPostBack="true" >
-                                <asp:ListItem Text="" Value="">Seleccione un formato</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="validationInsumos" runat="server" ControlToValidate="ddlInsumos" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtFormatoC" runat="server"></asp:TextBox>
                         </div>
                         </div>
 

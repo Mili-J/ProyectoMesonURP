@@ -18,7 +18,7 @@ namespace ProyectoMesonURP
         static DataTable dt;
         static bool sEntrada, sSegundo;
 
-
+  
         protected void gvEntrada_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "SeleccionarEntrada"&&sEntrada==true)

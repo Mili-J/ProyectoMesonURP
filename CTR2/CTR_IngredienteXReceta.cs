@@ -25,5 +25,11 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_IngredienteXReceta(idReceta, idIngrediente);
         }
+
+        public DataSet CTR_Consultar_IxR(DTO_Receta objReceta)
+        {
+            objDAO = new DAO_IngredienteXReceta();
+            return objDAO.DAO_Consultar_IxR(objReceta);
+        }
     }
 }
