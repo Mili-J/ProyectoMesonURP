@@ -22,5 +22,9 @@ namespace CTR
             dao_ing_x_receta = new DAO_IngredienteXReceta();
             return dao_ing_x_receta.DAO_Consultar_IxR(objReceta);
         }
+        public bool CTR_Get_ID_FormatoC(DTO_IngredienteXReceta objIR)
+        {
+            return dao_ing_x_receta.DAO_Get_ID_FormatoC(objIR);
+        }
     }
 }

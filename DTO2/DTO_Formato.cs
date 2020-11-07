@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_Formato
+    public class DTO_Formato
     {
+        public int FCO_idFormatoCocina { get; set; }
+        public string FCO_nombreFCocina { get; set; }
     }
 }

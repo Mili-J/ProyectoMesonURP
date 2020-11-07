@@ -11,29 +11,30 @@ namespace DAO
     {
         SqlConnection conexion;
         DTO_Equivalencia dto_eq;
-        int MXFC_idMedidaFCocina = 0;
+        
 
         public DAO_Equivalencia()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
             dto_eq = new DTO_Equivalencia();
         }
-        public int DAO_Consultar_Medida_x_FCocina(DTO_MedidaXFormatoCocina objMedidaFC)
+        public bool DAO_Consultar_Equivalencia_x_Insumo(DTO_MedidaXFormatoCocina objMedidaFC, int idInsumo)
         {
             conexion.Open();
-            SqlCommand cmd = new SqlCommand("SP_SELECT_MEDIDA_X_FORMATOC", conexion);
+            SqlCommand cmd = new SqlCommand("SP_SELECT_EQUIVALENCIA_X_INSUMO", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@M_idMedida", objMedidaFC.M_idMedida));
-            cmd.Parameters.Add(new SqlParameter("@FCO_idFCocina", objMedidaFC.FCO_idFCocina));
+            cmd.Parameters.Add(new SqlParameter("@MedidaFCocina", objMedidaFC.M_idMedida));
+            cmd.Parameters.Add(new SqlParameter("@I_idInsumo", idInsumo));
             SqlDataReader reader = cmd.ExecuteReader();
             bool hayRegistros = reader.Read();
             if (hayRegistros)
             {
-                MXFC_idMedidaFCocina = (int)reader[0];
+                dto_eq.E_cantidad = (int)reader[0];
             }
             conexion.Close();
-            return MXFC_idMedidaFCocina;
+            return hayRegistros;
 
         }
+        
     }
 }

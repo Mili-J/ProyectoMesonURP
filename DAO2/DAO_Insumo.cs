@@ -10,12 +10,12 @@ namespace DAO
     public class DAO_Insumo
     {
         SqlConnection conexion;
-        string I_medidaInsumo = "";
+        DTO_Medida dto_medida;
 
         public DAO_Insumo()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
-            
+            dto_medida = new DTO_Medida();
         }
 
         public DataTable DAO_Consultar_Equivalencia_x_Insumo(DTO_Insumo dto_insumo)
@@ -32,7 +32,7 @@ namespace DAO
             conexion.Close();
             return dt;
         }
-        public string DAO_Consultar_Medida_x_Insumo(DTO_Insumo objInsumo)
+        public DTO_Medida DAO_Consultar_Medida_x_Insumo(DTO_Insumo objInsumo)
         {
             
             conexion.Open();
@@ -43,10 +43,12 @@ namespace DAO
             bool hayRegistros = reader.Read();
             if (hayRegistros)
             {
-                I_medidaInsumo = (string)reader[0];
+                dto_medida.M_nombreMedida = (string)reader[0];
+                dto_medida.M_idMedida = (int)reader[1];
+
             }
             conexion.Close();
-            return I_medidaInsumo;
+            return dto_medida;
 
         }
     }

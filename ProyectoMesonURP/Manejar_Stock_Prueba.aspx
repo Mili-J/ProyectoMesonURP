@@ -22,6 +22,8 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <br />
+            <asp:TextBox ID="txtPorciones" runat="server"></asp:TextBox>
         </div>
     </form>
 </body>

@@ -14,6 +14,7 @@ namespace ProyectoMesonURP
     {
         CTR_Receta ctr_receta;
         DataTable dt;
+        int porciones = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
@@ -38,6 +39,8 @@ namespace ProyectoMesonURP
             {
                 int idReceta = Convert.ToInt32(GridView1.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_idReceta"].ToString());
                 Session.Add("idReceta", idReceta);
+                porciones = int.Parse(txtPorciones.Text);
+                Session.Add("Porciones", porciones);
                 Response.Redirect("Transformar_Insumo.aspx");
   
             }
