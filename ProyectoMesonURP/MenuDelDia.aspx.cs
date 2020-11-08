@@ -14,7 +14,9 @@ namespace ProyectoMesonURP
     public partial class MenuDelDia : System.Web.UI.Page
     {
         CTR_Receta ctr_receta;
+        CTR_CategoriaReceta ctr_cat_receta;
         DataTable dtPlatoFondo, dtEntrada;
+        DTO_CategoriaReceta dto_cat_receta;
         static DataTable dt;
         static bool sEntrada, sSegundo;
 
@@ -23,18 +25,11 @@ namespace ProyectoMesonURP
         {
             if (e.CommandName == "SeleccionarEntrada"&&sEntrada==true)
             {
-                if (dt.Rows.Count == 0)
-                {
-                    dt.Columns.Add("R_nombreReceta");
-                    dt.Columns.Add("NumRaciones");
-                }
-                DataRow dr = dt.NewRow();
-                dr[0] = gvEntrada.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
-                dr[1] = txtNumRaciones.Text;
-                dt.Rows.Add(dr);
-                gvMenu.DataSource = dt;
-                gvMenu.DataBind();
-                sEntrada = false;
+                
+                int i = Convert.ToInt32(gvEntrada.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_idReceta"].ToString());
+                string nombre= gvEntrada.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
+              
+                LLenarDataTable(i, nombre,1);
             }
             else
             {
@@ -63,16 +58,19 @@ namespace ProyectoMesonURP
 
         protected void gvMenu_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+
+            string cat = gvMenu.Rows[e.RowIndex].Cells[2].Text;
+            if (cat == "Entradas" || cat=="Sopas")sEntrada = true;
+            else if(cat=="Segundos")sSegundo = true;
             dt.Rows.RemoveAt(e.RowIndex);
             gvMenu.DataSource = dt;
             gvMenu.DataBind();
-            sEntrada = true;
-            sSegundo = true;
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
+            ctr_cat_receta = new CTR_CategoriaReceta();
 
             if (!Page.IsPostBack)
             {
@@ -87,6 +85,7 @@ namespace ProyectoMesonURP
                 sEntrada = true;
                 sSegundo = true;
                 dt = new DataTable();
+                
             }
         }
 
@@ -94,23 +93,36 @@ namespace ProyectoMesonURP
         {
             if (e.CommandName == "SeleccionarPlato"&&sSegundo==true)
             {
-                  if (dt.Rows.Count == 0)
-                   {
-                    dt.Columns.Add("R_nombreReceta");
-                    dt.Columns.Add("NumRaciones");
-                   }
-                DataRow dr = dt.NewRow();
-                dr[0] = gvPlatoFondo.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
-                dr[1] = txtNumRaciones.Text;
-                dt.Rows.Add(dr);
-                gvMenu.DataSource = dt;
-                gvMenu.DataBind();
-                sSegundo = false;
+                int i= Convert.ToInt32(gvPlatoFondo.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_idReceta"].ToString());
+                string nombre= gvPlatoFondo.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
+                LLenarDataTable(i,nombre,2);
             }
             else
             {
                 ClientScript.RegisterStartupScript(Page.GetType(), "alertaRechazado", "alertaRechazado('Se ha logrado ingresar correctamente');", true);
             }
+        }
+        public void LLenarDataTable(int id, string nombre,int caso)
+        {
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("R_idReceta");
+                dt.Columns.Add("R_nombreReceta");
+                dt.Columns.Add("NumRaciones");
+                dt.Columns.Add("CR_nombreCatgoria");
+            }
+            DataRow dr = dt.NewRow();
+            dto_cat_receta = ctr_cat_receta.CTR_Consultar_CategoriaXReceta(ctr_receta.CTR_Consultar_Receta(id).CR_idCategoriaReceta);
+            dr[0] = id;
+            dr[1] = nombre;
+            dr[2] = txtNumRaciones.Text;
+            dr[3] = dto_cat_receta.CR_nombreCategoria;
+            dt.Rows.Add(dr);
+            gvMenu.DataSource = dt;
+            gvMenu.DataBind();
+
+            if (caso == 1) sEntrada = false;
+            else sSegundo = false;
         }
     }
 }

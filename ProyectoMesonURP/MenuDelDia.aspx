@@ -109,12 +109,13 @@
 
                         
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <asp:GridView ID="gvMenu" runat="server"  DataKeyNames="R_nombreReceta" OnRowCommand="gvMenu_RowCommand" AutoGenerateColumns="False"
+            <asp:GridView ID="gvMenu" runat="server"  DataKeyNames="R_idReceta, R_nombreReceta" OnRowCommand="gvMenu_RowCommand" AutoGenerateColumns="False"
                 CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnRowDeleting="gvMenu_RowDeleting">
                 <Columns>
                   
                     <asp:BoundField HeaderText="Nombre" DataField="R_nombreReceta" />
                    <asp:BoundField HeaderText="Raciones" DataField="NumRaciones" />
+                    <asp:BoundField HeaderText="Categoría" DataField="CR_nombreCatgoria" />
                     
 
                     

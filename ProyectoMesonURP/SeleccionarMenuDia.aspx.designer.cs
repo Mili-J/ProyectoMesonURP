@@ -11,160 +11,169 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class Master
+    public partial class SeleccionarMenuDia
     {
 
         /// <summary>
-        /// Control head.
+        /// Control txtFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
 
         /// <summary>
-        /// Control form1.
+        /// Control txtNumRaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtNumRaciones;
 
         /// <summary>
-        /// Control lblRol.
+        /// Control reapeterEntradas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRol;
+        protected global::System.Web.UI.WebControls.Repeater reapeterEntradas;
 
         /// <summary>
-        /// Control lblNombre.
+        /// Control repeaterFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombre;
+        protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
 
         /// <summary>
-        /// Control lblApellido.
+        /// Control imgEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblApellido;
+        protected global::System.Web.UI.WebControls.Image imgEntrada;
 
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control lblIdEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Label lblIdEntrada;
 
         /// <summary>
-        /// Control menuDashboard.
+        /// Control lblNombreEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuDashboard;
+        protected global::System.Web.UI.WebControls.Label lblNombreEntrada;
 
         /// <summary>
-        /// Control menuCotizacion.
+        /// Control lblPorcionEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuCotizacion;
+        protected global::System.Web.UI.WebControls.Label lblPorcionEntrada;
 
         /// <summary>
-        /// Control menuStock.
+        /// Control lblCatEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuStock;
+        protected global::System.Web.UI.WebControls.Label lblCatEntrada;
 
         /// <summary>
-        /// Control menuInsumosOC.
+        /// Control btnQuitarEntrada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuInsumosOC;
+        protected global::System.Web.UI.WebControls.Button btnQuitarEntrada;
 
         /// <summary>
-        /// Control menuReceta.
+        /// Control imgFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuReceta;
+        protected global::System.Web.UI.WebControls.Image imgFondo;
 
         /// <summary>
-        /// Control menuSepararIngredientes.
+        /// Control lblIdFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuSepararIngredientes;
+        protected global::System.Web.UI.WebControls.Label lblIdFondo;
 
         /// <summary>
-        /// Control menuProveedor.
+        /// Control lblNombreFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuProveedor;
+        protected global::System.Web.UI.WebControls.Label lblNombreFondo;
 
         /// <summary>
-        /// Control menuInsumo.
+        /// Control lblPorcionFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuInsumo;
+        protected global::System.Web.UI.WebControls.Label lblPorcionFondo;
 
         /// <summary>
-        /// Control menuMovimiento.
+        /// Control lblCatFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuMovimiento;
+        protected global::System.Web.UI.WebControls.Label lblCatFondo;
 
         /// <summary>
-        /// Control menuMenuDelDia.
+        /// Control btnQuitarFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuMenuDelDia;
+        protected global::System.Web.UI.WebControls.Button btnQuitarFondo;
 
         /// <summary>
-        /// Control menuMenu.
+        /// Control btnAceptar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menuMenu;
+        protected global::System.Web.UI.WebControls.Button btnAceptar;
+
+        /// <summary>
+        /// Control btnRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegresar;
     }
 }

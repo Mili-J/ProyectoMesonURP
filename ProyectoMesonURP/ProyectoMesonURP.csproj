@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
@@ -246,6 +247,7 @@
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
     <Content Include="RegistrarReceta.aspx" />
+    <Content Include="SeleccionarMenuDia.aspx" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -256,6 +258,13 @@
     </Compile>
     <Compile Include="ActualizarReceta.aspx.designer.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CalendariaMenu.aspx.cs">
+      <DependentUpon>CalendariaMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CalendariaMenu.aspx.designer.cs">
+      <DependentUpon>CalendariaMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
@@ -323,6 +332,13 @@
     </Compile>
     <Compile Include="RegistrarReceta.aspx.designer.cs">
       <DependentUpon>RegistrarReceta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionarMenuDia.aspx.cs">
+      <DependentUpon>SeleccionarMenuDia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SeleccionarMenuDia.aspx.designer.cs">
+      <DependentUpon>SeleccionarMenuDia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transformar_Insumo.aspx.cs">
       <DependentUpon>Transformar_Insumo.aspx</DependentUpon>
@@ -439,6 +455,7 @@
       <Name>DTO2</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

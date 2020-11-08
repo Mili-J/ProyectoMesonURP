@@ -190,10 +190,42 @@ namespace DAO
                 dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
                 dto_receta.R_descripcion = Convert.ToString(reader[3]);
                 dto_receta.R_imagenReceta = null;
+                try
+                {
+                    dto_receta.R_imagenReceta = (byte[])reader[4];
+                }
+                catch (Exception)
+                {
+
+                    dto_receta.R_imagenReceta = null;
+                }
+                
                 dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[5]);
             }
             conexion.Close();
             return dto_receta;
+        }
+        public Byte[] prueba(int i)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarRecetaPrueba", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", i);
+            byte[] img = new byte[100];
+            img = (byte[])comando.ExecuteScalar();
+            conexion.Close();
+            return img;
+            
+        }
+        public void actualizarfoto(byte[]aaa,int i)
+        {
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Actualizar_foto", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@R_idReceta",i);
+            command.Parameters.AddWithValue("@R_imagenReceta",aaa);
+            command.ExecuteNonQuery();
+            conexion.Close();
         }
 
         public DataTable DAO_ConsultarReceta2()
