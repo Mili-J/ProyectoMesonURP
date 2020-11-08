@@ -41,7 +41,7 @@ namespace ProyectoMesonURP
                 Session.Add("idReceta", idReceta);
                 porciones = int.Parse(txtPorciones.Text);
                 Session.Add("Porciones", porciones);
-                Response.Redirect("Transformar_Insumo.aspx");
+               
 
             }
         }

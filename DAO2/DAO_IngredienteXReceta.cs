@@ -32,27 +32,27 @@ namespace DAO
             conexion.Close();
             return dt;
         }
-        public DTO_IngredienteXReceta DAO_Consultar_IngredienteXReceta(int idReceta,int idIngrediente)
-        {
-            conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarIngredienteXReceta", conexion);
-            comando.CommandType = CommandType.StoredProcedure;
+        //public DTO_IngredienteXReceta DAO_Consultar_IngredienteXReceta(int idReceta,int idIngrediente)
+        //{
+        //    conexion.Open();
+        //    SqlCommand comando = new SqlCommand("SP_ConsultarIngredienteXReceta", conexion);
+        //    comando.CommandType = CommandType.StoredProcedure;
 
-            comando.Parameters.AddWithValue("@R_idReceta", idReceta);
-            comando.Parameters.AddWithValue("@I_idIngrediente", idIngrediente);
-            comando.ExecuteNonQuery();
-            SqlDataReader reader = comando.ExecuteReader();
-            if(reader.Read())
-            {
-                dto_ingredientexreceta.IR_idIngredienteReceta = Convert.ToInt32(reader[0]);
-                dto_ingredientexreceta.IR_cantidad = Convert.ToInt32(reader[1]);
-                dto_ingredientexreceta.IR_formatoMedida = reader[2].ToString();
-                dto_ingredientexreceta.R_idReceta = idReceta;
-                dto_ingredientexreceta.I_idIngrediente = idIngrediente;
-            }
-            conexion.Close();
-            return dto_ingredientexreceta;
-        }
+        //    comando.Parameters.AddWithValue("@R_idReceta", idReceta);
+        //    comando.Parameters.AddWithValue("@I_idIngrediente", idIngrediente);
+        //    comando.ExecuteNonQuery();
+        //    SqlDataReader reader = comando.ExecuteReader();
+        //    if(reader.Read())
+        //    {
+        //        dto_ingredientexreceta.IR_idIngredienteReceta = Convert.ToInt32(reader[0]);
+        //        dto_ingredientexreceta.IR_cantidad = Convert.ToInt32(reader[1]);
+        //        dto_ingredientexreceta.IR_formatoMedida = reader[2].ToString();
+        //        dto_ingredientexreceta.R_idReceta = idReceta;
+        //        dto_ingredientexreceta.I_idIngrediente = idIngrediente;
+        //    }
+        //    conexion.Close();
+        //    return dto_ingredientexreceta;
+        //}
         public DataSet DAO_Consultar_IxR(DTO_Receta objReceta)
         {
             conexion.Open();

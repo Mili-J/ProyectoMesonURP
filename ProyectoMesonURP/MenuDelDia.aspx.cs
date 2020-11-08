@@ -50,16 +50,16 @@ namespace ProyectoMesonURP
             }
         }
 
-        protected void txtNumRaciones_TextChanged(object sender, EventArgs e)
-        {
-            int racion = Convert.ToInt32(txtNumRaciones.Text);
-            //DTO_IngredienteXReceta a = new CTR_IngredienteXReceta().CTR_Consultar_IngredienteXReceta(1,5);
-            gvPlatoFondo.DataSource = ctr_receta.CTR__Consultar_Recetas_Disponibles(racion,2);
-            gvPlatoFondo.DataBind();
-            //-------
-            gvEntrada.DataSource = ctr_receta.CTR__Consultar_Recetas_Disponibles(racion, 1);
-            gvEntrada.DataBind();
-        }
+        //protected void txtNumRaciones_TextChanged(object sender, EventArgs e)
+        //{
+        //    int racion = Convert.ToInt32(txtNumRaciones.Text);
+        //    //DTO_IngredienteXReceta a = new CTR_IngredienteXReceta().CTR_Consultar_IngredienteXReceta(1,5);
+        //    gvPlatoFondo.DataSource = ctr_receta.CTR__Consultar_Recetas_Disponibles(racion,2);
+        //    gvPlatoFondo.DataBind();
+        //    //-------
+        //    gvEntrada.DataSource = ctr_receta.CTR__Consultar_Recetas_Disponibles(racion, 1);
+        //    gvEntrada.DataBind();
+        //}
 
         protected void gvMenu_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
