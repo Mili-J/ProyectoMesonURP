@@ -25,19 +25,25 @@ namespace ProyectoMesonURP
             ctr_receta = new CTR_Receta();
             if (!IsPostBack)
             {
-                
+
             }
         }
 
-
         protected void CalendarioMenu_SelectionChanged(object sender, EventArgs e)
         {
-            string fecha = CalendarioMenu.SelectedDate.ToShortDateString();
-            if (ctr_menu.CTR_HayMenu(Convert.ToDateTime(fecha))) hay = true;
-            else hay = false;
-            Session.Add("fecha",fecha);
-            Session.Add("hay",hay);
-            Response.Redirect("SeleccionarMenuDia.aspx");
+            DateTime date = CalendarioMenu.SelectedDate;
+            if (date.ToString("dddd") == "domingo")
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "msj", "alert('No hay menú los días domingos.')", true);
+                return;
+            }
+            else
+            {
+                string fecha = date.ToShortDateString();
+                Session.Add("fecha", fecha);
+                Session.Add("hay", hay);
+                Response.Redirect("SeleccionarMenuDia.aspx");
+            }
         }
 
         protected void CalendarioMenu_DayRender(object sender, DayRenderEventArgs e)
@@ -57,24 +63,21 @@ namespace ProyectoMesonURP
             //--------------------------------------
             if (ctr_menu.CTR_HayMenu(fecha))
             {
-                DataTable dt = new DataTable();
-                dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(dto_menu.ME_idMenu);
+                e.Cell.BackColor = Color.DarkGreen;
+                e.Cell.ForeColor = Color.White;
+                DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(dto_menu.ME_idMenu);
                 int i = 0;
                 object[] recetas;
                 DTO_Receta dto_receta;
-                while (i<dt.Rows.Count  )
+                while (i < dt.Rows.Count)
                 {
                     recetas = dt.Rows[i].ItemArray;
                     dto_receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
-
-                    e.Cell.Controls.Add(new LiteralControl("<hr />" +dto_receta.R_nombreReceta));
+                    e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_receta.R_nombreReceta));
                     i++;
                 }
-                e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_menu.ME_numRaciones+" raciones"));
-
+                e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_menu.ME_numRaciones + " raciones"));
             }
-          
-            
         }
     }
 }

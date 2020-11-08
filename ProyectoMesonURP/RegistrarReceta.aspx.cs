@@ -34,7 +34,7 @@ namespace ProyectoMesonURP
         }
         public void ListarCategoriaReceta()
         {
-         //   ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
+            ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
             ddlCategoriaReceta.DataTextField = "CR_nombreCategoria";
             ddlCategoriaReceta.DataValueField = "CR_idCategoriaReceta";
             ddlCategoriaReceta.DataBind();

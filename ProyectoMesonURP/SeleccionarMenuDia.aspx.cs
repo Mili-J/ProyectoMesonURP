@@ -18,11 +18,11 @@ namespace ProyectoMesonURP
     {
         CTR_Receta ctr_receta;
         CTR_Menu ctr_menu;
-        DTO_Menu dto_menu;       
+        DTO_Menu dto_menu;
         CTR_MenuXReceta ctr_menuxreceta;
-        DTO_MenuXReceta dto_menuxrecetaEntrada,dto_menuxrecetaFondo;
+        DTO_MenuXReceta dto_menuxrecetaEntrada, dto_menuxrecetaFondo;
         static bool sEntrada, sSegundo;
-       static bool hay;
+        static bool hay;
         static string fecha;
         DTO_Menu objMenu;
         protected void Page_Load(object sender, EventArgs e)
@@ -35,14 +35,14 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
 
-                
-        
-                 fecha = Session["fecha"].ToString();
+
+
+                fecha = Session["fecha"].ToString();
                 txtFecha.Text = fecha;
-                 hay = (bool)Session["hay"];
+                hay = (bool)Session["hay"];
 
                 //-----------------------------------
-                reapeterEntradas.DataSource= ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);
+                reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);
                 reapeterEntradas.DataBind();
                 //-----------------------------------
                 repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
@@ -76,7 +76,7 @@ namespace ProyectoMesonURP
                         int i = 0;
                         object[] recetas;
                         DTO_Receta receta;
-                       
+
                         while (i < dtmenu.Rows.Count)
                         {
                             recetas = dtmenu.Rows[i].ItemArray;
@@ -109,8 +109,8 @@ namespace ProyectoMesonURP
                 }
                 else
                 {
-                    
-                    
+
+
                     OcultarEntrada();
                     OcultarFondo();
 
@@ -164,36 +164,33 @@ namespace ProyectoMesonURP
             {
                 if (sSegundo == false && sEntrada == false)
                 {
-                  
-                        dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
-                        dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
-                        ctr_menu.CTR_RegistrarMenu(dto_menu);
-                        int id = ctr_menu.CTR_IdMenuMayor();
-                        //--------------------------------------
-                        RegistrarMenuXReceta(id);
-                        //--------------------------------------
-                        Response.Redirect("CalendariaMenu.aspx");
-                    
-                
+                    dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
+                    dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
+                    ctr_menu.CTR_RegistrarMenu(dto_menu);
+                    int id = ctr_menu.CTR_IdMenuMayor();
+                    //--------------------------------------
+                    RegistrarMenuXReceta(id);
+                    //--------------------------------------
+                    Response.Redirect("CalendariaMenu.aspx");
 
-               }
+                }
             }
-            else if(hay==true)
+            else if (hay == true)
             {
-                if (sSegundo==false&&sEntrada==false)
+                if (sSegundo == false && sEntrada == false)
                 {
                     DTO_Menu objmenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
                     objmenu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
                     DataTable dtMenuReceta = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(objmenu.ME_idMenu);
                     ctr_menu.CTR_ActualizarMenu(objmenu);
-                    if(dtMenuReceta.Rows.Count==2)
+                    if (dtMenuReceta.Rows.Count == 2)
                     {
                         dtMenuReceta.Rows[0][1] = Convert.ToInt32(lblIdEntrada.Text);
                         dtMenuReceta.Rows[1][1] = Convert.ToInt32(lblIdFondo.Text);
                         ctr_menuxreceta.CTR_ActualizarMenuXReceta(dtMenuReceta);
-                        
+
                     }
-                    else if(dtMenuReceta.Rows.Count==0)
+                    else if (dtMenuReceta.Rows.Count == 0)
                     {
 
                         RegistrarMenuXReceta(objmenu.ME_idMenu);
@@ -204,7 +201,7 @@ namespace ProyectoMesonURP
                 }
 
             }
-           
+
 
         }
 
@@ -226,7 +223,7 @@ namespace ProyectoMesonURP
             {
 
             }
-            else if (e.CommandName == "AgregarEntrada" && sEntrada==true)
+            else if (e.CommandName == "AgregarEntrada" && sEntrada == true)
             {
                 MostrarEntrada();
                 System.Web.UI.WebControls.Label lblIdReceta = e.Item.FindControl("lblIdReceta") as System.Web.UI.WebControls.Label;
@@ -238,7 +235,7 @@ namespace ProyectoMesonURP
                 //----------------------
                 lblIdEntrada.Text = id.ToString();
                 lblNombreEntrada.Text = lblNombreReceta.Text;
-                lblPorcionEntrada.Text = "Porción: "+lblPorciones.Text;
+                lblPorcionEntrada.Text = "Porción: " + lblPorciones.Text;
                 lblCatEntrada.Text = lblCategoria.Text;
                 try
                 {
@@ -254,7 +251,7 @@ namespace ProyectoMesonURP
                 sEntrada = false;
                 btnQuitarEntrada.Visible = true;
             }
-            else if (sEntrada==false)
+            else if (sEntrada == false)
             {
                 ClientScript.RegisterStartupScript(Page.GetType(), "alertaRechazado", "alertaRechazado('Se ha logrado ingresar correctamente');", true);
             }

@@ -75,7 +75,6 @@ namespace DAO
             SqlCommand comando = new SqlCommand("SP_ConsultarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@ME_fechaMenu", fecha);
-            comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read()) estado = true;      
             else estado = false;

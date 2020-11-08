@@ -46,7 +46,6 @@
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
                             <asp:DropDownList ID="ddlCategoriaReceta" runat="server" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
-                                <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>

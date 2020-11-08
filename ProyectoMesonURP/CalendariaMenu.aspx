@@ -2,7 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Calendar ID="CalendarioMenu" runat="server" OnSelectionChanged="CalendarioMenu_SelectionChanged" OnDayRender="CalendarioMenu_DayRender"></asp:Calendar>
-
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+            <asp:Calendar ID="CalendarioMenu" runat="server" OnSelectionChanged="CalendarioMenu_SelectionChanged" 
+        OnDayRender="CalendarioMenu_DayRender" FirstDayOfWeek="Monday" DayNameFormat="Full" NextPrevFormat="FullMonth" 
+        SelectionMode="Day" TodayDayStyle-BackColor="YellowGreen"></asp:Calendar>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
-
