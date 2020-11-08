@@ -196,9 +196,17 @@ namespace DAO
             return dto_receta;
         }
 
-        public DTO_Receta DAO_ConsultarReceta2()
+        public DataTable DAO_ConsultarReceta2()
         {
-
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
         }
     }
 }

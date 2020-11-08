@@ -19,7 +19,7 @@ namespace ProyectoMesonURP
         {
             ctr_receta = new CTR_Receta();
             dt = new DataTable();
-            dt = ctr_receta.CTR_Consultar_Receta();
+            dt = ctr_receta.CTR_Consultar_Receta2();
             if (!Page.IsPostBack)
             {
                 GridView1.DataSource = dt;
