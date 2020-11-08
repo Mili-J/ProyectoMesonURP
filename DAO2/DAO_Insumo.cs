@@ -84,20 +84,18 @@ namespace DAO
         {
             
             conexion.Open();
+            DTO_Medida dtoM = new DTO_Medida();
             SqlCommand cmd = new SqlCommand("SP_SELECT_MEDIDA_X_INSUMO", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objInsumo.I_idInsumo));
             SqlDataReader reader = cmd.ExecuteReader();
-            bool hayRegistros = reader.Read();
-            if (hayRegistros)
+            if (reader.Read())
             {
-                dto_medida.M_nombreMedida = (string)reader[0];
-                dto_medida.M_idMedida = (int)reader[1];
-
+                dtoM.M_nombreMedida = reader[0].ToString();
+                dtoM.M_idMedida = int.Parse(reader[1].ToString());
             }
             conexion.Close();
-            return dto_medida;
-
+            return dtoM;
         }
     }
 }

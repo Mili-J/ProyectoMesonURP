@@ -164,8 +164,9 @@ namespace ProyectoMesonURP
             {
                 dto_insumo.I_idInsumo = int.Parse(ddlInsumo.SelectedValue);
                 dto_medida = new DTO_Medida();
-                dto_medida.M_nombreMedida=ctr_insumo.CTR_Consultar_Medida_x_Insumo(dto_insumo).M_nombreMedida;
+                dto_medida=ctr_insumo.CTR_Consultar_Medida_x_Insumo(dto_insumo);
                 txtMedida.Text = dto_medida.M_nombreMedida;
+                txtCantidad.Text = dto_medida.M_idMedida.ToString();
             }
         }
         protected void ddlIngrediente_SelectedIndexChanged(object sender, EventArgs e)
