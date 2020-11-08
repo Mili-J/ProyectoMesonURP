@@ -17,12 +17,13 @@
                 <div class="form-three widget-shadow">
                     <div class="form-horizontal" runat="server">
 
-                        <asp:GridView ID="gvIngredienteReceta" runat="server" DataKeyNames="I_nombreIngrediente,I_nombreInsumo,IR_cantidad,IR_formatoMedida" AutoGenerateColumns="False">
+                        <asp:GridView ID="gvIngredienteReceta" runat="server" DataKeyNames="I_nombreIngrediente,I_nombreInsumo,IR_cantidad,IR_formatoMedida,I_idIngrediente" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" />
                                 <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                 <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
                                 <asp:BoundField HeaderText="Formato Medida" DataField="IR_formatoMedida"/>
+                                
                                
                             </Columns>
                         </asp:GridView>
@@ -89,7 +90,7 @@
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                       <ContentTemplate>
                          <p class="center-button">
-                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" />
+                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
 <%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
                         </p>
                       </ContentTemplate>

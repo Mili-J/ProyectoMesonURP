@@ -3,42 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="women_main">
-         <div>
-             <asp:TextBox ID="txtNumRaciones" runat="server" TextMode="Number" OnTextChanged="txtNumRaciones_TextChanged" AutoPostBack="true"></asp:TextBox>
-         </div>
-        
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
         <div>
-         <div>Plato de fondo</div>
-            <div>
-            <asp:GridView ID="gvPlatoFondo" runat="server"  DataKeyNames="R_idReceta,R_nombreReceta,R_numeroPorcion,R_descripcion" OnRowCommand="gvPlatoFondo_RowCommand" AutoGenerateColumns="false">
-                <Columns>
-                  
-                    <asp:BoundField HeaderText="Nombre" DataField="R_nombreReceta" />
-                    <asp:BoundField HeaderText="Porcion" DataField="R_numeroPorcion" />
-                    <asp:BoundField HeaderText="Descripcion" DataField="R_descripcion"/>
-                    <asp:TemplateField HeaderText="Transformar">
-                        <ItemTemplate>
-                            <asp:Button ID="btnTransformar" runat="server" CommandName="TransformarI" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  Text="Transformar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    
-                    <asp:TemplateField HeaderText="Seleccionar">
-                        <ItemTemplate>
-                            <asp:Button ID="btnSeleccionarPlato" runat="server" CommandName="SeleccionarPlato" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"   Text="Seleccionar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-            </div>
-        </div>
-        <%-- ---------------------- --%>
-        <div>
-         <div>Entrada</div>
-            <div>
-            <asp:GridView ID="gvEntrada" runat="server"  DataKeyNames="R_idReceta,R_nombreReceta,R_numeroPorcion,R_descripcion" OnRowCommand="gvEntrada_RowCommand" AutoGenerateColumns="false">
+            <asp:GridView ID="GridView1" runat="server"  DataKeyNames="R_idReceta,R_nombreReceta,R_numeroPorcion,R_descripcion" OnRowCommand="GridView_RowCommand" AutoGenerateColumns="false" Width="359px">
                 <Columns>
                   
                     <asp:BoundField HeaderText="Nombre" DataField="R_nombreReceta" />
@@ -78,7 +50,9 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            </div>
+            <br />
+            <asp:TextBox ID="txtPorciones" runat="server"></asp:TextBox>
         </div>
-         </div>
-         </asp:Content>
+    </form>
+</body>
+</html>
