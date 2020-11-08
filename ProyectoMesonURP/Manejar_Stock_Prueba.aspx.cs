@@ -18,13 +18,16 @@ namespace ProyectoMesonURP
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
-            
+            dt = new DataTable();
+            dt = ctr_receta.CTR_Consultar_Receta();
             if (!Page.IsPostBack)
             {
                 GridView1.DataSource = dt;
-            GridView1.DataBind();
-                }
+                GridView1.DataBind();
+            }
+
         }
+
         protected void btnTransformar_Click(object sender, EventArgs e)
         {
 
@@ -39,7 +42,8 @@ namespace ProyectoMesonURP
                 porciones = int.Parse(txtPorciones.Text);
                 Session.Add("Porciones", porciones);
                 Response.Redirect("Transformar_Insumo.aspx");
-  
+
             }
         }
-}   }
+    }
+}   
