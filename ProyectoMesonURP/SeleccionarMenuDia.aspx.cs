@@ -159,20 +159,23 @@ namespace ProyectoMesonURP
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+
             if (hay == false)
             {
                 if (sSegundo == false && sEntrada == false)
                 {
-
+                  
+                        dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
+                        dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
+                        ctr_menu.CTR_RegistrarMenu(dto_menu);
+                        int id = ctr_menu.CTR_IdMenuMayor();
+                        //--------------------------------------
+                        RegistrarMenuXReceta(id);
+                        //--------------------------------------
+                        Response.Redirect("CalendariaMenu.aspx");
+                    
                 
-                dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
-                dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
-                ctr_menu.CTR_RegistrarMenu(dto_menu);
-                int id = ctr_menu.CTR_IdMenuMayor();
-                    //--------------------------------------
-                    RegistrarMenuXReceta(id);
-                //--------------------------------------
-                Response.Redirect("CalendariaMenu.aspx");
+
                }
             }
             else if(hay==true)
@@ -231,12 +234,23 @@ namespace ProyectoMesonURP
                 System.Web.UI.WebControls.Label lblPorciones = e.Item.FindControl("lblPorciones") as System.Web.UI.WebControls.Label;
                 System.Web.UI.WebControls.Label lblCategoria = e.Item.FindControl("lblCategoria") as System.Web.UI.WebControls.Label;
                 int id = int.Parse(lblIdReceta.Text);
+                byte[] imagen;
                 //----------------------
                 lblIdEntrada.Text = id.ToString();
                 lblNombreEntrada.Text = lblNombreReceta.Text;
                 lblPorcionEntrada.Text = "Porción: "+lblPorciones.Text;
                 lblCatEntrada.Text = lblCategoria.Text;
-                imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(ctr_receta.CTR_Consultar_Receta(id).R_imagenReceta);
+                try
+                {
+                    imagen = ctr_receta.CTR_Consultar_Receta(id).R_imagenReceta;
+                    imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(imagen);
+                }
+                catch (Exception)
+                {
+
+                    imgEntrada.AlternateText = "No se ha podido cargar la imagen";
+                }
+
                 sEntrada = false;
                 btnQuitarEntrada.Visible = true;
             }
@@ -276,7 +290,17 @@ namespace ProyectoMesonURP
                 lblNombreFondo.Text = lblNombreReceta.Text;
                 lblPorcionFondo.Text = "Porción: " + lblPorciones.Text;
                 lblCatFondo.Text = lblCategoria.Text;
-                imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(ctr_receta.CTR_Consultar_Receta(id).R_imagenReceta);
+                try
+                {
+                    byte[] imagen = ctr_receta.CTR_Consultar_Receta(id).R_imagenReceta;
+                    imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(imagen);
+                }
+                catch (Exception)
+                {
+
+                    imgFondo.AlternateText = "No se ha podido cargar la imagen";
+                }
+
                 sSegundo = false;
                 btnQuitarFondo.Visible = true;
             }
