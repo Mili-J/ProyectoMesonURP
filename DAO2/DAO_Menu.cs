@@ -28,6 +28,17 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void DAO_ActualizarMenu(DTO_Menu obj)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ActualizarMenu", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_numRaciones", obj.ME_numRaciones);
+            comando.Parameters.AddWithValue("@ME_idMenu", obj.ME_idMenu);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+                
+        }
         public int DAO_IdMenuMayor()
         {
             int id;

@@ -24,5 +24,9 @@ namespace CTR
         {
             return dao_menuxreceta.DAO_ConsultarRecetasXMenu(i);
         }
+        public void CTR_ActualizarMenuXReceta(DataTable obj)
+        {
+            dao_menuxreceta.DAO_ActualizarMenuXReceta(obj);
+        }
     }
 }

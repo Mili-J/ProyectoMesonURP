@@ -62,7 +62,7 @@ namespace ProyectoMesonURP
                 int i = 0;
                 object[] recetas;
                 DTO_Receta dto_receta;
-                while (i<dt.Rows.Count)
+                while (i<dt.Rows.Count  )
                 {
                     recetas = dt.Rows[i].ItemArray;
                     dto_receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));

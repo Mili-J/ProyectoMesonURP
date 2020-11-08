@@ -32,5 +32,9 @@ namespace CTR
         {
             return dao_menu.DAO_HayMenu(fecha);
         }
+        public void CTR_ActualizarMenu(DTO_Menu obj)
+        {
+            dao_menu.DAO_ActualizarMenu(obj);
+        }
     }
 }
