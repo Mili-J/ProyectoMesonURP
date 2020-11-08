@@ -92,7 +92,9 @@
                                 </asp:UpdatePanel>
                             </div>
                             
-                        <div class="clearfix"></div>
+                        <div class="clearfix">
+                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        </div>
                      </div>
                   </div>
     <script>
