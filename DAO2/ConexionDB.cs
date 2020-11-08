@@ -10,7 +10,7 @@ namespace DAO
         {
             get
             { 
-                 return "Data Source = (Local); initial catalog=DB_MesonURP; integrated security=true;";
+                 return "Data Source = (Local); initial catalog=BD_MesonURP; integrated security=true;";
               // FIORELA 
                 //return "Data Source =DESKTOP-GJ83E50\\MSSQLSERVER01; Initial Catalog = BD_MesonURP; Integrated Security = True";
 

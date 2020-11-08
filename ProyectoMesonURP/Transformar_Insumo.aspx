@@ -27,6 +27,7 @@
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                     <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
                                     <asp:BoundField HeaderText="Formato Medida" DataField="IR_formatoMedida" />
+                                   
 
                                 </Columns>
                             </asp:GridView>
@@ -91,13 +92,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                       <%-- <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Peso Unitario</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtPesoUnitario" runat="server" CssClass="form-control form-color-letter" Style="width:25%" />
                                 <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                             </div>
-                        </div>
+                        </div>--%>
 
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                             <ContentTemplate>

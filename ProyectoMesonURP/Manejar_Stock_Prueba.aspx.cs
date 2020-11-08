@@ -30,7 +30,7 @@ namespace ProyectoMesonURP
 
         protected void btnTransformar_Click(object sender, EventArgs e)
         {
-
+            
         }
         protected void GridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -41,7 +41,7 @@ namespace ProyectoMesonURP
                 Session.Add("idReceta", idReceta);
                 porciones = int.Parse(txtPorciones.Text);
                 Session.Add("Porciones", porciones);
-               
+                Response.Redirect("Transformar_Insumo.aspx");
 
             }
         }

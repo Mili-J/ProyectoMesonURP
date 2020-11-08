@@ -31,9 +31,9 @@ namespace CTR
             objDAO = new DAO_IngredienteXReceta();
             return objDAO.DAO_Consultar_IxR(objReceta);
         }
-        public bool CTR_Get_ID_FormatoC(DTO_IngredienteXReceta objIR)
+        public DataTable CTR_Consultar_Equivalencia_x_Ingrediente(int i, int ing)
         {
-            return objDAO.DAO_Get_ID_FormatoC(objIR);
+            return objDAO.DAO_Consultar_Equivalencia_X_Ingrediente(i,ing);
         }
     }
 }
