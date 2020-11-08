@@ -48,7 +48,7 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
         }
-       
+
         protected void ddlIngredientes_Change(object sender, EventArgs e)
         {
             if (ddlIngredientes.SelectedIndex != 0)
@@ -78,20 +78,18 @@ namespace ProyectoMesonURP
         }
         protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(gvIngredientes, "Select$" + e.Row.RowIndex);
-                    e.Row.ToolTip = "Haga click para seleccionar la fila.";
-                    id = e.Row.RowIndex;
-                }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(gvIngredientes, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Haga click para seleccionar la fila.";
+                id = e.Row.RowIndex;
+            }
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
             _Di.I_nombreIngrediente = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
-
-
             DataRow row = tin.NewRow();
             if (tin.Columns.Count == 0)
             {
@@ -99,11 +97,13 @@ namespace ProyectoMesonURP
                 tin.Columns.Add("Cantidad");
                 tin.Columns.Add("Medida");
             }
-                if (tin.Rows.Count > 0)
-                {
-                    // Primero averigua si el registro existe:
-                    bool existe = false;
-                    for (int i = 0; i < tin.Rows.Count; i++)
+            if (tin.Rows.Count > 0)
+            {
+                // Primero averigua si el registro existe:
+                bool existe = false;
+                for (int i = 0; i < tin.Rows.Count; i++)
+                { 
+                    if (gvIngredientes.Rows.Count > 0)
                     {
                         if (Convert.ToString(gvIngredientes.Rows[i].Cells[1].Text) == Convert.ToString(_Dr.R_nombreReceta))
                         {
@@ -112,30 +112,33 @@ namespace ProyectoMesonURP
                             break;
                         }
                     }
-                    // Luego, ya fuera del ciclo, solo si no existe, realizas la insercion:
-                    if (existe == false){
-                        pila.Add(_Dixr);
-
-                        row[0] = _Di.I_nombreIngrediente;
-                        row[1] = _Dixr.IR_cantidad;
-                        row[2] = _Dixr.IR_formatoMedida;
-                        tin.Rows.Add(row);
-
-                        gvIngredientes.DataSource = tin;
-                        gvIngredientes.DataBind();
-                    }
                 }
-                else{
-                        pila.Add(_Dixr);
+                // Luego, ya fuera del ciclo, solo si no existe, realizas la insercion:
+                if (existe == false)
+                {
+                    pila.Add(_Dixr);
 
-                        row[0] = _Di.I_nombreIngrediente;
-                        row[1] = _Dixr.IR_cantidad;
-                        row[2] = _Dixr.IR_formatoMedida;
-                        tin.Rows.Add(row);
+                    row[0] = _Di.I_nombreIngrediente;
+                    row[1] = _Dixr.IR_cantidad;
+                    row[2] = _Dixr.IR_formatoMedida;
+                    tin.Rows.Add(row);
 
-                        gvIngredientes.DataSource = tin;
-                        gvIngredientes.DataBind();
+                    gvIngredientes.DataSource = tin;
+                    gvIngredientes.DataBind();
                 }
+            }
+            else
+            {
+                pila.Add(_Dixr);
+
+                row[0] = _Di.I_nombreIngrediente;
+                row[1] = _Dixr.IR_cantidad;
+                row[2] = _Dixr.IR_formatoMedida;
+                tin.Rows.Add(row);
+
+                gvIngredientes.DataSource = tin;
+                gvIngredientes.DataBind();
+            }
         }
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
@@ -144,7 +147,7 @@ namespace ProyectoMesonURP
                 _Dr.R_nombreReceta = txtnombre.Text;
                 _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
                 _Dr.R_descripcion = txtDescripcion.Text;
-                _Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
+                _Dr.R_imagenReceta = fuImagen.FileBytes;
                 _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
                 //_Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
                 _Cr.RegistrarReceta(_Dr);
@@ -153,7 +156,7 @@ namespace ProyectoMesonURP
             }
             catch (System.FormatException)
             {
-                
+
             }
             //if (pila.Count == 0)
             //{

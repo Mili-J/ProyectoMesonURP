@@ -17,10 +17,10 @@
                 </div>
                 <div class="stock-options">
                          <div class="width-auto margin-5">
-                            <button type="button" class="btn btn-primary btn-flex" style="display: flex; margin-left: 6px;"
-                                OnClick="btnRegistrarReceta_Click">     
+                            <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;"
+                                onserverclick="btnRegistrarReceta_Click">     
                                 <span class="material-icons margin-5" style="margin-right: 6px;">add_circle_outline</span>
-                                <h>Registrar Receta</h>
+                                Registrar Receta
                             </button>
                         </div>
                 </div>
@@ -45,7 +45,7 @@
                         </li>
                     </ul>
                 </div>
-                <div id="container-all" style="display: flex;justify-content: space-between;margin-top: 30px;">
+                <div id="container-all" style="display: flex; justify-content: space-around; margin-top: 30px; flex-wrap: wrap;">
                         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemCreated="Repeater1_ItemCreated" OnItemDataBound="Repeater1_ItemDataBound">
                             <ItemTemplate>
                                 <div class="card" style="width: 18rem">

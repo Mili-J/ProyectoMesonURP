@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using DAO;
 using DTO;
@@ -17,6 +18,11 @@ namespace CTR
         public DTO_CategoriaReceta CTR_Consultar_CategoriaXReceta(int i)
         {
             return dao_categoriareceta.DAO_Consultar_CategoriaXReceta(i);
+        }
+      
+        public DataSet CargarCategoriaReceta()
+        {
+            return dao_categoriareceta.SelectCategoriaReceta();
         }
     }
 }
