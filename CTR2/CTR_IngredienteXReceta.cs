@@ -33,7 +33,7 @@ namespace CTR
         }
         public bool CTR_Get_ID_FormatoC(DTO_IngredienteXReceta objIR)
         {
-            return dao_ing_x_receta.DAO_Get_ID_FormatoC(objIR);
+            return objDAO.DAO_Get_ID_FormatoC(objIR);
         }
     }
 }

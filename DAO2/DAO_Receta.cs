@@ -129,7 +129,7 @@ namespace DAO
                         ingredientesxrecetas = dtIngredientesxReceta.Rows[j].ItemArray;
                         dto_ingrediente = dao_ingrediente.DAO_Consultar_IngredienteXID(Convert.ToInt32(ingredientesxrecetas[4]));
                         dto_ingredientexreceta = dao_ingredientexreceta.DAO_Consultar_IngredienteXReceta(Convert.ToInt32(ingredientesxrecetas[3]), Convert.ToInt32(ingredientesxrecetas[4]));
-                        if (dto_ingredientexreceta.IR_Cantidad * racion <= dto_ingrediente.I_cantidad)
+                        if (dto_ingredientexreceta.IR_cantidad * racion <= dto_ingrediente.I_cantidad)
                         {
                             valor = true;
                             if (j == dtIngredientesxReceta.Rows.Count - 1)

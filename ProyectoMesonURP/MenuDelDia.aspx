@@ -39,7 +39,7 @@
                 <div class="panel panel-widget forms-panel">
                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
                         <div class="form-title color-white">
-                            <h4>Platos de Fonndo</h4>
+                            <h4>Platos de Fondo</h4>
                         </div>
 
                         

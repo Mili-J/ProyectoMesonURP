@@ -65,9 +65,7 @@ namespace DAO
                 throw ex;
             }
         }
-            dto_medida = new DTO_Medida();
-        }
-
+           
         public DataTable DAO_Consultar_Equivalencia_x_Insumo(DTO_Insumo dto_insumo)
         {
             conexion.Open();

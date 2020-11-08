@@ -45,7 +45,7 @@ namespace DAO
             if(reader.Read())
             {
                 dto_ingredientexreceta.IR_idIngredienteReceta = Convert.ToInt32(reader[0]);
-                dto_ingredientexreceta.IR_Cantidad = Convert.ToInt32(reader[1]);
+                dto_ingredientexreceta.IR_cantidad = Convert.ToInt32(reader[1]);
                 dto_ingredientexreceta.IR_formatoMedida = reader[2].ToString();
                 dto_ingredientexreceta.R_idReceta = idReceta;
                 dto_ingredientexreceta.I_idIngrediente = idIngrediente;
