@@ -195,5 +195,10 @@ namespace DAO
             conexion.Close();
             return dto_receta;
         }
+
+        public DTO_Receta DAO_ConsultarReceta2()
+        {
+
+        }
     }
 }

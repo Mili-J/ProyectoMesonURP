@@ -38,6 +38,11 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Receta(i);
         }
+        public DataTable CTR_Consultar_Receta2()
+        {
+            objDAO = new DAO_Receta();
+            return objDAO.DAO_ConsultarReceta2();
+        }
         public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
