@@ -11,6 +11,8 @@ namespace ProyectoMesonURP
 {
     public partial class Login : System.Web.UI.Page
     {
+        CTR_Usuario _Cu = new CTR_Usuario();
+        DTO_TipoUsuario _Dtu = new DTO_TipoUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,7 +22,6 @@ namespace ProyectoMesonURP
         {
             try 
             {
-                
                 DTO_Usuario dto = new DTO_Usuario()
                 {
                     U_contraseña = password.Value,
@@ -30,7 +31,11 @@ namespace ProyectoMesonURP
                 if (dto.P_idPersona != 0)
                 {
                     //ENTRO
+                    _Cu.getPerfil(dto, _Dtu);
                     Session["Usuario"] = dto;
+                    Session["TipoPerfil"] = _Dtu.TU_nombreTipoUsuario;
+                    Session["NombreUsuario"] = dto.P_nombres;
+                    Session["ApellidoUsuario"] = dto.P_aPaterno;
                     Response.Redirect("Dashboard");
                 }
                 else

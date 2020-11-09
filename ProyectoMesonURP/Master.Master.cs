@@ -4,7 +4,7 @@ using DTO;
 
 namespace ProyectoMesonURP
 {
-    public partial class Master :MasterPage
+    public partial class Master : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +25,9 @@ namespace ProyectoMesonURP
                         menuSepararIngredientes.Visible = true;
                         menuMenuDelDia.Visible = true;
                         menuMenu.Visible = true;
-
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
+                        lblNombre.Text = Convert.ToString(Session["NombreUsuario"]);
+                        lblApellido.Text = Convert.ToString(Session["ApellidoUsuario"]);
                         break;
                     case 2:
                         menuCotizacion.Visible = false;
@@ -37,6 +39,9 @@ namespace ProyectoMesonURP
                         menuInsumosOC.Visible = true;
                         menuStock.Visible = true;
                         menuSepararIngredientes.Visible = false;
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
+                        lblNombre.Text = Convert.ToString(Session["NombreUsuario"]);
+                        lblApellido.Text = Convert.ToString(Session["ApellidoUsuario"]);
                         break;
                     case 3:
                         menuCotizacion.Visible = false;
@@ -48,6 +53,9 @@ namespace ProyectoMesonURP
                         menuInsumosOC.Visible = false;
                         menuStock.Visible = false;
                         menuSepararIngredientes.Visible = true;
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
+                        lblNombre.Text = Convert.ToString(Session["NombreUsuario"]);
+                        lblApellido.Text = Convert.ToString(Session["ApellidoUsuario"]);
                         break;
                     default:
                         break;
