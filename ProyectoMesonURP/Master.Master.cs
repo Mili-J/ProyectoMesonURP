@@ -24,7 +24,6 @@ namespace ProyectoMesonURP
                         menuInsumosOC.Visible = true;
                         menuStock.Visible = true;
                         menuSepararIngredientes.Visible = true;
-                        menuMenuDelDia.Visible = true;
                         menuMenu.Visible = true;
                         lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
                         lblNombre.Text = Convert.ToString(Session["NombreUsuario"]);
