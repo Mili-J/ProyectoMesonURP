@@ -140,6 +140,10 @@
                     <li id="menuMenu" runat="server"><a href="CalendariaMenu.aspx"><i class="lnr lnr-users"></i><span>Menu del dia Este</span></a></li>
                 </ul>
             </div>
+            <div class="cerrar-sesion">
+                    <asp:LinkButton class="btn btn-link" runat="server" OnClick="btnSalida_Click">
+                 <img src="img/baseline_exit_to_app_white_18dp.png" /></asp:LinkButton>
+                </div>
         </div>
         <div class="clearfix"></div>
         <!--js -->

@@ -15,7 +15,7 @@ namespace ProyectoMesonURP
         DTO_TipoUsuario _Dtu = new DTO_TipoUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

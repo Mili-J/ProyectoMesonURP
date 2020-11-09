@@ -18,6 +18,10 @@ namespace ProyectoMesonURP
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Login?x=1");
+            }
             if (!Page.IsPostBack)
             {
                 dto_i = new DTO_Insumo();

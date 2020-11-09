@@ -1,4 +1,5 @@
 using System;
+using System.Web;
 using System.Web.UI;
 using DTO;
 
@@ -61,6 +62,14 @@ namespace ProyectoMesonURP
                         break;
                 }
             }
+        }
+        protected void btnSalida_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Session.RemoveAll();
+            Session.Clear();
+            HttpContext.Current.Session.Abandon();
+            Response.Redirect("Home.aspx?x=2");
         }
     }
 }
