@@ -23,22 +23,29 @@ namespace ProyectoMesonURP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (!Page.IsPostBack)
             {
                 ListarRecetaxID();
                 lblIndex.Text = id.ToString();
+                ddlCategoriaReceta.Visible = false;
+                ListarCategoriaReceta();
+                ListarIngredientes();
             }
         }
         public void ListarRecetaxID()
         {
             //_Cr.CargarRecetaxID(_Dr);
-            int idReceta = Convert.ToInt32(Session["IdReceta"]);
+            _Dr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
             txtnombre.Text = Convert.ToString(Session["nombreReceta"]);
             txtPorciones.Text = Convert.ToString(Session["porciones"]);
-            ddlCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
-            //txtDescripcion.Text = _Dr.R_descripcion;
+            txtCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
+            txtDescripcion.Text = Convert.ToString(Session["descripcion"]);
             //ddlCategoriaReceta.Text = _Dr.CR_idCategoriaReceta;
+
+            //ctr_ocxinsumo = new CTR_OCxInsumo();
+            //dt = ctr_ocxinsumo.Leer_InsumoxOC(dto_oc.OC_idOrdenCompra);
+            //GridViewEditarOC.DataSource = dt;
+            //GridViewEditarOC.DataBind();
         }
         public void ListarIngredientes()
         {
@@ -47,6 +54,14 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataValueField = "I_idIngrediente";
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
+        }
+        public void ListarCategoriaReceta()
+        {
+            ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
+            ddlCategoriaReceta.DataTextField = "CR_nombreCategoria";
+            ddlCategoriaReceta.DataValueField = "CR_idCategoriaReceta";
+            ddlCategoriaReceta.DataBind();
+            ddlCategoriaReceta.Items.Insert(0, "--seleccionar--");
         }
 
         protected void ddlIngredientes_Change(object sender, EventArgs e)
@@ -62,7 +77,6 @@ namespace ProyectoMesonURP
         {
             id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
             lblIndex.Text = id.ToString();
-
         }
         protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
@@ -154,7 +168,6 @@ namespace ProyectoMesonURP
             //}
             //ScriptManager.RegisterClientScriptBlock(this.panelEgreso, this.panelEgreso.GetType(), "alert", "alertaExito()", true);
             //return;
-
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
         {
@@ -215,7 +228,17 @@ namespace ProyectoMesonURP
                 return null;
 
         }
+        protected void btnEditarCategoria_Click(object sender, ImageClickEventArgs e)
+        {
+            ddlCategoriaReceta.Visible = true;
+            txtCategoriaReceta.Visible = false;
+        }
         protected void btnQuitarInsumo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAñadirIngredientes_Click(object sender, ImageClickEventArgs e)
         {
 
         }

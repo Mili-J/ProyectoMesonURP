@@ -44,10 +44,17 @@
                             </div>
                             <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
+                                <div class="col-sm-8">
+                             <asp:TextBox ID="txtCategoriaReceta" runat="server" Enabled ="true" 
+                                 CssClass="form-control1"  />
+                            </div> 
                         <div class="col-sm-8">
                             <asp:DropDownList ID="ddlCategoriaReceta" runat="server" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
                                 <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
                             </asp:DropDownList>
+
+                            <asp:ImageButton ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarCategoria_Click" Height="31px" />
+                                       
                         </div>
                     </div>
                             <div class="form-group">

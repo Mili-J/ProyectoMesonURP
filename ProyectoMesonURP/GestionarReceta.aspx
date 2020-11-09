@@ -52,10 +52,8 @@
                                     <img class="card-img-top" alt="Imagen de Referencia" 
                                         src="data:image/png;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                     
-                                        
-                                    
                                     <div class="card-body">
-                                            <asp:Label ID="lblIdReceta" runat="server"  Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+                                            <asp:Label ID="lblIdReceta" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
 
                                         <h5 class="card-title">
                                             <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
@@ -67,7 +65,10 @@
                                         <p class="card-text">
                                             Categoría: 
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CR_nombreCategoria") %>' />
+                                                         <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
+                                        
                                         </p>
+
                                         <div>
                                             <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="ActualizarReceta" />
                                             <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" />
