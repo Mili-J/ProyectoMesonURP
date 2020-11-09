@@ -35,5 +35,9 @@ namespace CTR
         {
             return dao_insumo.DAO_Consultar_Medida_x_Insumo(objInsumo);    
         }
+        public DataTable BuscarInsumoP(int idInsumo)
+        {
+            return dao_insumo.BuscarInsumoP(idInsumo);
+        }
     }
 }
