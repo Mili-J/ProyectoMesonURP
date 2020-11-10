@@ -91,6 +91,8 @@ namespace ProyectoMesonURP
             _Di = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
+
+
             DataRow row = tin.NewRow();
             if (tin.Columns.Count == 0)
             {
@@ -98,18 +100,17 @@ namespace ProyectoMesonURP
                 tin.Columns.Add("Cantidad");
                 tin.Columns.Add("Medida");
             }
-                if (tin.Rows.Count > 0)
+            if (tin.Rows.Count > 0)
+            {
+                // Primero averigua si el registro existe:
+                bool existe = false;
+                for (int i = 0; i < tin.Rows.Count; i++)
                 {
-                    // Primero averigua si el registro existe:
-                    bool existe = false;
-                    for (int i = 0; i < tin.Rows.Count; i++)
+                    if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(_Di.I_nombreIngrediente))
                     {
-                        if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(_Di.I_nombreIngrediente))
-                        {
-                            existe = true;
-                            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaDuplicado()", true);
-                            break;
-                        }
+                        existe = true;
+                        ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaDuplicado()", true);
+                        break;
                     }
                 }
                 // Luego, ya fuera del ciclo, solo si no existe, realizas la insercion:
@@ -125,7 +126,20 @@ namespace ProyectoMesonURP
                     gvIngredientes.DataSource = tin;
                     gvIngredientes.DataBind();
                 }
-            }           
+            }
+            else
+            {
+                pila.Add(_Dixr);
+
+                row[0] = _Di.I_nombreIngrediente;
+                row[1] = _Dixr.IR_cantidad;
+                row[2] = _Dixr.IR_formatoMedida;
+                tin.Rows.Add(row);
+
+                gvIngredientes.DataSource = tin;
+                gvIngredientes.DataBind();
+            }
+        }           
         
  
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
