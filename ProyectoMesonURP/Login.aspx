@@ -16,6 +16,11 @@
     <link href="css/pages/Login/daterangepicker.css" rel="stylesheet" />
     <link href="css/pages/Login/util.css" rel="stylesheet" />
     <link href="css/pages/Login/main.css" rel="stylesheet" />
+	<link href="css/sweetalert2.min.css" rel="stylesheet" />
+    <script src="js/sweetalert.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </head>
 
 <body style="background-color: #666666;">
@@ -45,14 +50,12 @@
 								Recuérdame
 							</label>
 						</div>
-
 						<div>
 							<a href="#" class="txt1">
 								Olvidaste tu contraseña?
 							</a>
 						</div>
-					</div>
-			
+					</div>			
 					<asp:UpdatePanel ID="PanelLogin" runat="server">
 						<ContentTemplate>
 							<div class="container-login100-form-btn">
@@ -98,7 +101,7 @@
             Swal.fire({
                 title: 'Oh, no!',
                 text: 'El usuario ingresado no existe.',
-                icon: 'alert',
+                icon: 'warning',
                 confirmButtonText: 'Aceptar'
             })
         }

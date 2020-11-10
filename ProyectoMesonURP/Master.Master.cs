@@ -11,6 +11,8 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
                 DTO_Usuario dto = (DTO_Usuario)Session["Usuario"];
+                lblNombre.Text = dto.P_nombres;
+                lblApellido.Text = dto.P_aPaterno + " " + dto.P_aMaterno;
                 switch (dto.TU_idTipoUsuario)
                 {
                     case 1:
@@ -25,6 +27,7 @@ namespace ProyectoMesonURP
                         menuSepararIngredientes.Visible = true;
                         menuMenuDelDia.Visible = true;
                         menuMenu.Visible = true;
+                        lblRol.Text = "Administrador";
 
                         break;
                     case 2:

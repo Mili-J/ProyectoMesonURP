@@ -35,7 +35,7 @@ namespace ProyectoMesonURP
                 }
                 else
                 {
-                    ScriptManager.RegisterClientScriptBlock(this.PanelLogin, this.PanelLogin.GetType(), "alertLogin1", "alertLogin1();", true);
+                    ScriptManager.RegisterStartupScript(PanelLogin, PanelLogin.GetType(), "alertLogin1", "alertLogin1();", true);
 
                 }
             }
