@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DTO;
 using System.Data;
 
 namespace CTR
@@ -15,7 +16,7 @@ namespace CTR
         {
             return objDAO.SelectIngrediente();
         }
-        public string ListarNombreIngrediente(int idIngrediente)
+        public DTO_Ingrediente ListarNombreIngrediente(int idIngrediente)
         {
             return objDAO.SelectNombreIngrediente(idIngrediente);
         }

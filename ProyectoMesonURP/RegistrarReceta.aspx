@@ -26,8 +26,6 @@
                             </p>
                         </div>
                     </div>
-                    <%--<asp:UpdatePanel ID="panelEgreso" runat="server">
-                        <ContentTemplate>--%>
                             <div class="form-three widget-shadow">
                 <div class="form-horizontal" runat="server">
                             <div class="form-group">
@@ -81,11 +79,10 @@
                       <ContentTemplate>--%>
                          <p class="center-button">
                             <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" OnClick="btnAñadirIngredientes_Click"/>
-<%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
+                             <asp:Button CssClass="btn btn-danger" runat="server" Text="Quitar" ID="btnQuitarIngredientes" OnClick="btnQuitarIngredientes_Click"/>
                         </p>
                      <%-- </ContentTemplate>
                     </asp:UpdatePanel>--%>
-
                           </div>
               <div class="panel panel-widget forms-panel">
                   <div class="form-grids widget-shadow" data-example-id="basic-forms">
@@ -110,18 +107,14 @@
                       <hr />
                       <p class="center-button">
                           <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
-                          <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'Gestionar Receta';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
+                          <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'Gestionar Receta.aspx';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
                           <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
                       </p>
                   </div>
                       </div>
-                       
                 </div>
-           <%--</ContentTemplate>
-                    </asp:UpdatePanel>--%>
                     </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
         <script>
 

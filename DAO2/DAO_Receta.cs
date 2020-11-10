@@ -42,5 +42,21 @@ namespace DAO
                 throw ex;
             }
         }
+        public int SelectIdReceta()
+        {
+            int idReceta = 0;
+             SqlCommand unComando = new SqlCommand("SP_SELECT_ID_RECETA", conexion);
+                unComando.CommandType = CommandType.StoredProcedure;
+                conexion.Open();
+
+                SqlDataReader dReader = unComando.ExecuteReader();
+                if (dReader.Read())
+                {
+                    idReceta = Convert.ToInt32(dReader["R_idReceta"]);
+                }
+                conexion.Close();
+                return idReceta;
+           
+        }
     }
 }

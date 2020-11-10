@@ -17,7 +17,9 @@ namespace ProyectoMesonURP
         DTO_IngredienteXReceta _Dixr = new DTO_IngredienteXReceta();
         CTR_CategoriaReceta _Ccr = new CTR_CategoriaReceta();
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
+        CTR_IngredienteXReceta _Cixr = new CTR_IngredienteXReceta();
         static DataTable tin = new DataTable();
+        DataTable dt = new DataTable();
         static List<DTO_IngredienteXReceta> pila = new List<DTO_IngredienteXReceta>();
         static int id { get; set; }
 
@@ -34,18 +36,17 @@ namespace ProyectoMesonURP
         }
         public void ListarRecetaxID()
         {
-            //_Cr.CargarRecetaxID(_Dr);
             _Dr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
             txtnombre.Text = Convert.ToString(Session["nombreReceta"]);
             txtPorciones.Text = Convert.ToString(Session["porciones"]);
             txtCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
             txtDescripcion.Text = Convert.ToString(Session["descripcion"]);
-            //ddlCategoriaReceta.Text = _Dr.CR_idCategoriaReceta;
 
             //ctr_ocxinsumo = new CTR_OCxInsumo();
-            //dt = ctr_ocxinsumo.Leer_InsumoxOC(dto_oc.OC_idOrdenCompra);
-            //GridViewEditarOC.DataSource = dt;
-            //GridViewEditarOC.DataBind();
+            _Cixr = new CTR_IngredienteXReceta();
+            dt = _Cixr.ListarIngredientesXReceta(_Dr.R_idReceta);
+            gvIngredientes.DataSource = dt;
+            gvIngredientes.DataBind();
         }
         public void ListarIngredientes()
         {
@@ -89,7 +90,7 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
-            _Di.I_nombreIngrediente = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            _Di = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
 
@@ -233,14 +234,13 @@ namespace ProyectoMesonURP
             ddlCategoriaReceta.Visible = true;
             txtCategoriaReceta.Visible = false;
         }
-        protected void btnQuitarInsumo_Click(object sender, EventArgs e)
+        protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnAñadirIngredientes_Click(object sender, ImageClickEventArgs e)
-        {
-
+            id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
+            tin.Rows[id].Delete();
+            pila.RemoveAt(id);
+            gvIngredientes.DataSource = tin;
+            gvIngredientes.DataBind();
         }
     }
 }

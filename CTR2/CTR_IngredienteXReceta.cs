@@ -1,7 +1,6 @@
 ﻿using DAO;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using DTO;
+using System.Data;
 
 namespace CTR
 {
@@ -12,6 +11,14 @@ namespace CTR
         public CTR_IngredienteXReceta()
         {
             objDAO = new DAO_IngredienteXReceta();
+        }
+        public void RegistrarIngredienteXReceta(DTO_IngredienteXReceta objDto)
+        {
+            objDAO.InsertIngredienteXReceta(objDto);
+        }
+        public DataTable ListarIngredientesXReceta(int R_idReceta)
+        {
+            return objDAO.SelectIngredientesXReceta(R_idReceta);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActualizarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ActualizarReceta"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActualizarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ActualizarReceta" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -26,8 +26,6 @@
                             </p>
                         </div>
                     </div>
-                    <%--<asp:UpdatePanel ID="panelEgreso" runat="server">
-                        <ContentTemplate>--%>
                             <div class="form-three widget-shadow">
                 <div class="form-horizontal" runat="server">
                             <div class="form-group">
@@ -88,11 +86,10 @@
                       <ContentTemplate>--%>
                          <p class="center-button">
                             <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" OnClick="btnAñadirIngredientes_Click"/>
-<%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
+                            <asp:Button CssClass="btn btn-danger" runat="server" Text="Quitar" ID="btnQuitarIngredientes" OnClick="btnQuitarIngredientes_Click"/>
                         </p>
                      <%-- </ContentTemplate>
                     </asp:UpdatePanel>--%>
-
                           </div>
               <div class="panel panel-widget forms-panel">
                   <div class="form-grids widget-shadow" data-example-id="basic-forms">
@@ -101,13 +98,13 @@
                     </div>
                       <div class="table-wrapper-scroll-y my-custom-scrollbar">
                           <asp:GridView ID="gvIngredientes" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvIngredientes_OnRowDataBound"
-                              DataKeyNames="Nombre Ingrediente,Medida"
+                              DataKeyNames="I_nombreIngrediente, IR_cantidad, IR_formatoMedida"
                               CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvIngredientes_SelectedIndexChanged">
 
                               <Columns>
-                                  <asp:BoundField HeaderText="Nombre Ingrediente" DataField="Nombre Ingrediente" />
-                                  <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                                  <asp:BoundField HeaderText="Medida" DataField="Medida" />
+                                  <asp:BoundField HeaderText="Nombre Ingrediente" DataField="I_nombreIngrediente" />
+                                  <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
+                                  <asp:BoundField HeaderText="Medida" DataField="IR_formatoMedida" />
 
                               </Columns>
                               <SelectedRowStyle BackColor="LightGreen" />
@@ -124,11 +121,8 @@
                       </div>
                        
                 </div>
-           <%--</ContentTemplate>
-                    </asp:UpdatePanel>--%>
                     </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
         <script>
 

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DTO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace DAO
 {
@@ -28,27 +27,24 @@ namespace DAO
                 throw ex;
             }
         }
-        public string SelectNombreIngrediente(int I_idIngrediente)
+        public DTO_Ingrediente SelectNombreIngrediente(int I_idIngrediente)
         {
-            string nombre = "";
-            try
-            {
-                SqlCommand unComando = new SqlCommand("SP_SELECT_NOMBRE_INGREDIENTE", conexion);
-                unComando.CommandType = CommandType.StoredProcedure;
+                DTO_Ingrediente ingrediente = new DTO_Ingrediente();
                 conexion.Open();
-                unComando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
-                SqlDataReader dReader = unComando.ExecuteReader();
-                if (dReader.Read())
+                SqlCommand comando = new SqlCommand("SP_SELECT_NOMBRE_INGREDIENTE", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                comando.ExecuteNonQuery();
+
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
                 {
-                    nombre = dReader["I_nombreIngrediente"].ToString();
+                    ingrediente.I_idIngrediente = Convert.ToInt32(reader[0]);
+                    ingrediente.I_nombreIngrediente = Convert.ToString(reader[1]);
                 }
+
                 conexion.Close();
-                return nombre;
+                return ingrediente;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
     }
 }

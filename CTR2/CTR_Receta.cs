@@ -22,5 +22,9 @@ namespace CTR
         {
             return objDAO.SelectRecetaxNombre(@nombreReceta);
         }
+        public int IdReceta()
+        {
+            return objDAO.SelectIdReceta();
+        }
     }
 }
