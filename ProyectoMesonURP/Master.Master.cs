@@ -1,10 +1,11 @@
 using System;
+using System.Web;
 using System.Web.UI;
 using DTO;
 
 namespace ProyectoMesonURP
 {
-    public partial class Master :MasterPage
+    public partial class Master : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,10 +26,8 @@ namespace ProyectoMesonURP
                         menuInsumosOC.Visible = true;
                         menuStock.Visible = true;
                         menuSepararIngredientes.Visible = true;
-                        menuMenuDelDia.Visible = true;
                         menuMenu.Visible = true;
-                        lblRol.Text = "Administrador";
-
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;                       
                         break;
                     case 2:
                         menuCotizacion.Visible = false;
@@ -40,6 +39,8 @@ namespace ProyectoMesonURP
                         menuInsumosOC.Visible = true;
                         menuStock.Visible = true;
                         menuSepararIngredientes.Visible = false;
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
+                        
                         break;
                     case 3:
                         menuCotizacion.Visible = false;
@@ -51,11 +52,21 @@ namespace ProyectoMesonURP
                         menuInsumosOC.Visible = false;
                         menuStock.Visible = false;
                         menuSepararIngredientes.Visible = true;
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
+                       
                         break;
                     default:
                         break;
                 }
             }
+        }
+        protected void btnSalida_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Session.RemoveAll();
+            Session.Clear();
+            HttpContext.Current.Session.Abandon();
+            Response.Redirect("Home.aspx?x=2");
         }
     }
 }

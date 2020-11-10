@@ -137,10 +137,13 @@
                         </ul>
                     </li>
                     <li id="menuMovimiento" runat="server"><a href="#"><i class="lnr lnr-users"></i><span>Consultar Movimiento</span></a></li>
-                    <li id="menuMenuDelDia" runat="server"><a href="MenuDelDia.aspx"><i class="lnr lnr-users"></i><span>Menu del dia Este no</span></a></li>
-                    <li id="menuMenu" runat="server"><a href="CalendariaMenu.aspx"><i class="lnr lnr-users"></i><span>Menu del dia Este</span></a></li>
+                    <li id="menuMenu" runat="server"><a href="CalendariaMenu.aspx"><i class="lnr lnr-users"></i><span>Planificar Menú</span></a></li>
                 </ul>
             </div>
+            <div class="cerrar-sesion">
+                    <asp:LinkButton class="btn btn-link" runat="server" OnClick="btnSalida_Click">
+                 <img src="img/baseline_exit_to_app_white_18dp.png" /></asp:LinkButton>
+                </div>
         </div>
         <div class="clearfix"></div>
         <!--js -->

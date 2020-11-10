@@ -248,7 +248,9 @@
     <Content Include="MenuDelDia.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
+    <Content Include="SeleccionarMenuTransformar.aspx" />
     <Content Include="Transformar_Insumo.aspx" />
+    <Content Include="SC_Prueba.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -340,12 +342,26 @@
     <Compile Include="SeleccionarMenuDia.aspx.designer.cs">
       <DependentUpon>SeleccionarMenuDia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionarMenuTransformar.aspx.cs">
+      <DependentUpon>SeleccionarMenuTransformar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SeleccionarMenuTransformar.aspx.designer.cs">
+      <DependentUpon>SeleccionarMenuTransformar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Transformar_Insumo.aspx.cs">
       <DependentUpon>Transformar_Insumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Transformar_Insumo.aspx.designer.cs">
       <DependentUpon>Transformar_Insumo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SC_Prueba.aspx.cs">
+      <DependentUpon>SC_Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SC_Prueba.aspx.designer.cs">
+      <DependentUpon>SC_Prueba.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

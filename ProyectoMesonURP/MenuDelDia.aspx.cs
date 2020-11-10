@@ -72,6 +72,10 @@ namespace ProyectoMesonURP
             ctr_receta = new CTR_Receta();
             ctr_cat_receta = new CTR_CategoriaReceta();
 
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Home.aspx?x=1");
+            }
             if (!Page.IsPostBack)
             {
                 dtEntrada = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);

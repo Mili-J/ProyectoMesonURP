@@ -32,6 +32,11 @@ namespace ProyectoMesonURP
             dto_menu = new DTO_Menu();
             ctr_menu = new CTR_Menu();
             objMenu = new DTO_Menu();
+
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Home.aspx?x=1");
+            }
             if (!IsPostBack)
             {
 

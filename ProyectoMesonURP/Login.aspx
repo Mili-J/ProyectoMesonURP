@@ -27,7 +27,11 @@
    <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				
 				<form id="formLogin" class="login100-form validate-form" runat="server">
+					<p class="title-login">
+                    <asp:Label ID="lblMensajeAyuda" runat="server" Text=""></asp:Label>
+					</p>
 					<asp:ScriptManager runat="server"></asp:ScriptManager>
 					<span class="login100-form-title p-b-43">
 						Inicia sesión para continuar
