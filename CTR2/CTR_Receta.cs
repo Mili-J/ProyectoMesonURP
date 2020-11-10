@@ -55,5 +55,9 @@ namespace CTR
         {
             objDAO.actualizarfoto(a,i);
         }
+        public int IdReceta()
+        {
+            return objDAO.SelectIdReceta();
+        }
     }
 }

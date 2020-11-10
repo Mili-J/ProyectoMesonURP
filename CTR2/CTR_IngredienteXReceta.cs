@@ -35,5 +35,13 @@ namespace CTR
         {
             return objDAO.DAO_Get_ID_FormatoC(objIR);
         }
+        public void RegistrarIngredienteXReceta(DTO_IngredienteXReceta objDto)
+        {
+            objDAO.InsertIngredienteXReceta(objDto);
+        }
+        public DataTable ListarIngredientesXReceta(int R_idReceta)
+        {
+            return objDAO.SelectIngredientesXReceta(R_idReceta);
+        }
     }
 }

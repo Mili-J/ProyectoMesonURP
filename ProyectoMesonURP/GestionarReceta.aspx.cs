@@ -57,7 +57,11 @@ namespace ProyectoMesonURP
                 Label lblcategoria = e.Item.FindControl("lblCategoria") as Label;
                 string Categoria = Convert.ToString(lblcategoria.Text);
                 Session["categoria"] = Categoria;
-                
+
+                Label lbldescripcion = e.Item.FindControl("lblDescripcion") as Label;
+                string Descripcion = Convert.ToString(lbldescripcion.Text);
+                Session["descripcion"] = Descripcion;
+
 
                 Response.Redirect("ActualizarReceta");
             }

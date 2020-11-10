@@ -17,28 +17,36 @@ namespace ProyectoMesonURP
         DTO_IngredienteXReceta _Dixr = new DTO_IngredienteXReceta();
         CTR_CategoriaReceta _Ccr = new CTR_CategoriaReceta();
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
+        CTR_IngredienteXReceta _Cixr = new CTR_IngredienteXReceta();
         static DataTable tin = new DataTable();
+        DataTable dt = new DataTable();
         static List<DTO_IngredienteXReceta> pila = new List<DTO_IngredienteXReceta>();
         static int id { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (!Page.IsPostBack)
             {
                 ListarRecetaxID();
                 lblIndex.Text = id.ToString();
+                ddlCategoriaReceta.Visible = false;
+                ListarCategoriaReceta();
+                ListarIngredientes();
             }
         }
         public void ListarRecetaxID()
         {
-            //_Cr.CargarRecetaxID(_Dr);
-            int idReceta = Convert.ToInt32(Session["IdReceta"]);
+            _Dr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
             txtnombre.Text = Convert.ToString(Session["nombreReceta"]);
             txtPorciones.Text = Convert.ToString(Session["porciones"]);
-            ddlCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
-            //txtDescripcion.Text = _Dr.R_descripcion;
-            //ddlCategoriaReceta.Text = _Dr.CR_idCategoriaReceta;
+            txtCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
+            txtDescripcion.Text = Convert.ToString(Session["descripcion"]);
+
+            //ctr_ocxinsumo = new CTR_OCxInsumo();
+            _Cixr = new CTR_IngredienteXReceta();
+            dt = _Cixr.ListarIngredientesXReceta(_Dr.R_idReceta);
+            gvIngredientes.DataSource = dt;
+            gvIngredientes.DataBind();
         }
         public void ListarIngredientes()
         {
@@ -47,6 +55,14 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataValueField = "I_idIngrediente";
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
+        }
+        public void ListarCategoriaReceta()
+        {
+            ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
+            ddlCategoriaReceta.DataTextField = "CR_nombreCategoria";
+            ddlCategoriaReceta.DataValueField = "CR_idCategoriaReceta";
+            ddlCategoriaReceta.DataBind();
+            ddlCategoriaReceta.Items.Insert(0, "--seleccionar--");
         }
 
         protected void ddlIngredientes_Change(object sender, EventArgs e)
@@ -62,7 +78,6 @@ namespace ProyectoMesonURP
         {
             id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
             lblIndex.Text = id.ToString();
-
         }
         protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
@@ -75,7 +90,7 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
-            _Di.I_nombreIngrediente = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            _Di = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
 
@@ -154,7 +169,6 @@ namespace ProyectoMesonURP
             //}
             //ScriptManager.RegisterClientScriptBlock(this.panelEgreso, this.panelEgreso.GetType(), "alert", "alertaExito()", true);
             //return;
-
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
         {
@@ -215,9 +229,18 @@ namespace ProyectoMesonURP
                 return null;
 
         }
-        protected void btnQuitarInsumo_Click(object sender, EventArgs e)
+        protected void btnEditarCategoria_Click(object sender, ImageClickEventArgs e)
         {
-
+            ddlCategoriaReceta.Visible = true;
+            txtCategoriaReceta.Visible = false;
+        }
+        protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
+        {
+            id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
+            tin.Rows[id].Delete();
+            pila.RemoveAt(id);
+            gvIngredientes.DataSource = tin;
+            gvIngredientes.DataBind();
         }
     }
 }

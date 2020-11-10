@@ -18,11 +18,10 @@ namespace ProyectoMesonURP
         DTO_IngredienteXReceta _Dixr = new DTO_IngredienteXReceta();
         CTR_CategoriaReceta _Ccr = new CTR_CategoriaReceta();
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
+        CTR_IngredienteXReceta _Cixr = new CTR_IngredienteXReceta();
         static DataTable tin = new DataTable();
         static List<DTO_IngredienteXReceta> pila = new List<DTO_IngredienteXReceta>();
         static int id { get; set; }
-        static int idCategoria { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -67,7 +66,7 @@ namespace ProyectoMesonURP
         }
         protected void ddlCategoriaReceta_Change(object sender, EventArgs e)
         {
-            idCategoria = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+            
 
         }
         protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,7 +86,9 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
-            _Di.I_nombreIngrediente = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            _Dixr.R_idReceta = _Cr.IdReceta() + 1;
+            _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
+            _Di = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
             DataRow row = tin.NewRow();
@@ -97,15 +98,13 @@ namespace ProyectoMesonURP
                 tin.Columns.Add("Cantidad");
                 tin.Columns.Add("Medida");
             }
-            if (tin.Rows.Count > 0)
-            {
-                // Primero averigua si el registro existe:
-                bool existe = false;
-                for (int i = 0; i < tin.Rows.Count; i++)
-                { 
-                    if (gvIngredientes.Rows.Count > 0)
+                if (tin.Rows.Count > 0)
+                {
+                    // Primero averigua si el registro existe:
+                    bool existe = false;
+                    for (int i = 0; i < tin.Rows.Count; i++)
                     {
-                        if (Convert.ToString(gvIngredientes.Rows[i].Cells[1].Text) == Convert.ToString(_Dr.R_nombreReceta))
+                        if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(_Di.I_nombreIngrediente))
                         {
                             existe = true;
                             ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaDuplicado()", true);
@@ -126,55 +125,32 @@ namespace ProyectoMesonURP
                     gvIngredientes.DataSource = tin;
                     gvIngredientes.DataBind();
                 }
-            }
-            else
-            {
-                pila.Add(_Dixr);
-
-                row[0] = _Di.I_nombreIngrediente;
-                row[1] = _Dixr.IR_cantidad;
-                row[2] = _Dixr.IR_formatoMedida;
-                tin.Rows.Add(row);
-
-                gvIngredientes.DataSource = tin;
-                gvIngredientes.DataBind();
-            }
-        }
+            }           
+        
+ 
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
-            try
-            {
                 _Dr.R_nombreReceta = txtnombre.Text;
                 _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
                 _Dr.R_descripcion = txtDescripcion.Text;
                 _Dr.R_imagenReceta = fuImagen.FileBytes;
                 _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
-                //_Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
                 _Cr.RegistrarReceta(_Dr);
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
+                //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
+                //return;
+            if (pila.Count == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(),"alert", "alertaError()", true);
                 return;
             }
-            catch (System.FormatException)
+            while (pila.Count >= 1)
             {
-
+                _Cixr.RegistrarIngredienteXReceta(pila[pila.Count - 1]);
+                pila.RemoveAt(pila.Count - 1);
+                tin.Clear();
             }
-            //if (pila.Count == 0)
-            //{
-            //    ScriptManager.RegisterClientScriptBlock(this.panelEgreso, this.panelEgreso.GetType(), "alert", "alertaError()", true);
-            //    return;
-            //}
-            //while (pila.Count >= 1)
-            //{
-            //    _Cr.RegistrarReceta(_Dr);
-            //    //_Cmxi.RegistrarMovimientoxInsumo(pila[pila.Count - 1]);
-            //    //_Cmxi.UpdateStockEgreso(pila[pila.Count - 1]);
-            //    pila.RemoveAt(pila.Count - 1);
-
-            //    tin.Clear();
-            //}
-            //ScriptManager.RegisterClientScriptBlock(this.panelEgreso, this.panelEgreso.GetType(), "alert", "alertaExito()", true);
-            //return;
-
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
+            return;
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
         {
@@ -232,9 +208,13 @@ namespace ProyectoMesonURP
             else
                 return null;
         }
-        protected void btnQuitarInsumo_Click(object sender, EventArgs e)
+        protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
         {
-
+            id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
+            tin.Rows[id].Delete();
+            pila.RemoveAt(id);
+            gvIngredientes.DataSource = tin;
+            gvIngredientes.DataBind();
         }
     }
 }

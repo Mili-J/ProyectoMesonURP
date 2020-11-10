@@ -60,6 +60,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtPorciones;
 
         /// <summary>
+        /// Control txtCategoriaReceta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCategoriaReceta;
+
+        /// <summary>
         /// Control ddlCategoriaReceta.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaReceta;
+
+        /// <summary>
+        /// Control btnEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnEditar;
 
         /// <summary>
         /// Control txtDescripcion.
@@ -112,6 +130,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAñadirIngredientes;
+
+        /// <summary>
+        /// Control btnQuitarIngredientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnQuitarIngredientes;
 
         /// <summary>
         /// Control gvIngredientes.
