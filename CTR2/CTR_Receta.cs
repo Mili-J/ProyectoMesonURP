@@ -68,5 +68,9 @@ namespace CTR
         {
             objDAO.UpdateReceta(objDTO);
         }
+        public void EliminarReceta(int R_idReceta)
+        {
+            objDAO.DeleteReceta(R_idReceta);
+        }
     }
 }

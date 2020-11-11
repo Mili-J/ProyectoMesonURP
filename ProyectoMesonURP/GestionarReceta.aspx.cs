@@ -17,10 +17,10 @@ namespace ProyectoMesonURP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Home.aspx?x=1");
-            }
+            //if (Session["Usuario"] == null)
+            //{
+            //    Response.Redirect("Home.aspx?x=1");
+            //}
             if (!IsPostBack)
             {
                 CargarReceta();
@@ -64,7 +64,16 @@ namespace ProyectoMesonURP
 
                 Response.Redirect("ActualizarReceta");
             }
-        }
+            if (e.CommandName == "EliminarReceta")
+            {
+                Label lblidReceta = e.Item.FindControl("lblIdReceta") as Label;
+                int IdReceta = Convert.ToInt32(lblidReceta.Text);
+                Session["IdReceta"] = IdReceta;
+
+                _Cr.EliminarReceta(IdReceta);
+                CargarReceta();
+            }
+            }
         protected void fNombreReceta_TextChanged(object sender, EventArgs e)
         {
             CargarReceta();
@@ -73,7 +82,6 @@ namespace ProyectoMesonURP
         {
             Repeater1.DataSource = _Cr.CargarRecetaxNombre(txtBuscarReceta.Text);
             Repeater1.DataBind();
-            
         }
         protected void btnRegistrarReceta_Click(object sender, EventArgs e)
         {

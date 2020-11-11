@@ -71,8 +71,7 @@
 
                                         <div>
                                             <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="ActualizarReceta" />
-                                            <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" />
-
+                                            <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>
                                         </div>
                                     </div>
                                 </div>
