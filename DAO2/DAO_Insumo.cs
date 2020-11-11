@@ -97,5 +97,22 @@ namespace DAO
             conexion.Close();
             return dtoM;
         }
+
+        public void DAO_Actualizar_Cantidad_Insumo(DTO_Insumo objInsumo)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_UPDATE_CANTIDAD_INSUMO", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@I_cantidad", objInsumo.I_cantidad);
+                cmd.Parameters.AddWithValue("@I_idInsumo", objInsumo.I_idInsumo);
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

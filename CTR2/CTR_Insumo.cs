@@ -35,5 +35,10 @@ namespace CTR
         {
             return dao_insumo.DAO_Consultar_Medida_x_Insumo(objInsumo);    
         }
+
+        public void ActualizarCantidadI(DTO_Insumo objInsumo)
+        {
+            dao_insumo.DAO_Actualizar_Cantidad_Insumo(objInsumo);
+        }
     }
 }

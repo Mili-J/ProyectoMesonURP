@@ -11,10 +11,16 @@
         </div>
         <div class="forms">
             <div class="panel panel-widget forms-panel" style="width: 36%">
+                <div class="form-title color-white" >
+                         <asp:Label ID="lblPlato" runat="server"></asp:Label>
+                    </div>
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
                         <h4>Plato a Transformar</h4>
-                    </div>
+                    </div> 
+                    <div>
+                        <asp:Image ID="Image1" runat="server" />
+                    </div> 
                 </div>
             </div>
             <asp:UpdatePanel ID="panel1" runat="server">
@@ -52,7 +58,7 @@
                         <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
                             <div class="col-sm-8">
-                                <asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control form-color-letter" Style="width:25%" />
+                                <asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" />
                                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
@@ -60,8 +66,8 @@
                         <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
                             <div class="col-sm-8">
-                                <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                                <asp:TextBox ID="txtMedida" runat="server" CssClass="form-control form-color-letter" Style="width:25%"></asp:TextBox>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                <asp:TextBox ID="txtMedida" runat="server" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%"></asp:TextBox>
 
                             </div>
                         </div>
@@ -71,35 +77,26 @@
                         <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Ingrediente</label>
                             <div class="col-sm-8">
-                                <%--<asp:TextBox ID="txtIngrediente" runat="server" CssClass="form-control1" />--%>
+                               
                                 <asp:DropDownList ID="ddlIngrediente" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlIngrediente_SelectedIndexChanged"></asp:DropDownList>
-                                <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="selector1" class="col-sm-2 control-label">Formato Cocina</label>
                             <div class="col-sm-8">
-                                <asp:TextBox ID="txtFormatoC" CssClass="form-control form-color-letter" Style="width:25%" runat="server"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
-                            <div class="col-sm-8">
-                                <asp:TextBox ID="txtCantidadI" runat="server" CssClass="form-control form-color-letter" Style="width:25%" />
-                                <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                <asp:TextBox ID="txtFormatoC" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" runat="server"></asp:TextBox>
                             </div>
                         </div>
 
                        <%-- <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Peso Unitario</label>
+                            <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
                             <div class="col-sm-8">
-                                <asp:TextBox ID="txtPesoUnitario" runat="server" CssClass="form-control form-color-letter" Style="width:25%" />
+                                <asp:TextBox ID="txtCantidadI" runat="server" CssClass="form-control form-color-letter" ReadOnly="true" AutoPostBack="true"  Style="width:25%" />
                                 <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                             </div>
                         </div>--%>
-
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                             <ContentTemplate>
                                 <p class="center-button">
@@ -114,9 +111,8 @@
                 </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
-
         </div>
+   </div>
 </asp:Content>
 
 
