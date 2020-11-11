@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoMesonURP.Login" %>
+﻿<%@ Page Title="Mesón URP | Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoMesonURP.Login" %>
 
 <!DOCTYPE html>
 

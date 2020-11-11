@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuTransformar.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuTransformar" %>
+﻿<%@ Page Title="Mesón URP | Menú a Transformar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuTransformar.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuTransformar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

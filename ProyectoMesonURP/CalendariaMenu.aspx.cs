@@ -45,7 +45,7 @@ namespace ProyectoMesonURP
                 string fecha = date.ToShortDateString();
                 Session.Add("fecha", fecha);
                 Session.Add("hay", hay);
-                Response.Redirect("SeleccionarMenuDia.aspx");
+                Response.Redirect("SeleccionarMenu");
             }
         }
 
@@ -66,7 +66,8 @@ namespace ProyectoMesonURP
             //--------------------------------------
             if (ctr_menu.CTR_HayMenu(fecha))
             {
-                e.Cell.BackColor = Color.DarkGreen;
+                System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#629e6c");
+                e.Cell.BackColor = col;
                 e.Cell.ForeColor = Color.White;
                 DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(dto_menu.ME_idMenu);
                 int i = 0;
@@ -79,7 +80,7 @@ namespace ProyectoMesonURP
                     e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_receta.R_nombreReceta));
                     i++;
                 }
-                e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_menu.ME_numRaciones + " raciones"));
+                //e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_menu.ME_numRaciones + " raciones"));
             }
         }
     }

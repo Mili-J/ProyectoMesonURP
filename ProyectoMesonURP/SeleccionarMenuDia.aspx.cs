@@ -52,16 +52,6 @@ namespace ProyectoMesonURP
                 //-----------------------------------
                 repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
                 repeaterFondo.DataBind();
-                //byte[]  aa = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/pescadofrito.jpg");
-                //ctr_receta.pruebaa(aa,1);
-                //byte[] ab = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/arrozconpollo.jpg");
-                //ctr_receta.pruebaa(ab, 4);
-                //byte[] ac = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/causalimeniaweb.jpg");
-                //ctr_receta.pruebaa(ac, 5);
-                //byte[] ad = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/Sopa-de-pollo.jpg");
-                //ctr_receta.pruebaa(ad, 6);
-                //byte[] ae = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/lomo-saltado-3.jpg");
-                //ctr_receta.pruebaa(ae, 7);
                 if (hay)
                 {
                     objMenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
