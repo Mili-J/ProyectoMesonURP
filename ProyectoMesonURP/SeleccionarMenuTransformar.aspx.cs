@@ -27,7 +27,6 @@ namespace ProyectoMesonURP
 		}
 		protected void GridView_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
-
 			if (e.CommandName == "TransformarI")
 			{
 				int idReceta = Convert.ToInt32(GridView1.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_idReceta"].ToString());
@@ -35,8 +34,12 @@ namespace ProyectoMesonURP
 				porciones = int.Parse(txtPorciones.Text);
 				Session.Add("Porciones", porciones);
 				Response.Redirect("TransformarInsumo");
-
 			}
 		}
+		protected void btnTransformar_Click(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }

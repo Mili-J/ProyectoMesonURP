@@ -10,8 +10,8 @@
     </div>
     <div class="form-horizontal" runat="server">
         <div class="form-group">
-            <label for="focusedinput" class="col-sm-2 control-label">Fecha:</label>
             <div class="col-sm-8">
+                <label for="focusedinput" class="col-sm-2 control-label">Fecha:</label>
                 <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control1" ReadOnly="true" />
             </div>
         </div>

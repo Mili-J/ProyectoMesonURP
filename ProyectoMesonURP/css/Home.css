@@ -6992,3 +6992,7 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
     color: #85858a !important;
 }
 /***responsive***/
+
+.card {
+    margin: 5px !important;
+}
