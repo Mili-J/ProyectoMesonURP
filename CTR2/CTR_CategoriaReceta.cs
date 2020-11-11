@@ -26,7 +26,7 @@ namespace CTR
         }
         public int CargarCategoriaRecetaxNombre(string CR_nombreCategoria)
         {
-            return objDAO.SelectCategoriaRecetaxNombre(CR_nombreCategoria);
+            return dao_categoriareceta.SelectCategoriaRecetaxNombre(CR_nombreCategoria);
         }
     }
 }
