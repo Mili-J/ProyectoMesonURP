@@ -45,9 +45,9 @@ namespace DAO
                 unComando.Fill(dSet);
                 return dSet.Tables[0];
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
         }
         public DataTable DAO_Consultar_Recetas()
@@ -255,6 +255,28 @@ namespace DAO
                 conexion.Close();
                 return idReceta;
            
+        }
+        public void UpdateReceta(DTO_Receta objDTO)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_UPDATE_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@R_idReceta", objDTO.R_idReceta));
+                cmd.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta ));
+                cmd.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
+                cmd.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion ));
+                cmd.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CR_idCategoriaReceta ));
+                cmd.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion ));
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
         }
     }
 }

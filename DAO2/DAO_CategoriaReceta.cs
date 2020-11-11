@@ -44,10 +44,26 @@ namespace DAO
                 unComando.Fill(dSet);
                 return dSet;
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
+        }
+        public int SelectCategoriaRecetaxNombre(string CR_nombreCategoria)
+        { 
+            int idCategoria = 0;
+            SqlCommand unComando = new SqlCommand("SP_SELECT_CATEGORIA_RECETA_X_NOMBRE", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@CR_nombreCategoria", CR_nombreCategoria);
+            conexion.Open();
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                idCategoria = Convert.ToInt32(dReader["CR_idCategoriaReceta"]);
+            }
+            conexion.Close();
+            return idCategoria;
+
         }
     }
 }

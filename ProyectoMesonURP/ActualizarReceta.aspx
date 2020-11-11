@@ -82,14 +82,14 @@
                                     <asp:TextBox ID="txtMedidaFormato" runat="server" CssClass="form-control1" />
                                 </div>
                             </div> 
-                    <%--<asp:UpdatePanel ID="PanelAñadir" runat="server">
-                      <ContentTemplate>--%>
+                    <asp:UpdatePanel ID="PanelAñadir" runat="server">
+                      <ContentTemplate>
                          <p class="center-button">
                             <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" OnClick="btnAñadirIngredientes_Click"/>
                             <asp:Button CssClass="btn btn-danger" runat="server" Text="Quitar" ID="btnQuitarIngredientes" OnClick="btnQuitarIngredientes_Click"/>
                         </p>
-                     <%-- </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                      </ContentTemplate>
+                    </asp:UpdatePanel>
                           </div>
               <div class="panel panel-widget forms-panel">
                   <div class="form-grids widget-shadow" data-example-id="basic-forms">

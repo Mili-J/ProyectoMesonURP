@@ -62,7 +62,6 @@ namespace ProyectoMesonURP
                 string Descripcion = Convert.ToString(lbldescripcion.Text);
                 Session["descripcion"] = Descripcion;
 
-
                 Response.Redirect("ActualizarReceta");
             }
         }
