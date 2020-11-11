@@ -76,7 +76,17 @@ namespace ProyectoMesonURP
                             receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
                             if (receta.CR_idCategoriaReceta == 2)
                             {
-                                imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
+                                
+                                try
+                                {
+                                    imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
+                                }
+                                catch (Exception)
+                                {
+
+                                    imgFondo.AlternateText = "No se ha podido cargar la imagen";
+                                }
+
                                 lblIdFondo.Visible = false; lblIdFondo.Text = receta.R_idReceta.ToString();
                                 lblNombreFondo.Text = receta.R_nombreReceta;
                                 lblPorcionFondo.Text = receta.R_numeroPorcion.ToString();
@@ -84,7 +94,16 @@ namespace ProyectoMesonURP
                             }
                             else
                             {
-                                imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
+                                try
+                                {
+                                    imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
+                                }
+                                catch (Exception)
+                                {
+
+                                    imgEntrada.AlternateText = "No se ha podido cargar la imagen";
+                                }
+                                
                                 lblIdEntrada.Visible = false; lblIdEntrada.Text = receta.R_idReceta.ToString();
                                 lblNombreEntrada.Text = receta.R_nombreReceta;
                                 lblPorcionEntrada.Text = receta.R_numeroPorcion.ToString();
