@@ -52,10 +52,8 @@ namespace ProyectoMesonURP
                 //-----------------------------------
                 repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
                 repeaterFondo.DataBind();
-
                 //byte[]  aa = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/pescadofrito.jpg");
                 //ctr_receta.pruebaa(aa,1);
-
                 //byte[] ab = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/arrozconpollo.jpg");
                 //ctr_receta.pruebaa(ab, 4);
                 //byte[] ac = File.ReadAllBytes("C:/Users/Carlos Lau/Desktop/Recetas/causalimeniaweb.jpg");
@@ -164,7 +162,16 @@ namespace ProyectoMesonURP
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            //if (Convert.ToInt32(txtNumRaciones.Text)==0)
+            //{
+            //    revNumRac.ErrorMessage = "No puede ser 0";
+            //    revNumRac.ValidationExpression = @"[^0]";
+            //}
+            //else
+            //{
+            //    revNumRac.ErrorMessage = "Número inválido";
+            //    revNumRac.ValidationExpression = @"\d{1,}";
+            //}
             if (hay == false)
             {
                 if (sSegundo == false && sEntrada == false)
