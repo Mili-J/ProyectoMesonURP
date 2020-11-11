@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_Medida
+    public class DTO_Medida
     {
+        public int M_idMedida { get; set; }
+        public string M_nombreMedida { get; set; }
     }
 }

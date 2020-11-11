@@ -4,7 +4,11 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_Equivalencia
+    public class DTO_Equivalencia
     {
+        public int E_idEquivalencia { get; set; }
+        public decimal E_cantidad { get; set; }
+        public int I_idInsumo { get; set; }
+        public int MXFC_idMedidaFCocina { get; set; }
     }
 }

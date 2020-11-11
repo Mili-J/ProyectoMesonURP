@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Data;
 using System.Data.SqlClient;
 using DTO;
-using System.Data;
 
 namespace DAO
 {
     public class DAO_Insumo
     {
         SqlConnection conexion;
+        DTO_Medida dto_medida;
 
         public DAO_Insumo()
         {
@@ -56,6 +56,55 @@ namespace DAO
                 SqlDataAdapter cmd = new SqlDataAdapter("SP_Buscar_Insumo_MS", conexion);
                 cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
                 cmd.SelectCommand.Parameters.AddWithValue("@I_nombreInsumo", nombreInsumo);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+           
+        public DataTable DAO_Consultar_Equivalencia_x_Insumo(DTO_Insumo dto_insumo)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_EQUIVALENCIA_X_INSUMO", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("@I_idInsumo", dto_insumo.I_idInsumo));
+            SqlDataReader reader = comando.ExecuteReader();
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+        public DTO_Medida DAO_Consultar_Medida_x_Insumo(DTO_Insumo objInsumo)
+        {
+            
+            conexion.Open();
+            DTO_Medida dtoM = new DTO_Medida();
+            SqlCommand cmd = new SqlCommand("SP_SELECT_MEDIDA_X_INSUMO", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objInsumo.I_idInsumo));
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                dtoM.M_nombreMedida = reader[0].ToString();
+                dtoM.M_idMedida = int.Parse(reader[1].ToString());
+            }
+            conexion.Close();
+            return dtoM;
+        }
+
+        public DataTable BuscarInsumoP(int IdInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Buscar_Insumo_Prueba", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", IdInsumo);
                 DataSet ds = new DataSet();
                 cmd.Fill(ds);
                 return ds.Tables[0];
