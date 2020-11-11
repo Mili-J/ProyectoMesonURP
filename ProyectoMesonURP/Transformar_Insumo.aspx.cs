@@ -28,8 +28,8 @@ namespace ProyectoMesonURP
         DataSet dtInsumoR;
         DataSet dtIngredienteR;
         string medidaC = "";
-        int cantidadC = 0;
-        int idMedida = 0;
+        
+     
         int porciones=0;
         decimal cantEq=0;
 
@@ -97,56 +97,22 @@ namespace ProyectoMesonURP
         }
         public int SelectCantidadI(int idIngrediente)
         {
+            int cantidadC = 0;
             foreach (DataRow row in dt_ing_x_receta.Rows)
             {
                 int idI = Convert.ToInt32(row["I_idIngrediente"]);
-                if (idIngrediente == idI)
+
+                foreach (GridViewRow row_g in gvIngredienteReceta.Rows)
                 {
-                    foreach (GridViewRow row_g in gvIngredienteReceta.Rows)
-                    { 
-                        return cantidadC = Convert.ToInt32(row_g.Cells[2].Text); 
-                    }
                     
-                }
-
-            }
-            return 0;
-        }
-        public int Get_IdFormatoC(int idIngrediente)
-        {
-            foreach (DataRow row in dt_ing_x_receta.Rows)
-            {
-                int idI = Convert.ToInt32(row["I_idIngrediente"]);
-                int idR = dto_receta.R_idReceta;
-                if (idIngrediente == idI)
-                {
-                    dto_ir.I_idIngrediente = idIngrediente;
-                    dto_ir.R_idReceta = idR;
-                    if (ctr_ing_x_receta.CTR_Get_ID_FormatoC(dto_ir)) 
+                    if (idIngrediente == idI)
                     {
-                        return dto_formato.FCO_idFormatoCocina;                       
-                    }                
+                        return cantidadC = Convert.ToInt32(row_g.Cells[2].Text);
+                    }
                 }
-
-            }
-            return dto_formato.FCO_idFormatoCocina;
-        }
-        public int Get_idMedida(int idInsumo)
-        {
-            foreach (DataRow row in dt_ing_x_receta.Rows)
-            {
-                int idI = Convert.ToInt32(row["I_idInsumo"]);
-                if (idInsumo == idI)
-                {
-                    dto_insumo.I_idInsumo = idInsumo;
-                    dto_medida.M_idMedida = ctr_insumo.CTR_Consultar_Medida_x_Insumo(dto_insumo).M_idMedida;
-                    return idMedida = dto_medida.M_idMedida;
-                }
-
             }
             return 0;
         }
-
         public void PorcionesReceta()
         {
             foreach (GridViewRow row in gvIngredienteReceta.Rows)
@@ -157,7 +123,6 @@ namespace ProyectoMesonURP
             }
 
         }
-
         protected void ddlInsumo_SelectedIndexChanged1(object sender, EventArgs e)
         {
             if (ddlInsumo.SelectedValue != "")
@@ -166,7 +131,7 @@ namespace ProyectoMesonURP
                 dto_medida = new DTO_Medida();
                 dto_medida=ctr_insumo.CTR_Consultar_Medida_x_Insumo(dto_insumo);
                 txtMedida.Text = dto_medida.M_nombreMedida;
-                txtCantidad.Text = dto_medida.M_idMedida.ToString();
+                
             }
         }
         protected void ddlIngrediente_SelectedIndexChanged(object sender, EventArgs e)
@@ -175,32 +140,39 @@ namespace ProyectoMesonURP
             {
                 int idIng = int.Parse(ddlIngrediente.SelectedValue);
                 txtFormatoC.Text = SelectMedidaI(idIng);
-                txtCantidadI.Text = SelectCantidadI(idIng).ToString();
+               // txtCantidadI.Text = SelectCantidadI(idIng).ToString();
             }
         }
         public decimal Transformar()
         {
-            dto_MFCocina.M_idMedida = Get_idMedida(Convert.ToInt32(ddlInsumo.SelectedValue));
-            dto_MFCocina.FCO_idFCocina = Get_IdFormatoC(Convert.ToInt32(ddlIngrediente.SelectedValue));
-            dto_MFCocina.MXFC_idMedidaFCocina= ctr_MFCocina.CTR_Consultar_Medida_x_FCocina(dto_MFCocina);
-            int idI= int.Parse(ddlInsumo.SelectedValue);
+            int i = Convert.ToInt32(ddlInsumo.SelectedValue);
+            int ing = Convert.ToInt32(ddlIngrediente.SelectedValue);   
             DTO_Equivalencia dto_eq = new DTO_Equivalencia();
-            if (ctr_eq.CTR_Consulta_Equivalencia_x_Insumo(dto_MFCocina, idI))
+            DataTable dt_eq = new DataTable();
+            dt_eq=ctr_ing_x_receta.CTR_Consultar_Equivalencia_x_Ingrediente(i,ing);
+            foreach (DataRow row in dt_eq.Rows)
             {
-                 cantEq = dto_eq.E_cantidad;
+                cantEq = Convert.ToDecimal(row["E_cantidad"]);
             }
-                        
-            int cantIng = int.Parse(txtCantidadI.Text);
-            decimal cantIns = cantIng / cantEq;
+            int cantIng = SelectCantidadI(ing);
+            decimal cantIns = cantIng*cantEq;
             return cantIns;
 
         }
-
-        protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
+       protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
         {
-            // txtCantidad.Text = Transformar().ToString();
-            dto_MFCocina.FCO_idFCocina = Get_IdFormatoC(Convert.ToInt32(ddlIngrediente.SelectedValue));
-            txtPesoUnitario.Text = dto_MFCocina.FCO_idFCocina.ToString();
+            txtCantidad.Text = Transformar().ToString();           
+        }
+
+       public void DescontarStock()
+       {
+            foreach (GridViewRow row in gvIngredienteReceta.Rows)
+            {
+                int cantIng = Convert.ToInt32(row.Cells[2].Text);
+                int cantFIng = cantIng * porciones;
+                row.Cells[2].Text = cantFIng.ToString();
+            }
+
         }
     }
 }

@@ -21,19 +21,19 @@ namespace CTR
             objDAO = new DAO_IngredienteXReceta();
             return objDAO.DAO_Consultar_Insumo_x_Receta(objReceta);
         }
-        public DTO_IngredienteXReceta CTR_Consultar_IngredienteXReceta(int idReceta, int idIngrediente)
-        {
-            return objDAO.DAO_Consultar_IngredienteXReceta(idReceta, idIngrediente);
-        }
+        //public DTO_IngredienteXReceta CTR_Consultar_IngredienteXReceta(int idReceta, int idIngrediente)
+        //{
+        //    return objDAO.DAO_Consultar_IngredienteXReceta(idReceta, idIngrediente);
+        //}
 
         public DataSet CTR_Consultar_IxR(DTO_Receta objReceta)
         {
             objDAO = new DAO_IngredienteXReceta();
             return objDAO.DAO_Consultar_IxR(objReceta);
         }
-        public bool CTR_Get_ID_FormatoC(DTO_IngredienteXReceta objIR)
+        public DataTable CTR_Consultar_Equivalencia_x_Ingrediente(int i, int ing)
         {
-            return objDAO.DAO_Get_ID_FormatoC(objIR);
+            return objDAO.DAO_Consultar_Equivalencia_X_Ingrediente(i,ing);
         }
         public void RegistrarIngredienteXReceta(DTO_IngredienteXReceta objDto)
         {

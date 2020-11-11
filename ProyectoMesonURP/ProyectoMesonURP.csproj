@@ -466,6 +466,10 @@
       <Project>{41d3861b-3344-41c3-96b6-0dc4ff9ada56}</Project>
       <Name>CTR2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAO2\DAO2.csproj">
+      <Project>{05bb5cd5-dc8e-4413-83b0-272e96412ba5}</Project>
+      <Name>DAO2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO2\DTO2.csproj">
       <Project>{aeb2a706-6617-4641-9c3f-065caf57222d}</Project>
       <Name>DTO2</Name>
