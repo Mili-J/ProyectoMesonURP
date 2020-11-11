@@ -240,6 +240,18 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+        public DataTable DAO_ConsultarRecetaT()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_T", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
         public int SelectIdReceta()
         {
             int idReceta = 0;

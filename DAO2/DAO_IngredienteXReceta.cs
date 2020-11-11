@@ -34,6 +34,20 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+        public DataTable DAO_Consultar_Insumo_x_Receta_T(DTO_Receta objReceta)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_INGREDIENTE_X_RECETA_T", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("@R_idReceta", objReceta.R_idReceta));
+
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
         public DTO_IngredienteXReceta DAO_Consultar_IngredienteXReceta(int idReceta, int idIngrediente)
         {
             conexion.Open();
@@ -58,7 +72,7 @@ namespace DAO
         public DataSet DAO_Consultar_IxR(DTO_Receta objReceta)
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_SELECT_INGREDIENTE_X_RECETA", conexion);
+            SqlCommand comando = new SqlCommand("SP_SELECT_INGREDIENTE_X_RECETA_T", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.Add(new SqlParameter("@R_idReceta", objReceta.R_idReceta));
             comando.ExecuteNonQuery();
