@@ -93,7 +93,7 @@
                 <div class="content">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                 </div>
-            </div>
+            </div>            
             <div class="clearfix"></div>
         </div>
         <div class="fo-top-di">           
@@ -143,9 +143,9 @@
                 </ul>
             </div>
             <div class="cerrar-sesion">
-                    <asp:LinkButton class="btn btn-link" runat="server" OnClick="btnSalida_Click">
+                 <asp:LinkButton class="btn btn-link" runat="server" OnClick="btnSalida_Click">
                  <img src="img/baseline_exit_to_app_white_18dp.png" /></asp:LinkButton>
-                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
         <!--js -->

@@ -10,13 +10,13 @@
                 <h2 class="tittle-margin5">Seleccionar Plato a Transformar</h2>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 75px;">
             <div class="col-sm-8">
                 <label for="focusedinput" class="col-sm-2 control-label">Ingrese la porción: </label>
-                <asp:TextBox ID="txtPorciones" runat="server"></asp:TextBox> 
+                <asp:TextBox ID="txtPorciones" CssClass="form-control1" runat="server"></asp:TextBox>
             </div>
         </div>
-       
+
         <div class="panel panel-widget forms-panel">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
@@ -25,7 +25,7 @@
 
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                     <asp:GridView ID="GridView1" runat="server" DataKeyNames="R_idReceta,R_nombreReceta,R_numeroPorcion,R_descripcion" OnRowCommand="GridView_RowCommand" AutoGenerateColumns="false"
-                        Width="359px" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None">
+                        CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None">
                         <Columns>
 
                             <asp:BoundField HeaderText="Nombre" DataField="R_nombreReceta" />
@@ -42,4 +42,5 @@
             </div>
             <br />
         </div>
+    </div>
 </asp:Content>
