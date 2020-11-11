@@ -131,7 +131,8 @@ namespace ProyectoMesonURP
                 dto_medida = new DTO_Medida();
                 dto_medida=ctr_insumo.CTR_Consultar_Medida_x_Insumo(dto_insumo);
                 txtMedida.Text = dto_medida.M_nombreMedida;
-                
+                txtCantidad.Text = dto_medida.M_idMedida.ToString();
+
             }
         }
         protected void ddlIngrediente_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,7 +141,7 @@ namespace ProyectoMesonURP
             {
                 int idIng = int.Parse(ddlIngrediente.SelectedValue);
                 txtFormatoC.Text = SelectMedidaI(idIng);
-               // txtCantidadI.Text = SelectCantidadI(idIng).ToString();
+                txtCantidadI.Text = SelectCantidadI(idIng).ToString();
             }
         }
         public decimal Transformar()
