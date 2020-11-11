@@ -278,5 +278,14 @@ namespace DAO
                 throw;
             }
         }
+        public void DeleteReceta(int R_idReceta)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_DELETE_RECETA", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }
