@@ -39,6 +39,9 @@ namespace ProyectoMesonURP
             }
             else
             {
+                if (ctr_menu.CTR_HayMenu(date)) hay = true;
+                else hay = false;
+                
                 string fecha = date.ToShortDateString();
                 Session.Add("fecha", fecha);
                 Session.Add("hay", hay);
