@@ -20,6 +20,9 @@
             <div class="col-sm-8">
                 <label for="focusedinput" class="col-sm-2 control-label">N° de raciones</label>
                 <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+                <asp:RegularExpressionValidator ID="revNumRac" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="validationNumRac" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                         
             </div>
         </div>
         <%--    <div>
@@ -136,7 +139,7 @@
         </div>
         <%-- --------------------------------------------------- --%>
         <div>
-            <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" />
+            <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu"/>
         </div>
         <div>
             <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
