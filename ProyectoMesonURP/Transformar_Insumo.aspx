@@ -98,7 +98,7 @@
                                 <asp:TextBox ID="txtPesoUnitario" runat="server" CssClass="form-control form-color-letter" Style="width:25%" />
                                 <%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                             </div>
-                        </div>--%>
+                        </div>
 
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                             <ContentTemplate>
