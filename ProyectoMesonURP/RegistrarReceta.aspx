@@ -57,7 +57,7 @@
                         <br />
                         <br />
                         <label style="height: 45px; width: 257px" class="col-sm-2 control-label">Selecciona la imagen</label>
-                        <asp:FileUpload Style="height: 45px;" ID="fuImagen" accept=".jpg" runat="server" CssClass="form-control1 " />
+                        <asp:FileUpload Style="height: 45px; z-index: 100;" ID="fuImagen" accept=".jpg" runat="server" CssClass="form-control1 " />
                         <br />
                         <%--                    <p class="center-button">
                             <asp:Button ID="btnCargar" runat="server" Text="Cargar" class="btn btn-danger" OnClick="btnCargar_Click" />
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-horizontal" runat="server" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">                     
+        <div class="form-horizontal" runat="server" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">
             <div class="form-grids widget-shadow" data-example-id="basic-forms" style="margin-top: 34px;">
                 <div class="form-title color-white">
                     <h4>Ingredientes</h4>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <p class="center-button">
-                        <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" style="margin-right: -154px; width: 39%;" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
+                        <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" Style="margin-right: -154px; width: 39%;" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
                         <%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
                     </p>
                 </div>
