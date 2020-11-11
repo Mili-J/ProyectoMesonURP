@@ -50,7 +50,7 @@
                             <ItemTemplate>
                                 <div class="card" style="width: 18rem">
                                     <img class="card-img-top" alt="Imagen de Referencia" 
-                                        src="data:image/png;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                        src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                     
                                     <div class="card-body">
                                             <asp:Label ID="lblIdReceta" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>

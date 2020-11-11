@@ -37,5 +37,22 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+        public void DeleteIngredientexReceta(int R_idReceta, int I_idIngrediente)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_DELETE_INGREDIENTE_X_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@R_idReceta", R_idReceta));
+                cmd.Parameters.Add(new SqlParameter("@I_idIngrediente", I_idIngrediente));
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
     }
 }

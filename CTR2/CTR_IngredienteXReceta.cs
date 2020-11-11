@@ -20,5 +20,10 @@ namespace CTR
         {
             return objDAO.SelectIngredientesXReceta(R_idReceta);
         }
+        public void EliminarIngredientexReceta(int R_idReceta, int I_idIngrediente)
+        {
+            objDAO.DeleteIngredientexReceta(R_idReceta, I_idIngrediente);
+
+        }
     }
 }

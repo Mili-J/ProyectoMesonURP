@@ -26,5 +26,9 @@ namespace CTR
         {
             return objDAO.SelectIdReceta();
         }
+        public void ActualizarReceta(DTO_Receta objDTO)
+        {
+            objDAO.UpdateReceta(objDTO);
+        }
     }
 }

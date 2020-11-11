@@ -20,5 +20,9 @@ namespace CTR
         {
             return objDAO.SelectNombreIngrediente(idIngrediente);
         }
+        public int ListarIdIngredientexNombre(string I_nombreIngrediente)
+        {
+            return objDAO.SelectIdIngredientexNombre(I_nombreIngrediente);
+        }
     }
 }

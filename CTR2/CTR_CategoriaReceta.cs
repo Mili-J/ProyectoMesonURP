@@ -18,5 +18,9 @@ namespace CTR
         {
             return objDAO.SelectCategoriaReceta();
         }
+        public int CargarCategoriaRecetaxNombre(string CR_nombreCategoria)
+        {
+            return objDAO.SelectCategoriaRecetaxNombre(CR_nombreCategoria);
+        }
     }
 }

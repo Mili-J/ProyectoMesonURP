@@ -45,6 +45,24 @@ namespace DAO
 
                 conexion.Close();
                 return ingrediente;
+        }
+        public int SelectIdIngredientexNombre(string I_nombreIngrediente)
+        {
+            int idIngrediente = 0;
+            SqlCommand unComando = new SqlCommand("SP_SELECT_IDINGREDIENTE_X_NOMBRE", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@I_nombreIngrediente", I_nombreIngrediente);
+
+            conexion.Open();
+
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                idIngrediente = Convert.ToInt32(dReader["I_idIngrediente"]);
             }
+            conexion.Close();
+            return idIngrediente;
+        }
+
     }
 }
