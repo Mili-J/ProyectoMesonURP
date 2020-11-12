@@ -21,13 +21,15 @@
                     <div class="form-group" style="width: 1889px; margin-top: 23px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" />
-                        </div>
+                             <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);"/>
+                            <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ControlToValidate="txtnombre" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">N° porciones</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtPorciones" runat="server" Style="width: 25%;" placeholder="Seleccione la cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
+                            <asp:TextBox ID="txtPorciones" runat="server" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
+                            <asp:RequiredFieldValidator ID="rfvporciones" runat="server" ControlToValidate="txtPorciones" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -41,7 +43,7 @@
                                 <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
                             </asp:DropDownList>
                             <asp:ImageButton style="margin-left: 233px;" ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarCategoria_Click" Height="31px" />
-
+                            <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -95,13 +97,13 @@
                     <div class="form-group" style="width: 1887px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtCantidad" Style="width: 25%;" runat="server" CssClass="form-control1" />
+                            <asp:TextBox ID="txtCantidad" Style="width: 25%;" runat="server" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5"/>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1887px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtMedidaFormato" Style="width: 25%;" runat="server" CssClass="form-control1" />
+                            <asp:TextBox ID="txtMedidaFormato" Style="width: 25%;" runat="server" CssClass="form-control1" onkeypress="return soloLetras(event);" />
                         </div>
                     </div>
                     <p class="center-button">

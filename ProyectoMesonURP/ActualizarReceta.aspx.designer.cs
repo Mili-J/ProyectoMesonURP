@@ -24,6 +24,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtnombre;
 
         /// <summary>
+        /// Control rfvnombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvnombre;
+
+        /// <summary>
         /// Control txtPorciones.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorciones;
+
+        /// <summary>
+        /// Control rfvporciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvporciones;
 
         /// <summary>
         /// Control txtCategoriaReceta.
@@ -58,6 +76,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnEditar;
+
+        /// <summary>
+        /// Control rfvcategoriaR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcategoriaR;
 
         /// <summary>
         /// Control txtDescripcion.

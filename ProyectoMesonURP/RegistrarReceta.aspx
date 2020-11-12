@@ -21,13 +21,15 @@
                     <div class="form-group" style="width: 1889px; margin-top: 23px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" />
-                        </div>
+                            <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);"/>
+                            <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ControlToValidate="txtnombre" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">N° porciones</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtPorciones" runat="server" Style="width: 25%;" placeholder="Seleccione la cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
+                            <asp:TextBox ID="txtPorciones" runat="server" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5" />
+                             <asp:RequiredFieldValidator ID="rfvporciones" runat="server" ControlToValidate="txtPorciones" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -35,12 +37,13 @@
                         <div class="col-sm-8">
                             <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
                             </asp:DropDownList>
+                             <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Descripción</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtDescripcion" runat="server" Style="width: 25%;" placeholder="Descripcion" CssClass="form-control1" />
+                            <asp:TextBox ID="txtDescripcion" runat="server" Style="width: 25%;" placeholder="Descripcion" CssClass="form-control1" onkeypress="return soloLetras(event);" />
                         </div>
                     </div>
                 </div>
@@ -81,19 +84,22 @@
                                 OnSelectedIndexChanged="ddlIngredientes_Change">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1887px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtCantidad" runat="server" Style="width: 25%;" CssClass="form-control1" />
+                            <asp:TextBox ID="txtCantidad" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5"/>
+                            <asp:RequiredFieldValidator ID="rfvcantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>                       
                         </div>
                     </div>
                     <div class="form-group" style="width: 1887px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtMedidaFormato" runat="server" Style="width: 25%;" CssClass="form-control1" />
-                        </div>
+                            <asp:TextBox ID="txtMedidaFormato" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);" />
+                            <asp:RequiredFieldValidator ID="rfvMedida" runat="server" ControlToValidate="txtMedidaFormato" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                         </div>
                     </div>
                     <p class="center-button">
                         <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" Style="margin-right: -154px; width: 39%;" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
@@ -145,6 +151,24 @@
             if (tecla >= 8226 && tecla <= 10175) { return false; }
             var regEx = /^[0-9\.]+$/i;
             return regEx.test(String.fromCharCode(tecla));
+        }
+
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = [8, 37, 39, 46];
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial)
+                return false;
         }
     </script>
     <!-- Alertas -->
