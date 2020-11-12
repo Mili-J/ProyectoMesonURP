@@ -28,5 +28,9 @@ namespace CTR
         {
             dao_menuxreceta.DAO_ActualizarMenuXReceta(obj);
         }
+        public bool ExistenciaMenuxReceta(int R_idReceta)
+        {
+            return dao_menuxreceta.SelectExistenciaMenuxReceta(R_idReceta);
+        }
     }
 }

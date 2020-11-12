@@ -86,8 +86,33 @@ namespace DAO
             }
             conexion.Close();
             return obj;
-
         }
+        public bool SelectExistenciaMenuxReceta(int R_idReceta)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_EXISTENCIA_MENU_X_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+                cmd.ExecuteNonQuery();
 
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count == 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    conexion.Close();
+                    return true;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
     }
 }

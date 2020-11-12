@@ -12,8 +12,9 @@
         </div>
         <div class="form-group" style="margin-bottom: 75px;">
             <div class="col-sm-8">
-                <label for="focusedinput" class="col-sm-2 control-label">Ingrese la porción: </label>
-                <asp:TextBox ID="txtPorciones" CssClass="form-control1" runat="server"></asp:TextBox>
+                <label for="focusedinput" class="col-sm-2 control-label">N° porciones: </label>
+                <asp:TextBox ID="txtPorciones" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" runat="server" onkeypress="return SoloNumeroInt(event);" MaxLength="3" />
+                <asp:RequiredFieldValidator ID="rfvporciones" runat="server" ControlToValidate="txtPorciones" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
             </div>
         </div>
 
@@ -43,4 +44,14 @@
             <br />
         </div>
     </div>
+     <script>
+        function SoloNumeroInt(ev) {
+            var tecla = (document.all) ? ev.keyCode : ev.which;
+            if (tecla == 8 || tecla == 13 || tecla == 0) return true;
+            if (tecla >= 8226 && tecla <= 10175) { return false; }
+            var regEx = /^[0-9]+$/i;
+            return regEx.test(String.fromCharCode(tecla));
+        }
+    </script>
+   
 </asp:Content>
