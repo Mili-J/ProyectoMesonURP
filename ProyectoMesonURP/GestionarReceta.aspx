@@ -45,7 +45,7 @@
                         </li>
                     </ul>
                 </div>
-                <div id="container-all" style="display: flex; justify-content: space-around; margin-top: 30px; flex-wrap: wrap;">
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
                         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemCreated="Repeater1_ItemCreated" OnItemDataBound="Repeater1_ItemDataBound">
                             <ItemTemplate>
                                 <div class="card" style="width: 18rem">

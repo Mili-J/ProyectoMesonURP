@@ -163,7 +163,7 @@
         function alertaDuplicado() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'No puedes añadir el mismo Insumo',
+                text: 'No puedes añadir la misma receta',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -179,7 +179,7 @@
         function alertaError() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'No has añadido ningún Insumo',
+                text: 'No se ha podido registrar',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -187,12 +187,12 @@
         function alertaExito() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha logrado egresar correctamente',
+                text: 'Se ha logrado registrar correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = "ManejarStock";
+                    window.location.href = "GestionarReceta";
                 }
             })
         }

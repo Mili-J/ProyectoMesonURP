@@ -15,13 +15,13 @@ namespace ProyectoMesonURP
     {
 
         /// <summary>
-        /// Control lblPlato.
+        /// Control panel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPlato;
+        protected global::System.Web.UI.UpdatePanel panel1;
 
         /// <summary>
         /// Control Image1.
@@ -31,15 +31,6 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image1;
-
-        /// <summary>
-        /// Control panel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel panel1;
 
         /// <summary>
         /// Control gvIngredienteReceta.

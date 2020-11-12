@@ -109,7 +109,7 @@ namespace ProyectoMesonURP
                     if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(_Di.I_nombreIngrediente))
                     {
                         existe = true;
-                        ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaDuplicado()", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaDuplicado()", true);
                         break;
                     }
                 }
@@ -154,7 +154,7 @@ namespace ProyectoMesonURP
                 //return;
             if (pila.Count == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(),"alert", "alertaError()", true);
+                ScriptManager.RegisterStartupScript(this, GetType(),"alert", "alertaError()", true);
                 return;
             }
             while (pila.Count >= 1)
@@ -163,7 +163,7 @@ namespace ProyectoMesonURP
                 pila.RemoveAt(pila.Count - 1);
                 tin.Clear();
             }
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
             return;
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)

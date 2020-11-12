@@ -22,7 +22,7 @@
                 <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
                 <asp:RegularExpressionValidator ID="revNumRac" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="validationNumRac" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                         
+
             </div>
         </div>
         <%--    <div>
@@ -36,7 +36,7 @@
                 <div class="form-title color-white">
                     <h4>Entradas</h4>
                 </div>
-                <div id="container-all" style="display: flex; justify-content: space-between; margin-top: 30px;">
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
                     <asp:Repeater ID="reapeterEntradas" runat="server" OnItemCommand="reapeterEntradas_ItemCommand">
                         <ItemTemplate>
                             <div class="card" style="width: 18rem">
@@ -72,7 +72,7 @@
                 <div class="form-title color-white">
                     <h4>Platos de Fondo</h4>
                 </div>
-                <div id="container-all" style="display: flex; justify-content: space-between; margin-top: 30px;">
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
                     <asp:Repeater ID="repeaterFondo" runat="server" OnItemCommand="repeaterFondo_ItemCommand">
                         <ItemTemplate>
                             <div class="card" style="width: 18rem">
@@ -104,47 +104,47 @@
             </div>
         </div>
         <%-- --------------------------------------------------- --%>
-        <div class="panel panel-widget forms-panel">
+        <div class="panel panel-widget forms-panel" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
                     <h4>Menú del Día</h4>
                 </div>
-                <div id="container-all" style="display: flex; justify-content: space-between; margin-top: 30px;">
-                    <div class="form-title color-white">
-                        <h5>Entrada</h5>
+                <div style="display: flex; justify-content: center;">
+                    <div id="container-all" style="margin-top: 30px; width: 19%; margin-right:50px">
+                        <div class="form-title color-white">
+                            <h5>Entrada</h5>
+                        </div>
+                        <div class="card" style="width: 18rem">
+                            <asp:Image ID="imgEntrada" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
+                            <asp:Label ID="lblIdEntrada" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="lblNombreEntrada" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblPorcionEntrada" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblCatEntrada" runat="server" Text="Label"></asp:Label>
+                            <asp:Button ID="btnQuitarEntrada" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarEntrada_Click" />
+                        </div>
                     </div>
-                    <div class="card" style="width: 18rem">
-                        <asp:Image ID="imgEntrada" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
-                        <asp:Label ID="lblIdEntrada" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:Label ID="lblNombreEntrada" runat="server" Text="Label"></asp:Label>
-                        <asp:Label ID="lblPorcionEntrada" runat="server" Text="Label"></asp:Label>
-                        <asp:Label ID="lblCatEntrada" runat="server" Text="Label"></asp:Label>
-                        <asp:Button ID="btnQuitarEntrada" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarEntrada_Click" />
-                    </div>
-                </div>
-                <div id="container-all" style="display: flex; justify-content: space-between; margin-top: 30px;">
-                    <div class="form-title color-white">
-                        <h5>Plato de fondo</h5>
-                    </div>
-                    <div class="card" style="width: 18rem">
-                        <asp:Image ID="imgFondo" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
-                        <asp:Label ID="lblIdFondo" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:Label ID="lblNombreFondo" runat="server" Text="Label"></asp:Label>
-                        <asp:Label ID="lblPorcionFondo" runat="server" Text="Label"></asp:Label>
-                        <asp:Label ID="lblCatFondo" runat="server" Text="Label"></asp:Label>
-                        <asp:Button ID="btnQuitarFondo" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarFondo_Click" />
-                    </div>
+                    <div id="container-all" style="margin-top: 30px; width: 19%">
+                        <div class="form-title color-white">
+                            <h5>Plato de fondo</h5>
+                        </div>
+                        <div class="card" style="width: 18rem">
+                            <asp:Image ID="imgFondo" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
+                            <asp:Label ID="lblIdFondo" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="lblNombreFondo" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblPorcionFondo" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblCatFondo" runat="server" Text="Label"></asp:Label>
+                            <asp:Button ID="btnQuitarFondo" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarFondo_Click" />
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
         <%-- --------------------------------------------------- --%>
-        <div>
-            <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu"/>
+             <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
+                <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu" />
+                <asp:Button ID="btnRegresar" CssClass="btn btn-danger" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
+            </p>
         </div>
-        <div>
-            <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
-        </div>
-    </div>
     <script>
         function lettersOnly(evt) {
             evt = (evt) ? evt : event;
