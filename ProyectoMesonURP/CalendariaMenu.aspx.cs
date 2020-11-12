@@ -34,8 +34,7 @@ namespace ProyectoMesonURP
             DateTime date = CalendarioMenu.SelectedDate;
             if (date.ToString("dddd") == "domingo")
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "msj", "alert('No hay menú los días domingos.')", true);
-                return;
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaError()", true); return;
             }
             else
             {

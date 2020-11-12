@@ -29,4 +29,14 @@
                 </div>
          </div>
     </div>
+    <script>
+        function alertaError() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'No hay menú los días domingo.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+    </script>
 </asp:Content>

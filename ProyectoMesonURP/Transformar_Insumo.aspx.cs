@@ -55,7 +55,7 @@ namespace ProyectoMesonURP
             gvIngredienteReceta.DataSource = dt_ing_x_receta;
             gvIngredienteReceta.DataBind();
             PorcionesReceta();
-            lblPlato.Text = dto_receta.R_nombreReceta;
+            //lblPlato.Text = dto_receta.R_nombreReceta;
 
             if (!this.IsPostBack)
             {
@@ -112,8 +112,7 @@ namespace ProyectoMesonURP
         }
         public int SelectCantidadI(int idIngrediente)
         {
-            int cantidadC = 0;
-            
+            int cantidadC = 0;       
 
                 foreach (GridViewRow row_g in gvIngredienteReceta.Rows)
                 {
