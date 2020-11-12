@@ -140,8 +140,7 @@
         <%-- --------------------------------------------------- --%>
         <div>
             <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu"/>
-        </div>
-        <div>
+       
             <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
         </div>
     </div>
