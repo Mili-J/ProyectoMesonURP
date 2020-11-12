@@ -37,7 +37,7 @@
                                 CssClass="form-control1" />
                         </div>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
+                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1">
                                 <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
                             </asp:DropDownList>
                             <asp:ImageButton style="margin-left: 233px;" ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarCategoria_Click" Height="31px" />
@@ -86,8 +86,7 @@
                     <div class="form-group" style="width: 1887px; margin-top: 30px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList Style="width: 25%;" ID="ddlIngredientes" runat="server" CssClass="form-control1"
-                                OnSelectedIndexChanged="ddlIngredientes_Change">
+                            <asp:DropDownList Style="width: 25%;" ID="ddlIngredientes" runat="server" CssClass="form-control1">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                         </div>
@@ -115,7 +114,7 @@
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="gvIngredientes" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvIngredientes_OnRowDataBound"
                                         DataKeyNames="I_nombreIngrediente, IR_cantidad, IR_formatoMedida"
-                                        CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvIngredientes_SelectedIndexChanged">
+                                        CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None">
 
                                         <Columns>
                                             <asp:BoundField HeaderText="Nombre Ingrediente" DataField="I_nombreIngrediente" />
@@ -160,26 +159,10 @@
     </script>
     <script>
 
-        function alertaCantidad() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'La cantidad de insumos no es permitida',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
         function alertaDuplicado() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'No puedes añadir el mismo Insumo',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        function alertaSeleccionar() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'Selecciona un insumo, por favor',
+                text: 'El ingrediente ya fue añadido',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -187,7 +170,7 @@
         function alertaError() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'No has añadido ningún Insumo',
+                text: 'Falta llenar campos',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -195,12 +178,12 @@
         function alertaExito() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha logrado egresar correctamente',
+                text: 'Se ha logrado actualizar correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = "ManejarStock";
+                    window.location.href = "GestionarReceta";
                 }
             })
         }

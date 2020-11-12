@@ -152,26 +152,10 @@
     </script>
     <script>
 
-        function alertaCantidad() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'La cantidad de insumos no es permitida',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
         function alertaDuplicado() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'No puedes añadir el mismo Insumo',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        function alertaSeleccionar() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'Selecciona un insumo, por favor',
+                text: 'No puedes añadir el mismo Ingrediente',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -179,7 +163,7 @@
         function alertaError() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'No has añadido ningún Insumo',
+                text: 'No has añadido ningún Ingrediente a la receta',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -187,12 +171,12 @@
         function alertaExito() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha logrado egresar correctamente',
+                text: 'Se ha logrado registrar la receta correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = "ManejarStock";
+                    window.location.href = "GestionarReceta";
                 }
             })
         }
