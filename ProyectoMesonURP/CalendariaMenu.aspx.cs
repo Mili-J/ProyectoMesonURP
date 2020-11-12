@@ -36,6 +36,7 @@ namespace ProyectoMesonURP
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaError()", true); return;
             }
+
             else
             {
                 if (ctr_menu.CTR_HayMenu(date)) hay = true;
@@ -52,6 +53,8 @@ namespace ProyectoMesonURP
         {
             //Aqui se puede cambiar algunas cosas
             DateTime fecha = e.Day.Date;
+            
+            
             dto_menu = new DTO_Menu();
             dto_menu = ctr_menu.CTR_ConsultarMenu(fecha);
             e.Cell.Width = Unit.Pixel(200);
@@ -61,6 +64,10 @@ namespace ProyectoMesonURP
             if (e.Day.IsOtherMonth)
             {
                 e.Cell.Visible = false;
+            }
+            else if (e.Day.Date<DateTime.Today)
+            {
+                e.Day.IsSelectable = false;
             }
             //--------------------------------------
             if (ctr_menu.CTR_HayMenu(fecha))
