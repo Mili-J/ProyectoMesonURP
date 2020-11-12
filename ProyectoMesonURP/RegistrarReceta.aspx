@@ -37,6 +37,7 @@
                         <div class="col-sm-8">
                             <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
                             </asp:DropDownList>
+                             <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -83,7 +84,7 @@
                                 OnSelectedIndexChanged="ddlIngredientes_Change">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="rfvcategoria" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1887px;">

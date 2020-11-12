@@ -60,6 +60,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaReceta;
 
         /// <summary>
+        /// Control rfvcategoriaR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcategoriaR;
+
+        /// <summary>
         /// Control txtDescripcion.
         /// </summary>
         /// <remarks>
@@ -96,13 +105,13 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList ddlIngredientes;
 
         /// <summary>
-        /// Control rfvcategoria.
+        /// Control rfvingredientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcategoria;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvingredientes;
 
         /// <summary>
         /// Control txtCantidad.
