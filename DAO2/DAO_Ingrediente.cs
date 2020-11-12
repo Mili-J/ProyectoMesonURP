@@ -94,8 +94,7 @@ namespace DAO
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.Read())
                 {
-                    ingrediente.I_idIngrediente = Convert.ToInt32(reader[0]);
-                    ingrediente.I_nombreIngrediente = Convert.ToString(reader[1]);
+                    ingrediente.I_nombreIngrediente = Convert.ToString(reader[0]);
                 }
 
                 conexion.Close();

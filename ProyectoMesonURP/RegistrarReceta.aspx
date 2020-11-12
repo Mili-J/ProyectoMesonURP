@@ -184,14 +184,6 @@
     </script>
     <script>
 
-        function alertaCantidad() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'La cantidad de insumos no es permitida',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
         function alertaDuplicado() {
             Swal.fire({
                 title: 'Oh, no!',
