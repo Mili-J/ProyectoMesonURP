@@ -103,7 +103,7 @@ namespace ProyectoMesonURP
             _Dixr = new DTO_IngredienteXReceta();
             if (ddlIngredientes.SelectedValue == "") 
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
             }
             else {
                 _Dixr.I_idIngrediente = int.Parse(ddlIngredientes.SelectedValue); 
@@ -111,7 +111,7 @@ namespace ProyectoMesonURP
             DTO_Ingrediente ingrediente = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
             if (txtCantidad.Text == "")
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
             }
             else
             {
@@ -136,7 +136,7 @@ namespace ProyectoMesonURP
             }
 
             _Cr.ActualizarReceta(_Dr);
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
             return;
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
@@ -169,7 +169,7 @@ namespace ProyectoMesonURP
             }
             catch (System.ArgumentException)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
             }
         }
         public System.Drawing.Image RedimensionarImagen(System.Drawing.Image ImagenRecetaOriginal, int alto)
