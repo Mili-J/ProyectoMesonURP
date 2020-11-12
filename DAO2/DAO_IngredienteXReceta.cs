@@ -108,7 +108,6 @@ namespace DAO
             unComando.Parameters.Add(new SqlParameter("@IR_formatoMedida", objDTO.IR_formatoMedida));
             unComando.Parameters.Add(new SqlParameter("@R_idReceta", objDTO.R_idReceta));
             unComando.Parameters.Add(new SqlParameter("@I_idIngrediente", objDTO.I_idIngrediente));
-
             unComando.ExecuteNonQuery();
             conexion.Close();
         }

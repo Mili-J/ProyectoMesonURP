@@ -43,7 +43,7 @@ namespace ProyectoMesonURP
             txtPorciones.Text = Convert.ToString(Session["porciones"]);
             txtCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
             txtDescripcion.Text = Convert.ToString(Session["descripcion"]);
-            
+
             ImagenPreview.ImageUrl = "data:image / jpg; base64";
             //_Cixr = new CTR_IngredienteXReceta();
             //dt = _Cixr.ListarIngredientesXReceta(_Dr.R_idReceta);
@@ -53,7 +53,8 @@ namespace ProyectoMesonURP
         public void CargargvIngredientes()
         {
             _Cixr = new CTR_IngredienteXReceta();
-            dt = _Cixr.ListarIngredientesXReceta(_Dr.R_idReceta);
+            int idReceta = int.Parse(Session["IdReceta"] is null ? "0" : Session["IdReceta"].ToString());
+            dt = _Cixr.ListarIngredientesXReceta(idReceta);
             gvIngredientes.DataSource = dt;
             gvIngredientes.DataBind();
         }
@@ -82,10 +83,10 @@ namespace ProyectoMesonURP
         }
         protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-                //id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
-                //lblIndex.Text = id.ToString();
-             
+
+            //id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
+            //lblIndex.Text = id.ToString();
+
         }
         protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
@@ -98,37 +99,28 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
-            _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
-            //string nombreIngrediente = Convert.ToString(_Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue)));
-            _Cixr.ListarIngredientesXReceta(_Dixr.R_idReceta);
-            _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
-            _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
-
-            _Dixr = new DTO_IngredienteXReceta();
-
+            if (ddlIngredientes.SelectedValue == "" || txtCantidad.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
+                return;
+            }
             for (int i = 0; i < tin.Rows.Count; i++)
             {
-                if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(_Di.I_nombreIngrediente))
+                if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(ddlIngredientes.SelectedItem.Text))
                 {
-                    existe = true;
-                    ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
+                    return;
                 }
             }
-             if (ddlIngredientes.SelectedValue == "" || txtCantidad.Text == "")
-             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
-            }
-            else
-            {
-                _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
-                _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
-                _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
-                _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
-                _Dixr.IR_cantidad = Convert.ToInt32(txtCantidad.Text);
-
-                _Cixr.RegistrarIngredienteXReceta(_Dixr);
-                CargargvIngredientes();
-            }
+            _Dixr = new DTO_IngredienteXReceta();
+            _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
+            _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
+            _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
+            _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
+            //string nombreIngrediente = Convert.ToString(_Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue)));
+            _Cixr.ListarIngredientesXReceta(_Dixr.R_idReceta);
+            _Cixr.RegistrarIngredienteXReceta(_Dixr);
+            CargargvIngredientes();
         }
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
@@ -137,10 +129,12 @@ namespace ProyectoMesonURP
             _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
             _Dr.R_descripcion = txtDescripcion.Text;
             _Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
-            try {
+            try
+            {
                 _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
             }
-            catch (System.FormatException) {
+            catch (System.FormatException)
+            {
                 _Dr.CR_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
             }
             _Cr.ActualizarReceta(_Dr);

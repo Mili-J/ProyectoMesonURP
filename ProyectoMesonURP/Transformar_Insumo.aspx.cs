@@ -187,6 +187,8 @@ namespace ProyectoMesonURP
             txtCantidad.Text = Transformar().ToString();
             int idInsumo = SelectCantidadI(Convert.ToInt32(ddlInsumo.SelectedValue));
             DescontarStock(idInsumo);
+            ScriptManager.RegisterStartupScript(this, GetType(), "exito", "alertaExito()", true);
+            return;
         }
 
        public void DescontarStock(int idInsumo)

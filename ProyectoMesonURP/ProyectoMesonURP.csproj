@@ -95,10 +95,19 @@
     <Content Include="css\icon-font.min.css" />
     <Content Include="css\manejarStock.css" />
     <Content Include="css\owl.carousel.css" />
+    <Content Include="css\pages\Empty\animate.css" />
+    <Content Include="css\pages\Empty\bootstrap.css" />
+    <Content Include="css\pages\Empty\bootstrap.min.css" />
+    <Content Include="css\pages\Empty\font-awesome.css" />
+    <Content Include="css\pages\Empty\font-awesome.min.css" />
+    <Content Include="css\pages\Empty\styles.css" />
+    <Content Include="css\pages\Empty\supersized.css" />
+    <Content Include="css\pages\Empty\YTPlayer.css" />
     <Content Include="css\pages\Login\animate.css" />
     <Content Include="css\pages\Login\animsition.min.css" />
     <Content Include="css\pages\Login\daterangepicker.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Empty.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
@@ -207,6 +216,17 @@
     <Content Include="js\cbpFWTabs.js" />
     <Content Include="js\Chart.js" />
     <Content Include="js\clndr.js" />
+    <Content Include="js\Empty js\bootstrap.js" />
+    <Content Include="js\Empty js\bootstrap.min.js" />
+    <Content Include="js\Empty js\html5shiv.js" />
+    <Content Include="js\Empty js\jquery.countdown.min.js" />
+    <Content Include="js\Empty js\jquery.cycle.min.js" />
+    <Content Include="js\Empty js\jquery.mb.YTPlayer.js" />
+    <Content Include="js\Empty js\jquery.min.js" />
+    <Content Include="js\Empty js\jquery.plugin.js" />
+    <Content Include="js\Empty js\respond.min.js" />
+    <Content Include="js\Empty js\scripts.js" />
+    <Content Include="js\Empty js\supersized.min.js" />
     <Content Include="js\GestionarReceta\bootstrap.min.js" />
     <Content Include="js\GestionarReceta\jquery.min.js" />
     <Content Include="js\GestionarReceta\jquery.zoom.min.js" />
@@ -274,6 +294,13 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empty.aspx.cs">
+      <DependentUpon>Empty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empty.aspx.designer.cs">
+      <DependentUpon>Empty.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>

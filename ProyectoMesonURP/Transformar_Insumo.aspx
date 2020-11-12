@@ -116,6 +116,23 @@
             </asp:UpdatePanel>
         </div>
     </div>
+       <!-- Alertas -->
+    <script src="js/sweetalert.js">
+    </script>
+    <script>
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado transformar insumo',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "TransformarInsumo";
+                }
+            })
+        }
+    </script>
 </asp:Content>
 
 
