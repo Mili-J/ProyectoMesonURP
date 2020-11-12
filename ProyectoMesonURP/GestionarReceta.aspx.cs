@@ -14,6 +14,8 @@ namespace ProyectoMesonURP
     {
         DTO_Receta _Dr = new DTO_Receta(); 
         CTR_Receta _Cr = new CTR_Receta();
+        CTR_MenuXReceta _Cmxr = new CTR_MenuXReceta();
+        public int a = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,11 +71,21 @@ namespace ProyectoMesonURP
                 Label lblidReceta = e.Item.FindControl("lblIdReceta") as Label;
                 int IdReceta = Convert.ToInt32(lblidReceta.Text);
                 Session["IdReceta"] = IdReceta;
-
-                _Cr.EliminarReceta(IdReceta);
-                CargarReceta();
+                
+                bool Emxr = _Cmxr.ExistenciaMenuxReceta(IdReceta);
+                if (Emxr) 
+                {
+                    a = 1;
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
+                    return;
+                    
+                }
+                else if(a==0){
+                    _Cr.EliminarReceta(IdReceta);
+                    CargarReceta();
+                }
             }
-            }
+        }
         protected void fNombreReceta_TextChanged(object sender, EventArgs e)
         {
             CargarReceta();

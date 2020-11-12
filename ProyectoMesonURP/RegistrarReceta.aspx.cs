@@ -140,8 +140,6 @@ namespace ProyectoMesonURP
                 gvIngredientes.DataBind();
             }
         }           
-        
- 
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
                 _Dr.R_nombreReceta = txtnombre.Text;

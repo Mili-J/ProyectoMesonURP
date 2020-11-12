@@ -21,6 +21,7 @@ namespace ProyectoMesonURP
         static DataTable tin = new DataTable();
         DataTable dt = new DataTable();
         static List<DTO_IngredienteXReceta> pila = new List<DTO_IngredienteXReceta>();
+        public bool existe = false;
         static int id { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -42,7 +43,8 @@ namespace ProyectoMesonURP
             txtPorciones.Text = Convert.ToString(Session["porciones"]);
             txtCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
             txtDescripcion.Text = Convert.ToString(Session["descripcion"]);
-            //ImagenPreview.ImageUrl = 
+            
+            ImagenPreview.ImageUrl = "data:image / jpg; base64";
             //_Cixr = new CTR_IngredienteXReceta();
             //dt = _Cixr.ListarIngredientesXReceta(_Dr.R_idReceta);
             //gvIngredientes.DataSource = dt;
@@ -96,30 +98,37 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
-            _Di = _Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
+            //string nombreIngrediente = Convert.ToString(_Ci.ListarNombreIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue)));
+            _Cixr.ListarIngredientesXReceta(_Dixr.R_idReceta);
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
 
             _Dixr = new DTO_IngredienteXReceta();
-            if (ddlIngredientes.SelectedValue == "") 
+
+            for (int i = 0; i < tin.Rows.Count; i++)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
+                if (Convert.ToString(gvIngredientes.Rows[i].Cells[0].Text) == Convert.ToString(_Di.I_nombreIngrediente))
+                {
+                    existe = true;
+                    ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
+                }
             }
-            else {
-                _Dixr.I_idIngrediente = int.Parse(ddlIngredientes.SelectedValue); 
-            }
-            DTO_Ingrediente ingrediente = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
-            if (txtCantidad.Text == "")
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
-            }
+             if (ddlIngredientes.SelectedValue == "" || txtCantidad.Text == "")
+             {
+                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true); 
+             }
             else
             {
+                _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
+                _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
+                _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
+                _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
                 _Dixr.IR_cantidad = Convert.ToInt32(txtCantidad.Text);
-            }
-            _Dixr.R_idReceta = _Dr.R_idReceta;
-            CargargvIngredientes();
 
+                _Cixr.RegistrarIngredienteXReceta(_Dixr);
+                CargargvIngredientes();
+            }
         }
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
@@ -134,7 +143,6 @@ namespace ProyectoMesonURP
             catch (System.FormatException) {
                 _Dr.CR_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
             }
-
             _Cr.ActualizarReceta(_Dr);
             ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
             return;
@@ -152,26 +160,6 @@ namespace ProyectoMesonURP
                 ddlIngredientes.SelectedIndex = 0;
             }
         }
-        protected void btnCargar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int tamaño = fuImagen.PostedFile.ContentLength;
-                byte[] ImagenOriginal = new byte[tamaño];
-
-                fuImagen.PostedFile.InputStream.Read(ImagenOriginal, 0, tamaño);
-
-                Bitmap ImagenOriginalBinaria = new Bitmap(fuImagen.PostedFile.InputStream);
-
-                string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(ImagenOriginal);
-
-                ImagenPreview.ImageUrl = ImagenDataURL64;
-            }
-            catch (System.ArgumentException)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "randomtext", "alertaError()", true);
-            }
-        }
         public System.Drawing.Image RedimensionarImagen(System.Drawing.Image ImagenRecetaOriginal, int alto)
         {
             var radio = Convert.ToDouble(alto) / ImagenRecetaOriginal.Height;
@@ -180,10 +168,6 @@ namespace ProyectoMesonURP
             var nuevaImagenRedimensionada = new Bitmap(nuevoAncho, nuevoAlto);
             var g = Graphics.FromImage(nuevaImagenRedimensionada);
             return nuevaImagenRedimensionada;
-        }
-        protected void ConsultarImagenReceta()
-        {
-            
         }
         private Byte[] imagen_bytes(System.Web.UI.WebControls.Image ImagenReceta)
         {
@@ -205,11 +189,18 @@ namespace ProyectoMesonURP
         }
         protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
         {
-            GridViewRow row = gvIngredientes.SelectedRow;
-            int idReceta = Convert.ToInt32(Session["IdReceta"]);
-            int idIngrediente = _Ci.ListarIdIngredientexNombre(row.Cells[0].Text);
-            _Cixr.EliminarIngredientexReceta(idReceta, idIngrediente);
-            CargargvIngredientes();
+            try
+            {
+                GridViewRow row = gvIngredientes.SelectedRow;
+                int idReceta = Convert.ToInt32(Session["IdReceta"]);
+                int idIngrediente = _Ci.ListarIdIngredientexNombre(row.Cells[0].Text);
+                _Cixr.EliminarIngredientexReceta(idReceta, idIngrediente);
+                CargargvIngredientes();
+            }
+            catch (System.NullReferenceException)
+            {
+                throw;
+            }
         }
     }
 }

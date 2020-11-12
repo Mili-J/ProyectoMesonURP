@@ -109,8 +109,8 @@
                         <asp:Button CssClass="btn btn-danger" runat="server" Text="Quitar" ID="btnQuitarIngredientes" OnClick="btnQuitarIngredientes_Click" />
                     </p>
                     </div>
-                    <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                        <ContentTemplate>
+                    <%--<asp:UpdatePanel ID="PanelAñadir" runat="server">
+                        <ContentTemplate>--%>
                             <div class="panel panel-widget forms-panel" style="width: 60vh; margin-top: 27px;">
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="gvIngredientes" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvIngredientes_OnRowDataBound"
@@ -127,12 +127,12 @@
                                     </asp:GridView>
                                     </div>
                                 </div>
-                        </ContentTemplate>
+                        <%--</ContentTemplate>--%>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="btnAñadirIngredientes" />
                             <asp:PostBackTrigger ControlID="btnGuardar" />
                         </Triggers>
-                    </asp:UpdatePanel>
+                    <%--</asp:UpdatePanel>--%>
                 </div>
                     <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
                     <hr />

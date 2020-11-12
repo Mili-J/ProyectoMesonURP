@@ -49,7 +49,7 @@
                         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemCreated="Repeater1_ItemCreated" OnItemDataBound="Repeater1_ItemDataBound">
                             <ItemTemplate>
                                 <div class="card" style="width: 18rem">
-                                    <img class="card-img-top" alt="Imagen de Referencia" 
+                                    <img ID="ImagenReceta" class="card-img-top" alt="Imagen de Referencia" 
                                         src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                     
                                     <div class="card-body">
