@@ -53,5 +53,9 @@ namespace CTR
             objDAO.DeleteIngredientexReceta(R_idReceta, I_idIngrediente);
 
         }
+        public bool ExistenciaIngredientexReceta(int R_idReceta, int I_idIngrediente)
+        {
+            return objDAO.SelectExistenciaIngredientexReceta(R_idReceta, I_idIngrediente);
+        }
     }
 }

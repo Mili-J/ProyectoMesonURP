@@ -28,7 +28,8 @@ namespace ProyectoMesonURP
                         menuSepararIngredientes.Visible = true;
                         menuMenu.Visible = true;
                         menuTransformar.Visible = true;
-                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;                       
+
+                        lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
                         break;
                     case 2:
                         menuCotizacion.Visible = false;
@@ -41,7 +42,7 @@ namespace ProyectoMesonURP
                         menuStock.Visible = true;
                         menuSepararIngredientes.Visible = false;
                         lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
-                        
+
                         break;
                     case 3:
                         menuCotizacion.Visible = false;
@@ -54,7 +55,7 @@ namespace ProyectoMesonURP
                         menuStock.Visible = false;
                         menuSepararIngredientes.Visible = true;
                         lblRol.Text = Convert.ToString(Session["TipoPerfil"]); ;
-                       
+
                         break;
                     default:
                         break;

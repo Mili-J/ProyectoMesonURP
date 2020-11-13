@@ -141,5 +141,33 @@ namespace DAO
                 throw;
             }
         }
+        public bool SelectExistenciaIngredientexReceta(int R_idReceta,int I_idIngrediente)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_EXISTENCIA_INGREDIENTE_X_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+                cmd.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                cmd.ExecuteNonQuery();
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count == 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    conexion.Close();
+                    return true;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
     }
 }
