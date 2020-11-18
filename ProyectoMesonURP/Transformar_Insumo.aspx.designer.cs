@@ -51,13 +51,31 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.GridView gvIngredienteReceta;
 
         /// <summary>
-        /// ddlInsumo control.
+        /// ddlIngrediente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInsumo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlIngrediente;
+
+        /// <summary>
+        /// txtFormatoC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFormatoC;
+
+        /// <summary>
+        /// txtInsumo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInsumo;
 
         /// <summary>
         /// txtCantidad control.
@@ -78,24 +96,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtMedida;
 
         /// <summary>
-        /// ddlIngrediente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIngrediente;
-
-        /// <summary>
-        /// txtFormatoC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFormatoC;
-
-        /// <summary>
         /// PanelAñadir control.
         /// </summary>
         /// <remarks>
@@ -112,5 +112,14 @@ namespace ProyectoMesonURP
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAñadirIngrediente;
+
+        /// <summary>
+        /// GridViewTransformacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewTransformacion;
     }
 }
