@@ -17,7 +17,7 @@
                         <h4>Información del Plato</h4>
                     </div>
                 </div>
-                <div class="form-horizontal" runat="server">
+                <div class="p-5" runat="server">
                     <div class="form-group" style="width: 1889px; margin-top: 23px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
