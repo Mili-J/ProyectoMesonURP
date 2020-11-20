@@ -11,20 +11,17 @@ namespace ProyectoMesonURP
 {
     public partial class Login : System.Web.UI.Page
     {
+        CTR_Usuario _Cu = new CTR_Usuario();
+        DTO_TipoUsuario _Dtu = new DTO_TipoUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            try
+            try 
             {
-                if (password.Value == "" || usuario.Value == "")
-                {
-                    //MENSAJE DE QUE ESTAN VACIOS LOS CAMPOS
-                    return;
-                }
                 DTO_Usuario dto = new DTO_Usuario()
                 {
                     U_contraseña = password.Value,
@@ -34,12 +31,15 @@ namespace ProyectoMesonURP
                 if (dto.P_idPersona != 0)
                 {
                     //ENTRO
+                    _Cu.getPerfil(dto, _Dtu);
                     Session["Usuario"] = dto;
-                    Response.Redirect("Dashboard");
+                    Session["TipoPerfil"] = _Dtu.TU_nombreTipoUsuario;
+                    Response.Redirect("Empty.aspx");
                 }
                 else
                 {
-                    //MENSAJE DE QUE SU USUARIO NO EXISTE
+                    ScriptManager.RegisterStartupScript(PanelLogin, PanelLogin.GetType(), "alertLogin1", "alertLogin1();", true);
+
                 }
             }
             catch (Exception)

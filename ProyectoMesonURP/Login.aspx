@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoMesonURP.Login" %>
+﻿<%@ Page Title="Mesón URP | Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoMesonURP.Login" %>
 
 <!DOCTYPE html>
 
@@ -16,30 +16,34 @@
     <link href="css/pages/Login/daterangepicker.css" rel="stylesheet" />
     <link href="css/pages/Login/util.css" rel="stylesheet" />
     <link href="css/pages/Login/main.css" rel="stylesheet" />
+	<link href="css/sweetalert2.min.css" rel="stylesheet" />
+    <script src="js/sweetalert.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </head>
+
 <body style="background-color: #666666;">
    <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				
 				<form id="formLogin" class="login100-form validate-form" runat="server">
+					<p class="title-login">
+                    <asp:Label ID="lblMensajeAyuda" runat="server" Text=""></asp:Label>
+					</p>
+					<asp:ScriptManager runat="server"></asp:ScriptManager>
 					<span class="login100-form-title p-b-43">
 						Inicia sesión para continuar
-					</span>				
-					
-					<div class="wrap-input100 validate-input" data-validate = "Se requiere email válido: ex@abc.xyz">
-						<input id="usuario" class="input100" type="text" name="email" runat="server">
-					<%--	<asp:RegularExpressionValidator ID="RevCorreo" runat="server" ErrorMessage="Por favor ingrese su correo" ControlToValidate="email" ForeColor="#CC0000" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
-						<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="email" ErrorMessage="Campo Obligatorio" ValidationGroup="iniciarSesionV" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+					</span>									
+					<div class="wrap-input100 validate-input" data-validate = "Se requiere un usuario válido">
+						<input id="usuario" class="input100" type="text" name="email" runat="server"/>				
 						<span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
+						<span class="label-input100">Usuario</span>
 					</div>
-					
-					
+										
 					<div class="wrap-input100 validate-input" data-validate="Se requiere la contraseña">
-						<input id="password" class="input100" type="password" name="pass" runat="server"/>
-						<%--<asp:RegularExpressionValidator ID="revContraseña" runat="server" ErrorMessage="Por favor ingrese solo letras o números" ControlToValidate="password" ForeColor="#CC0000" ValidationExpression="([a-zA-Z0-9]{1,})" SetFocusOnError="True" Display="Dynamic"></asp:RegularExpressionValidator>
-						<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="password" ErrorMessage="Campo Obligatorio" ValidationGroup="iniciarSesionV" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-						<span class="focus-input100"></span>
+						<input id="password" class="input100" type="password" name="pass" runat="server"/>						
 						<span class="label-input100">Contraseña</span>
 					</div>
 
@@ -50,18 +54,20 @@
 								Recuérdame
 							</label>
 						</div>
-
 						<div>
 							<a href="#" class="txt1">
 								Olvidaste tu contraseña?
 							</a>
 						</div>
-					</div>
-			
-
-					<div class="container-login100-form-btn">
-						<asp:Button id="btnLogin" runat="server" class="login100-form-btn" ValidationGroup="iniciarSesionV" Text="Ingresar" OnClick="btnLogin_Click"/>
-					</div>
+					</div>			
+					<asp:UpdatePanel ID="PanelLogin" runat="server">
+						<ContentTemplate>
+							<div class="container-login100-form-btn">
+							<asp:Button id="btnLogin" runat="server" class="login100-form-btn" ValidationGroup="iniciarSesionV" Text="Ingresar" OnClick="btnLogin_Click"/>
+						</div>
+						</ContentTemplate>						
+					</asp:UpdatePanel>
+						
 					
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
@@ -94,5 +100,15 @@
     <script src="js/Login%20js/daterangepicker.js"></script>
     <script src="js/Login%20js/countdowntime.js"></script>
     <script src="js/Login%20js/main.js"></script>
+	<script>
+        function alertLogin1() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El usuario ingresado no existe.',
+                icon: 'warning',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+    </script>
 </body>
 </html>

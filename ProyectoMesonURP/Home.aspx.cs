@@ -13,7 +13,17 @@ namespace ProyectoMesonURP
         {
             if (!IsPostBack)
             {
-                
+                if (Request.QueryString["x"] != null)
+                {
+                    int valor = Convert.ToInt32(Request.QueryString["x"]);
+                    switch (valor)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                    }
+                }
             }
         }
     }

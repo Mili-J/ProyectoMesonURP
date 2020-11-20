@@ -4,7 +4,14 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_Receta
+    public class DTO_Receta
     {
+        public int R_idReceta { get; set; }
+        public string R_nombreReceta { get; set; }
+        public int R_numeroPorcion { get; set; }
+        public string R_descripcion { get; set; }
+        public byte[] R_imagenReceta { get; set; }
+        public int CR_idCategoriaReceta { get; set; }
+
     }
 }

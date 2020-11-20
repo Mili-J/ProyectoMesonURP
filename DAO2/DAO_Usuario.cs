@@ -10,6 +10,7 @@ namespace DAO
     public class DAO_Usuario
     {
         SqlConnection conexion;
+       
         public DAO_Usuario()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
@@ -18,7 +19,6 @@ namespace DAO
 
         public DTO_Usuario Login(DTO_Usuario objUsuario)
         {
-            DTO_Usuario dto = new DTO_Usuario();
             try
             {
                 conexion.Open();
@@ -31,14 +31,14 @@ namespace DAO
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    dto.U_idUsuario = reader.GetInt32(0);
-                    dto.U_codigo = reader.GetString(1);
-                    dto.U_contraseña = reader.GetString(2);
-                    dto.TU_idTipoUsuario = reader.GetInt32(3);
-                    dto.P_idPersona = reader.GetInt32(4);
-                    dto.P_nombres = reader.GetString(5);
-                    dto.P_aPaterno = reader.GetString(6);
-                    dto.P_aMaterno = reader.GetString(7);
+                    objUsuario.U_idUsuario = reader.GetInt32(0);
+                    objUsuario.U_codigo = reader.GetString(1);
+                    objUsuario.U_contraseña = reader.GetString(2);
+                    objUsuario.TU_idTipoUsuario = reader.GetInt32(3);
+                    objUsuario.P_idPersona = reader.GetInt32(4);
+                    objUsuario.P_nombres = reader.GetString(5);
+                    objUsuario.P_aPaterno = reader.GetString(6);
+                    objUsuario.P_aMaterno = reader.GetString(7);
                 }
             }
             catch (Exception ex)
@@ -46,7 +46,29 @@ namespace DAO
                 throw ex;
             }
             conexion.Close();
-            return dto;
+            return objUsuario;
+        }
+        public void getPerfil(DTO_Usuario objUsuario, DTO_TipoUsuario objTipoU)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Tipo_Usuario", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@codigo", objUsuario.U_codigo));
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    objTipoU.TU_nombreTipoUsuario = reader.GetString(0);
+                }
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }
