@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Gestionar Receta | Registrar Receta" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistrarReceta.aspx.cs" Inherits="ProyectoMesonURP.RegistrarReceta" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/fv.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -19,25 +20,28 @@
                 </div>
                 <div class="p-5" runat="server">
                     <div class="form-group" style="width: 1889px; margin-top: 23px;">
-                        <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
+						<label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);"/>
-                            <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ControlToValidate="txtnombre" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            <div class="field">
+                                <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);" required="required"/>
                             </div>
-                    </div>
+                        </div>
+					</div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">N° porciones</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtPorciones" runat="server" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" onkeypress="return SoloNumeroInt(event);" MaxLength="3" />
-                             <asp:RequiredFieldValidator ID="rfvporciones" runat="server" ControlToValidate="txtPorciones" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            <div class="field">
+                                <asp:TextBox ID="txtPorciones" runat="server" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" onkeypress="return SoloNumeroInt(event);" MaxLength="3" required="required"/>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
-                            </asp:DropDownList>
-                             <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                             <div class="field">
+                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" required="ddlCategoriaReceta" OnSelectedIndexChanged="ddlCategoriaReceta_Change" >
+                                </asp:DropDownList>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -221,5 +225,37 @@
             })
         }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="multifield.js"></script>
+    <script src="validator.js"></script>
+	<script>
+        // initialize a validator instance from the "FormValidator" constructor.
+        // A "<form>" element is optionally passed as an argument, but is not a must
+        var validator = new FormValidator({ "events": ['blur', 'input', 'change'] }, document.forms[0]);
+
+
+        // on form "submit" event
+        document.forms[0].onsubmit = function (e) {
+            var submit = true,
+                validatorResult = validator.checkAll(this);
+
+            console.log(validatorResult);
+            return !!validatorResult.valid;
+        };
+
+
+        // on form "reset" event
+        document.forms[0].onreset = function (e) {
+            validator.reset();
+        };
+
+        // stuff related ONLY for this demo page:
+        $('.toggleValidationTooltips').change(function () {
+            validator.settings.alerts = !this.checked;
+
+            if (this.checked)
+                $('form .alert').remove();
+        }).prop('checked', false);
+	</script>
 </asp:Content>
 

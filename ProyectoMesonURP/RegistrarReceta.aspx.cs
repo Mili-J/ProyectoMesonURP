@@ -66,7 +66,10 @@ namespace ProyectoMesonURP
         }
         protected void ddlCategoriaReceta_Change(object sender, EventArgs e)
         {
-            
+            //if(ddlCategoriaReceta == )
+            //{
+
+            //}
 
         }
         protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
