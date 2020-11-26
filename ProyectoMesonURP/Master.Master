@@ -201,7 +201,7 @@
             
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <form id="form1" runat="server">
+            <form id="form1" action="" runat="server" method="post" novalidate>
                  <asp:ScriptManager runat="server"></asp:ScriptManager>
             <!-- Main Content -->
             <div id="content">
