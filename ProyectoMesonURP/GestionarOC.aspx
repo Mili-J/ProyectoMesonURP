@@ -26,7 +26,7 @@
                                         <h4>Ordenes de Compra</h4>
                                     </div>
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                       <asp:GridView ID="gvOC" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
+                                       <asp:GridView ID="gvOC" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible." OnRowCommand="gvOC_RowCommand" 
                                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EC_nombreEstadoC"  
                                             Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvOC_SelectedIndexChanged" GridLines="None">
                                             <Columns>
@@ -38,12 +38,12 @@
                                                 <asp:BoundField DataField="EC_nombreEstadoC" HeaderText="Estado" />
                                                 <asp:TemplateField HeaderText="Descargar">
                                                     <ItemTemplate>
-                                                <asp:ImageButton ID="btnDescargar" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="DescargarIn" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                                <asp:ImageButton ID="btnDescargar" ImageUrl="img/descargar.png" onmouseover="this.src='img/descargar-b.png'" onmouseout="this.src='img/descargar.png'" runat="server" CommandName="Descargar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Recepcionar">
                                                     <ItemTemplate>
-                                                <asp:ImageButton ID="btnRecepcionar" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="RecepcionarIn" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                                <asp:ImageButton ID="btnRecepcionar" ImageUrl="img/recepcionar.png" onmouseover="this.src='img/recepcionar-b.png'" onmouseout="this.src='img/recepcionar.png'" runat="server" CommandName="Recepcionar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 

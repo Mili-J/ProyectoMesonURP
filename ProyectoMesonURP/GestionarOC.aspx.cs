@@ -52,6 +52,18 @@ namespace ProyectoMesonURP
 
             }
         }
+        protected void gvOC_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+
+            if (e.CommandName == "Descargar")
+            {
+            }
+            if (e.CommandName == "Recepcionar")
+            {
+            }
+            
+        }
         protected void gvOC_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvOC.PageIndex = e.NewPageIndex;

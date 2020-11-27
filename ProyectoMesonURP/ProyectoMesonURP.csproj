@@ -141,6 +141,8 @@
     <Content Include="img\correcto.png" />
     <Content Include="img\decano.PNG" />
     <Content Include="img\delete.png" />
+    <Content Include="img\descargar-b.png" />
+    <Content Include="img\descargar.png" />
     <Content Include="img\director.PNG" />
     <Content Include="img\editar-b.png" />
     <Content Include="img\editar.png" />
@@ -200,6 +202,8 @@
     <Content Include="img\realtor-1.jpeg" />
     <Content Include="img\realtor-2.jpeg" />
     <Content Include="img\realtor-3.jpeg" />
+    <Content Include="img\recepcionar.png" />
+    <Content Include="img\recepcionar-b.png" />
     <Content Include="img\recibido-b.png" />
     <Content Include="img\recibido.png" />
     <Content Include="img\rector.PNG" />
