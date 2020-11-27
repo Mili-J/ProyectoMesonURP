@@ -57,12 +57,12 @@
                                     </div>
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                      <asp:GridView ID="gvInsumos2" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
-                                        CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadmin,I_cantidad,El_nombreEstado" 
+                                        CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadMinima,I_cantidad,El_nombreEstado" 
                                         Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None" OnSelectedIndexChanged="gvInsumos2_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                             <asp:BoundField Datafield="I_NombreInsumo" HeaderText="Nombre insumo" />
-                                            <asp:BoundField Datafield="I_cantidadmin" HeaderText="Stock minimo" />
+                                            <asp:BoundField Datafield="I_cantidadMinima" HeaderText="Stock minimo" />
                                             <asp:BoundField Datafield="I_cantidad" HeaderText="Stock actual" />
                                             <asp:BoundField Datafield="El_nombreEstado" HeaderText="Estado" />
                                             <%--<asp:TemplateField HeaderText="Solicitar">
@@ -91,10 +91,6 @@
                                 </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>
-                            
-                        <div class="clearfix">
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        </div>
                      </div>
                   </div>
     <script>
