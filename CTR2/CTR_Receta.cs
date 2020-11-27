@@ -34,10 +34,10 @@ namespace CTR
         //{
         //    return objDAO.DAO_Consultar_Recetas_Disponibles(racion,caso);
         //}
-        //public DTO_Receta CTR_Consultar_Receta(int i)
-        //{
-        //    return objDAO.DAO_Consultar_Receta(i);
-        //}
+        public DTO_Receta CTR_Consultar_Receta(int i)
+        {
+            return objDAO.DAO_Consultar_Receta(i);
+        }
         public DataTable CTR_Consultar_Receta2()
         {
             objDAO = new DAO_Receta();

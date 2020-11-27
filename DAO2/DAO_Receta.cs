@@ -13,6 +13,7 @@ namespace DAO
         DAO_IngredienteXReceta dao_ingredientexreceta;
         DTO_Receta dto_receta;
         DAO_Ingrediente dao_ingrediente;
+        
         public DAO_Receta()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
@@ -163,38 +164,39 @@ namespace DAO
 
 
         //            j++;
-                   
+
         //        }
-                
+
         //        prueba.Add(dto_receta);
         //        i++;
         //    }
-            
+
         //    return dtDisponibles;
 
         //}
 
-        //public DTO_Receta DAO_Consultar_Receta(int i)
-        //{
-        //    conexion.Open();
-        //    SqlCommand comando = new SqlCommand("SP_ConsultarReceta", conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    comando.Parameters.AddWithValue("@R_idReceta", i);
-        //    comando.ExecuteNonQuery();
-        //    SqlDataReader reader = comando.ExecuteReader();
+        public DTO_Receta DAO_Consultar_Receta(int i)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarReceta", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", i);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
 
-        //    if (reader.Read())
-        //    {
-        //        dto_receta.R_idReceta = i;
-        //        dto_receta.R_nombreReceta = reader[1].ToString();
-        //        dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
-        //        dto_receta.R_descripcion = Convert.ToString(reader[3]);
-        //        dto_receta.R_imagenReceta = 0;
-        //        dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[5]);
-        //    }
-        //    conexion.Close();
-        //    return dto_receta;
-        //}
+            if (reader.Read())
+            {
+                dto_receta.R_idReceta = i;
+                dto_receta.R_nombreReceta = reader[1].ToString();
+                dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
+                dto_receta.R_descripcion = Convert.ToString(reader[3]);
+                dto_receta.R_imagenReceta =( byte[])(reader[4]);
+                
+                       
+            }
+            conexion.Close();
+            return dto_receta;
+        }
 
         public DataTable DAO_ConsultarReceta2()
         {

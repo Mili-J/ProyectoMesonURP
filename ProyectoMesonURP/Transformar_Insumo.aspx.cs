@@ -40,6 +40,7 @@ namespace ProyectoMesonURP
             dto_ir = new DTO_IngredienteXReceta();
             dto_formato = new DTO_Formato();
             dto_medida = new DTO_Medida();
+            dto_receta = new DTO_Receta();
             dto_MFCocina = new DTO_MedidaXFormatoCocina();
             ctr_MFCocina = new CTR_MedidaXFormatoCocina();
             dto_receta = new DTO_Receta();
@@ -47,6 +48,7 @@ namespace ProyectoMesonURP
             porciones = (int)Session["Porciones"];
             dto_receta.R_nombreReceta = (string)Session["Receta"];
             ctr_insumo = new CTR_Insumo();
+            CTR_Receta objReceta = new CTR_Receta();
             dto_insumo = new DTO_Insumo();
             ctr_ing_x_receta = new CTR_IngredienteXReceta();
             dt_ing_x_receta = new DataTable();
@@ -57,12 +59,13 @@ namespace ProyectoMesonURP
             gvIngredienteReceta.DataBind();
             PorcionesReceta();
             lblPlato.Text = dto_receta.R_nombreReceta;
+            objReceta.CTR_Consultar_Receta(dto_receta.R_idReceta);
+            string imageBase64 = Convert.ToBase64String(dto_receta.R_imagenReceta);           
+            Imagen_Receta.ImageUrl = "data:Image/png;base64," + imageBase64;
 
             if (!this.IsPostBack)
-            {
-                
-                LlenarIngredienteR();
-                
+            {                
+                LlenarIngredienteR();               
             }
 
         }
@@ -110,9 +113,9 @@ namespace ProyectoMesonURP
             }
             return "no hay";
         }
-        public int Get_Cantidad_Ingrediente(int idIngrediente)
+        public decimal Get_Cantidad_Ingrediente(int idIngrediente)
         {
-            int cantidadC = 0;
+            decimal cantidadC = 0;
 
 
             foreach (GridViewRow row_g in gvIngredienteReceta.Rows)
@@ -122,7 +125,7 @@ namespace ProyectoMesonURP
                     int idI = Convert.ToInt32(row["I_idIngrediente"]);
                     if (idIngrediente == idI)
                     {
-                        return cantidadC = Convert.ToInt32(row_g.Cells[2].Text);
+                        return cantidadC = Convert.ToDecimal(row_g.Cells[2].Text);
                     }
                 }
             }
@@ -142,13 +145,15 @@ namespace ProyectoMesonURP
         }
         public void PorcionesReceta()
         {
-            foreach (GridViewRow row in gvIngredienteReceta.Rows)
+            if(gvIngredienteReceta.Rows.Count!=0)
             {
-                int cantIng = Convert.ToInt32(row.Cells[2].Text);
-                int cantFIng = cantIng * porciones;
-                row.Cells[2].Text = cantFIng.ToString();
-            }
-
+                foreach (GridViewRow row in gvIngredienteReceta.Rows)
+                {
+                    decimal cantIng = Convert.ToDecimal(row.Cells[2].Text);
+                    decimal cantFIng = cantIng * porciones;
+                    row.Cells[2].Text = cantFIng.ToString();
+                }
+            }            
         }
         public decimal Transformar(int i)
         {
@@ -161,9 +166,9 @@ namespace ProyectoMesonURP
             {
                 equivalencia = Convert.ToDecimal(row["E_cantidad"]);
             }
-            int cantidad_Ingrediente = Get_Cantidad_Ingrediente(i_ingrediente);
+            decimal cantidad_Ingrediente = Get_Cantidad_Ingrediente(i_ingrediente);
             decimal cantidad_Insumo = cantidad_Ingrediente / equivalencia;
-            return cantidad_Insumo;
+            return Math.Round(cantidad_Insumo,2);
 
         }
         public void DescontarStock(int idInsumo)

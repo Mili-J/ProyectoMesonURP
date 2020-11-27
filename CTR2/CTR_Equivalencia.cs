@@ -15,9 +15,6 @@ namespace CTR
             dao_eq = new DAO_Equivalencia();
         }
 
-        public bool CTR_Consulta_Equivalencia_x_Insumo(DTO_MedidaXFormatoCocina objMFCocina, int idInsumo)
-        {
-            return dao_eq.DAO_Consultar_Equivalencia_x_Insumo(objMFCocina,idInsumo);
-        }
+        
     }
 }

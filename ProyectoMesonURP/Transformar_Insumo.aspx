@@ -19,7 +19,7 @@
                         <h4>Plato a Transformar</h4>
                     </div> 
                     <div>
-                        <asp:Image ID="Image1" runat="server" />
+                        <asp:Image ID="Imagen_Receta" runat="server" />
                     </div> 
                 </div>
             </div>

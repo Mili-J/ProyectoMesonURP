@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ActualizarReceta.aspx" />
+    <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -256,6 +257,13 @@
     </Compile>
     <Compile Include="ActualizarReceta.aspx.designer.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarEquivalencia.aspx.cs">
+      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEquivalencia.aspx.designer.cs">
+      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
