@@ -2,6 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/fv.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .rfv
+    {
+        float: left; 
+        color: #FFF; 
+        border-radius: 3px 4px 4px 3px; 
+        margin: -2px 0 0 20px; 
+        padding: 3px 10px; 
+        background-color: #CE5454; 
+        z-index: 1;
+    }
+   </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -42,9 +54,10 @@
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
                              <div class="field">
-                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" required="required"  OnSelectedIndexChanged="ddlCategoriaReceta_Change" >
+                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change" required='required'>
                                 </asp:DropDownList>
-                            </div>
+                                <asp:RequiredFieldValidator ID="rfvddlcategoria" runat="server" CssClass="required-item" ControlToValidate="ddlCategoriaReceta" Display="Static" ForeColor="White" InitialValue="--seleccionar--" ><span id="sampleRFV" class="rfv">Seleccione una opción</span></asp:RequiredFieldValidator>
+                          </div>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -91,12 +104,14 @@
                     <div class="form-group" style="width: 1887px; margin-top: 30px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
+                            <div class="field">
                             <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1"
                                 OnSelectedIndexChanged="ddlIngredientes_Change">
-                                <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
+                                <%--<asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>--%>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                        </div>
+                             </div>
+                         </div>
                     </div>
                     <div class="form-group" style="width: 1887px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
@@ -163,35 +178,36 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
     <script>
-       function ValidateSelection() {
-           var valor = document.getElementById("txtnombre").value;
-           var porciones = document.getElementById("txtPorciones").value;
-          // alert(gettext);
+       //function ValidateSelection() {
+       //    var valor = document.getElementById("txtnombre").value;
+       //    var porciones = document.getElementById("txtPorciones").value;
+           
+       //   // alert(gettext);
 
-           if (valor == null || valor.length == 0 || porciones == null || porciones.length == 0) {
+       //    if (valor == null || valor.length == 0 || porciones == null || porciones.length == 0) {
 
-               return false;
-            }
+       //        return false;
+       //     }
           
-       }
+       //}
 
         function GetMaster1Details(){
             var value = document.getElementById("<%=ddlCategoriaReceta.ClientID%>");
             var getvalue = value.options[value.selectedIndex].value;
             var gettext = value.options[value.selectedIndex].text;
-            
+
             var valor = $('#<%=txtnombre.ClientID %>');
             var porciones = $('#<%=txtPorciones.ClientID %>');
 
-            if (gettext == "--seleccionar--"){
+            if (gettext == "--seleccionar--") {
                 alert("seleccione una categoria")
                 return false;
             }
-            else if( valor == null || valor.length == 0 || porciones == null || porciones.length == 0) {
-              
+            else if (valor == null || valor.length == 0 || porciones == null || porciones.length == 0) {
+
                 return false;
             }
-            
+
             else {
                 vat = true;
             }
