@@ -53,6 +53,7 @@
     <Compile Include="DAO_EstadoInsumo.cs" />
     <Compile Include="DAO_EstadoOC.cs" />
     <Compile Include="DAO_EstadoProveedor.cs" />
+    <Compile Include="DAO_EstadoReceta.cs" />
     <Compile Include="DAO_Formato.cs" />
     <Compile Include="DAO_Ingrediente.cs" />
     <Compile Include="DAO_IngredienteXReceta.cs" />

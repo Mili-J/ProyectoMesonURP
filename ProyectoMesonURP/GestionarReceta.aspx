@@ -46,7 +46,7 @@
                     </ul>
                 </div>
                 <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
-                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand" OnItemCreated="Repeater1_ItemCreated" OnItemDataBound="Repeater1_ItemDataBound">
+                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                             <ItemTemplate>
                                 <div class="card" style="width: 18rem">
                                     <img ID="ImagenReceta" class="card-img-top" alt="Imagen de Referencia" 
@@ -64,8 +64,7 @@
                                         </p>
                                         <p class="card-text">
                                             Categoría: 
-                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CR_nombreCategoria") %>' />
-                                        
+                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                         </p>
                                         <p class="card-text">
                                             Descripción:
@@ -73,7 +72,8 @@
                                         </p>
                                         <div>
                                             <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="ActualizarReceta" />
-                                            <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>
+                                           <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
+                                           
                                         </div>
                                     </div>
                                 </div>

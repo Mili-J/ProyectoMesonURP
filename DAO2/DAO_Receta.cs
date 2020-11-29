@@ -29,8 +29,11 @@ namespace DAO
                 unComando.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
                 unComando.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
                 unComando.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
-                unComando.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
-                
+                unComando.Parameters.Add(new SqlParameter("@R_subcategoria", objDTO.R_subcategoria));
+                unComando.Parameters.Add(new SqlParameter("@EP_idEstadoReceta", objDTO.EP_idEstadoReceta));
+                unComando.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
+            
+            
                 unComando.ExecuteNonQuery();
                 conexion.Close();
         }
@@ -205,12 +208,12 @@ namespace DAO
             conexion.Close();
             return dto_receta;
         }
-        public Byte[] prueba(int i)
+        public Byte[] Select_ImagenReceta(int R_idReceta)
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarRecetaPrueba", conexion);
+            SqlCommand comando = new SqlCommand("SP_SELECT_IMAGEN_RECETA", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@R_idReceta", i);
+            comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
             byte[] img = new byte[100];
             img = (byte[])comando.ExecuteScalar();
             conexion.Close();
@@ -276,11 +279,13 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand("SP_UPDATE_RECETA", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@R_idReceta", objDTO.R_idReceta));
-                cmd.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta ));
+                cmd.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta));
+                cmd.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
+                cmd.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
                 cmd.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
-                cmd.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion ));
-                cmd.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CR_idCategoriaReceta ));
-                cmd.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion ));
+                cmd.Parameters.Add(new SqlParameter("@R_subcategoria", objDTO.R_subcategoria));
+                cmd.Parameters.Add(new SqlParameter("@EP_idEstadoReceta", objDTO.EP_idEstadoReceta));
+                cmd.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
 
                 cmd.ExecuteNonQuery();
                 conexion.Close();

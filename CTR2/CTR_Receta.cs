@@ -52,9 +52,9 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
         }
-        public byte[]prueba(int i)
+        public byte[] Consultar_ImagenReceta(int R_idReceta)
         {
-            return objDAO.prueba(i);
+            return objDAO.Select_ImagenReceta(R_idReceta);
         }
         public void pruebaa(byte[]a,int i)
         {
