@@ -31,7 +31,7 @@ namespace DAO
             conexion.Close();
             return ds;
         }
-        public DataSet DAO_SelectInsumoCategoria(DTO_CategoriaInsumo objCategoriaI)
+        public DataSet DAO_SelectInsumoXCategoria(DTO_CategoriaInsumo objCategoriaI)
         {
             conexion.Open();
             SqlCommand cmd = new SqlCommand("SP_Listar_Insumo_x_Categoria", conexion);

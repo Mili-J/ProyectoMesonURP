@@ -21,17 +21,17 @@ namespace DAO
 
         public void InsertEquivalencia(DTO_Equivalencia objEquivalencia)
         {
-            conexion.Open();
-            SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
-            unComando.CommandType = CommandType.StoredProcedure;
-            unComando.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta));
-            unComando.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
-            unComando.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
-            unComando.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
-            unComando.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
+            //conexion.Open();
+            //SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
+            //unComando.CommandType = CommandType.StoredProcedure;
+            //unComando.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta));
+            //unComando.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
+            //unComando.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
+            //unComando.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
+            //unComando.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
 
-            unComando.ExecuteNonQuery();
-            conexion.Close();
+            //unComando.ExecuteNonQuery();
+            //conexion.Close();
         }
 
     }

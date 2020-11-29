@@ -49,13 +49,13 @@ namespace DAO
                 throw ex;
             }
         }
-        public DataTable BuscarInsumo(string nombreInsumo)
+        public DataTable BuscarInsumo(int IdInsumo)
         {
             try
             {
-                SqlDataAdapter cmd = new SqlDataAdapter("SP_Buscar_Insumo_MS", conexion);
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Select_Medida_X_Insumo", conexion);
                 cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
-                cmd.SelectCommand.Parameters.AddWithValue("@I_nombreInsumo", nombreInsumo);
+                cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", IdInsumo);
                 DataSet ds = new DataSet();
                 cmd.Fill(ds);
                 return ds.Tables[0];
