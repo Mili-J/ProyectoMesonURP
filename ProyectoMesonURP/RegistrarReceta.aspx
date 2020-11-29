@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/fv.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
     <style type="text/css">
     .rfv
     {
@@ -54,10 +55,12 @@
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
                              <div class="field">
-                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change" required='required'>
+                                 <div class="row">
+                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" class="custom-select2 form-control" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvddlcategoria" runat="server" CssClass="required-item" ControlToValidate="ddlCategoriaReceta" Display="Static" ForeColor="White" InitialValue="--seleccionar--" ><span id="sampleRFV" class="rfv">Seleccione una opción</span></asp:RequiredFieldValidator>
-                          </div>
+                                </div>
+                             </div>
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -176,6 +179,7 @@
             </p>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
     <script>
        //function ValidateSelection() {
