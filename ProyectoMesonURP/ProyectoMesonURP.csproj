@@ -73,6 +73,7 @@
     <Content Include="404.html" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarReceta.aspx" />
+    <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -129,6 +130,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionarOC.aspx" />
+    <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -1978,6 +1980,13 @@
     <Compile Include="CalendariaMenu.aspx.designer.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgregarEquivalencia.aspx.cs">
+      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEquivalencia.aspx.designer.cs">
+      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1998,6 +2007,13 @@
     </Compile>
     <Compile Include="GestionarOC.aspx.designer.cs">
       <DependentUpon>GestionarOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarEquivalencia.aspx.cs">
+      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarEquivalencia.aspx.designer.cs">
+      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
