@@ -115,7 +115,7 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">OC Personalizado:</h6>
-                        <a class="collapse-item" href="Empty.aspx">Gestionar OC</a>
+                        <a class="collapse-item" href="GestionarOC.aspx">Gestionar OC</a>
                         <a class="collapse-item" href="Empty.aspx">Recepcionar Insumo</a>
                     </div>
                 </div>

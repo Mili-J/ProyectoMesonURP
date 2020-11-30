@@ -9,10 +9,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="gvprueba" runat="server" DataKeyNames="I_idInsumo" AutoGenerateColumns="false" Width="359px">
+            <asp:GridView ID="gvprueba" runat="server" DataKeyNames="I_idInsumo,I_nomInsumo" AutoGenerateColumns="false" Width="359px">
                 <Columns>
 
-                   <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" />
+                   <asp:BoundField DataField="I_idInsumo" HeaderText="Id" />
+                    <asp:BoundField DataField="I_nomInsumo" HeaderText="Insumo" />
                    <%--<asp:BoundField DataField="I_nombreInsumo" HeaderText="Insumo" />
                    <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoria" />
                    <asp:BoundField DataField="I_cantidad" HeaderText="Cantidad" />

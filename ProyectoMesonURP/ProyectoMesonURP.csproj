@@ -128,6 +128,7 @@
     <Content Include="css\sweetalert2.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -140,6 +141,8 @@
     <Content Include="img\correcto.png" />
     <Content Include="img\decano.PNG" />
     <Content Include="img\delete.png" />
+    <Content Include="img\descargar-b.png" />
+    <Content Include="img\descargar.png" />
     <Content Include="img\director.PNG" />
     <Content Include="img\editar-b.png" />
     <Content Include="img\editar.png" />
@@ -199,6 +202,8 @@
     <Content Include="img\realtor-1.jpeg" />
     <Content Include="img\realtor-2.jpeg" />
     <Content Include="img\realtor-3.jpeg" />
+    <Content Include="img\recepcionar.png" />
+    <Content Include="img\recepcionar-b.png" />
     <Content Include="img\recibido-b.png" />
     <Content Include="img\recibido.png" />
     <Content Include="img\rector.PNG" />
@@ -1986,6 +1991,13 @@
     </Compile>
     <Compile Include="Empty.aspx.designer.cs">
       <DependentUpon>Empty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarOC.aspx.cs">
+      <DependentUpon>GestionarOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarOC.aspx.designer.cs">
+      <DependentUpon>GestionarOC.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
