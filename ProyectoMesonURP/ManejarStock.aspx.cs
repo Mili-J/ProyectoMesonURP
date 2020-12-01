@@ -38,7 +38,7 @@ namespace ProyectoMesonURP
             {
                 if (txtBuscarInsumo.Text != "")
                 {
-                    gvInsumos.DataSource = _CI.BuscarInsumo(txtBuscarInsumo.Text);
+                    gvInsumos.DataSource = _CI.BuscarInsumoF(txtBuscarInsumo.Text);
                     gvInsumos.DataBind();
                 }
             }

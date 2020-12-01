@@ -65,7 +65,22 @@ namespace DAO
                 throw ex;
             }
         }
-           
+        public DataTable BuscarInsumoF(string nombreInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Buscar_Insumo_MS", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@I_nombreInsumo", nombreInsumo);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable DAO_Consultar_Equivalencia_x_Insumo(DTO_Insumo dto_insumo)
         {
             conexion.Open();
