@@ -39,13 +39,24 @@ namespace ProyectoMesonURP
 
             else
             {
-                if (ctr_menu.CTR_HayMenu(date)) hay = true;
-                else hay = false;
-                
                 string fecha = date.ToShortDateString();
                 Session.Add("fecha", fecha);
-                Session.Add("hay", hay);
-                Response.Redirect("SeleccionarMenu");
+              
+                if (ctr_menu.CTR_HayMenu(date))
+                {
+                    hay = true;
+                    Session.Add("hay", hay);
+                    Response.Redirect("ActualizarMenuDia.aspx");
+                }
+                else 
+                {  
+                    hay = false;
+                    Session.Add("hay", hay);
+                    Response.Redirect("SeleccionarMenu");
+                }
+                
+
+                
             }
         }
 
@@ -61,6 +72,8 @@ namespace ProyectoMesonURP
             e.Cell.Height = Unit.Pixel(50);
             e.Cell.BorderWidth = Unit.Pixel(4);
             e.Cell.BorderStyle = BorderStyle.Dotted;
+            e.Cell.ForeColor = Color.White;
+            bool hay = ctr_menu.CTR_HayMenu(fecha);
             if (e.Day.IsOtherMonth)
             {
                 e.Cell.Visible = false;
@@ -68,13 +81,31 @@ namespace ProyectoMesonURP
             else if (e.Day.Date<DateTime.Today)
             {
                 e.Day.IsSelectable = false;
+                e.Cell.BackColor = Color.Gray;
             }
-            //--------------------------------------
-            if (ctr_menu.CTR_HayMenu(fecha))
+            else if (e.Day.IsToday)
             {
                 System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#629e6c");
                 e.Cell.BackColor = col;
-                e.Cell.ForeColor = Color.White;
+                //e.Cell.BackColor = Color.LightGreen;
+                
+            }
+            else if (e.Day.Date>DateTime.Today)
+            {
+                if (hay) e.Cell.BackColor = Color.Orange;
+                else
+                {
+                    e.Cell.BackColor = Color.White;
+                    e.Cell.ForeColor = Color.Gray;
+
+                }
+            }
+            //--------------------------------------
+            if (hay)
+            {
+                //System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#629e6c");
+                //e.Cell.BackColor = col;
+                //e.Cell.ForeColor = Color.White;
                 DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(dto_menu.ME_idMenu);
                 int i = 0;
                 object[] recetas;

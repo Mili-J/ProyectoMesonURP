@@ -1,9 +1,8 @@
-﻿<%@ Page Title="Mesón URP | Seleccionar Menú" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuDia" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ActualizarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.ActualizarMenuDia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="grids">
+        <div class="grids">
         <div class="progressbar-heading grids-heading title-flex">
             <h2 class="tittle-margin5">Seleccionar el Menú del día</h2>
         </div>
@@ -30,6 +29,43 @@
         <asp:TextBox ID="txtid" runat="server"></asp:TextBox>
         <asp:Button ID="btnprueba" runat="server" Text="Aqui" OnClick="btnprueba_Click"/>
     </div>--%>
+        <%-- ------------------------------------------------------- --%>
+                <div class="panel panel-widget forms-panel" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h4>Menú del Día</h4>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <div id="container-all" style="margin-top: 30px; width: 19%; margin-right:50px">
+                        <div class="form-title color-white">
+                            <h5>Entrada</h5>
+                        </div>
+                        <div class="card" style="width: 18rem">
+                            <asp:Image ID="imgEntrada" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
+                            <asp:Label ID="lblIdEntrada" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="lblNombreEntrada" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblPorcionEntrada" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblCatEntrada" runat="server" Text="Label"></asp:Label>
+                            <asp:Button ID="btnQuitarEntrada" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarEntrada_Click" />
+                        </div>
+                    </div>
+                    <div id="container-all" style="margin-top: 30px; width: 19%; margin-right:50px"">
+                        <div class="form-title color-white">
+                            <h5>Plato de fondo</h5>
+                        </div>
+                        <div class="card" style="width: 18rem">
+                            <asp:Image ID="imgFondo" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
+                            <asp:Label ID="lblIdFondo" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="lblNombreFondo" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblPorcionFondo" runat="server" Text="Label"></asp:Label>
+                            <asp:Label ID="lblCatFondo" runat="server" Text="Label"></asp:Label>
+                            <asp:Button ID="btnQuitarFondo" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarFondo_Click" />
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+       
         <%-- ------------------------------------------------------- --%>
         <div class="panel panel-widget forms-panel">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
@@ -104,56 +140,7 @@
             </div>
         </div>
         <%-- --------------------------------------------------- --%>
-        <div class="panel panel-widget forms-panel" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">
-            <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                <div class="form-title color-white">
-                    <h4>Menú del Día</h4>
-                </div>
-                <div style="display: flex; justify-content: center;">
-                    <div id="container-all" style="margin-top: 30px; width: 19%; margin-right:50px">
-                        <div class="form-title color-white">
-                            <h5>Entrada</h5>
-                        </div>
-                        <div class="card" style="width: 18rem">
-                            <asp:Image ID="imgEntrada" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
-                            <asp:Label ID="lblIdEntrada" runat="server" Text="Label" Visible="false"></asp:Label>
-                            <asp:Label ID="lblNombreEntrada" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lblPorcionEntrada" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lblCatEntrada" runat="server" Text="Label"></asp:Label>
-                            <asp:Button ID="btnQuitarEntrada" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarEntrada_Click" />
-                        </div>
-                    </div>
-                    <div id="container-all" style="margin-top: 30px; width: 19%; margin-right:50px"">
-                        <div class="form-title color-white">
-                            <h5>Plato de fondo</h5>
-                        </div>
-                        <div class="card" style="width: 18rem">
-                            <asp:Image ID="imgFondo" runat="server" CssClass="card-img-top" AlternateText="Imagen de Referencia" />
-                            <asp:Label ID="lblIdFondo" runat="server" Text="Label" Visible="false"></asp:Label>
-                            <asp:Label ID="lblNombreFondo" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lblPorcionFondo" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lblCatFondo" runat="server" Text="Label"></asp:Label>
-                            <asp:Button ID="btnQuitarFondo" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarFondo_Click" />
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-        <%-- Carta--------------------------------------------------- --%>
-    <div class="grids">
-        <div class="progressbar-heading grids-heading title-flex">
-            <h2 class="tittle-margin5">Seleccionar el Platos del día</h2>
-        </div>
-    </div>
-          <div class="form-group">
-              <label for="selector1" class="col-sm-2 control-label">Categoría</label>
-              <div class="col-sm-8">
-                  <asp:DropDownList runat="server" CssClass="form-control1" AutoPostBack="true" ID="ddlcatplato" OnSelectedIndexChanged="ddlcatplato_SelectedIndexChanged">
-                      <asp:ListItem Value="1"> prueba</asp:ListItem>
-                  </asp:DropDownList>
-              </div>
-          </div>
-        <%-- --------------------------------------------------- --%>
+
              <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
                 <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu" />
                 <asp:Button ID="btnRegresar" CssClass="btn btn-danger" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />

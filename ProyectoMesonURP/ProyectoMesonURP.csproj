@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="css\atlas.css" />
@@ -1959,6 +1960,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarMenuDia.aspx.cs">
+      <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarMenuDia.aspx.designer.cs">
+      <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarReceta.aspx.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

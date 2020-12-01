@@ -11,7 +11,7 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class SeleccionarMenuDia
+    public partial class ActualizarMenuDia
     {
 
         /// <summary>
@@ -49,24 +49,6 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator validationNumRac;
-
-        /// <summary>
-        /// Control reapeterEntradas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater reapeterEntradas;
-
-        /// <summary>
-        /// Control repeaterFondo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
 
         /// <summary>
         /// Control imgEntrada.
@@ -177,13 +159,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Button btnQuitarFondo;
 
         /// <summary>
-        /// Control ddlcatplato.
+        /// Control reapeterEntradas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcatplato;
+        protected global::System.Web.UI.WebControls.Repeater reapeterEntradas;
+
+        /// <summary>
+        /// Control repeaterFondo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
 
         /// <summary>
         /// Control btnAceptar.

@@ -4,17 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 using CTR;
 using DTO;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Reflection.Emit;
-using System.Data.Sql;
 
 namespace ProyectoMesonURP
 {
-    public partial class SeleccionarMenuDia : System.Web.UI.Page
+    public partial class ActualizarMenuDia : System.Web.UI.Page
     {
         CTR_Receta ctr_receta;
         CTR_Menu ctr_menu;
@@ -52,81 +49,75 @@ namespace ProyectoMesonURP
                 //-----------------------------------
                 repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
                 repeaterFondo.DataBind();
-                //if (hay)
-                //{
-                //    objMenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
-                //    txtNumRaciones.Text = objMenu.ME_numRaciones.ToString();
-                //    DataTable dtmenu = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(objMenu.ME_idMenu);
-                //    if (dtmenu.Rows.Count == 0)
-                //    {
-                //        OcultarEntrada();
-                //        OcultarFondo();
-                //    }
-                //    else
-                //    {
 
 
-                //        int i = 0;
-                //        object[] recetas;
-                //        DTO_Receta receta;
-
-                //        while (i < dtmenu.Rows.Count)
-                //        {
-                //            recetas = dtmenu.Rows[i].ItemArray;
-                //            receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
-                //            if (receta.CR_idCategoriaReceta == 2)
-                //            {
-                                
-                //                try
-                //                {
-                //                    imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
-                //                }
-                //                catch (Exception)
-                //                {
-
-                //                    imgFondo.AlternateText = "No se ha podido cargar la imagen";
-                //                }
-
-                //                lblIdFondo.Visible = false; lblIdFondo.Text = receta.R_idReceta.ToString();
-                //                lblNombreFondo.Text = receta.R_nombreReceta;
-                //                lblPorcionFondo.Text = receta.R_numeroPorcion.ToString();
-                //                lblCatFondo.Text = new CTR_CategoriaReceta().CTR_Consultar_CategoriaXReceta(receta.CR_idCategoriaReceta).CR_nombreCategoria;
-                //            }
-                //            else
-                //            {
-                //                try
-                //                {
-                //                    imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
-                //                }
-                //                catch (Exception)
-                //                {
-
-                //                    imgEntrada.AlternateText = "No se ha podido cargar la imagen";
-                //                }
-                                
-                //                lblIdEntrada.Visible = false; lblIdEntrada.Text = receta.R_idReceta.ToString();
-                //                lblNombreEntrada.Text = receta.R_nombreReceta;
-                //                lblPorcionEntrada.Text = receta.R_numeroPorcion.ToString();
-                //                lblCatEntrada.Text = new CTR_CategoriaReceta().CTR_Consultar_CategoriaXReceta(receta.CR_idCategoriaReceta).CR_nombreCategoria;
-                //            }
-                //            i++;
-                //        }
+                //------
+                    objMenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
+                    txtNumRaciones.Text = objMenu.ME_numRaciones.ToString();
+                    DataTable dtmenu = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(objMenu.ME_idMenu);
+                    if (dtmenu.Rows.Count == 0)
+                    {
+                        OcultarEntrada();
+                        OcultarFondo();
+                    }
+                    else
+                    {
 
 
-                //        sEntrada = false;
-                //        sSegundo = false;
-                //        //---------------------}
-                //        //---------------------
-                //    }
-                //}
-                //else
-                //{
+                        int i = 0;
+                        object[] recetas;
+                        DTO_Receta receta;
+
+                        while (i < dtmenu.Rows.Count)
+                        {
+                            recetas = dtmenu.Rows[i].ItemArray;
+                            receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
+                            if (receta.CR_idCategoriaReceta == 2)
+                            {
+
+                                try
+                                {
+                                    imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
+                                }
+                                catch (Exception)
+                                {
+
+                                    imgFondo.AlternateText = "No se ha podido cargar la imagen";
+                                }
+
+                                lblIdFondo.Visible = false; lblIdFondo.Text = receta.R_idReceta.ToString();
+                                lblNombreFondo.Text = receta.R_nombreReceta;
+                                lblPorcionFondo.Text = receta.R_numeroPorcion.ToString();
+                                lblCatFondo.Text = new CTR_CategoriaReceta().CTR_Consultar_CategoriaXReceta(receta.CR_idCategoriaReceta).CR_nombreCategoria;
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
+                                }
+                                catch (Exception)
+                                {
+
+                                    imgEntrada.AlternateText = "No se ha podido cargar la imagen";
+                                }
+
+                                lblIdEntrada.Visible = false; lblIdEntrada.Text = receta.R_idReceta.ToString();
+                                lblNombreEntrada.Text = receta.R_nombreReceta;
+                                lblPorcionEntrada.Text = receta.R_numeroPorcion.ToString();
+                                lblCatEntrada.Text = new CTR_CategoriaReceta().CTR_Consultar_CategoriaXReceta(receta.CR_idCategoriaReceta).CR_nombreCategoria;
+                            }
+                            i++;
+                        }
 
 
-                    OcultarEntrada();
-                    OcultarFondo();
+                        sEntrada = false;
+                        sSegundo = false;
+                        //---------------------}
+                        //---------------------
+                    }
+                
 
-                //}
             }
         }
         public void OcultarEntrada()
@@ -180,24 +171,24 @@ namespace ProyectoMesonURP
             //{
             //    revNumRac.ErrorMessage = "Número inválido";
             //    revNumRac.ValidationExpression = @"\d{1,}";
-            //}
-            if (hay == false)
-            {
-                if (sSegundo == false && sEntrada == false)
-                {
-                    dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
-                    dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
-                    ctr_menu.CTR_RegistrarMenu(dto_menu);
-                    int id = ctr_menu.CTR_IdMenuMayor();
-                    //--------------------------------------
-                    RegistrarMenuXReceta(id);
-                    //--------------------------------------
-                    Response.Redirect("CalendariaMenu.aspx");
+            ////}
+            //if (hay == false)
+            //{
+            //    if (sSegundo == false && sEntrada == false)
+            //    {
+            //        dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
+            //        dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
+            //        ctr_menu.CTR_RegistrarMenu(dto_menu);
+            //        int id = ctr_menu.CTR_IdMenuMayor();
+            //        //--------------------------------------
+            //        RegistrarMenuXReceta(id);
+            //        //--------------------------------------
+            //        Response.Redirect("CalendariaMenu.aspx");
 
-                }
-            }
-            else if (hay == true)
-            {
+            //    }
+            //}
+            //else if (hay == true)
+            //{
                 if (sSegundo == false && sEntrada == false)
                 {
                     DTO_Menu objmenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
@@ -221,7 +212,7 @@ namespace ProyectoMesonURP
 
                 }
 
-            }
+            //}
 
 
         }
@@ -289,11 +280,6 @@ namespace ProyectoMesonURP
             OcultarEntrada();
         }
 
-        protected void ddlcatplato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void repeaterFondo_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "VerFondo")
@@ -347,4 +333,5 @@ namespace ProyectoMesonURP
             Response.Redirect("CalendariaMenu.aspx");
         }
     }
+
 }
