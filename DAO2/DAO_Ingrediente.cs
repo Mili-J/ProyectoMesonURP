@@ -1,10 +1,7 @@
-﻿using DTO;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
-using System.Data.SqlClient;
-using System.Data;
 using DTO;
 
 namespace DAO
