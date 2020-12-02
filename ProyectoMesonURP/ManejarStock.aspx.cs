@@ -18,17 +18,17 @@ namespace ProyectoMesonURP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Login?x=1");
-            }
+            //if (Session["Usuario"] == null)
+            //{
+            //    Response.Redirect("Login?x=1");
+            //}
             if (!Page.IsPostBack)
             {
                 dto_i = new DTO_Insumo();
                 CargarStockInsumo();
                 CargarStockInsumo2();
             }
-            
+
         }
 
         protected void btnBuscar_ServerClick(object sender, EventArgs e)
@@ -56,26 +56,26 @@ namespace ProyectoMesonURP
             CargarStockInsumo2();
             Recuperar();
 
-            
-                CheckBox chk;
-                DataTable dt = new DataTable();
-                dt.Columns.Add("I_idInsumo");
-                dt.Columns.Add("I_nomInsumo");
-                foreach (GridViewRow grvRow in gvInsumos2.Rows)
+
+            CheckBox chk;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("I_idInsumo");
+            dt.Columns.Add("I_nomInsumo");
+            foreach (GridViewRow grvRow in gvInsumos2.Rows)
+            {
+                chk = (CheckBox)grvRow.FindControl("chkBox");
+                if (chk.Checked)
                 {
-                    chk = (CheckBox)grvRow.FindControl("chkBox");
-                    if (chk.Checked)
-                    {
-                        int d = Convert.ToInt32(gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_idInsumo"].ToString());
-                        string n = gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_NombreInsumo"].ToString();
-                        dt.Rows.Add(d, n);
-                    }
+                    int d = Convert.ToInt32(gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_idInsumo"].ToString());
+                    string n = gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_NombreInsumo"].ToString();
+                    dt.Rows.Add(d, n);
                 }
-            
-               gvInsumos2.AllowPaging = true;
-               CargarStockInsumo2();
-               Session.Add("InsumosSeleccionados", dt);
-               Response.Redirect("SC_Prueba.aspx");
+            }
+
+            gvInsumos2.AllowPaging = true;
+            CargarStockInsumo2();
+            Session.Add("InsumosSeleccionados", dt);
+            Response.Redirect("SC_Prueba.aspx");
 
         }
         private void Guardar()
@@ -135,7 +135,25 @@ namespace ProyectoMesonURP
         {
             gvInsumos.PageIndex = e.NewPageIndex;
             CargarStockInsumo();
+
         }
+        protected void gvInsumos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "El_nombreEstado").ToString());
+
+                if (estado == "Agotado")
+                {
+                    e.Row.Cells[5].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[5].Text + "</span>";
+                }
+                else if (estado == "Disponible")
+                {
+                    e.Row.Cells[5].Text = "<span class='badge badge-success'>" + e.Row.Cells[5].Text + "</span>";
+                }
+            }
+        }
+
         protected void gvInsumos2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             Guardar();

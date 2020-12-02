@@ -233,10 +233,6 @@
     <Content Include="js\cbpFWTabs.js" />
     <Content Include="js\Chart.js" />
     <Content Include="js\clndr.js" />
-    <Content Include="js\demo\chart-area-demo.js" />
-    <Content Include="js\demo\chart-bar-demo.js" />
-    <Content Include="js\demo\chart-pie-demo.js" />
-    <Content Include="js\demo\datatables-demo.js" />
     <Content Include="js\Empty js\bootstrap.js" />
     <Content Include="js\Empty js\bootstrap.min.js" />
     <Content Include="js\Empty js\html5shiv.js" />
@@ -294,14 +290,12 @@
     <Content Include="SeleccionarMenuTransformar.aspx" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="SC_Prueba.aspx" />
+    <Content Include="vendors\styles\core.css" />
+    <Content Include="vendors\styles\style.css" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="vendor\chart.js\Chart.bundle.js" />
-    <Content Include="vendor\chart.js\Chart.bundle.min.js" />
-    <Content Include="vendor\chart.js\Chart.js" />
-    <Content Include="vendor\chart.js\Chart.min.js" />
     <Content Include="vendor\datatables\dataTables.bootstrap4.css" />
     <Content Include="vendor\datatables\dataTables.bootstrap4.js" />
     <Content Include="vendor\datatables\dataTables.bootstrap4.min.css" />

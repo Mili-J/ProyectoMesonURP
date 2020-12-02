@@ -3,6 +3,8 @@
     <style type="text/css">
         .mb-0 {}
     </style>
+        <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+    	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
          <div class="women_main">
@@ -26,7 +28,7 @@
                                         <h4>Stock Actual</h4>
                                     </div>
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                       <asp:GridView ID="gvInsumos" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
+                                       <asp:GridView ID="gvInsumos" allowpaging="True"  OnRowDataBound="gvInsumos_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
                                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,CI_nombreCategoria,I_cantidad,Representacion de compra,El_nombreEstado"  
                                             Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged" GridLines="None">
                                             <Columns>
@@ -35,12 +37,7 @@
                                                 <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoria" />
                                                 <asp:BoundField DataField="I_cantidad" HeaderText="Cantidad" />
                                                 <asp:BoundField DataField="Representacion de compra" HeaderText="Representacion de compra" />
-                                                <asp:BoundField DataField="El_nombreEstado" HeaderText="Estado" />
-                                                <%--<asp:TemplateField HeaderText="Transformar">
-                                                    <ItemTemplate>
-                                                <asp:ImageButton ID="btnTransformar" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="TransformarIn" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>--%>
+                                                <asp:BoundField DataField="El_nombreEstado" HeaderText="Estado"/>                                            
 
                                             </Columns>
                                         </asp:GridView>
