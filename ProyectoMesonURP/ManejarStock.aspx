@@ -30,7 +30,7 @@
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                        <asp:GridView ID="gvInsumos" allowpaging="True"  OnRowDataBound="gvInsumos_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
                                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,CI_nombreCategoria,I_cantidad,Representacion de compra,El_nombreEstado"  
-                                            Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged" GridLines="None">
+                                            Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" CellPadding="4" PageSize="8" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged" GridLines="None">
                                             <Columns>
                                                 <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                                 <asp:BoundField DataField="I_NombreInsumo" HeaderText="Insumo" />
@@ -53,9 +53,9 @@
                                      <h4>Insumos que requieren abastecimiento</h4>
                                     </div>
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                     <asp:GridView ID="gvInsumos2" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
+                                     <asp:GridView ID="gvInsumos2"  OnRowDataBound="gvInsumos2_RowDataBound" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
                                         CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadMinima,I_cantidad,El_nombreEstado" 
-                                        Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None" OnSelectedIndexChanged="gvInsumos2_SelectedIndexChanged">
+                                        Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="8" GridLines="None" OnSelectedIndexChanged="gvInsumos2_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                             <asp:BoundField Datafield="I_NombreInsumo" HeaderText="Nombre insumo" />

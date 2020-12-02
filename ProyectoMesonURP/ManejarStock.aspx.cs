@@ -161,7 +161,22 @@ namespace ProyectoMesonURP
             CargarStockInsumo2();
             Recuperar();
         }
+        protected void gvInsumos2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "El_nombreEstado").ToString());
 
+                if (estado == "Agotado")
+                {
+                    e.Row.Cells[4].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[4].Text + "</span>";
+                }
+                else if (estado == "Disponible")
+                {
+                    e.Row.Cells[5].Text = "<span class='badge badge-success'>" + e.Row.Cells[5].Text + "</span>";
+                }
+            }
+        }
         protected void gvInsumos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
