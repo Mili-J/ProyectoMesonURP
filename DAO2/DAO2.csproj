@@ -53,11 +53,11 @@
     <Compile Include="DAO_EstadoInsumo.cs" />
     <Compile Include="DAO_EstadoOC.cs" />
     <Compile Include="DAO_EstadoProveedor.cs" />
+    <Compile Include="DAO_EstadoReceta.cs" />
     <Compile Include="DAO_Formato.cs" />
     <Compile Include="DAO_Ingrediente.cs" />
     <Compile Include="DAO_IngredienteXReceta.cs" />
     <Compile Include="DAO_Insumo.cs" />
-    <Compile Include="DAO_InsumoXProveedor.cs" />
     <Compile Include="DAO_Medida.cs" />
     <Compile Include="DAO_MedidaXFormato.cs" />
     <Compile Include="DAO_MedidaXFormatoCocina.cs" />

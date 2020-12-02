@@ -17,7 +17,7 @@
                         <h4>Información del Plato</h4>
                     </div>
                 </div>
-                <div class="form-horizontal" runat="server">
+                <div class="p-5" runat="server">
                     <div class="form-group" style="width: 1889px; margin-top: 23px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
                         <div class="col-sm-8">
@@ -35,10 +35,22 @@
                     <div class="form-group" style="width: 1889px;">
                         <label for="selector1" class="col-sm-2 control-label">Categoría</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
+                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1">
                             </asp:DropDownList>
                              <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
+                    </div>
+                    <div class="form-group" style="width: 1889px;">
+                        <label for="selector1" class="col-sm-2 control-label">Sub categoría</label>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="ddlSubCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1">
+                                <asp:ListItem Value="">Seleccione una sub categoría</asp:ListItem>
+                                <asp:ListItem Value="Entradas">Entradas</asp:ListItem>
+                                <asp:ListItem Value="Platos de fondo">Platos de fondo</asp:ListItem>
+                                <asp:ListItem Value="Sopas">Sopas</asp:ListItem>
+                                <asp:ListItem Value="Postres">Postres</asp:ListItem>
+                            </asp:DropDownList>
+                            </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Descripción</label>
@@ -62,9 +74,6 @@
                         <label style="height: 45px; width: 257px" class="col-sm-2 control-label">Selecciona la imagen</label>
                         <asp:FileUpload Style="height: 45px; z-index: 100;" ID="fuImagen" accept=".jpg" runat="server" CssClass="form-control1 " />
                         <br />
-                        <%--                    <p class="center-button">
-                            <asp:Button ID="btnCargar" runat="server" Text="Cargar" class="btn btn-danger" OnClick="btnCargar_Click" />
-                        </p>--%>
                     </div>
                 </div>
             </div>
@@ -80,8 +89,7 @@
                     <div class="form-group" style="width: 1887px; margin-top: 30px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1"
-                                OnSelectedIndexChanged="ddlIngredientes_Change">
+                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>

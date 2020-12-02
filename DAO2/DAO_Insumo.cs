@@ -49,7 +49,23 @@ namespace DAO
                 throw ex;
             }
         }
-        public DataTable BuscarInsumo(string nombreInsumo)
+        public DataTable BuscarInsumo(int IdInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Select_Medida_X_Insumo", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", IdInsumo);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable BuscarInsumoF(string nombreInsumo)
         {
             try
             {
@@ -65,7 +81,6 @@ namespace DAO
                 throw ex;
             }
         }
-           
         public DataTable DAO_Consultar_Equivalencia_x_Insumo(DTO_Insumo dto_insumo)
         {
             conexion.Open();

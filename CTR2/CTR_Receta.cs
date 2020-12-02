@@ -30,13 +30,17 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria(categoria);
         }
-        public DataTable CTR__Consultar_Recetas_Disponibles(int racion, int caso)
-        {
-            return objDAO.DAO_Consultar_Recetas_Disponibles(racion, caso);
-        }
+        //public DataTable CTR__Consultar_Recetas_Disponibles(int racion, int caso)
+        //{
+        //    return objDAO.DAO_Consultar_Recetas_Disponibles(racion, caso);
+        //}
         public DTO_Receta CTR_Consultar_Receta(int i)
         {
             return objDAO.DAO_Consultar_Receta(i);
+        }
+        public DTO_Receta CTR_Consultar_RecetaD(int i)
+        {
+            return objDAO.DAO_Consultar_RecetaD(i);
         }
         public DataTable CTR_Consultar_Receta2()
         {
@@ -52,9 +56,9 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
         }
-        public byte[]prueba(int i)
+        public byte[] Consultar_ImagenReceta(int R_idReceta)
         {
-            return objDAO.prueba(i);
+            return objDAO.Select_ImagenReceta(R_idReceta);
         }
         public void pruebaa(byte[]a,int i)
         {

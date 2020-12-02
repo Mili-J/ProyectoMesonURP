@@ -34,8 +34,8 @@ namespace ProyectoMesonURP
         public void ListarCategoriaReceta()
         {
             ddlCategoriaReceta.DataSource = _Ccr.CargarCategoriaReceta();
-            ddlCategoriaReceta.DataTextField = "CR_nombreCategoria";
-            ddlCategoriaReceta.DataValueField = "CR_idCategoriaReceta";
+            ddlCategoriaReceta.DataTextField = "CP_nombreCategoriaR";
+            ddlCategoriaReceta.DataValueField = "CP_idCategoriaReceta";
             ddlCategoriaReceta.DataBind();
             ddlCategoriaReceta.Items.Insert(0, "--seleccionar--");
         }
@@ -46,28 +46,6 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataValueField = "I_idIngrediente";
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
-        }
-
-        protected void ddlIngredientes_Change(object sender, EventArgs e)
-        {
-            if (ddlIngredientes.SelectedIndex != 0)
-            {
-                //txtUnidadMedida.Text = _Cm.BuscarMedida(Convert.ToInt32(ddlIngredientes.SelectedValue));
-                //txtOculto.Text = _Cmxi.VerificarStockMin(Convert.ToInt32(ddlInsumos.SelectedValue));
-            }
-            else
-            {
-                //txtUnidadMedida.Text = "";
-                //txtOculto.Text = "";
-                //txtCantidad.Text = "";
-                //ScriptManager.RegisterClientScriptBlock(this.PanelAñadir, this.PanelAñadir.GetType(), "alertaSeleccionar", "alertaSeleccionar();", true);
-                //return;
-            }
-        }
-        protected void ddlCategoriaReceta_Change(object sender, EventArgs e)
-        {
-            
-
         }
         protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,31 +117,36 @@ namespace ProyectoMesonURP
                 gvIngredientes.DataSource = tin;
                 gvIngredientes.DataBind();
             }
-        }           
+        }
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
-                _Dr.R_nombreReceta = txtnombre.Text;
-                _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
-                _Dr.R_descripcion = txtDescripcion.Text;
-                _Dr.R_imagenReceta = fuImagen.FileBytes;
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
-                _Cr.RegistrarReceta(_Dr);
-                //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
-                //return;
+            _Dr.R_nombreReceta = txtnombre.Text;
+            _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
+            _Dr.R_descripcion = txtDescripcion.Text;
+            _Dr.R_imagenReceta = fuImagen.FileBytes;
+            _Dr.R_subcategoria = ddlSubCategoriaReceta.SelectedValue;
+            _Dr.EP_idEstadoReceta = 1;
+            _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+            
+
             if (pila.Count == 0)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(),"alert", "alertaError()", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaError()", true);
                 return;
             }
-            while (pila.Count >= 1)
+            else
             {
-                _Cixr.RegistrarIngredienteXReceta(pila[pila.Count - 1]);
-                pila.RemoveAt(pila.Count - 1);
-                tin.Clear();
-            }
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
-            return;
+                _Cr.RegistrarReceta(_Dr);
+                while (pila.Count >= 1)
+                {
+                    _Cixr.RegistrarIngredienteXReceta(pila[pila.Count - 1]);
+                    pila.RemoveAt(pila.Count - 1);
+                    tin.Clear();
+                }
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
+                return;
         }
+    }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
         {
             tin.Clear();

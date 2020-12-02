@@ -38,7 +38,7 @@ namespace ProyectoMesonURP
             {
                 if (txtBuscarInsumo.Text != "")
                 {
-                    gvInsumos.DataSource = _CI.BuscarInsumo(txtBuscarInsumo.Text);
+                    gvInsumos.DataSource = _CI.BuscarInsumoF(txtBuscarInsumo.Text);
                     gvInsumos.DataBind();
                 }
             }
@@ -60,13 +60,15 @@ namespace ProyectoMesonURP
                 CheckBox chk;
                 DataTable dt = new DataTable();
                 dt.Columns.Add("I_idInsumo");
+                dt.Columns.Add("I_nomInsumo");
                 foreach (GridViewRow grvRow in gvInsumos2.Rows)
                 {
                     chk = (CheckBox)grvRow.FindControl("chkBox");
                     if (chk.Checked)
                     {
                         int d = Convert.ToInt32(gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_idInsumo"].ToString());
-                        dt.Rows.Add(d);
+                        string n = gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_NombreInsumo"].ToString();
+                        dt.Rows.Add(d, n);
                     }
                 }
             
