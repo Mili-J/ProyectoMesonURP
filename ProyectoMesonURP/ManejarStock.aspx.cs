@@ -173,7 +173,7 @@ namespace ProyectoMesonURP
                 }
                 else if (estado == "Disponible")
                 {
-                    e.Row.Cells[5].Text = "<span class='badge badge-success'>" + e.Row.Cells[5].Text + "</span>";
+                    e.Row.Cells[4].Text = "<span class='badge badge-success'>" + e.Row.Cells[4].Text + "</span>";
                 }
             }
         }

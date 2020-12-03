@@ -34,9 +34,9 @@
                                             <Columns>
                                                 <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                                 <asp:BoundField DataField="I_NombreInsumo" HeaderText="Insumo" />
-                                                <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoria" />
+                                                <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoría" />
                                                 <asp:BoundField DataField="I_cantidad" HeaderText="Cantidad" />
-                                                <asp:BoundField DataField="Representacion de compra" HeaderText="Representacion de compra" />
+                                                <asp:BoundField DataField="Representacion de compra" HeaderText="Representación de compra" />
                                                 <asp:BoundField DataField="El_nombreEstado" HeaderText="Estado"/>                                            
 
                                             </Columns>
@@ -59,7 +59,7 @@
                                         <Columns>
                                             <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                             <asp:BoundField Datafield="I_NombreInsumo" HeaderText="Nombre insumo" />
-                                            <asp:BoundField Datafield="I_cantidadMinima" HeaderText="Stock minimo" />
+                                            <asp:BoundField Datafield="I_cantidadMinima" HeaderText="Stock mínimo" />
                                             <asp:BoundField Datafield="I_cantidad" HeaderText="Stock actual" />
                                             <asp:BoundField Datafield="El_nombreEstado" HeaderText="Estado" />
                                             <%--<asp:TemplateField HeaderText="Solicitar">
