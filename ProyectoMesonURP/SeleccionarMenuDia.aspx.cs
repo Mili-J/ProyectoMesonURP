@@ -40,18 +40,22 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
 
-
-
                 fecha = Session["fecha"].ToString();
                 txtFecha.Text = fecha;
                 hay = (bool)Session["hay"];
 
                 //-----------------------------------
-                reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);
+                reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1,"Segundos");
                 reapeterEntradas.DataBind();
                 //-----------------------------------
-                repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
+                repeaterFondo.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1,"Entradas");
                 repeaterFondo.DataBind();
+                //-----------------------------------
+                repeaterBebida.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1, "Bebidas");
+                repeaterBebida.DataBind();
+                //-----------------------------------
+                repeaterCarta.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria(2);
+                repeaterCarta.DataBind();
                 //if (hay)
                 //{
                 //    objMenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
@@ -64,8 +68,6 @@ namespace ProyectoMesonURP
                 //    }
                 //    else
                 //    {
-
-
                 //        int i = 0;
                 //        object[] recetas;
                 //        DTO_Receta receta;
@@ -76,7 +78,7 @@ namespace ProyectoMesonURP
                 //            receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
                 //            if (receta.CR_idCategoriaReceta == 2)
                 //            {
-                                
+
                 //                try
                 //                {
                 //                    imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
@@ -103,7 +105,7 @@ namespace ProyectoMesonURP
 
                 //                    imgEntrada.AlternateText = "No se ha podido cargar la imagen";
                 //                }
-                                
+
                 //                lblIdEntrada.Visible = false; lblIdEntrada.Text = receta.R_idReceta.ToString();
                 //                lblNombreEntrada.Text = receta.R_nombreReceta;
                 //                lblPorcionEntrada.Text = receta.R_numeroPorcion.ToString();
@@ -121,11 +123,8 @@ namespace ProyectoMesonURP
                 //}
                 //else
                 //{
-
-
-                    OcultarEntrada();
+                OcultarEntrada();
                     OcultarFondo();
-
                 //}
             }
         }
@@ -181,12 +180,13 @@ namespace ProyectoMesonURP
             //    revNumRac.ErrorMessage = "Número inválido";
             //    revNumRac.ValidationExpression = @"\d{1,}";
             //}
+
             if (hay == false)
             {
                 if (sSegundo == false && sEntrada == false)
                 {
-                    dto_menu.ME_fechaMenu = Convert.ToDateTime(txtFecha.Text);
-                    dto_menu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
+                    dto_menu.ME_fechaMenu = txtFecha.Text;
+                    dto_menu.ME_totalPorcion = Convert.ToInt32(txtNumRaciones.Text);
                     ctr_menu.CTR_RegistrarMenu(dto_menu);
                     int id = ctr_menu.CTR_IdMenuMayor();
                     //--------------------------------------
@@ -201,7 +201,7 @@ namespace ProyectoMesonURP
                 if (sSegundo == false && sEntrada == false)
                 {
                     DTO_Menu objmenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
-                    objmenu.ME_numRaciones = Convert.ToInt32(txtNumRaciones.Text);
+                    objmenu.ME_totalPorcion = Convert.ToInt32(txtNumRaciones.Text);
                     DataTable dtMenuReceta = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(objmenu.ME_idMenu);
                     ctr_menu.CTR_ActualizarMenu(objmenu);
                     if (dtMenuReceta.Rows.Count == 2)
@@ -289,7 +289,14 @@ namespace ProyectoMesonURP
             OcultarEntrada();
         }
 
-        protected void ddlcatplato_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        protected void repeaterBebida_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
+
+        protected void repeaterCarta_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
 
         }

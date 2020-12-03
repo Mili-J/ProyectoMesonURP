@@ -12,7 +12,7 @@ using System.Data;
 namespace ProyectoMesonURP
 {
     public partial class ActualizarMenuDia : System.Web.UI.Page
-    {
+    {/*
         CTR_Receta ctr_receta;
         CTR_Menu ctr_menu;
         DTO_Menu dto_menu;
@@ -331,7 +331,7 @@ namespace ProyectoMesonURP
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("CalendariaMenu.aspx");
-        }
+        }*/
     }
 
 }

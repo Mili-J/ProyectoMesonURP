@@ -131,11 +131,11 @@ namespace ProyectoMesonURP
             _Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
             try
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
             }
             catch (System.FormatException)
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
             }
             _Cr.ActualizarReceta(_Dr);
             ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);

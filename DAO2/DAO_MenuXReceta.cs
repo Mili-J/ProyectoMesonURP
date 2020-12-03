@@ -50,7 +50,7 @@ namespace DAO
             while (j< dtMenuReceta.Rows.Count)
             {
                 recetasMenu = dtMenuReceta.Rows[j].ItemArray;
-                obj.MR_idMenuReceta = Convert.ToInt32(recetasMenu[0]);
+                obj.MXR_idMenuReceta = Convert.ToInt32(recetasMenu[0]);
                 obj.R_idReceta = Convert.ToInt32(recetasMenu[1]);
                 obj.ME_idMenu = Convert.ToInt32(recetasMenu[2]);
                 DAO_ActualizarUnMenuXReceta(obj);
@@ -65,7 +65,7 @@ namespace DAO
             SqlCommand comando = new SqlCommand("SP_ActualizarMenuXReceta", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@R_idReceta", menureceta.R_idReceta);
-            comando.Parameters.AddWithValue("@MR_idMenuReceta",menureceta.MR_idMenuReceta);
+            comando.Parameters.AddWithValue("@MR_idMenuReceta",menureceta.MXR_idMenuReceta);
             comando.ExecuteNonQuery();
             conexion.Close();
         }
@@ -80,7 +80,7 @@ namespace DAO
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
             {
-                obj.MR_idMenuReceta = Convert.ToInt32(reader[0]);
+                obj.MXR_idMenuReceta = Convert.ToInt32(reader[0]);
                 obj.R_idReceta = Convert.ToInt32(reader[1]);
                 obj.ME_idMenu = Convert.ToInt32(reader[2]);
             }

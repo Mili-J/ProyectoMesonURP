@@ -146,7 +146,7 @@ namespace ProyectoMesonURP
                 _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
                 _Dr.R_descripcion = txtDescripcion.Text;
                 _Dr.R_imagenReceta = fuImagen.FileBytes;
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
                 _Cr.RegistrarReceta(_Dr);
                 //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
                 //return;

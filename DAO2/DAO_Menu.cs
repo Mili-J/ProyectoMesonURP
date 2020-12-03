@@ -24,7 +24,7 @@ namespace DAO
             SqlCommand comando = new SqlCommand("SP_RegistrarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@ME_fechaMenu", dto_menu.ME_fechaMenu);
-            comando.Parameters.AddWithValue("@ME_numRaciones", dto_menu.ME_numRaciones);
+            comando.Parameters.AddWithValue("@ME_numRaciones", dto_menu.ME_totalPorcion);
             comando.ExecuteNonQuery();
             conexion.Close();
         }
@@ -33,7 +33,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ActualizarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_numRaciones", obj.ME_numRaciones);
+            comando.Parameters.AddWithValue("@ME_numRaciones", obj.ME_totalPorcion);
             comando.Parameters.AddWithValue("@ME_idMenu", obj.ME_idMenu);
             comando.ExecuteNonQuery();
             conexion.Close();
@@ -62,8 +62,9 @@ namespace DAO
             if (reader.Read())
             {
                 dto_menu.ME_idMenu = Convert.ToInt32(reader[0]);
-                dto_menu.ME_fechaMenu = Convert.ToDateTime(reader[1]);
-                dto_menu.ME_numRaciones = Convert.ToInt32(reader[2]);
+                dto_menu.ME_fechaMenu = Convert.ToString(reader[1]);
+                dto_menu.ME_totalPorcion = Convert.ToInt32(reader[2]);
+                dto_menu.EM_idEstadoMenu = Convert.ToInt32(reader[3]);
             }
             conexion.Close();
             return dto_menu;

@@ -8,9 +8,10 @@ namespace DTO
 {
     public class DTO_MenuXReceta
     {
-        public int MR_idMenuReceta { get; set; }
+        public int MXR_idMenuReceta { get; set; }
         public int R_idReceta { get; set; }
         public int ME_idMenu { get; set; }
+        public int MXR_numeroPorcion { get; set; }
 
     }
 }

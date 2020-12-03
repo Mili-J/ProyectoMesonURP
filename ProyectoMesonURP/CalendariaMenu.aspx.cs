@@ -76,7 +76,7 @@ namespace ProyectoMesonURP
             bool hay = ctr_menu.CTR_HayMenu(fecha);
             if (e.Day.IsOtherMonth)
             {
-                e.Cell.Visible = false;
+                e.Day.IsSelectable = false;
             }
             else if (e.Day.Date<DateTime.Today)
             {

@@ -50,7 +50,9 @@
     <Compile Include="CTR_Equivalencia.cs" />
     <Compile Include="CTR_EstadoCotizacion.cs" />
     <Compile Include="CTR_EstadoInsumo.cs" />
+    <Compile Include="CTR_EstadoMenu.cs" />
     <Compile Include="CTR_EstadoOC.cs" />
+    <Compile Include="CTR_EstadoPlato.cs" />
     <Compile Include="CTR_EstadoProveedor.cs" />
     <Compile Include="CTR_Formato.cs" />
     <Compile Include="CTR_Ingrediente.cs" />

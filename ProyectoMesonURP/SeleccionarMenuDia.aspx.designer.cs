@@ -69,6 +69,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
 
         /// <summary>
+        /// Control repeaterBebida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterBebida;
+
+        /// <summary>
         /// Control imgEntrada.
         /// </summary>
         /// <remarks>
@@ -177,13 +186,13 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Button btnQuitarFondo;
 
         /// <summary>
-        /// Control ddlcatplato.
+        /// Control repeaterCarta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcatplato;
+        protected global::System.Web.UI.WebControls.Repeater repeaterCarta;
 
         /// <summary>
         /// Control btnAceptar.
