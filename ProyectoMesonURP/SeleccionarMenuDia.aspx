@@ -43,7 +43,7 @@
                                 <img class="card-img-top" alt="Imagen de Referencia"
                                     src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                 <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
                                     <h5 class="card-title">
                                         <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
                                     </h5>
@@ -79,7 +79,7 @@
                                 <img class="card-img-top" alt="Imagen de Referencia"
                                     src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                 <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
                                     <h5 class="card-title">
                                         <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
                                     </h5>
@@ -92,8 +92,8 @@
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                     </p>
                                     <div>
-                                        <asp:Button ID="btnVerBebida" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerBebida" />
-                                        <asp:Button ID="btnAgregarBebida" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarBebida" />
+                                        <asp:Button ID="btnVerFondo" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerFondo" />
+                                        <asp:Button ID="btnAgregarFondo" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarFondo" />
 
                                     </div>
                                 </div>
@@ -129,8 +129,8 @@
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                     </p>
                                     <div>
-                                        <asp:Button ID="btnVerFondo" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerFondo" />
-                                        <asp:Button ID="btnAgregarFondo" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarFondo" />
+                                        <asp:Button ID="btnVerBebida" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerBebida" />
+                                        <asp:Button ID="btnAgregarBebida" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarBebida" />
 
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
             </div>
         </div>
         <%-- --------------------------------------------------- --%>
-        <div class="panel panel-widget forms-panel" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">
+<%--        <div class="panel panel-widget forms-panel" style="background-color: #f5f6f7; border-radius: 1%; padding-bottom: 4px;">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
                     <h4>Menú del Día</h4>
@@ -172,7 +172,52 @@
                             <asp:Label ID="lblCatFondo" runat="server" Text="Label"></asp:Label>
                             <asp:Button ID="btnQuitarFondo" CssClass="btn btn-primary" runat="server" Text="Quitar" OnClick="btnQuitarFondo_Click" />
                         </div>
-                    </div> 
+                    </div>
+                </div>
+
+            </div>
+        </div>--%>
+        <div class="panel panel-widget forms-panel">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h4>Menú del día</h4>
+                </div>
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
+                    <asp:Repeater ID="repeaterMenu" runat="server" OnItemCommand="repeaterMenu_ItemCommand">
+                        <ItemTemplate>
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" alt="Imagen de Referencia"
+                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                <div class="card-body">
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
+                                    <h5 class="card-title">
+                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                    </h5>
+                                    <p class="card-text">
+                                        Porción:
+                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría: 
+                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría de Receta: 
+                                                         <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Raciones: 
+                                                         <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+                                    </p>
+                                    <div>
+                                        <asp:Button ID="btnQuitarMenu" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarMenu" />
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
         </div>
@@ -189,7 +234,7 @@
                                 <img class="card-img-top" alt="Imagen de Referencia"
                                     src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                 <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
                                     <h5 class="card-title">
                                         <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
                                     </h5>
@@ -201,6 +246,7 @@
                                         Categoría: 
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                     </p>
+
                                     <div>
                                         <asp:Button ID="btnVerCarta" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerCarta" />
                                         <asp:Button ID="btnAgregarCarta" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarCarta" />
@@ -224,7 +270,7 @@
         <div class="panel panel-widget forms-panel">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
-                    <h4>A la Carta</h4>
+                    <h4>Platos seleccionados a la Carta</h4>
                 </div>
                 <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
                     <asp:Repeater ID="repeaterCartaSeleccionada" runat="server" OnItemCommand="repeaterCartaSeleccionada_ItemCommand">
@@ -233,7 +279,7 @@
                                 <img class="card-img-top" alt="Imagen de Referencia"
                                     src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                 <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
                                     <h5 class="card-title">
                                         <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
                                     </h5>
@@ -244,6 +290,14 @@
                                     <p class="card-text">
                                         Categoría: 
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría de Receta: 
+                                                         <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Raciones: 
+                                                         <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
                                     </p>
                                     <div>
                                         <asp:Button ID="btnQuitarCarta" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarCarta" />
@@ -259,7 +313,7 @@
         </div>
         <%-- --------------------------------------------------- --%>
              <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
-                <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Agregar Menu" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu" />
+                <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu" />
                 <asp:Button ID="btnRegresar" CssClass="btn btn-danger" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
             </p>
         </div>

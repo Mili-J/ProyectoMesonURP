@@ -9,12 +9,13 @@ using DTO;
 
 namespace DAO
 {
-    public class DAO_CategoriaPlato//Plato o Carta
+    public class DAO_CategoriaPlato//Menu o Carta
     {
         SqlConnection conexion;
         public DAO_CategoriaPlato()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
         }
+
     }
 }
