@@ -129,6 +129,7 @@
     <Content Include="css\sweetalert2.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GestionarCotizacion.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -283,6 +284,7 @@
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
+    <Content Include="RegistrarCotizacion.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
     <Content Include="SeleccionarMenuTransformar.aspx" />
@@ -1995,6 +1997,13 @@
     <Compile Include="Empty.aspx.designer.cs">
       <DependentUpon>Empty.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionarCotizacion.aspx.cs">
+      <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarCotizacion.aspx.designer.cs">
+      <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2048,6 +2057,13 @@
       <DependentUpon>MenuDelDia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarCotizacion.aspx.cs">
+      <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCotizacion.aspx.designer.cs">
+      <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarReceta.aspx.cs">
       <DependentUpon>RegistrarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
