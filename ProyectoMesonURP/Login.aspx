@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoMesonURP.Login" %>
+﻿<%@ Page Title="Mesón URP | Login" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoMesonURP.Login" %>
 
 <!DOCTYPE html>
 
@@ -16,13 +16,22 @@
     <link href="css/pages/Login/daterangepicker.css" rel="stylesheet" />
     <link href="css/pages/Login/util.css" rel="stylesheet" />
     <link href="css/pages/Login/main.css" rel="stylesheet" />
+	<link href="css/sweetalert2.min.css" rel="stylesheet" />
+    <script src="js/sweetalert.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </head>
 
 <body style="background-color: #666666;">
    <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				
 				<form id="formLogin" class="login100-form validate-form" runat="server">
+					<p class="title-login">
+                    <asp:Label ID="lblMensajeAyuda" runat="server" Text=""></asp:Label>
+					</p>
 					<asp:ScriptManager runat="server"></asp:ScriptManager>
 					<span class="login100-form-title p-b-43">
 						Inicia sesión para continuar
@@ -45,14 +54,12 @@
 								Recuérdame
 							</label>
 						</div>
-
 						<div>
 							<a href="#" class="txt1">
 								Olvidaste tu contraseña?
 							</a>
 						</div>
-					</div>
-			
+					</div>			
 					<asp:UpdatePanel ID="PanelLogin" runat="server">
 						<ContentTemplate>
 							<div class="container-login100-form-btn">
@@ -98,7 +105,7 @@
             Swal.fire({
                 title: 'Oh, no!',
                 text: 'El usuario ingresado no existe.',
-                icon: 'alert',
+                icon: 'warning',
                 confirmButtonText: 'Aceptar'
             })
         }

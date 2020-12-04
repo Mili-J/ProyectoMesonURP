@@ -7,6 +7,6 @@ namespace DTO
     public class DTO_TipoUsuario
     {
         public int TU_idTipoUsuario { get; set; }
-        public int TU_nombreTipoUsuario { get; set; }
+        public string TU_nombreTipoUsuario { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo" %>
+﻿<%@ Page Title="Mesón URP | Transformación" Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -105,7 +105,24 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-   </div>
+    </div>
+       <!-- Alertas -->
+    <script src="js/sweetalert.js">
+    </script>
+    <script>
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado transformar insumo',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "TransformarInsumo";
+                }
+            })
+        }
+    </script>
 </asp:Content>
 
 

@@ -11,40 +11,41 @@ namespace ProyectoMesonURP
 {
     public partial class Login : System.Web.UI.Page
     {
+        CTR_Usuario _Cu = new CTR_Usuario();
+        DTO_TipoUsuario _Dtu = new DTO_TipoUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //try 
-            //{
+            try 
+            {
+                DTO_Usuario dto = new DTO_Usuario()
+                {
+                    U_contraseña = password.Value,
+                    U_codigo = usuario.Value
+                };
+                dto = new CTR_Usuario().validarUsuario(dto);
+                if (dto.P_idPersona != 0)
+                {
+                    //ENTRO
+                    _Cu.getPerfil(dto, _Dtu);
+                    Session["Usuario"] = dto;
+                    Session["TipoPerfil"] = _Dtu.TU_nombreTipoUsuario;
+                    Response.Redirect("Empty.aspx");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(PanelLogin, PanelLogin.GetType(), "alertLogin1", "alertLogin1();", true);
 
-            //    DTO_Usuario dto = new DTO_Usuario()
-            //    {
-            //        U_contraseña = password.Value,
-            //        U_codigo = usuario.Value
-            //    };
-            //    dto = new CTR_Usuario().validarUsuario(dto);
-            //    if (dto.P_idPersona != 0)
-            //    {
-            //        //ENTRO
-            //        Session["Usuario"] = dto;
-            //        Response.Redirect("Dashboard");
-            //    }
-            //    else
-            //    {
-            //        ScriptManager.RegisterClientScriptBlock(this.PanelLogin, this.PanelLogin.GetType(), "alertLogin1", "alertLogin1();", true);
-
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
-
-            Response.Redirect("Manejar_Stock_Prueba.aspx");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

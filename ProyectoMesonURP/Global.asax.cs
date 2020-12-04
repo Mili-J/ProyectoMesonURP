@@ -51,12 +51,14 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("Login", "Login", "~/Login.aspx", true);
             routes.MapPageRoute("Dashboard", "Dashboard", "~/Dashboard.aspx", true);
             routes.MapPageRoute("ManejarStock", "ManejarStock", "~/ManejarStock.aspx", true);
+            routes.MapPageRoute("GestionarReceta", "GestionarReceta", "~/GestionarReceta.aspx", true);
             routes.MapPageRoute("RegistrarReceta", "RegistrarReceta", "~/RegistrarReceta.aspx", true);
             routes.MapPageRoute("ActualizarReceta", "ActualizarReceta", "~/ActualizarReceta.aspx", true);
             routes.MapPageRoute("TransformarInsumo", "TransformarInsumo", "~/Transformar_Insumo.aspx", true);
-            routes.MapPageRoute("MenuDelDia", "MenuDelDia", "~/MenuDelDia.aspx", true);
-            routes.MapPageRoute("GestionarReceta", "GestionarReceta", "~/GestionarReceta.aspx", true);
-            routes.MapPageRoute("ElegirRecetaTransformar", "ElegirRecetaTransformar", "~/Manejar_Stock_Prueba.aspx", true);
+            routes.MapPageRoute("CalendariaMenu", "CalendariaMenu", "~/CalendariaMenu.aspx", true);
+            routes.MapPageRoute("ElegirRecetaTransformar", "ElegirRecetaTransformar", "~/SeleccionarMenuTransformar.aspx", true);
+            routes.MapPageRoute("SeleccionarMenu", "SeleccionarMenu", "~/SeleccionarMenuDia.aspx", true);
+
         }
     }
 }

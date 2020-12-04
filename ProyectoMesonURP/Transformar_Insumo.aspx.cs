@@ -59,7 +59,7 @@ namespace ProyectoMesonURP
             gvIngredienteReceta.DataBind();
             PorcionesReceta();
             lblPlato.Text = dto_receta.R_nombreReceta;
-            objReceta.CTR_Consultar_Receta(dto_receta.R_idReceta);
+            objReceta.CTR_Consultar_RecetaD(dto_receta.R_idReceta);
             string imageBase64 = Convert.ToBase64String(dto_receta.R_imagenReceta);           
             Imagen_Receta.ImageUrl = "data:Image/png;base64," + imageBase64;
 

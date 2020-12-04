@@ -2874,6 +2874,7 @@ p.cart {
     padding: 25px;
     margin: 26px;
     border-radius: 6px;
+    background: white;
 }
 
 .foot-top li {
@@ -6992,3 +6993,35 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
     color: #85858a !important;
 }
 /***responsive***/
+
+.card {
+    margin: 5px !important;
+}
+.calendar {
+    border: solid 1px #B8B8B8 !important;
+    background-color: #F8F8F8 !important;
+    color: #B8B8B8;
+}
+
+    .calendar td {
+        font-weight: bold;
+        background-color: #F8F8F8 !important;
+        padding: 2px;
+    }
+
+    .calendar table td {
+        background-color: #2272A7 !important;
+        border: solid 0px #2272A7;
+        color: #F8F8F8;
+        font-weight: bold;
+    }
+
+        .calendar table td a {
+            color: #F8F8F8 !important;
+            text-decoration: none;
+        }
+
+    .calendar a {
+        color: #2272A7 !important;
+        text-decoration: none !important;
+    }

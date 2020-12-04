@@ -6,7 +6,7 @@ namespace DTO
 {
     public class DTO_CategoriaReceta
     {
-        public int @CR_idCategoriaReceta { get; set; }
-        public string @CR_nombreCategoria  { get; set; }
+        public int CR_idCategoriaReceta { get; set; }
+        public string CR_nombreCategoria { get; set; }
     }
 }

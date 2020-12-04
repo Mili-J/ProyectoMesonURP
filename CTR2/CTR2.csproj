@@ -52,6 +52,7 @@
     <Compile Include="CTR_EstadoInsumo.cs" />
     <Compile Include="CTR_EstadoOC.cs" />
     <Compile Include="CTR_EstadoProveedor.cs" />
+    <Compile Include="CTR_EstadoReceta.cs" />
     <Compile Include="CTR_Formato.cs" />
     <Compile Include="CTR_Ingrediente.cs" />
     <Compile Include="CTR_IngredienteXReceta.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="CTR_Medida.cs" />
     <Compile Include="CTR_MedidaXFormato.cs" />
     <Compile Include="CTR_MedidaXFormatoCocina.cs" />
+    <Compile Include="CTR_Menu.cs" />
+    <Compile Include="CTR_MenuXReceta.cs" />
     <Compile Include="CTR_Merma.cs" />
     <Compile Include="CTR_Movimiento.cs" />
     <Compile Include="CTR_OC.cs" />

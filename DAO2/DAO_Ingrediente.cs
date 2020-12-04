@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -80,27 +79,40 @@ namespace DAO
             conexion.Close();
             return dto_ingrediente;
         }
-        public string SelectNombreIngrediente(int I_idIngrediente)
+        public DTO_Ingrediente SelectNombreIngrediente(int I_idIngrediente)
         {
-            string nombre = "";
-            try
-            {
-                SqlCommand unComando = new SqlCommand("SP_SELECT_NOMBRE_INGREDIENTE", conexion);
-                unComando.CommandType = CommandType.StoredProcedure;
+                DTO_Ingrediente ingrediente = new DTO_Ingrediente();
                 conexion.Open();
-                unComando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
-                SqlDataReader dReader = unComando.ExecuteReader();
-                if (dReader.Read())
+                SqlCommand comando = new SqlCommand("SP_SELECT_NOMBRE_INGREDIENTE", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                comando.ExecuteNonQuery();
+
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
                 {
-                    nombre = dReader["I_nombreIngrediente"].ToString();
+                    ingrediente.I_nombreIngrediente = Convert.ToString(reader[0]);
                 }
+
                 conexion.Close();
-                return nombre;
-            }
-            catch (Exception ex)
+                return ingrediente;
+        }
+        public int SelectIdIngredientexNombre(string I_nombreIngrediente)
+        {
+            int idIngrediente = 0;
+            SqlCommand unComando = new SqlCommand("SP_SELECT_IDINGREDIENTE_X_NOMBRE", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@I_nombreIngrediente", I_nombreIngrediente);
+
+            conexion.Open();
+
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
             {
-                throw ex;
+                idIngrediente = Convert.ToInt32(dReader["I_idIngrediente"]);
             }
+            conexion.Close();
+            return idIngrediente;
         }
 
         public DataSet ListarFormatoCocina()

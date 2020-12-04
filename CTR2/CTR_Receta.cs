@@ -30,22 +30,51 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria(categoria);
         }
-        //public DataTable CTR__Consultar_Recetas_Disponibles(int racion,int caso)
+        //public DataTable CTR__Consultar_Recetas_Disponibles(int racion, int caso)
         //{
-        //    return objDAO.DAO_Consultar_Recetas_Disponibles(racion,caso);
+        //    return objDAO.DAO_Consultar_Recetas_Disponibles(racion, caso);
         //}
         public DTO_Receta CTR_Consultar_Receta(int i)
         {
             return objDAO.DAO_Consultar_Receta(i);
+        }
+        public DTO_Receta CTR_Consultar_RecetaD(int i)
+        {
+            return objDAO.DAO_Consultar_RecetaD(i);
         }
         public DataTable CTR_Consultar_Receta2()
         {
             objDAO = new DAO_Receta();
             return objDAO.DAO_ConsultarReceta2();
         }
+        public DataTable CTR_Consultar_RecetaT()
+        {
+            objDAO = new DAO_Receta();
+            return objDAO.DAO_ConsultarRecetaT();
+        }
         public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
+        }
+        public byte[] Consultar_ImagenReceta(int R_idReceta)
+        {
+            return objDAO.Select_ImagenReceta(R_idReceta);
+        }
+        public void pruebaa(byte[]a,int i)
+        {
+            objDAO.actualizarfoto(a,i);
+        }
+        public int IdReceta()
+        {
+            return objDAO.SelectIdReceta();
+        }
+        public void ActualizarReceta(DTO_Receta objDTO)
+        {
+            objDAO.UpdateReceta(objDTO);
+        }
+        public void EliminarReceta(int R_idReceta)
+        {
+            objDAO.DeleteReceta(R_idReceta);
         }
     }
 }

@@ -12,6 +12,10 @@ namespace ProyectoMesonURP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Home.aspx?x=1");
+            }
             if (!IsPostBack)
             {
                 DTO_Usuario dto = (DTO_Usuario)Session["Usuario"];
