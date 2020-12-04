@@ -14,16 +14,30 @@ namespace ProyectoMesonURP
     {
         
         CTR_CategoriaInsumo objCatInsumo;
+        CTR_Ingrediente objIngrediente;
         DataSet dsCatInsumo;
+        DataSet dsFCocina;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadCategoriaI();
+                LoadFCocina();
             }
             
         }
 
+        public void LoadFCocina()
+        {
+            objIngrediente = new CTR_Ingrediente();
+            dsFCocina = new DataSet();
+            dsFCocina = objIngrediente.ListarFCocina();
+            ddlFormatoCocina.DataTextField = "FCO_nombreFormatoCocina";
+            ddlFormatoCocina.DataValueField = "FCO_idFCocina";
+            ddlFormatoCocina.DataSource = dsFCocina;
+            ddlFormatoCocina.DataBind();
+            ddlFormatoCocina.Items.Insert(0, "Seleccione");
+        }
         public void LoadCategoriaI()
         {
             objCatInsumo = new CTR_CategoriaInsumo();
@@ -85,6 +99,16 @@ namespace ProyectoMesonURP
         }
 
         protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionarEquivalencia.aspx");
+        }
+
+        protected void ddlFormatoCocina_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

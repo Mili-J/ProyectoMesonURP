@@ -70,8 +70,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ActualizarEquivalencia.aspx" />
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="AgregarEquivalencia.aspx" />
+    <Content Include="ConsultarEquivalencia.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -252,6 +254,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarEquivalencia.aspx.cs">
+      <DependentUpon>ActualizarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarEquivalencia.aspx.designer.cs">
+      <DependentUpon>ActualizarEquivalencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarReceta.aspx.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +274,13 @@
     </Compile>
     <Compile Include="AgregarEquivalencia.aspx.designer.cs">
       <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarEquivalencia.aspx.cs">
+      <DependentUpon>ConsultarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarEquivalencia.aspx.designer.cs">
+      <DependentUpon>ConsultarEquivalencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

@@ -15,23 +15,30 @@
                 <ContentTemplate>
                     <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" runat="server" DataKeyNames="E_cantidad,I_idInsumo" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
+                            <asp:GridView ID="gvEquivalencia" runat="server" DataKeyNames="E_cantidad,I_nombreInsumo,M_nombreMedida,FCO_nombreFormatoCocina" OnRowCommand="GVEquivalencia_RowCommand" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
                                 <Columns>
-                                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreIngrediente" />
-                                    <asp:BoundField HeaderText="Medida" DataField="I_nombreInsumo" />
-                                    <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
-                                    <asp:BoundField HeaderText="Formato Cocina" DataField="IR_formatoMedida" />
-                                   
-
-                                    <asp:TemplateField HeaderText="Editar">
+                                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
+                                    <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
-                                            <asp:Button ID="btnEditarEquivalencia" runat="server" OnClick="btnEditarEquivalencia_Click" Text="Editar" />
+                                              <%# "1" + " " + Eval("M_nombreMedida")%>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Equivalencia">
+                                        <ItemTemplate>
+                                              <%# Eval("E_cantidad") + " " + Eval("FCO_nombreFormatoCocina")%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                    
-
+                                    <asp:TemplateField HeaderText="Editar">
+                                        <ItemTemplate>
+                                            <asp:Button  ID="btnEditarEquivalencia" runat="server"  CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                   
+                                   
                                 </Columns>
                             </asp:GridView>
+                             
                         </div>
                     </div>
                     

@@ -24,11 +24,11 @@ namespace ProyectoMesonURP
 
             try
             {
-                if (txtBuscarInsumo.Text != "")
-                {
-                    gvInsumos.DataSource = _CI.BuscarInsumo(txtBuscarInsumo.Text);
-                    gvInsumos.DataBind();
-                }
+                //if (txtBuscarInsumo.Text != "")
+                //{
+                //    gvInsumos.DataSource = _CI.BuscarInsumo(txtBuscarInsumo.Text);
+                //    gvInsumos.DataBind();
+                //}
             }
             catch (Exception ex)
             {

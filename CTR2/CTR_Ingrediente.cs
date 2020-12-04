@@ -15,6 +15,11 @@ namespace CTR
         {
             return objDAO.SelectIngrediente();
         }
+
+        public DataSet ListarFCocina()
+        {
+            return objDAO.ListarFormatoCocina();
+        }
         public string ListarNombreIngrediente(int idIngrediente)
         {
             return objDAO.SelectNombreIngrediente(idIngrediente);

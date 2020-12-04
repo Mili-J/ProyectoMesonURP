@@ -11,26 +11,26 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class AgregarEquivalencia
+    public partial class ActualizarEquivalencia
     {
 
         /// <summary>
-        /// ddlCategoria control.
+        /// panelInsumo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+        protected global::System.Web.UI.UpdatePanel panelInsumo;
 
         /// <summary>
-        /// ddlInsumo control.
+        /// txtInsumo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInsumo;
+        protected global::System.Web.UI.WebControls.TextBox txtInsumo;
 
         /// <summary>
         /// txtMedida control.
@@ -58,41 +58,5 @@ namespace ProyectoMesonURP
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFormatoCocina;
-
-        /// <summary>
-        /// PanelAñadir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel PanelAñadir;
-
-        /// <summary>
-        /// btnAñadirEquivalencia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAñadirEquivalencia;
-
-        /// <summary>
-        /// PanelVolver control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel PanelVolver;
-
-        /// <summary>
-        /// btnVolver control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
     }
 }

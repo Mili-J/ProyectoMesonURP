@@ -81,9 +81,21 @@ namespace DAO
             SqlDataAdapter da = new SqlDataAdapter(comando);
             da.Fill(dt);
             conexion.Close();
-            return dt;
-            
-            
+            return dt;                       
         }
+
+        public DataSet ListarFormatoCocina(DTO_Receta objReceta)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_Select_FCocina", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataSet dt = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+
     }
 }

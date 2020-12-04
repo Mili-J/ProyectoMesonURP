@@ -19,7 +19,7 @@ namespace DAO
             dto_eq = new DTO_Equivalencia();
         }
 
-        public void InsertEquivalencia(DTO_Equivalencia objEquivalencia)
+        public void AgregarEquivalencia(DTO_Equivalencia objEquivalencia)
         {
             //conexion.Open();
             //SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
@@ -33,6 +33,22 @@ namespace DAO
             //unComando.ExecuteNonQuery();
             //conexion.Close();
         }
-
+        public DataTable ListarEquivalencias()
+        {
+            try
+            {
+                DataTable dtable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SP_Select_Equivalencias", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtable);
+                return dtable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
     }
 }

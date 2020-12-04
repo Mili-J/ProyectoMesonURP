@@ -56,10 +56,10 @@
                        <div class="form-group">
                             <label for="selector1" class="col-sm-2 control-label" style="left: 101px; top: 3px">Formato Cocina</label>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlFormatoCocina" CssClass="form-control form-color-letter"  Style="width:25%" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlFormatoCocina" CssClass="form-control form-color-letter"  Style="width:25%" runat="server" OnSelectedIndexChanged="ddlFormatoCocina_SelectedIndexChanged"></asp:DropDownList>
                             </div>
                        </div>
-            <asp:UpdatePanel ID="PanelAñadir" runat="server">
+                        <asp:UpdatePanel ID="PanelAñadir" runat="server">
                             <ContentTemplate>
                                 <p class="center-button">
                                     <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />
@@ -67,6 +67,14 @@
                                 </p>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+            <asp:UpdatePanel ID="PanelVolver" runat="server">
+                <ContentTemplate>
+                    <p>
+                        <asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
+                    </p>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            
         </div>
      </div>
 </asp:Content>

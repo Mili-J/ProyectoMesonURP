@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
-using System.Data.SqlClient;
-using System.Data;
 using DTO;
 
 namespace DAO
@@ -103,6 +101,19 @@ namespace DAO
             {
                 throw ex;
             }
+        }
+
+        public DataSet ListarFormatoCocina()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_Select_FCocina", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataSet dt = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
         }
     }
 }
