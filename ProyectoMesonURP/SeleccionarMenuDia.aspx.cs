@@ -11,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection.Emit;
 using System.Data.Sql;
+using Label = System.Web.UI.WebControls.Label;
 
 namespace ProyectoMesonURP
 {
@@ -25,6 +26,7 @@ namespace ProyectoMesonURP
         static bool hay;
         static string fecha;
         DTO_Menu objMenu;
+        static DataTable dtCarta=new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
@@ -297,6 +299,38 @@ namespace ProyectoMesonURP
         }
 
         protected void repeaterCarta_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+            if (e.CommandName == "VerCarta")
+            {
+
+            }
+            else if (e.CommandName == "AgregarCarta")
+            {
+                DataRow dr = dtCarta.NewRow();
+                int i = int.Parse(((Label)repeaterCarta.Items[e.Item.ItemIndex].FindControl("lblIdReceta")).Text);
+                DTO_Receta receta = ctr_receta.CTR_Consultar_Receta(i);
+                if (dtCarta.Columns.Count == 0)
+                {
+                    dtCarta.Columns.Add("R_imagenReceta");
+                    dtCarta.Columns.Add("R_idReceta");
+                    dtCarta.Columns.Add("R_nombreReceta");
+                    dtCarta.Columns.Add("R_numeroPorcion");
+                    dtCarta.Columns.Add("CP_nombreCategoriaR");
+                }
+                dr[0] = receta.R_imagenReceta;
+                dr[1] = receta.R_idReceta;
+                dr[2] = receta.R_nombreReceta;
+                dr[3] = receta.R_numeroPorcion;
+                dr[4] = receta.CP_idCategoriaReceta;
+                dtCarta.Rows.Add(dr);
+                repeaterCartaSeleccionada.DataSource = dtCarta;
+                repeaterCartaSeleccionada.DataBind();
+            }
+
+        }
+
+        protected void repeaterCartaSeleccionada_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
 
         }
