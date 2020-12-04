@@ -90,10 +90,11 @@ namespace ProyectoMesonURP
                 //e.Cell.BackColor = Color.LightGreen;
                 
             }
-            else if (e.Day.Date>DateTime.Today)
+            else if (e.Day.Date > DateTime.Today)
             {
-                if (hay) e.Cell.BackColor = Color.Orange;
-                else
+                //if (hay) e.Cell.BackColor = Color.Orange;
+                //else 
+                if(!hay)
                 {
                     e.Cell.BackColor = Color.White;
                     e.Cell.ForeColor = Color.Gray;
@@ -106,7 +107,12 @@ namespace ProyectoMesonURP
                 //System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#629e6c");
                 //e.Cell.BackColor = col;
                 //e.Cell.ForeColor = Color.White;
-                DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(dto_menu.ME_idMenu);
+                if (dto_menu.EM_idEstadoMenu==1)
+                {
+                    e.Cell.BackColor = Color.MidnightBlue;
+                }
+               
+                DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenuYCategoria(dto_menu.ME_idMenu,1);
                 int i = 0;
                 object[] recetas;
                 DTO_Receta dto_receta;

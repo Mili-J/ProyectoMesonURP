@@ -24,6 +24,7 @@ namespace DAO
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@R_idReceta", obj.R_idReceta);
             comando.Parameters.AddWithValue("@ME_idMenu", obj.ME_idMenu);
+            comando.Parameters.AddWithValue("@MXR_numeroPorcion", obj.MXR_numeroPorcion);
             comando.ExecuteNonQuery();
             conexion.Close();
         }
@@ -40,6 +41,21 @@ namespace DAO
             conexion.Close();
             return dtMXR;
         }
+        public DataTable DAO_ConsultarRecetasXMenuYCategoria(int M_id,int Cat_id)//Consultar las recetas de un menu
+        {
+            DataTable dtMXR = new DataTable();
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarMenuXRecetaYCategoria", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_idMenu", M_id);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta", Cat_id);
+            comando.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dtMXR);
+            conexion.Close();
+            return dtMXR;
+        }
+        
         public void DAO_ActualizarMenuXReceta(DataTable dtMenuReceta)
         {
            
@@ -66,6 +82,7 @@ namespace DAO
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@R_idReceta", menureceta.R_idReceta);
             comando.Parameters.AddWithValue("@MR_idMenuReceta",menureceta.MXR_idMenuReceta);
+            comando.Parameters.AddWithValue("@MXR_numeroPorcion", menureceta.MXR_numeroPorcion);
             comando.ExecuteNonQuery();
             conexion.Close();
         }
@@ -75,7 +92,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarSoloUnMenuXReceta", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@MR_idMenuReceta", i);
+            comando.Parameters.AddWithValue("@MXR_idMenuReceta", i);
             comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())

@@ -24,7 +24,8 @@ namespace DAO
             SqlCommand comando = new SqlCommand("SP_RegistrarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@ME_fechaMenu", dto_menu.ME_fechaMenu);
-            comando.Parameters.AddWithValue("@ME_numRaciones", dto_menu.ME_totalPorcion);
+            comando.Parameters.AddWithValue("@ME_totalPorcion", dto_menu.ME_totalPorcion);
+            comando.Parameters.AddWithValue("@EM_idEstadoMenu",dto_menu.EM_idEstadoMenu);
             comando.ExecuteNonQuery();
             conexion.Close();
         }
@@ -33,8 +34,9 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ActualizarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_numRaciones", obj.ME_totalPorcion);
+            comando.Parameters.AddWithValue("@ME_totalPorcion", obj.ME_totalPorcion);
             comando.Parameters.AddWithValue("@ME_idMenu", obj.ME_idMenu);
+            comando.Parameters.AddWithValue("@EM_idEstadoMenu", dto_menu.EM_idEstadoMenu);
             comando.ExecuteNonQuery();
             conexion.Close();
                 
@@ -56,7 +58,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha);
+            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToShortDateString());
             comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
@@ -75,7 +77,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha);
+            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToShortDateString());
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read()) estado = true;      
             else estado = false;
