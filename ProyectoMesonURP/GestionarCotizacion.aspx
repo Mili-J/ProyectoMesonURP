@@ -31,9 +31,13 @@
                                     <asp:BoundField HeaderText="Fecha de emisión" DataField="C_fechaEmision" />
                                     <asp:BoundField HeaderText="Tiempo plazo" DataField="C_tiempoPlazo" />
                                     <asp:BoundField HeaderText="Documento" DataField="C_documento" />
-                                    <asp:BoundField HeaderText="Proveedor" DataField="PR_idProveedor" />
-                                    <asp:BoundField HeaderText="Estado" DataField="EC_idEstadoCotizacion" />
-                                    <asp:BoundField HeaderText="Usuario" DataField="U_idUsuario" Visible="false" />
+
+                                    <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
+                                    
+                                    <asp:BoundField HeaderText="Estado nombre" DataField="EC_nombreEstadoC" />
+
+                                    <asp:BoundField HeaderText="Usuario nombre" DataField="P_nombres" />
+
                                     <asp:TemplateField HeaderText="Enviar">
                                         <ItemTemplate>
                                             <%--<asp:Button ID="btnEnviarEmailOC" class="btn btn-primary" runat="server" CommandName="EnviarEmailOC" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Enviar" OnClick="btnEnviarEmailOC_Click" />--%>
@@ -56,16 +60,7 @@
                                             <asp:ImageButton ID="btnEliminarCotizacion" ImageUrl="img/delete.png" onmouseover="this.src='img/basura-b.png'" onmouseout="this.src='img/delete.png'" runat="server" CommandName="EliminarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Acciones">
-                                        <ItemTemplate>
-                                            <div style="text-align: center">
-                                                <asp:ImageButton ID="btnAceptado" ImageUrl="img/correcto.png" onmouseover="this.src='img/correcto-b.png'" onmouseout="this.src='img/correcto.png'" runat="server" CommandName="AceptarOC" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" TabIndex="1" />
 
-                                                <asp:ImageButton ID="btnRechazado" ImageUrl="img/eliminar.png" onmouseover="this.src='img/eliminar-b.png'" onmouseout="this.src='img/eliminar.png'" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="RechazarOC" TabIndex="2" />
-                                            </div>
-                                            <asp:ImageButton ID="btnRecibido" runat="server" ImageUrl="img/recibido.png" onmouseover="this.src='img/recibido-b.png'" onmouseout="this.src='img/recibido.png'" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="RecibirOC" TabIndex="3" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -77,7 +72,7 @@
 
              <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
                 <asp:Button ID="btnGenerar_OC" CssClass="btn btn-primary" runat="server" Text="Generar OC" />
-                <asp:Button ID="btnAdjuntarRespuesta" CssClass="btn btn-primary" runat="server" Text="Adjuntar OC" />
+                <asp:Button ID="btnAdjuntarRespuesta" CssClass="btn btn-primary" runat="server" Text="Adjuntar Respuesta" />
             </p>
 
 
