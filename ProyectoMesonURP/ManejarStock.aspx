@@ -25,11 +25,20 @@
                                     <div class="form-title color-white">
                                         <h4>Stock Actual</h4>
                                     </div>
+                                     <div class="w3-row-padding">
+                                    <div class="w3-third">            
+                                        <label class="control-label">Paginación:</label>
+                                                <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                        </div>
+                                     </div>
+
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                        <asp:GridView ID="gvInsumos" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
                                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,CI_nombreCategoria,I_cantidad,Representacion de compra,El_nombreEstado"  
-                                            Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged" GridLines="None">
-                                            <Columns>
+                                            Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" OnRowCommand="gvInsumos_RowCommand" CellPadding="4" PageSize="5" GridLines="None">
+                                            <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
+                                           <Columns>
                                                 <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                                 <asp:BoundField DataField="I_NombreInsumo" HeaderText="Insumo" />
                                                 <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoria" />
@@ -58,7 +67,7 @@
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                      <asp:GridView ID="gvInsumos2" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
                                         CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadmin,I_cantidad,El_nombreEstado" 
-                                        Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None" OnSelectedIndexChanged="gvInsumos2_SelectedIndexChanged">
+                                        Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None">
                                         <Columns>
                                             <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                                             <asp:BoundField Datafield="I_NombreInsumo" HeaderText="Nombre insumo" />

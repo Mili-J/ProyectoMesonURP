@@ -18,15 +18,22 @@ namespace ProyectoMesonURP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Login?x=1");
-            }
+            //if (Session["Usuario"] == null)
+            //{
+            //    Response.Redirect("Login?x=1");
+            //}
             if (!Page.IsPostBack)
             {
                 dto_i = new DTO_Insumo();
                 CargarStockInsumo();
                 CargarStockInsumo2();
+
+                ListItem ddl1 = new ListItem("5", "5");
+                ddlp.Items.Insert(0, ddl1);
+                ListItem ddl2 = new ListItem("10", "10");
+                ddlp.Items.Insert(1, ddl2);
+                ListItem ddl3 = new ListItem("20", "20");
+                ddlp.Items.Insert(2, ddl3);
             }
             
         }
@@ -141,16 +148,30 @@ namespace ProyectoMesonURP
             CargarStockInsumo2();
             Recuperar();
         }
-
-        protected void gvInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            gvInsumos.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+            CargarStockInsumo();
         }
-
-        protected void gvInsumos2_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gvInsumos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            try
+            {
+                if (e.CommandName == "selectItem")
+                {
 
+                    int codSer = Convert.ToInt32(gvInsumos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
+
+                    Session["I_idInsumo"] = codSer;
+
+                    Response.Redirect("ManejarStock.aspx");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-
     }
 }
