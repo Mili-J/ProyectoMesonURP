@@ -134,7 +134,7 @@ namespace ProyectoMesonURP
             _Dr.R_imagenReceta = fuImagen.FileBytes;
             _Dr.R_subcategoria = ddlSubCategoriaReceta.SelectedValue;
             _Dr.EP_idEstadoReceta = 1;
-            _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+            _Dr.CP_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
             
 
             if (pila.Count == 0)

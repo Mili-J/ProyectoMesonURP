@@ -146,13 +146,13 @@ namespace ProyectoMesonURP
 
             try
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
                 _Dr.R_subcategoria = ddlSubCategoria.SelectedValue;
                 _Dr.EP_idEstadoReceta = Convert.ToInt32(ddlEstadoReceta.SelectedValue);
             }
             catch (System.FormatException)
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
                 _Dr.R_subcategoria = txtSubcategoria.Text;
                 _Dr.EP_idEstadoReceta = _Cer.CargarIdEstadoxIdReceta(Convert.ToInt32(Session["IdReceta"]));
             }

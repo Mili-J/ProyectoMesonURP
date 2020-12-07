@@ -56,17 +56,9 @@ namespace CTR
             objDAO = new DAO_Receta();
             return objDAO.DAO_ConsultarRecetaT();
         }
-        public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
-        {
-            return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
-        }
         public byte[] Consultar_ImagenReceta(int R_idReceta)
         {
             return objDAO.Select_ImagenReceta(R_idReceta);
-        }
-        public void pruebaa(byte[]a,int i)
-        {
-            objDAO.actualizarfoto(a,i);
         }
         //public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
         //{
