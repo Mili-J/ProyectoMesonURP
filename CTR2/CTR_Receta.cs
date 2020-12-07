@@ -76,5 +76,17 @@ namespace CTR
         {
             objDAO.DeleteReceta(R_idReceta);
         }
+        public DataTable CTR_Consultar_RecetaTabSegM()
+        {
+            return objDAO.DAO_SelectRecetaTabSegM();
+        }
+        public DataTable DAO_SelectRecetaTabEntM()
+        {
+            return objDAO.DAO_SelectRecetaTabEntM();
+        }
+        public DataTable DAO_SelectRecetaTabBebM()
+        {
+            return objDAO.DAO_SelectRecetaTabBebM();
+        }
     }
 }

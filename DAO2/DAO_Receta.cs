@@ -328,5 +328,42 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataTable DAO_SelectRecetaTabSegM()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_SEGM", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+
+        }
+        public DataTable DAO_SelectRecetaTabEntM()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_ENTM", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+        public DataTable DAO_SelectRecetaTabBebM()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_BEBM", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }
