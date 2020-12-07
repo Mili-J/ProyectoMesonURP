@@ -1956,6 +1956,9 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="vendros\scripts\core.js" />
+    <Content Include="vendros\styles\core.css" />
+    <Content Include="vendros\styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

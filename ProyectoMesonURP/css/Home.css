@@ -4142,6 +4142,7 @@ button.btn.btn-default.tip {
 .row {
     margin-right: 0px !important;
     margin-left: 0px !important;
+    margin-top: revert;
 }
 
 .form-control {
