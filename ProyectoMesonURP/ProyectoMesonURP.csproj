@@ -293,11 +293,6 @@
     <Content Include="src\plugins\datatables\js\jquery.dataTables.min.js" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="SC_Prueba.aspx" />
-    <Content Include="vendors\scripts\core.js" />
-    <Content Include="vendors\scripts\datatable-setting.js" />
-    <Content Include="vendors\styles\core.css" />
-    <Content Include="vendors\styles\icon-font.min.css" />
-    <Content Include="vendors\styles\style.css" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
@@ -1963,9 +1958,9 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
-    <Content Include="vendros\scripts\core.js" />
-    <Content Include="vendros\styles\core.css" />
-    <Content Include="vendros\styles\style.css" />
+    <Content Include="vendors\scripts\core.js" />
+    <Content Include="vendors\styles\core.css" />
+    <Content Include="vendors\styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
