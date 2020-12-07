@@ -89,7 +89,7 @@
                     <div class="form-group" style="width: 1887px; margin-top: 30px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1">
+                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1" AutoPostBack="true" OnSelectedIndexChanged="ddlIngredientes_SelectionChange">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
@@ -102,12 +102,12 @@
                             <asp:RequiredFieldValidator ID="rfvcantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>                       
                         </div>
                     </div>
-                    <div class="form-group" style="width: 1887px;">
-                        <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
+                    <div class="form-group" style="width: 1889px;">
+                        <label for="selector1" class="col-sm-2 control-label">Medida</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtMedidaFormato" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);" />
-                            <asp:RequiredFieldValidator ID="rfvMedida" runat="server" ControlToValidate="txtMedidaFormato" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                         </div>
+                            <asp:DropDownList ID="ddlMedida" runat="server" Style="width: 25%;" CssClass="form-control1">
+                            </asp:DropDownList>
+                            </div>
                     </div>
                     <p class="center-button">
                         <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" Style="margin-right: -154px; width: 39%;" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
