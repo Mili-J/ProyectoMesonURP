@@ -47,6 +47,14 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
         }
+        public void ListarMedida()
+        {
+            ddlIngredientes.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            ddlIngredientes.DataTextField = "I_idIngrediente";
+            ddlIngredientes.DataValueField = "I_idIngrediente";
+            ddlIngredientes.DataBind();
+            ddlIngredientes.Items.Insert(0, "--seleccionar--");
+        }
         protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
@@ -64,7 +72,7 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
-            _Dixr.R_idReceta = _Cr.IdReceta() + 1;
+            _Dixr.R_idReceta = _Cr.IdReceta()+1;
             _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
             _Di = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);

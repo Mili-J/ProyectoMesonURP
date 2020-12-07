@@ -96,13 +96,13 @@ namespace CTR
         {
             return objDAO.DAO_SelectRecetaTabSegM();
         }
-        public DataTable DAO_SelectRecetaTabEntM()
+        public bool ExistenciaImagen(int R_idReceta)
         {
-            return objDAO.DAO_SelectRecetaTabEntM();
+            return objDAO.SelectExistenciaImagen(R_idReceta);
         }
-        public DataTable DAO_SelectRecetaTabBebM()
+        public string CargarSubcategoriaxIdReceta(int R_idReceta)
         {
-            return objDAO.DAO_SelectRecetaTabBebM();
+            return objDAO.SelectSubcategoriaxIdReceta(R_idReceta);
         }
     }
 }

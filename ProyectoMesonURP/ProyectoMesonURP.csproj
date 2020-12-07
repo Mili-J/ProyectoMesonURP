@@ -133,6 +133,7 @@
     <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarCotizacion.aspx" />
+    <Content Include="GenerarOC.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -2029,6 +2030,13 @@
     </Compile>
     <Compile Include="GestionarCotizacion.aspx.designer.cs">
       <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarOC.aspx.cs">
+      <DependentUpon>GenerarOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarOC.aspx.designer.cs">
+      <DependentUpon>GenerarOC.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
