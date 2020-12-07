@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Mesón URP | Gestionar Receta" Language="C#" AutoEventWireup="true" CodeBehind="GestionarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarReceta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="vendros/styles/core.css" rel="stylesheet" />
-    <link href="vendros/styles/style.css" rel="stylesheet" />
+    <link href="vendors/styles/core.css" rel="stylesheet" />
+    <link href="vendors/styles/style.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -162,5 +162,5 @@
             })
         }
     </script>
-    <script src="vendros/scripts/core.js"></script>
+    <script src="vendors/scripts/core.js"></script>
 </asp:Content>

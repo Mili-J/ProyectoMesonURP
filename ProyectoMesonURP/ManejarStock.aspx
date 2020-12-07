@@ -62,8 +62,8 @@
                                      <h4>Insumos que requieren abastecimiento</h4>
                                     </div>
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                     <asp:GridView ID="gvInsumos2" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
-                                        CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadmin,I_cantidad,El_nombreEstado" 
+                                     <asp:GridView ID="gvInsumos2" OnRowDataBound="gvInsumos2_RowDataBound" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
+                                        CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadMinima,I_cantidad,El_nombreEstado" 
                                         Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None">
                                         <Columns>
                                             <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />

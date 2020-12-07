@@ -1971,8 +1971,6 @@
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="vendors\scripts\core.js" />
-    <Content Include="vendors\styles\core.css" />
-    <Content Include="vendors\styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
