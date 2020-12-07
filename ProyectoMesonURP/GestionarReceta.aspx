@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="Mesón URP | Gestionar Receta" Language="C#" AutoEventWireup="true" CodeBehind="GestionarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarReceta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="vendros/styles/core.css" rel="stylesheet" />
+    <link href="vendros/styles/style.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="women_main">
-        <!-- start content --><div class="grids">
+        <div class="pd-20 card-box">
             <div class="progressbar-heading grids-heading title-flex">
                 <h2 class="tittle-margin5">Gestionar Receta</h2>
             </div>
@@ -25,39 +26,22 @@
                         </div>
                 </div>
             </div>
-                
-            <!-- SECTION -->
-            <div class="section">
                 <!-- container -->
                 <div class="navtabs-receta">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#tab1">Todos</a>
+                            <a class="nav-link active" href="container-all">Todos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab2">Platos de Fondo</a>
+                            <a class="nav-link" href="#">Platos de Fondo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab3">Entradas</a>
+                            <a class="nav-link" href="#">Entradas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab4">Sopas</a>
+                            <a class="nav-link" href="#">Sopas</a>
                         </li>
                     </ul>
-                     <%--<!-- Navigation Tabs ends -->
-                    <!-- Tab Panes starts -->
-                    <div class="tab-content" style="padding-top: 10px">
-                        <div role="tabpanel" class="tab-pane active" id="tab1">
-                            You are in Tab1
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="tab2">
-                            You are in Tab2
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="tab3">
-                            You are in Tab3
-                        </div>
-                    </div>--%>
-                    <!-- Tab Panes ends -->
                 </div>
                 <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
                         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
@@ -69,34 +53,39 @@
                                     <div class="card-body">
                                             <asp:Label ID="lblIdReceta" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
 
-                                        <h5 class="card-title">
-                                            <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
-                                        </h5>
-                                        <p class="card-text">
-                                            Porción:
-                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
-                                        </p>
-                                        <p class="card-text">
-                                            Categoría: 
-                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
-                                        </p>
-                                        <p class="card-text">
-                                            Descripción:
-                                            <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
-                                        </p>
-                                        <div>
-                                            <asp:Button ID="btnActualizarReceta" CssClass="btn btn-primary" runat="server" Text="Actualizar" CommandName="ActualizarReceta" />
-                                           <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
-                                           
-                                        </div>
-                                    </div>
+                                                                <h5 class="card-title">
+                                                                    <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                                                </h5>
+                                                                  <p class="card-text">
+                                                                    Porción:
+                                                                                <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                                                  </p>
+                                                                  <p class="card-text">
+                                                                    Categoría: 
+                                                                                    <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                                                 </p>
+                                                                <p class="card-text">
+                                                                    Descripción:
+                                                                    <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
+                                                                </p>
+                                                                <div>
+                                                                    <asp:Button ID="btnActualizarReceta" class="btn btn-outline-warning" Text="Editar" runat="server" CommandName="ActualizarReceta" />
+                                                                    <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                 </ul>
                                 </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
             <div class="clearfix"></div>
     <!-- jQuery Plugins -->
     <script src="js/GestionarReceta/jquery.min.js"></script>
@@ -105,9 +94,7 @@
     <script src="js/GestionarReceta/nouislider.min.js"></script>
     <script src="js/GestionarReceta/jquery.zoom.min.js"></script>
     <script src="js/GestionarReceta/main.js"></script>
-    
     <script>
-
         function soloLetras(e) {
             key = e.keyCode || e.which;
             tecla = String.fromCharCode(key).toLowerCase();
@@ -134,4 +121,5 @@
             })
         }
     </script>
+    <script src="vendros/scripts/core.js"></script>
 </asp:Content>
