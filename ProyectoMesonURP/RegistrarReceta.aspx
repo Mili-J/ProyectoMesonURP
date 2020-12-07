@@ -57,7 +57,7 @@
                         <div class="col-sm-8">
                              <div class="field">
                                  <div class="row">
-                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" class="custom-select2 form-control" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
+                                <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" class="custom-select2 form-control">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" CssClass="required-item" ControlToValidate="ddlCategoriaReceta" Display="Static" ForeColor="White" InitialValue="--seleccionar--" ><span id="sampleRFV" class="rfv">Seleccione una opción</span></asp:RequiredFieldValidator>
                                 </div>
@@ -118,7 +118,7 @@
                         <div class="col-sm-8">
                             <div class="field">
                                 <%--<asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>--%>
-                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlIngredientes_Change">
+                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1" >
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
