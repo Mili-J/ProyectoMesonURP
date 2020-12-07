@@ -173,12 +173,6 @@ namespace ProyectoMesonURP
             gvInsumos.PageSize = Convert.ToInt32(ddlp.SelectedValue);
             CargarStockInsumo();
         }
-        protected void gvInsumos_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName == "selectItem")
-                {
         protected void gvInsumos2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -195,8 +189,12 @@ namespace ProyectoMesonURP
                 }
             }
         }
-        protected void gvInsumos_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gvInsumos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            try
+            {
+                if (e.CommandName == "selectItem")
+                {
                     int codSer = Convert.ToInt32(gvInsumos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
 
                     Session["I_idInsumo"] = codSer;

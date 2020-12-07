@@ -25,24 +25,25 @@
             </div>
         </div>
         <fieldset>
-        <div class="infprincipal" style="display: flex;">
-            <div class="infReceta" style="width: 50%;">
+        <div class="pd-20 card-box mb-30">
+            <div class="content clearfix">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms" style="margin-top: 34px;">
                     <div class="form-title color-white">
                         <h4>Información del Plato</h4>
                     </div>
                 </div>
-                <div class="p-5" runat="server">
-                    <div class="form-group" style="width: 1889px; margin-top: 23px;">
-						<label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
-                        <div class="col-sm-8">
-                            <div class="field">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+						        <label for="focusedinput" class="col-sm-2 control-label">Nombre del plato</label>
+                                  <div class="field">
                                 <asp:TextBox ID="txtnombre" runat="server" Style="width: 25%;" CssClass="form-control1" onkeypress="return soloLetras(event);" required="required"/>
                               <%-- <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ControlToValidate="txtnombre" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                             --%>
                                 </div>
-                        </div>
-					</div>
+                            </div>
+					    </div>
+                    </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">N° porciones</label>
                         <div class="col-sm-8">
@@ -58,13 +59,10 @@
                                  <div class="row">
                                 <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" class="custom-select2 form-control" OnSelectedIndexChanged="ddlCategoriaReceta_Change">
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rfvddlcategoria" runat="server" CssClass="required-item" ControlToValidate="ddlCategoriaReceta" Display="Static" ForeColor="White" InitialValue="--seleccionar--" ><span id="sampleRFV" class="rfv">Seleccione una opción</span></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" CssClass="required-item" ControlToValidate="ddlCategoriaReceta" Display="Static" ForeColor="White" InitialValue="--seleccionar--" ><span id="sampleRFV" class="rfv">Seleccione una opción</span></asp:RequiredFieldValidator>
                                 </div>
                              </div>
-                            <asp:DropDownList ID="ddlCategoriaReceta" runat="server" Style="width: 25%;" CssClass="form-control1">
-                            </asp:DropDownList>
-                             <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                        </div>
+                          </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="selector1" class="col-sm-2 control-label">Sub categoría</label>
@@ -87,7 +85,6 @@
                          </div>
                     </div>
                 </div>
-            </div>
             <div class="imgDiv" style="width: 50%; margin-left: 50px">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms" style="margin-top: 34px;">
                     <div class="form-title color-white">
@@ -120,10 +117,8 @@
                         <label for="focusedinput" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
                             <div class="field">
-                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1"
-                                OnSelectedIndexChanged="ddlIngredientes_Change">
                                 <%--<asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>--%>
-                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1">
+                            <asp:DropDownList ID="ddlIngredientes" runat="server" Style="width: 25%;" CssClass="form-control1" OnSelectedIndexChanged="ddlIngredientes_Change">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
