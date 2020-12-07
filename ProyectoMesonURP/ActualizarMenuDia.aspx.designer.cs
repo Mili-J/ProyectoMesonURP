@@ -11,7 +11,7 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class SeleccionarMenuDia
+    public partial class ActualizarMenuDia
     {
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarCategoriaXReceta", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@CR_idCategoriaReceta",i);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta",i);
             comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
 

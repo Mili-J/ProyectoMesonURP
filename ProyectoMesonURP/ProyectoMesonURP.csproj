@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="AgregarEquivalencia.aspx" />
@@ -131,6 +132,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarEquivalencia.aspx" />
+    <Content Include="GestionarCotizacion.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -285,6 +287,7 @@
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
+    <Content Include="RegistrarCotizacion.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
     <Content Include="SeleccionarMenuTransformar.aspx" />
@@ -1964,6 +1967,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarMenuDia.aspx.cs">
+      <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarMenuDia.aspx.designer.cs">
+      <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarReceta.aspx.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2012,6 +2022,13 @@
     </Compile>
     <Compile Include="GestionarEquivalencia.aspx.designer.cs">
       <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarCotizacion.aspx.cs">
+      <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarCotizacion.aspx.designer.cs">
+      <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
@@ -2066,6 +2083,13 @@
       <DependentUpon>MenuDelDia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarCotizacion.aspx.cs">
+      <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCotizacion.aspx.designer.cs">
+      <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarReceta.aspx.cs">
       <DependentUpon>RegistrarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

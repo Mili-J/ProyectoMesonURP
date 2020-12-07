@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_Menu
+    public class DTO_EstadoMenu
     {
-        public int ME_idMenu { get; set; }
-        public string ME_fechaMenu { get; set; }
-        public int ME_totalPorcion { get; set; }
         public int EM_idEstadoMenu { get; set; }
+        public string EM_nombreEstadoM { get; set; }
     }
 }

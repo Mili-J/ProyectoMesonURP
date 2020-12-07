@@ -66,12 +66,12 @@ namespace DAO
             conexion.Close();
             return dt;
         }
-        public DataTable DAO_Consultar_Recetas_X_Categoria(int categoria)
+        public DataTable DAO_Consultar_Recetas_X_Categoria(int categoria)//Menu o carta
         {
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarRecetasXCategoria", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@CR_idCategoriaReceta", categoria);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta", categoria);
             comando.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -79,21 +79,28 @@ namespace DAO
             conexion.Close();
             return dt;
         }
-        public  DataTable DAO_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
+        public DataTable DAO_Consultar_Recetas_X_SubCategoriaYCategoria(int catPlato, string subCat)
         {
-            switch (caso)
-            {
-                case 1://entradas y sopas
-                    DataTable dtEntrada = DAO_Consultar_Recetas_X_Categoria(1);
-                    dtEntrada.Merge(DAO_Consultar_Recetas_X_Categoria(3));
-                    return dtEntrada;
-
-                case 2://Segundos
-                    return DAO_Consultar_Recetas_X_Categoria(2);
-                default:
-                    return new DataTable();//nada :C
-            }
+            conexion.Open();
+            DataTable dt = new DataTable();
+            SqlCommand comando = new SqlCommand("SP_ConsultarRecetasXSubCategoriaYCategoria",conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_subcategoria",subCat);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta",catPlato);
+            comando.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
         }
+        //public  DataTable DAO_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
+        //{
+        //    switch (caso)
+        //    {
+        //        case 1://entradas y sopas
+        //            DataTable dtEntrada = DAO_Consultar_Recetas_X_Categoria(1);
+        //            dtEntrada.Merge(DAO_Consultar_Recetas_X_Categoria(3));
+        //            return dtEntrada;
 
 
         //public DataTable DAO_Consultar_Recetas_Disponibles(int racion, int caso)
@@ -193,7 +200,7 @@ namespace DAO
                 dto_receta.R_nombreReceta = reader[1].ToString();
                 dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
                 dto_receta.R_descripcion = Convert.ToString(reader[3]);
-                dto_receta.R_imagenReceta = null;
+                //dto_receta.R_imagenReceta = null;
                 try
                 {
                     dto_receta.R_imagenReceta = (byte[])reader[4];
@@ -203,8 +210,9 @@ namespace DAO
 
                     dto_receta.R_imagenReceta = null;
                 }
-                
-                dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[5]);
+                dto_receta.R_subcategoria = Convert.ToString(reader[5]);
+                dto_receta.EP_idEstadoReceta = Convert.ToInt32(reader[6]);
+                dto_receta.CP_idCategoriaReceta = Convert.ToInt32(reader[7]);
             }
             conexion.Close();
             return dto_receta;

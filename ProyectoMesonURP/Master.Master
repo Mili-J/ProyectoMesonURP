@@ -91,7 +91,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cotización Personalizado:</h6>
-                        <a class="collapse-item" href="Empty.aspx">Solicitar Cotización</a>
+                        <a class="collapse-item" href="GestionarCotizacion.aspx">Solicitar Cotización</a>
                         <a class="collapse-item" href="Empty.aspx">Generar OC</a>
                     </div>
                 </div>

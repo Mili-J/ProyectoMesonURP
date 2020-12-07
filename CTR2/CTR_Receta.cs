@@ -26,9 +26,13 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas();
         }
-        public DataTable CTR_Consultar_Recetas_X_Categoria(int categoria)
+        public DataTable CTR_Consultar_Recetas_X_Categoria(int categoria)//Menu o carta
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria(categoria);
+        }
+        public DataTable CTR_Consultar_Recetas_X_SubCategoriaYCategoria(int catPlato, string subCat)
+        {
+            return objDAO.DAO_Consultar_Recetas_X_SubCategoriaYCategoria(catPlato,subCat);
         }
         //public DataTable CTR__Consultar_Recetas_Disponibles(int racion, int caso)
         //{
@@ -64,6 +68,18 @@ namespace CTR
         {
             objDAO.actualizarfoto(a,i);
         }
+        //public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
+        //{
+        //    return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
+        //}
+        //public byte[]prueba(int i)
+        //{
+        //    return objDAO.prueba(i);
+        //}
+        //public void pruebaa(byte[]a,int i)
+        //{
+        //    objDAO.actualizarfoto(a,i);
+        //}
         public int IdReceta()
         {
             return objDAO.SelectIdReceta();
