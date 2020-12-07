@@ -128,6 +128,7 @@
     <Content Include="css\sweetalert2.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GenerarOC.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -1986,6 +1987,13 @@
     </Compile>
     <Compile Include="Empty.aspx.designer.cs">
       <DependentUpon>Empty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarOC.aspx.cs">
+      <DependentUpon>GenerarOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarOC.aspx.designer.cs">
+      <DependentUpon>GenerarOC.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>

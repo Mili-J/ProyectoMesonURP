@@ -220,17 +220,6 @@ namespace DAO
             return img;
             
         }
-        public void actualizarfoto(byte[]aaa,int i)
-        {
-            conexion.Open();
-            SqlCommand command = new SqlCommand("SP_Actualizar_foto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@R_idReceta",i);
-            command.Parameters.AddWithValue("@R_imagenReceta",aaa);
-            command.ExecuteNonQuery();
-            conexion.Close();
-        }
-
         public DataTable DAO_ConsultarReceta2()
         {
             conexion.Open();
@@ -303,6 +292,50 @@ namespace DAO
             comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
             comando.ExecuteNonQuery();
             conexion.Close();
+        }
+        public bool SelectExistenciaImagen(int R_idReceta)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_IMAGEN_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+                cmd.ExecuteNonQuery();
+                byte[] img = new byte[100];
+                img = (byte[])cmd.ExecuteScalar();
+                if (img.LongLength == 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    conexion.Close();
+                    return true;
+                }
+            }
+            catch (System.InvalidCastException)
+            {
+                conexion.Close();
+                return false;
+            }
+        }
+        public string SelectSubcategoriaxIdReceta(int R_idReceta)
+        {
+            string subcategoria = "";
+            SqlCommand unComando = new SqlCommand("SP_SELECT_SUBCATEGORIA_X_ID_RECETA", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+            conexion.Open();
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                subcategoria = Convert.ToString(dReader["R_subcategoria"]);
+            }
+            conexion.Close();
+            return subcategoria;
+
         }
     }
 }

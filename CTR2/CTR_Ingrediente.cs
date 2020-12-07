@@ -24,5 +24,9 @@ namespace CTR
         {
             return objDAO.SelectIdIngredientexNombre(I_nombreIngrediente);
         }
+        public DataSet CargarMedidaxIdIngrediente(int I_idIngrediente)
+        {
+            return objDAO.SelectMedidaxIdIngrediente(I_idIngrediente);
+        }
     }
 }

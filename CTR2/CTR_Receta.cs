@@ -56,10 +56,6 @@ namespace CTR
         {
             return objDAO.Select_ImagenReceta(R_idReceta);
         }
-        public void pruebaa(byte[]a,int i)
-        {
-            objDAO.actualizarfoto(a,i);
-        }
         public int IdReceta()
         {
             return objDAO.SelectIdReceta();
@@ -71,6 +67,14 @@ namespace CTR
         public void EliminarReceta(int R_idReceta)
         {
             objDAO.DeleteReceta(R_idReceta);
+        }
+        public bool ExistenciaImagen(int R_idReceta)
+        {
+            return objDAO.SelectExistenciaImagen(R_idReceta);
+        }
+        public string CargarSubcategoriaxIdReceta(int R_idReceta)
+        {
+            return objDAO.SelectSubcategoriaxIdReceta(R_idReceta);
         }
     }
 }

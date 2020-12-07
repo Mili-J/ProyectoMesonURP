@@ -32,18 +32,32 @@
                 <div class="navtabs-receta">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="container-all">Todos</a>
+                            <a class="nav-link active" href="#tab1">Todos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Platos de Fondo</a>
+                            <a class="nav-link" href="#tab2">Platos de Fondo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Entradas</a>
+                            <a class="nav-link" href="#tab3">Entradas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sopas</a>
+                            <a class="nav-link" href="#tab4">Sopas</a>
                         </li>
                     </ul>
+                     <%--<!-- Navigation Tabs ends -->
+                    <!-- Tab Panes starts -->
+                    <div class="tab-content" style="padding-top: 10px">
+                        <div role="tabpanel" class="tab-pane active" id="tab1">
+                            You are in Tab1
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tab2">
+                            You are in Tab2
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tab3">
+                            You are in Tab3
+                        </div>
+                    </div>--%>
+                    <!-- Tab Panes ends -->
                 </div>
                 <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
                         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
@@ -91,6 +105,7 @@
     <script src="js/GestionarReceta/nouislider.min.js"></script>
     <script src="js/GestionarReceta/jquery.zoom.min.js"></script>
     <script src="js/GestionarReceta/main.js"></script>
+    
     <script>
 
         function soloLetras(e) {
