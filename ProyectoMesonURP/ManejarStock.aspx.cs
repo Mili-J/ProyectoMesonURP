@@ -56,8 +56,8 @@ namespace ProyectoMesonURP
             CargarStockInsumo2();
             Recuperar();
 
-            
-                CheckBox chk;
+
+            CheckBox chk;
                 DataTable dt = new DataTable();
                 dt.Columns.Add("I_idInsumo");
                 dt.Columns.Add("I_nomInsumo");
@@ -71,10 +71,10 @@ namespace ProyectoMesonURP
                         dt.Rows.Add(d, n);
                     }
                 }
-            
-               gvInsumos2.AllowPaging = true;
-               CargarStockInsumo2();
-               Session.Add("InsumosSeleccionados", dt);
+
+            gvInsumos2.AllowPaging = true;
+            CargarStockInsumo2();
+            Session.Add("InsumosSeleccionados", dt);
                Response.Redirect("SC_Prueba.aspx");
 
         }
