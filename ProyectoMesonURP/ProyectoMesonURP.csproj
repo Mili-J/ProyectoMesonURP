@@ -87,6 +87,7 @@
     <Content Include="css\fabochart.css" />
     <Content Include="css\flexslider.css" />
     <Content Include="css\font-awesome.css" />
+    <Content Include="css\fv.css" />
     <Content Include="css\GestionarReceta\bootstrap.min.css" />
     <Content Include="css\GestionarReceta\font-awesome.min.css" />
     <Content Include="css\GestionarReceta\nouislider.min.css" />
@@ -288,6 +289,7 @@
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
+    <Content Include="multifield.js" />
     <Content Include="RegistrarCotizacion.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
@@ -297,6 +299,12 @@
     <Content Include="src\plugins\datatables\js\jquery.dataTables.min.js" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="SC_Prueba.aspx" />
+    <Content Include="validator.js" />
+    <Content Include="vendors\scripts\process.js" />
+    <Content Include="vendors\scripts\script.min.js" />
+    <Content Include="vendors\styles\core.css" />
+    <Content Include="vendors\styles\icon-font.min.css" />
+    <Content Include="vendors\styles\style.css" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />

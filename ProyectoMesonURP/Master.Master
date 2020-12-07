@@ -201,7 +201,7 @@
             
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <form id="form1" runat="server">
+            <form id="form1" action="" runat="server" method="post" novalidate>
                  <asp:ScriptManager runat="server"></asp:ScriptManager>
             <!-- Main Content -->
             <div id="content">
@@ -466,6 +466,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+     <script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
 
     <!-- Page level plugins -->
     <%--<script src="vendor/chart.js/Chart.min.js"></script>--%>

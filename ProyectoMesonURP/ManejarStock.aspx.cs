@@ -27,6 +27,13 @@ namespace ProyectoMesonURP
                 dto_i = new DTO_Insumo();
                 CargarStockInsumo();
                 CargarStockInsumo2();
+
+                ListItem ddl1 = new ListItem("5", "5");
+                ddlp.Items.Insert(0, ddl1);
+                ListItem ddl2 = new ListItem("10", "10");
+                ddlp.Items.Insert(1, ddl2);
+                ListItem ddl3 = new ListItem("20", "20");
+                ddlp.Items.Insert(2, ddl3);
             }
 
         }
@@ -161,6 +168,17 @@ namespace ProyectoMesonURP
             CargarStockInsumo2();
             Recuperar();
         }
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gvInsumos.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+            CargarStockInsumo();
+        }
+        protected void gvInsumos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "selectItem")
+                {
         protected void gvInsumos2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -179,13 +197,18 @@ namespace ProyectoMesonURP
         }
         protected void gvInsumos_SelectedIndexChanged(object sender, EventArgs e)
         {
+                    int codSer = Convert.ToInt32(gvInsumos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
 
+                    Session["I_idInsumo"] = codSer;
+
+                    Response.Redirect("ManejarStock.aspx");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-
-        protected void gvInsumos2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
