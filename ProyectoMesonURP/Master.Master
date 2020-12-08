@@ -20,6 +20,9 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet"/>
+    <link href="vendors/styles/core.css" rel="stylesheet" />
+    <link href="vendors/styles/style.css" rel="stylesheet" />
+
 
     <!-- Custom CSS -->
     <link href="css/Home.css" rel="stylesheet" />
