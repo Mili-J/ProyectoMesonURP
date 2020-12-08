@@ -49,11 +49,24 @@ namespace ProyectoMesonURP
         }
         public void ListarMedida()
         {
-            ddlIngredientes.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
-            ddlIngredientes.DataTextField = "I_idIngrediente";
-            ddlIngredientes.DataValueField = "I_idIngrediente";
-            ddlIngredientes.DataBind();
-            ddlIngredientes.Items.Insert(0, "--seleccionar--");
+            ddlMedida.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            ddlMedida.DataTextField = "M_nombreMedida";
+            ddlMedida.DataValueField = "M_nombreMedida";
+            ddlMedida.DataBind();
+            ddlMedida.Items.Insert(0, "--seleccionar--");
+        }
+        protected void ddlIngredientes_SelectionChange(Object sender, EventArgs e)
+        {
+            if (ddlIngredientes.SelectedIndex != 0)
+            {
+                ListarMedida();
+            }
+            else
+            {
+                ddlMedida.Items.FindByValue("--seleccionar--");
+                ScriptManager.RegisterClientScriptBlock(this.PanelAñadir, this.PanelAñadir.GetType(), "alertaSeleccionar", "alertaSeleccionar();", true);
+                return;
+            }
         }
         protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -76,7 +89,7 @@ namespace ProyectoMesonURP
             _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
             _Di = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
-            _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
+            _Dixr.IR_formatoMedida = ddlMedida.SelectedValue;
 
 
             DataRow row = tin.NewRow();
