@@ -146,5 +146,15 @@ namespace DAO
                 throw ex;
             }
         }
+        public void UPDATE_cantidadInsumo(decimal cantidad, int idInsumo)
+        {
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand("SP_UPDATE_Insumo_GO", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.Add(new SqlParameter("@cantidad", cantidad));
+            unComando.Parameters.Add(new SqlParameter("@I_idInsumo", idInsumo));
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }

@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                        <asp:GridView ID="gvOC" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible." OnRowCommand="gvOC_RowCommand" 
-                                            CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EC_nombreEstadoC"  
+                                            CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EOC_nombreEstadoOC"  
                                             Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvOC_SelectedIndexChanged" GridLines="None">
                                             <Columns>
                                                 <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
@@ -35,7 +35,7 @@
                                                 <asp:BoundField DataField="PR_nombreContacto" HeaderText="Proveedor" />
                                                 <asp:BoundField DataField="OC_fechaEmision" HeaderText="Fecha de Emisión" />
                                                 <asp:BoundField DataField="OC_fechaEntrega" HeaderText="Fecha de Entrega" />
-                                                <asp:BoundField DataField="EC_nombreEstadoC" HeaderText="Estado" />
+                                                <asp:BoundField DataField="EOC_nombreEstadoOC" HeaderText="Estado" />
                                                 <asp:TemplateField HeaderText="Descargar">
                                                     <ItemTemplate>
                                                 <asp:ImageButton ID="btnDescargar" ImageUrl="img/descargar.png" onmouseover="this.src='img/descargar-b.png'" onmouseout="this.src='img/descargar.png'" runat="server" CommandName="Descargar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
@@ -77,7 +77,7 @@
              function alertaError() {
                  Swal.fire({
                      title: 'Oh, no!',
-                     text: 'Ingrese un insumo para la busqueda',
+                     text: 'Ingrese un numero de OC para la busqueda',
                      icon: 'error',
                      confirmButtonText: 'Aceptar'
                  })

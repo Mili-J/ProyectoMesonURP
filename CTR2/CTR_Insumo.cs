@@ -48,5 +48,11 @@ namespace CTR
         {
             dao_insumo.DAO_Actualizar_Cantidad_Insumo(objInsumo);
         }
+
+        public void UPDATE_cantidadInsumoOC(decimal cantidad, int idInsumo)
+        {
+            dao_insumo.UPDATE_cantidadInsumo(cantidad, idInsumo);
+        }
+
     }
 }

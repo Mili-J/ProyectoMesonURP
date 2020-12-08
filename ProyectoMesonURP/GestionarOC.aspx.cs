@@ -42,7 +42,7 @@ namespace ProyectoMesonURP
             {
                 if (txtBuscarInsumo.Text != "")
                 {
-                    gvOC.DataSource = _CO.BuscarOC(txtBuscarInsumo.Text);
+                    gvOC.DataSource = _CO.BuscarOC(Int32.Parse(txtBuscarInsumo.Text));
                     gvOC.DataBind();
                 }
             }
@@ -61,6 +61,9 @@ namespace ProyectoMesonURP
             }
             if (e.CommandName == "Recepcionar")
             {
+                int OC = Convert.ToInt32(gvOC.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["OC_idOC"].ToString());
+                Session.Add("OCSeleccionada", OC);
+                Response.Redirect("Recepción_Insumos.aspx");
             }
             
         }

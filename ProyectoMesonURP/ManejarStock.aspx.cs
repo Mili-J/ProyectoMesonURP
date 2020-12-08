@@ -65,24 +65,24 @@ namespace ProyectoMesonURP
 
 
             CheckBox chk;
-            DataTable dt = new DataTable();
-            dt.Columns.Add("I_idInsumo");
-            dt.Columns.Add("I_nomInsumo");
-            foreach (GridViewRow grvRow in gvInsumos2.Rows)
-            {
-                chk = (CheckBox)grvRow.FindControl("chkBox");
-                if (chk.Checked)
+                DataTable dt = new DataTable();
+                dt.Columns.Add("I_idInsumo");
+                dt.Columns.Add("I_nomInsumo");
+                foreach (GridViewRow grvRow in gvInsumos2.Rows)
                 {
-                    int d = Convert.ToInt32(gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_idInsumo"].ToString());
-                    string n = gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_NombreInsumo"].ToString();
-                    dt.Rows.Add(d, n);
+                    chk = (CheckBox)grvRow.FindControl("chkBox");
+                    if (chk.Checked)
+                    {
+                        int d = Convert.ToInt32(gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_idInsumo"].ToString());
+                        string n = gvInsumos2.DataKeys[grvRow.RowIndex].Values["I_NombreInsumo"].ToString();
+                        dt.Rows.Add(d, n);
+                    }
                 }
-            }
 
             gvInsumos2.AllowPaging = true;
             CargarStockInsumo2();
             Session.Add("InsumosSeleccionados", dt);
-            Response.Redirect("SC_Prueba.aspx");
+               Response.Redirect("SC_Prueba.aspx");
 
         }
         private void Guardar()

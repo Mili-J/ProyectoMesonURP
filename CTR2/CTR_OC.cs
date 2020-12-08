@@ -18,9 +18,17 @@ namespace CTR
         {
             return dao_oc.ListarOC();
         }
-        public DataTable BuscarOC(string numeroOC)
+        public DataTable BuscarOC(int idOC)
         {
-            return dao_oc.BuscarOC(numeroOC);
+            return dao_oc.BuscarOC(idOC);
+        }
+        public DataTable ListarOC2(int idOC)
+        {
+            return dao_oc.ListarOC_2(idOC);
+        }
+        public void UPDATE_EstadoOC(int idOC)
+        {
+            dao_oc.UPDATE_EstadoOC(idOC);
         }
     }
 }

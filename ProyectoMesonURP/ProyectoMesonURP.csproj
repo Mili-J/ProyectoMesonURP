@@ -289,6 +289,7 @@
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
+    <Content Include="Recepción_Insumos.aspx" />
     <Content Include="multifield.js" />
     <Content Include="RegistrarCotizacion.aspx" />
     <Content Include="RegistrarReceta.aspx" />
@@ -2103,6 +2104,13 @@
     </Compile>
     <Compile Include="RegistrarCotizacion.aspx.designer.cs">
       <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Recepción_Insumos.aspx.cs">
+      <DependentUpon>Recepción_Insumos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recepción_Insumos.aspx.designer.cs">
+      <DependentUpon>Recepción_Insumos.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarReceta.aspx.cs">
       <DependentUpon>RegistrarReceta.aspx</DependentUpon>
