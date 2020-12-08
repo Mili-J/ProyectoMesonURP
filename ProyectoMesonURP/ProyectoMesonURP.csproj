@@ -306,6 +306,7 @@
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\fontawesome-free\attribution.js" />
     <Content Include="vendor\fontawesome-free\css\all.css" />
+    <Content Include="vendor\fontawesome-free\css\all.min.css" />
     <Content Include="vendor\fontawesome-free\js\all.js" />
     <Content Include="vendor\fontawesome-free\js\all.min.js" />
     <Content Include="vendor\fontawesome-free\LICENSE.txt" />

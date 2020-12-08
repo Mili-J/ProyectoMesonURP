@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Gestionar Receta | Registrar Receta" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistrarReceta.aspx.cs" Inherits="ProyectoMesonURP.RegistrarReceta" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="css/fv.css" rel="stylesheet" type="text/css" />
+<%--    <link href="css/fv.css" rel="stylesheet" type="text/css" />--%>
     <style type="text/css">
     .rfv
     {
@@ -302,9 +302,9 @@
             })
         }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="multifield.js"></script>
-    <script src="validator.js"></script>
+    <script src="validator.js"></script>--%>
 	<script>
         // initialize a validator instance from the "FormValidator" constructor.
         // A "<form>" element is optionally passed as an argument, but is not a must
