@@ -10,21 +10,21 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
-/*@mixin form-control-focus($ignore-warning: false) {
+@mixin form-control-focus($ignore-warning: false) {
   &:focus {
     color: $input-focus-color;
-    background-color: $input-focus-bg;*/
-    /*border-color: $input-focus-border-color;*/
-    /*outline: 0;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
     @if $enable-shadows {
       @include box-shadow($input-box-shadow, $input-focus-box-shadow);
     } @else {
-      // Avoid using mixin so we can pass custom focus shadow properly*/
-      /*box-shadow: $input-focus-box-shadow;*/
-    /*}
+      // Avoid using mixin so we can pass custom focus shadow properly
+      box-shadow: $input-focus-box-shadow;
+    }
   }
   @include deprecate("The `form-control-focus()` mixin", "v4.4.0", "v5", $ignore-warning);
-}*/
+}
 
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details

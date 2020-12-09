@@ -60,7 +60,7 @@ img {
 
 input, select, textarea {
     resize: none;
-    font-family: 'Inter',sans-serif
+    /*font-family: 'Inter',sans-serif*/
 }
 
 select, textarea {
@@ -725,10 +725,10 @@ p {
     }
 
 .custom-file-input, .custom-file-label, .custom-select, .form-control {
-    font-family: 'Inter',sans-serif;
+    font-family: 'Roboto'; /*cambie*/
     color: #131e22;
-    font-weight: 400;
-    height: 45px;
+    font-weight: 200; /*cambie*/
+    /*height: 45px;*/
     border-color: #d4d4d4;
     letter-spacing: .035em;
     -webkit-transition: all .3s ease-in-out;

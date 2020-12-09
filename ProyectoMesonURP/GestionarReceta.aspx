@@ -162,5 +162,5 @@
             })
         }
     </script>
-    <script src="vendors/scripts/core.js"></script>
+    <%--<script src="vendors/scripts/core.js"></script>--%>
 </asp:Content>
