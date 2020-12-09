@@ -725,7 +725,7 @@ p {
     }
 
 .custom-file-input, .custom-file-label, .custom-select, .form-control {
-    font-family: 'Roboto'; /*cambie*/
+    /*font-family: 'Roboto';*/ /*cambie*/
     color: #131e22;
     font-weight: 200; /*cambie*/
     /*height: 45px;*/
