@@ -14,7 +14,171 @@
                 <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control1" ReadOnly="true" />
             </div>
         </div>
+        <%-- -------------------------------------------------------- --%>
+<%--    <div class="grids">
+        <div class="progressbar-heading grids-heading title-flex">
+            <h2 class="tittle-margin5">Seleccionar los Platos del día</h2>
+        </div>
+    </div>--%>
+
         <%-- ------------------------------------------------------- --%>
+        <div class="panel panel-widget forms-panel">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h4>Platos seleccionados a la Carta</h4>
+                </div>
+
+
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
+                <asp:TextBox ID="txtNumRacCarta" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+
+            </div>
+        </div>
+
+
+
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
+                    <asp:Repeater ID="repeaterCartaSeleccionada" runat="server" OnItemCommand="repeaterCartaSeleccionada_ItemCommand">
+                        <ItemTemplate>
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" alt="Imagen de Referencia"
+                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                <div class="card-body">
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
+                                    <h5 class="card-title">
+                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                    </h5>
+                                    <p class="card-text">
+                                        Porción:
+                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría: 
+                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría de Receta: 
+                                                         <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Raciones: 
+                                                         <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+                                    </p>
+                                    <div>
+                                        <asp:Button ID="btnQuitarCarta" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarCarta" />
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>
+        <%-- ------------------------------------------------------- --%>
+        <div class="panel panel-widget forms-panel">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h4>Menú del día</h4>
+                </div>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
+                <asp:TextBox ID="txtNumRacMenu" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+
+            </div>
+        </div>
+
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
+                    <asp:Repeater ID="repeaterMenu" runat="server" OnItemCommand="repeaterMenu_ItemCommand">
+                        <ItemTemplate>
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" alt="Imagen de Referencia"
+                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                <div class="card-body">
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
+                                    <h5 class="card-title">
+                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                    </h5>
+                                    <p class="card-text">
+                                        Porción:
+                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría: 
+                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría de Receta: 
+                                                         <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
+                                    </p>
+                                    <p class="card-text">
+                                        Raciones: 
+                                                         <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+                                    </p>
+                                    <div>
+                                        <asp:Button ID="btnQuitarMenu" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarMenu" />
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>
+        <%-- ------------------------------------------------------- --%
+        <%-- Carta--------------------------------------------------- --%>
+        <div class="panel panel-widget forms-panel">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h4>A la Carta</h4>
+                </div>
+                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
+                    <asp:Repeater ID="repeaterCarta" runat="server" OnItemCommand="repeaterCarta_ItemCommand">
+                        <ItemTemplate>
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" alt="Imagen de Referencia"
+                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                <div class="card-body">
+                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
+                                    <h5 class="card-title">
+                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                    </h5>
+                                    <p class="card-text">
+                                        Porción:
+                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                    </p>
+                                    <p class="card-text">
+                                        Categoría: 
+                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                    </p>
+
+                                    <div>
+                                        <asp:Button ID="btnVerCarta" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerCarta" />
+                                        <asp:Button ID="btnAgregarCarta" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarCarta" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>
+
+        <%-- --------------------------------------------------- --%>
+>
         <div class="panel panel-widget forms-panel">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
@@ -125,166 +289,8 @@
             </div>
         </div>
         <%-- --------------------------------------------------- --%>
-        <div class="panel panel-widget forms-panel">
-            <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                <div class="form-title color-white">
-                    <h4>Menú del día</h4>
-                </div>
-
-        <div class="form-group">
-            <div class="col-sm-8">
-                <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
-                <asp:TextBox ID="txtNumRacMenu" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-
-            </div>
-        </div>
-
-                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
-                    <asp:Repeater ID="repeaterMenu" runat="server" OnItemCommand="repeaterMenu_ItemCommand">
-                        <ItemTemplate>
-                            <div class="card" style="width: 18rem">
-                                <img class="card-img-top" alt="Imagen de Referencia"
-                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
-                                <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
-                                    <h5 class="card-title">
-                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
-                                    </h5>
-                                    <p class="card-text">
-                                        Porción:
-                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
-                                    </p>
-                                    <p class="card-text">
-                                        Categoría: 
-                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
-                                    </p>
-                                    <p class="card-text">
-                                        Categoría de Receta: 
-                                                         <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
-                                    </p>
-                                    <p class="card-text">
-                                        Raciones: 
-                                                         <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-                                    </p>
-                                    <div>
-                                        <asp:Button ID="btnQuitarMenu" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarMenu" />
-                                       
-
-                                    </div>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-            </div>
-        </div>
-        <%-- Carta--------------------------------------------------- --%>
-        <div class="panel panel-widget forms-panel">
-            <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                <div class="form-title color-white">
-                    <h4>A la Carta</h4>
-                </div>
-                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
-                    <asp:Repeater ID="repeaterCarta" runat="server" OnItemCommand="repeaterCarta_ItemCommand">
-                        <ItemTemplate>
-                            <div class="card" style="width: 18rem">
-                                <img class="card-img-top" alt="Imagen de Referencia"
-                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
-                                <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
-                                    <h5 class="card-title">
-                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
-                                    </h5>
-                                    <p class="card-text">
-                                        Porción:
-                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
-                                    </p>
-                                    <p class="card-text">
-                                        Categoría: 
-                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
-                                    </p>
-
-                                    <div>
-                                        <asp:Button ID="btnVerCarta" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerCarta" />
-                                        <asp:Button ID="btnAgregarCarta" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarCarta" />
-
-                                    </div>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-            </div>
-        </div>
-        <%-- -------------------------------------------------------- --%>
-    <div class="grids">
-        <div class="progressbar-heading grids-heading title-flex">
-            <h2 class="tittle-margin5">Seleccionar los Platos del día</h2>
-        </div>
-    </div>
-
-        <%-- --------------------------------------------------- --%>
-        <div class="panel panel-widget forms-panel">
-            <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                <div class="form-title color-white">
-                    <h4>Platos seleccionados a la Carta</h4>
-                </div>
 
 
-
-        <div class="form-group">
-            <div class="col-sm-8">
-                <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
-                <asp:TextBox ID="txtNumRacCarta" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-
-            </div>
-        </div>
-
-
-
-                <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
-                    <asp:Repeater ID="repeaterCartaSeleccionada" runat="server" OnItemCommand="repeaterCartaSeleccionada_ItemCommand">
-                        <ItemTemplate>
-                            <div class="card" style="width: 18rem">
-                                <img class="card-img-top" alt="Imagen de Referencia"
-                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
-                                <div class="card-body">
-                                    <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
-                                    <h5 class="card-title">
-                                        <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
-                                    </h5>
-                                    <p class="card-text">
-                                        Porción:
-                                                        <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
-                                    </p>
-                                    <p class="card-text">
-                                        Categoría: 
-                                                         <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
-                                    </p>
-                                    <p class="card-text">
-                                        Categoría de Receta: 
-                                                         <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
-                                    </p>
-                                    <p class="card-text">
-                                        Raciones: 
-                                                         <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-                                    </p>
-                                    <div>
-                                        <asp:Button ID="btnQuitarCarta" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarCarta" />
-                                       
-
-                                    </div>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-            </div>
-        </div>
         <%-- --------------------------------------------------- --%>
              <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
                 <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />

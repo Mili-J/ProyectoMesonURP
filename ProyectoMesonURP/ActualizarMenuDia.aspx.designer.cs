@@ -24,31 +24,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
 
         /// <summary>
-        /// Control reapeterEntradas.
+        /// Control txtNumRacCarta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater reapeterEntradas;
+        protected global::System.Web.UI.WebControls.TextBox txtNumRacCarta;
 
         /// <summary>
-        /// Control repeaterFondo.
+        /// Control repeaterCartaSeleccionada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
-
-        /// <summary>
-        /// Control repeaterBebida.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterBebida;
+        protected global::System.Web.UI.WebControls.Repeater repeaterCartaSeleccionada;
 
         /// <summary>
         /// Control txtNumRacMenu.
@@ -78,22 +69,31 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Repeater repeaterCarta;
 
         /// <summary>
-        /// Control txtNumRacCarta.
+        /// Control reapeterEntradas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumRacCarta;
+        protected global::System.Web.UI.WebControls.Repeater reapeterEntradas;
 
         /// <summary>
-        /// Control repeaterCartaSeleccionada.
+        /// Control repeaterFondo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterCartaSeleccionada;
+        protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
+
+        /// <summary>
+        /// Control repeaterBebida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterBebida;
 
         /// <summary>
         /// Control btnAceptar.

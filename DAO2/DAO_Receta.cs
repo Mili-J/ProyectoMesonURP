@@ -314,5 +314,19 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataTable DAO_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)//recetas ya seleccionadas, menu o carta
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarMenuXRecetaYCategoria", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_idMenu", id_menu);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta", id_cat);
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }
