@@ -11,17 +11,8 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class GestionarEquivalencia
+    public partial class Gestionar_Ingrediente
     {
-
-        /// <summary>
-        /// btnIngrediente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngrediente;
 
         /// <summary>
         /// panel1 control.
@@ -33,21 +24,12 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.UpdatePanel panel1;
 
         /// <summary>
-        /// gvEquivalencia control.
+        /// gvIngrediente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEquivalencia;
-
-        /// <summary>
-        /// panelAgregarEqui control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel panelAgregarEqui;
+        protected global::System.Web.UI.WebControls.GridView gvIngrediente;
     }
 }

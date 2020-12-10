@@ -10,7 +10,7 @@ namespace DAO
         {
             get
             {
-                return "Data Source = DESKTOP-928V5LN\\SQLEXPRESS; Initial Catalog = BD_MesonURP; Integrated Security = True";
+                return "Data Source = (Local); Initial Catalog = BD_MesonURP; Integrated Security = True";
 
             }
         }

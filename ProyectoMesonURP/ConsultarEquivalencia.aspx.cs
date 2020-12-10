@@ -11,6 +11,16 @@ namespace ProyectoMesonURP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LLenarDatosE();
+        }
+        public void LLenarDatosE()
+        {
+            string[] E = new string[4];
+            E = (string[])Session["Equivalencia"];
+            txtInsumo.Text = E[0];
+            txtMedida.Text = E[1];
+            txtCantidad.Text = E[2];
+            lblFormatoC.Text = E[3];
 
         }
     }

@@ -131,6 +131,7 @@
     <Content Include="css\sweetalert2.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Gestionar Ingrediente.aspx" />
     <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarReceta.aspx" />
@@ -2016,6 +2017,13 @@
     </Compile>
     <Compile Include="Empty.aspx.designer.cs">
       <DependentUpon>Empty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gestionar Ingrediente.aspx.cs">
+      <DependentUpon>Gestionar Ingrediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gestionar Ingrediente.aspx.designer.cs">
+      <DependentUpon>Gestionar Ingrediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarOC.aspx.cs">
       <DependentUpon>GestionarOC.aspx</DependentUpon>

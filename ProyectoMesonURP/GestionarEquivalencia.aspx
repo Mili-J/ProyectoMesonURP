@@ -3,10 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <div class="women_main">
+    <div class="women_main">
      <div class="grids">
          <div class="progressbar-heading grids-heading tittle-flex">
              <h2 class="tittle-margin5">Gestionar Equivalencia</h2>
+             <div class="center-button" >
+                 <asp:Button CssClass="btn btn-primary" ID="btnIngrediente" runat="server" Text="Ver Ingredientes" OnClick="btnIngrediente_Click"  /> 
+
+             </div>
          </div>
      </div>
 
@@ -31,7 +35,14 @@
                                    
                                     <asp:TemplateField HeaderText="Editar">
                                         <ItemTemplate>
-                                            <asp:Button  ID="btnEditarEquivalencia" runat="server"  CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
+                                            <asp:Button CssClass="btn btn-primary" ID="btnEditarEquivalencia" runat="server"  CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                   
+                                   
+                                    <asp:TemplateField HeaderText="Ver">
+                                        <ItemTemplate>
+                                            <asp:Button CssClass="btn btn-primary" ID="btnVer" runat="server"  CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Ver" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                    

@@ -21,7 +21,7 @@ namespace CTR
         {
             return objDAO.ListarFormatoCocina();
         }
-        public string ListarNombreIngrediente(int idIngrediente)
+       
         public DTO_Ingrediente ListarNombreIngrediente(int idIngrediente)
         {
             return objDAO.SelectNombreIngrediente(idIngrediente);
@@ -29,6 +29,11 @@ namespace CTR
         public int ListarIdIngredientexNombre(string I_nombreIngrediente)
         {
             return objDAO.SelectIdIngredientexNombre(I_nombreIngrediente);
+        }
+
+        public DataTable ListarIngredientes()
+        {
+            return objDAO.ListarIngredientes();
         }
     }
 }

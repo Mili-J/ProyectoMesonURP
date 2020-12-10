@@ -127,5 +127,19 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+
+        public DataTable ListarIngredientes()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_Select_Ingrediente", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+
     }
 }

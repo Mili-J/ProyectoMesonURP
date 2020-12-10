@@ -44,7 +44,12 @@
                   </div>
                    <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Formato Cocina</label>
-                            <div class="col-sm-8">                               
+                            <div class="col-sm-8">
+                                 <asp:Label ID="Label1" runat="server">Actual:</asp:Label>
+                                <asp:Label ID="lblFormatoC" runat="server"></asp:Label>
+                            </div>
+                            <div class="col-sm-8">    
+                                
                                 <asp:DropDownList ID="ddlFormatoCocina" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlFormatoC_SelectedIndexChanged"></asp:DropDownList>
                             </div>
                         </div>

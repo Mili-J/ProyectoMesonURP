@@ -37,21 +37,19 @@ namespace ProyectoMesonURP
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            if (e.CommandName == "EditarEquivalencia")
+            if (e.CommandName == "EditarEquivalencia" || e.CommandName == "VerEquivalencia")
             {
                 
                 string insumo = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_nombreInsumo"].ToString();
                 string medida = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["M_nombreMedida"].ToString();
                 string cantidad = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["E_cantidad"].ToString();
                 string fcocina= gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FCO_nombreFormatoCocina"].ToString();
-                //Session.Add("Equivalencia", LlenarDatosEquivalencia(insumo, medida, cantidad, fcocina));
-                //Response.Redirect("ActualizarEquivalencia.aspx");
-
-                Session.Add("insumo",insumo);
-                Session.Add("medida",medida);
-                Session.Add("cantidad", cantidad);
-                Response.Redirect("ActualizarEquivalencia.aspx");
+                Session.Add("Equivalencia", LlenarDatosEquivalencia(insumo, medida, cantidad, fcocina));
+                
+                if(e.CommandName == "EditarEquivalencia") Response.Redirect("ActualizarEquivalencia.aspx");
+                if (e.CommandName == "VerEquivalencia") Response.Redirect("ConsultarEquivalencia.aspx");
             }
+           
         }
         public string[] LlenarDatosEquivalencia(string i, string m, string c, string fc)
         {
@@ -62,5 +60,12 @@ namespace ProyectoMesonURP
             Equivalencia[3] = fc;
             return Equivalencia;
         }
+
+        protected void btnIngrediente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Gestionar Ingrediente.aspx");
+        }
+
+      
     }
 }
