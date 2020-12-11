@@ -51,6 +51,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Repeater repeaterBebida;
 
         /// <summary>
+        /// Control repeaterCarta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterCarta;
+
+        /// <summary>
         /// Control txtNumRacMenu.
         /// </summary>
         /// <remarks>
@@ -67,15 +76,6 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeaterMenu;
-
-        /// <summary>
-        /// Control repeaterCarta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterCarta;
 
         /// <summary>
         /// Control txtNumRacCarta.
