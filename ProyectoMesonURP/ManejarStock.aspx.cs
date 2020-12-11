@@ -15,6 +15,7 @@ namespace ProyectoMesonURP
     {
         CTR_Insumo _CI = new CTR_Insumo();
         DTO_Insumo dto_i;
+        DTO_Usuario dto_u;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +25,25 @@ namespace ProyectoMesonURP
             }
             if (!Page.IsPostBack)
             {
+                dto_u=(DTO_Usuario)Session["Usuario"];
                 dto_i = new DTO_Insumo();
+                switch (dto_u.TU_idTipoUsuario)
+                {
+                    case 1:
+                        PanelBuscar.Visible = false;
+                        PanelInsumos.Visible = false;
+                    break;
+                    case 2:
+                        PanelSolicitar.Visible = false;
+                        PanelInsumos2.Visible = false;
+                        break;
+                    case 3:
+                        PanelSolicitar.Visible = false;
+                        PanelInsumos2.Visible = false;
+                        break;
+                    default:
+                        break;
+                }
                 CargarStockInsumo();
                 CargarStockInsumo2();
             }
@@ -44,7 +63,7 @@ namespace ProyectoMesonURP
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ingrese un insumo para la busqueda');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alertIns()", true);
 
             }
         }

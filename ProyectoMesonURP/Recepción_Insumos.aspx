@@ -100,13 +100,24 @@
                  if (letras.indexOf(tecla) == -1 && !tecla_especial)
                      return false;
              }
-             function alertaError() {
+
+             function alertaCantMax() {
                  Swal.fire({
                      title: 'Oh, no!',
-                     text: 'Ingrese un numero de OC para la busqueda',
+                     text: 'Cantidad máxima excedida',
                      icon: 'error',
                      confirmButtonText: 'Aceptar'
                  })
              }
+
+            function alertaSeleccionar() {
+                Swal.fire({
+                    title: 'Oh, no!',
+                    text: 'Selecciona un insumo, por favor',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                })
+            }
+
     </script>
 </asp:Content>

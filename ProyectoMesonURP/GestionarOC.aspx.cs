@@ -15,8 +15,11 @@ namespace ProyectoMesonURP
     {
         CTR_OC _CO = new CTR_OC();
         DTO_OC dto_o;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            gvInsumos1.DataBind();
             if (Session["Usuario"] == null)
             {
                 Response.Redirect("Login?x=1");
@@ -25,6 +28,7 @@ namespace ProyectoMesonURP
             {
                 dto_o = new DTO_OC();
                 CargarOC();
+
             }
 
         }
@@ -34,7 +38,12 @@ namespace ProyectoMesonURP
             gvOC.DataBind();
 
         }
+        public void CargarInsumosOC(int oc)
+        {
+            gvInsumos1.DataSource = _CO.ListarOC2(oc);
+            gvInsumos1.DataBind();
 
+        }
         protected void btnBuscar_ServerClick(object sender, EventArgs e)
         {
 
@@ -52,12 +61,15 @@ namespace ProyectoMesonURP
 
             }
         }
+
         protected void gvOC_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
 
             if (e.CommandName == "Descargar")
             {
+                int OC = Convert.ToInt32(gvOC.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["OC_idOC"].ToString());
+                CargarInsumosOC(OC);
             }
             if (e.CommandName == "Recepcionar")
             {
@@ -65,7 +77,7 @@ namespace ProyectoMesonURP
                 Session.Add("OCSeleccionada", OC);
                 Response.Redirect("Recepción_Insumos.aspx");
             }
-            
+
         }
         protected void gvOC_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

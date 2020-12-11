@@ -11,7 +11,7 @@
                         <div class="progressbar-heading grids-heading title-flex">
                             <h2 class="tittle-margin5">Manejar Stock</h2>
                         </div>
-                        <div class="search-buttons">
+                        <div class="search-buttons" runat="server" id="PanelBuscar">
                             <div class="search">                                
                                     <asp:TextBox  id="txtBuscarInsumo" runat="server"  CssClass="form-control1"  onkeypress="return lettersOnly(event);"  placeholder="Buscar Insumo ..."/>
                                     <button type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
@@ -20,7 +20,7 @@
                                     </button>
                             </div>
                            </div>
-                               <div class="panel panel-widget forms-panel">
+                               <div class="panel panel-widget forms-panel" runat="server" id="PanelInsumos">
                                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                     <div class="form-title color-white">
                                         <h4>Stock Actual</h4>
@@ -50,7 +50,7 @@
 
                              <hr /> 
 
-                            <div class="panel panel-widget forms-panel">
+                            <div class="panel panel-widget forms-panel" runat="server" id="PanelInsumos2">
                                  <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                     <div class="form-title color-white">
                                      <h4>Insumos que requieren abastecimiento</h4>
@@ -111,7 +111,7 @@
                  if (letras.indexOf(tecla) == -1 && !tecla_especial)
                      return false;
              }
-             function alertaError() {
+             function alertIns() {
                  Swal.fire({
                      title: 'Oh, no!',
                      text: 'Ingrese un insumo para la busqueda',
