@@ -102,6 +102,13 @@ namespace DAO
         //            dtEntrada.Merge(DAO_Consultar_Recetas_X_Categoria(3));
         //            return dtEntrada;
 
+        //        case 2://Segundos
+        //            return DAO_Consultar_Recetas_X_Categoria(2);
+        //        default:
+        //            return new DataTable();//nada :C
+        //    }
+        //}
+
 
         //public DataTable DAO_Consultar_Recetas_Disponibles(int racion, int caso)
         //{
@@ -430,6 +437,20 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_BEBM", conexion);
             comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+        public DataTable DAO_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)//recetas ya seleccionadas, menu o carta
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarMenuXRecetaYCategoria", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_idMenu", id_menu);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta", id_cat);
             comando.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(comando);

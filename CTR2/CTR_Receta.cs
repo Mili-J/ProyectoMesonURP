@@ -100,5 +100,9 @@ namespace CTR
         {
             return objDAO.SelectSubcategoriaxIdReceta(R_idReceta);
         }
+        public DataTable CTR_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)
+        {
+            return objDAO.DAO_ConsultarMenuXRecetaYCategoria(id_menu,id_cat);
+        }
     }
 }
