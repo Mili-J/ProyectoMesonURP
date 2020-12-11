@@ -87,39 +87,21 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.UpdatePanel PanelAñadir;
 
         /// <summary>
-        /// Control gvIngredientes.
+        /// Control gvInsumos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvIngredientes;
+        protected global::System.Web.UI.WebControls.GridView gvInsumos;
 
         /// <summary>
-        /// Control btnAñadirIngredientes.
+        /// Control btnEnviar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAñadirIngredientes;
-
-        /// <summary>
-        /// Control lblIndex.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIndex;
-
-        /// <summary>
-        /// Control btnGuardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnGuardar;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnEnviar;
     }
 }

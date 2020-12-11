@@ -93,8 +93,6 @@ namespace DAO
                     return new DataTable();//nada :C
             }
         }
-
-
         public DataTable DAO_Consultar_Recetas_Disponibles(int racion, int caso)
         {
             //TODO
@@ -320,6 +318,26 @@ namespace DAO
                 conexion.Close();
                 return false;
             }
+        }
+        public bool SelectExistenciaReceta(string R_nombreReceta)
+        {
+           
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_EXISTENCIA_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@R_nombreReceta", R_nombreReceta);
+                cmd.ExecuteNonQuery();
+                string nombreReceta = Convert.ToString(cmd.ExecuteScalar());
+                if (nombreReceta == "")
+                {
+                conexion.Close();
+                return false;
+                }
+                else
+                {
+                conexion.Close();
+                return true;
+                }
         }
         public string SelectSubcategoriaxIdReceta(int R_idReceta)
         {

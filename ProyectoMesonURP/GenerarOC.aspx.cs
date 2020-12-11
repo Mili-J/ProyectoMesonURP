@@ -9,20 +9,29 @@ namespace ProyectoMesonURP
 {
     public partial class GenerarOC : System.Web.UI.Page
     {
+        string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!Page.IsPostBack){
 
+                CargarCotizacion();
+            }
+            txtFechaEmision.Text = FechaActual;
         }
-        protected void gvIngredientes_SelectedIndexChanged(object sender, EventArgs e)
+        public void CargarCotizacion() {
+            txtNdeCompra.Text = Convert.ToString(Session["nCompra"]);
+            txtNdeCompra.Enabled = false;
+            txtProveedor.Text = Convert.ToString(Session["proveedor"]);
+            txtProveedor.Enabled = false;
+            txtFechaEmision.Enabled = false;
+        }
+        protected void gvInsumos_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
-        protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        protected void gvInsumos_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
         }
-        protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
-        { 
-        }
-        protected void btnGuardar_ServerClick(object sender, EventArgs e)
+        protected void btnEnviar_ServerClick(object sender, EventArgs e)
         { 
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
@@ -31,8 +40,5 @@ namespace ProyectoMesonURP
         protected void btnLimpiar_ServerClick(object sender, EventArgs e)
         { 
         }
-        protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
-        { 
-        }
-        }
+    }
 }

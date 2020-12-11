@@ -141,15 +141,21 @@ namespace ProyectoMesonURP
         }
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
-            _Dr.R_nombreReceta = txtnombre.Text;
-            _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
-            _Dr.R_descripcion = txtDescripcion.Text;
-            _Dr.R_imagenReceta = fuImagen.FileBytes;
-            _Dr.R_subcategoria = ddlSubCategoriaReceta.SelectedValue;
-            _Dr.EP_idEstadoReceta = 1;
-            _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
-            
-
+            bool Enr = _Cr.ExistenciaReceta(txtnombre.Text);
+            if (Enr==false) {
+                _Dr.R_nombreReceta = txtnombre.Text;
+                _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
+                _Dr.R_descripcion = txtDescripcion.Text;
+                _Dr.R_imagenReceta = fuImagen.FileBytes;
+                _Dr.R_subcategoria = ddlSubCategoriaReceta.SelectedValue;
+                _Dr.EP_idEstadoReceta = 1;
+                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaDuplicado()", true);
+                return;
+            }
             if (pila.Count == 0)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaError()", true);
@@ -170,15 +176,40 @@ namespace ProyectoMesonURP
     }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
         {
-            tin.Clear();
-            return;
+            if (pila.Count != 0)
+            {
+                for (int i = 0; i < pila.Count;)
+                {
+                    if (i % 5 == 0)
+                        tin.Rows[i].Delete();
+                    pila.Remove(pila[i]);
+                }
+                gvIngredientes.DataSource = tin;
+                gvIngredientes.DataBind();
+            }
+            Response.Redirect("GestionarReceta");
         }
         protected void btnLimpiar_ServerClick(object sender, EventArgs e)
         {
+            txtDescripcion.Text = "";
+            txtnombre.Text = "";
+            txtPorciones.Text = "";
             txtCantidad.Text = "";
             if (ddlIngredientes.SelectedIndex != 0)
             {
                 ddlIngredientes.SelectedIndex = 0;
+            }
+            if (ddlCategoriaReceta.SelectedIndex != 0)
+            {
+                ddlCategoriaReceta.SelectedIndex = 0;
+            }
+            if (ddlMedida.SelectedIndex != 0)
+            {
+                ddlMedida.SelectedIndex = 0;
+            }
+            if (ddlSubCategoriaReceta.SelectedIndex != 0)
+            {
+                ddlSubCategoriaReceta.SelectedIndex = 0;
             }
             if (pila.Count != 0)
             {

@@ -145,7 +145,7 @@
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
                 <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
-                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarReceta';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
+                <input type="button" name="sub-1" value="Regresar" runat="server" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
                 <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
             </p>
         </div>
