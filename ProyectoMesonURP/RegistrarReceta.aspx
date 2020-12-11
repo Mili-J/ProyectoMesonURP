@@ -184,7 +184,7 @@
             </p>
         </div>
     </div>
-
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
     <script>
