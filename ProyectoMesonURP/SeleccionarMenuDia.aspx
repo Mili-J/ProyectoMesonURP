@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Mesón URP | Seleccionar Menú" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuDia" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .form-control {
+            text-align:center;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -8,20 +13,22 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="title">
-						<h4>Planificación</h4>
+						<h4>Planificación del Día</h4>
 					</div>
 				</div>
 			</div>
 		</div>
         <div class="pd-20 card-box">
-            <div class="grids">
-                 <h5 class="tittle-margin5">Seleccionar el Menú del día</h5>
+            <div class="grids pl-3">
+                 <h5 class="tittle-margin5">Seleccionar los Platos a Planificar</h5>
             </div>
            <%-- <div class="form-horizontal" runat="server">--%>
-            <div class="form-group">
-                <div class="col-sm-8">
-                    <label for="focusedinput" class="col-sm-2 control-label">Fecha:</label>
-                    <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control1" ReadOnly="true" />
+            <div class="row pl-5 p-4">
+                <div class="col-md-2 pt-1">
+                    <label>Fecha de planificación:</label>
+                </div>    
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtFecha" runat="server" class="form-control" disabled=""/>
                 </div>
             </div>
             <!-- container -->
@@ -198,29 +205,28 @@
             <!-- end container -->
        </div>
         <%-- --------------------------------------------------- --%>
-     <div class="padding-top-30">
-        <div class="pd-20 card-box">
+      <div class="row clearfix pt-30">
+        <div class="col-md-6 col-sm-12 mb-30">
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
-                        <h4>Menú del día</h4>
+                        <h5>Menú del día</h5>
                     </div>
-                    <div class="form-group">
-                <div class="col-sm-8">
-                    <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
-                    <asp:TextBox ID="txtNumRacMenu" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-    <%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-
-                </div>
-            </div>
-
-                    <div class="product-wrap">
+                     <div class="pd-20 card-box height-100-p">
+                         <div class="row">
+                            <div class="col-md-4">
+                                <label>N° total de raciones: </label>
+                            </div>    
+                            <div class="col-md-2 pl-3">
+                                <asp:TextBox ID="txtNumRacMenu" runat="server" class="form-control"  TextMode="Number"/>
+                            </div>
+                        </div>
+                        <div class="product-wrap">
                             <div class="product-list">
                                 <ul class="row">
                                     <asp:Repeater ID="repeaterMenu" runat="server" OnItemCommand="repeaterMenu_ItemCommand">
                                             <ItemTemplate>
-                                                <li class="col-lg-3 col-md-2 col-sm-12">
+                                                <li class="col-lg-6 col-md-2 col-sm-12">
                                                     <div class="product-box">
                                                         <div class="producct-img">
                                                                 <img class="card-img-top" alt="Imagen de Referencia" src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
@@ -259,43 +265,37 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                     </div>
+                 </div>
             </div>
        </div>
-    </div>
+    
             <%-- Carta--------------------------------------------------- --%>
-  
-        <div class="grids">
-            <div class="progressbar-heading grids-heading title-flex">
-                <h2 class="tittle-margin5">Seleccionar los Platos del día</h2>
-            </div>
-        </div>
 
             <%-- --------------------------------------------------- --%>
-     <div class="padding-top-30">
-        <div class="pd-20 card-box">
+    
+        <div class="col-md-6 col-sm-12 mb-30">
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
-                        <h4>Platos seleccionados a la Carta</h4>
+                        <h5>Platos seleccionados a la Carta</h5>
                     </div>
-
-            <div class="form-group">
-                <div class="col-sm-8">
-                    <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
-                    <asp:TextBox ID="txtNumRacCarta" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-    <%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-
-                </div>
-            </div>
-
-                     <div class="product-wrap">
+                    <div class="pd-20 card-box height-100-p">
+                         <div class="row">
+                            <div class="col-md-4">
+                                <label>N° total de raciones: </label>
+                            </div>    
+                            <div class="col-md-2 pl-3">
+                                <asp:TextBox ID="txtNumRacCarta" runat="server" class="form-control"  TextMode="Number"/>
+                            </div>
+                        </div>
+                    
+                        <div class="product-wrap">
                             <div class="product-list">
                                 <ul class="row">
                                      <asp:Repeater ID="repeaterCartaSeleccionada" runat="server" OnItemCommand="repeaterCartaSeleccionada_ItemCommand">
                                             <ItemTemplate>
-                                                <li class="col-lg-3 col-md-2 col-sm-12">
+                                                <li class="col-lg-6 col-md-2 col-sm-12">
                                                     <div class="product-box">
                                                         <div class="producct-img">
                                                               <img class="card-img-top" alt="Imagen de Referencia" src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
@@ -334,12 +334,13 @@
                             </ul>
                         </div>
                     </div>
+                     </div>
                 </div>
             </div>
          </div>
      </div>
 
-            <%-- --------------------------------------------------- --%>
+       <%-- --------------------------------------------------- --%>
                  <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
                     <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
                     <asp:Button ID="btnRegresar" CssClass="btn btn-danger" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
