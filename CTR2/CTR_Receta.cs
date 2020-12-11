@@ -92,6 +92,10 @@ namespace CTR
         {
             return objDAO.SelectExistenciaImagen(R_idReceta);
         }
+        public bool ExistenciaReceta(string R_nombreReceta)
+        {
+            return objDAO.SelectExistenciaReceta(R_nombreReceta);
+        }
         public string CargarSubcategoriaxIdReceta(int R_idReceta)
         {
             return objDAO.SelectSubcategoriaxIdReceta(R_idReceta);

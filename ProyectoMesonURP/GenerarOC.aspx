@@ -40,6 +40,15 @@
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
+                        <label for="selector1" class="col-sm-2 control-label">Fecha de Entrega</label>
+                        <div class="col-sm-8">
+                           <%-- <asp:TextBox ID="txtFechaEntrega" runat="server" Style="width: 25%;" ReadOnly="true" CssClass="form-control1"/>
+                           
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFechaEntrega" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                        --%>
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 1889px;">
                         <label for="selector1" class="col-sm-2 control-label">Comprobante</label>
                         <div class="col-sm-8">
                             <asp:DropDownList ID="ddlComprobante" runat="server" Style="width: 25%;" CssClass="form-control1">
@@ -64,39 +73,41 @@
                         </asp:UpdatePanel>--%>
                         <div class="panel panel-widget forms-panel" style="width: 60vh; margin-top: 27px;">
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                <asp:GridView ID="gvIngredientes" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvIngredientes_OnRowDataBound"
-                                    DataKeyNames="Nombre Ingrediente,Medida"
-                                    CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvIngredientes_SelectedIndexChanged">
+                                <asp:GridView ID="gvInsumos" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvInsumos_OnRowDataBound"
+                                    DataKeyNames="I_nombreInsumo,FC_nombreFormatoCompra,DC_cantidadCotizacion"
+                                    CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged" ShowFooter="True">
 
                                     <Columns>
-                                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                                        <asp:BoundField HeaderText="Representación" DataField="Representación" />
-                                        <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                                        <asp:BoundField HeaderText="PrecioUnitario" DataField="PrecioUnitario" />
-                                         <asp:BoundField HeaderText="Total" DataField="Total" />
-
+                                        <asp:BoundField HeaderText="Nombre" DataField="I_nombreInsumo" />
+                                        <asp:BoundField HeaderText="Representación" DataField="FC_nombreFormatoCompra" />
+                                        <asp:BoundField HeaderText="Cantidad" DataField="DC_cantidadCotizacion" />
+                                        <asp:TemplateField HeaderText="Precio Unitario" >
+                                            <Itemtemplate>
+                                        <asp:TextBox id ="txtPrecioUnitario" runat="server" />
+                                        </Itemtemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Total">
+                                            <Itemtemplate>
+                                        <asp:Label id ="lblTotal" runat="server" />
+                                        </Itemtemplate>
+                                        </asp:TemplateField>
                                     </Columns>
-                                    <SelectedRowStyle BackColor="LightGreen" />
                                 </asp:GridView>
                             </div>
-                            <p class="center-button">
-                        <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" Style="margin-right: -154px; width: 39%;" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
-                        <%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
-                    </p>
                         </div>
                     </ContentTemplate>
                     <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="btnAñadirIngredientes" />
-                        <asp:PostBackTrigger ControlID="btnGuardar" />
+                        <asp:PostBackTrigger ControlID="btnEnviar" />
                     </Triggers>
                 </asp:UpdatePanel>
-            <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
+                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEnviar" onserverclick="btnEnviar_ServerClick">Enviar</button>
                 <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarReceta';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
                 <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
             </p>
         </div>
     </div>
+     
     </asp:Content>
+
