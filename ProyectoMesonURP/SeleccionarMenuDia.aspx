@@ -6,6 +6,7 @@
             text-align:center;
         }
     </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -252,9 +253,8 @@
                                                             Raciones: 
                                                                                 <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
                                                         </p>
-                                                        <div>
-                                                            <asp:Button ID="btnQuitarMenu" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarMenu" />
-                                       
+                                                        <div class="col-md-12 col-sm-12 text-right">
+                                                            <asp:Button ID="btnQuitarMenu" class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarMenu" />
 
                                                         </div>
                                                     </div>
@@ -271,8 +271,6 @@
        </div>
     
             <%-- Carta--------------------------------------------------- --%>
-
-            <%-- --------------------------------------------------- --%>
     
         <div class="col-md-6 col-sm-12 mb-30">
             <div class="panel panel-widget forms-panel">
@@ -321,8 +319,8 @@
                                                             Raciones: 
                                                                              <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
                                                         </p>
-                                                        <div>
-                                                            <asp:Button ID="btnQuitarCarta" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarCarta" />
+                                                        <div class="col-md-12 col-sm-12 text-right">
+                                                            <asp:Button ID="btnQuitarCarta"  class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarCarta" />
                                        
 
                                                         </div>
