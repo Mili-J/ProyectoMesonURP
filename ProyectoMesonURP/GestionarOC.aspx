@@ -48,7 +48,7 @@
                                 <asp:BoundField DataField="EOC_nombreEstadoOC" HeaderText="Estado" />
                                 <asp:TemplateField HeaderText="Descargar">
                                     <ItemTemplate>
-                                        <asp:ImageButton  ID="btnDescargar" ImageUrl="img/descargar.png" onmouseover="this.src='img/descargar-b.png'" onmouseout="this.src='img/descargar.png'" runat="server" CommandName="Descargar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="javascript:createPDF()" />
+                                        <asp:ImageButton  ID="btnDescargar" ImageUrl="img/descargar.png" onmouseover="this.src='img/descargar-b.png'" onmouseout="this.src='img/descargar.png'" runat="server" CommandName="Descargar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Recepcionar">
