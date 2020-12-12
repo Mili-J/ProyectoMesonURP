@@ -21,7 +21,7 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
                 CargarReceta();
-                //CargarRecetaTab1();
+                CargarRecetaTab1();
             }
         }
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -92,7 +92,7 @@ namespace ProyectoMesonURP
         protected void fNombreReceta_TextChanged(object sender, EventArgs e)
         {
             CargarReceta();
-            //CargarRecetaTab1();
+            CargarRecetaTab1();
         }
         
         public void CargarReceta()

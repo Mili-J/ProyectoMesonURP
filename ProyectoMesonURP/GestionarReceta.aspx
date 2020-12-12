@@ -18,17 +18,21 @@
 
         <div class="pd-20 card-box">
             <div class="row p-3">
-                <div class="header-left pt-1">
+                <div class="header-left pt-1 col-md-9">
 			        <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
 			        <div class="header-search">
 					    <div class="form-group mb-0">
-						    <i class="dw dw-search2 search-icon"></i>
-						    <asp:TextBox ID="txtBuscarReceta" runat="server" AutoPostBack="True" class="form-control search-input" OnTextChanged="fNombreReceta_TextChanged" onkeypress="return soloLetras(event);" placeholder="Buscar Receta..."/>
-					    </div>
+                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                 <ContentTemplate>
+						            <i class="dw dw-search2 search-icon"></i>
+						            <asp:TextBox ID="txtBuscarReceta" runat="server" AutoPostBack="True" class="form-control search-input" OnTextChanged="fNombreReceta_TextChanged" onkeypress="return soloLetras(event);" placeholder="Buscar Receta..."/>
+					             </ContentTemplate>
+                              </asp:UpdatePanel>
+                         </div>
 			        </div> 
 		        </div>
 
-                <div class="header-right pr-4">
+                <div class="header-right pr-4 col-md-3">
                     <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;" onserverclick="btnRegistrarReceta_Click">     
                         <span class="material-icons margin-5">add_circle_outline</span>
                         Registrar Receta
@@ -50,10 +54,12 @@
 			    </ul>
                 <div class="tab-content pt-3">
                     <div class="tab-pane fade show active" id="tabTotal" role="tabpanel">
-                            <div class="product-wrap">
+                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <div class="product-wrap">
                                 <div class="product-list">
                                     <ul class="row">
-                                            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                                     <ItemTemplate>
                                                         <li class="col-lg-3 col-md-2 col-sm-12">
                                                             <div class="product-box">
@@ -89,12 +95,16 @@
                                                         </li>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
-                                        </ul>
-                                    </div>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                            </ContentTemplate>
+                         </asp:UpdatePanel>
+                     </div>
                     <div class="tab-pane fade" id="tabSegundosM" role="tabpanel">
-                            <div class="product-wrap">
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <div class="product-wrap">
                                 <div class="product-list">
                                     <ul class="row">
                                         <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater1_ItemCommand">
@@ -136,6 +146,8 @@
                                 </ul>
                             </div>
                         </div>
+                            </ContentTemplate>
+                         </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
