@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <div class="women_main">
         <!-- start content -->
         <div class="grids">
@@ -42,10 +43,10 @@
                     <div class="form-group" style="width: 1889px;">
                         <label for="selector1" class="col-sm-2 control-label">Fecha de Entrega</label>
                         <div class="col-sm-8">
-                           <%-- <asp:TextBox ID="txtFechaEntrega" runat="server" Style="width: 25%;" ReadOnly="true" CssClass="form-control1"/>
-                           
+
+                            <asp:TextBox ID="txtFechaEntrega" runat="server" CssClass="form-control1"></asp:TextBox>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFechaEntrega" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                        --%>
+                        
                         </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
@@ -108,6 +109,19 @@
             </p>
         </div>
     </div>
-     
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+       <script>
+           $(function () {
+               $('#txtFechaEntrega').datepicker({
+                   dateFormat: 'dd/mm/yy',
+                   changeMonth: true,
+                   changeYear: true,
+                   yearRange: '2020:2021'
+               });
+           })
+       </script>
     </asp:Content>
+
 
