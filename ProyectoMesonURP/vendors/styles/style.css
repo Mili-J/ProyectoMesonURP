@@ -1067,12 +1067,12 @@ textarea.form-control {
 }
 
 .bootstrap-select .dropdown-menu li .dropdown-item.active:hover, .select2-container--default .select2-results__option[aria-selected=true] {
-    background-color: #1b00ff;
+    background-color: #1b00ff; /*cambie*/
     color: #fff
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #1b00ff
+    background-color: #1b00ff /*cambie*/
 }
 
 .bootstrap-select.btn-group .dropdown-menu.inner, table.dataTable > tbody > tr.child ul.dtr-details .dtr-title {

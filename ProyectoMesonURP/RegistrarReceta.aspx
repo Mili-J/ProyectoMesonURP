@@ -25,12 +25,13 @@
                             <h4 class="tittle-margin5">Registrar Receta</h4>
                         </div>
                     </div>
-                </div>
+               </div>
+
                 <div class="row clearfix">
                     <div class="col-md-6 col-sm-12 mb-30">
                         <div class="form-grids widget-shadow" data-example-id="basic-forms">
                             <div class="form-title color-white">
-                                <h4>Información del Plato</h4>
+                                <h5>Información del Plato</h5>
                             </div>
                         </div>
                         <div class="pd-20 card-box height-100-p">
@@ -89,7 +90,7 @@
                     <div class="col-md-6 col-sm-12 mb-30">
                         <div class="form-grids widget-shadow" data-example-id="basic-forms">
                             <div class="form-title color-white">
-                                <h4>Imagen de Referencia</h4>
+                                <h5>Imagen de Referencia</h5>
                             </div>
                         </div>
                         <div class="pd-20 card-box height-100-p">
@@ -106,24 +107,29 @@
                         </div>
                     </div>
                 </div>
-               <div class="padding-top-30">
+
+                <div class="padding-top-30">
                     <div class="pd-20 card-box mb-30">
                         <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                 <div class="form-title color-white">
-                                    <h4>Ingredientes</h4>
+                                    <h5>Ingredientes</h5>
                                 </div>
                             </div>
                         <div class="row clearfix">
                             
                             <div class="col-md-6 col-sm-12 mb-30">
                                 <div class="form-group pt-5 pl-5">
-                                    <label>Ingredientes</label>
-                                    <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlIngredientes" runat="server" class="custom-select2 form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlIngredientes_SelectionChange">
-                                            <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                                    </div>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                         <ContentTemplate>
+                                            <label>Ingredientes</label>
+                                            <div class="col-sm-6">
+                                                <asp:DropDownList ID="ddlIngredientes" runat="server" class="custom-select2 form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlIngredientes_SelectionChange">
+                                                    <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:RequiredFieldValidator ID="rfvingredientes" runat="server" ControlToValidate="ddlIngredientes" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                                            </div>
+                                         </ContentTemplate>
+                                    </asp:UpdatePanel>
                                 </div>
                                 <div class="form-group pt-3 pl-5">
                                     <label>Cantidad</label>
@@ -132,29 +138,35 @@
                                     </div>
                                 </div>
                                 <div class="form-group pt-3 pl-5">
-                                    <label>Medida</label>
-                                    <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlMedida" runat="server" class="custom-select2 form-control">
-                                        </asp:DropDownList>
-                                    </div>
+                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                         <ContentTemplate>
+                                            <label>Medida</label>
+                                            <div class="col-sm-6">
+                                                <asp:DropDownList ID="ddlMedida" runat="server" class="custom-select2 form-control">
+                                                </asp:DropDownList>
+                                            </div>
+                                         </ContentTemplate>
+                                    </asp:UpdatePanel>
                                 </div>
-                                <p class="center-button">
-                                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" Style="margin-right: -154px; width: 39%;" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
-                                    <%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
-                                </p>
+                                <asp:UpdatePanel ID="UpdateButton" runat="server">
+                                    <ContentTemplate>
+                                    <p class="center-button">
+                                        <asp:Button CssClass="btn btn-outline-success" runat="server" Text="Añadir" ID="btnAñadirIngredientes" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
+                                        <asp:Button CssClass="btn btn-outline-danger" runat="server" Text="Quitar" OnClick="btnQuitarIngrediente_Click" />
+                                    </p>
+                                     </ContentTemplate>
+                                </asp:UpdatePanel>
                             </div>
                 
                             <div class="col-md-6 col-sm-12 mb-30">
                                 <asp:UpdatePanel ID="PanelAñadir" runat="server">
                                     <ContentTemplate>
-                                        <%-- </ContentTemplate>
-                                            </asp:UpdatePanel>--%>
                                         <div class="panel panel-widget forms-panel" style="width: 60vh; margin-top: 27px;">
                                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                                 <asp:GridView ID="gvIngredientes" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvIngredientes_OnRowDataBound"
                                                     DataKeyNames="Nombre Ingrediente,Medida"
                                                     CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvIngredientes_SelectedIndexChanged">
-
+                                                   
                                                     <Columns>
                                                         <asp:BoundField HeaderText="Nombre Ingrediente" DataField="Nombre Ingrediente" />
                                                         <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
@@ -175,15 +187,16 @@
                         </div>
             <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
 </div>
-</div>
+                </div>
             <hr />
-            <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
-                <input type="button" name="sub-1" value="Regresar" runat="server" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
-                <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
-            </p>
+                    <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
+                        <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
+                        <input type="button" name="sub-1" value="Regresar" runat="server" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
+                        <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
+                    </p>
+                
+            </div>
         </div>
-    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>

@@ -263,5 +263,14 @@ namespace ProyectoMesonURP
             gvIngredientes.DataSource = tin;
             gvIngredientes.DataBind();
         }
+        protected void btnQuitarIngrediente_Click(object sender, EventArgs e)
+        {
+            id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
+            tin.Rows[id].Delete();
+            pila.RemoveAt(id);
+            gvIngredientes.DataSource = tin;
+            gvIngredientes.DataBind();
+
+        }
     }
 }
