@@ -156,5 +156,22 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataTable ConsultarInsumo(string @nombreInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Consultar_Insumo_MS", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@nombreInsumo", nombreInsumo);
+                DataSet dSet = new DataSet();
+                cmd.Fill(dSet);
+                return dSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

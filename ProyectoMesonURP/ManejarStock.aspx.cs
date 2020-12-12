@@ -38,23 +38,23 @@ namespace ProyectoMesonURP
 
         }
 
-        protected void btnBuscar_ServerClick(object sender, EventArgs e)
-        {
+        //protected void btnBuscar_ServerClick(object sender, EventArgs e)
+        //{
 
-            try
-            {
-                if (txtBuscarInsumo.Text != "")
-                {
-                    gvInsumos.DataSource = _CI.BuscarInsumoF(txtBuscarInsumo.Text);
-                    gvInsumos.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ingrese un insumo para la busqueda');", true);
+        //    try
+        //    {
+        //        if (txtBuscarInsumo.Text != "")
+        //        {
+        //            gvInsumos.DataSource = _CI.BuscarInsumoF(txtBuscarInsumo.Text);
+        //            gvInsumos.DataBind();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ingrese un insumo para la busqueda');", true);
 
-            }
-        }
+        //    }
+        //}
 
         protected void btnSolicitar_Click(object sender, EventArgs e)
         {
@@ -127,11 +127,15 @@ namespace ProyectoMesonURP
 
         public void CargarStockInsumo()
         {
-            gvInsumos.DataSource = _CI.ListarInsumo();
+            gvInsumos.DataSource = _CI.ConsultarInsumo(txtBuscarInsumo.Text);
             gvInsumos.DataBind();
 
         }
-
+        protected void fNombreInsumo_TextChanged(object sender, EventArgs e)
+        {
+            CargarStockInsumo();
+            //CargarRecetaTab1();
+        }
         public void CargarStockInsumo2()
         {
             gvInsumos2.DataSource = _CI.ListarInsumo2();

@@ -19,6 +19,10 @@ namespace CTR
         {
             return dao_insumo.ListarInsumo();
         }
+        public DataTable ConsultarInsumo(string nombreInsumo)
+        {
+            return dao_insumo.ConsultarInsumo(nombreInsumo);
+        }
         public DataTable ListarInsumo2()
         {
             return dao_insumo.ListarInsumo2();
