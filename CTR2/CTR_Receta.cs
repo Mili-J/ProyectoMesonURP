@@ -26,14 +26,18 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Recetas();
         }
-        public DataTable CTR_Consultar_Recetas_X_Categoria(int categoria)
+        public DataTable CTR_Consultar_Recetas_X_Categoria(int categoria)//Menu o carta
         {
             return objDAO.DAO_Consultar_Recetas_X_Categoria(categoria);
         }
-        public DataTable CTR__Consultar_Recetas_Disponibles(int racion, int caso)
+        public DataTable CTR_Consultar_Recetas_X_SubCategoriaYCategoria(int catPlato, string subCat)
         {
-            return objDAO.DAO_Consultar_Recetas_Disponibles(racion, caso);
+            return objDAO.DAO_Consultar_Recetas_X_SubCategoriaYCategoria(catPlato,subCat);
         }
+        //public DataTable CTR__Consultar_Recetas_Disponibles(int racion, int caso)
+        //{
+        //    return objDAO.DAO_Consultar_Recetas_Disponibles(racion, caso);
+        //}
         public DTO_Receta CTR_Consultar_Receta(int i)
         {
             return objDAO.DAO_Consultar_Receta(i);
@@ -48,14 +52,18 @@ namespace CTR
             objDAO = new DAO_Receta();
             return objDAO.DAO_ConsultarRecetaT();
         }
-        public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
-        {
-            return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
-        }
-        public byte[] Consultar_ImagenReceta(int R_idReceta)
-        {
-            return objDAO.Select_ImagenReceta(R_idReceta);
-        }
+        //public DataTable CTR_Consultar_Recetas_X_Categoria_Seleccionada(int caso)
+        //{
+        //    return objDAO.DAO_Consultar_Recetas_X_Categoria_Seleccionada(caso);
+        //}
+        //public byte[]prueba(int i)
+        //{
+        //    return objDAO.prueba(i);
+        //}
+        //public void pruebaa(byte[]a,int i)
+        //{
+        //    objDAO.actualizarfoto(a,i);
+        //}
         public int IdReceta()
         {
             return objDAO.SelectIdReceta();
@@ -83,6 +91,10 @@ namespace CTR
         public string CargarSubcategoriaxIdReceta(int R_idReceta)
         {
             return objDAO.SelectSubcategoriaxIdReceta(R_idReceta);
+        }
+        public DataTable CTR_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)
+        {
+            return objDAO.DAO_ConsultarMenuXRecetaYCategoria(id_menu,id_cat);
         }
     }
 }

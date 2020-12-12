@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConexionDB.cs" />
     <Compile Include="DAO_CategoriaInsumo.cs" />
+    <Compile Include="DAO_CategoriaPlato.cs" />
     <Compile Include="DAO_CategoriaReceta.cs" />
     <Compile Include="DAO_Cotizacion.cs" />
     <Compile Include="DAO_DetalleCotizacion.cs" />
@@ -51,7 +52,9 @@
     <Compile Include="DAO_Equivalencia.cs" />
     <Compile Include="DAO_EstadoCotizacion.cs" />
     <Compile Include="DAO_EstadoInsumo.cs" />
+    <Compile Include="DAO_EstadoMenu.cs" />
     <Compile Include="DAO_EstadoOC.cs" />
+    <Compile Include="DAO_EstadoPlato.cs" />
     <Compile Include="DAO_EstadoProveedor.cs" />
     <Compile Include="DAO_EstadoReceta.cs" />
     <Compile Include="DAO_Formato.cs" />
