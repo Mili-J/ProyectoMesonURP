@@ -19,47 +19,45 @@
 	    </div>
     </div>
     <div class="pd-20 card-box">
-         <div class="header-left pt-1">
-			<div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
-			<div class="header-search">
-				<div class="form-group mb-0">
-					<i class="dw dw-search2 search-icon"></i>
-					<asp:TextBox ID="txtBuscarInsumo" runat="server" AutoPostBack="True" class="form-control search-input" OnTextChanged="fNombreInsumo_TextChanged" onkeypress="return lettersOnly(event);" placeholder="Buscar Insumo ..."/>
+        <div class="row pt-1">    
+            <div class="col-sm-12 col-md-6">            
+                <label class="control-label col-md-2">Paginación:</label>
+                        <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
+                        </asp:DropDownList>
+            </div>
+             <div class="col-sm-12 col-md-3 pl-30"></div>
+             <div class="col-sm-12 col-md-3 pl-30">
+                 <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
+                      <asp:TextBox ID="txtBuscarInsumo" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fNombreInsumo_TextChanged" onkeypress="return lettersOnly(event);" placeholder="Buscar Insumo ..."/>
+					<i class="search_icon dw dw-search"></i>
 				</div>
-			</div> 
-		</div>
-
-        <div class="panel panel-widget forms-panel">
+             </div>
+         </div>
+       <div class="panel panel-widget forms-panel">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title color-white">
                 <h4>Stock Actual</h4>
             </div>
                 <div class="w3-row-padding">
-            <div class="w3-third">            
-                <label class="control-label">Paginación:</label>
-                        <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
-                        </asp:DropDownList>
-                </div>
-                </div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <asp:GridView ID="gvInsumos" allowpaging="True"  OnRowDataBound="gvInsumos_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
+                            CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,CI_nombreCategoria,Cantidad,Representacion de compra,El_nombreEstado"  
+                            Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" OnRowCommand="gvInsumos_RowCommand" CellPadding="4" PageSize="5" GridLines="None">
+                            <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
+                            <Columns>
+                                <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
+                                <asp:BoundField DataField="I_NombreInsumo" HeaderText="Insumo" />
+                                <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoría" />
+                                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+                                <asp:BoundField DataField="Representacion de compra" HeaderText="Representación de compra" />
+                                <asp:BoundField DataField="El_nombreEstado" HeaderText="Estado"/>                                            
 
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <asp:GridView ID="gvInsumos" allowpaging="True"  OnRowDataBound="gvInsumos_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
-                    CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,CI_nombreCategoria,Cantidad,Representacion de compra,El_nombreEstado"  
-                    Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" OnRowCommand="gvInsumos_RowCommand" CellPadding="4" PageSize="5" GridLines="None">
-                    <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
-                    <Columns>
-                        <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
-                        <asp:BoundField DataField="I_NombreInsumo" HeaderText="Insumo" />
-                        <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoría" />
-                        <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                        <asp:BoundField DataField="Representacion de compra" HeaderText="Representación de compra" />
-                        <asp:BoundField DataField="El_nombreEstado" HeaderText="Estado"/>                                            
-
-                    </Columns>
-                </asp:GridView>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <div class="padding-top-30">  
     <div class="pd-20 card-box">

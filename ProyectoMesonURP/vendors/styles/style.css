@@ -2250,14 +2250,14 @@ body.IE .login-wrap, body.IE .register-page-wrap {
 }
 
     .search-icon-box input {
-        height: 70px;
+        /*height: 70px;
         width: 100%;
-        font-size: 20px;
+        font-size: 20px;*/
         padding: 0 60px 0 30px;
-        font-weight: 300;
+        /*font-weight: 300;*/
         border: 0;
         color: #fff;
-        background: #6209ab
+        background: #e9ecef /*#d4d4d4*/ /*#6209ab*/
     }
 
         .search-icon-box input::-webkit-input-placeholder {
@@ -2278,9 +2278,9 @@ body.IE .login-wrap, body.IE .register-page-wrap {
     .search-icon-box .search_icon {
         position: absolute;
         font-size: 24px;
-        line-height: 1;
+        line-height: 0; /*1*/
         right: 20px;
-        top: 26px;
+        top: 19px; /*26*/
         color: #fff
     }
 

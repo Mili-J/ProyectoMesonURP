@@ -15,15 +15,6 @@ namespace ProyectoMesonURP
     {
 
         /// <summary>
-        /// Control txtBuscarInsumo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarInsumo;
-
-        /// <summary>
         /// Control ddlp.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlp;
+
+        /// <summary>
+        /// Control txtBuscarInsumo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarInsumo;
 
         /// <summary>
         /// Control gvInsumos.
