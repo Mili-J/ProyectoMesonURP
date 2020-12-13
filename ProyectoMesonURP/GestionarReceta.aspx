@@ -86,7 +86,7 @@
                                                                     <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
                                                                 </p>
                                                                 <div>
-                                                                    <asp:Button ID="btnActualizarReceta" class="btn btn-outline-warning" Text="Editar" runat="server" CommandName="ActualizarReceta" />
+                                                                    <asp:LinkButton ID="btnActualizarReceta" class="btn btn-outline-warning" runat="server" CommandName="ActualizarReceta"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
                                                                     <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
                                            
                                                                 </div>
@@ -134,7 +134,7 @@
                                                                 <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
                                                             </p>
                                                             <div>
-                                                                <asp:Button ID="btnActualizarReceta" class="btn btn-outline-warning" Text="Editar" runat="server" CommandName="ActualizarReceta" />
+                                                                <asp:LinkButton ID="btnActualizarReceta" class="btn btn-outline-warning" runat="server" CommandName="ActualizarReceta"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
                                                                 <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
                                                                    
                                                             </div>

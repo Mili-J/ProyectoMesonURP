@@ -152,7 +152,7 @@
                                     <ContentTemplate>
                                     <p class="center-button">
                                         <asp:Button CssClass="btn btn-outline-success" runat="server" Text="Añadir" ID="btnAñadirIngredientes" OnClick="btnAñadirIngredientes_Click" UseSubmitBehavior="false" />
-                                        <asp:Button CssClass="btn btn-outline-danger" runat="server" Text="Quitar" OnClick="btnQuitarIngrediente_Click" />
+                                        <asp:LinkButton runat="server" OnClick="btnQuitarIngrediente_Click" class="btn btn-outline-danger"><i class="fa fa-times-circle-o"></i>&nbsp;Quitar</asp:LinkButton>
                                     </p>
                                      </ContentTemplate>
                                 </asp:UpdatePanel>

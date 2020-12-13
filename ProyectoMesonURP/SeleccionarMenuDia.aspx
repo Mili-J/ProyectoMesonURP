@@ -20,16 +20,13 @@
 			</div>
 		</div>
         <div class="pd-20 card-box">
-            <div class="grids pl-3">
-                 <h5 class="tittle-margin5">Seleccionar los Platos a Planificar</h5>
-            </div>
            <%-- <div class="form-horizontal" runat="server">--%>
             <div class="row pl-5 p-4">
                 <div class="col-md-2 pt-1">
                     <label>Fecha de planificación:</label>
                 </div>    
                 <div class="col-md-2">
-                    <asp:TextBox ID="txtFecha" runat="server" class="form-control" disabled=""/>
+                    <asp:TextBox ID="txtFecha" runat="server" class="form-control" ReadOnly="true"/>
                 </div>
             </div>
             <!-- container -->
@@ -73,10 +70,15 @@
                                                                 Categoría: 
                                                                                     <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                                             </p>
-                                                            <div>
-                                                                <asp:Button ID="btnVerEntrada" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerEntrada" />
-                                                                <asp:Button ID="btnAgregarEntrada" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarEntrada" />
-                                                            </div>
+                                                            <asp:UpdatePanel ID="UpdateButton" runat="server">
+                                                               <ContentTemplate>
+                                                                    <div>
+                                                                        <asp:Button ID="btnVerEntrada" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerEntrada" />
+                                                                      <%--  <asp:Button ID="btnAgregarEntrada" class="btn btn-outline-success" runat="server" Text="Agregar" CommandName="AgregarEntrada" />--%>
+                                                                        <asp:LinkButton ID="btnAgregarEntrada" runat="server" CommandName="AgregarEntrada" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>&nbsp;Agregar</asp:LinkButton>
+                                                                    </div>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
                                                         </div>
                                                      </div>
                                                  </li>
@@ -110,11 +112,14 @@
                                                                 Categoría: 
                                                                                  <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                                             </p>
-                                                            <div>
-                                                                <asp:Button ID="btnVerFondo" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerFondo" />
-                                                                <asp:Button ID="btnAgregarFondo" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarFondo" />
-
-                                                            </div>
+                                                             <asp:UpdatePanel ID="UpdateButton" runat="server">
+                                                                 <ContentTemplate>
+                                                                     <div>
+                                                                        <asp:Button ID="btnVerFondo" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerFondo" />
+                                                                        <asp:LinkButton ID="btnAgregarFondo" runat="server" CommandName="AgregarFondo" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>&nbsp;Agregar</asp:LinkButton>
+                                                                     </div>
+                                                                 </ContentTemplate>
+                                                             </asp:UpdatePanel>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -136,7 +141,7 @@
                                                                    <img class="card-img-top" alt="Imagen de Referencia" src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                                             </div>
                                                         <div class="card-body">
-                                                            <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+                                                            <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
                                                             <h5 class="card-title">
                                                                 <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
                                                             </h5>
@@ -148,16 +153,19 @@
                                                                 Categoría: 
                                                                                  <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                                             </p>
-                                                            <div>
-                                                                <asp:Button ID="btnVerBebida" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerBebida" />
-                                                                <asp:Button ID="btnAgregarBebida" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarBebida" />
-
-                                                            </div>
+                                                            <asp:UpdatePanel ID="UpdateButton" runat="server">
+                                                                 <ContentTemplate>
+                                                                    <div>
+                                                                        <asp:Button ID="btnVerBebida" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerBebida" />
+                                                                        <asp:LinkButton ID="btnAgregarBebida" runat="server" CommandName="AgregarBebida" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>&nbsp;Agregar</asp:LinkButton>
+                                                                    </div>
+                                                                  </ContentTemplate>
+                                                             </asp:UpdatePanel>
                                                         </div>
                                                     </div>
                                                 </li>
-                                    </ItemTemplate>
-                                </asp:Repeater>
+                                         </ItemTemplate>
+                                    </asp:Repeater>
                                 </ul>
                             </div>
                         </div>
@@ -186,12 +194,14 @@
                                                                 Categoría: 
                                                                                  <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                                             </p>
-
-                                                            <div>
-                                                                <asp:Button ID="btnVerCarta" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerCarta" />
-                                                                <asp:Button ID="btnAgregarCarta" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarCarta" />
-
-                                                            </div>
+                                                            <asp:UpdatePanel ID="UpdateButton" runat="server">
+                                                                 <ContentTemplate>
+                                                                    <div>
+                                                                        <asp:Button ID="btnVerCarta" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerCarta" />
+                                                                        <asp:LinkButton ID="btnAgregarCarta" runat="server" CommandName="AgregarCarta" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>&nbsp;Agregar</asp:LinkButton>
+                                                                    </div>
+                                                                 </ContentTemplate>
+                                                             </asp:UpdatePanel>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -222,6 +232,8 @@
                                 <asp:TextBox ID="txtNumRacMenu" runat="server" class="form-control"  TextMode="Number"/>
                             </div>
                         </div>
+                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
                         <div class="product-wrap">
                             <div class="product-list">
                                 <ul class="row">
@@ -257,9 +269,8 @@
                                                                              <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" />
                                                             </div>
                                                          </div>
-                                                        <div class="col-md-12 col-sm-12 text-right">
-                                                            <asp:Button ID="btnQuitarMenu" class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarMenu" />
-
+                                                        <div class="col-md-12 col-sm-12 pt-2 text-right">
+                                                            <asp:LinkButton ID="btnQuitarMenu" runat="server" CommandName="QuitarMenu" class="btn btn-outline-danger"><i class="fa fa-times-circle-o"></i>&nbsp;Quitar</asp:LinkButton>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -269,6 +280,8 @@
                             </ul>
                         </div>
                     </div>
+                            </ContentTemplate>
+                         </asp:UpdatePanel>
                      </div>
                  </div>
             </div>
@@ -291,7 +304,8 @@
                                 <asp:TextBox ID="txtNumRacCarta" runat="server" class="form-control"  TextMode="Number"/>
                             </div>
                         </div>
-                    
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
                         <div class="product-wrap">
                             <div class="product-list">
                                 <ul class="row">
@@ -323,13 +337,13 @@
                                                             <div class="col-md-3">
                                                                 <label>Raciones: </label>
                                                             </div> 
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-5 pl-4">
                                                                              <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12 col-sm-12 text-right">
-                                                            <asp:Button ID="btnQuitarCarta"  class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarCarta" />
-                                       
+                                                        <div class="col-md-12 col-sm-12 pt-2 text-right">
+                                                            <%--<asp:Button ID="btnQuitarCarta"  class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarCarta" />--%>
+                                                            <asp:LinkButton ID="btnQuitarCarta" runat="server" CommandName="QuitarCarta" class="btn btn-outline-danger"><i class="fa fa-times-circle-o"></i>&nbsp;Quitar</asp:LinkButton>
 
                                                         </div>
                                                     </div>
@@ -340,6 +354,8 @@
                             </ul>
                         </div>
                     </div>
+                            </ContentTemplate>
+                    </asp:UpdatePanel>
                      </div>
                 </div>
             </div>
@@ -348,7 +364,7 @@
 
        <%-- --------------------------------------------------- --%>
                  <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
-                    <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
+                    <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Guardar" OnClick="btnAceptar_Click" />
                     <asp:Button ID="btnRegresar" CssClass="btn btn-danger" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
                 </p>
             </div>
