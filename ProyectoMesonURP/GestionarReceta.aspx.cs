@@ -86,6 +86,7 @@ namespace ProyectoMesonURP
                     CargarReceta();
                     ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaExito()", true);
                     return;
+                    
                 }
             }
         }

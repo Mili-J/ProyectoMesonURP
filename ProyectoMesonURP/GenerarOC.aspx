@@ -75,21 +75,21 @@
                         <div class="panel panel-widget forms-panel" style="width: 60vh; margin-top: 27px;">
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                 <asp:GridView ID="gvInsumos" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvInsumos_OnRowDataBound"
-                                    DataKeyNames="I_nombreInsumo,FC_nombreFormatoCompra,DC_cantidadCotizacion"
-                                    CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged" ShowFooter="True">
+                                    DataKeyNames="I_nombreInsumo,FC_nombreFormatoCompra,DC_cantidadCotizacion" ShowFooter="True"
+                                    CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged">
 
                                     <Columns>
                                         <asp:BoundField HeaderText="Nombre" DataField="I_nombreInsumo" />
                                         <asp:BoundField HeaderText="Representación" DataField="FC_nombreFormatoCompra" />
-                                        <asp:BoundField HeaderText="Cantidad" DataField="DC_cantidadCotizacion" />
+                                        <asp:BoundField HeaderText="Cantidad" DataField="DC_cantidadCotizacion"/>
                                         <asp:TemplateField HeaderText="Precio Unitario" >
                                             <Itemtemplate>
-                                        <asp:TextBox id ="txtPrecioUnitario" runat="server" />
+                                        <asp:TextBox id ="txtPrecioUnitario" runat="server" class="precio" CssClass="form-control1"></asp:TextBox>
                                         </Itemtemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Total">
+                                        <asp:TemplateField HeaderText="Precio Total">
                                             <Itemtemplate>
-                                        <asp:Label id ="lblTotal" runat="server" />
+                                        <asp:Label id ="lblPrecioTotal" runat="server"></asp:Label>
                                         </Itemtemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -104,16 +104,19 @@
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
                 <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEnviar" onserverclick="btnEnviar_ServerClick">Enviar</button>
-                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarReceta';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
+                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion';" onserverclick="btnRegresar_ServerClick" class="btn btn-primary" />
                 <input type="reset" name="res-1" value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />
             </p>
         </div>
     </div>
-    <link href="css/jquery-ui.css" rel="stylesheet" />
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
+    <link href="../css/jquery-ui.css" rel="stylesheet" />
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
        <script>
-           $(function () {
+           $(function() {
                $('#txtFechaEntrega').datepicker({
                    dateFormat: 'dd/mm/yy',
                    changeMonth: true,
@@ -122,6 +125,21 @@
                });
            })
        </script>
+     <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('#<%=gvInsumos.ClientID%>.precio').change(function() {
+              
+            var tr = $(this).parent().parent();
+            var precio = $("td:eq(2)", tr).html();
+
+                $("td:eq(5) span", tr).html($(this).val() * precio);
+            });
+        });
+    </script>
     </asp:Content>
 
 
