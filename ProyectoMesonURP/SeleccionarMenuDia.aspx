@@ -249,10 +249,14 @@
                                                             Categoría de Receta: 
                                                                                 <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
                                                         </p>
-                                                        <p class="card-text">
-                                                            Raciones: 
-                                                                                <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-                                                        </p>
+                                                         <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Raciones: </label>
+                                                            </div> 
+                                                            <div class="col-md-5 pl-4">
+                                                                             <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" />
+                                                            </div>
+                                                         </div>
                                                         <div class="col-md-12 col-sm-12 text-right">
                                                             <asp:Button ID="btnQuitarMenu" class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarMenu" />
 
@@ -315,10 +319,14 @@
                                                             Categoría de Receta: 
                                                                              <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
                                                         </p>
-                                                        <p class="card-text">
-                                                            Raciones: 
-                                                                             <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-                                                        </p>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Raciones: </label>
+                                                            </div> 
+                                                            <div class="col-md-4">
+                                                                             <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" />
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-12 col-sm-12 text-right">
                                                             <asp:Button ID="btnQuitarCarta"  class="btn btn-outline-danger" runat="server" Text="Quitar" CommandName="QuitarCarta" />
                                        
