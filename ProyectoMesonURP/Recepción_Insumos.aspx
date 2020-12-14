@@ -5,18 +5,25 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-         <div class="women_main">
-                    <!-- start content -->
-                    <div class="grids">
-                        <div class="progressbar-heading grids-heading title-flex">
-                            <h2 class="tittle-margin5">Recepción de Insumos</h2>
-                        </div>
-                        <div class="forms" style="display: flex; flex-direction: row;">
-                            <asp:UpdatePanel ID="PanelInsumos" runat="server">
+    <div class="women_main">
+        <!-- start content -->
+           <div class="page-header">
+                <div class="row">
+	                <div class="col-md-6 col-sm-12">
+		                <div class="title">
+			                <h4>Recepción de Insumos</h4>
+		                </div>
+	                </div>
+                </div>
+           </div>
+          <div class="pd-20 card-box">
+               <div class="row clearfix">
+                    <div class="col-md-5 col-sm-12 mb-30 pt-20">
+                    <asp:UpdatePanel ID="PanelInsumos" runat="server">
                                 <ContentTemplate>
                                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                         <div class="form-title color-white">
-                                            <h4>Insumos</h4>
+                                            <h5>Insumos de la Orden de Compra</h5>
                                         </div>
                                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                             <asp:GridView ID="gvInsumos" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
@@ -35,28 +42,32 @@
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                            <div class="form-horizontal" runat="server" style="margin: 10px; background-color: #FFFFFF; border-radius: 1%; width: auto; ">
-                                <div class="container-sw">
-                                    <div class="form-group">
-                                        <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
-                                        <div class="col-sm-8">
-                                            <asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control form-color-letter" Style="width: 100%" />
-                                        </div>
-                                    </div>
-                                    <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                                        <ContentTemplate>
-                                            <p class="center-button">
-                                                <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadir" OnClick="btnAñadir_Click" />
-                                            </p>
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-                                </div>
+                    </div>
+                     <div class="col-md-2 col-sm-12 mb-30 pt-30">
+                        <div class="row pt-5">
+                                <div class="col-md-5 pt-2">
+                                <label>Cantidad: </label>
+                                </div> 
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtCantidad" runat="server" class="form-control" TextMode="Number" />
                             </div>
-                            <asp:UpdatePanel ID="PanelIngresos" runat="server">
+                        </div>
+                        <div class="center-button pt-3">
+                        <asp:UpdatePanel ID="PanelAñadir" runat="server">
+                            <ContentTemplate>
+                                <p class="center-button">
+                                    <asp:Button class="btn btn-success" runat="server" Text="Añadir" ID="btnAñadir" OnClick="btnAñadir_Click" />
+                                </p>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        </div>
+                     </div>
+                     <div class="col-md-5 col-sm-12 mb-30 pt-20">
+                    <asp:UpdatePanel ID="PanelIngresos" runat="server">
                                 <ContentTemplate>
                                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                         <div class="form-title color-white">
-                                            <h4>Ingresos</h4>
+                                            <h5>Insumos Ingresados</h5>
                                         </div>
                                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                             <asp:GridView ID="gvIngresos" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
@@ -75,13 +86,14 @@
                                     </div>
                                     <hr />
                                     <p class="center-button">
-                                        <asp:Button CssClass="btn btn-primary" runat="server" Text="Aceptar" ID="btnAceptar" OnClick="btnAceptar_Click" />
+                                        <asp:Button CssClass="btn btn-primary" runat="server" Text="Registrar" ID="btnAceptar" OnClick="btnAceptar_Click" />
                                     </p>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                        </div>
-                     </div>
-                  </div>
+                    </div>
+               </div>
+          </div>
+    </div>
     <script>
              function soloLetras(e) {
                  key = e.keyCode || e.which;
