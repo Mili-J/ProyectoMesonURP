@@ -22,5 +22,18 @@ namespace ProyectoMesonURP
                 GridViewCotizacion.DataBind();
             }
         }
+        protected void gvCotizacion_RowCommand(object source, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "GenerarOc")
+            {
+                int idCotizacion = Convert.ToInt32(GridViewCotizacion.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["C_idCotizacion"].ToString());
+                Session["idcotizacion"] = idCotizacion;
+
+                string proveedor = GridViewCotizacion.Rows[Convert.ToInt32(e.CommandArgument)].Cells[5].Text;
+                Session["proveedor"] = proveedor;
+
+                Response.Redirect("GenerarOC");
+            }
+        }
     }
 }

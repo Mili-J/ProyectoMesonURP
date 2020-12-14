@@ -22,7 +22,7 @@
 
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <asp:GridView ID="GridViewCotizacion" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible."
-                                DataKeyNames="C_idCotizacion" AutoGenerateColumns="False"
+                                DataKeyNames="C_idCotizacion" AutoGenerateColumns="False" OnRowCommand="gvCotizacion_RowCommand"
                                 CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None">
                                 <Columns>
 
@@ -42,6 +42,11 @@
                                         <ItemTemplate>
                                             <%--<asp:Button ID="btnEnviarEmailOC" class="btn btn-primary" runat="server" CommandName="EnviarEmailOC" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Enviar" OnClick="btnEnviarEmailOC_Click" />--%>
                                             <asp:ImageButton ID="btnEnviarEmailCotizacion" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="GenerarOc">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btnGenerarOC" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="GenerarOc" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Editar">

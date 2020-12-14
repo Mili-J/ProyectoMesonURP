@@ -97,6 +97,8 @@
     <Content Include="css\graph.css" />
     <Content Include="css\Home.css" />
     <Content Include="css\icon-font.min.css" />
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\jquery-ui.min.css" />
     <Content Include="css\manejarStock.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\pages\Empty\animate.css" />
@@ -256,7 +258,10 @@
     <Content Include="js\GestionarReceta\slick.min.js" />
     <Content Include="js\imagezoom.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.flexslider.js" />
     <Content Include="js\jquery.flot.js" />
     <Content Include="js\jquery.fn.gantt.js" />

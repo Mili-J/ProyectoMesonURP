@@ -219,7 +219,7 @@ namespace DAO
                 }
                 dto_receta.R_subcategoria = Convert.ToString(reader[5]);
                 dto_receta.EP_idEstadoReceta = Convert.ToInt32(reader[6]);
-                dto_receta.CP_idCategoriaReceta = Convert.ToInt32(reader[7]);
+                dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[7]);
             }
             conexion.Close();
             return dto_receta;
@@ -236,6 +236,17 @@ namespace DAO
             return img;
             
         }
+        public void actualizarfoto(byte[]aaa,int i)
+        {
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Actualizar_foto", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@R_idReceta",i);
+            command.Parameters.AddWithValue("@R_imagenReceta",aaa);
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+
         public void actualizarfoto(byte[]aaa,int i)
         {
             conexion.Open();
@@ -324,7 +335,7 @@ namespace DAO
                 cmd.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
                 cmd.Parameters.Add(new SqlParameter("@R_subcategoria", objDTO.R_subcategoria));
                 cmd.Parameters.Add(new SqlParameter("@EP_idEstadoReceta", objDTO.EP_idEstadoReceta));
-                cmd.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CP_idCategoriaReceta));
+                cmd.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
 
                 cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -342,6 +353,20 @@ namespace DAO
             comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
             comando.ExecuteNonQuery();
             conexion.Close();
+        }
+        public DataTable DAO_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)//recetas ya seleccionadas, menu o carta
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarMenuXRecetaYCategoria", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_idMenu", id_menu);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta", id_cat);
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
         }
         public bool SelectExistenciaImagen(int R_idReceta)
         {
