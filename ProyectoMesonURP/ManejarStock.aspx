@@ -18,7 +18,7 @@
 		    </div>
 	    </div>
     </div>
-    <div class="pd-20 card-box" runat="server" id="PanelBuscar">
+    <div class="pd-20 card-box"  runat="server" id="PanelInsumos">
         <div class="row pt-1">    
             <div class="col-sm-12 col-md-6">            
                 <label class="control-label col-md-2">Paginación:</label>
@@ -33,7 +33,7 @@
 				</div>
              </div>
          </div>
-       <div class="panel panel-widget forms-panel" runat="server" id="PanelInsumos">
+       <div class="panel panel-widget forms-panel" >
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title color-white">
                 <h5>Stock Actual</h5>
@@ -59,10 +59,10 @@
             </div>
         </div>
     </div>
-    <div class="padding-top-30">  
+    <div class="padding-top-30" runat="server" id="PanelInsumos2">  
     <div class="pd-20 card-box">
-        <div class="panel panel-widget forms-panel" runat="server" id="PanelInsumos2">
-                <div class="form-grids widget-shadow" data-example-id="basic-forms">
+        <div class="panel panel-widget forms-panel">
+                <div class="form-grids widget-shadow" data-example-id="basic-forms" >
                 <div class="form-title color-white">
                     <h5>Insumos que requieren abastecimiento</h5>
                 </div>

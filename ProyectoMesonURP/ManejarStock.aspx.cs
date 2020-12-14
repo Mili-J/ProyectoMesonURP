@@ -29,16 +29,13 @@ namespace ProyectoMesonURP
                 dto_i = new DTO_Insumo();
                 switch (dto_u.TU_idTipoUsuario)
                 {
-                    case 1:
-                        PanelBuscar.Visible = false;
+                    case 1: 
                         PanelInsumos.Visible = false;
                     break;
                     case 2:
-                        PanelSolicitar.Visible = false;
                         PanelInsumos2.Visible = false;
                         break;
                     case 3:
-                        PanelSolicitar.Visible = false;
                         PanelInsumos2.Visible = false;
                         break;
                     default:
