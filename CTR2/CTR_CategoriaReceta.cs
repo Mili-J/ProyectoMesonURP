@@ -19,7 +19,6 @@ namespace CTR
         {
             return dao_categoriareceta.DAO_Consultar_CategoriaXReceta(i);
         }
-      
         public DataSet CargarCategoriaReceta()
         {
             return dao_categoriareceta.SelectCategoriaReceta();

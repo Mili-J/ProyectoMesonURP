@@ -49,7 +49,23 @@ namespace DAO
                 throw ex;
             }
         }
-        public DataTable BuscarInsumo(string nombreInsumo)
+        public DataTable BuscarInsumo(int IdInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Select_Medida_X_Insumo", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", IdInsumo);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable BuscarInsumoF(string nombreInsumo)
         {
             try
             {
@@ -65,7 +81,6 @@ namespace DAO
                 throw ex;
             }
         }
-           
         public DataTable DAO_Consultar_Equivalencia_x_Insumo(DTO_Insumo dto_insumo)
         {
             conexion.Open();
@@ -140,6 +155,23 @@ namespace DAO
             unComando.Parameters.Add(new SqlParameter("@I_idInsumo", idInsumo));
             unComando.ExecuteNonQuery();
             conexion.Close();
+        }
+        public DataTable ConsultarInsumo(string @nombreInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Consultar_Insumo_MS", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@nombreInsumo", nombreInsumo);
+                DataSet dSet = new DataSet();
+                cmd.Fill(dSet);
+                return dSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

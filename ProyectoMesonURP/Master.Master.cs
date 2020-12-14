@@ -11,53 +11,53 @@ namespace ProyectoMesonURP
         {
             if (!IsPostBack)
             {
-                DTO_Usuario dto = (DTO_Usuario)Session["Usuario"];
-                lblNombre.Text = dto.P_nombres;
-                lblApellido.Text = dto.P_aPaterno + " " + dto.P_aMaterno;
-                switch (dto.TU_idTipoUsuario)
-                {
-                    case 1:
-                        menuCotizacion.Visible = true;
-                        menuReceta.Visible = true;
-                        menuProveedor.Visible = true;
-                        menuMovimiento.Visible = true;
-                        menuDashboard.Visible = true;
-                        menuInsumo.Visible = true;
-                        menuInsumosOC.Visible = true;
-                        menuStock.Visible = true;
-                        menuSepararIngredientes.Visible = true;
-                        menuMenu.Visible = true;
-                        menuTransformar.Visible = true;
+                //DTO_Usuario dto = (DTO_Usuario)Session["Usuario"];
+                //lblNombre.Text = dto.P_nombres;
+                //lblApellido.Text = dto.P_aPaterno + " " + dto.P_aMaterno;
+                //switch (dto.TU_idTipoUsuario)
+                //{
+                //    case 1:
+                //        menuCotizacion.Visible = true;
+                //        menuReceta.Visible = true;
+                //        menuProveedor.Visible = true;
+                //        menuMovimiento.Visible = true;
+                //        menuDashboard.Visible = true;
+                //        menuInsumo.Visible = true;
+                //        menuInsumosOC.Visible = true;
+                //        menuStock.Visible = true;
+                //        menuSepararIngredientes.Visible = true;
+                //        menuMenu.Visible = true;
+                //        menuTransformar.Visible = true;
 
-                       
-                        break;
-                    case 2:
-                        menuCotizacion.Visible = false;
-                        menuReceta.Visible = false;
-                        menuProveedor.Visible = false;
-                        menuMovimiento.Visible = false;
-                        menuDashboard.Visible = false;
-                        menuInsumo.Visible = true;
-                        menuInsumosOC.Visible = true;
-                        menuStock.Visible = true;
-                        menuSepararIngredientes.Visible = false;
 
-                        break;
-                    case 3:
-                        menuCotizacion.Visible = false;
-                        menuReceta.Visible = true;
-                        menuProveedor.Visible = false;
-                        menuMovimiento.Visible = false;
-                        menuDashboard.Visible = false;
-                        menuInsumo.Visible = false;
-                        menuInsumosOC.Visible = false;
-                        menuStock.Visible = false;
-                        menuSepararIngredientes.Visible = true;
+                //        break;
+                //    case 2:
+                //        menuCotizacion.Visible = false;
+                //        menuReceta.Visible = false;
+                //        menuProveedor.Visible = false;
+                //        menuMovimiento.Visible = false;
+                //        menuDashboard.Visible = false;
+                //        menuInsumo.Visible = true;
+                //        menuInsumosOC.Visible = true;
+                //        menuStock.Visible = true;
+                //        menuSepararIngredientes.Visible = false;
 
-                        break;
-                    default:
-                        break;
-                }
+                //        break;
+                //    case 3:
+                //        menuCotizacion.Visible = false;
+                //        menuReceta.Visible = true;
+                //        menuProveedor.Visible = false;
+                //        menuMovimiento.Visible = false;
+                //        menuDashboard.Visible = false;
+                //        menuInsumo.Visible = false;
+                //        menuInsumosOC.Visible = false;
+                //        menuStock.Visible = false;
+                //        menuSepararIngredientes.Visible = true;
+
+                //        break;
+                //    default:
+                //        break;
+                //}
             }
         }
         protected void btnSalida_Click(object sender, EventArgs e)

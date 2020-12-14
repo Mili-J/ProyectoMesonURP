@@ -1,10 +1,7 @@
-﻿using DTO;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
-using System.Data.SqlClient;
-using System.Data;
 using DTO;
 
 namespace DAO
@@ -117,6 +114,21 @@ namespace DAO
             conexion.Close();
             return idIngrediente;
         }
-
+        public DataSet SelectMedidaxIdIngrediente(int I_idIngrediente)
+        {
+            try
+            {
+                SqlDataAdapter unComando = new SqlDataAdapter("SP_SELECT_MEDIDA_X_ID_INGREDIENTE", conexion);
+                unComando.SelectCommand.CommandType = CommandType.StoredProcedure;
+                unComando.SelectCommand.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                DataSet dSet = new DataSet();
+                unComando.Fill(dSet);
+                return dSet;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
     }
 }

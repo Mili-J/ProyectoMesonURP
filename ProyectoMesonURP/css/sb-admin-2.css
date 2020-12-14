@@ -4847,7 +4847,7 @@ a.badge:hover, a.badge:focus {
   padding-left: 0.6em;
   border-radius: 10rem;
 }
-
+/*
 .badge-primary {
   color: #fff;
   background-color: #4e73df;
@@ -4877,8 +4877,8 @@ a.badge-secondary:focus, a.badge-secondary.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(133, 135, 150, 0.5);
 }
-
-.badge-success {
+*/
+/*.badge-success {
   color: #fff;
   background-color: #1cc88a;
 }
@@ -4967,7 +4967,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(90, 92, 105, 0.5);
 }
-
+*/
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;

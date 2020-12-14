@@ -21,7 +21,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarCategoriaXReceta", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@CR_idCategoriaReceta",i);
+            comando.Parameters.AddWithValue("@CP_idCategoriaReceta",i);
             comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
 
@@ -59,7 +59,7 @@ namespace DAO
             SqlDataReader dReader = unComando.ExecuteReader();
             if (dReader.Read())
             {
-                idCategoria = Convert.ToInt32(dReader["CR_idCategoriaReceta"]);
+                idCategoria = Convert.ToInt32(dReader["CP_idCategoriaReceta"]);
             }
             conexion.Close();
             return idCategoria;

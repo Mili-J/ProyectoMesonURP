@@ -71,8 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarReceta.aspx" />
+    <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -85,6 +87,7 @@
     <Content Include="css\fabochart.css" />
     <Content Include="css\flexslider.css" />
     <Content Include="css\font-awesome.css" />
+    <Content Include="css\fv.css" />
     <Content Include="css\GestionarReceta\bootstrap.min.css" />
     <Content Include="css\GestionarReceta\font-awesome.min.css" />
     <Content Include="css\GestionarReceta\nouislider.min.css" />
@@ -94,6 +97,8 @@
     <Content Include="css\graph.css" />
     <Content Include="css\Home.css" />
     <Content Include="css\icon-font.min.css" />
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\jquery-ui.min.css" />
     <Content Include="css\manejarStock.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\pages\Empty\animate.css" />
@@ -129,6 +134,9 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionarOC.aspx" />
+    <Content Include="GestionarEquivalencia.aspx" />
+    <Content Include="GestionarCotizacion.aspx" />
+    <Content Include="GenerarOC.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -231,10 +239,6 @@
     <Content Include="js\cbpFWTabs.js" />
     <Content Include="js\Chart.js" />
     <Content Include="js\clndr.js" />
-    <Content Include="js\demo\chart-area-demo.js" />
-    <Content Include="js\demo\chart-bar-demo.js" />
-    <Content Include="js\demo\chart-pie-demo.js" />
-    <Content Include="js\demo\datatables-demo.js" />
     <Content Include="js\Empty js\bootstrap.js" />
     <Content Include="js\Empty js\bootstrap.min.js" />
     <Content Include="js\Empty js\html5shiv.js" />
@@ -254,7 +258,10 @@
     <Content Include="js\GestionarReceta\slick.min.js" />
     <Content Include="js\imagezoom.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery-1.7.2.min.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.flexslider.js" />
     <Content Include="js\jquery.flot.js" />
     <Content Include="js\jquery.fn.gantt.js" />
@@ -288,25 +295,35 @@
     <Content Include="Manejar_Stock_Prueba.aspx" />
     <Content Include="MenuDelDia.aspx" />
     <Content Include="Recepción_Insumos.aspx" />
+    <Content Include="multifield.js" />
+    <Content Include="RegistrarCotizacion.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
     <Content Include="SeleccionarMenuTransformar.aspx" />
     <Content Include="Transformar_Insumo.aspx" />
     <Content Include="SC_Prueba.aspx" />
+    <Content Include="validator.js" />
+    <Content Include="vendors\fonts\dropways.css" />
+    <Content Include="vendors\fonts\dropways.svg" />
+    <Content Include="vendors\fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="vendors\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="vendors\fonts\fontawesome-webfont.svg" />
+    <Content Include="vendors\fonts\foundation-icons.css" />
+    <Content Include="vendors\fonts\foundation-icons.svg" />
+    <Content Include="vendors\fonts\ionicons-master\css\ionicons.css" />
+    <Content Include="vendors\fonts\ionicons-master\css\ionicons.min.css" />
+    <Content Include="vendors\fonts\ionicons.svg" />
+    <Content Include="vendors\fonts\themify-icons\themify-icons.css" />
+    <Content Include="vendors\fonts\themify.svg" />
+    <Content Include="vendors\scripts\process.js" />
+    <Content Include="vendors\scripts\script.min.js" />
+    <Content Include="vendors\styles\core.css" />
+    <Content Include="vendors\styles\icon-font.min.css" />
+    <Content Include="vendors\styles\style.css" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="vendor\chart.js\Chart.bundle.js" />
-    <Content Include="vendor\chart.js\Chart.bundle.min.js" />
-    <Content Include="vendor\chart.js\Chart.js" />
-    <Content Include="vendor\chart.js\Chart.min.js" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.css" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.js" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.min.css" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.min.js" />
-    <Content Include="vendor\datatables\jquery.dataTables.js" />
-    <Content Include="vendor\datatables\jquery.dataTables.min.js" />
     <Content Include="vendor\fontawesome-free\attribution.js" />
     <Content Include="vendor\fontawesome-free\css\all.css" />
     <Content Include="vendor\fontawesome-free\css\all.min.css" />
@@ -1955,6 +1972,7 @@
     <Content Include="vendor\fontawesome-free\webfonts\fa-brands-400.svg" />
     <Content Include="vendor\fontawesome-free\webfonts\fa-regular-400.svg" />
     <Content Include="vendor\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="vendors\scripts\core.js" />
     <Content Include="vendor\jquery-easing\jquery.easing.compatibility.js" />
     <Content Include="vendor\jquery-easing\jquery.easing.js" />
     <Content Include="vendor\jquery-easing\jquery.easing.min.js" />
@@ -1965,6 +1983,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarMenuDia.aspx.cs">
+      <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarMenuDia.aspx.designer.cs">
+      <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarReceta.aspx.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1978,6 +2003,13 @@
     </Compile>
     <Compile Include="CalendariaMenu.aspx.designer.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarEquivalencia.aspx.cs">
+      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEquivalencia.aspx.designer.cs">
+      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
@@ -1999,6 +2031,27 @@
     </Compile>
     <Compile Include="GestionarOC.aspx.designer.cs">
       <DependentUpon>GestionarOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarEquivalencia.aspx.cs">
+      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarEquivalencia.aspx.designer.cs">
+      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarCotizacion.aspx.cs">
+      <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarCotizacion.aspx.designer.cs">
+      <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarOC.aspx.cs">
+      <DependentUpon>GenerarOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarOC.aspx.designer.cs">
+      <DependentUpon>GenerarOC.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
@@ -2053,6 +2106,13 @@
       <DependentUpon>MenuDelDia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarCotizacion.aspx.cs">
+      <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCotizacion.aspx.designer.cs">
+      <DependentUpon>RegistrarCotizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Recepción_Insumos.aspx.cs">
       <DependentUpon>Recepción_Insumos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2358,6 +2418,23 @@
     <Content Include="vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
+    <Content Include="vendors\fonts\dropways.eot" />
+    <Content Include="vendors\fonts\dropways.ttf" />
+    <Content Include="vendors\fonts\dropways.woff" />
+    <Content Include="vendors\fonts\fontawesome-webfont.eot" />
+    <Content Include="vendors\fonts\fontawesome-webfont.ttf" />
+    <Content Include="vendors\fonts\fontawesome-webfont.woff" />
+    <Content Include="vendors\fonts\fontawesome-webfont.woff2" />
+    <Content Include="vendors\fonts\FontAwesome.otf" />
+    <Content Include="vendors\fonts\foundation-icons.eot" />
+    <Content Include="vendors\fonts\foundation-icons.ttf" />
+    <Content Include="vendors\fonts\foundation-icons.woff" />
+    <Content Include="vendors\fonts\ionicons.eot" />
+    <Content Include="vendors\fonts\ionicons.ttf" />
+    <Content Include="vendors\fonts\ionicons.woff" />
+    <Content Include="vendors\fonts\themify.eot" />
+    <Content Include="vendors\fonts\themify.ttf" />
+    <Content Include="vendors\fonts\themify.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

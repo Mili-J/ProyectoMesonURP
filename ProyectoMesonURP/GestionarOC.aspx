@@ -6,56 +6,69 @@
         }
     </style>
     <style type="text/css">
-  .hiddencol
-  {
-    display: none;
-  }
-</style>
+      .hiddencol
+      {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
-        <!-- start content -->
-        <div class="grids">
-            <div class="progressbar-heading grids-heading title-flex">
-                <h2 class="tittle-margin5">Gestionar Orden de Compra</h2>
+    <!-- start content -->
+     <div class="page-header">
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="title">
+					<h4>Gestionar Orden de Compra</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="pd-20 card-box">
+        <div class="row pt-1">    
+            <div class="col-sm-12 col-md-6">            
+                <label class="control-label col-md-2">Paginación:</label>
+                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
+                    </asp:DropDownList>
             </div>
-            <div class="search-buttons">
-                <div class="search">
-                    <asp:TextBox ID="txtBuscarInsumo" runat="server" CssClass="form-control1" onkeypress="return lettersOnly(event);" placeholder="Buscar Insumo ..." />
-                    <button type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
-                        <span class="material-icons">search
-                        </span>
-                    </button>
-                </div>
+            <div class="col-sm-12 col-md-3 pl-30"></div>
+            <div class="col-sm-12 col-md-3 pl-30">
+                <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
+                    <asp:TextBox ID="txtBuscarOC" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fidOC_TextChanged" placeholder="Buscar OC..."/>
+				<i class="search_icon dw dw-search"></i>
+				</div>
             </div>
-            <div class="panel panel-widget forms-panel">
-                <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                    <div class="form-title color-white">
-                        <h4>Ordenes de Compra</h4>
-                         
-                    </div>
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                        <asp:GridView ID="gvOC" AllowPaging="True" AutoGenerateColumns="False" runat="server" EmptyDataText="No hay información disponible." OnRowCommand="gvOC_RowCommand"
-                            CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EOC_nombreEstadoOC"
-                            Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvOC_SelectedIndexChanged" GridLines="None">
-                            <Columns>
-                                <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField DataField="OC_numeroOC" HeaderText="N° de Compra" />
-                                <asp:BoundField DataField="PR_nombreContacto" HeaderText="Proveedor" />
-                                <asp:BoundField DataField="OC_fechaEmision" HeaderText="Fecha de Emisión" />
-                                <asp:BoundField DataField="OC_fechaEntrega" HeaderText="Fecha de Entrega" />
-                                <asp:BoundField DataField="EOC_nombreEstadoOC" HeaderText="Estado" />
-                                <asp:TemplateField HeaderText="Descargar">
-                                    <ItemTemplate>
-                                        <asp:ImageButton  ID="btnDescargar" ImageUrl="img/descargar.png" onmouseover="this.src='img/descargar-b.png'" onmouseout="this.src='img/descargar.png'" runat="server" CommandName="Descargar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                        </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Recepcionar">
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="btnRecepcionar" ImageUrl="img/recepcionar.png" onmouseover="this.src='img/recepcionar-b.png'" onmouseout="this.src='img/recepcionar.png'" runat="server" CommandName="Recepcionar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+        </div>
+        <div class="panel panel-widget forms-panel">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title color-white">
+                <h5>Ordenes de Compra</h5>
+            </div>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <asp:GridView ID="gvOC" allowpaging="True" OnRowDataBound="gvOC_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible." OnRowCommand="gvOC_RowCommand" 
+                    CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EOC_nombreEstadoOC"  
+                    Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None">
+                        <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
+                    <Columns>
+                        <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
+                        <asp:BoundField DataField="OC_numeroOC" HeaderText="N° de Compra" />
+                        <asp:BoundField DataField="PR_nombreContacto" HeaderText="Proveedor" />
+                        <asp:BoundField DataField="OC_fechaEmision" HeaderText="Fecha de Emisión" />
+                        <asp:BoundField DataField="OC_fechaEntrega" HeaderText="Fecha de Entrega" />
+                        <asp:BoundField DataField="EOC_nombreEstadoOC" HeaderText="Estado" />
+                        <asp:TemplateField HeaderText="Descargar">
+                            <ItemTemplate>
+                                 <asp:LinkButton ID="btnDescargar" runat="server" class="btn btn-info" CommandName="Descargar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-download"></i>&nbsp;Descargar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Recepcionar">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnRecepcionar" runat="server" class="btn btn-success" CommandName="Recepcionar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-sign-in"></i>&nbsp;Recepcionar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
                             </Columns>
                         </asp:GridView>
@@ -71,7 +84,7 @@
                                         </div>
                                             <asp:GridView ID="gvInsumos1"  allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
                                                 CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,DC_idDetalleCotizacion,I_idInsumo,I_nombreInsumo,DC_cantidadCotizacion,Estado"   
-                                                Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged = "gvOC_SelectedIndexChanged" AllowSorting="False" EnablePersistedSelection="True">
+                                                Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" AllowSorting="False" EnablePersistedSelection="True">
                                                 <Columns>
                                                     <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
                                                     <asp:BoundField DataField="DC_idDetalleCotizacion" HeaderText="ID_DetalleCotizacion" Visible="False" />

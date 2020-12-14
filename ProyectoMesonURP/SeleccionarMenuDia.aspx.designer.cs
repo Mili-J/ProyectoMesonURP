@@ -24,33 +24,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
 
         /// <summary>
-        /// Control txtNumRaciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumRaciones;
-
-        /// <summary>
-        /// Control revNumRac.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNumRac;
-
-        /// <summary>
-        /// Control validationNumRac.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator validationNumRac;
-
-        /// <summary>
         /// Control reapeterEntradas.
         /// </summary>
         /// <remarks>
@@ -69,112 +42,76 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Repeater repeaterFondo;
 
         /// <summary>
-        /// Control imgEntrada.
+        /// Control repeaterBebida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgEntrada;
+        protected global::System.Web.UI.WebControls.Repeater repeaterBebida;
 
         /// <summary>
-        /// Control lblIdEntrada.
+        /// Control repeaterCarta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIdEntrada;
+        protected global::System.Web.UI.WebControls.Repeater repeaterCarta;
 
         /// <summary>
-        /// Control lblNombreEntrada.
+        /// Control txtNumRacMenu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreEntrada;
+        protected global::System.Web.UI.WebControls.TextBox txtNumRacMenu;
 
         /// <summary>
-        /// Control lblPorcionEntrada.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPorcionEntrada;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Control lblCatEntrada.
+        /// Control repeaterMenu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCatEntrada;
+        protected global::System.Web.UI.WebControls.Repeater repeaterMenu;
 
         /// <summary>
-        /// Control btnQuitarEntrada.
+        /// Control txtNumRacCarta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnQuitarEntrada;
+        protected global::System.Web.UI.WebControls.TextBox txtNumRacCarta;
 
         /// <summary>
-        /// Control imgFondo.
+        /// Control UpdatePanel2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgFondo;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
-        /// Control lblIdFondo.
+        /// Control repeaterCartaSeleccionada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIdFondo;
-
-        /// <summary>
-        /// Control lblNombreFondo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreFondo;
-
-        /// <summary>
-        /// Control lblPorcionFondo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPorcionFondo;
-
-        /// <summary>
-        /// Control lblCatFondo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCatFondo;
-
-        /// <summary>
-        /// Control btnQuitarFondo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnQuitarFondo;
+        protected global::System.Web.UI.WebControls.Repeater repeaterCartaSeleccionada;
 
         /// <summary>
         /// Control btnAceptar.
