@@ -181,6 +181,14 @@
                 confirmButtonText: 'Aceptar'
             })
         }
+        function alertaError1() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La receta seleccionada no se puede editar',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
     </script>
     <%--<script src="vendors/scripts/core.js"></script>--%>
 </asp:Content>
