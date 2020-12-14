@@ -56,7 +56,7 @@
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                             <ContentTemplate>
                                 <p class="center-button">
-                                    <asp:Button class="btn btn-success" runat="server" Text="Añadir" ID="btnAñadir" OnClick="btnAñadir_Click" />
+                                    <asp:Button class="btn btn-primary btn-lg fa" style="height:40px; font-weight:500" runat="server" Text="" ID="btnAñadir" OnClick="btnAñadir_Click" />
                                 </p>
                             </ContentTemplate>
                         </asp:UpdatePanel>
