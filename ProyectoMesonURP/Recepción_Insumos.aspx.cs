@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,10 +21,8 @@ namespace ProyectoMesonURP
         DTO_OC dto_oc;
         DTO_Movimiento dto_mov;
         DTO_Usuario dto_us;
-        DTO_Insumo dto_i;
         int oc;
-        static DataTable dt = new DataTable();
-        
+        static DataTable dt;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,9 +34,12 @@ namespace ProyectoMesonURP
             {
                 dto_oc = new DTO_OC();
                 oc = (int)Session["OCSeleccionada"];
+                dt = new DataTable();
                 CargarInsumosOC(oc);
                 CargarIngresosOC(dt);
+
             }
+            
 
         }
         public void CargarInsumosOC(int oc)
@@ -54,7 +56,6 @@ namespace ProyectoMesonURP
         }
         protected void gvInsumos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            oc = (int)Session["OCSeleccionada"];
             gvInsumos.PageIndex = e.NewPageIndex;
             CargarInsumosOC(oc);
         }
@@ -88,7 +89,7 @@ namespace ProyectoMesonURP
                 {
                     if (row.RowIndex == gvInsumos.SelectedIndex)
                     {
-                        row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                        row.BackColor = ColorTranslator.FromHtml("#babfba");
                         row.ToolTip = string.Empty;
                     }
                     else
@@ -110,26 +111,28 @@ namespace ProyectoMesonURP
 
         protected void btnAñadir_Click(object sender, EventArgs e)
         {
-            
-            int id = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["I_idInsumo"]);
-            string nom = (gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["I_nombreInsumo"].ToString());
-            string Hoy = DateTime.Now.ToString("MM/dd/yyyy");
-            string Ahora = DateTime.Now.ToString("HH:mm:ss");
-            decimal cantidad = Convert.ToDecimal(txtCantidad.Text);
-            int idDCO = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["DC_idDetalleCotizacion"].ToString()); 
+            if (gvInsumos.SelectedIndex !=-1) { 
+                if (Añadir_Val())
+                {
+                    int id = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["I_idInsumo"]);
+                    string nom = (gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["I_nombreInsumo"].ToString());
+                    string Hoy = DateTime.Now.ToString("MM/dd/yyyy");
+                    string Ahora = DateTime.Now.ToString("HH:mm:ss");
+                    decimal cantidad = decimal.Parse(txtCantidad.Text, CultureInfo.InvariantCulture);
+                    int idDCO = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["DC_idDetalleCotizacion"]);
 
-            DataRow row = dt.NewRow();
-            if (dt.Columns.Count == 0)
-            {
-                dt.Columns.Add("I_idInsumo");
-                dt.Columns.Add("I_nombreInsumo");
-                dt.Columns.Add("M_fechaMovimiento");
-                dt.Columns.Add("Hora");
-                dt.Columns.Add("M_cantidad");
-                dt.Columns.Add("DC_idDetalleCotizacion");
-            }
-                           
-                
+                    DataRow row = dt.NewRow();
+                    if (dt.Columns.Count == 0)
+                    {
+                        dt.Columns.Add("I_idInsumo");
+                        dt.Columns.Add("I_nombreInsumo");
+                        dt.Columns.Add("M_fechaMovimiento");
+                        dt.Columns.Add("Hora");
+                        dt.Columns.Add("M_cantidad");
+                        dt.Columns.Add("DC_idDetalleCotizacion");
+                    }
+
+
                     row[0] = id;
                     row[1] = nom;
                     row[2] = Hoy;
@@ -138,11 +141,28 @@ namespace ProyectoMesonURP
                     row[5] = idDCO;
                     dt.Rows.Add(row);
                     CargarIngresosOC(dt);
+
+                }
+
+                else {
+                   ScriptManager.RegisterStartupScript(this, GetType(),"alert", "alertaCantMax()", true);
+                    return;
+                }
+            }
+
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaSeleccionar()", true);
+                return;
+            }
+
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             dto_us = (DTO_Usuario)Session["Usuario"];
+            gvIngresos.AllowPaging = false;
+            CargarIngresosOC(dt);
             foreach (GridViewRow grvRow in gvIngresos.Rows)
             {
                 dto_mov = new DTO_Movimiento();
@@ -150,16 +170,71 @@ namespace ProyectoMesonURP
                 dto_mov.I_idInsumo = Convert.ToInt32(gvIngresos.DataKeys[grvRow.RowIndex].Values["I_idInsumo"]);
                 string fecha = (gvIngresos.DataKeys[grvRow.RowIndex].Values["M_fechaMovimiento"].ToString()) + " " + (gvIngresos.DataKeys[grvRow.RowIndex].Values["Hora"].ToString());
                 dto_mov.M_fechaMovimiento = DateTime.ParseExact(fecha, "MM/dd/yyyy HH:mm:ss", null);
-                dto_mov.M_cantidad = Convert.ToDecimal(gvIngresos.DataKeys[grvRow.RowIndex].Values["M_cantidad"].ToString());
+                dto_mov.M_cantidad = Convert.ToDecimal(gvIngresos.DataKeys[grvRow.RowIndex].Values["M_cantidad"]);
                 int idOC = Convert.ToInt32(gvIngresos.DataKeys[grvRow.RowIndex].Values["DC_idDetalleCotizacion"]);
                 _DO.UPDATE_cantidadEntregada(dto_mov.M_cantidad, idOC);
                 _I.UPDATE_cantidadInsumoOC(dto_mov.M_cantidad, dto_mov.I_idInsumo);
                 _MO.InsertMovGO(dto_mov);
             }
             dt.Clear();
-            oc = (int)Session["OCSeleccionada"];
-            CargarInsumosOC(oc);
+            gvIngresos.AllowPaging = true;
             CargarIngresosOC(dt);
+            if (Completado()) { _OC.UPDATE_EstadoOC(oc); }
+        }
+
+        public Boolean Añadir_Val()
+        {
+            gvIngresos.AllowPaging = false;
+            CargarIngresosOC(dt);
+            int id = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["I_idInsumo"]);
+            string est = (gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["Estado"].ToString());
+            string[] num1 = est.Split('/');
+            decimal c1 = decimal.Parse(num1[0], CultureInfo.InvariantCulture);
+            decimal c2 = decimal.Parse(num1[1], CultureInfo.InvariantCulture);
+            decimal dif = c2 - c1;
+            decimal cantidad = decimal.Parse(txtCantidad.Text, CultureInfo.InvariantCulture);
+            int idIng;
+
+            foreach (GridViewRow grvRow in gvIngresos.Rows)
+            {
+                idIng= Convert.ToInt32(gvIngresos.DataKeys[grvRow.RowIndex].Values["I_idInsumo"]);
+                if (id == idIng)
+                {
+                    cantidad += Convert.ToDecimal(gvIngresos.DataKeys[grvRow.RowIndex].Values["M_cantidad"]);
+                }
+
+            }
+            gvIngresos.AllowPaging = true;
+            CargarIngresosOC(dt);
+
+            if (cantidad <= dif)
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public Boolean Completado()
+        {
+            gvIngresos.AllowPaging = false;
+            CargarInsumosOC(oc);
+            Boolean comp = true;
+            foreach (GridViewRow grvRow in gvInsumos.Rows)
+            {
+                string est = (gvInsumos.DataKeys[grvRow.RowIndex].Values["Estado"].ToString());
+                string[] num1 = est.Split('/');
+                decimal c1 = decimal.Parse(num1[0], CultureInfo.InvariantCulture);
+                decimal c2 = decimal.Parse(num1[1], CultureInfo.InvariantCulture);
+                if (c1 != c2)
+                {
+                    comp = false;
+                }
+
+            }
+            gvIngresos.AllowPaging = true;
+            CargarInsumosOC(oc);
+
+            return comp;
         }
     }
 }

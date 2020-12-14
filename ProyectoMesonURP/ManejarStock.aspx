@@ -123,7 +123,7 @@
                  if (letras.indexOf(tecla) == -1 && !tecla_especial)
                      return false;
              }
-             function alertaError() {
+             function alertIns() {
                  Swal.fire({
                      title: 'Oh, no!',
                      text: 'Ingrese un insumo para la busqueda',
