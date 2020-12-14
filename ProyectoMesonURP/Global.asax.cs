@@ -60,7 +60,8 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("SeleccionarMenu", "SeleccionarMenu", "~/SeleccionarMenuDia.aspx", true);
             routes.MapPageRoute("GenerarOC", "GenerarOC", "~/GenerarOC.aspx", true);
             routes.MapPageRoute("GestionarCotizacion", "GestionarCotizacion", "~/GestionarCotizacion.aspx", true);
-
+            routes.MapPageRoute("GestionarEquivalencia", "GestionarEquivalencia", "~/GestionarEquivalencia.aspx", true);
+            routes.MapPageRoute("AgregarEquivalencia", "AgregarEquivalencia", "~/AgregarEquivalencia.aspx", true);
         }
     }
 }

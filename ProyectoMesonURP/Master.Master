@@ -167,6 +167,7 @@
                         <h6 class="collapse-header">Insumo Personalizado:</h6>
                         <a class="collapse-item" href="Empty.aspx">Gestionar Insumo</a>
                         <a class="collapse-item" href="Empty.aspx">Gestionar Categoría</a>
+                        <a class="collapse-item" href="Empty.aspx">Gestionar Equivalencia</a>
                     </div>
                 </div>
             </li>
