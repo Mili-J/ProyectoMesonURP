@@ -92,10 +92,7 @@ namespace CTR
         {
             return objDAO.SelectExistenciaImagen(R_idReceta);
         }
-        public byte[] Consultar_ImagenReceta(int R_idReceta)
-        {
-            return objDAO.Select_ImagenReceta(R_idReceta);
-        }
+
         public bool ExistenciaReceta(string R_nombreReceta)
         {
             return objDAO.SelectExistenciaReceta(R_nombreReceta);

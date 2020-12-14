@@ -247,17 +247,6 @@ namespace DAO
             conexion.Close();
         }
 
-        public void actualizarfoto(byte[]aaa,int i)
-        {
-            conexion.Open();
-            SqlCommand command = new SqlCommand("SP_Actualizar_foto", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@R_idReceta",i);
-            command.Parameters.AddWithValue("@R_imagenReceta",aaa);
-            command.ExecuteNonQuery();
-            conexion.Close();
-        }
-
         public DTO_Receta DAO_Consultar_RecetaD(int i)
         {
             conexion.Open();
@@ -354,20 +343,7 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
-        public DataTable DAO_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)//recetas ya seleccionadas, menu o carta
-        {
-            conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarMenuXRecetaYCategoria", conexion);
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_idMenu", id_menu);
-            comando.Parameters.AddWithValue("@CP_idCategoriaReceta", id_cat);
-            comando.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-            da.Fill(dt);
-            conexion.Close();
-            return dt;
-        }
+       
         public bool SelectExistenciaImagen(int R_idReceta)
         {
             try
@@ -482,6 +458,8 @@ namespace DAO
             da.Fill(dt);
             conexion.Close();
             return dt;
+
+
         }
     }
 }
