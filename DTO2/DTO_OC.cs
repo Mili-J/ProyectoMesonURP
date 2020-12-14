@@ -6,9 +6,8 @@ namespace DTO
 {
     public class DTO_OC
     {
-
         public int OC_idOC { get; set; }
-        public string OC_numeroOC { get; set; }
+        public string OC_numeroOc{ get; set; }
         public DateTime OC_fechaEmision { get; set; }
         public DateTime OC_fechaEntrega { get; set; }
         public string OC_tipoPago { get; set; }
