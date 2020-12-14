@@ -345,7 +345,7 @@ namespace ProyectoMesonURP
             DataRow dr = dt.NewRow();
             int R_id = int.Parse(((Label)rp.Items[i].FindControl("lblIdReceta")).Text);
             DTO_Receta receta = ctr_receta.CTR_Consultar_Receta(R_id);
-            int CR_id = receta.CR_idCategoriaReceta;
+            int CR_id = receta.CP_idCategoriaReceta;
             DTO_CategoriaReceta cat_receta = ctr_cat_receta.CTR_Consultar_CategoriaXReceta(CR_id);
 
             CrearDt(dt);
