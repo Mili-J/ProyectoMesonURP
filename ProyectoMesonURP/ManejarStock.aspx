@@ -36,7 +36,7 @@
        <div class="panel panel-widget forms-panel">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title color-white">
-                <h4>Stock Actual</h4>
+                <h5>Stock Actual</h5>
             </div>
                 <div class="w3-row-padding">
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -64,7 +64,7 @@
         <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
-                    <h4>Insumos que requieren abastecimiento</h4>
+                    <h5>Insumos que requieren abastecimiento</h5>
                 </div>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                     <asp:GridView ID="gvInsumos2" OnRowDataBound="gvInsumos2_RowDataBound" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
