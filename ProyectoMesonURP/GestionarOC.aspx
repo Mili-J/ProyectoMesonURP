@@ -39,9 +39,9 @@
                 <h5>Ordenes de Compra</h5>
             </div>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <asp:GridView ID="gvOC" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible." OnRowCommand="gvOC_RowCommand" 
+                <asp:GridView ID="gvOC" allowpaging="True" OnRowDataBound="gvOC_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible." OnRowCommand="gvOC_RowCommand" 
                     CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EOC_nombreEstadoOC"  
-                    Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvOC_SelectedIndexChanged" GridLines="None">
+                    Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None">
                         <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
                     <Columns>
                         <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />

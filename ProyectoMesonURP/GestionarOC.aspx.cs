@@ -81,14 +81,26 @@ namespace ProyectoMesonURP
             gvOC.PageIndex = e.NewPageIndex;
             CargarOC();
         }
-        protected void gvOC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
             gvOC.PageSize = Convert.ToInt32(ddlp.SelectedValue);
             CargarOC();
+        }
+        protected void gvOC_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "EOC_nombreEstadoOC").ToString());
+
+                if (estado == "Incompleto")
+                {
+                    e.Row.Cells[5].Text = "<span class='badge badge-warning'>" + e.Row.Cells[5].Text + "</span>";
+                }
+                else
+                {
+                    e.Row.Cells[5].Text = "<span class='badge badge-success'>" + e.Row.Cells[5].Text + "</span>";
+                }
+            }
         }
     }
 }
