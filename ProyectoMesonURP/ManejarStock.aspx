@@ -18,7 +18,7 @@
 		    </div>
 	    </div>
     </div>
-    <div class="pd-20 card-box">
+    <div class="pd-20 card-box" runat="server" id="PanelBuscar">
         <div class="row pt-1">    
             <div class="col-sm-12 col-md-6">            
                 <label class="control-label col-md-2">Paginación:</label>
@@ -33,7 +33,7 @@
 				</div>
              </div>
          </div>
-       <div class="panel panel-widget forms-panel">
+       <div class="panel panel-widget forms-panel" runat="server" id="PanelInsumos">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title color-white">
                 <h5>Stock Actual</h5>
@@ -61,7 +61,7 @@
     </div>
     <div class="padding-top-30">  
     <div class="pd-20 card-box">
-        <div class="panel panel-widget forms-panel">
+        <div class="panel panel-widget forms-panel" runat="server" id="PanelInsumos2">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
                     <h5>Insumos que requieren abastecimiento</h5>
@@ -70,7 +70,8 @@
                     <asp:GridView ID="gvInsumos2" OnRowDataBound="gvInsumos2_RowDataBound" allowpaging="True" runat="server" AutoGenerateColumns="False" emptydataText="No hay información disponible."  
                     CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_NombreInsumo,I_cantidadMinima,I_cantidad,El_nombreEstado" 
                     Style="text-align: center" OnPageIndexChanging="gvInsumos2_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None" EnablePersistedSelection="True">
-                    <Columns>
+                     <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
+                        <Columns>
                         <asp:BoundField DataField="I_idInsumo" HeaderText="Id_Insumo" Visible="False" />
                         <asp:BoundField Datafield="I_NombreInsumo" HeaderText="Nombre insumo" />
                         <asp:BoundField Datafield="I_cantidadMinima" HeaderText="Stock mínimo" />

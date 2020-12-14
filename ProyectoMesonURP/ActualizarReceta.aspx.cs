@@ -146,7 +146,7 @@ namespace ProyectoMesonURP
 
             try
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
                 _Dr.R_subcategoria = ddlSubCategoria.SelectedValue;
                 _Dr.EP_idEstadoReceta = Convert.ToInt32(ddlEstadoReceta.SelectedValue);
             }

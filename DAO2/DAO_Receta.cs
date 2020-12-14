@@ -219,7 +219,7 @@ namespace DAO
                 }
                 dto_receta.R_subcategoria = Convert.ToString(reader[5]);
                 dto_receta.EP_idEstadoReceta = Convert.ToInt32(reader[6]);
-                dto_receta.CR_idCategoriaReceta = Convert.ToInt32(reader[7]);
+                dto_receta.CP_idCategoriaReceta = Convert.ToInt32(reader[7]);
             }
             conexion.Close();
             return dto_receta;
@@ -324,7 +324,7 @@ namespace DAO
                 cmd.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
                 cmd.Parameters.Add(new SqlParameter("@R_subcategoria", objDTO.R_subcategoria));
                 cmd.Parameters.Add(new SqlParameter("@EP_idEstadoReceta", objDTO.EP_idEstadoReceta));
-                cmd.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
+                cmd.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CP_idCategoriaReceta));
 
                 cmd.ExecuteNonQuery();
                 conexion.Close();
