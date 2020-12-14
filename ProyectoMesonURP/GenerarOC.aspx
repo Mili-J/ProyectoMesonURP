@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GenerarOC.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GenerarOC" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GenerarOC.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GenerarOC" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -44,7 +44,7 @@
                         <label for="selector1" class="col-sm-2 control-label">Fecha de Entrega</label>
                         <div class="col-sm-8">
 
-                            <asp:TextBox ID="txtFechaEntrega" runat="server" CssClass="form-control1"></asp:TextBox>
+                            <asp:TextBox ID="txtFechaEntrega" runat="server" CssClass="form-control1" TextMode="Date"></asp:TextBox>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFechaEntrega" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         
                         </div>
@@ -84,7 +84,7 @@
                                         <asp:BoundField HeaderText="Cantidad" DataField="DC_cantidadCotizacion"/>
                                         <asp:TemplateField HeaderText="Precio Unitario" >
                                             <Itemtemplate>
-                                        <asp:TextBox id ="txtPrecioUnitario" runat="server" class="precio" CssClass="form-control1"></asp:TextBox>
+                                        <asp:TextBox id ="txtPrecioUnitario" runat="server" class="precio" CssClass="form-control1" OnTextChanged="txtPrecioUnitario_TextChanged"></asp:TextBox>
                                         </Itemtemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Precio Total">

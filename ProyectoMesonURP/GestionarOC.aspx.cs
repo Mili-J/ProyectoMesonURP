@@ -113,5 +113,9 @@ namespace ProyectoMesonURP
                 }
             }
         }
+        protected void gvOC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

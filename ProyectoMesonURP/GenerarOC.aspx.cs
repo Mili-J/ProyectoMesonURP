@@ -25,7 +25,7 @@ namespace ProyectoMesonURP
         }
         public void CargarCotizacion() {
             txtNdeCompra.Text = Convert.ToString(Session["nCompra"]);
-            txtNdeCompra.Enabled = false;
+            //txtNdeCompra.Enabled = false;
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
             txtProveedor.Enabled = false;
             txtFechaEmision.Enabled = false;
@@ -68,6 +68,22 @@ namespace ProyectoMesonURP
         }
         protected void btnLimpiar_ServerClick(object sender, EventArgs e)
         { 
+        }
+
+        protected void txtPrecioUnitario_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox txt = (TextBox)sender;
+                int index = ((GridViewRow)txt.NamingContainer).RowIndex;
+                string cantidad = txt.Text;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
