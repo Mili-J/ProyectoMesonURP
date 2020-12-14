@@ -20,10 +20,10 @@ namespace ProyectoMesonURP
         {
 
             gvInsumos1.DataBind();
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Login?x=1");
-            }
+            //if (Session["Usuario"] == null)
+            //{
+            //    Response.Redirect("Login?x=1");
+            //}
             if (!Page.IsPostBack)
             {
                 dto_o = new DTO_OC();
