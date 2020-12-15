@@ -23,8 +23,9 @@
                         <label for="focusedinput" class="col-sm-2 control-label">N° de Compra</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtNdeCompra" runat="server" Style="width: 25%;" CssClass="form-control1"/>
-                            <asp:RequiredFieldValidator ID="rfvNdeCompra" runat="server" ControlToValidate="txtNdeCompra" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                            </div>
+                            <%--<asp:RequiredFieldValidator ID="rfvNdeCompra" runat="server" ControlToValidate="txtNdeCompra" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            --%>
+                        </div>
                     </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Proveedor</label>

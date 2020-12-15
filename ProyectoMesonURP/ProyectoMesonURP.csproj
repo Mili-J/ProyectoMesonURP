@@ -289,6 +289,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
+    <Content Include="MensajeOC.html" />
     <Content Include="MenuDelDia.aspx" />
     <Content Include="RegistrarCotizacion.aspx" />
     <Content Include="RegistrarReceta.aspx" />
@@ -2087,6 +2088,11 @@
     <Compile Include="RegistrarReceta.aspx.designer.cs">
       <DependentUpon>RegistrarReceta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="SeleccionarMenuDia.aspx.cs">
       <DependentUpon>SeleccionarMenuDia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2399,7 +2405,12 @@
       <Name>DTO2</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
