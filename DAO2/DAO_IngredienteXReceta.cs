@@ -169,5 +169,19 @@ namespace DAO
                 throw;
             }
         }
+        public DataTable DAO_ConsultarIngredientesXReceta(int R_idReceta,int cat)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarIngredientesXReceta", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+            comando.Parameters.AddWithValue("@CI_idCategoriaInsumo", cat);
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

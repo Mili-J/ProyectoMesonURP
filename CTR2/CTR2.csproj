@@ -44,6 +44,7 @@
     <Compile Include="CTR_CategoriaInsumo.cs" />
     <Compile Include="CTR_CategoriaReceta.cs" />
     <Compile Include="CTR_Cotizacion.cs" />
+    <Compile Include="CTR_CotizacionXMenu.cs" />
     <Compile Include="CTR_DetalleCotizacion.cs" />
     <Compile Include="CTR_DetalleOC.cs" />
     <Compile Include="CTR_Egreso.cs" />

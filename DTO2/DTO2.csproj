@@ -46,6 +46,7 @@
     <Compile Include="DTO_CategoriaPlato.cs" />
     <Compile Include="DTO_CategoriaReceta.cs" />
     <Compile Include="DTO_Cotizacion.cs" />
+    <Compile Include="DTO_CotizacionXMenu.cs" />
     <Compile Include="DTO_DetalleCotizacion.cs" />
     <Compile Include="DTO_DetalleOC.cs" />
     <Compile Include="DTO_Egreso.cs" />

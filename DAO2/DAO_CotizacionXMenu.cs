@@ -1,29 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using DTO;
 namespace DAO
 {
-    public class DAO_Proveedor
+    public class DAO_CotizacionXMenu
     {
         SqlConnection conexion;
-        public DAO_Proveedor()
+        public DAO_CotizacionXMenu()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
         }
-        public DataTable DAO_ConsultarProveedores()
+        public void DAO_RegistrarCotizacionXMenu(DTO_CotizacionXMenu cotXmen)
         {
-            DataTable dt = new DataTable();
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarProveedores", conexion);
+            SqlCommand comando = new SqlCommand("SP_RegistrarCotizacionXMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion",cotXmen.C_idCotizacion);
+            comando.Parameters.AddWithValue("@ME_idMenu", cotXmen.ME_idMenu);
             comando.ExecuteNonQuery();
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-            da.Fill(dt);
             conexion.Close();
-            return dt;
         }
+
     }
 }

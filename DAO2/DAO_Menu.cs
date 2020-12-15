@@ -85,5 +85,19 @@ namespace DAO
             conexion.Close();
             return estado;
         }
+        public DataTable DAO_ConsultarMenusXEstadoYFecha(int estado, DateTime fecha)
+        {
+            DataTable dtMenu = new DataTable();
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarMenusXEstadoYFecha", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@EM_idEstadoMenu", estado);
+            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToShortDateString());
+            comando.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dtMenu);
+            conexion.Close();
+            return dtMenu;
+        }
     }
 }
