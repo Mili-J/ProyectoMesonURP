@@ -21,7 +21,6 @@ namespace ProyectoMesonURP
             txtMedida.Text = E[1];
             txtCantidad.Text = E[2];
             lblFormatoC.Text = E[3];
-
         }
     }
 }

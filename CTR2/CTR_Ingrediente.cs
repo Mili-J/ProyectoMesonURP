@@ -12,6 +12,12 @@ namespace CTR
         {
             objDAO = new DAO_Ingrediente();
         }
+
+        public void InsertarIngrediente(DTO_Ingrediente objIngrediente)
+        {
+            //if(objIngrediente.I_cantidad==0 || objIngrediente.I_cantidad<0) 
+            objDAO.DAO_Registrar_Ingrediente(objIngrediente);
+        }
         public DataSet CargarIngredientes()
         {
             return objDAO.SelectIngrediente();

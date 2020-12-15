@@ -35,6 +35,16 @@ namespace ProyectoMesonURP
             if (e.CommandName == "EditarEquivalencia")
             {
             }
-        }   
+        }
+
+        protected void btnAnadirIngrediente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarIngrediente.aspx");
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionarEquivalencia.aspx");
+        }
     }
 }

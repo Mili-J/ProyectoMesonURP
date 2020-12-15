@@ -50,13 +50,20 @@
                 </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-         <%--<asp:UpdatePanel ID="panelAgregarIngrediente" runat="server">
+         <asp:UpdatePanel ID="panelAgregarIngrediente" runat="server">
              <ContentTemplate>
                  <p class="center-button">
                      <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir Ingrediente" OnClick="btnAnadirIngrediente_Click"></asp:Button>
                  </p>
              </ContentTemplate>
-         </asp:UpdatePanel>--%>
+         </asp:UpdatePanel>
+         <asp:UpdatePanel ID="panelVolver" runat="server">
+             <ContentTemplate>
+                 <p class="center-button">
+                     <asp:Button CssClass="btn btn-primary" runat="server" Text="Volver" OnClick="btnVolver_Click"></asp:Button>
+                 </p>
+             </ContentTemplate>
+         </asp:UpdatePanel>
      </div>
  </div>
 </asp:Content>

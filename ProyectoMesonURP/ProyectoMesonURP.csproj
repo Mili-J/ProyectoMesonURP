@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="AgregarIngrediente.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarEquivalencia.aspx" />
     <Content Include="ActualizarReceta.aspx" />
@@ -1982,6 +1983,13 @@
     </Compile>
     <Compile Include="ActualizarReceta.aspx.designer.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarIngrediente.aspx.cs">
+      <DependentUpon>AgregarIngrediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarIngrediente.aspx.designer.cs">
+      <DependentUpon>AgregarIngrediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="CalendariaMenu.aspx.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
