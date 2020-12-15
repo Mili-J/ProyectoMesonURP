@@ -43,22 +43,37 @@
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                             <asp:GridView ID="gvEquivalencia" runat="server" DataKeyNames="E_cantidad,I_idInsumo" emptydatatext="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
                                 <Columns>
-                                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreIngrediente" />
-                                    <asp:BoundField HeaderText="Medida" DataField="I_nombreInsumo" />
-                                    <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
-                                    <asp:BoundField HeaderText="Formato Cocina" DataField="IR_formatoMedida" />
-                                   
-
-                                    <asp:TemplateField HeaderText="Editar">
+                                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
+                                    <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnEditarEquivalencia" class="btn btn-outline-warning" runat="server" OnClick="btnEditarEquivalencia_Click"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
-                                                                   
+                                              <%# "1" + " " + Eval("M_nombreMedida")%>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="Equivalencia">
+                                        <ItemTemplate>
+                                              <%# Eval("E_cantidad") + " " + Eval("FCO_nombreFormatoCocina")%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                    
-
+                                    <asp:TemplateField HeaderText="Editar">
+                                        <ItemTemplate>
+                                            <asp:Button CssClass="btn btn-primary" ID="btnEditarEquivalencia" runat="server"  CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                   
+                                   
+                                    <asp:TemplateField HeaderText="Ver">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnEditarEquivalencia" class="btn btn-outline-warning" runat="server" OnClick="btnEditarEquivalencia_Click"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
+                                                                   
+                                            <asp:Button CssClass="btn btn-primary" ID="btnVer" runat="server"  CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Ver" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                   
+                                   
                                 </Columns>
                             </asp:GridView>
+                             
                         </div>
                     </div>
                     
