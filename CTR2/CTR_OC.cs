@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAO;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -29,6 +31,10 @@ namespace CTR
         public void UPDATE_EstadoOC(int idOC)
         {
             dao_oc.UPDATE_EstadoOC(idOC);
+        }
+        public void EnviarOC(DTO_OC objDTO, int idCotizacion, string html)
+        {
+            objDAO.EnviarCorreo(objDTO, idCotizacion, html);
         }
     }
 }
