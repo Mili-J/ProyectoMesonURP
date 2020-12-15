@@ -49,17 +49,17 @@ namespace ProyectoMesonURP
         {
             try
             {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    _Total += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "lblTotal"));
-                }
-                else if (e.Row.RowType == DataControlRowType.Footer)
-                {
-                    e.Row.Cells[3].Text = "TOTAL:";
-                    e.Row.Cells[4].Text = _Total.ToString();
-                    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
-                    e.Row.Font.Bold = true;
-                }
+                //if (e.Row.RowType == DataControlRowType.DataRow)
+                //{
+                //    _Total += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "lblPrecioTotal"));
+                //}
+                //else if (e.Row.RowType == DataControlRowType.Footer)
+                //{
+                //    e.Row.Cells[3].Text = "TOTAL:";
+                //    e.Row.Cells[4].Text = _Total.ToString();
+                //    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
+                //    e.Row.Font.Bold = true;
+                //}
             }
             catch (Exception err)
             {
@@ -125,8 +125,20 @@ namespace ProyectoMesonURP
             {
                 TextBox txt = (TextBox)sender;
                 int index = ((GridViewRow)txt.NamingContainer).RowIndex;
-                string cantidad = txt.Text;
-
+                string precioCosto = txt.Text;
+                if (!decimal.TryParse(precioCosto, out decimal result))
+                {
+                 //mensaje de que no es entero    
+                }
+                string cantidad = ((Label)gvInsumos.Rows[index].FindControl("lblCantidad")).Text;
+                decimal subtotal = decimal.Parse(precioCosto) * decimal.Parse(cantidad);
+                ((Label)gvInsumos.Rows[index].FindControl("lblPrecioTotal")).Text = subtotal.ToString();
+                decimal sum = decimal.Zero;
+                for (int i = 0; i < gvInsumos.Rows.Count; i++)
+                {
+                    sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
+                }
+               ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text = sum.ToString();
             }
             catch (Exception)
             {

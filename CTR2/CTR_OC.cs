@@ -34,7 +34,7 @@ namespace CTR
         }
         public void EnviarOC(DTO_OC objDTO, int idCotizacion, string html)
         {
-            objDAO.EnviarCorreo(objDTO, idCotizacion, html);
+            dao_oc.EnviarCorreo(objDTO, idCotizacion, html);
         }
     }
 }
