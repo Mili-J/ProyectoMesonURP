@@ -16,7 +16,7 @@ namespace ProyectoMesonURP
         CTR_Receta ctr_receta;
         CTR_CategoriaReceta ctr_cat_receta;
         DataTable dtPlatoFondo, dtEntrada;
-        DTO_CategoriaReceta dto_cat_receta;
+       // DTO_CategoriaReceta dto_cat_receta;
         static DataTable dt;
         static bool sEntrada, sSegundo;
 
@@ -78,8 +78,8 @@ namespace ProyectoMesonURP
             }
             if (!Page.IsPostBack)
             {
-                dtEntrada = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);
-                dtPlatoFondo = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
+                //dtEntrada = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(1);
+                //dtPlatoFondo = ctr_receta.CTR_Consultar_Recetas_X_Categoria_Seleccionada(2);
                 //---------------------------------------------------------
                 gvPlatoFondo.DataSource = dtPlatoFondo;
                 gvPlatoFondo.DataBind();
@@ -108,25 +108,25 @@ namespace ProyectoMesonURP
         }
         public void LLenarDataTable(int id, string nombre,int caso)
         {
-            if (dt.Columns.Count == 0)
-            {
-                dt.Columns.Add("R_idReceta");
-                dt.Columns.Add("R_nombreReceta");
-                dt.Columns.Add("NumRaciones");
-                dt.Columns.Add("CR_nombreCatgoria");
-            }
-            DataRow dr = dt.NewRow();
-            dto_cat_receta = ctr_cat_receta.CTR_Consultar_CategoriaXReceta(ctr_receta.CTR_Consultar_Receta(id).CR_idCategoriaReceta);
-            dr[0] = id;
-            dr[1] = nombre;
-            dr[2] = txtNumRaciones.Text;
-            dr[3] = dto_cat_receta.CR_nombreCategoria;
-            dt.Rows.Add(dr);
-            gvMenu.DataSource = dt;
-            gvMenu.DataBind();
+            //if (dt.Columns.Count == 0)
+            //{
+            //    dt.Columns.Add("R_idReceta");
+            //    dt.Columns.Add("R_nombreReceta");
+            //    dt.Columns.Add("NumRaciones");
+            //    dt.Columns.Add("CR_nombreCatgoria");
+            //}
+            //DataRow dr = dt.NewRow();
+            //dto_cat_receta = ctr_cat_receta.CTR_Consultar_CategoriaXReceta(ctr_receta.CTR_Consultar_Receta(id).CR_idCategoriaReceta);
+            //dr[0] = id;
+            //dr[1] = nombre;
+            //dr[2] = txtNumRaciones.Text;
+            //dr[3] = dto_cat_receta.CR_nombreCategoria;
+            //dt.Rows.Add(dr);
+            //gvMenu.DataSource = dt;
+            //gvMenu.DataBind();
 
-            if (caso == 1) sEntrada = false;
-            else sSegundo = false;
+            //if (caso == 1) sEntrada = false;
+            //else sSegundo = false;
         }
     }
 }

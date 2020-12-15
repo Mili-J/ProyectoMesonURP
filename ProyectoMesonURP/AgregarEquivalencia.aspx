@@ -6,63 +6,72 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="women_main">
-        <div class="grids">
-      <div class="form-horizontal" runat="server" style="background-color:#f5f6f7; border-radius:1%">
-                        <div class="form-grids widget-shadow" data-example-id="basic-forms" style="margin-top: 34px;">
-                            <div class="form-title color-white">
-                                <h4>Añadir Equivalencia</h4>
-                            </div>
-                        </div>
-          </div>
-        </div>
-        <div class="forms">
-            <br />
-                        <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Categoria</label>
-                            <div class="col-sm-8">                               
-                              <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>                              
-                            </div>
-                        </div>
-                       <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Insumo</label>
-                            <div class="col-sm-8">                               
-                              <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>                              
-                            </div>
-                        </div>
-
-                      <%-- <div class="form-group">
-                            <label for="selector1" class="col-sm-2 control-label" style="left: 103px; top: 8px">Medida</label>
-                                                           
-                                <asp:Label ID="lblUnidad" runat="server" Text="1"></asp:Label>                                                           
-                       </div>--%>
-
-                       <div class="form-group">
-                            <label for="selector1" class="col-sm-2 control-label">Medida</label>
-                                    <div class="col-sm-8">                                            
-                                <asp:TextBox ID="txtMedida" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" runat="server"></asp:TextBox>                        
-                                        </div> 
-                           <br />
-                       </div>
-
-                        <div class="form-group">
-                            <label for="selector1" class="col-sm-2 control-label">Cantidad</label>
-                            <div class="col-sm-8">
-                                <asp:TextBox ID="txtCantidad" CssClass="form-control form-color-letter" Style="width:25%" runat="server"></asp:TextBox>
-                            </div>
-                       </div>
-
-                       
-
-                       <div class="form-group">
-                            <label for="selector1" class="col-sm-2 control-label" style="left: 101px; top: 3px">Formato Cocina</label>
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlFormatoCocina" CssClass="form-control form-color-letter"  Style="width:25%" runat="server" OnSelectedIndexChanged="ddlFormatoCocina_SelectedIndexChanged"></asp:DropDownList>
-                            </div>
-                       </div>
-                        <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                            <ContentTemplate>
-                                <p class="center-button">
-                                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />
+       <div class="page-header">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="title">
+						<h4>Añadir Equivalencia</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="pd-20 card-box mb-30">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                    <div class="form-title color-white">
+                        <h5>Equivalencia de un Insumo</h5>
+                    </div>
+                </div>
+            <div class="padding-top-30">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
+                    <div class="col-sm-12 col-md-4">                             
+                        <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" class="custom-select2 form-control" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>                              
+                    </div>
+                </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                     <ContentTemplate>
+               <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
+                    <div class="col-sm-12 col-md-4">                          
+                        <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" class="custom-select2 form-control" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>                              
+                    </div>
+                </div>
+                     </ContentTemplate>
+                </asp:UpdatePanel>
+                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                     <ContentTemplate>
+                <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Medida</label>
+                       <div class="col-sm-12 col-md-4">                                                  
+                        <asp:TextBox ID="txtMedida" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>                        
+                       </div> 
+                </div>
+                     </ContentTemplate>
+                 </asp:UpdatePanel>
+                 <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
+                    <div class="col-sm-12 col-md-4">          
+                        <asp:TextBox ID="txtCantidad" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                      <ContentTemplate>
+                 <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Formato Cocina</label>
+                    <div class="col-sm-12 col-md-4"> 
+                        <asp:DropDownList ID="ddlFormatoCocina" class="custom-select2 form-control" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+                     </ContentTemplate>
+                 </asp:UpdatePanel>
+                <asp:UpdatePanel ID="PanelAñadir" runat="server">
+                    <ContentTemplate>
+                        <p class="center-button pt-3">
+                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />
                                     
                                 </p>
                             </ContentTemplate>

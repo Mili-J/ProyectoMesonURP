@@ -13,8 +13,7 @@ namespace DTO
         public byte[] R_imagenReceta { get; set; }
         public string R_subcategoria { get; set; }
         public int EP_idEstadoReceta { get; set; }
-        public int CR_idCategoriaReceta { get; set; }
-        
+        public int CP_idCategoriaReceta { get; set; }
 
     }
 }

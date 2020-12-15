@@ -24,15 +24,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtnombre;
 
         /// <summary>
-        /// Control rfvnombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvnombre;
-
-        /// <summary>
         /// Control txtPorciones.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorciones;
-
-        /// <summary>
-        /// Control rfvporciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvporciones;
 
         /// <summary>
         /// Control ddlCategoriaReceta.
@@ -105,6 +87,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.FileUpload fuImagen;
 
         /// <summary>
+        /// Control UpdatePanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// Control ddlIngredientes.
         /// </summary>
         /// <remarks>
@@ -132,31 +123,31 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
 
         /// <summary>
-        /// Control rfvcantidad.
+        /// Control UpdatePanel2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcantidad;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
-        /// Control txtMedidaFormato.
+        /// Control ddlMedida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedidaFormato;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedida;
 
         /// <summary>
-        /// Control rfvMedida.
+        /// Control UpdateButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMedida;
+        protected global::System.Web.UI.UpdatePanel UpdateButton;
 
         /// <summary>
         /// Control btnAñadirIngredientes.

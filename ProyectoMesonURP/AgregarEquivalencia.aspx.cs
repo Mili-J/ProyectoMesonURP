@@ -47,7 +47,7 @@ namespace ProyectoMesonURP
             ddlCategoria.DataValueField = "CI_idCategoriaInsumo";
             ddlCategoria.DataSource = dsCatInsumo;
             ddlCategoria.DataBind();
-            ddlCategoria.Items.Insert(0, "Seleccione");
+            ddlCategoria.Items.Insert(0, "-- Seleccione --");
         }
         public void LoadInsumo(DTO_CategoriaInsumo objCInsumo)
         {

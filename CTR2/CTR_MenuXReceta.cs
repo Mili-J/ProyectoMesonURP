@@ -32,5 +32,9 @@ namespace CTR
         {
             return dao_menuxreceta.SelectExistenciaMenuxReceta(R_idReceta);
         }
+        public DataTable CTR_ConsultarRecetasXMenuYCategoria(int M_id, int Cat_id)
+        {
+            return dao_menuxreceta.DAO_ConsultarRecetasXMenuYCategoria(M_id, Cat_id);
+        }
     }
 }

@@ -27,6 +27,13 @@ namespace ProyectoMesonURP
             dtEquivalencias = objEquivalencia.ListaEquivalencias();
             gvEquivalencia.DataSource = dtEquivalencias;
             gvEquivalencia.DataBind();
+            ListItem ddl1 = new ListItem("5", "5");
+            ddlp.Items.Insert(0, ddl1);
+            ListItem ddl2 = new ListItem("10", "10");
+            ddlp.Items.Insert(1, ddl2);
+            ListItem ddl3 = new ListItem("20", "20");
+            ddlp.Items.Insert(2, ddl3);
+        }
 
         }
         protected void btnAnadirEquivalencia_Click(object sender, EventArgs e)

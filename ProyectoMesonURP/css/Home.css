@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 */
 
 html, body {
-    font-family: 'Roboto', sans-serif;
+   /* font-family: 'Roboto', sans-serif;*/
     font-size: 100%;
     overflow-x: hidden;
     background: #FFFFFF;
@@ -2874,7 +2874,6 @@ p.cart {
     padding: 25px;
     margin: 26px;
     border-radius: 6px;
-    background: white;
 }
 
 .foot-top li {
@@ -3610,11 +3609,11 @@ span.brand {
     background-color: rgb(3, 197, 135);
     border-color: rgb(3, 197, 135);
 }
-
+/*
 .btn-success:hover {
     border-color: #E74225 !important;
     background: #E74225 !important;
-}
+}*/
 
 .control2 {
     height: 200px;
@@ -3711,9 +3710,9 @@ button.note-color-btn {
     display: inline-block;
 }
 
-.form-control {
+/*.form-control {
     border-radius: inherit;
-}
+}*/
 
 .help-block {
     margin-top: 10px;
@@ -3966,7 +3965,7 @@ button.btn.btn-default.tip {
 }
 
 .accordion {
-    margin-bottom: 2em;
+    /*margin-bottom: 2em;*/
 }
 
 .fo-top-di {
@@ -4143,10 +4142,11 @@ button.btn.btn-default.tip {
 .row {
     margin-right: 0px !important;
     margin-left: 0px !important;
+    margin-top: revert;
 }
 
 .form-control {
-    color: #C5C5CF !important;
+    color: #212529 !important;
 }
 
 input[type="date"] {
@@ -6819,8 +6819,8 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
 }
 
 .tittle-margin5 {
-    margin-top: 2px;
-    margin-bottom: 26px;
+    margin-top: 9px;
+   /* margin-bottom: 26px;*/
 }
 
 .margin-cont5 {

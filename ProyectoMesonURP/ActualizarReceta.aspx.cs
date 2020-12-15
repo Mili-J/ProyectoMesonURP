@@ -21,7 +21,6 @@ namespace ProyectoMesonURP
         static DataTable tin = new DataTable();
         DataTable dt = new DataTable();
         public int a = 0;
-        byte[] imagenRecet;
         static int id { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -31,7 +30,8 @@ namespace ProyectoMesonURP
                 ListarRecetaxID();
                 lblIndex.Text = id.ToString();
                 ddlCategoriaReceta.Visible = false;
-                //ddlSubCategoriaReceta.Visible = false;
+                ddlEstadoReceta.Visible = false;
+                ddlSubCategoria.Visible = false;
                 ListarCategoriaReceta();
                 ListarIngredientes();
                 ListarEstadoReceta();
@@ -45,9 +45,12 @@ namespace ProyectoMesonURP
             txtnombre.Text = Convert.ToString(Session["nombreReceta"]);
             txtPorciones.Text = Convert.ToString(Session["porciones"]);
             txtCategoriaReceta.Text = Convert.ToString(Session["categoria"]);
+            txtCategoriaReceta.Enabled = false;
             txtDescripcion.Text = Convert.ToString(Session["descripcion"]);
             txtEstadoReceta.Text = Convert.ToString(_Cer.CargarEstadoxIdReceta(Convert.ToInt32(Session["IdReceta"])));
-
+            txtEstadoReceta.Enabled = false;
+            txtSubcategoria.Text = _Cr.CargarSubcategoriaxIdReceta(Convert.ToInt32(Session["IdReceta"]));
+            txtSubcategoria.Enabled = false;
         }
         public void CargargvIngredientes()
         {
@@ -138,30 +141,30 @@ namespace ProyectoMesonURP
             _Dr.R_nombreReceta = txtnombre.Text;
             _Dr.R_numeroPorcion = Convert.ToInt32(txtPorciones.Text);
             _Dr.R_descripcion = txtDescripcion.Text;
-            
             _Dr.EP_idEstadoReceta = Convert.ToInt32(Session["idEstadoReceta"]);
+            
+
             try
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(ddlCategoriaReceta.SelectedValue);
                 _Dr.R_subcategoria = ddlSubCategoria.SelectedValue;
                 _Dr.EP_idEstadoReceta = Convert.ToInt32(ddlEstadoReceta.SelectedValue);
             }
             catch (System.FormatException)
             {
-                _Dr.CR_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
+                _Dr.CP_idCategoriaReceta = Convert.ToInt32(_Ccr.CargarCategoriaRecetaxNombre(txtCategoriaReceta.Text));
                 _Dr.R_subcategoria = txtSubcategoria.Text;
                 _Dr.EP_idEstadoReceta = _Cer.CargarIdEstadoxIdReceta(Convert.ToInt32(Session["IdReceta"]));
             }
-            byte[] img1 = new byte[0];
-            imagenRecet = _Cr.Consultar_ImagenReceta(Convert.ToInt32(Session["IdReceta"]));
-            if (img1.Equals(imagenRecet))
+            bool Eir = _Cr.ExistenciaImagen(Convert.ToInt32(Session["IdReceta"]));
+            if (Eir == true)
+            {
+                _Dr.R_imagenReceta = _Cr.Consultar_ImagenReceta(Convert.ToInt32(Session["IdReceta"]));
+                
+            }
+            else if (Eir == false || imagen_bytes(ImagenPreview) == new byte[0])
             {
                 _Dr.R_imagenReceta = imagen_bytes(ImagenPreview);
-
-            }
-            else
-            {
-                _Dr.R_imagenReceta = imagenRecet;
             }
             _Cr.ActualizarReceta(_Dr);
             ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
@@ -209,8 +212,8 @@ namespace ProyectoMesonURP
         }
         protected void btnEditarEstadoReceta_Click(object sender, ImageClickEventArgs e)
         {
-            ddlCategoriaReceta.Visible = true;
-            txtCategoriaReceta.Visible = false;
+            ddlEstadoReceta.Visible = true;
+            txtEstadoReceta.Visible = false;
         }
         protected void btnEditarSubCategoria_Click(object sender, ImageClickEventArgs e)
         {

@@ -29,7 +29,7 @@ namespace ProyectoMesonURP
                 //        menuMenu.Visible = true;
                 //        menuTransformar.Visible = true;
 
-                       
+
                 //        break;
                 //    case 2:
                 //        menuCotizacion.Visible = false;

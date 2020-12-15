@@ -9,7 +9,8 @@ namespace DTO
     public class DTO_Menu
     {
         public int ME_idMenu { get; set; }
-        public DateTime ME_fechaMenu { get; set; }
-        public int ME_numRaciones { get; set; }
+        public string ME_fechaMenu { get; set; }
+        public int ME_totalPorcion { get; set; }
+        public int EM_idEstadoMenu { get; set; }
     }
 }

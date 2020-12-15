@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DTO_CategoriaInsumo.cs" />
+    <Compile Include="DTO_CategoriaPlato.cs" />
     <Compile Include="DTO_CategoriaReceta.cs" />
     <Compile Include="DTO_Cotizacion.cs" />
     <Compile Include="DTO_DetalleCotizacion.cs" />
@@ -51,8 +52,10 @@
     <Compile Include="DTO_Equivalencia.cs" />
     <Compile Include="DTO_EstadoCotizacion.cs" />
     <Compile Include="DTO_EstadoInsumo.cs" />
+    <Compile Include="DTO_EstadoMenu.cs" />
     <Compile Include="DTO_EstadoOC.cs" />
     <Compile Include="DTO_EstadoProveedor.cs" />
+    <Compile Include="DTO_EstadoPlato.cs" />
     <Compile Include="DTO_Formato.cs" />
     <Compile Include="DTO_Ingrediente.cs" />
     <Compile Include="DTO_IngredienteXReceta.cs" />
