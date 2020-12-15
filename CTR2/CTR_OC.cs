@@ -16,6 +16,10 @@ namespace CTR
         {
             dao_oc = new DAO_OC();
         }
+        public void RegistrarOC(DTO_OC objDto)
+        {
+            dao_oc.InsertOC(objDto);
+        }
         public DataTable ListarOC(string OC_numeroOC)
         {
             return dao_oc.ListarOC(OC_numeroOC);
@@ -35,6 +39,10 @@ namespace CTR
         public void EnviarOC(DTO_OC objDTO, int idCotizacion, string html)
         {
             dao_oc.EnviarCorreo(objDTO, idCotizacion, html);
+        }
+        public string ListarNumeroOC()
+        {
+            return dao_oc.SelectNumeroOC();
         }
     }
 }

@@ -31,8 +31,8 @@ namespace ProyectoMesonURP
         }
         public void CargarCotizacion()
         {
-            txtNdeCompra.Text = Convert.ToString(Session["nCompra"]);
-            //txtNdeCompra.Enabled = false;
+            txtNdeCompra.Text = _Coc.ListarNumeroOC();
+            txtNdeCompra.Enabled = false;
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
             txtProveedor.Enabled = false;
             txtFechaEmision.Enabled = false;
@@ -47,28 +47,10 @@ namespace ProyectoMesonURP
         }
         protected void gvInsumos_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            try
-            {
-                //if (e.Row.RowType == DataControlRowType.DataRow)
-                //{
-                //    _Total += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "lblPrecioTotal"));
-                //}
-                //else if (e.Row.RowType == DataControlRowType.Footer)
-                //{
-                //    e.Row.Cells[3].Text = "TOTAL:";
-                //    e.Row.Cells[4].Text = _Total.ToString();
-                //    e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Right;
-                //    e.Row.Font.Bold = true;
-                //}
-            }
-            catch (Exception err)
-            {
-                string error = err.Message.ToString() + " - " + err.Source.ToString();
-            }
         }
         public void CorreoOC()
         {
-            _Doc.OC_numeroOc = Convert.ToInt32(txtNdeCompra.Text);
+            _Doc.OC_numeroOc = txtNdeCompra.Text;
             string proveedor = txtProveedor.Text;
             _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
             _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
@@ -109,8 +91,23 @@ namespace ProyectoMesonURP
         }
         protected void btnEnviar_ServerClick(object sender, EventArgs e)
         {
-            CorreoOC();
+            if (ddlComprobante.SelectedIndex != 0)
+            {
+                _Doc.OC_numeroOc = txtNdeCompra.Text;
+                _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
+                _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
+                _Doc.OC_tipoPago = ddlComprobante.SelectedValue;
+                _Doc.OC_totalCompra = Convert.ToDecimal(Session["Totaldecompra"]);
+                _Doc.EOC_idEstadoOC = 1;
+                _Doc.U_idUsuario = Convert.ToInt32(Session["idUsuario"]);
+                _Coc.RegistrarOC(_Doc);
+
+                CorreoOC();
+            }
+
+
             //ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaCorreo('');", true);
+
         }
         protected void btnRegresar_ServerClick(object sender, EventArgs e)
         {
@@ -139,6 +136,7 @@ namespace ProyectoMesonURP
                     sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
                 }
                ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text = sum.ToString();
+                Session["Totaldecompra"] = ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text;
             }
             catch (Exception)
             {

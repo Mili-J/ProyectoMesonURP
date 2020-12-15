@@ -16,12 +16,30 @@ namespace DAO
     {
         SqlConnection conexion;
         DTO_Medida dto_medida;
+        DAO_Cotizacion objCotizacion;
 
         public DAO_OC()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
+            objCotizacion = new DAO_Cotizacion();
         }
+        public void InsertOC(DTO_OC objDTO)
+        {
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand("SP_INSERT_OC", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.Add(new SqlParameter("@OC_numeroOC", objDTO.OC_numeroOc));
+            unComando.Parameters.Add(new SqlParameter("@OC_fechaEmision", objDTO.OC_fechaEmision));
+            unComando.Parameters.Add(new SqlParameter("@OC_fechaEntrega", objDTO.OC_fechaEntrega));
+            unComando.Parameters.Add(new SqlParameter("OC_tipoPago", objDTO.OC_tipoPago));
+            unComando.Parameters.Add(new SqlParameter("@OC_totalCompra", objDTO.OC_totalCompra));
+            unComando.Parameters.Add(new SqlParameter("@EOC_idEstadoOC", objDTO.EOC_idEstadoOC));
+            unComando.Parameters.Add(new SqlParameter("@U_idUsuario", objDTO.U_idUsuario));
 
+
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public DataTable ListarOC(string OC_numeroOC)
         {
             try
@@ -84,31 +102,46 @@ namespace DAO
         }
         public void EnviarCorreo(DTO_OC objDto, int idCotizacion, string msj)
         {
-            //try
-            //{
-            //    string correo = objCotizacion.SelectProveedorxCotizacion(idCotizacion);
+            try
+            {
+                string correo = objCotizacion.SelectProveedorxCotizacion(idCotizacion);
 
-            //    MailMessage msg = new MailMessage();
-            //    msg.To.Add(correo);
-            //    msg.Subject = "Orden de Compra" + objDto.OC_idOC;
-            //    msg.SubjectEncoding = Encoding.UTF8;
-            //    msg.IsBodyHtml = true;
-            //    msg.Body = msj;
-            //    msg.BodyEncoding = Encoding.UTF8;
-            //    msg.From = new MailAddress("mesonurp@gmail.com");
-            //    SmtpClient cliente = new SmtpClient
-            //    {
-            //        Credentials = new NetworkCredential("mesonurp@gmail.com", "meson123456"),
-            //        Host = "smtp.gmail.com",
-            //        Port = 587,
-            //        EnableSsl = true
-            //    };
-            //    cliente.Send(msg);
-            //}
-            //catch (System.Net.Mail.SmtpException)
-            //{
-            //    throw;
-            //}
+                MailMessage msg = new MailMessage();
+                msg.To.Add(correo);
+                msg.Subject = "Orden de Compra" + objDto.OC_idOC;
+                msg.SubjectEncoding = Encoding.UTF8;
+                msg.IsBodyHtml = true;
+                msg.Body = msj;
+                msg.BodyEncoding = Encoding.UTF8;
+                msg.From = new MailAddress("mesonurp@gmail.com");
+                SmtpClient cliente = new SmtpClient
+                {
+                    Credentials = new NetworkCredential("mesonurp@gmail.com", "meson123456"),
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true
+                };
+                cliente.Send(msg);
+            }
+            catch (System.Net.Mail.SmtpException)
+            {
+                throw;
+            }
+        }
+        public string SelectNumeroOC()
+        {
+            string numeroOC = "";
+            SqlCommand unComando = new SqlCommand("SP_numeroOC", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                numeroOC = Convert.ToString(dReader["CODIGO"]);
+            }
+            conexion.Close();
+            return numeroOC;
+
         }
     }
 }
