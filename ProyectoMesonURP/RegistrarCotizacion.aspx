@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <%-- ----- --%>
-                    <div class="form-group">
+<%--                    <div class="form-group">
 
                         <label for="selector1" class="col-sm-2 control-label">Verduras</label>
                         <div class="col-sm-8">
@@ -72,7 +72,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
-                    </div>
+                    </div>--%>
                    
                     <%-- ----- --%>
 
@@ -158,10 +158,10 @@
                         <hr />
                         <p class="center-button">
                             <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Agregar"/>
-                            <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion';" class="btn btn-primary" />
+                            <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />
                             <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
                             <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />
-                            &nbsp;</p>
+                        </p>
                     </div>
                 </div>
             </div>

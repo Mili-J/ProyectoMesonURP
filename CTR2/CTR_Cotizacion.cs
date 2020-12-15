@@ -21,5 +21,9 @@ namespace CTR
         {
             dao_cotizacion.DAO_Registrar_Cotizacion(cot);
         }
+        public int CTR_IdCotizacionMayor()
+        {
+            return dao_cotizacion.DAO_IdCotizacionMayor();
+        }
     }
 }

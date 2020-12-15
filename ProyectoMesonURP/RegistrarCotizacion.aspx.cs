@@ -18,10 +18,13 @@ namespace ProyectoMesonURP
         CTR_Ingrediente ctr_ingrediente;
         CTR_Insumo ctr_insumo;
         CTR_Cotizacion ctr_cotizacion;
+        CTR_DetalleCotizacion ctr_detalleCot;
+        CTR_CotizacionXMenu ctr_cotMen;
         static DataTable dtCot;
         static List<DTO_Cotizacion> listCot = new List<DTO_Cotizacion>();
-        static List<DTO_DetalleCotizacion> listDetCot = new List<DTO_DetalleCotizacion>();
-        //static List<List<DTO_DetalleCotizacion>> listDetCotTotal = new List<List<DTO_DetalleCotizacion>>();
+        static List<List<DTO_DetalleCotizacion>> listDetCotTotal = new List<List<DTO_DetalleCotizacion>>();
+        static List<List<DateTime>> listFechaXCot = new List<List<DateTime>>();
+        static DTO_Usuario dto_usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_proveedor = new CTR_Proveedor();
@@ -31,10 +34,14 @@ namespace ProyectoMesonURP
             ctr_ingrediente = new CTR_Ingrediente();
             ctr_insumo = new CTR_Insumo();
             ctr_cotizacion = new CTR_Cotizacion();
+            ctr_detalleCot = new CTR_DetalleCotizacion();
+            ctr_cotMen = new CTR_CotizacionXMenu();
+            dto_usuario = new DTO_Usuario();
+            dto_usuario = (DTO_Usuario)Session["Usuario"];
             if (!IsPostBack)
             {
                 dtCot = new DataTable();
-                txtFecha.Text = DateTime.Today.ToString();
+                txtFecha.Text = DateTime.Today.ToShortDateString();
                 //--
                 DdlProveedor.DataTextField = "PR_razonSocial";
                 DdlProveedor.DataValueField = "PR_idProveedor";
@@ -46,12 +53,37 @@ namespace ProyectoMesonURP
 
         protected void btnCrearCotizacion_Click(object sender, EventArgs e)
         {
-            while (listCot.Count>=1)
+            int i = 0;
+            while (i<listCot.Count)
             {
-                ctr_cotizacion.CTR_Registrar_Cotizacion(listCot[listCot.Count-1]);
-                listCot.RemoveAt(listCot.Count - 1);
+                ctr_cotizacion.CTR_Registrar_Cotizacion(listCot[i]);
+                //listCot.RemoveAt(i);
+                //----------
+                int id = ctr_cotizacion.CTR_IdCotizacionMayor();
+                int j = 0;
+                while (j< listDetCotTotal[i].Count)
+                {
+                    listDetCotTotal[i][j].C_idCotizacion = id;
+                    ctr_detalleCot.CTR_RegistrarDetalleCotizacion(listDetCotTotal[i][j]);
+                    j++;
+                }
+                int k = 0;
+                while (k < listFechaXCot[i].Count)
+                {
+                    if (ctr_menu.CTR_HayMenu(listFechaXCot[i][k]))
+                    {
+                        DTO_CotizacionXMenu dto_cotXmen = new DTO_CotizacionXMenu();
+                        dto_cotXmen.C_idCotizacion = id;
+                        dto_cotXmen.ME_idMenu = ctr_menu.CTR_ConsultarMenu(listFechaXCot[i][k]).ME_idMenu;
+                        ctr_cotMen.CTR_RegistrarCotizacionXMenu(dto_cotXmen);
+                    }
+                    k++;
+                }
+
+                i++;
+                
             }
-            
+           
         }
 
         protected void btnCal_Click(object sender, EventArgs e)
@@ -85,7 +117,6 @@ namespace ProyectoMesonURP
                 h++;
             }
             
-
             // Seleccionar las recetas del menuxreceta de las fechas selccionadas
 
 
@@ -136,6 +167,10 @@ namespace ProyectoMesonURP
             dto_cotizacion.C_tiempoPlazo= DdlTiempoPlazo.SelectedValue;
             dto_cotizacion.C_documento = txtDoc.Text;
             dto_cotizacion.PR_idProveedor= Convert.ToInt32(DdlProveedor.SelectedValue);
+            dto_cotizacion.C_fechaEmision = DateTime.Today;
+            dto_cotizacion.EC_idEstadoCotizacion = 1;
+            
+            dto_cotizacion.U_idUsuario =dto_usuario.U_idUsuario;
             DataRow dr = dtCot.NewRow();
             dr[0] = dto_cotizacion.C_numeroCotizacion;
             dr[1] = dto_cotizacion.C_tiempoPlazo;
@@ -148,19 +183,32 @@ namespace ProyectoMesonURP
             GVCot.DataBind();
             //----------------
             int i = 0;
+            List<DTO_DetalleCotizacion> listDetCot = new List<DTO_DetalleCotizacion>();
+            List<DateTime> listFecha = new List<DateTime>();
             while (i < GVVerdura.Rows.Count)
             {
+                
                 DTO_DetalleCotizacion dto_detcot = new DTO_DetalleCotizacion();
                 //dto_detcot.C_idCotizacion = Convert.ToInt32(GVVerdura.Rows[i].Cells[0].Text);
                 dto_detcot.I_idInsumo = Convert.ToInt32(GVVerdura.DataKeys[i]["I_idInsumo"]);
                 dto_detcot.DC_cantidadCotizacion = Convert.ToDecimal(GVVerdura.Rows[i].Cells[2].Text);
                 //dto_detcot.DC_idDetalleCotizacion = Convert.ToInt32(GVVerdura.Rows[i].Cells[0]);
                 listDetCot.Add(dto_detcot);
+                
                 i++;
             }
+            //---------------------------
+            foreach (DateTime item in CldFecha.SelectedDates)
+            {
+                listFecha.Add(item);
+            }
+            //---------------------------
+            listDetCotTotal.Add(listDetCot);
+            listFechaXCot.Add(listFecha);
 
 
-
+            
+           
         }
     }
 }

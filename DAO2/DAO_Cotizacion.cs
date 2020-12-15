@@ -41,6 +41,18 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public int DAO_IdCotizacionMayor()
+        {
+            int id;
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarIdCotizacionMayor", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+            comando.ExecuteNonQuery();
+            id = Convert.ToInt32(comando.Parameters["@id"].Value);
+            conexion.Close();
+            return id;
+        }
     }
     
 }
