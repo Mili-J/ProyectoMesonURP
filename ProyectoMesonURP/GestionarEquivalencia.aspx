@@ -36,7 +36,7 @@
             <div class="col-sm-12 col-md-3 pl-30"></div>
             <div class="col-sm-12 col-md-3 pl-30">
                 <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
-                    <asp:TextBox ID="txtBuscarEquivalencia" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreEq_TextChanged" placeholder="Buscar Equivalencia..."/>
+                    <asp:TextBox ID="txtBuscarEquivalencia" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreEq1_TextChanged" placeholder="Buscar Equivalencia..."/>
 				<i class="search_icon dw dw-search"></i>
 				</div>
             </div>
