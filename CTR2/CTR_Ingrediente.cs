@@ -45,5 +45,9 @@ namespace CTR
         {
             return objDAO.SelectMedidaxIdIngrediente(I_idIngrediente);
         }
+        public DTO_Ingrediente CTR_Consultar_IngredienteXID(int i)
+        {
+            return objDAO.DAO_Consultar_IngredienteXID(i);
+        }
     }
 }

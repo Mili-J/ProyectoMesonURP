@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DTO
 {
-    class DTO_EstadoCotizacion
+    public class DTO_EstadoCotizacion
     {
+        public int EC_idEstadoCotizacion { get; set; }
+        public string EC_nombreEstadoC { get; set; }
     }
 }

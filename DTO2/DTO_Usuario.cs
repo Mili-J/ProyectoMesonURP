@@ -11,6 +11,7 @@ namespace DTO
         public string U_contraseña { get; set; }
         public int TU_idTipoUsuario { get; set; }
         public int P_idPersona { get; set; }
+        //------------
         public string P_nombres { get; set; }
         public string P_aPaterno { get; set; }
         public string P_aMaterno { get; set; }

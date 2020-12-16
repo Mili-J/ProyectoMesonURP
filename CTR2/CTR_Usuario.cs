@@ -14,5 +14,9 @@ namespace CTR
         {
             dao_usu.getPerfil(dto_usu, dto_tus);
         }
+        public DTO_Usuario CTR_ConsultarUsuario(int id)
+        {
+            return dao_usu.DAO_ConsultarUsuario(id);
+        }
     }
 }

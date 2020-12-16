@@ -36,5 +36,9 @@ namespace CTR
         {
             dao_menu.DAO_ActualizarMenu(obj);
         }
+        public DataTable CTR_ConsultarMenusXEstadoYFecha(int estado, DateTime fecha)
+        {
+            return dao_menu.DAO_ConsultarMenusXEstadoYFecha(estado,fecha);
+        }
     }
 }

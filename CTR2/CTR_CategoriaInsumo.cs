@@ -25,5 +25,9 @@ namespace CTR
             return objCategoriaI.DAO_SelectInsumoXCategoria(objCategoriaIn);
         }
 
+        public DataTable DAO_ConsultarCategoriasInsumo()
+        {
+            return objCategoriaI.DAO_ConsultarCategoriasInsumo();
+        }
     }
 }

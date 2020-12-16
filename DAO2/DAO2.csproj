@@ -46,6 +46,7 @@
     <Compile Include="DAO_CategoriaPlato.cs" />
     <Compile Include="DAO_CategoriaReceta.cs" />
     <Compile Include="DAO_Cotizacion.cs" />
+    <Compile Include="DAO_CotizacionXMenu.cs" />
     <Compile Include="DAO_DetalleCotizacion.cs" />
     <Compile Include="DAO_DetalleOC.cs" />
     <Compile Include="DAO_Egreso.cs" />
