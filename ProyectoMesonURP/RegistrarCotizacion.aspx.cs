@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CTR;
 using DTO;
+using System.Text.RegularExpressions;
 namespace ProyectoMesonURP
 {
     public partial class RegistrarCotizacion : System.Web.UI.Page
@@ -91,6 +92,7 @@ namespace ProyectoMesonURP
                 i++;
                 
             }
+            Response.Redirect("GestionarCotizacion.aspx");
            
         }
 
@@ -116,7 +118,18 @@ namespace ProyectoMesonURP
                 dtCot.Columns.Add("PR_razonSocial");
             }
             DTO_Cotizacion dto_cotizacion = new DTO_Cotizacion();
-            dto_cotizacion.C_numeroCotizacion = $"V00{dtCot.Rows.Count}{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}";
+
+            //--------------------------------
+            string pattern = "[A-Z]";
+            Regex regex = new Regex(pattern);
+            MatchCollection match = regex.Matches(DdlInsumo.SelectedItem.Text);
+            string ini = "";
+            foreach (Match item in match)
+            {
+                ini += item.ToString();
+            }
+            //--------------------------------
+            dto_cotizacion.C_numeroCotizacion = $"{ini}00{dtCot.Rows.Count}{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}";
             dto_cotizacion.C_tiempoPlazo= DdlTiempoPlazo.SelectedValue;
             dto_cotizacion.C_documento = txtDoc.Text;
             dto_cotizacion.PR_idProveedor= Convert.ToInt32(DdlProveedor.SelectedValue);
