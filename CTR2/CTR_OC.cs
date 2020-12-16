@@ -24,10 +24,10 @@ namespace CTR
         {
             return dao_oc.ListarOC(OC_numeroOC);
         }
-        public DataTable ListarOC(string numOC)
-        {
-            return dao_oc.ListarOC(numOC);
-        }
+        //public DataTable ListarOC(string numOC)
+        //{
+        //    return dao_oc.ListarOC(numOC);
+        //}
         public DataTable BuscarOC(int idOC)
         {
             return dao_oc.BuscarOC(idOC);
