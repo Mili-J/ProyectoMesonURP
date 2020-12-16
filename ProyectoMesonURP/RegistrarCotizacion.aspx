@@ -28,7 +28,6 @@
                     <%-- ----- --%>
 
 
-                     <%-- ----- --%>
                     <div class="form-group">
                            <label for="selector1" class="col-sm-2 control-label">Tiempo plazo</label>
                            <div class="col-sm-8">
@@ -41,6 +40,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
+
                      <%-- ----- --%>
 
                     <div class="form-group">
@@ -63,16 +63,16 @@
                         </div>
                     </div>
                     <%-- ----- --%>
-<%--                    <div class="form-group">
+                    <div class="form-group">
 
-                        <label for="selector1" class="col-sm-2 control-label">Verduras</label>
+                        <label for="selector1" class="col-sm-2 control-label">Categorías:</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlInsumo"  AutoPostBack="true">
+                            <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlInsumo"  AutoPostBack="true" CausesValidation="false" OnSelectedIndexChanged="DdlInsumo_SelectedIndexChanged">                        
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                         </div>
 
-                    </div>--%>
+                    </div>
                    
                     <%-- ----- --%>
 
@@ -81,7 +81,10 @@
                     <div class="panel panel-widget forms-panel">
                         <div class="form-grids widget-shadow" data-example-id="basic-forms">
                             <div class="form-title color-white">
-                                <h4>Verduras:</h4>
+                                <h4>
+                                    <asp:Label ID="lblCat" runat="server" Text=""></asp:Label>
+
+                                </h4>
                             </div>
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Proveedor</label>
@@ -112,12 +115,9 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
-                                        <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>
-                                        
+                                        <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
                                         <asp:BoundField HeaderText="Cantidad Mínima" DataField="I_cantidadMinima" />
                                         <asp:BoundField HeaderText="Peso total" Datafield="I_pesoTotal"/>
-                                       <%-- <asp:BoundField HeaderText="Categoría" Datafield="CI_idCategoriaInsumo"/>--%>
-                                       <%-- <asp:BoundField HeaderText="Estado" Datafield="EI_idEstadoInsumo"/>--%>
                                         <asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>
                                     </Columns>   
                                     
@@ -145,6 +145,7 @@
                                         <asp:BoundField HeaderText="Documento" Datafield="C_documento"/>
                                         <asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />
                                         <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
+                                        
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>
