@@ -6,6 +6,10 @@
             background-color: #dee2e6;
             padding: 10px;
             display: inline-block;
+            width: 100%;    
+        }
+        .calendarWrapper .myCalendar{
+            width: 100%;
         }
 
         .myCalendar
