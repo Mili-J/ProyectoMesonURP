@@ -157,5 +157,29 @@ namespace DAO
             }
         }
 
+        public void ActualizarIngrediente(DTO_Ingrediente objIngre)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Update_Ingrediente", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@I_idIngrediente", objIngre.I_idIngrediente));
+                cmd.Parameters.Add(new SqlParameter("@I_nombreIngrediente", objIngre.I_nombreIngrediente));
+                cmd.Parameters.Add(new SqlParameter("@I_pesoUnitario", objIngre.I_pesoUnitario));
+                cmd.Parameters.Add(new SqlParameter("@I_cantidad", objIngre.I_cantidad));
+                cmd.Parameters.Add(new SqlParameter("@I_idnsumo", objIngre.I_idInsumo));
+                cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objIngre.E_idEquivalencia));
+               
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
     }
 }

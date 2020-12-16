@@ -78,6 +78,7 @@
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="ConsultarEquivalencia.aspx" />
+    <Content Include="ActualizarIngrediente.aspx" />
     <Content Include="ConsultarCotizacion.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
@@ -2044,6 +2045,13 @@
     </Compile>
     <Compile Include="ConsultarCotizacion.aspx.designer.cs">
       <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarIngrediente.aspx.cs">
+      <DependentUpon>ActualizarIngrediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarIngrediente.aspx.designer.cs">
+      <DependentUpon>ActualizarIngrediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
