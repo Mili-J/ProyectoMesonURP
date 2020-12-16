@@ -60,7 +60,20 @@ namespace ProyectoMesonURP
             {
                 e.Row.Cells[2].Text = Convert.ToDateTime(e.Row.Cells[2].Text).ToShortDateString();
             }
-            
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "EC_nombreEstadoC").ToString());
+
+                if (estado == "Aceptada")
+                {
+                    e.Row.Cells[6].Text = "<span class='badge badge-success'>" + e.Row.Cells[6].Text + "</span>";
+                }
+                else if (estado == "Rechazada")
+                {
+                    e.Row.Cells[6].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[6].Text + "</span>";
+                }
+            }
+
         }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
