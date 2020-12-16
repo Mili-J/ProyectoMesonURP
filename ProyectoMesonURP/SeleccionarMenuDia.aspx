@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Seleccionar Menú" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuDia" %>
+﻿<%@ Page Title="Mesón URP | Seleccionar Menú" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuDia" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -20,7 +20,6 @@
 			</div>
 		</div>
         <div class="pd-20 card-box">
-           <%-- <div class="form-horizontal" runat="server">--%>
             <div class="row pl-5 p-4">
                 <div class="col-md-2 pt-1">
                     <label>Fecha de planificación:</label>
@@ -64,11 +63,11 @@
                                                             </h5>
                                                             <p class="card-text">
                                                                 Porción:
-                                                                                <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                                                <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
                                                             </p>
                                                             <p class="card-text">
                                                                 Categoría: 
-                                                                                    <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                                             </p>
                                                             <asp:UpdatePanel ID="UpdateButton" runat="server">
                                                                <ContentTemplate>
