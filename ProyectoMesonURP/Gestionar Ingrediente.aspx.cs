@@ -13,6 +13,8 @@ namespace ProyectoMesonURP
     public partial class Gestionar_Ingrediente : System.Web.UI.Page
     {
         DataTable dtIngrediente;
+       
+        CTR_Ingrediente objIngrediente;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -24,7 +26,7 @@ namespace ProyectoMesonURP
         }
         public void LlenarGVIngredientes()
         {
-            CTR_Ingrediente objIngrediente = new CTR_Ingrediente();
+            objIngrediente = new CTR_Ingrediente();
             dtIngrediente = new DataTable();
             dtIngrediente = objIngrediente.ListarIngredientes();
             gvIngrediente.DataSource = dtIngrediente;
@@ -116,6 +118,7 @@ namespace ProyectoMesonURP
             return 0;
         }
 
+
         protected void btnAnadirIngrediente_Click(object sender, EventArgs e)
         {
             Response.Redirect("AgregarIngrediente.aspx");
@@ -128,7 +131,24 @@ namespace ProyectoMesonURP
 
         protected void gvIngrediente_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            //Para deshabilitar la opcion Editar 
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                dtIngrediente = objIngrediente.ListarIngredientes();
+                DataTable dtReceta = new DataTable();
+                dtReceta = objIngrediente.Validar_IngredientesXReceta();
+                
+                foreach (DataRow row in dtIngrediente.Rows)
+                {
+                    int idI = int.Parse(row["I_idIngrediente"].ToString());
+                    foreach(DataRow row2 in dtReceta.Rows )
+                    {
+                        int idIn= int.Parse(row2["I_idIngrediente"].ToString());
+                        if (idI==idIn) e.Row.Cells[5].FindControl("btnEditarIngrediente").Visible = false;
+                    }
+                   
+                }            
+            }
         }
     }
 }

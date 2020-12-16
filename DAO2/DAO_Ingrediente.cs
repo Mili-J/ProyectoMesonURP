@@ -164,6 +164,17 @@ namespace DAO
                 throw;
             }
         }
-
+        public DataTable Validar_IngredientesXReceta()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_Validar_IngredientesxReceta", conexion);
+            comando.CommandType = CommandType.StoredProcedure;            
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace DAO
     public class DAO_OC
     {
         SqlConnection conexion;
-        DTO_Medida dto_medida;
+        
 
         public DAO_OC()
         {

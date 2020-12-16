@@ -49,5 +49,9 @@ namespace CTR
         {
             objDAO.ActualizarIngrediente(ObjIngre);
         }
+        public DataTable Validar_IngredientesXReceta()
+        {
+            return objDAO.Validar_IngredientesXReceta();
+        }
     }
 }
