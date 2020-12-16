@@ -29,5 +29,9 @@ namespace CTR
         {
             return dao_cotizacion.DAO_ConsultarCotizacion(id);
         }
+        public void CTR_Actualizar_Cotizacion(DTO_Cotizacion cot)
+        {
+            dao_cotizacion.DAO_Actualizar_Cotizacion(cot);
+        }
     }
 }

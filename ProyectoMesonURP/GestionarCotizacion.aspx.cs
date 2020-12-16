@@ -26,11 +26,31 @@ namespace ProyectoMesonURP
         protected void GridViewCotizacion_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int idCot;
+            idCot = Convert.ToInt32(GridViewCotizacion.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["C_idCotizacion"].ToString());
+            Session.Add("idCot", idCot);
             if (e.CommandName== "ConsultarCotizacion")
             {
-                idCot = Convert.ToInt32(GridViewCotizacion.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["C_idCotizacion"].ToString());
-                Session.Add("idCot",idCot);
                 Response.Redirect("ConsultarCotizacion.aspx");
+            }
+            else if (e.CommandName== "EnviarEmailCotizacion")
+            {
+
+            }
+            else if (e.CommandName == "ActualizarCotizacion")
+            {
+                Response.Redirect("ActualizarCotizacion.aspx");
+            }
+            else if (e.CommandName == "AceptarCotizacion")
+            {
+
+            }
+            else if (e.CommandName == "RechazarCotizacion")
+            {
+
+            }
+            else if (e.CommandName == "RecibirCotizacion")
+            {
+
             }
         }
 
@@ -39,6 +59,39 @@ namespace ProyectoMesonURP
             if (e.Row.RowType==DataControlRowType.DataRow)
             {
                 e.Row.Cells[2].Text = Convert.ToDateTime(e.Row.Cells[2].Text).ToShortDateString();
+
+                string estado = e.Row.Cells[6].Text.ToString();
+                if (estado=="Creada")
+                {
+                    e.Row.Cells[11].FindControl("btnAceptada").Visible=false;
+                    e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
+                    e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
+                }
+                else if (estado=="Enviada")
+                {
+
+                }
+                else if (estado == "Recibida")
+                {
+                    e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
+                    e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                }
+                else if (estado == "Aceptada")
+                {
+                    e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
+                    e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
+                    e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
+                    e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
+                    e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                }
+                else if (estado == "Rechazada")
+                {
+                    e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
+                    e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
+                    e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
+                    e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
+                    e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                }
             }
             
         }

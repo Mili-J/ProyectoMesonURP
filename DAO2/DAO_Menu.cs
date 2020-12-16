@@ -71,6 +71,24 @@ namespace DAO
             conexion.Close();
             return dto_menu;
         }
+        public DTO_Menu DAO_ConsultarMenuXID(int id)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarMenuXID", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_idMenu", id);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                dto_menu.ME_idMenu = Convert.ToInt32(reader[0]);
+                dto_menu.ME_fechaMenu = Convert.ToString(reader[1]);
+                dto_menu.ME_totalPorcion = Convert.ToInt32(reader[2]);
+                dto_menu.EM_idEstadoMenu = Convert.ToInt32(reader[3]);
+            }
+            conexion.Close();
+            return dto_menu;
+        }
         public bool DAO_HayMenu(DateTime fecha)
         {
             bool estado;

@@ -40,5 +40,9 @@ namespace CTR
         {
             return dao_menu.DAO_ConsultarMenusXEstadoYFecha(estado,fecha);
         }
+        public DTO_Menu CTR_ConsultarMenuXID(int id)
+        {
+            return dao_menu.DAO_ConsultarMenuXID(id);
+        }
     }
 }

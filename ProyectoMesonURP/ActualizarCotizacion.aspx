@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ConsultarCotizacion.aspx.cs" Inherits="ProyectoMesonURP.ConsultarCotizacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ActualizarCotizacion.aspx.cs" Inherits="ProyectoMesonURP.ActualizarCotizacion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -31,24 +31,44 @@
                         </div>
                     </div>
                     <%-- ----- --%>
-                    <div class="form-group">
+<%--                    <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Tiempo Plazo:</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtTiempoPlazo" runat="server"  CssClass="form-control1" ReadOnly="true"/>
+                        </div>
+                    </div>--%>
+                    <div class="form-group">
+                           <label for="selector1" class="col-sm-2 control-label">Tiempo plazo</label>
+                           <div class="col-sm-8">
+                           <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlTiempoPlazo" >
+                                <asp:ListItem  Value="">--seleccione--</asp:ListItem>
+                                <asp:ListItem Text="5 días" Value="5 días"></asp:ListItem>
+                                <asp:ListItem Text="10 días" Value="10 días"></asp:ListItem>
+                                <asp:ListItem Text="20 días" Value="20 días"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <%-- ----- --%>
                     <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Documento:</label>
                         <div class="col-sm-8">
-                            <asp:TextBox ID="txtDoc" runat="server"  CssClass="form-control1" ReadOnly="true"/>
+                            <asp:TextBox ID="txtDoc" runat="server"  CssClass="form-control1"/>
                         </div>
                     </div>
                     <%-- ----- --%>
-                    <div class="form-group">
+<%--                    <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Proveedor:</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtProveedor" runat="server"  CssClass="form-control1" ReadOnly="true"/>
+                        </div>
+                    </div>--%>
+                    <div class="form-group">
+                        <label for="selector1" class="col-sm-2 control-label">Proveedor</label>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="DdlProveedor" runat="server" CssClass="form-control1">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="validationProveedorOC" runat="server" ControlToValidate="DdlProveedor" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <%-- ----- --%>
@@ -69,12 +89,12 @@
                       <div class="input-info">
 						<h3>Detalles de Insumo</h3>
 					</div>
-
+                    <%-- ----- --%>
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Menú</label>
                         <div class="col-sm-8">
                             <asp:Button ID="btnCal" runat="server" Text="Calendario" OnClick="btnCal_Click" CausesValidation="false"/>
-                            <asp:Calendar ID="CldFecha" runat="server" Visible="true" SelectionMode="None" OnDayRender="CldFecha_DayRender" Enabled="false"></asp:Calendar>
+                            <asp:Calendar ID="CldFecha" runat="server" Visible="true" SelectionMode="DayWeekMonth" OnSelectionChanged="CldFecha_SelectionChanged" OnDayRender="CldFecha_DayRender"></asp:Calendar>
                         </div>
                     </div>
                     <%-- ----- --%>
@@ -104,6 +124,7 @@
 
                         <hr />
                         <p class="center-button">
+                            <asp:Button ID="btnActualizarCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnActualizarCotizacion_Click" Text="Actualizar"/>
                             <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />
                         </p>
                     </div>

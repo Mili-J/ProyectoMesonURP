@@ -25,6 +25,20 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataTable DAO_ConsultarCotizacionXMenuXCotizacion(int id)
+        {
+            DataTable dtCotMen = new DataTable();
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarCotizacionXMenuXCotizacion", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion", id);
+            
+            comando.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dtCotMen);
+            conexion.Close();
+            return dtCotMen;
+        }
 
     }
 }

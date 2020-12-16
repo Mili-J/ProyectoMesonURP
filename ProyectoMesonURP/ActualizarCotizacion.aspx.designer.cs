@@ -11,7 +11,7 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class ConsultarCotizacion
+    public partial class ActualizarCotizacion
     {
 
         /// <summary>
@@ -33,13 +33,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtFechaEmision;
 
         /// <summary>
-        /// Control txtTiempoPlazo.
+        /// Control DdlTiempoPlazo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTiempoPlazo;
+        protected global::System.Web.UI.WebControls.DropDownList DdlTiempoPlazo;
+
+        /// <summary>
+        /// Control RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// Control txtDoc.
@@ -51,13 +60,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtDoc;
 
         /// <summary>
-        /// Control txtProveedor.
+        /// Control DdlProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProveedor;
+        protected global::System.Web.UI.WebControls.DropDownList DdlProveedor;
+
+        /// <summary>
+        /// Control validationProveedorOC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validationProveedorOC;
 
         /// <summary>
         /// Control txtEstado.
@@ -103,5 +121,14 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GVDetalleCot;
+
+        /// <summary>
+        /// Control btnActualizarCotizacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizarCotizacion;
     }
 }

@@ -41,6 +41,19 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void DAO_Actualizar_Cotizacion(DTO_Cotizacion cot)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ActualizarCotizacion", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion", cot.C_idCotizacion);
+            comando.Parameters.AddWithValue("@C_numeroCotizacion", cot.C_numeroCotizacion);
+            comando.Parameters.AddWithValue("@C_tiempoPlazo", cot.C_tiempoPlazo);
+            comando.Parameters.AddWithValue("@C_documento", cot.C_documento);
+            comando.Parameters.AddWithValue("@PR_idProveedor", cot.PR_idProveedor);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public int DAO_IdCotizacionMayor()
         {
             int id;

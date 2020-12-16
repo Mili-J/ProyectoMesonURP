@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <asp:GridView ID="GridViewCotizacion" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible."
+                            <asp:GridView ID="GridViewCotizacion" runat="server" EmptyDataText="No hay información disponible."
                                 DataKeyNames="C_idCotizacion" AutoGenerateColumns="False" OnRowDataBound="GridViewCotizacion_RowDataBound"
                                 CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnRowCommand="GridViewCotizacion_RowCommand">
                                 <Columns>
@@ -55,11 +55,17 @@
                                             <asp:ImageButton ID="btnVerDetallesCotizacion" ImageUrl="img/ojo.png" onmouseover="this.src='img/ojo-b.png'" onmouseout="this.src='img/ojo.png'" runat="server" CommandName="ConsultarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-<%--                                    <asp:TemplateField HeaderText="Eliminar">
+
+                                    <asp:TemplateField HeaderText="Acciones">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="btnEliminarCotizacion" ImageUrl="img/delete.png" onmouseover="this.src='img/basura-b.png'" onmouseout="this.src='img/delete.png'" runat="server" CommandName="EliminarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                            <div style="text-align: center">
+                                                <asp:ImageButton ID="btnAceptada" ImageUrl="img/correcto.png" onmouseover="this.src='img/correcto-b.png'" onmouseout="this.src='img/correcto.png'" runat="server" CommandName="AceptarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" TabIndex="1" />
+
+                                                <asp:ImageButton ID="btnRechazada" ImageUrl="img/eliminar.png" onmouseover="this.src='img/eliminar-b.png'" onmouseout="this.src='img/eliminar.png'" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="RechazarCotizacion" TabIndex="2" />
+                                            </div>
+                                            <asp:ImageButton ID="btnRecibida" runat="server" ImageUrl="img/recibido.png" onmouseover="this.src='img/recibido-b.png'" onmouseout="this.src='img/recibido.png'" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="RecibirCotizacion" TabIndex="3" />
                                         </ItemTemplate>
-                                    </asp:TemplateField>--%>
+                                    </asp:TemplateField>
 
                                 </Columns>
                             </asp:GridView>
