@@ -76,16 +76,16 @@
                     <div class="panel panel-widget forms-panel" style="width: 60vh; margin-top: 27px;">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <asp:GridView ID="gvInsumos" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" OnRowDataBound="gvInsumos_OnRowDataBound"
-                                DataKeyNames="I_nombreInsumo,FC_nombreFormatoCompra,DC_cantidadCotizacion" ShowFooter="True"
+                                DataKeyNames="I_nombreInsumo,DC_cantidadCotizacion, Representacion de compra" ShowFooter="True"
                                 CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvInsumos_SelectedIndexChanged">
                                 <Columns>
                                     <asp:BoundField HeaderText="Nombre" DataField="I_nombreInsumo" />
-                                    <asp:BoundField HeaderText="Representación" DataField="FC_nombreFormatoCompra" />
                                     <asp:TemplateField HeaderText="Cantidad">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCantidad" runat="server" Text='<%# Bind("DC_cantidadCotizacion")%>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
                                     <asp:TemplateField HeaderText="Precio Unitario">
                                         <ItemTemplate>
                                             <asp:UpdatePanel runat="server">

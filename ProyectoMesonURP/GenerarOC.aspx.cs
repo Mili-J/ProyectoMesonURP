@@ -102,6 +102,15 @@ namespace ProyectoMesonURP
                 _Doc.U_idUsuario = Convert.ToInt32(Session["idUsuario"]);
                 _Coc.RegistrarOC(_Doc);
 
+                foreach (GridViewRow GVRow in gvInsumos.Rows)
+                {
+                    string Rango = GVRow.Cells[1].Text;
+                    string Piezas = GVRow.Cells[2].Text;
+                    string Kilos = GVRow.Cells[3].Text;
+                    string Part = GVRow.Cells[4].Text;
+
+                }
+
                 CorreoOC();
             }
 
