@@ -131,7 +131,7 @@ namespace DAO
         public DataTable ListarIngredientes()
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_Select_Ingrediente", conexion);
+            SqlCommand comando = new SqlCommand("SP_Select_Ingrediente_D", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.ExecuteNonQuery();
             DataTable dt = new DataTable();

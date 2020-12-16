@@ -50,8 +50,9 @@
          <asp:UpdatePanel ID="panel1" runat="server">
                 <ContentTemplate>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" runat="server" DataKeyNames="E_cantidad,I_nombreInsumo,M_nombreMedida,FCO_nombreFormatoCocina" emptydatatext="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" >
+                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="E_idEquivalencia,E_cantidad,I_nombreInsumo,M_nombreMedida,FCO_nombreFormatoCocina" emptydatatext="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" >
                                 <Columns>
+                                    <asp:BoundField DataField="E_idEquivalencia" HeaderText="E_idEquivalencia" Visible="false" />
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                     <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
