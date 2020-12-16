@@ -18,11 +18,21 @@ namespace ProyectoMesonURP
             ctr_cotizacion = new CTR_Cotizacion();
             if (!IsPostBack)
             {
-                GridViewCotizacion.DataSource = ctr_cotizacion.CTR_Consultar_Cotizaciones();
-                GridViewCotizacion.DataBind();
+                CargarCotizacion();
+                ListItem ddl1 = new ListItem("5", "5");
+                ddlp.Items.Insert(0, ddl1);
+                ListItem ddl2 = new ListItem("10", "10");
+                ddlp.Items.Insert(1, ddl2);
+                ListItem ddl3 = new ListItem("20", "20");
+                ddlp.Items.Insert(2, ddl3);
             }
         }
+        public void CargarCotizacion()
+        {
+            GridViewCotizacion.DataSource = ctr_cotizacion.CTR_Consultar_Cotizaciones();
+            GridViewCotizacion.DataBind();
 
+        }
         protected void GridViewCotizacion_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int idCot;
@@ -32,9 +42,6 @@ namespace ProyectoMesonURP
                 Session.Add("idCot",idCot);
                 Response.Redirect("ConsultarCotizacion.aspx");
             }
-        }
-        protected void gvCotizacion_RowCommand(object source, GridViewCommandEventArgs e)
-        {
             if (e.CommandName == "GenerarOc")
             {
                 int idCotizacion = Convert.ToInt32(GridViewCotizacion.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["C_idCotizacion"].ToString());
@@ -54,6 +61,20 @@ namespace ProyectoMesonURP
                 e.Row.Cells[2].Text = Convert.ToDateTime(e.Row.Cells[2].Text).ToShortDateString();
             }
             
+        }
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+        protected void fNombreCotizacion_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+        protected void GridViewCotizacion_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewCotizacion.PageIndex = e.NewPageIndex;
+            CargarCotizacion();
+
         }
     }
 }
