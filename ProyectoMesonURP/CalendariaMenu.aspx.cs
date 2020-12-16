@@ -40,7 +40,7 @@ namespace ProyectoMesonURP
             else
             {
                 string fecha = date.ToShortDateString();
-                Session.Add("fecha", fecha);
+                Session.Add("fecha", date);
               
                 if (ctr_menu.CTR_HayMenu(date))
                 {

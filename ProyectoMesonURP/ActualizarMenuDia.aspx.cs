@@ -21,11 +21,11 @@ namespace ProyectoMesonURP
         CTR_CategoriaReceta ctr_cat_receta;
         static DateTime fecha;
         DTO_Menu objMenu;
-        static DataTable dtCarta = new DataTable();
-        static DataTable dtMenu = new DataTable();
-        static int numBebidas = 0, numEntradas = 0, numFondos = 0;
-       static DataTable dtMenuSeleccionado = new DataTable();
-      static  DataTable dtCartaSeleccionada = new DataTable();
+        static DataTable dtCarta;
+        static DataTable dtMenu ;
+        static int numBebidas, numEntradas, numFondos;
+        static DataTable dtMenuSeleccionado; 
+      static  DataTable dtCartaSeleccionada;
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
@@ -42,7 +42,13 @@ namespace ProyectoMesonURP
             }
             if (!IsPostBack)
             {
-
+                dtMenuSeleccionado = new DataTable();
+                dtCartaSeleccionada = new DataTable();
+                dtCarta = new DataTable();
+                dtMenu = new DataTable();
+                numFondos = 0;
+                numBebidas = 0;
+                numEntradas = 0;
                 fecha = (DateTime)Session["fecha"];
                 txtFecha.Text = fecha.ToShortDateString();
                 //hay = (bool)Session["hay"];

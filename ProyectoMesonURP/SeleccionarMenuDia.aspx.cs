@@ -25,11 +25,11 @@ namespace ProyectoMesonURP
         CTR_CategoriaReceta ctr_cat_receta;
         static bool sEntrada, sSegundo;
         static bool hay;
-        static string fecha;
+        static DateTime fecha;
         DTO_Menu objMenu;
-        static DataTable dtCarta=new DataTable();
-        static DataTable dtMenu = new DataTable();
-        static int numBebidas=0, numEntradas=0, numFondos=0;
+        static DataTable dtCarta;
+        static DataTable dtMenu;
+        static int numBebidas, numEntradas, numFondos;
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
@@ -39,6 +39,7 @@ namespace ProyectoMesonURP
             objMenu = new DTO_Menu();
             ctr_cat_receta = new CTR_CategoriaReceta();
             dto_menuxreceta = new DTO_MenuXReceta();
+
             if (Session["Usuario"] == null)
             {
                 Response.Redirect("Home.aspx?x=1");
@@ -46,8 +47,13 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
 
-                fecha = Session["fecha"].ToString();
-                txtFecha.Text = fecha;
+                dtCarta = new DataTable();
+                dtMenu = new DataTable();
+                numBebidas = 0;
+                numEntradas = 0;
+                numFondos = 0;
+                fecha = (DateTime)Session["fecha"];
+                txtFecha.Text = fecha.ToShortDateString();
                 hay = (bool)Session["hay"];
 
                 //byte[] ad = File.ReadAllBytes("C:/Users/Carlos Lau/Escritorio/Recetas/causalimeniaweb.jpg");
@@ -569,6 +575,7 @@ namespace ProyectoMesonURP
         }
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
+
             Response.Redirect("CalendariaMenu.aspx");
         }
     }
