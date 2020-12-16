@@ -19,7 +19,7 @@
              <div class="col-md-4 col-sm-12 mb-30">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
-                        <h5>Detalles de la Orden de Compra</h5>
+                        <h5>Detalle de la Orden de Compra</h5>
                     </div>
                 </div>
              <div class="pd-20 card-box height-100-p pt-5">

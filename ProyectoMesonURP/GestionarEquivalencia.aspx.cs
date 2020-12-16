@@ -70,6 +70,13 @@ namespace ProyectoMesonURP
         {
             Response.Redirect("Gestionar Ingrediente.aspx");
         }
-
+        protected void fnombreEq_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     } 
 }
