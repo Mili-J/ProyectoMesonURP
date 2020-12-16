@@ -44,5 +44,9 @@ namespace CTR
         {
             return dao_oc.SelectNumeroOC();
         }
+        public int IdOC()
+        {
+            return dao_oc.SelectIdOC();
+        }
     }
 }

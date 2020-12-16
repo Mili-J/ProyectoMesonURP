@@ -40,6 +40,22 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public int SelectIdOC()
+        {
+            int idOC = 0;
+            SqlCommand unComando = new SqlCommand("SP_SELECT_ID_OC", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                idOC = Convert.ToInt32(dReader["OC_idOC"]);
+            }
+            conexion.Close();
+            return idOC;
+
+        }
         public DataTable ListarOC(string OC_numeroOC)
         {
             try

@@ -13,6 +13,10 @@ namespace CTR
         {
             dao_detalleOC = new DAO_DetalleOC();
         }
+        public void RegistrarDetalleOC(DTO_DetalleOC objDto)
+        {
+            dao_detalleOC.InsertDetalleOC(objDto);
+        }
         public void UPDATE_cantidadEntregada(decimal cantidad, int idDetalleOC)
         {
             dao_detalleOC.UPDATE_cantidadEntregada(cantidad, idDetalleOC);
