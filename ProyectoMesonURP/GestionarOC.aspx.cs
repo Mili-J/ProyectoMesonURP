@@ -78,6 +78,7 @@ namespace ProyectoMesonURP
             {
                 int OC = Convert.ToInt32(gvOC.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["OC_idOC"].ToString());
                 CargarInsumosOC(OC);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "DownloadPDF", "javascript:createPDF();", true);
             }
             if (e.CommandName == "Recepcionar")
             {

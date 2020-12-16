@@ -40,13 +40,13 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
-        public DataTable ListarOC(string OC_numeroOC)
+        public DataTable ListarOC(string numOC)
         {
             try
             {
                 SqlDataAdapter cmd = new SqlDataAdapter("SP_Listar_OC_GO", conexion);
                 cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
-                cmd.SelectCommand.Parameters.AddWithValue("@OC_idOC", OC_numeroOC);
+                cmd.SelectCommand.Parameters.AddWithValue("@OC_numeroOC", numOC);
                 DataSet ds = new DataSet();
                 cmd.Fill(ds);
                 return ds.Tables[0];

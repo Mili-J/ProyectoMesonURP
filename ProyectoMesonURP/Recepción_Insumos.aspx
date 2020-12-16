@@ -27,7 +27,7 @@
                                         </div>
                                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                             <asp:GridView ID="gvInsumos" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
-                                                CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,DC_idDetalleCotizacion,I_idInsumo,I_nombreInsumo,DC_cantidadCotizacion,Estado"   
+                                                CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,DC_idDetalleCotizacion,I_idInsumo,I_nombreInsumo,DC_cantidadCotizacion,Estado,Datos"   
                                                 Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged = "gvInsumos_SelectedIndexChanged" AllowSorting="False" EnablePersistedSelection="True">
                                                 <Columns>
                                                     <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
@@ -36,6 +36,7 @@
                                                     <asp:BoundField DataField="I_nombreInsumo" HeaderText="Nombre" />
                                                     <asp:BoundField DataField="DC_cantidadCotizacion" HeaderText="Cantidad" />
                                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                                                    <asp:BoundField DataField="Datos" HeaderText="Datos" Visible="False" />
                                                 </Columns>
                                             </asp:GridView>
                                         </div>
@@ -71,15 +72,22 @@
                                         </div>
                                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                             <asp:GridView ID="gvIngresos" allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
-                                                CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_nombreInsumo,M_fechaMovimiento,Hora,M_cantidad,DC_idDetalleCotizacion"  
-                                                Style="text-align: center" OnPageIndexChanging="gvIngresos_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvIngresos_SelectedIndexChanged" GridLines="None">
+                                                CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_idInsumo,I_nombreInsumo,M_fechaMovimiento,Hora,Cantidad,M_cantidad,DO_cantidadE,DC_idDetalleCotizacion"  
+                                                Style="text-align: center" OnPageIndexChanging="gvIngresos_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvIngresos_SelectedIndexChanged" GridLines="None" OnRowCommand="gvIngresos_RowCommand" OnRowDeleting="gvIngresos_RowDeleting">
                                                 <Columns>
                                                     <asp:BoundField DataField="I_idInsumo" HeaderText="N° Insumo" />
                                                     <asp:BoundField DataField="I_nombreInsumo" HeaderText="Nombre" />
                                                     <asp:BoundField DataField="M_fechaMovimiento" HeaderText="Fecha de Entrega" />
                                                     <asp:BoundField DataField="Hora" HeaderText="Hora" />
-                                                    <asp:BoundField DataField="M_cantidad" HeaderText="Cantidad Ingresada" />
+                                                    <asp:BoundField DataField="Cantidad" HeaderText="Cantidad Ingresada" />
+                                                    <asp:BoundField DataField="M_cantidad" HeaderText="CantidadIN" Visible="False" />
+                                                    <asp:BoundField DataField="DO_cantidadE" HeaderText="Cantidad" Visible="False" />
                                                     <asp:BoundField DataField="DC_idDetalleCotizacion" HeaderText="ID_DetalleCotizacion" Visible="False" />
+                                                    <asp:TemplateField HeaderText="Quitar">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnQuitar" runat="server" class="btn btn-danger" CommandName="Quitar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="dw dw-delete-2"></i>&nbsp;</asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                 </Columns>
                                             </asp:GridView>
                                         </div>
