@@ -53,6 +53,29 @@ namespace DAO
             conexion.Close();
             return id;
         }
+        public DTO_Cotizacion DAO_ConsultarCotizacion(int id)
+        {
+            conexion.Open();
+            DTO_Cotizacion cot = new DTO_Cotizacion();
+            SqlCommand comando = new SqlCommand("SP_ConsultarCotizacion", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion", id);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                cot.C_idCotizacion = Convert.ToInt32(reader[0]);
+                cot.C_numeroCotizacion = Convert.ToString(reader[1]);
+                cot.C_fechaEmision = Convert.ToDateTime(reader[2]);
+                cot.C_tiempoPlazo = Convert.ToString(reader[3]);
+                cot.C_documento = Convert.ToString(reader[4]);
+                cot.PR_idProveedor = Convert.ToInt32(reader[5]);
+                cot.EC_idEstadoCotizacion = Convert.ToInt32(reader[6]);
+                cot.U_idUsuario = Convert.ToInt32(reader[7]);
+            }
+            conexion.Close();
+            return cot;
+        }
     }
     
 }

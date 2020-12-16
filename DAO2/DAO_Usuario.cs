@@ -70,5 +70,26 @@ namespace DAO
             }
 
         }
+        public DTO_Usuario DAO_ConsultarUsuario(int id)
+        {
+            conexion.Open();
+            DTO_Usuario usario = new DTO_Usuario();
+            SqlCommand comando = new SqlCommand("SP_ConsultarUsuario", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@U_idUsuario", id);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                usario.U_idUsuario = Convert.ToInt32(reader[0]);
+                usario.U_codigo = Convert.ToString(reader[1]);
+                usario.U_contraseña = Convert.ToString(reader[2]);
+                usario.TU_idTipoUsuario = Convert.ToInt32(reader[3]);
+                usario.P_idPersona = Convert.ToInt32(reader[4]);
+
+            }
+            conexion.Close();
+            return usario;
+        }
     }
 }

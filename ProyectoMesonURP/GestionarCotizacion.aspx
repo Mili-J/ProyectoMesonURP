@@ -22,8 +22,8 @@
 
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <asp:GridView ID="GridViewCotizacion" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible."
-                                DataKeyNames="C_idCotizacion" AutoGenerateColumns="False"
-                                CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None">
+                                DataKeyNames="C_idCotizacion" AutoGenerateColumns="False" OnRowDataBound="GridViewCotizacion_RowDataBound"
+                                CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnRowCommand="GridViewCotizacion_RowCommand">
                                 <Columns>
 
                                     <asp:BoundField HeaderText="ID Cotizacion" DataField="C_idCotizacion" Visible="false"/>
@@ -55,11 +55,11 @@
                                             <asp:ImageButton ID="btnVerDetallesCotizacion" ImageUrl="img/ojo.png" onmouseover="this.src='img/ojo-b.png'" onmouseout="this.src='img/ojo.png'" runat="server" CommandName="ConsultarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Eliminar">
+<%--                                    <asp:TemplateField HeaderText="Eliminar">
                                         <ItemTemplate>
                                             <asp:ImageButton ID="btnEliminarCotizacion" ImageUrl="img/delete.png" onmouseover="this.src='img/basura-b.png'" onmouseout="this.src='img/delete.png'" runat="server" CommandName="EliminarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
 
                                 </Columns>
                             </asp:GridView>

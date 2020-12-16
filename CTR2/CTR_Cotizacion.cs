@@ -13,7 +13,7 @@ namespace CTR
         {
             dao_cotizacion = new DAO_Cotizacion();
         }
-        public DataTable DAO_Consultar_Cotizaciones()
+        public DataTable CTR_Consultar_Cotizaciones()
         {
             return dao_cotizacion.DAO_Consultar_Cotizaciones();
         }
@@ -24,6 +24,10 @@ namespace CTR
         public int CTR_IdCotizacionMayor()
         {
             return dao_cotizacion.DAO_IdCotizacionMayor();
+        }
+        public DTO_Cotizacion CTR_ConsultarCotizacion(int id)
+        {
+            return dao_cotizacion.DAO_ConsultarCotizacion(id);
         }
     }
 }

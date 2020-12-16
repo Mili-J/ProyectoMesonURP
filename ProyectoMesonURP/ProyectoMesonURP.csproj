@@ -74,6 +74,7 @@
     <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarReceta.aspx" />
+    <Content Include="ConsultarCotizacion.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -1982,6 +1983,13 @@
     </Compile>
     <Compile Include="CalendariaMenu.aspx.designer.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarCotizacion.aspx.cs">
+      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarCotizacion.aspx.designer.cs">
+      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
