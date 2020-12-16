@@ -100,7 +100,12 @@ namespace ProyectoMesonURP
 
         protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
         {
-
+            CTR_Equivalencia CTREqui = new CTR_Equivalencia();
+            DTO_Equivalencia DTOEqui = new DTO_Equivalencia();
+            DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
+            DTOEqui.E_cantidad = int.Parse(txtCantidad.Text);
+            DTOEqui.MXFC_idMedidaFCocina = int.Parse(ddlFormatoCocina.SelectedValue);
+            CTREqui.AgregarEquivalencia(DTOEqui);
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

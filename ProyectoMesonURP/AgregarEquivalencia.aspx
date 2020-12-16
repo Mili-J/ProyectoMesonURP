@@ -27,7 +27,7 @@
                 <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
                     <div class="col-sm-12 col-md-4">                             
-                        <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" class="custom-select2 form-control" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>                              
+                        <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true"  ></asp:DropDownList>                              
                     </div>
                 </div>
                     </ContentTemplate>
@@ -37,7 +37,7 @@
                <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
                     <div class="col-sm-12 col-md-4">                          
-                        <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" class="custom-select2 form-control" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>                              
+                        <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true"  ></asp:DropDownList>                              
                     </div>
                 </div>
                      </ContentTemplate>
@@ -63,7 +63,7 @@
                  <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Formato Cocina</label>
                     <div class="col-sm-12 col-md-4"> 
-                        <asp:DropDownList ID="ddlFormatoCocina" class="custom-select2 form-control" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlFormatoCocina" AutoPostBack="true" class="custom-select2 form-control" runat="server"></asp:DropDownList>
                     </div>
                 </div>
                      </ContentTemplate>

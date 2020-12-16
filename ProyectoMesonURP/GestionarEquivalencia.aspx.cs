@@ -14,8 +14,8 @@ namespace ProyectoMesonURP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            if(!IsPostBack)
+
+            if (!IsPostBack)
             {
                 LlenarGVEquivalencias();
             }
@@ -35,7 +35,6 @@ namespace ProyectoMesonURP
             ddlp.Items.Insert(2, ddl3);
         }
 
-        }
         protected void btnAnadirEquivalencia_Click(object sender, EventArgs e)
         {
             Response.Redirect("AgregarEquivalencia.aspx");
@@ -44,19 +43,18 @@ namespace ProyectoMesonURP
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            if (e.CommandName == "EditarEquivalencia" || e.CommandName == "VerEquivalencia")
+            if (e.CommandName == "VerEquivalencia" )
             {
-                
+
                 string insumo = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_nombreInsumo"].ToString();
                 string medida = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["M_nombreMedida"].ToString();
                 string cantidad = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["E_cantidad"].ToString();
-                string fcocina= gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FCO_nombreFormatoCocina"].ToString();
+                string fcocina = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FCO_nombreFormatoCocina"].ToString();
                 Session.Add("Equivalencia", LlenarDatosEquivalencia(insumo, medida, cantidad, fcocina));
-                
-                if(e.CommandName == "EditarEquivalencia") Response.Redirect("ActualizarEquivalencia.aspx");
-                if (e.CommandName == "VerEquivalencia") Response.Redirect("ConsultarEquivalencia.aspx");
+
+               
             }
-           
+
         }
         public string[] LlenarDatosEquivalencia(string i, string m, string c, string fc)
         {
@@ -68,11 +66,20 @@ namespace ProyectoMesonURP
             return Equivalencia;
         }
 
-        protected void btnIngrediente_Click(object sender, EventArgs e)
+  
+
+        protected void fnombreEq_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVerIngredientes_Click(object sender, EventArgs e)
         {
             Response.Redirect("Gestionar Ingrediente.aspx");
         }
-
-      
     }
+
 }
+    
+
+

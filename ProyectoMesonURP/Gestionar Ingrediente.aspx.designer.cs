@@ -24,13 +24,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.UpdatePanel panel1;
 
         /// <summary>
-        /// gvIngrediente control.
+        /// btnEditarIngrediente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvIngrediente;
+        protected global::System.Web.UI.WebControls.Button btnEditarIngrediente;
+
+        /// <summary>
+        /// btnVer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVer;
 
         /// <summary>
         /// panelAgregarIngrediente control.
