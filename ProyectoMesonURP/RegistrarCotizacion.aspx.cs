@@ -27,6 +27,7 @@ namespace ProyectoMesonURP
         static List<List<DTO_DetalleCotizacion>> listDetCotTotal = new List<List<DTO_DetalleCotizacion>>();
         static List<List<DateTime>> listFechaXCot = new List<List<DateTime>>();
         static DTO_Usuario dto_usuario;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_proveedor = new CTR_Proveedor();
@@ -147,6 +148,7 @@ namespace ProyectoMesonURP
             listCot.Add(dto_cotizacion);
             GVCot.DataSource = dtCot;
             GVCot.DataBind();
+            
             //----------------
             int i = 0;
             List<DTO_DetalleCotizacion> listDetCot = new List<DTO_DetalleCotizacion>();
@@ -242,5 +244,12 @@ namespace ProyectoMesonURP
             GVVerdura.DataBind();
 
         }
+
+
+
+
+
+
+
     }
 }

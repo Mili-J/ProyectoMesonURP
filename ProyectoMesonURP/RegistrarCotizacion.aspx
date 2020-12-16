@@ -136,6 +136,7 @@
                             </div>
 
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
                                 <asp:GridView ID="GVCot"  runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" 
                                     CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
                                     <Columns>
@@ -145,7 +146,6 @@
                                         <asp:BoundField HeaderText="Documento" Datafield="C_documento"/>
                                         <asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />
                                         <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
-                                        
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>
@@ -167,4 +167,51 @@
                 </div>
             </div>
         </div>
+
+
+               
+               
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Detalle de la Cotización</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+           <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+            <asp:GridView ID="GVDetCot"  runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" 
+               DataKeyNames="I_idInsumo,I_idIngrediente" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
+                <Columns>
+
+                    <asp:TemplateField Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="I_idInsumo" runat="server" Text="Label"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
+                    <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
+                    <asp:BoundField HeaderText="Cantidad Mínima" DataField="I_cantidadMinima" />
+                    <asp:BoundField HeaderText="Peso total" Datafield="I_pesoTotal"/>
+                    <asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>
+                </Columns>   
+                
+                <SelectedRowStyle BackColor="LightGreen"/>
+
+            </asp:GridView>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+     
 </asp:Content>

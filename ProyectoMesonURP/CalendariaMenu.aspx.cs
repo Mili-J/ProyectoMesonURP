@@ -111,6 +111,11 @@ namespace ProyectoMesonURP
                 {
                     e.Cell.BackColor = Color.MidnightBlue;
                 }
+                else if(dto_menu.EM_idEstadoMenu == 2)
+                {
+                    e.Cell.BackColor = Color.Red;
+                    e.Day.IsSelectable = false;
+                }
                
                 DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenuYCategoria(dto_menu.ME_idMenu,1);
                 int i = 0;

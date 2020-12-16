@@ -29,6 +29,7 @@ namespace ProyectoMesonURP
         DTO_Menu objMenu;
         static DataTable dtCarta=new DataTable();
         static DataTable dtMenu = new DataTable();
+        static int numBebidas=0, numEntradas=0, numFondos=0;
         protected void Page_Load(object sender, EventArgs e)
         {
             ctr_receta = new CTR_Receta();
@@ -49,6 +50,8 @@ namespace ProyectoMesonURP
                 txtFecha.Text = fecha;
                 hay = (bool)Session["hay"];
 
+                //byte[] ad = File.ReadAllBytes("C:/Users/Carlos Lau/Escritorio/Recetas/causalimeniaweb.jpg");
+                //ctr_receta.pruebaa(ad, 6);
                 //-----------------------------------
                 reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1, "Entradas");
                 reapeterEntradas.DataBind();
@@ -61,6 +64,7 @@ namespace ProyectoMesonURP
                 //-----------------------------------
                 repeaterCarta.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria(2);
                 repeaterCarta.DataBind();
+
                 //Ocultar comentarios
                 if (true)
                 {
@@ -225,7 +229,18 @@ namespace ProyectoMesonURP
                 //sEntrada = false;
                 //btnQuitarEntrada.Visible = true;
 
-                AgregarFilas(reapeterEntradas, dtMenu, e.Item.ItemIndex, repeaterMenu);
+               
+                if (numEntradas<2)
+                {
+                   
+                    AgregarFilas(reapeterEntradas, dtMenu, e.Item.ItemIndex, repeaterMenu, ref numEntradas);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertaSeleccionado", "alertaSeleccionado('Se ha logrado ingresar correctamente');", true);
+                }
+
+
             }
 
         }
@@ -265,7 +280,18 @@ namespace ProyectoMesonURP
 
                 //sSegundo = false;
                 //btnQuitarFondo.Visible = true;
-                AgregarFilas(repeaterFondo, dtMenu, e.Item.ItemIndex, repeaterMenu);
+                
+                if (numFondos<3)
+                {
+                    
+                    AgregarFilas(repeaterFondo, dtMenu, e.Item.ItemIndex, repeaterMenu,ref numFondos);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertaSeleccionado", "alertaSeleccionado('Se ha logrado ingresar correctamente');", true);
+                }
+                
+                
             }
 
         }
@@ -278,7 +304,18 @@ namespace ProyectoMesonURP
             }
             else if (e.CommandName == "AgregarBebida")
             {
-                AgregarFilas(repeaterBebida, dtMenu, e.Item.ItemIndex,repeaterMenu);
+                
+                if (numBebidas<1)
+                {
+                    AgregarFilas(repeaterBebida, dtMenu, e.Item.ItemIndex, repeaterMenu, ref numBebidas);
+                    
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertaSeleccionado", "alertaSeleccionado('Se ha logrado ingresar correctamente');", true);
+                }
+                
+                
             }
         }
 
@@ -287,6 +324,12 @@ namespace ProyectoMesonURP
             if (e.CommandName == "QuitarMenu")
             {
                 dtMenu.Rows[e.Item.ItemIndex].Delete();
+                int R_id = int.Parse(((Label)repeaterMenu.Items[e.Item.ItemIndex].FindControl("lblIdReceta")).Text);
+                DTO_Receta receta = ctr_receta.CTR_Consultar_Receta(R_id);
+                if (receta.R_subcategoria == "Entradas") numEntradas--;
+                else if (receta.R_subcategoria == "Segundos") numFondos--;
+                else if (receta.R_subcategoria == "Bebidas") numBebidas--;
+
                 repeaterMenu.DataSource = dtMenu;
                 repeaterMenu.DataBind();
             }
@@ -310,7 +353,8 @@ namespace ProyectoMesonURP
             }
             else if (e.CommandName == "AgregarCarta")
             {
-                AgregarFilas(repeaterCarta,dtCarta,e.Item.ItemIndex,repeaterCartaSeleccionada);
+                int a = 0;
+                AgregarFilas(repeaterCarta,dtCarta,e.Item.ItemIndex,repeaterCartaSeleccionada,ref a);
             }
             
 
@@ -331,16 +375,17 @@ namespace ProyectoMesonURP
         {
             if (dt.Columns.Count == 0)
             {
-                dt.Columns.Add("R_imagenReceta");
-                dt.Columns.Add("R_idReceta");
-                dt.Columns.Add("R_nombreReceta");
-                dt.Columns.Add("R_numeroPorcion");
-                dt.Columns.Add("CP_nombreCategoriaR");
-                dt.Columns.Add("R_subcategoria");
+                dt.Columns.Add("R_imagenReceta", typeof(byte[]));
+                dt.Columns.Add("R_idReceta", typeof(int));
+                dt.Columns.Add("R_nombreReceta", typeof(string));
+                dt.Columns.Add("R_numeroPorcion", typeof(int));
+                dt.Columns.Add("CP_nombreCategoriaR", typeof(string));
+                dt.Columns.Add("R_subcategoria", typeof(string));
+                dt.Columns.Add("MXR_numeroPorcion", typeof(int));
                 dt.PrimaryKey = new DataColumn[] { dt.Columns["R_idReceta"] };
             }
         }
-        public void AgregarFilas(Repeater rp, DataTable dt,int i,Repeater rpFinal)
+        public void AgregarFilas(Repeater rp, DataTable dt, int i, Repeater rpFinal, ref int num)
         {
             DataRow dr = dt.NewRow();
             int R_id = int.Parse(((Label)rp.Items[i].FindControl("lblIdReceta")).Text);
@@ -366,6 +411,25 @@ namespace ProyectoMesonURP
                 dt.Rows.Add(dr);
                 rpFinal.DataSource = dt;
                 rpFinal.DataBind();
+                //try
+                //{
+                //    byte[] a = receta.R_imagenReceta;
+                //    System.Drawing.Image rImage = null;
+                //    using (MemoryStream ms = new MemoryStream(a))
+                //    {
+                //        rImage = System.Drawing.Image.FromStream(ms);
+                //        ((System.Web.UI.WebControls.Image)rpFinal.Items[rpFinal.Items.Count - 1].FindControl("imgFoto")).ImageUrl = "data:image/jpg;base64," + Convert.ToBase64String(a);
+                //    }
+                //}
+                //catch (Exception)
+                //{
+
+                //    //throw;
+                //}
+
+
+
+                num++;
             }
         }
 
@@ -436,14 +500,42 @@ namespace ProyectoMesonURP
             int sumaMenu = SumarPorciones(repeaterMenu);
             if (int.Parse(txtNumRacCarta.Text)==sumaCarta && int.Parse(txtNumRacMenu.Text) == sumaMenu)
             {
-                dto_menu.ME_fechaMenu = txtFecha.Text;
-                dto_menu.ME_totalPorcion = sumaCarta + sumaMenu;
-                dto_menu.EM_idEstadoMenu = 1;
-                ctr_menu.CTR_RegistrarMenu(dto_menu);
-                RegistrarMenuXReceta(repeaterCartaSeleccionada);
-                RegistrarMenuXReceta(repeaterMenu);
-                Response.Redirect("CalendariaMenu.aspx");
-
+                string cat = "";
+                int sumEntrada = 0,sumBebida=0,s=0;
+                
+                foreach (RepeaterItem item in repeaterMenu.Items)
+                {
+                    cat = ((Label)item.FindControl("lblCatRec")).Text;
+                    s = int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
+                    if (cat== "Entradas")
+                    {
+                        sumEntrada += s;
+                    }
+                    else if (cat== "Bebidas")
+                    {
+                        sumBebida += s;
+                    }
+                        
+                }
+                if (sumEntrada==sumBebida)
+                {
+                    dto_menu.ME_fechaMenu = txtFecha.Text;
+                    dto_menu.ME_totalPorcion = sumaCarta + sumaMenu;
+                    dto_menu.EM_idEstadoMenu = 1;
+                    ctr_menu.CTR_RegistrarMenu(dto_menu);
+                    RegistrarMenuXReceta(repeaterCartaSeleccionada);
+                    RegistrarMenuXReceta(repeaterMenu);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertaExito", "alertaExito('Se ha logrado ingresar correctamente');", true);
+                    //Response.Redirect("CalendariaMenu.aspx");
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertaBebidayEntrada", "alertaBebidayEntrada('Se ha logrado ingresar correctamente');", true);
+                }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(Page.GetType(), "alertaPorcion", "alertaPorcion('Se ha logrado ingresar correctamente');", true);
             }
         }
         public void RegistrarMenuXReceta(Repeater rp)

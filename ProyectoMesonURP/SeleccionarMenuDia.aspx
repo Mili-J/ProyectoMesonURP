@@ -188,8 +188,8 @@
             <div class="col-sm-8">
                 <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
                 <asp:TextBox ID="txtNumRacMenu" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>--%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRacMenu" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
             </div>
         </div>
@@ -198,8 +198,9 @@
                     <asp:Repeater ID="repeaterMenu" runat="server" OnItemCommand="repeaterMenu_ItemCommand">
                         <ItemTemplate>
                             <div class="card" style="width: 18rem">
-                                <img class="card-img-top" alt="Imagen de Referencia"
+                            <img class="card-img-top" alt="Imagen de Referencia"
                                     src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                <%--<asp:Image ID="imgFoto" runat="server"/>--%>
                                 <div class="card-body">
                                     <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
                                     <h5 class="card-title">
@@ -220,6 +221,7 @@
                                     <p class="card-text">
                                         Raciones: 
                                                          <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </p>
                                     <div>
                                         <asp:Button ID="btnQuitarMenu" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarMenu" />
@@ -259,6 +261,11 @@
                                                          <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
                                     </p>
 
+
+                                    <p class="card-text">
+                                        prueba: 
+                                                         <asp:Label ID="Label1" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") %>' />
+                                    </p>
                                     <div>
                                         <asp:Button ID="btnVerCarta" CssClass="btn btn-primary" runat="server" Text="Ver Receta" CommandName="VerCarta" />
                                         <asp:Button ID="btnAgregarCarta" CssClass="btn btn-primary" runat="server" Text="Agregar" CommandName="AgregarCarta" />
@@ -291,8 +298,8 @@
             <div class="col-sm-8">
                 <label for="focusedinput" class="col-sm-2 control-label">N° total de raciones</label>
                 <asp:TextBox ID="txtNumRacCarta" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
-<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+<%--                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Número inválido" ControlToValidate="txtNumRaciones" ForeColor="#CC0000" SetFocusOnError="True" Display="Dynamic" ValidationGroup="SeleccionarMenu" ValidationExpression="[^0\-]\d{0,}"></asp:RegularExpressionValidator>--%>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNumRacCarta" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
             </div>
         </div>
@@ -300,10 +307,14 @@
 
 
                 <div id="container-all" style="display: flex; margin-top: 30px; flex-wrap: wrap;">
+
+
+
                     <asp:Repeater ID="repeaterCartaSeleccionada" runat="server" OnItemCommand="repeaterCartaSeleccionada_ItemCommand">
                         <ItemTemplate>
                             <div class="card" style="width: 18rem">
-                                <img class="card-img-top" alt="Imagen de Referencia"
+                                <%--<asp:Image ID="imgFoto" runat="server"/>--%>
+                                 <img class="card-img-top" alt="Imagen de Referencia"
                                     src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
                                 <div class="card-body">
                                     <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
@@ -322,9 +333,14 @@
                                         Categoría de Receta: 
                                                          <asp:Label ID="lblCatRec" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_subcategoria") %>' />
                                     </p>
+
+
+
                                     <p class="card-text">
                                         Raciones: 
                                                          <asp:TextBox ID="txtNumRaciones" runat="server" placeholder="Ingrese el número de raciones" CssClass="form-control1" TextMode="Number" />
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtNumRaciones" ErrorMessage="Campo Obligatorio" ValidationGroup="SeleccionarMenu" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                     </p>
                                     <div>
                                         <asp:Button ID="btnQuitarCarta" CssClass="btn btn-primary" runat="server" Text="Quitar" CommandName="QuitarCarta" />
@@ -335,12 +351,13 @@
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
+
                 </div>
             </div>
         </div>
         <%-- --------------------------------------------------- --%>
              <p class="center-button"  style="margin-top: 49px; margin-bottom: 44px;">
-                <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
+                <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" ValidationGroup="SeleccionarMenu"/>
                 <asp:Button ID="btnRegresar" CssClass="btn btn-danger" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
             </p>
         </div>
@@ -357,14 +374,6 @@
             return true;
         }
 
-        function alertaAceptado() {
-            Swal.fire({
-                title: 'Aceptado',
-                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            })
-        }
 
         function alertaRechazado() {
             Swal.fire({
@@ -375,22 +384,43 @@
             })
         }
 
-        function alertaRecibido() {
+        function alertaSeleccionado() {
             Swal.fire({
-                title: 'Recibido',
-                text: 'Los insumos ya se encuentran en stock',
+                title: 'Oh, no!',
+                text: 'Ya alcanzó el número de recetas posible',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaPorcion() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'Las porciones no coinciden',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaBebidayEntrada() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La suma de las bebidas no coincide con la suma de las entradas',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado registrar el menú correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "CalendariaMenu.aspx";
+                }
             })
         }
 
-        function alertaEliminar() {
-            Swal.fire({
-                title: 'Eliminado',
-                text: 'La Orden de Compra ha sido eliminada',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            })
-        }
+
     </script>
 </asp:Content>
