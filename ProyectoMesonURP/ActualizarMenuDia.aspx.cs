@@ -386,11 +386,13 @@ namespace ProyectoMesonURP
         {
             int R_id;
             int M_id = ctr_menu.CTR_IdMenuMayor();
+            int MXR_id;
 
             foreach (RepeaterItem item in rp.Items)
             {
                 R_id = int.Parse(((Label)item.FindControl("lblIdReceta")).Text);
                 dto_menuxreceta.ME_idMenu = M_id;
+                //dto_menuxreceta.MXR_idMenuReceta = ;
                 dto_menuxreceta.R_idReceta = R_id;
                 dto_menuxreceta.MXR_numeroPorcion = int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
                 ctr_menuxreceta.DAO_ActualizarUnMenuXReceta(dto_menuxreceta);

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="GestionarCotizacion.aspx.cs" Inherits="ProyectoMesonURP.GestionarCotizacion" EnableEventValidation="false"%>
+﻿<%@ Page Title="MesónURP | Gestionar Cotización" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="GestionarCotizacion.aspx.cs" Inherits="ProyectoMesonURP.GestionarCotizacion" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .mb-0 {}
@@ -65,15 +65,9 @@
                                         <asp:LinkButton ID="btnEnviarEmailCotizacion" class="btn btn-info" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-paper-plane-o"></i>&nbsp;Enviar</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Adjuntar Respuesta">
-                                    <ItemTemplate>
-                                         <asp:LinkButton class="btn btn-warning" runat="server"><i class="fa fa-upload"></i>&nbsp;Adjuntar</asp:LinkButton>
-                                     </ItemTemplate>
-                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="GenerarOc">
                                     <ItemTemplate>
                                          <asp:LinkButton ID="btnGenerarOC" class="btn btn-success" runat="server" CommandName="GenerarOc" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-arrow-circle-o-right"></i>&nbsp;Generar</asp:LinkButton>
-                                    
                                      </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Acciones">
