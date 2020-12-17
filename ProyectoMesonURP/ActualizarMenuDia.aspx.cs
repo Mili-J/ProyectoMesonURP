@@ -60,7 +60,7 @@ namespace ProyectoMesonURP
                 //repeaterMenu.DataBind();
 
 
-                repeaterMenu.DataSource = dtMenu;
+                repeaterMenu.DataSource = dtMenuSeleccionado;
                 repeaterMenu.DataBind();
                 dtCartaSeleccionada = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 2);
                 repeaterCartaSeleccionada.DataSource = dtCartaSeleccionada;
