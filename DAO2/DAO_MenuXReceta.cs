@@ -81,7 +81,8 @@ namespace DAO
             SqlCommand comando = new SqlCommand("SP_ActualizarMenuXReceta", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@R_idReceta", menureceta.R_idReceta);
-            comando.Parameters.AddWithValue("@MR_idMenuReceta",menureceta.MXR_idMenuReceta);
+            comando.Parameters.AddWithValue("@MXR_idMenuReceta",menureceta.MXR_idMenuReceta);
+            comando.Parameters.AddWithValue("@ME_idMenu", menureceta.ME_idMenu);
             comando.Parameters.AddWithValue("@MXR_numeroPorcion", menureceta.MXR_numeroPorcion);
             comando.ExecuteNonQuery();
             conexion.Close();
