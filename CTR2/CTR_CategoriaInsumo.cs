@@ -14,13 +14,11 @@ namespace CTR
         {
             dao_catIns = new DAO_CategoriaInsumo();
         }
-        public DataTable DAO_ConsultarCategoriasInsumo()
-        {
-            return dao_catIns.DAO_ConsultarCategoriasInsumo();
-        }
+        //public DataTable DAO_ConsultarCategoriasInsumo()
+        //{
+        //    return dao_catIns.DAO_ConsultarCategoriasInsumo();
+        //}
 
-
-       
         public DataSet CTR_SelectInsumoXCategoria(DTO_CategoriaInsumo objCategoriaIn)
         {
             return dao_catIns.DAO_SelectInsumoXCategoria(objCategoriaIn);
@@ -28,7 +26,7 @@ namespace CTR
 
         public DataTable DAO_ConsultarCategoriasInsumo()
         {
-            return objCategoriaI.DAO_ConsultarCategoriasInsumo();
+            return dao_catIns.DAO_ConsultarCategoriasInsumo();
         }
     }
 }

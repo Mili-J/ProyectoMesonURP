@@ -42,6 +42,20 @@ namespace DAO
             conexion.Close();
             return correoContacto;
         }
+        //public string SelectProveedorxCotizacion(int C_idCotizacion)
+        //{
+        //    string correoContacto = "";
+        //    SqlCommand unComando = new SqlCommand("SP_SELECT_PROVEEDOR_X_COTIZACION", conexion);
+        //    unComando.CommandType = CommandType.StoredProcedure;
+        //    unComando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+        //    conexion.Open();
+        //    SqlDataReader dReader = unComando.ExecuteReader();
+        //    if (dReader.Read())
+        //    {
+        //        //throw;
+        //        return false;
+        //    }
+        //}
         public void DAO_Registrar_Cotizacion(DTO_Cotizacion cot)
         {
             conexion.Open();
@@ -132,22 +146,11 @@ namespace DAO
                 cliente.Send(msg);
                 return true;
             }
-            catch (Exception)
-        }
-        public string SelectProveedorxCotizacion(int C_idCotizacion)
-        {
-            string correoContacto = "";
-            SqlCommand unComando = new SqlCommand("SP_SELECT_PROVEEDOR_X_COTIZACION", conexion);
-            unComando.CommandType = CommandType.StoredProcedure;
-            unComando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
-            conexion.Open();
-            SqlDataReader dReader = unComando.ExecuteReader();
-            if (dReader.Read())
+            catch (Exception) 
             {
-                //throw;
-                return false;
             }
         }
+      
         public void DAO_ActualizarEstadoCotizacion(DTO_Cotizacion cot)
         {
             conexion.Open();
