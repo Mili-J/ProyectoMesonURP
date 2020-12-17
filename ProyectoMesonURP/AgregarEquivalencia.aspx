@@ -26,34 +26,41 @@
                         <div class="form-group row justify-content-center h-100">
                             <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
                             <div class="col-sm-12 col-md-4">
-                                <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
                             </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
                 <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
                     <div class="col-sm-12 col-md-4">
-                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                 </div>
-
+                        </ContentTemplate>
+                </asp:UpdatePanel>
                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                     <ContentTemplate>
                         <div class="form-group row justify-content-center h-100">
                             <label class="col-sm-12 col-md-2 col-form-label">Medida</label>
                             <div class="col-sm-12 col-md-4">
-                                <asp:TextBox ID="txtMedida" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtMedida" CssClass="form-control" ReadOnly="true" runat="server" ></asp:TextBox>
                             </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                 <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                    <ContentTemplate>
                 <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
                     <div class="col-sm-12 col-md-4">
                         <asp:TextBox ID="txtCantidad" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                     </div>
                 </div>
+                         </ContentTemplate>
+                </asp:UpdatePanel>
                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                     <ContentTemplate>
                         <div class="form-group row justify-content-center h-100">
@@ -64,21 +71,12 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                    <ContentTemplate>
+              
                         <p class="center-button pt-3">
                             <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />
-
-                        </p>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-                <asp:UpdatePanel ID="PanelVolver" runat="server">
-                    <ContentTemplate>
-                        <p class="center-button">
                             <asp:Button CssClass="btn btn-danger" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
                         </p>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                 
 
             </div>
         </div>

@@ -174,7 +174,7 @@ namespace DAO
                     lista.Add(new DTO_OC_SP
                     {
                         OC_idOC = Convert.ToInt32(dr["OC_idOC"]),
-                        DC_idDetalleCotizacion = Convert.ToInt32(dr["DC_idDetalleCotizacion"]),
+                        DOC_idDetalleOC = Convert.ToInt32(dr["DOC_idDetalleOC"]),
                         OC_numeroOC = Convert.ToInt32(dr["OC_numeroOC"]),
                         I_idInsumo = Convert.ToInt32(dr["I_idInsumo"]),
                         I_nombreInsumo = Convert.ToString(dr["I_nombreInsumo"]),

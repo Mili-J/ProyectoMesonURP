@@ -62,14 +62,12 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                    <ContentTemplate>
+                
                         <p class="center-button">
                             <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
                             <asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
                         </p>
-                    </ContentTemplate>
-                </asp:UpdatePanel>               
+                          
             </div>
         </div>
 
