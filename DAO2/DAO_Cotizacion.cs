@@ -4,7 +4,8 @@ using System.Text;
 using DTO;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Net.Mail;
+using System.Net;
 namespace DAO
 {
     public class DAO_Cotizacion
@@ -88,6 +89,37 @@ namespace DAO
             }
             conexion.Close();
             return cot;
+        }
+        public void EnviarCorreo(DTO_Cotizacion dto_cot, string msj)
+        {
+            DTO_Proveedor dto_proveedor = new DTO_Proveedor();
+            DAO_Proveedor dao_proveedor = new DAO_Proveedor();
+            try
+            {
+                dto_proveedor = dao_proveedor.DAO_ConsultarProveedor(dto_cot.PR_idProveedor);
+                
+                
+                MailMessage msg = new MailMessage();
+                msg.To.Add(dto_proveedor.PR_correoContacto);
+                msg.Subject = "Solicitudad de cotización" + dto_cot.C_numeroCotizacion;
+                msg.SubjectEncoding = Encoding.UTF8;
+                msg.IsBodyHtml = true;
+                msg.Body = msj;
+                msg.BodyEncoding = Encoding.UTF8;
+                msg.From = new MailAddress("mesonurp@gmail.com");
+                SmtpClient cliente = new SmtpClient
+                {
+                    Credentials = new NetworkCredential("mesonurp@gmail.com", "meson123456"),
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true
+                };
+                cliente.Send(msg);   
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
     

@@ -34,6 +34,25 @@ namespace ProyectoMesonURP
             }
             else if (e.CommandName== "EnviarEmailCotizacion")
             {
+                DTO_Cotizacion cot = ctr_cotizacion.CTR_ConsultarCotizacion(idCot);
+                DataTable dt = new CTR_DetalleCotizacion().CTR_ConsultarDetallesCotizacionXCotizacion(idCot);
+                string htmlbody="";
+                htmlbody = htmlbody.Replace("#IDOC#", cot.C_idCotizacion.ToString());
+                htmlbody = htmlbody.Replace("#TIPOCOMPROBANTE#", cot.C_documento);
+                htmlbody = htmlbody.Replace("#NUMEROCOMPROBANTE#", cot.C_numeroCotizacion);
+                //htmlbody = htmlbody.Replace("#FORMADEPAGO#", formaPago);
+                htmlbody = htmlbody.Replace("#TIEMPO PLAZO#", cot.C_tiempoPlazo);
+                htmlbody = htmlbody.Replace("#FECHAEMISION#", cot.C_fechaEmision.ToString());
+
+                string msj = "Solicitud de cotización<br />";
+                msj += $"Número de cotización: {cot.C_numeroCotizacion}<br />";
+                msj += $"Número de cotización: {cot.C_tiempoPlazo}<br />";
+                msj += $"Número de cotización: {cot.C_fechaEmision.ToShortDateString()}<br />";
+                msj += $"Número de cotización: {cot.C_documento}<br />";
+               
+                ctr_cotizacion.EnviarCorreo(cot, msj);
+                
+                ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaCorreo('');", true);
 
             }
             else if (e.CommandName == "ActualizarCotizacion")

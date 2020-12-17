@@ -87,4 +87,51 @@
         </div>
 
     </div>
+        <script>
+        function alertaAceptado() {
+            Swal.fire({
+                title: 'Aceptado',
+                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaRechazado() {
+            Swal.fire({
+                title: 'Rechazado',
+                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaRecibido() {
+            Swal.fire({
+                title: 'Recibido',
+                text: 'Los insumos ya se encuentran en stock',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaEliminar() {
+            Swal.fire({
+                title: 'Eliminado',
+                text: 'La Orden de Compra ha sido eliminada',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaCorreo() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha enviado el correo correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = 'GestionarCotizacion.aspx';
+                }
+            })
+
+        }
+        </script>
 </asp:Content>
