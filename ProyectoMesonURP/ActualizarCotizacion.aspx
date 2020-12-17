@@ -94,7 +94,7 @@
                         <label for="selector1" class="col-sm-2 control-label">Menú</label>
                         <div class="col-sm-8">
                             <asp:Button ID="btnCal" runat="server" Text="Calendario" OnClick="btnCal_Click" CausesValidation="false"/>
-                            <asp:Calendar ID="CldFecha" runat="server" Visible="true" SelectionMode="DayWeekMonth" OnSelectionChanged="CldFecha_SelectionChanged" OnDayRender="CldFecha_DayRender"></asp:Calendar>
+                            <asp:Calendar ID="CldFecha" runat="server" Visible="true" SelectionMode="None" OnSelectionChanged="CldFecha_SelectionChanged" OnDayRender="CldFecha_DayRender" Enabled="false"></asp:Calendar>
                         </div>
                     </div>
                     <%-- ----- --%>
@@ -111,6 +111,7 @@
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
                                         <asp:BoundField HeaderText="Cantidad" Datafield="DC_cantidadCotizacion"/>
+                                        <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
                                         <%--<asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>--%>
                                     </Columns>   
                                     <SelectedRowStyle BackColor="LightGreen"/>

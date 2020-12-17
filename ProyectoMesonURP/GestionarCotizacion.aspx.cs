@@ -46,7 +46,10 @@ namespace ProyectoMesonURP
                 string dta = "";
                 foreach (DataRow item in dt.Rows)
                 {
-                    dta += $"<tr><td>{item.ItemArray[4].ToString()}</td><td>{item.ItemArray[1].ToString()}</td></tr>";
+                    dta += $"<tr><td>{item.ItemArray[4].ToString()}</td>" +
+                        $"<td>{item.ItemArray[1].ToString()}</td>" +
+                        $"<td>{item.ItemArray[8].ToString()}</td>" +
+                        $"</tr>";
                 }
 
                 htmlbody = htmlbody.Replace("#GRID#", dta);

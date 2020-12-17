@@ -106,7 +106,7 @@
 
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                 <asp:GridView ID="GVVerdura"  runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" 
-                                   DataKeyNames="I_idInsumo,I_idIngrediente" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
+                                   DataKeyNames="I_idInsumo" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
                                     <Columns>
 
                                         <asp:TemplateField Visible="false">
@@ -114,11 +114,16 @@
                                                 <asp:Label ID="I_idInsumo" runat="server" Text="Label"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                        
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
-                                        <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
-                                        <asp:BoundField HeaderText="Cantidad Mínima" DataField="I_cantidadMinima" />
-                                        <asp:BoundField HeaderText="Peso total" Datafield="I_pesoTotal"/>
-                                        <asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>
+
+<%--                                        <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
+                                        <asp:BoundField HeaderText="Número de porciones Menú" DataField="numPorcion" />
+                                        <asp:BoundField HeaderText="E_cantidad" DataField="E_cantidad" />
+                                        <asp:BoundField HeaderText="MXF_cantidadContenida" DataField="MXF_cantidadContenida" />--%>
+
+                                        <asp:BoundField HeaderText="Cantidad" Datafield="numTotal"/>
+                                        <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>

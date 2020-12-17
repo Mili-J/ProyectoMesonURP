@@ -92,6 +92,8 @@
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
                                         <asp:BoundField HeaderText="Cantidad" Datafield="DC_cantidadCotizacion"/>
                                         
+                                        <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
+                                        
                                     </Columns>   
                                     <SelectedRowStyle BackColor="LightGreen"/>
                                 </asp:GridView>
