@@ -51,11 +51,11 @@ namespace DAO
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Update_Ingrediente", conexion);
+                SqlCommand cmd = new SqlCommand("SP_Update_Equivalencia", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
-                cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.I_idInsumo));
-                cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.E_cantidad));
+                cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
+                cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
                 cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
            
                 cmd.ExecuteNonQuery();

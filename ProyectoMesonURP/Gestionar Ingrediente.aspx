@@ -20,8 +20,7 @@
                         <h5>Ingredientes</h5>
                     </div>
                     <div class="w3-row-padding">
-                        <asp:UpdatePanel ID="panel1" runat="server">
-                            <ContentTemplate>
+                   
                                 <div class="widget-shadow">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                                         <asp:GridView ID="gvIngrediente" runat="server" DataKeyNames="I_nombreIngrediente,I_pesoUnitario,I_Cantidad,I_nombreInsumo,E_cantidad,M_nombreMedida,FCO_nombreFormatoCocina" OnRowCommand="GVIngrediente_RowCommand" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnRowDataBound="gvIngrediente_RowDataBound">
@@ -49,22 +48,12 @@
                                         </asp:GridView>
                                     </div>
                                 </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <asp:UpdatePanel ID="panelAgregarIngrediente" runat="server">
-                            <ContentTemplate>
                                 <p class="center-button">
                                     <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir Ingrediente" OnClick="btnAnadirIngrediente_Click"></asp:Button>
                                 </p>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <asp:UpdatePanel ID="panelVolver" runat="server">
-                            <ContentTemplate>
                                 <p class="center-button">
                                     <asp:Button CssClass="btn btn-primary" runat="server" Text="Volver" OnClick="btnVolver_Click"></asp:Button>
                                 </p>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
