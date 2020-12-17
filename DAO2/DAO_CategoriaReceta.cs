@@ -59,7 +59,7 @@ namespace DAO
             SqlDataReader dReader = unComando.ExecuteReader();
             if (dReader.Read())
             {
-                idCategoria = Convert.ToInt32(dReader["CR_idCategoriaReceta"]);
+                idCategoria = Convert.ToInt32(dReader["CP_idCategoriaReceta"]);
             }
             conexion.Close();
             return idCategoria;

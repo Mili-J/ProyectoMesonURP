@@ -13,6 +13,7 @@ namespace DAO
         DAO_IngredienteXReceta dao_ingredientexreceta;
         DTO_Receta dto_receta;
         DAO_Ingrediente dao_ingrediente;
+        
         public DAO_Receta()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
@@ -29,8 +30,11 @@ namespace DAO
                 unComando.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
                 unComando.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
                 unComando.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
-                unComando.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CP_idCategoriaReceta));
-                
+                unComando.Parameters.Add(new SqlParameter("@R_subcategoria", objDTO.R_subcategoria));
+                unComando.Parameters.Add(new SqlParameter("@EP_idEstadoReceta", objDTO.EP_idEstadoReceta));
+                unComando.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CP_idCategoriaReceta));
+            
+            
                 unComando.ExecuteNonQuery();
                 conexion.Close();
         }
@@ -220,12 +224,12 @@ namespace DAO
             conexion.Close();
             return dto_receta;
         }
-        public Byte[] prueba(int i)
+        public Byte[] Select_ImagenReceta(int R_idReceta)
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarRecetaPrueba", conexion);
+            SqlCommand comando = new SqlCommand("SP_SELECT_IMAGEN_RECETA", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@R_idReceta", i);
+            comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
             byte[] img = new byte[100];
             img = (byte[])comando.ExecuteScalar();
             conexion.Close();
@@ -241,6 +245,29 @@ namespace DAO
             command.Parameters.AddWithValue("@R_imagenReceta",aaa);
             command.ExecuteNonQuery();
             conexion.Close();
+        }
+
+        public DTO_Receta DAO_Consultar_RecetaD(int i)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarReceta", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", i);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+
+            if (reader.Read())
+            {
+                dto_receta.R_idReceta = i;
+                dto_receta.R_nombreReceta = reader[1].ToString();
+                dto_receta.R_numeroPorcion = Convert.ToInt32(reader[2]);
+                dto_receta.R_descripcion = Convert.ToString(reader[3]);
+                dto_receta.R_imagenReceta =( byte[])(reader[4]);
+                
+                       
+            }
+            conexion.Close();
+            return dto_receta;
         }
 
         public DataTable DAO_ConsultarReceta2()
@@ -291,11 +318,13 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand("SP_UPDATE_RECETA", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@R_idReceta", objDTO.R_idReceta));
-                cmd.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta ));
+                cmd.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta));
+                cmd.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
+                cmd.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
                 cmd.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
-                cmd.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion ));
-                cmd.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CP_idCategoriaReceta ));
-                cmd.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion ));
+                cmd.Parameters.Add(new SqlParameter("@R_subcategoria", objDTO.R_subcategoria));
+                cmd.Parameters.Add(new SqlParameter("@EP_idEstadoReceta", objDTO.EP_idEstadoReceta));
+                cmd.Parameters.Add(new SqlParameter("@CP_idCategoriaReceta", objDTO.CP_idCategoriaReceta));
 
                 cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -314,6 +343,108 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+       
+        public bool SelectExistenciaImagen(int R_idReceta)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_IMAGEN_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+                cmd.ExecuteNonQuery();
+                byte[] img = new byte[100];
+                img = (byte[])cmd.ExecuteScalar();
+                if (img.LongLength == 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    conexion.Close();
+                    return true;
+                }
+            }
+            catch (System.InvalidCastException)
+            {
+                conexion.Close();
+                return false;
+            }
+        }
+        public bool SelectExistenciaReceta(string R_nombreReceta)
+        {
+           
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_EXISTENCIA_RECETA", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@R_nombreReceta", R_nombreReceta);
+                cmd.ExecuteNonQuery();
+                string nombreReceta = Convert.ToString(cmd.ExecuteScalar());
+                if (nombreReceta == "")
+                {
+                conexion.Close();
+                return false;
+                }
+                else
+                {
+                conexion.Close();
+                return true;
+                }
+        }
+        public string SelectSubcategoriaxIdReceta(int R_idReceta)
+        {
+            string subcategoria = "";
+            SqlCommand unComando = new SqlCommand("SP_SELECT_SUBCATEGORIA_X_ID_RECETA", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+            conexion.Open();
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                subcategoria = Convert.ToString(dReader["R_subcategoria"]);
+            }
+            conexion.Close();
+            return subcategoria;
+
+        }
+        public DataTable DAO_SelectRecetaTabSegM()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_SEGM", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+
+        }
+        public DataTable DAO_SelectRecetaTabEntM()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_ENTM", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
+        public DataTable DAO_SelectRecetaTabBebM()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_BEBM", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
         public DataTable DAO_ConsultarMenuXRecetaYCategoria(int id_menu, int id_cat)//recetas ya seleccionadas, menu o carta
         {
             conexion.Open();
@@ -327,6 +458,8 @@ namespace DAO
             da.Fill(dt);
             conexion.Close();
             return dt;
+
+
         }
     }
 }

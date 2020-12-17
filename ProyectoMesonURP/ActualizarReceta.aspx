@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Gestionar Receta | Actualizar Receta" Language="C#" AutoEventWireup="true" CodeBehind="ActualizarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ActualizarReceta" EnableEventValidation="false" %>
+﻿<%--<%@ Page Title="Gestionar Receta | Actualizar Receta" Language="C#" AutoEventWireup="true" CodeBehind="ActualizarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ActualizarReceta" EnableEventValidation="false" %>--%>
+<%@ Page Title="Gestionar Receta | Actualizar Receta" Language="C#" AutoEventWireup="true" CodeBehind="ActualizarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ActualizarReceta" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -46,10 +47,42 @@
                             <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
+                     <div class="form-group" style="width: 1889px;">
+                        <label for="selector1" class="col-sm-2 control-label">Sub categoría</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox ID="txtSubcategoria" runat="server" Style="width: 25%;" Enabled="true"
+                                CssClass="form-control1" />
+                        </div>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="ddlSubCategoria" runat="server" Style="width: 25%;" CssClass="form-control1">
+                                <asp:ListItem Text="" Value="">Seleccione una sub categoría</asp:ListItem>
+                                <asp:ListItem  Value="Entradas">Entradas</asp:ListItem>
+                                <asp:ListItem  Value="Plato de fondo">Plato de fondo</asp:ListItem>
+                                <asp:ListItem  Value="Sopas">Sopas</asp:ListItem>
+                                <asp:ListItem  Value="Postres">Postres</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:ImageButton style="margin-left: 233px;" ID="ImageButton1" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarSubCategoria_Click" Height="31px" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlSubCategoria" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
                     <div class="form-group" style="width: 1889px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Descripción</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtDescripcion" runat="server" Style="width: 25%;" placeholder="Descripcion" CssClass="form-control1" />
+                        </div>
+                    </div>
+                     <div class="form-group" style="width: 1889px;">
+                        <label for="selector1" class="col-sm-2 control-label">Estado</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox ID="txtEstadoReceta" runat="server" Style="width: 25%;" Enabled="true"
+                                CssClass="form-control1" />
+                        </div>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="ddlEstadoReceta" runat="server" Style="width: 25%;" CssClass="form-control1">
+                                <asp:ListItem Text="" Value="">Seleccione un estado</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:ImageButton style="margin-left: 233px;" ID="ImageButton2" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarEstadoReceta_Click" Height="31px" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEstadoReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>

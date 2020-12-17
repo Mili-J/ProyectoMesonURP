@@ -18,22 +18,36 @@ namespace DAO
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
             dto_eq = new DTO_Equivalencia();
         }
-        public bool DAO_Consultar_Equivalencia_x_Insumo(DTO_MedidaXFormatoCocina objMedidaFC, int idInsumo)
-        {
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand("SP_SELECT_EQUIVALENCIA_X_INSUMO", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@MedidaFCocina", objMedidaFC.M_idMedida));
-            cmd.Parameters.Add(new SqlParameter("@I_idInsumo", idInsumo));
-            SqlDataReader reader = cmd.ExecuteReader();
-            bool hayRegistros = reader.Read();
-            if (hayRegistros)
-            {
-                dto_eq.E_cantidad = (int)reader[0];
-            }
-            conexion.Close();
-            return hayRegistros;
 
+        public void AgregarEquivalencia(DTO_Equivalencia objEquivalencia)
+        {
+            //conexion.Open();
+            //SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
+            //unComando.CommandType = CommandType.StoredProcedure;
+            //unComando.Parameters.Add(new SqlParameter("@R_nombreReceta", objDTO.R_nombreReceta));
+            //unComando.Parameters.Add(new SqlParameter("@R_numeroPorcion", objDTO.R_numeroPorcion));
+            //unComando.Parameters.Add(new SqlParameter("@R_descripcion", objDTO.R_descripcion));
+            //unComando.Parameters.Add(new SqlParameter("@R_imagenReceta", objDTO.R_imagenReceta));
+            //unComando.Parameters.Add(new SqlParameter("@CR_idCategoriaReceta", objDTO.CR_idCategoriaReceta));
+
+            //unComando.ExecuteNonQuery();
+            //conexion.Close();
+        }
+        public DataTable ListarEquivalencias()
+        {
+            try
+            {
+                DataTable dtable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SP_Select_Equivalencias", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtable);
+                return dtable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         
     }

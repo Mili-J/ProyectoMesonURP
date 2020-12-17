@@ -19,13 +19,21 @@ namespace CTR
         {
             return dao_insumo.ListarInsumo();
         }
+        public DataTable ConsultarInsumo(string nombreInsumo)
+        {
+            return dao_insumo.ConsultarInsumo(nombreInsumo);
+        }
         public DataTable ListarInsumo2()
         {
             return dao_insumo.ListarInsumo2();
         }
-        public DataTable BuscarInsumo(string nombreInsumo)
+        public DataTable BuscarInsumo(int idInsumo)
         {
-            return dao_insumo.BuscarInsumo(nombreInsumo);
+            return dao_insumo.BuscarInsumo(idInsumo);
+        }
+        public DataTable BuscarInsumoF(string nombreInsumo)
+        {
+            return dao_insumo.BuscarInsumoF(nombreInsumo);
         }
         public DataTable CTR_CONSULTAR_EQUIVALENCIA_X_INSUMO(DTO_Insumo dto_insumo)
         {
@@ -44,5 +52,11 @@ namespace CTR
         {
             dao_insumo.DAO_Actualizar_Cantidad_Insumo(objInsumo);
         }
+
+        public void UPDATE_cantidadInsumoOC(decimal cantidad, int idInsumo)
+        {
+            dao_insumo.UPDATE_cantidadInsumo(cantidad, idInsumo);
+        }
+
     }
 }

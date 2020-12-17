@@ -27,6 +27,21 @@ namespace DAO
             conexion.Close();
             return dtCot;
         }
+        public string SelectProveedorxCotizacion(int C_idCotizacion)
+        {
+            string correoContacto = "";
+            SqlCommand unComando = new SqlCommand("SP_SELECT_PROVEEDOR_X_COTIZACION", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+            conexion.Open();
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                correoContacto = Convert.ToString(dReader["PR_correoContacto"]);
+            }
+            conexion.Close();
+            return correoContacto;
+        }
         public void DAO_Registrar_Cotizacion(DTO_Cotizacion cot)
         {
             conexion.Open();

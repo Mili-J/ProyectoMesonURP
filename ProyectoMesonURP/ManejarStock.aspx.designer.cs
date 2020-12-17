@@ -15,6 +15,24 @@ namespace ProyectoMesonURP
     {
 
         /// <summary>
+        /// Control PanelInsumos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PanelInsumos;
+
+        /// <summary>
+        /// Control ddlp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlp;
+
+        /// <summary>
         /// Control txtBuscarInsumo.
         /// </summary>
         /// <remarks>
@@ -24,15 +42,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtBuscarInsumo;
 
         /// <summary>
-        /// Control btnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnBuscar;
-
-        /// <summary>
         /// Control gvInsumos.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvInsumos;
+
+        /// <summary>
+        /// Control PanelInsumos2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PanelInsumos2;
 
         /// <summary>
         /// Control gvInsumos2.
@@ -67,14 +85,5 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSolicitar;
-
-        /// <summary>
-        /// Control TextBox1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
     }
 }

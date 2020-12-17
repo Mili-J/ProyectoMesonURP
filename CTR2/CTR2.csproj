@@ -55,6 +55,7 @@
     <Compile Include="CTR_EstadoOC.cs" />
     <Compile Include="CTR_EstadoPlato.cs" />
     <Compile Include="CTR_EstadoProveedor.cs" />
+    <Compile Include="CTR_EstadoReceta.cs" />
     <Compile Include="CTR_Formato.cs" />
     <Compile Include="CTR_Ingrediente.cs" />
     <Compile Include="CTR_IngredienteXReceta.cs" />

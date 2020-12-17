@@ -34,6 +34,7 @@ namespace ProyectoMesonURP
                     _Cu.getPerfil(dto, _Dtu);
                     Session["Usuario"] = dto;
                     Session["TipoPerfil"] = _Dtu.TU_nombreTipoUsuario;
+                    Session["idUsuario"] = dto.U_idUsuario;
                     Response.Redirect("Empty.aspx");
                 }
                 else
