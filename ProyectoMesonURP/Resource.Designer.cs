@@ -86,6 +86,38 @@ namespace ProyectoMesonURP {
         ///            padding-top: 36px;
         ///           [resto de la cadena truncado]&quot;;.
         /// </summary>
+        public static string MensajeCotizacion {
+            get {
+                return ResourceManager.GetString("MensajeCotizacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
+        ///    &lt;title&gt;&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            margin: 0px;
+        ///        }
+        ///
+        ///        .maintable {
+        ///            margin: 20px;
+        ///            padding: 5px;
+        ///            width: 750px;
+        ///            border: 4px solid white;
+        ///        }
+        ///
+        ///        .header {
+        ///            background-repeat: no-repeat;
+        ///            background-color: #214E3F;
+        ///            display: flex;
+        ///            align-items: center;
+        ///            padding-top: 36px;
+        ///           [resto de la cadena truncado]&quot;;.
+        /// </summary>
         public static string MensajeOC {
             get {
                 return ResourceManager.GetString("MensajeOC", resourceCulture);

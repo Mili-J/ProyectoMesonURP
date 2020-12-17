@@ -20,9 +20,9 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_RegistrarDetalleCotizacion", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@DC_cantidadCotizacion",detCot.DC_cantidadCotizacion);
-            comando.Parameters.AddWithValue("@C_idCotizacion",detCot.C_idCotizacion);
-            comando.Parameters.AddWithValue("@I_idInsumo",detCot.I_idInsumo);
+            comando.Parameters.AddWithValue("@DC_cantidadCotizacion", detCot.DC_cantidadCotizacion);
+            comando.Parameters.AddWithValue("@C_idCotizacion", detCot.C_idCotizacion);
+            comando.Parameters.AddWithValue("@I_idInsumo", detCot.I_idInsumo);
 
             comando.ExecuteNonQuery();
             conexion.Close();
@@ -30,7 +30,7 @@ namespace DAO
         public DataTable DAO_ConsultarDetallesCotizacionXCotizacion(int id)
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarDetallesCotizacion",conexion);
+            SqlCommand comando = new SqlCommand("SP_ConsultarDetallesCotizacion", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@C_idCotizacion", id);
             comando.ExecuteNonQuery();
@@ -39,15 +39,6 @@ namespace DAO
             da.Fill(dtDetCot);
             conexion.Close();
             return dtDetCot;
-        }
-    public class DAO_DetalleCotizacion
-    {
-        SqlConnection conexion;
-        
-        public DAO_DetalleCotizacion()
-        {
-            conexion = new SqlConnection(ConexionDB.CadenaConexion);
-            
         }
         public int SelectIdDetalleCotizacion(int C_idCotizacion)
         {

@@ -8,6 +8,7 @@ using System.Data;
 using CTR;
 using DTO;
 
+
 namespace ProyectoMesonURP
 {
     public partial class GestionarCotizacion : System.Web.UI.Page
@@ -36,21 +37,22 @@ namespace ProyectoMesonURP
             {
                 DTO_Cotizacion cot = ctr_cotizacion.CTR_ConsultarCotizacion(idCot);
                 DataTable dt = new CTR_DetalleCotizacion().CTR_ConsultarDetallesCotizacionXCotizacion(idCot);
-                string htmlbody="";
-                htmlbody = htmlbody.Replace("#IDOC#", cot.C_idCotizacion.ToString());
-                htmlbody = htmlbody.Replace("#TIPOCOMPROBANTE#", cot.C_documento);
-                htmlbody = htmlbody.Replace("#NUMEROCOMPROBANTE#", cot.C_numeroCotizacion);
-                //htmlbody = htmlbody.Replace("#FORMADEPAGO#", formaPago);
-                htmlbody = htmlbody.Replace("#TIEMPO PLAZO#", cot.C_tiempoPlazo);
-                htmlbody = htmlbody.Replace("#FECHAEMISION#", cot.C_fechaEmision.ToString());
+                string htmlbody=Resource.MensajeCotizacion;
+                htmlbody = htmlbody.Replace("#IDOC#", cot.C_numeroCotizacion);
+                htmlbody = htmlbody.Replace("#PROVEEDOR#", cot.PR_idProveedor.ToString());
+                htmlbody = htmlbody.Replace("#FECHAEMISION#", cot.C_fechaEmision.ToShortDateString());
+                htmlbody = htmlbody.Replace("#TIEMPOPLAZO#", cot.C_tiempoPlazo);
+                htmlbody = htmlbody.Replace("#DOCUMENTO#", cot.C_documento);
+                string dta = "";
+                foreach (DataRow item in dt.Rows)
+                {
+                    dta += $"<tr><td>{item.ItemArray[4].ToString()}</td><td>{item.ItemArray[1].ToString()}</td></tr>";
+                }
 
-                string msj = "Solicitud de cotización<br />";
-                msj += $"Número de cotización: {cot.C_numeroCotizacion}<br />";
-                msj += $"Número de cotización: {cot.C_tiempoPlazo}<br />";
-                msj += $"Número de cotización: {cot.C_fechaEmision.ToShortDateString()}<br />";
-                msj += $"Número de cotización: {cot.C_documento}<br />";
-               
-                ctr_cotizacion.EnviarCorreo(cot, msj);
+                htmlbody = htmlbody.Replace("#GRID#", dta);
+                //htmlbody = htmlbody.Replace("#NUMEROCOMPROBANTE#", cot.C_numeroCotizacion);
+
+                ctr_cotizacion.EnviarCorreo(cot, htmlbody);
                 
                 ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaCorreo('');", true);
 

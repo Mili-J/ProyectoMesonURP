@@ -10,20 +10,20 @@ namespace DAO
     public class DAO_CategoriaInsumo
     {
         SqlConnection conexion;
-        
+
 
         public DAO_CategoriaInsumo()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
-            
-            
+
+
         }
 
         public DataSet DAO_SelectCategoriaI()
         {
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_Listar_Categoria", conexion);
-            comando.CommandType = CommandType.StoredProcedure;           
+            comando.CommandType = CommandType.StoredProcedure;
             comando.ExecuteNonQuery();
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -36,7 +36,7 @@ namespace DAO
             conexion.Open();
             SqlCommand cmd = new SqlCommand("SP_Listar_Insumo_x_Categoria", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter ("@idCategoria", objCategoriaI.CI_idCategoriaInsumo));
+            cmd.Parameters.Add(new SqlParameter("@idCategoria", objCategoriaI.CI_idCategoriaInsumo));
             cmd.ExecuteNonQuery();
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -45,13 +45,6 @@ namespace DAO
             return ds;
         }
 
-    public class DAO_CategoriaInsumo
-    {
-        SqlConnection conexion;
-        public DAO_CategoriaInsumo()
-        {
-            conexion = new SqlConnection(ConexionDB.CadenaConexion);
-        }
         public DataTable DAO_ConsultarCategoriasInsumo()
         {
             conexion.Open();

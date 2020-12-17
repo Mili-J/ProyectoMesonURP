@@ -299,6 +299,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
+    <Content Include="MensajeCotizacion.html" />
     <Content Include="MensajeOC.html" />
     <Content Include="MenuDelDia.aspx" />
     <Content Include="Recepción_Insumos.aspx" />

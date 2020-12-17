@@ -19,7 +19,7 @@
                         <div class="form-title color-white">
                             <h4>Solicitudes de cotización</h4>
                         </div>
-
+                       
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <asp:GridView ID="GridViewCotizacion" runat="server" EmptyDataText="No hay información disponible."
                                 DataKeyNames="C_idCotizacion" AutoGenerateColumns="False" OnRowDataBound="GridViewCotizacion_RowDataBound"
@@ -75,6 +75,7 @@
                                 </Columns>
                             </asp:GridView>
                         </div>
+                            
                         <%--</ContentTemplate>
                         </asp:UpdatePanel>--%>
                     </div>
