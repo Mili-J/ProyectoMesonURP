@@ -14,6 +14,8 @@ namespace DTO2
         public int I_idInsumo { get; set; }
         public String I_nombreInsumo { get; set; }
         public double DC_cantidadCotizacion { get; set; }
+        public String Estado { get; set; }
+        public String Datos { get; set; }
         public DateTime OC_fechaEmision { get; set; }
         public DateTime OC_fechaEntrega { get; set; }
     }

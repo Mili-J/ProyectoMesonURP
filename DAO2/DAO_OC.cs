@@ -157,9 +157,9 @@ namespace DAO
             return numeroOC;
 
         }
-        public List<DTO_OC_SP> ListarOC_3(int idOC)
+       public List<DTO_OC_SP> ListarOC_3(int idOC)
         {
-
+            
             List<DTO_OC_SP> lista = new List<DTO_OC_SP>();
             try
             {
@@ -170,7 +170,7 @@ namespace DAO
                 cmd.Fill(ds);
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-
+                    
                     lista.Add(new DTO_OC_SP
                     {
                         OC_idOC = Convert.ToInt32(dr["OC_idOC"]),
@@ -178,7 +178,9 @@ namespace DAO
                         OC_numeroOC = Convert.ToInt32(dr["OC_numeroOC"]),
                         I_idInsumo = Convert.ToInt32(dr["I_idInsumo"]),
                         I_nombreInsumo = Convert.ToString(dr["I_nombreInsumo"]),
-                        DC_cantidadCotizacion = Convert.ToDouble(dr["DC_cantidadCotizacion"])
+                        DC_cantidadCotizacion = Convert.ToDouble(dr["DC_cantidadCotizacion"]),
+                        Estado = Convert.ToString(dr["Estado"]),
+                        Datos = Convert.ToString(dr["Datos"])
                     });
 
                 }

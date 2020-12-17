@@ -150,33 +150,75 @@
             dataType: "json",                                          // formato de transmición de datos
             async: true,                                               // si es asincrónico o no
             success: function (resultado) {                            // función que va a ejecutar si el pedido fue exitoso
-
+                //alert(JSON.stringify({ resultado }));
 
                 doc.autoTable({ html: '#my-table' })
-                doc.autoTable({
-                    head: [['I_idInsumo', 'DC_cantidadCotizacion', 'I_nombreInsumo']],
-                })
+                var columns = ["Cantidad", "Nombre Insumo", "Estado", "Datos"];
+
+                /*  doc.autoTable({
+                      head: [['Cantidad', 'Nombre Insumo', 'Estado', 'Datos']],
+                     
+                      styles: {
+                          cellPadding: 0.5,
+                          halign: 'center'
+                      },
+                      margin: {
+                          top: 100
+                      }		
+                  })*/
+
+                doc.setFont('helvetica')
+                doc.setFontType('bold')
+
+                var w = "Orden de compra del proveedor: " + row.cells[2].innerHTML;
+                doc.text(w, 45, 15);
+                var rows = [];
                 for (var p in resultado) {
 
 
                     for (var s in resultado[p]) {
                         var a = '';
-
                         var q = '';
                         var d = '';
-                        a = resultado[p][s].I_idInsumo;
-                        q = resultado[p][s].DC_cantidadCotizacion;
-                        d = resultado[p][s].I_nombreInsumo;
-                        doc.autoTable({
-                            body: [[a, q, d]]
-                        })
+                        var t = '';
+                        var o = '';
+                        // a = resultado[p][s].I_idInsumo;
+                        q = "      " + resultado[p][s].DC_cantidadCotizacion + "      ";
+                        d = "      " + resultado[p][s].I_nombreInsumo + "      ";
+                        t = "      " + resultado[p][s].Estado + "      ";
+                        o = "      " + resultado[p][s].Datos + "      ";
+
+                        var singleRow = [resultado[p][s].DC_cantidadCotizacion, resultado[p][s].I_nombreInsumo, resultado[p][s].Estado, resultado[p][s].Datos];
+                        rows.push(singleRow);
+                        /*doc.autoTable({
+                            body: [[a,q,d,t,o],],
+                           styles: {
+                               halign: 'center'
+                           },
+                           margin: {
+                               top: 100
+                           }		
+                       })*/
                     }
 
                 }
+                doc.autoTable(columns, rows, {
+                    fontStyle: 'bold',
+                    theme: 'grid',
+                    styles: {
+                        halign: 'center',
+
+                    },
+                    Color: [255, 255, 255],
+                    margin: {
+                        top: 100
+                    }
+
+                });
+
                 doc.autoTable({
                     foot: [['Proveedor:', row.cells[2].innerHTML], ['Fecha de Emision:', row.cells[3].innerHTML], ['Fecha de Entrega:', row.cells[4].innerHTML]],
                 })
-
 
 
                 doc.save('document.pdf');
@@ -189,6 +231,6 @@
         });
 
         return false;
-    }  
+    } 
 </script>
 </asp:Content>
