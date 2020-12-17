@@ -18,7 +18,6 @@ namespace ProyectoMesonURP
         CTR_Movimiento _MO = new CTR_Movimiento();
         CTR_DetalleOC _DO = new CTR_DetalleOC();
         CTR_Insumo _I = new CTR_Insumo();
-        DTO_OC dto_oc;
         DTO_Movimiento dto_mov;
         DTO_Usuario dto_us;
         int oc;
@@ -32,7 +31,6 @@ namespace ProyectoMesonURP
             //}
             if (!Page.IsPostBack)
             {
-                dto_oc = new DTO_OC();
                 oc = (int)Session["OCSeleccionada"];
                 dt = new DataTable();
                 CargarInsumosOC(oc);
@@ -125,7 +123,7 @@ namespace ProyectoMesonURP
                     decimal cantidadE = decimal.Parse(txtCantidad.Text, CultureInfo.InvariantCulture);
                     decimal cantidadInsumo= cantidadE * decimal.Parse(num1[2], CultureInfo.InvariantCulture);
                     string cantidadIng = cantidadInsumo + " " + num1[3];
-                    int idDCO = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["DC_idDetalleCotizacion"]);
+                    int idDCO = Convert.ToInt32(gvInsumos.DataKeys[gvInsumos.SelectedIndex].Values["DOC_idDetalleOC"]);
 
                     DataRow row = dt.NewRow();
                     if (dt.Columns.Count == 0)
@@ -137,7 +135,7 @@ namespace ProyectoMesonURP
                         dt.Columns.Add("Cantidad");
                         dt.Columns.Add("M_cantidad");
                         dt.Columns.Add("DO_cantidadE");
-                        dt.Columns.Add("DC_idDetalleCotizacion");
+                        dt.Columns.Add("DOC_idDetalleOC");
                     }
 
 
@@ -177,7 +175,7 @@ namespace ProyectoMesonURP
             {
                 decimal cantidade = Convert.ToDecimal(gvIngresos.DataKeys[grvRow.RowIndex].Values["DO_cantidadE"]);
                 string fecha = (gvIngresos.DataKeys[grvRow.RowIndex].Values["M_fechaMovimiento"].ToString()) + " " + (gvIngresos.DataKeys[grvRow.RowIndex].Values["Hora"].ToString());
-                int idDOC = Convert.ToInt32(gvIngresos.DataKeys[grvRow.RowIndex].Values["DC_idDetalleCotizacion"]);
+                int idDOC = Convert.ToInt32(gvIngresos.DataKeys[grvRow.RowIndex].Values["DOC_idDetalleOC"]);
 
                 dto_mov = new DTO_Movimiento();
                 dto_mov.U_idUsuario = dto_us.U_idUsuario;

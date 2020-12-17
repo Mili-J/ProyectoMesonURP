@@ -83,11 +83,11 @@
                                             <h4>Insumos</h4>
                                         </div>
                                             <asp:GridView ID="gvInsumos1"  allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
-                                                CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,DC_idDetalleCotizacion,I_idInsumo,I_nombreInsumo,DC_cantidadCotizacion,Estado"   
+                                                CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,DOC_idDetalleOC,I_idInsumo,I_nombreInsumo,DC_cantidadCotizacion,Estado"   
                                                 Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" AllowSorting="False" EnablePersistedSelection="True">
                                                 <Columns>
                                                     <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
-                                                    <asp:BoundField DataField="DC_idDetalleCotizacion" HeaderText="ID_DetalleCotizacion" Visible="False" />
+                                                    <asp:BoundField DataField="DOC_idDetalleOC" HeaderText="ID_DOC" Visible="False" />
                                                     <asp:BoundField DataField="I_idInsumo" HeaderText="N° Insumo" />
                                                     <asp:BoundField DataField="I_nombreInsumo" HeaderText="Nombre" />
                                                     <asp:BoundField DataField="DC_cantidadCotizacion" HeaderText="Cantidad" />
