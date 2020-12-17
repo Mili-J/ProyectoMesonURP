@@ -47,8 +47,6 @@
                 <h5>Equivalencia de los Insumos</h5>
             </div>
        <div class="w3-row-padding">
-         <asp:UpdatePanel ID="panel1" runat="server">
-                <ContentTemplate>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                             <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="E_idEquivalencia,E_cantidad,I_nombreInsumo,M_nombreMedida,FCO_nombreFormatoCocina" emptydatatext="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" >
                                 <Columns>
@@ -87,11 +85,8 @@
                         </div>
                     </div>
                 </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-       </div>
-        </div>
+                
      </div>
-   </div>
+     </div>
  </div>
 </asp:Content>

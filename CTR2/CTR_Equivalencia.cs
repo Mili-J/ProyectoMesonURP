@@ -23,5 +23,9 @@ namespace CTR
         {
             objEquivalencia.AgregarEquivalencia(DTOEquival);
         }
+        public void ActualizarEquivalencia(DTO_Equivalencia DTOEquivalencia)
+        {
+            objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
+        }
     }
 }

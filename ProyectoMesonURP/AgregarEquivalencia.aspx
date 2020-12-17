@@ -32,16 +32,14 @@
                 </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                     <ContentTemplate>
+               
                <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
                     <div class="col-sm-12 col-md-4">                          
                         <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true"  ></asp:DropDownList>                              
                     </div>
                 </div>
-                     </ContentTemplate>
-                </asp:UpdatePanel>
+                   
                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                      <ContentTemplate>
                 <div class="form-group row justify-content-center h-100">
@@ -86,4 +84,5 @@
             
         </div>
      </div>
+         </div>
 </asp:Content>

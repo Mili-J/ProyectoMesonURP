@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 using DAO;
 using DTO;
@@ -17,9 +18,9 @@ namespace CTR
             dao_MFCocina = new DAO_MedidaXFormatoCocina();
         }
 
-        public int CTR_Consultar_Medida_x_FCocina(DTO_MedidaXFormatoCocina objMFCocina)
+        public DataTable ListarIDMedidaXFCocina()
         {
-            return dao_MFCocina.DAO_Consultar_Medida_x_FCocina(objMFCocina);      
+            return dao_MFCocina.ListarMedidaXFCocina();      
         }
     }
 }
