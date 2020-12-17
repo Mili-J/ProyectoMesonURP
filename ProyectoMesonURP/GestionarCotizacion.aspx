@@ -101,6 +101,57 @@
 
         <div class="clearfix"></div>
 
-      </div>
-   </div>
+        </div>
+
+    </div>
+        <script>
+        function alertaAceptado() {
+            Swal.fire({
+                title: 'Aceptado',
+                text: 'La solicitdad de cotización ha sido aceptada satisfactoriamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaRechazado() {
+            Swal.fire({
+                title: 'Rechazado',
+                text: 'La solicitdad de cotización ha sido rechazada satisfactoriamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaRecibido() {
+            Swal.fire({
+                title: 'Recibid',
+                text: 'La solicitdad de cotización ha sido recibida',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaEliminar() {
+            Swal.fire({
+                title: 'Eliminado',
+                text: 'La Orden de Compra ha sido eliminada',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaCorreo() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha enviado el correo satisfactoriamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+            }
+            function alertaCorreoNo() {
+                Swal.fire({
+                    title: 'Oh, no!',
+                    text: 'No se ha podido enviar el correo',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                })
+            }
+        </script>
 </asp:Content>

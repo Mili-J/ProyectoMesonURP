@@ -28,11 +28,14 @@ namespace ProyectoMesonURP
         DTO_Persona dto_persona;
         //--------------------
         CTR_DetalleCotizacion ctr_detCot;
+        CTR_Menu ctr_menu;
+        int idCot;
+        CTR_CotizacionXMenu ctr_cotMen;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                int idCot = (int)Session["idCot"];
+                 idCot = (int)Session["idCot"];
                 ctr_cot = new CTR_Cotizacion();
                 dto_cot=ctr_cot.CTR_ConsultarCotizacion(idCot);
                 //--------
@@ -58,11 +61,32 @@ namespace ProyectoMesonURP
                 ctr_detCot = new CTR_DetalleCotizacion();
                 GVDetalleCot.DataSource = ctr_detCot.CTR_ConsultarDetallesCotizacionXCotizacion(idCot);
                 GVDetalleCot.DataBind();
-
+                ctr_cotMen = new CTR_CotizacionXMenu();
+                ctr_menu = new CTR_Menu();
 
             }
 
 
+        }
+
+        protected void btnCal_Click(object sender, EventArgs e)
+        {
+            CldFecha.Visible = !CldFecha.Visible;
+        }
+
+        protected void CldFecha_DayRender(object sender, DayRenderEventArgs e)
+        {
+            DataTable dtCotMen = ctr_cotMen.CTR_ConsultarCotizacionXMenuXCotizacion(idCot);
+            int i = 0;
+            while (i < dtCotMen.Rows.Count)
+            {
+                DTO_Menu menu = ctr_menu.CTR_ConsultarMenuXID(Convert.ToInt32(dtCotMen.Rows[i].ItemArray[2]));
+                //CldFecha.SelectedDate = Convert.ToDateTime(menu.ME_fechaMenu);
+                CldFecha.SelectedDates.Add(Convert.ToDateTime(menu.ME_fechaMenu));
+                i++;
+
+            }
+            e.Day.IsSelectable = false;
         }
     }
 }

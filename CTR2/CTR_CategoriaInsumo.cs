@@ -9,20 +9,21 @@ namespace CTR
 {
     public class CTR_CategoriaInsumo
     {
-        DAO_CategoriaInsumo objCategoriaI;
-
+        DAO_CategoriaInsumo dao_catIns;
         public CTR_CategoriaInsumo()
         {
-            objCategoriaI = new DAO_CategoriaInsumo();
+            dao_catIns = new DAO_CategoriaInsumo();
         }
-        public DataSet CTR_SelectCategoriaI()
+        public DataTable DAO_ConsultarCategoriasInsumo()
         {
-            return objCategoriaI.DAO_SelectCategoriaI();
+            return dao_catIns.DAO_ConsultarCategoriasInsumo();
         }
 
+
+       
         public DataSet CTR_SelectInsumoXCategoria(DTO_CategoriaInsumo objCategoriaIn)
         {
-            return objCategoriaI.DAO_SelectInsumoXCategoria(objCategoriaIn);
+            return dao_catIns.DAO_SelectInsumoXCategoria(objCategoriaIn);
         }
 
         public DataTable DAO_ConsultarCategoriasInsumo()

@@ -71,11 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="ActualizarCotizacion.aspx" />
     <Content Include="AgregarIngrediente.aspx" />
     <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarEquivalencia.aspx" />
     <Content Include="ActualizarReceta.aspx" />
+    <Content Include="ConsultarCotizacion.aspx" />
     <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="ConsultarEquivalencia.aspx" />
     <Content Include="ActualizarIngrediente.aspx" />
@@ -299,6 +301,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ManejarStock.aspx" />
     <Content Include="Manejar_Stock_Prueba.aspx" />
+    <Content Include="MensajeCotizacion.html" />
     <Content Include="MensajeOC.html" />
     <Content Include="MenuDelDia.aspx" />
     <Content Include="Recepción_Insumos.aspx" />
@@ -1990,6 +1993,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarCotizacion.aspx.cs">
+      <DependentUpon>ActualizarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarCotizacion.aspx.designer.cs">
+      <DependentUpon>ActualizarCotizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarEquivalencia.aspx.cs">
       <DependentUpon>ActualizarEquivalencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2024,6 +2034,13 @@
     </Compile>
     <Compile Include="CalendariaMenu.aspx.designer.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarCotizacion.aspx.cs">
+      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarCotizacion.aspx.designer.cs">
+      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgregarEquivalencia.aspx.cs">
       <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>

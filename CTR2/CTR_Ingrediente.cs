@@ -36,6 +36,10 @@ namespace CTR
         {
             return objDAO.SelectIdIngredientexNombre(I_nombreIngrediente);
         }
+        public DTO_Ingrediente CTR_Consultar_IngredienteXID(int i)
+        {
+            return objDAO.DAO_Consultar_IngredienteXID(i);
+        }
 
         public DataTable ListarIngredientes()
         {
@@ -56,6 +60,10 @@ namespace CTR
         public DataTable Validar_IngredientesXReceta()
         {
             return objDAO.Validar_IngredientesXReceta();
+        }
+        public DataSet CargarMedidaxIdIngrediente(int I_idIngrediente)
+        {
+            return objDAO.SelectMedidaxIdIngrediente(I_idIngrediente);
         }
     }
 }

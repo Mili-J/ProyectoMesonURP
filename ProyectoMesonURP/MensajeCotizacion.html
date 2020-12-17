@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .maintable {
+            margin: 20px;
+            padding: 5px;
+            width: 750px;
+            border: 4px solid white;
+        }
+
+        .header {
+            background-repeat: no-repeat;
+            background-color: #214E3F;
+            display: flex;
+            align-items: center;
+            padding-top: 36px;
+            margin-top: 10px;
+            padding-bottom: 36px;
+            justify-content: center;
+        }
+
+        .footer {
+            background-repeat: no-repeat;
+        }
+
+        .company {
+            font-size: 29px;
+            color: white;
+            font-family: 'Century Gothic';
+        }
+
+        .moto {
+            position: relative;
+            font-size: 20px;
+            color: #000000;
+            font-family: 'Century Gothic';
+            left: 100px;
+            width: 150px;
+        }
+
+        .title {
+            color: #000000;
+            font-family: 'Century Gothic';
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .text {
+            color: #000000;
+            font-family: 'Century Gothic';
+            font-size: 20px;
+        }
+
+        .textMin {
+            color: #000000;
+            font-family: 'Century Gothic';
+            font-size: 13px;
+        }
+
+        .padding {
+            padding-left: 20px;
+        }
+
+        .content {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <table class="maintable" cellspacing="0" cellpadding="0">
+            <tr style="display: flex;flex-direction: column;
+">
+                <td>
+                    <br /><br />
+                    <img id="img" src="https://1.bp.blogspot.com/-YADTwb96LIk/Xw_w4o1MxuI/AAAAAAAAdFk/o7WcaE1nv4Q1RXvjUZDeZLLk2UVgCEsQgCLcBGAsYHQ/s1600/MesonURP_logofinal2.png" style="margin-top: -30px;width:50%" />
+                </td>
+
+            </tr>
+            <tr class="header" colspan="2">
+                <td>
+                    <div class="company">¡Ha recibido una solicitud de Cotización N° "<strong>#IDOC#</strong>"!</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="content" colspan="3">
+                    <br><br>
+                    <font class="title">Estimado(a) Sr(a).  <strong>#PROVEEDOR#</strong> </font> 
+                    <br><br>
+                    <div style="text-align: justify;">
+                        <font class="text">
+                            Le saluda el Administrador del Meson del estudiante de la Universidad Ricardo Palma,
+                            para informarles que se le ha enviado la cotización N° "<strong>#IDOC#</strong>"
+                            <br />
+                            Fecha de Emisión: <strong>#FECHAEMISION#</strong>
+                            <br>
+                            <br />
+                            <font class="title">Le adjuntamos información extra de ser necesario.</font>
+                            <br><br />
+                            Fecha de emisión: <strong>#FECHAEMISION#</strong>
+                            <br />
+                            Tiempo Plazo: <strong>#TIEMPOPLAZO#</strong>
+                            <br />
+                            Documento: <strong>#DOCUMENTO#</strong>
+                            <br />
+                            Detalle de la cotización:
+                            <br>
+                            <strong><!--Ahhhh--></strong>
+                            <table style="width:100%;" border="1">
+                                <tr>
+                                    <th>Insumo</th>
+                                    <th>Cantidad</th>
+                                    <th>Formato</th>
+                                </tr>
+                                #GRID#
+                            </table>
+                            <br>
+                            <br>
+                            Para más detalles, comuníquese con el administrador.
+                            <br><br>
+                            Muchas gracias.
+                            <br />
+                            <br>
+                        </font>
+                        <font class="textMin">*Este mensaje es automático, por favor no responder a este correo.</font>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

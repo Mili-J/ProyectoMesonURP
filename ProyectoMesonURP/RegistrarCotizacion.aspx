@@ -106,7 +106,7 @@
 
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                 <asp:GridView ID="GVVerdura"  runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" 
-                                   DataKeyNames="I_idInsumo,I_idIngrediente" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
+                                   DataKeyNames="I_idInsumo" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
                                     <Columns>
 
                                         <asp:TemplateField Visible="false">
@@ -114,11 +114,16 @@
                                                 <asp:Label ID="I_idInsumo" runat="server" Text="Label"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                        
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
-                                        <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
-                                        <asp:BoundField HeaderText="Cantidad Mínima" DataField="I_cantidadMinima" />
-                                        <asp:BoundField HeaderText="Peso total" Datafield="I_pesoTotal"/>
-                                        <asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>
+
+<%--                                        <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
+                                        <asp:BoundField HeaderText="Número de porciones Menú" DataField="numPorcion" />
+                                        <asp:BoundField HeaderText="E_cantidad" DataField="E_cantidad" />
+                                        <asp:BoundField HeaderText="MXF_cantidadContenida" DataField="MXF_cantidadContenida" />--%>
+
+                                        <asp:BoundField HeaderText="Cantidad" Datafield="numTotal"/>
+                                        <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>
@@ -136,6 +141,7 @@
                             </div>
 
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
                                 <asp:GridView ID="GVCot"  runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" 
                                     CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
                                     <Columns>
@@ -143,9 +149,8 @@
                                         <asp:BoundField HeaderText="N° de Cotizacion" DataField="C_numeroCotizacion"  />
                                         <asp:BoundField HeaderText="Tiempo plazo" Datafield="C_tiempoPlazo"/>
                                         <asp:BoundField HeaderText="Documento" Datafield="C_documento"/>
-                                        <asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />
+                                        <%--<asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />--%>
                                         <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
-                                        
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>
@@ -167,4 +172,89 @@
                 </div>
             </div>
         </div>
+
+
+               
+               
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Detalle de la Cotización</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+           <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+            <asp:GridView ID="GVDetCot"  runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" 
+               DataKeyNames="I_idInsumo,I_idIngrediente" CssClass="table table-bordered table-striped mb-0" Style="text-align: center" GridLines="None">
+                <Columns>
+
+                    <asp:TemplateField Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="I_idInsumo" runat="server" Text="Label"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
+                    <asp:BoundField HeaderText="Cantidad" Datafield="IR_cantidad"/>                        
+                    <asp:BoundField HeaderText="Cantidad Mínima" DataField="I_cantidadMinima" />
+                    <asp:BoundField HeaderText="Peso total" Datafield="I_pesoTotal"/>
+                    <asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>
+                </Columns>   
+                
+                <SelectedRowStyle BackColor="LightGreen"/>
+
+            </asp:GridView>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <script>
+        function lettersOnly(evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+            if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+                (charCode < 97 || charCode > 122)) {
+                alert("Por favor, ingrese solo letras.");
+                return false;
+            }
+            return true;
+        }
+
+
+        function alertaRechazado() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'Ya ha seleccionado una receta',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+
+
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado registrar la cotización correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "GestionarCotizacion.aspx";
+                }
+            })
+        }
+
+
+    </script>     
 </asp:Content>

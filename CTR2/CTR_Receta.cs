@@ -68,10 +68,10 @@ namespace CTR
         //{
         //    return objDAO.prueba(i);
         //}
-        //public void pruebaa(byte[]a,int i)
-        //{
-        //    objDAO.actualizarfoto(a,i);
-        //}
+        public void pruebaa(byte[] a, int i)
+        {
+            objDAO.actualizarfoto(a, i);
+        }
         public int IdReceta()
         {
             return objDAO.SelectIdReceta();

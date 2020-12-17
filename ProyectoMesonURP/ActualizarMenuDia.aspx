@@ -458,32 +458,36 @@
                 confirmButtonText: 'Aceptar'
             })
         }
-
-        function alertaRechazado() {
+        function alertaPorcion() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'Ya ha seleccionado una receta',
+                text: 'Las porciones no coinciden',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
         }
-
-        function alertaRecibido() {
+        function alertaBebidayEntrada() {
             Swal.fire({
-                title: 'Recibido',
-                text: 'Los insumos ya se encuentran en stock',
-                icon: 'success',
+                title: 'Oh, no!',
+                text: 'La suma de las bebidas no coincide con la suma de las entradas',
+                icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
         }
-
-        function alertaEliminar() {
+        function alertaExito() {
             Swal.fire({
-                title: 'Eliminado',
-                text: 'La Orden de Compra ha sido eliminada',
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado actualizar el menú correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "CalendariaMenu.aspx";
+                }
             })
         }
+
+
+
     </script>
 </asp:Content>

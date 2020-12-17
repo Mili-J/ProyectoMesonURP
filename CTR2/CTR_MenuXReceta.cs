@@ -40,5 +40,9 @@ namespace CTR
         {
             return dao_menuxreceta.DAO_ConsultarRecetasXMenuYCategoria(M_id, Cat_id);
         }
+        public void CTR_EliminarMenusXReceta(int id)
+        {
+            dao_menuxreceta.DAO_EliminarMenusXReceta(id);
+        }
     }
 }

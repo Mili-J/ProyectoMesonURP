@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAO;
 using DTO;
+using System.Data;
 
 namespace CTR
 {
@@ -18,6 +19,10 @@ namespace CTR
         public void CTR_RegistrarCotizacionXMenu(DTO_CotizacionXMenu cotXmen)
         {
             dao_cotizacionxmenu.DAO_RegistrarCotizacionXMenu(cotXmen);
+        }
+        public DataTable CTR_ConsultarCotizacionXMenuXCotizacion(int id)
+        {
+            return dao_cotizacionxmenu.DAO_ConsultarCotizacionXMenuXCotizacion(id);
         }
     }
 }

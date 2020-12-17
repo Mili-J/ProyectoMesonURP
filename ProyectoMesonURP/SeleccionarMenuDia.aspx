@@ -1,12 +1,6 @@
 ﻿<%@ Page Title="Mesón URP | Seleccionar Menú" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SeleccionarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.SeleccionarMenuDia" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .form-control {
-            text-align:center;
-        }
-    </style>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -464,7 +458,7 @@
         function alertaRechazado() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'Ya ha seleccionado una receta',
+                text: 'Las porciones no coinciden',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
