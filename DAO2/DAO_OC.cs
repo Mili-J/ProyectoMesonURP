@@ -5,10 +5,8 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-
-using System.Data.SqlClient;
-using DTO;
 using System.Data;
+using DTO2;
 
 namespace DAO
 {
@@ -158,6 +156,38 @@ namespace DAO
             conexion.Close();
             return numeroOC;
 
+        }
+        public List<DTO_OC_SP> ListarOC_3(int idOC)
+        {
+
+            List<DTO_OC_SP> lista = new List<DTO_OC_SP>();
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Listar_OC_2_GO", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@OC_idOC", idOC);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+
+                    lista.Add(new DTO_OC_SP
+                    {
+                        OC_idOC = Convert.ToInt32(dr["OC_idOC"]),
+                        DC_idDetalleCotizacion = Convert.ToInt32(dr["DC_idDetalleCotizacion"]),
+                        OC_numeroOC = Convert.ToInt32(dr["OC_numeroOC"]),
+                        I_idInsumo = Convert.ToInt32(dr["I_idInsumo"]),
+                        I_nombreInsumo = Convert.ToString(dr["I_nombreInsumo"]),
+                        DC_cantidadCotizacion = Convert.ToDouble(dr["DC_cantidadCotizacion"])
+                    });
+
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

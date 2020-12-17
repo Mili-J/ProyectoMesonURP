@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Gestionar Orden de Compra" Language="C#" AutoEventWireup="true" CodeBehind="GestionarOC.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarOC" EnableEventValidation="false"%>
+﻿<%@ Page Title="Mesón URP | Gestionar Orden de Compra" Language="C#" AutoEventWireup="true" CodeBehind="GestionarOC.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarOC" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
@@ -6,85 +6,78 @@
         }
     </style>
     <style type="text/css">
-      .hiddencol
-      {
-        display: none;
-      }
-    </style>
-    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+  .hiddencol
+  {
+    display: none;
+  }
+  table,td,tr {
+	border: 1px solid black;
+}
+</style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
-    <!-- start content -->
-     <div class="page-header">
-		<div class="row">
-			<div class="col-md-6 col-sm-12">
-				<div class="title">
-					<h4>Gestionar Orden de Compra</h4>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div class="pd-20 card-box">
-        <div class="row pt-1">    
-            <div class="col-sm-12 col-md-6">            
-                <label class="control-label col-md-2">Paginación:</label>
-                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
-                    </asp:DropDownList>
+        <!-- start content -->
+        <div class="grids">
+            <div class="progressbar-heading grids-heading title-flex">
+                <h2 class="tittle-margin5">Gestionar Orden de Compra</h2>
             </div>
-            <div class="col-sm-12 col-md-3 pl-30"></div>
-            <div class="col-sm-12 col-md-3 pl-30">
-                <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
-                    <asp:TextBox ID="txtBuscarOC" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fidOC_TextChanged" placeholder="Buscar OC..."/>
-				<i class="search_icon dw dw-search"></i>
-				</div>
+            <div class="search-buttons">
+                <div class="search">
+                    <asp:TextBox ID="txtBuscarOC" runat="server" CssClass="form-control1" onkeypress="return lettersOnly(event);" placeholder="Buscar Insumo ..." />
+                  <%--  <button type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
+                        <span class="material-icons">search
+                        </span>
+                    </button>--%>
+                </div>
             </div>
-        </div>
-        <div class="panel panel-widget forms-panel">
-        <div class="form-grids widget-shadow" data-example-id="basic-forms">
-            <div class="form-title color-white">
-                <h5>Ordenes de Compra</h5>
-            </div>
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <asp:GridView ID="gvOC" allowpaging="True" OnRowDataBound="gvOC_RowDataBound" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible." OnRowCommand="gvOC_RowCommand" 
-                    CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EOC_nombreEstadoOC"  
-                    Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" GridLines="None">
-                        <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
-                    <Columns>
-                        <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
-                        <asp:BoundField DataField="OC_numeroOC" HeaderText="N° de Compra" />
-                        <asp:BoundField DataField="PR_nombreContacto" HeaderText="Proveedor" />
-                        <asp:BoundField DataField="OC_fechaEmision" HeaderText="Fecha de Emisión" />
-                        <asp:BoundField DataField="OC_fechaEntrega" HeaderText="Fecha de Entrega" />
-                        <asp:BoundField DataField="EOC_nombreEstadoOC" HeaderText="Estado" />
-                        <asp:TemplateField HeaderText="Descargar">
-                            <ItemTemplate>
-                                 <asp:LinkButton ID="btnDescargar" runat="server" class="btn btn-info" CommandName="Descargar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-download"></i>&nbsp;Descargar</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Recepcionar">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnRecepcionar" runat="server" class="btn btn-success" CommandName="Recepcionar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-sign-in"></i>&nbsp;Recepcionar</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+            <div class="panel panel-widget forms-panel">
+                <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                    <div class="form-title color-white">
+                        <h4>Ordenes de Compra</h4>
+                         
+                    </div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <asp:GridView ID="gvOC" AllowPaging="True" AutoGenerateColumns="False" runat="server" EmptyDataText="No hay información disponible." OnRowCommand="gvOC_RowCommand"
+                            CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,OC_numeroOC,PR_nombreContacto,OC_fechaEmision,OC_fechaEntrega,EOC_nombreEstadoOC"
+                            Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvOC_SelectedIndexChanged" GridLines="None">
+                            <Columns>
+                                <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField DataField="OC_numeroOC" HeaderText="N° de Compra" />
+                                <asp:BoundField DataField="PR_nombreContacto" HeaderText="Proveedor" />
+                                <asp:BoundField DataField="OC_fechaEmision" HeaderText="Fecha de Emisión" />
+                                <asp:BoundField DataField="OC_fechaEntrega" HeaderText="Fecha de Entrega" />
+                                <asp:BoundField DataField="EOC_nombreEstadoOC" HeaderText="Estado" />
+                                <asp:TemplateField HeaderText="Descargar">
+                                    <ItemTemplate>
+                                        <asp:ImageButton  ID="btnDescargar" ImageUrl="img/descargar.png" onmouseover="this.src='img/descargar-b.png'" onmouseout="this.src='img/descargar.png'" runat="server" CommandName="Descargar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="javascript:return getDatos(this)"/><!--OnClientClick="javascript:createPDF() "-->
+                                        </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Recepcionar">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnRecepcionar" ImageUrl="img/recepcionar.png" onmouseover="this.src='img/recepcionar-b.png'" onmouseout="this.src='img/recepcionar.png'" runat="server" CommandName="Recepcionar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                             </Columns>
                         </asp:GridView>
                     </div>
                 </div>
-
+                 <table id="my-table">
+                    
+                 </table>
                          <contenttemplate >
+                            
                                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                           
-                                        <div id="hola" style="display: none" class="table-wrapper-scroll-y my-custom-scrollbar" >
+                                        <div id="hola" style="display: none" class="table-wrapper-scroll-y my-custom-scrollbar" ><!--style="display: none" depues del hola-->
                                           <div class="form-title color-white">
                                             <h4>Insumos</h4>
                                         </div>
                                             <asp:GridView ID="gvInsumos1"  allowpaging="True" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."
                                                 CssClass="table table-bordered table-striped mb-0" DataKeyNames="OC_idOC,DC_idDetalleCotizacion,I_idInsumo,I_nombreInsumo,DC_cantidadCotizacion,Estado"   
-                                                Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" AllowSorting="False" EnablePersistedSelection="True">
+                                                Style="text-align: center" OnPageIndexChanging="gvOC_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged = "gvOC_SelectedIndexChanged" AllowSorting="False" EnablePersistedSelection="True">
                                                 <Columns>
                                                     <asp:BoundField DataField="OC_idOC" HeaderText="Id_OC" Visible="False" />
                                                     <asp:BoundField DataField="DC_idDetalleCotizacion" HeaderText="ID_DetalleCotizacion" Visible="False" />
@@ -98,9 +91,9 @@
                                     </div>
                                 </contenttemplate>
 
-                </div>
-            <div>
             </div>
+            <div>
+    </div>
             <hr />
 
         </div>
@@ -135,44 +128,67 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.es.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.11/jspdf.plugin.autotable.min.js"></script>
 <script type="text/javascript">
 
-    function createPDF() {
-
-        var sTable = document.getElementById('hola').innerHTML;
-        var style = "<style>";
-        style = style + "table {width: 100%;font: 17px Calibri;}";
-        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-        style = style + "padding: 2px 3px;text-align: center;}";
-        style = style + "</style>";
-
-        // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=700,width=700');
-
-        win.document.write('<html><head>');
-        win.document.write('<title>Orden de compra</title>');   // <title> FOR PDF HEADER.
-        win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-        win.document.write('</head>');
-        win.document.write('<body>');
-        win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-        win.document.write('</body></html>');
-
-        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
-
-        win.print();    // PRINT THE CONTENTS.
-    }
 
 
-    function OnSuccess(response) {
-        createPDF();
-    }
+    function getDatos(UserLink) {
+
+        var doc = new jsPDF();
+
+        var row = UserLink.parentNode.parentNode;
+        var rowIndex = row.rowIndex - 1;
+        var Userid = row.cells[0].innerHTML;
+        $.ajax({
+            type: "POST",
+            url: 'GestionarOC.aspx/ListaDatos',
+            data: "{ numero: " + Userid + " }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",                                          // formato de transmición de datos
+            async: true,                                               // si es asincrónico o no
+            success: function (resultado) {                            // función que va a ejecutar si el pedido fue exitoso
+
+
+                doc.autoTable({ html: '#my-table' })
+                doc.autoTable({
+                    head: [['I_idInsumo', 'DC_cantidadCotizacion', 'I_nombreInsumo']],
+                })
+                for (var p in resultado) {
+
+
+                    for (var s in resultado[p]) {
+                        var a = '';
+
+                        var q = '';
+                        var d = '';
+                        a = resultado[p][s].I_idInsumo;
+                        q = resultado[p][s].DC_cantidadCotizacion;
+                        d = resultado[p][s].I_nombreInsumo;
+                        doc.autoTable({
+                            body: [[a, q, d]]
+                        })
+                    }
+
+                }
+                doc.autoTable({
+                    foot: [['Proveedor:', row.cells[2].innerHTML], ['Fecha de Emision:', row.cells[3].innerHTML], ['Fecha de Entrega:', row.cells[4].innerHTML]],
+                })
 
 
 
+                doc.save('document.pdf');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+                var error = eval("(" + XMLHttpRequest.responseText + ")");
+                alert(error.Message);
+            }
 
+        });
 
-
+        return false;
+    }  
 </script>
-    
 </asp:Content>
