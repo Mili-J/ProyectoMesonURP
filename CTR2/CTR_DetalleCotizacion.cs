@@ -4,7 +4,6 @@ using System.Data;
 using System.Text;
 using DAO;
 using DTO;
-using System.Data;
 namespace CTR
 {
     public class CTR_DetalleCotizacion

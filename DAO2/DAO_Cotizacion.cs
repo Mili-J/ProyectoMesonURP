@@ -126,8 +126,8 @@ namespace DAO
             try
             {
                 dto_proveedor = dao_proveedor.DAO_ConsultarProveedor(dto_cot.PR_idProveedor);
-                
-                
+
+
                 MailMessage msg = new MailMessage();
                 msg.To.Add(dto_proveedor.PR_correoContacto);
                 msg.Subject = "Solicitudad de cotización " + dto_cot.C_numeroCotizacion;
@@ -146,11 +146,12 @@ namespace DAO
                 cliente.Send(msg);
                 return true;
             }
-            catch (Exception) 
+            catch (Exception)
             {
+                //throw;
+                return false;
             }
         }
-      
         public void DAO_ActualizarEstadoCotizacion(DTO_Cotizacion cot)
         {
             conexion.Open();
