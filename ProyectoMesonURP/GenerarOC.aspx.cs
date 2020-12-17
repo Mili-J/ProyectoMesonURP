@@ -21,7 +21,6 @@ namespace ProyectoMesonURP
         private decimal _Total = 0;
         string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
         
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -36,21 +35,12 @@ namespace ProyectoMesonURP
         public void CargarCotizacion()
         {
             txtNdeCompra.Text = _Coc.ListarNumeroOC();
-            //txtNdeCompra.Enabled = false;
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
-            //txtProveedor.Enabled = false;
-            //txtFechaEmision.Enabled = false;
         }
         public void CargargvInsumos()
         {
             gvInsumos.DataSource = _Cdc.CargarDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
             gvInsumos.DataBind();
-        }
-        protected void gvInsumos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-        protected void gvInsumos_OnRowDataBound(object sender, GridViewRowEventArgs e)
-        {
         }
         public void CorreoOC()
         {
@@ -58,14 +48,12 @@ namespace ProyectoMesonURP
             string proveedor = txtProveedor.Text;
             _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
             _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
-            _Doc.OC_tipoPago = ddlComprobante.SelectedValue;
-            string comprobante = ddlComprobante.SelectedValue;
+            _Doc.OC_tipoPago = ddlFormaPago.SelectedValue;
             int idCotizacion = Convert.ToInt32(Session["idcotizacion"]);
 
             string htmlBody = Resource.MensajeOC;
             htmlBody = htmlBody.Replace("#IDOC#", _Doc.OC_numeroOc.ToString());
-            htmlBody = htmlBody.Replace("#FORMADEPAGO#", comprobante);
-            htmlBody = htmlBody.Replace("#TIPOCOMPROBANTE#", _Doc.OC_tipoPago);
+            htmlBody = htmlBody.Replace("#TIPODEPAGO#", _Doc.OC_tipoPago);
             htmlBody = htmlBody.Replace("#PROVEEDOR#", proveedor);
             htmlBody = htmlBody.Replace("#FECHAEMISION#", _Doc.OC_fechaEmision.ToString());
             htmlBody = htmlBody.Replace("#FECHAENTREGA#", _Doc.OC_fechaEntrega.ToString());
@@ -92,40 +80,33 @@ namespace ProyectoMesonURP
         }
         protected void btnEnviar_ServerClick(object sender, EventArgs e)
         {
-            if (ddlComprobante.SelectedIndex != 0)
+            if (ddlFormaPago.SelectedIndex != 0)
             {
                 _Doc.OC_numeroOc = txtNdeCompra.Text;
                 _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
                 _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
-                _Doc.OC_tipoPago = ddlComprobante.SelectedValue;
+                _Doc.OC_tipoPago = ddlFormaPago.SelectedValue;
                 _Doc.OC_totalCompra = Convert.ToDecimal(Session["Totaldecompra"]);
                 _Doc.EOC_idEstadoOC = 1;
                 _Doc.U_idUsuario = Convert.ToInt32(Session["idUsuario"]);
+
                 _Coc.RegistrarOC(_Doc);
 
-                foreach (GridViewRow GVRow in gvInsumos.Rows)
+                for (int i = 0; i < gvInsumos.Rows.Count; i++)
                 {
-                    _Ddc.DOC_precioUnitario = Convert.ToDecimal(GVRow.Cells[3].Text);
-                    _Ddc.DOC_totalPrecio = Convert.ToDecimal(GVRow.Cells[4].Text);
+                    _Ddc.DOC_totalPrecio = Convert.ToDecimal(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
+                    _Ddc.DOC_precioUnitario = Convert.ToDecimal(((TextBox)gvInsumos.Rows[i].FindControl("txtPrecioUnitario")).Text);
                     _Ddc.OC_idOC = _Coc.IdOC();
-                    _Ddc.DC_idDetalleCotizacion = _Cdc.IdDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
+                    int idCotizacion = Convert.ToInt32(Session["idcotizacion"]);
+                    string nombre = Convert.ToString(gvInsumos.Rows[i].Cells[0].Text);
 
+                    _Ddc.DC_idDetalleCotizacion = _Cdc.IdDetalleCotizacion(idCotizacion, nombre);
                     _Cdoc.RegistrarDetalleOC(_Ddc);
                 }
-
-                CorreoOC();
+                    CorreoOC();
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaExito('');", true);
             }
-
-            //ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaCorreo('');", true);
-
         }
-        protected void btnRegresar_ServerClick(object sender, EventArgs e)
-        {
-        }
-        protected void btnLimpiar_ServerClick(object sender, EventArgs e)
-        {
-        }
-
         protected void txtPrecioUnitario_TextChanged(object sender, EventArgs e)
         {
             try
