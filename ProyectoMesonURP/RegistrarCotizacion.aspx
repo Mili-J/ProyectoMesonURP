@@ -55,13 +55,13 @@
 						<h3>Detalles de Insumo</h3>
 					</div>
                     <%-- ----- --%>
-                    <div class="form-group">
+<%--                    <div class="form-group">
                            <label for="selector1" class="col-sm-2 control-label">Documento</label>
                            <div class="col-sm-8">
                                <asp:TextBox ID="txtDoc" runat="server"></asp:TextBox>
                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDoc" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
-                    </div>
+                    </div>--%>
                     <%-- ----- --%>
                     <div class="form-group">
 
@@ -148,7 +148,7 @@
                                         <%--<asp:BoundField HeaderText="Insumo" DataField="I_NombreInsumo"  />--%>
                                         <asp:BoundField HeaderText="N° de Cotizacion" DataField="C_numeroCotizacion"  />
                                         <asp:BoundField HeaderText="Tiempo plazo" Datafield="C_tiempoPlazo"/>
-                                        <asp:BoundField HeaderText="Documento" Datafield="C_documento"/>
+                                        <asp:BoundField HeaderText="Documento" Datafield="C_documento" Visible="false"/>
                                         <%--<asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />--%>
                                         <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
                                     </Columns>   

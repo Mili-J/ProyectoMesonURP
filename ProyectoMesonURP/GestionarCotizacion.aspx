@@ -30,7 +30,7 @@
                                     <asp:BoundField HeaderText="N° de cotización" DataField="C_numeroCotizacion" />
                                     <asp:BoundField HeaderText="Fecha de emisión" DataField="C_fechaEmision" />
                                     <asp:BoundField HeaderText="Tiempo plazo" DataField="C_tiempoPlazo" />
-                                    <asp:BoundField HeaderText="Documento" DataField="C_documento" />
+                                    <asp:BoundField HeaderText="Documento" DataField="C_documento"  Visible="false"/>
 
                                     <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
                                     
@@ -112,7 +112,7 @@
         }
         function alertaRecibido() {
             Swal.fire({
-                title: 'Recibid',
+                title: 'Recibida',
                 text: 'La solicitdad de cotización ha sido recibida',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'

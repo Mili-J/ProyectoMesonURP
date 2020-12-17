@@ -56,12 +56,22 @@ namespace ProyectoMesonURP
                 dto_menu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
                 int id_menu = dto_menu.ME_idMenu;
                 dtMenuSeleccionado= ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 1);
-                repeaterMenu.DataSource = dtMenuSeleccionado;
-                repeaterMenu.DataBind();
+                //repeaterMenu.DataSource = dtMenuSeleccionado;
+                //repeaterMenu.DataBind();
 
-                dtCartaSeleccionada= ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 2);
+
+                repeaterMenu.DataSource = dtMenu;
+                repeaterMenu.DataBind();
+                dtCartaSeleccionada = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 2);
                 repeaterCartaSeleccionada.DataSource = dtCartaSeleccionada;
                 repeaterCartaSeleccionada.DataBind();
+                CrearDt(dtMenu);
+                CrearDt(dtCarta);
+                dtMenu.Merge(dtMenuSeleccionado);
+                dtCarta.Merge(dtCartaSeleccionada);
+                //----------
+                //dtCarta = dtCartaSeleccionada;
+                //dtMenu = dtMenuSeleccionado;
                 //-----------------------------------
                 reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1, "Entradas");
                 reapeterEntradas.DataBind();
@@ -105,7 +115,8 @@ namespace ProyectoMesonURP
                 {
                     if (Convert.ToInt32(dtCartaSeleccionada.Rows[i].ItemArray[1]) == R_id)
                     {
-                        dtCartaSeleccionada.Rows[i].Delete();
+                        //dtCartaSeleccionada.Rows[i].Delete();
+                        dtCartaSeleccionada.Rows.Remove(dtCartaSeleccionada.Rows[i]);
                     }
                 }
                 repeaterCartaSeleccionada.DataSource = dtCarta;
@@ -130,23 +141,31 @@ namespace ProyectoMesonURP
         {
             if (e.CommandName == "QuitarMenu")
             {
+               
                 dtMenu.Rows[e.Item.ItemIndex].Delete();
-                
                 int R_id = int.Parse(((Label)repeaterMenu.Items[e.Item.ItemIndex].FindControl("lblIdReceta")).Text);
                 DTO_Receta receta = ctr_receta.CTR_Consultar_Receta(R_id);
+
                 
-                for(int i=0;i<dtMenuSeleccionado.Rows.Count;i++)
+                for (int i = 0; i < dtMenuSeleccionado.Rows.Count; i++)
                 {
-                    if (Convert.ToInt32(dtMenuSeleccionado.Rows[i].ItemArray[1])==R_id)
-                    {
-                        dtMenuSeleccionado.Rows[i].Delete();
-                    }
+                    //if (dtMenuSeleccionado.Rows[i].RowState != DataRowState.Deleted)
+                    //{
+                        if (Convert.ToInt32(dtMenuSeleccionado.Rows[i].ItemArray[1]) == R_id)
+                        {
+                            //dtMenuSeleccionado.Rows[i].Delete();
+                            dtMenuSeleccionado.Rows.Remove(dtMenuSeleccionado.Rows[i]);
+                        }
+                   // }
                 }
+;
                 
+
                 if (receta.R_subcategoria == "Entradas") numEntradas--;
                 else if (receta.R_subcategoria == "Segundos") numFondos--;
                 else if (receta.R_subcategoria == "Bebidas") numBebidas--;
 
+                //dtMenu.Rows[e.Item.ItemIndex].Delete();
                 repeaterMenu.DataSource = dtMenu;
                 repeaterMenu.DataBind();
             }
@@ -240,7 +259,16 @@ namespace ProyectoMesonURP
 
             CrearDt(dt);
 
-            dr[0] = receta.R_imagenReceta;
+            try
+            {
+                dr[0] = receta.R_imagenReceta;
+            }
+            catch (Exception)
+            {
+
+                dr[0] = null;
+            }
+            
             dr[1] = receta.R_idReceta;
             dr[2] = receta.R_nombreReceta;
             dr[3] = receta.R_numeroPorcion;

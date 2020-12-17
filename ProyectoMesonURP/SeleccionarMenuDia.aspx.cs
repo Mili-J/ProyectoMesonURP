@@ -401,7 +401,15 @@ namespace ProyectoMesonURP
 
             CrearDt(dt);
 
-            dr[0] = receta.R_imagenReceta;
+            try
+            {
+                dr[0] = receta.R_imagenReceta;
+            }
+            catch (Exception)
+            {
+
+                dr[0] = null;
+            }
             dr[1] = receta.R_idReceta;
             dr[2] = receta.R_nombreReceta;
             dr[3] = receta.R_numeroPorcion;

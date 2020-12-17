@@ -50,7 +50,7 @@ namespace DAO
             comando.Parameters.AddWithValue("@C_numeroCotizacion", cot.C_numeroCotizacion);
             comando.Parameters.AddWithValue("@C_fechaEmision", cot.C_fechaEmision);
             comando.Parameters.AddWithValue("@C_tiempoPlazo", cot.C_tiempoPlazo);
-            comando.Parameters.AddWithValue("@C_documento", cot.C_documento);
+            //comando.Parameters.AddWithValue("@C_documento", null);
             comando.Parameters.AddWithValue("@PR_idProveedor", cot.PR_idProveedor);
             comando.Parameters.AddWithValue("@EC_idEstadoCotizacion", cot.EC_idEstadoCotizacion);
             comando.Parameters.AddWithValue("@U_idUsuario", cot.U_idUsuario);
@@ -65,7 +65,7 @@ namespace DAO
             comando.Parameters.AddWithValue("@C_idCotizacion", cot.C_idCotizacion);
             comando.Parameters.AddWithValue("@C_numeroCotizacion", cot.C_numeroCotizacion);
             comando.Parameters.AddWithValue("@C_tiempoPlazo", cot.C_tiempoPlazo);
-            comando.Parameters.AddWithValue("@C_documento", cot.C_documento);
+            //comando.Parameters.AddWithValue("@C_documento", cot.C_documento);
             comando.Parameters.AddWithValue("@PR_idProveedor", cot.PR_idProveedor);
             comando.ExecuteNonQuery();
             conexion.Close();

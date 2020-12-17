@@ -62,7 +62,7 @@ namespace ProyectoMesonURP
                 DdlTiempoPlazo.SelectedValue= dto_cot.C_tiempoPlazo;
                 //txtTiempoPlazo.Text = dto_cot.C_tiempoPlazo;
                 //------------------
-                txtDoc.Text = dto_cot.C_documento;
+               // txtDoc.Text = dto_cot.C_documento;
                 //--------Proveedor
                 ctr_pro = new CTR_Proveedor();
                 dto_pro = ctr_pro.CTR_ConsultarProveedor(dto_cot.PR_idProveedor);
@@ -126,7 +126,7 @@ namespace ProyectoMesonURP
             dto_cot.C_idCotizacion = idCot;
             dto_cot.C_numeroCotizacion = txtNumCot.Text;
             dto_cot.C_tiempoPlazo = DdlTiempoPlazo.SelectedValue;
-            dto_cot.C_documento = txtDoc.Text;
+            //dto_cot.C_documento = txtDoc.Text;
             dto_cot.PR_idProveedor = Convert.ToInt32(DdlProveedor.SelectedValue);
             
             

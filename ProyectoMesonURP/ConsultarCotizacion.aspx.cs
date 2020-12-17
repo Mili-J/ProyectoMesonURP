@@ -42,7 +42,7 @@ namespace ProyectoMesonURP
                 txtNumCot.Text = dto_cot.C_numeroCotizacion;
                 txtFechaEmision.Text = dto_cot.C_fechaEmision.ToShortDateString();
                 txtTiempoPlazo.Text = dto_cot.C_tiempoPlazo;
-                txtDoc.Text = dto_cot.C_documento;
+                //txtDoc.Text = dto_cot.C_documento;
                 //--------Proveedor
                 ctr_pro = new CTR_Proveedor();
                 dto_pro = ctr_pro.CTR_ConsultarProveedor(dto_cot.PR_idProveedor);
