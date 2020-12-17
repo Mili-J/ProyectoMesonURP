@@ -122,7 +122,7 @@ namespace ProyectoMesonURP
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Cells[2].Text = Convert.ToDateTime(e.Row.Cells[2].Text).ToShortDateString();
-
+                //string estadoColor = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "EC_nombreEstadoC").ToString());
                 string estado = e.Row.Cells[6].Text.ToString();
                 if (estado == "Creada")
                 {
@@ -151,6 +151,7 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
                     e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    e.Row.Cells[6].Text = "<span class='badge badge-success'>" + e.Row.Cells[6].Text + "</span>";
                 }
                 else if (estado == "Rechazada")
                 {
@@ -159,19 +160,7 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
                     e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
-                }
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    string estado = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "EC_nombreEstadoC").ToString());
-
-                    if (estado == "Aceptada")
-                    {
-                        e.Row.Cells[6].Text = "<span class='badge badge-success'>" + e.Row.Cells[6].Text + "</span>";
-                    }
-                    else if (estado == "Rechazada")
-                    {
-                        e.Row.Cells[6].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[6].Text + "</span>";
-                    }
+                    e.Row.Cells[6].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[6].Text + "</span>";
                 }
             }
 

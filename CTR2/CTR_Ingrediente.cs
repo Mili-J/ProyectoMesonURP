@@ -53,10 +53,10 @@ namespace CTR
         {
             objDAO.ActualizarIngrediente(ObjIngre);
         }
-        public DTO_Ingrediente CTR_Consultar_IngredienteXID(int i)
-        {
-            return objDAO.DAO_Consultar_IngredienteXID(i);
-        }
+        //public DTO_Ingrediente CTR_Consultar_IngredienteXID(int i)
+        //{
+        //    return objDAO.DAO_Consultar_IngredienteXID(i);
+        //}
         public DataTable Validar_IngredientesXReceta()
         {
             return objDAO.Validar_IngredientesXReceta();
