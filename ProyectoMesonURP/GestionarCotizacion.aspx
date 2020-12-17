@@ -43,7 +43,7 @@
             </div>
                 <div class="w3-row-padding">
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">    
-                        <asp:GridView ID="GridViewCotizacion" allowPaging="True" runat="server" EmptyDataText="No hay información disponible."
+                        <asp:GridView ID="GridViewCotizacion" allowPaging="False" runat="server" EmptyDataText="No hay información disponible."
                             DataKeyNames="C_idCotizacion" AutoGenerateColumns="False" OnRowDataBound="GridViewCotizacion_RowDataBound" 
                             CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None" OnRowCommand="GridViewCotizacion_RowCommand">
                             <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
