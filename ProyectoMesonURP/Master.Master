@@ -181,7 +181,7 @@
 
              <!-- Nav Item - Charts -->
             <li id="menuMenu"  runat="server" class="nav-item">
-                <a class="nav-link" href="CalendariaMenu">
+                <a class="nav-link" href="CalendarioMenu">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Planificar Menú</span></a>
             </li>

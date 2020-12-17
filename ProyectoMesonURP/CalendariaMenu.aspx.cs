@@ -46,7 +46,7 @@ namespace ProyectoMesonURP
                 {
                     hay = true;
                     Session.Add("hay", hay);
-                    Response.Redirect("ActualizarMenuDia.aspx");
+                    Response.Redirect("ActualizarDíaMenú");
                 }
                 else 
                 {  
@@ -112,17 +112,17 @@ namespace ProyectoMesonURP
                     e.Cell.BackColor = Color.MidnightBlue;
                 }
                
-                DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenuYCategoria(dto_menu.ME_idMenu,1);
-                int i = 0;
-                object[] recetas;
-                DTO_Receta dto_receta;
-                while (i < dt.Rows.Count)
-                {
-                    recetas = dt.Rows[i].ItemArray;
-                    dto_receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
-                    e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_receta.R_nombreReceta));
-                    i++;
-                }
+                //DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenuYCategoria(dto_menu.ME_idMenu,1);
+                //int i = 0;
+                //object[] recetas;
+                //DTO_Receta dto_receta;
+                //while (i < dt.Rows.Count)
+                //{
+                //    recetas = dt.Rows[i].ItemArray;
+                //    dto_receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
+                //    e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_receta.R_nombreReceta));
+                //    i++;
+                //}
                 //e.Cell.Controls.Add(new LiteralControl("<hr />" + dto_menu.ME_numRaciones + " raciones"));
             }
         }

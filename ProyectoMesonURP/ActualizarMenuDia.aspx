@@ -77,7 +77,7 @@
                                                                             <label>Raciones: </label>
                                                                         </div>
                                                                         <div class="col-md-5 pl-4">
-                                                                            <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" />
+                                                                            <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" Text='<%#Eval("MXR_numeroPorcion") %>'/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12 col-sm-12 pt-2 text-right">
@@ -378,11 +378,82 @@
             }
             return true;
         }
-
-        function alertaAceptado() {
+        function alertaEntradas() {
             Swal.fire({
-                title: 'Aceptado',
-                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
+                title: 'Oh, no!',
+                text: 'La cantidad de Entradas permitidas son 2.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaSegundos() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Segundos permitidos son 3.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaBebidas() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Bebidas permitidas es 1.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaEntradasMax() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Entradas es mayor al número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaSegundosMax() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Segundos es mayor al número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaBebidasMax() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Bebidas es mayor al número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaEmpty() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El campo se encuentra vacío.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaCero() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El valor debe ser mayor a cero.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaSimbolo() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'Revise nuevamente el número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaExito() {
+            Swal.fire({
+                title: 'Actualizado',
+                text: 'El menú ha sido actualizado satisfactoriamente.',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })

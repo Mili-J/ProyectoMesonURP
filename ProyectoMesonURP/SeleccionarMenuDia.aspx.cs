@@ -214,7 +214,6 @@ namespace ProyectoMesonURP
                 }
                 AgregarFilas(reapeterEntradas, dtMenu, e.Item.ItemIndex, repeaterMenu);
             }
-
         }
 
         protected void repeaterFondo_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -345,7 +344,7 @@ namespace ProyectoMesonURP
 
             if (dt.Rows.Contains(dr["R_idReceta"]))//Si ya se seleccionó
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "alertaRechazado", "alertaRechazado('Se ha logrado ingresar correctamente');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaRechazado('Se ha logrado ingresar correctamente');", true);
             }
             else
             {
@@ -355,15 +354,6 @@ namespace ProyectoMesonURP
             }
         }
 
-
-        //protected void btnprueba_Click(object sender, EventArgs e)
-        //{          
-        //    int i = int.Parse(txtid.Text);
-        //    byte[] aa = new byte[1000];
-        //            aa = ctr_receta.prueba(i);
-        //    string sb64 = Convert.ToBase64String(aa);     
-        //    Image1.ImageUrl = "data:image;base64," + sb64;
-        //}
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             //Para esconder comentarios
@@ -469,7 +459,8 @@ namespace ProyectoMesonURP
                 //ctr_menu.CTR_RegistrarMenu(dto_menu);
                 RegistrarMenuXReceta(repeaterCartaSeleccionada);
                 RegistrarMenuXReceta(repeaterMenu);
-                Response.Redirect("CalendariaMenu.aspx");
+                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaAceptado();", true);
+                Response.Redirect("CalendarioMenu");
 
             }
         }
@@ -504,7 +495,7 @@ namespace ProyectoMesonURP
         }
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CalendariaMenu.aspx");
+            Response.Redirect("CalendarioMenu");
         }
     }
 }

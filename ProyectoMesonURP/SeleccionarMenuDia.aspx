@@ -446,7 +446,7 @@
         function alertaSimbolo() {
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'El valor debe ser numérico.',
+                text: 'Revise nuevamente las raciones.',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })
@@ -454,8 +454,8 @@
 
         function alertaAceptado() {
             Swal.fire({
-                title: 'Aceptado',
-                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
+                title: 'Registrado',
+                text: 'El menú fue registrado satisfactoriamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })

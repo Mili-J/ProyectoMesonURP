@@ -55,7 +55,7 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("RegistrarReceta", "RegistrarReceta", "~/RegistrarReceta.aspx", true);
             routes.MapPageRoute("ActualizarReceta", "ActualizarReceta", "~/ActualizarReceta.aspx", true);
             routes.MapPageRoute("TransformarInsumo", "TransformarInsumo", "~/Transformar_Insumo.aspx", true);
-            routes.MapPageRoute("CalendariaMenu", "CalendariaMenu", "~/CalendariaMenu.aspx", true);
+            routes.MapPageRoute("CalendarioMenu", "CalendarioMenu", "~/CalendariaMenu.aspx", true);
             routes.MapPageRoute("ElegirRecetaTransformar", "ElegirRecetaTransformar", "~/SeleccionarMenuTransformar.aspx", true);
             routes.MapPageRoute("SeleccionarMenu", "SeleccionarMenu", "~/SeleccionarMenuDia.aspx", true);
             routes.MapPageRoute("GenerarOC", "GenerarOC", "~/GenerarOC.aspx", true);
@@ -67,6 +67,7 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("ActualizarIngrediente", "ActualizarIngrediente", "~/ActualizarIngrediente.aspx", true);
             routes.MapPageRoute("GestionarIngrediente", "GestionarIngrediente", "~/GestionarIngrediente.aspx", true);
             routes.MapPageRoute("ConsultarEquivalencia", "ConsultarEquivalencia", "~/ConsultarEquivalencia.aspx", true);
+            routes.MapPageRoute("ActualizarDíaMenú", "ActualizarDíaMenú", "~/ActualizarMenuDia.aspx", true);
 
         }
     }

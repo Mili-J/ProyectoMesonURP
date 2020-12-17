@@ -27,6 +27,10 @@ namespace CTR
         public void CTR_ActualizarMenuXReceta(DataTable obj)
         {
             dao_menuxreceta.DAO_ActualizarMenuXReceta(obj);
+        }  
+        public void DAO_ActualizarUnMenuXReceta(DTO_MenuXReceta obj)
+        {
+            dao_menuxreceta.DAO_ActualizarUnMenuXReceta(obj);
         }
         public bool ExistenciaMenuxReceta(int R_idReceta)
         {
