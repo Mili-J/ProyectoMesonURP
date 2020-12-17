@@ -105,7 +105,7 @@ namespace DAO
             conexion.Close();
             return cot;
         }
-        public void EnviarCorreo(DTO_Cotizacion dto_cot, string msj)
+        public bool EnviarCorreo(DTO_Cotizacion dto_cot, string msj)
         {
             DTO_Proveedor dto_proveedor = new DTO_Proveedor();
             DAO_Proveedor dao_proveedor = new DAO_Proveedor();
@@ -116,7 +116,7 @@ namespace DAO
                 
                 MailMessage msg = new MailMessage();
                 msg.To.Add(dto_proveedor.PR_correoContacto);
-                msg.Subject = "Solicitudad de cotización" + dto_cot.C_numeroCotizacion;
+                msg.Subject = "Solicitudad de cotización " + dto_cot.C_numeroCotizacion;
                 msg.SubjectEncoding = Encoding.UTF8;
                 msg.IsBodyHtml = true;
                 msg.Body = msj;
@@ -129,12 +129,24 @@ namespace DAO
                     Port = 587,
                     EnableSsl = true
                 };
-                cliente.Send(msg);   
+                cliente.Send(msg);
+                return true;
             }
             catch (Exception)
             {
-                throw;
+                //throw;
+                return false;
             }
+        }
+        public void DAO_ActualizarEstadoCotizacion(DTO_Cotizacion cot)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ActualizarEstadoCotizacion", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion", cot.C_idCotizacion);
+            comando.Parameters.AddWithValue("@EC_idEstadoCotizacion", cot.EC_idEstadoCotizacion);
+            comando.ExecuteNonQuery();
+            conexion.Close();
         }
     }
     

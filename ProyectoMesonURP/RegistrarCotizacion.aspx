@@ -144,7 +144,7 @@
                                         <asp:BoundField HeaderText="N° de Cotizacion" DataField="C_numeroCotizacion"  />
                                         <asp:BoundField HeaderText="Tiempo plazo" Datafield="C_tiempoPlazo"/>
                                         <asp:BoundField HeaderText="Documento" Datafield="C_documento"/>
-                                        <asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />
+                                        <%--<asp:BoundField HeaderText="Proveedor id" DataField="PR_idProveedor" />--%>
                                         <asp:BoundField HeaderText="Proveedor nombre" DataField="PR_razonSocial" />
                                     </Columns>   
                                     
@@ -213,5 +213,43 @@
     </div>
   </div>
 </div>
-     
+    <script>
+        function lettersOnly(evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+            if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+                (charCode < 97 || charCode > 122)) {
+                alert("Por favor, ingrese solo letras.");
+                return false;
+            }
+            return true;
+        }
+
+
+        function alertaRechazado() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'Ya ha seleccionado una receta',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+
+
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado registrar la cotización correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "GestionarCotizacion.aspx";
+                }
+            })
+        }
+
+
+    </script>     
 </asp:Content>

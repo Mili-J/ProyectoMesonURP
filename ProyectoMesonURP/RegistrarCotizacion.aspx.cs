@@ -93,7 +93,9 @@ namespace ProyectoMesonURP
                 i++;
                 
             }
-            Response.Redirect("GestionarCotizacion.aspx");
+            ClientScript.RegisterStartupScript(Page.GetType(), "alertaExito", "alertaExito('Se ha logrado ingresar correctamente');", true);
+
+           // Response.Redirect("GestionarCotizacion.aspx");
            
         }
 
@@ -115,7 +117,7 @@ namespace ProyectoMesonURP
                 dtCot.Columns.Add("C_numeroCotizacion");
                 dtCot.Columns.Add("C_tiempoPlazo");
                 dtCot.Columns.Add("C_documento");
-                dtCot.Columns.Add("PR_idProveedor");
+                //dtCot.Columns.Add("PR_idProveedor");
                 dtCot.Columns.Add("PR_razonSocial");
             }
             DTO_Cotizacion dto_cotizacion = new DTO_Cotizacion();
@@ -130,7 +132,8 @@ namespace ProyectoMesonURP
                 ini += item.ToString();
             }
             //--------------------------------
-            dto_cotizacion.C_numeroCotizacion = $"{ini}00{dtCot.Rows.Count}{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}";
+            var dt = ctr_cotizacion.CTR_Consultar_Cotizaciones();
+            dto_cotizacion.C_numeroCotizacion = $"{ini}{dt.Rows.Count}{dtCot.Rows.Count}{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}{DdlInsumo.SelectedValue}";
             dto_cotizacion.C_tiempoPlazo= DdlTiempoPlazo.SelectedValue;
             dto_cotizacion.C_documento = txtDoc.Text;
             dto_cotizacion.PR_idProveedor= Convert.ToInt32(DdlProveedor.SelectedValue);
@@ -142,8 +145,8 @@ namespace ProyectoMesonURP
             dr[0] = dto_cotizacion.C_numeroCotizacion;
             dr[1] = dto_cotizacion.C_tiempoPlazo;
             dr[2] = dto_cotizacion.C_documento;
-            dr[3] = dto_cotizacion.PR_idProveedor;
-            dr[4] = DdlProveedor.SelectedItem;
+            //dr[3] = dto_cotizacion.PR_idProveedor;
+            dr[3] = DdlProveedor.SelectedItem;
             dtCot.Rows.Add(dr);
             listCot.Add(dto_cotizacion);
             GVCot.DataSource = dtCot;
@@ -239,7 +242,10 @@ namespace ProyectoMesonURP
                 i++;
 
             }
+            foreach (DataRow item in dtIng.Rows)
+            {
 
+            }
             GVVerdura.DataSource = dtIng;
             GVVerdura.DataBind();
 

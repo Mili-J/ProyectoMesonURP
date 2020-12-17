@@ -97,7 +97,7 @@
         function alertaAceptado() {
             Swal.fire({
                 title: 'Aceptado',
-                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
+                text: 'La solicitdad de cotización ha sido aceptada satisfactoriamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
@@ -105,15 +105,15 @@
         function alertaRechazado() {
             Swal.fire({
                 title: 'Rechazado',
-                text: 'La Orden de Compra ha cambiado de estado satisfactoriamente',
+                text: 'La solicitdad de cotización ha sido rechazada satisfactoriamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
         }
         function alertaRecibido() {
             Swal.fire({
-                title: 'Recibido',
-                text: 'Los insumos ya se encuentran en stock',
+                title: 'Recibid',
+                text: 'La solicitdad de cotización ha sido recibida',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
@@ -129,15 +129,18 @@
         function alertaCorreo() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha enviado el correo correctamente',
+                text: 'Se ha enviado el correo satisfactoriamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = 'GestionarCotizacion.aspx';
-                }
             })
-
-        }
+            }
+            function alertaCorreoNo() {
+                Swal.fire({
+                    title: 'Oh, no!',
+                    text: 'No se ha podido enviar el correo',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                })
+            }
         </script>
 </asp:Content>

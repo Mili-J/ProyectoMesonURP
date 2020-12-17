@@ -33,9 +33,13 @@ namespace CTR
         {
             dao_cotizacion.DAO_Actualizar_Cotizacion(cot);
         }
-        public void EnviarCorreo(DTO_Cotizacion dto_cot, string msj)
+        public bool EnviarCorreo(DTO_Cotizacion dto_cot, string msj)
         {
-            dao_cotizacion.EnviarCorreo(dto_cot,msj);
+          return  dao_cotizacion.EnviarCorreo(dto_cot,msj);
+        }
+        public void CTR_ActualizarEstadoCotizacion(DTO_Cotizacion cot)
+        {
+            dao_cotizacion.DAO_ActualizarEstadoCotizacion(cot);
         }
     }
 }

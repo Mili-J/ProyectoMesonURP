@@ -35,6 +35,8 @@ namespace ProyectoMesonURP
         DataTable dtDetCot;
         //------
         CTR_CotizacionXMenu ctr_cotMen;
+        CTR_IngredienteXReceta ctr_ingxrec;
+        CTR_MenuXReceta ctr_menuxreceta;
         protected void Page_Load(object sender, EventArgs e)
         {
             dto_cot = new DTO_Cotizacion();
@@ -46,6 +48,8 @@ namespace ProyectoMesonURP
             ctr_usuario = new CTR_Usuario();
             ctr_cotMen = new CTR_CotizacionXMenu();
             ctr_menu = new CTR_Menu();
+            ctr_ingxrec = new CTR_IngredienteXReceta();
+            ctr_menuxreceta = new CTR_MenuXReceta();
             if (!IsPostBack)
             {
                 dtDetCot = new DataTable();
@@ -127,7 +131,71 @@ namespace ProyectoMesonURP
             
             
             ctr_cot.CTR_Actualizar_Cotizacion(dto_cot);
-            Response.Redirect("GestionarCotizacion.aspx");
+            ClientScript.RegisterStartupScript(Page.GetType(), "alertaExito", "alertaExito('Se ha logrado ingresar correctamente');", true);
+
+            //Response.Redirect("GestionarCotizacion.aspx");
+        }
+        public void ConsultarInsumosXCat()
+        {
+
+            // Seleccionar menu de la fecha seleccionada
+            DateTime fecha = CldFecha.SelectedDate;
+            DataTable dtmenu = new DataTable();
+            DataTable dtMenuXReceta, dtMenuXRecetas = new DataTable();
+            foreach (DateTime item in CldFecha.SelectedDates)
+            {
+                dtmenu.Merge(ctr_menu.CTR_ConsultarMenusXEstadoYFecha(1, item));
+            }
+            //dtmenu= ctr_menu.CTR_ConsultarMenusXEstadoYFecha(1, fecha);
+            int h = 0;
+            object[] menuxreceta, ingrxrec, menu;
+
+            //DTO_Menu dto_menu = ctr_menu.CTR_ConsultarMenusXEstadoYFecha(1,fecha);
+            // Seleccionar los menuxreceta del menu seleccionado
+            while (h < dtmenu.Rows.Count)
+            {
+                menu = dtmenu.Rows[h].ItemArray;
+                dtMenuXReceta = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(Convert.ToInt32(menu[0]));
+                dtMenuXRecetas.Merge(dtMenuXReceta);
+                h++;
+            }
+
+            // Seleccionar las recetas del menuxreceta de las fechas selccionadas
+
+
+            // Seleccionar los ingredientesxreceta de cada receta
+            int i = 0;
+
+            DTO_Ingrediente dto_ingrediente;
+            DTO_Insumo dto_insumo;
+            DataTable dtIng = new DataTable();
+            int cat = 1;
+            while (i < dtMenuXRecetas.Rows.Count)
+            {
+                //int j = 0;
+                menuxreceta = dtMenuXRecetas.Rows[i].ItemArray;
+                DataTable dtIngXRec = ctr_ingxrec.CTR_ConsultarIngredientesXReceta(Convert.ToInt32(menuxreceta[1]), cat);
+                dtIng.Merge(dtIngXRec);
+                //while (j < dtMenuXReceta.Rows.Count)
+                //{
+                //    ingrxrec = dtIngXRec.Rows[j].ItemArray;
+                //    // Seleccionar los ingredientes en funcion al ingredientexreceta del turno
+                //    dto_ingrediente = ctr_ingrediente.CTR_Consultar_IngredienteXID(Convert.ToInt32(ingrxrec[4]));
+                //    // Seleccionar el insumo del ingrediente
+
+                //    j++;
+                //}
+
+                i++;
+
+            }
+            foreach (DataRow item in dtIng.Rows)
+            {
+
+            }
+            GVDetalleCot.DataSource = dtIng;
+            GVDetalleCot.DataBind();
+
         }
     }
 }

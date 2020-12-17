@@ -111,7 +111,7 @@
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
                                         <asp:BoundField HeaderText="Cantidad" Datafield="DC_cantidadCotizacion"/>
-                                        
+                                        <%--<asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>--%>
                                     </Columns>   
                                     <SelectedRowStyle BackColor="LightGreen"/>
                                 </asp:GridView>
@@ -131,4 +131,43 @@
                 </div>
             </div>
         </div>
+        <script>
+        function lettersOnly(evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+            if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+                (charCode < 97 || charCode > 122)) {
+                alert("Por favor, ingrese solo letras.");
+                return false;
+            }
+            return true;
+        }
+
+
+        function alertaRechazado() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'Ya ha seleccionado una receta',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+
+
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado actualizar la cotización correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "GestionarCotizacion.aspx";
+                }
+            })
+        }
+
+
+        </script> 
 </asp:Content>

@@ -308,7 +308,7 @@ namespace ProyectoMesonURP
 
 
 
-        //TODO
+       
         public void RegistrarMenuXReceta(Repeater rp)
         {
             int R_id;
