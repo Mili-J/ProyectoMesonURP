@@ -56,7 +56,7 @@ namespace DAO
             return idOC;
 
         }
-        public DataTable ListarOC(string OC_numeroOC)
+        public DataTable ListarOC(string numOC)
         {
             try
             {
