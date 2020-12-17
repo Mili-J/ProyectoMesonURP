@@ -28,5 +28,10 @@ namespace CTR
         {
             return dao_catIns.DAO_ConsultarCategoriasInsumo();
         }
+        public DataSet CTR_SelectCategoriaI()
+        {
+            return dao_catIns.DAO_SelectCategoriaI();
+        }
+
     }
 }

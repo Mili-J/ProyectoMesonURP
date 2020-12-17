@@ -28,8 +28,6 @@ namespace DAO
             return dtCat;
         }
 
-       
-
         public DataSet DAO_SelectCategoriaI()
         {
             conexion.Open();
