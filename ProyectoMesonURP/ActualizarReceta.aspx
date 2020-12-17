@@ -35,25 +35,22 @@
                             </div>
                         </div>
 
-                      <div class="form-group">
+                      <div class="col-md-6">
                            <div class="col-md-6">
                                 <div class="form-group">
                                 <label>Categoría</label>
                                  <asp:TextBox ID="txtCategoriaReceta" runat="server" class="form-control" Enabled="true" />
                                 </div>
                            </div>
-                          <div class="row">
                            <div class="col-md-6">
                             <asp:DropDownList ID="ddlCategoriaReceta" runat="server" class="custom-select2 form-control">
                                 <asp:ListItem Text="" Value="">Seleccione una categoría</asp:ListItem>
                             </asp:DropDownList>
-                               </div>
-                               <div class="col-md-3">
-                            <asp:ImageButton ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarCategoria_Click"/>
-                              </div>
-                                   <%-- <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>--%>
                             </div>
-                       </div>
+                            <asp:ImageButton ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" OnClick="btnEditarCategoria_Click"/>
+                         
+                                   <%-- <asp:RequiredFieldValidator ID="rfvcategoriaR" runat="server" ControlToValidate="ddlCategoriaReceta" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>--%>
+                        </div>
 
                      <div class="form-group">
                          <div class="col-md-6">
@@ -148,7 +145,7 @@
                       <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                             <ContentTemplate>
                             <label>Medida</label>
-                             <asp:TextBox ID="txtMedidaFormato" runat="server" class="form-control" />
+                           <%--  <asp:TextBox ID="txtMedidaFormato" runat="server" class="form-control" />--%>
                             <div class="col-sm-6">
                                 <asp:DropDownList ID="ddlMedida" runat="server" class="custom-select2 form-control">
                                 </asp:DropDownList>
