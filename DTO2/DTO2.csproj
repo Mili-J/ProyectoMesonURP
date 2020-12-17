@@ -70,6 +70,7 @@
     <Compile Include="DTO_Merma.cs" />
     <Compile Include="DTO_Movimiento.cs" />
     <Compile Include="DTO_OC.cs" />
+    <Compile Include="DTO_OC_SP.cs" />
     <Compile Include="DTO_Persona.cs" />
     <Compile Include="DTO_Proveedor.cs" />
     <Compile Include="DTO_Receta.cs" />
