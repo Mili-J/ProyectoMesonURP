@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Recepción de Insumos" Language="C#" AutoEventWireup="true" CodeBehind="Recepción_Insumos.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Recepción_Insumos" %>
+﻿<%@ Page Title="Mesón URP | Recepción de Insumos" Language="C#" AutoEventWireup="true" CodeBehind="Recepción_Insumos.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Recepción_Insumos" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .mb-0 {}

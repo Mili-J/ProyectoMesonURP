@@ -241,7 +241,7 @@
                                                 <li class="col-lg-6 col-md-2 col-sm-12">
                                                     <div class="product-box">
                                                         <div class="producct-img">
-                                                                <img class="card-img-top" alt="Imagen de Referencia" src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                                                <img class="card-img-top" alt="Imagen de Referencia" src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : ((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")).Length == 0 ? string.Empty : Convert.ToBase64String((byte[]) Eval("R_imagenReceta")) %>">
                                                         </div>
                                                     <div class="card-body">
                                                         <asp:Label ID="lblIdReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>' Visible="false"></asp:Label>
@@ -379,6 +379,78 @@
             }
             return true;
         }
+        function alertaEntradas() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Entradas permitidas son 2.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaSegundos() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Segundos permitidos son 3.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaBebidas() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Bebidas permitidas es 1.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaEntradasMax() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Entradas es mayor al número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaSegundosMax() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Segundos es mayor al número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaBebidasMax() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'La cantidad de Bebidas es mayor al número de raciones.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaEmpty() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El campo se encuentra vacío.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaCero() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El valor debe ser mayor a cero.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaSimbolo() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El valor debe ser numérico.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
 
         function alertaAceptado() {
             Swal.fire({
@@ -397,6 +469,7 @@
                 confirmButtonText: 'Aceptar'
             })
         }
+
 
         function alertaRecibido() {
             Swal.fire({
