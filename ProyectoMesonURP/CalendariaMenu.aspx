@@ -158,13 +158,7 @@
                     width: 100%;
                     float: left;
                 }
-
-        .myCalendar .myCalendarDay a:hover,
-        .myCalendar .myCalendarSelector a:hover
-        {
-            background-color: #99b7bf;
-            height: 100px;
-        }
+                     
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -178,8 +172,6 @@
 				</div>
 			</div>
 		</div>
-        
-
         <div class="pd-20 card-box mb-30">
             <div class="form-group">
                 <div class="calendarWrapper">

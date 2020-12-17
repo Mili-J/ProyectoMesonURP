@@ -67,6 +67,7 @@ namespace ProyectoMesonURP
             objIngrediente.E_idEquivalencia = int.Parse(ddlEquivalencia.SelectedValue);
             CTR_Ingrediente CTRIngrediente = new CTR_Ingrediente();
             CTRIngrediente.InsertarIngrediente(objIngrediente);
+
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
