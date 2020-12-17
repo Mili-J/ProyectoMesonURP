@@ -10,7 +10,7 @@ namespace DAO
     public class DAO_Insumo
     {
         SqlConnection conexion;
-        DTO_Medida dto_medida;
+        
 
         public DAO_Insumo()
         {

@@ -11,8 +11,8 @@
      </div>
 
      <div class="forms">
-         <asp:UpdatePanel ID="panel1" runat="server">
-                <ContentTemplate>
+        <asp:UpdatePanel ID="panel1" runat="server">
+            <ContentTemplate>
                     <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                             <asp:GridView ID="gvIngrediente" runat="server" DataKeyNames="I_nombreIngrediente,I_pesoUnitario,I_Cantidad,I_nombreInsumo,E_cantidad,M_nombreMedida,FCO_nombreFormatoCocina" OnRowCommand="GVIngrediente_RowCommand" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" Width="381px" OnRowDataBound ="gvIngrediente_RowDataBound" >
@@ -48,8 +48,8 @@
                     
                     </div>
                 </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+           </ContentTemplate>
+           </asp:UpdatePanel>
          <asp:UpdatePanel ID="panelAgregarIngrediente" runat="server">
              <ContentTemplate>
                  <p class="center-button">
@@ -64,6 +64,6 @@
                  </p>
              </ContentTemplate>
          </asp:UpdatePanel>
+         </div>
      </div>
- </div>
 </asp:Content>

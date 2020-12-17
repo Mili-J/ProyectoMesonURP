@@ -53,5 +53,9 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_IngredienteXID(i);
         }
+        public DataTable Validar_IngredientesXReceta()
+        {
+            return objDAO.Validar_IngredientesXReceta();
+        }
     }
 }
