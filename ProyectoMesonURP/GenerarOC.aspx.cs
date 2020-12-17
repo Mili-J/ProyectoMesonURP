@@ -12,12 +12,15 @@ namespace ProyectoMesonURP
 {
     public partial class GenerarOC : System.Web.UI.Page
     {
+        DTO_DetalleOC _Ddc = new DTO_DetalleOC();
+        CTR_DetalleOC _Cdoc = new CTR_DetalleOC();
         CTR_DetalleCotizacion _Cdc = new CTR_DetalleCotizacion();
         DTO_OC _Doc = new DTO_OC();
         CTR_OC _Coc = new CTR_OC();
 
         private decimal _Total = 0;
         string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +31,7 @@ namespace ProyectoMesonURP
                 CargargvInsumos();
             }
             txtFechaEmision.Text = FechaActual;
+            txtFechaEntrega.Text = FechaActual;
         }
         public void CargarCotizacion()
         {
@@ -58,8 +62,6 @@ namespace ProyectoMesonURP
             string comprobante = ddlComprobante.SelectedValue;
             int idCotizacion = Convert.ToInt32(Session["idcotizacion"]);
 
-
-
             string htmlBody = Resource.MensajeOC;
             htmlBody = htmlBody.Replace("#IDOC#", _Doc.OC_numeroOc.ToString());
             htmlBody = htmlBody.Replace("#FORMADEPAGO#", comprobante);
@@ -83,7 +85,6 @@ namespace ProyectoMesonURP
                     return sw.ToString();
                 }
             }
-
         }
         public override void VerifyRenderingInServerForm(Control control)
         {
@@ -104,16 +105,16 @@ namespace ProyectoMesonURP
 
                 foreach (GridViewRow GVRow in gvInsumos.Rows)
                 {
-                    string Rango = GVRow.Cells[1].Text;
-                    string Piezas = GVRow.Cells[2].Text;
-                    string Kilos = GVRow.Cells[3].Text;
-                    string Part = GVRow.Cells[4].Text;
+                    _Ddc.DOC_precioUnitario = Convert.ToDecimal(GVRow.Cells[3].Text);
+                    _Ddc.DOC_totalPrecio = Convert.ToDecimal(GVRow.Cells[4].Text);
+                    _Ddc.OC_idOC = _Coc.IdOC();
+                    _Ddc.DC_idDetalleCotizacion = _Cdc.IdDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
 
+                    _Cdoc.RegistrarDetalleOC(_Ddc);
                 }
 
                 CorreoOC();
             }
-
 
             //ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaCorreo('');", true);
 

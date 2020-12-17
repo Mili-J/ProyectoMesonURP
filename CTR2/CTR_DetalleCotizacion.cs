@@ -27,5 +27,9 @@ namespace CTR
         {
             return objDAO.DAO_ConsultarDetallesCotizacionXCotizacion(id);
         }
+        public int IdDetalleCotizacion(int C_idCotizacion)
+        {
+            return objDAO.SelectIdDetalleCotizacion(C_idCotizacion);
+        }
     }
 }
