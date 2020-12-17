@@ -72,21 +72,19 @@
 
              </ContentTemplate>
          </asp:UpdatePanel>
-          <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                    <ContentTemplate>
+          
                         <p class="center-button pt-3">
                             <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btEditarEquivalencia" OnClick="btnEditarEquivalencia_Click" />
                                     
                                 </p>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-            <asp:UpdatePanel ID="PanelVolver" runat="server">
+                          
+            <%--<asp:UpdatePanel ID="PanelVolver" runat="server">
                 <ContentTemplate>
                     <p>
                         <asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
                     </p>
                 </ContentTemplate>
-            </asp:UpdatePanel>
+            </asp:UpdatePanel>--%>
     </div>
 
 </asp:Content>

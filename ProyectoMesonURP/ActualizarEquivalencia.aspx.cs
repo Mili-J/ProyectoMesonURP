@@ -23,11 +23,12 @@ namespace ProyectoMesonURP
         int idFCocina = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            LLenarDatosE();
+            
             if (!IsPostBack)
             {
                 LoadCategoriaI();
                 llenarDDLFormatoC();
+                LLenarDatosE();
             }
 
         }
@@ -60,7 +61,7 @@ namespace ProyectoMesonURP
             CTR_Ingrediente objIngrediente = new CTR_Ingrediente();
             dsFormatoC = objIngrediente.ListarFCocina();
             ddlFormatoCocina.DataTextField = "FCO_nombreFormatoCocina";
-            ddlFormatoCocina.DataValueField = "FCO_idFormatoCocina";
+            ddlFormatoCocina.DataValueField = "FCO_idFCocina";
             ddlFormatoCocina.DataSource = dsFormatoC;
             ddlFormatoCocina.DataBind();
             ddlFormatoCocina.Items.Insert(0, "Seleccione");
@@ -148,7 +149,7 @@ namespace ProyectoMesonURP
                 idMedida = ObtenerMedidaI(DTOEqui.I_idInsumo).M_idMedida;
             }
                
-            DTOEqui.E_cantidad = int.Parse(txtCantidad.Text);                                
+            DTOEqui.E_cantidad = Convert.ToDecimal(txtCantidad.Text);                                
             idFCocina = int.Parse(ddlFormatoCocina.SelectedValue);
             DTOEqui.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
             DTOEqui.E_idEquivalencia = idE;
