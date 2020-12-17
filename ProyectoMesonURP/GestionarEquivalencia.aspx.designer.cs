@@ -33,9 +33,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtBuscarEquivalencia;
 
         /// <summary>
-      
-
-        /// <summary>
         /// Control gvEquivalencia.
         /// </summary>
         /// <remarks>

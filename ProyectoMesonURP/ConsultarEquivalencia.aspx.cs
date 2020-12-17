@@ -20,7 +20,12 @@ namespace ProyectoMesonURP
             txtInsumo.Text = E[0];
             txtMedida.Text = E[1];
             txtCantidad.Text = E[2];
-            lblFormatoC.Text = E[3];
+            txtFormatoC.Text = E[3];
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionarEquivalencia");
         }
     }
 }

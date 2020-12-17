@@ -65,10 +65,9 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("ActualizarEquivalencia", "ActualizarEquivalencia", "~/ActualizarEquivalencia.aspx", true);
             routes.MapPageRoute("AgregarIngrediente", "AgregarIngrediente", "~/AgregarIngrediente.aspx", true);
             routes.MapPageRoute("ActualizarIngrediente", "ActualizarIngrediente", "~/ActualizarIngrediente.aspx", true);
-            routes.MapPageRoute("GestionarIngrediente", "GestionarIngrediente", "~/GestionarIngrediente.aspx", true);
+            routes.MapPageRoute("GestionarIngrediente", "GestionarIngrediente", "~/Gestionar Ingrediente.aspx", true);
             routes.MapPageRoute("ConsultarEquivalencia", "ConsultarEquivalencia", "~/ConsultarEquivalencia.aspx", true);
             routes.MapPageRoute("ActualizarDíaMenú", "ActualizarDíaMenú", "~/ActualizarMenuDia.aspx", true);
-
         }
     }
 }

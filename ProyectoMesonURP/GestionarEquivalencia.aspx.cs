@@ -37,7 +37,7 @@ namespace ProyectoMesonURP
 
         protected void btnAnadirEquivalencia_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AgregarEquivalencia.aspx");
+            Response.Redirect("AgregarEquivalencia");
         }
 
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -51,7 +51,7 @@ namespace ProyectoMesonURP
                 string cantidad = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["E_cantidad"].ToString();
                 string fcocina = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FCO_nombreFormatoCocina"].ToString();
                 Session.Add("Equivalencia", LlenarDatosEquivalencia(insumo, medida, cantidad, fcocina));
-                Response.Redirect("ConsultarEquivalencia.aspx");
+                Response.Redirect("ConsultarEquivalencia");
                
             }
             if (e.CommandName == "EditarEquivalencia")
@@ -154,7 +154,7 @@ namespace ProyectoMesonURP
 
         protected void btnVerIngredientes_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Gestionar Ingrediente.aspx");
+            Response.Redirect("GestionarIngrediente");
         }
         protected void fnombreEq1_TextChanged(object sender, EventArgs e)
         {
