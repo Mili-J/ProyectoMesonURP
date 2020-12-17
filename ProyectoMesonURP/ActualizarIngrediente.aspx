@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgregarIngrediente.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.AgregarIngrediente" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActualizarIngrediente.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ConsultarIngrediente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
    
@@ -10,7 +10,7 @@
       <div class="form-horizontal" runat="server" style="background-color:#f5f6f7; border-radius:1%">
                         <div class="form-grids widget-shadow" data-example-id="basic-forms" style="margin-top: 34px;">
                             <div class="form-title color-white">
-                                <h4>Añadir Ingrediente</h4>
+                                <h4>Editar Ingrediente</h4>
                             </div>
                         </div>
           </div>
@@ -39,8 +39,8 @@
                                 <asp:TextBox ID="txtCantidad" CssClass="form-control form-color-letter" Style="width:25%" runat="server"></asp:TextBox>
                             </div>
                        </div>
-                       
-            <div class="form-group">
+          
+             <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Categoria:</label>
                             <div class="col-sm-8">                               
                               <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>                              
@@ -48,9 +48,11 @@
                         </div>
 
                         <div class="form-group">
+
                             <label for="focusedinput" class="col-sm-2 control-label">Insumo:</label>
-                            <div class="col-sm-8">                               
-                              <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>                              
+                            <div class="col-sm-8"> 
+                                <asp:TextBox ID="txtInsumo" runat="server"></asp:TextBox>
+                              <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%"></asp:DropDownList>                              
                             </div>
                         </div>
     
@@ -59,13 +61,14 @@
                        <div class="form-group">
                             <label for="selector1" class="col-sm-2 control-label" style="left: 101px; top: 3px">Equivalencia</label>
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlEquivalencia" AutoPostBack="true" CssClass="form-control form-color-letter" runat="server" OnSelectedIndexChanged="ddlEquivalencia_SelectedIndexChanged" Height="4588px" Width="234px"></asp:DropDownList>
+                                <asp:TextBox ID="txtEquivalencia" runat="server"></asp:TextBox>
+                                <asp:DropDownList ID="ddlEquivalencia" AutoPostBack="true" CssClass="form-control form-color-letter" runat="server"  Height="4588px" Width="234px"></asp:DropDownList>
                             </div>
                        </div>
                         <asp:UpdatePanel ID="PanelAñadir" runat="server">
                             <ContentTemplate>
                                 <p class="center-button">
-                                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
+                                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
                                     
                                 </p>
                             </ContentTemplate>
@@ -77,7 +80,7 @@
                     </p>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            
+            <asp:Label ID="lblMsj" runat="server" Text="Label"></asp:Label>
         </div>
      </div>
 </asp:Content>

@@ -15,7 +15,7 @@
                 <ContentTemplate>
                     <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvIngrediente" runat="server" DataKeyNames="I_nombreIngrediente,I_pesoUnitario,I_Cantidad,I_nombreInsumo,E_cantidad,M_nombreMedida,FCO_nombreFormatoCocina" OnRowCommand="GVIngrediente_RowCommand" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" Width="381px">
+                            <asp:GridView ID="gvIngrediente" runat="server" DataKeyNames="I_nombreIngrediente,I_pesoUnitario,I_Cantidad,I_nombreInsumo,E_cantidad,M_nombreMedida,FCO_nombreFormatoCocina" OnRowCommand="GVIngrediente_RowCommand" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" Width="381px" OnRowDataBound ="gvIngrediente_RowDataBound" >
                                 <Columns>
                                     <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" />
                                     <asp:BoundField HeaderText="Peso Unitario" DataField="I_pesoUnitario" />
@@ -28,14 +28,14 @@
                                     </asp:TemplateField>                                           
                                     <asp:TemplateField HeaderText="Editar">
                                         <ItemTemplate>
-                                            <asp:Button  ID="btnEditarIngrediente" runat="server"  CommandName="EditarIngrediente" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
+                                            <asp:Button  ID="btnEditarIngrediente" CssClass="btn btn-primary" runat="server"  CommandName="EditarIngrediente" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                    
                                    
-                                    <asp:TemplateField HeaderText="Ver">
+                                    <asp:TemplateField HeaderText="Ver" Visible="false">
                                         <ItemTemplate>
-                                            <asp:Button ID="btnVer" runat="server" Text="Ver" />
+                                            <asp:Button ID="btnVer" runat="server" CssClass="btn btn-primary" CommandName="VerIngrediente" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Ver" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                    

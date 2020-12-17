@@ -32,10 +32,10 @@ namespace ProyectoMesonURP
         public void CargarCotizacion()
         {
             txtNdeCompra.Text = _Coc.ListarNumeroOC();
-            txtNdeCompra.Enabled = false;
+            //txtNdeCompra.Enabled = false;
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
-            txtProveedor.Enabled = false;
-            txtFechaEmision.Enabled = false;
+            //txtProveedor.Enabled = false;
+            //txtFechaEmision.Enabled = false;
         }
         public void CargargvInsumos()
         {
