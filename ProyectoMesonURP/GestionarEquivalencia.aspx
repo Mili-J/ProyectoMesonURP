@@ -42,8 +42,7 @@
             </div>
         </div>
      <div class="forms">
-         <asp:UpdatePanel ID="panel1" runat="server">
-                <ContentTemplate>
+        
                     <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                             <asp:GridView ID="gvEquivalencia" runat="server" DataKeyNames="E_cantidad,I_nombreInsumo,M_nombreMedida,FCO_nombreFormatoCocina" emptydatatext="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" >
@@ -84,9 +83,7 @@
                     
                     </div>
                 </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+          
      </div>
-     </div>
- </div>
+
 </asp:Content>

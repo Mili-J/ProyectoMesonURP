@@ -16,21 +16,37 @@
                     </div>                    
                 </div>
             </div>
+          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
+                    <div class="col-sm-12 col-md-4">                             
+                        <asp:DropDownList ID="ddlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"  ></asp:DropDownList>                              
+                    </div>
+                </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
          <asp:UpdatePanel ID="panelInsumo" runat="server">
              <ContentTemplate>
                   <div class="form-horizontal" runat="server" style="background-color:#f5f6f7; border-radius:1%">
                        <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Insumo</label>
                             <div class="col-sm-8">
-                                <asp:TextBox ID="txtInsumo" CssClass="form-control form-color-letter" Style="width:25%" runat="server"></asp:TextBox>                                                               
+                                <asp:TextBox ID="txtInsumo" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" runat="server"></asp:TextBox>                                                               
                             </div>
                         </div>
+                        <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
+                    <div class="col-sm-12 col-md-4">                          
+                        <asp:DropDownList ID="ddlInsumo" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"  ></asp:DropDownList>                              
+                    </div>
+                </div>
                   </div>
                   <div class="form-horizontal" runat="server" style="background-color:#f5f6f7; border-radius:1%">
                        <div class="form-group">
                             <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
                             <div class="col-sm-8">
-                                <asp:TextBox ID="txtMedida" CssClass="form-control form-color-letter" Style="width:25%" runat="server"></asp:TextBox>                                                               
+                                <asp:TextBox ID="txtMedida" CssClass="form-control form-color-letter" Style="width:25%" ReadOnly="true" runat="server"></asp:TextBox>                                                               
                             </div>
                         </div>
                   </div>
@@ -56,6 +72,21 @@
 
              </ContentTemplate>
          </asp:UpdatePanel>
+          <asp:UpdatePanel ID="PanelAñadir" runat="server">
+                    <ContentTemplate>
+                        <p class="center-button pt-3">
+                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btEditarEquivalencia" OnClick="btnEditarEquivalencia_Click" />
+                                    
+                                </p>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+            <asp:UpdatePanel ID="PanelVolver" runat="server">
+                <ContentTemplate>
+                    <p>
+                        <asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
+                    </p>
+                </ContentTemplate>
+            </asp:UpdatePanel>
     </div>
 
 </asp:Content>
