@@ -143,7 +143,7 @@ namespace ProyectoMesonURP
                 decimal sum = decimal.Zero;
                 for (int i = 0; i < gvInsumos.Rows.Count; i++)
                 {
-                    sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
+                    sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text == string.Empty ? "0" : ((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
                 }
                ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text = sum.ToString();
                 Session["Totaldecompra"] = ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text;
