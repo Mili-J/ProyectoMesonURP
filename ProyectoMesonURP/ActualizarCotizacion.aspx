@@ -50,12 +50,12 @@
                         </div>
                     </div>
                     <%-- ----- --%>
-                    <div class="form-group">
+                  <%--  <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Documento:</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtDoc" runat="server"  CssClass="form-control1"/>
                         </div>
-                    </div>
+                    </div>--%>
                     <%-- ----- --%>
 <%--                    <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Proveedor:</label>

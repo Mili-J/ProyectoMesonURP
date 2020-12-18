@@ -80,7 +80,7 @@ namespace ProyectoMesonURP
                 if (ctr_cotizacion.EnviarCorreo(cot, htmlbody))
                 {
                     ClientScript.RegisterStartupScript(Page.GetType(), "alertaCorreo", "alertaCorreo('');", true);
-                    cot.EC_idEstadoCotizacion = 2;
+                    cot.EC_idEstadoCotizacion = 4;
                     ctr_cotizacion.CTR_ActualizarEstadoCotizacion(cot);//de creada a enviada
                 }
                 else
@@ -98,13 +98,13 @@ namespace ProyectoMesonURP
             else if (e.CommandName == "AceptarCotizacion")
             {
                 ClientScript.RegisterStartupScript(Page.GetType(), "alertaAceptado", "alertaAceptado('');", true);
-                cot.EC_idEstadoCotizacion = 3;
+                cot.EC_idEstadoCotizacion = 1;
                 ctr_cotizacion.CTR_ActualizarEstadoCotizacion(cot);//de recibida a aceptada
             }
             else if (e.CommandName == "RechazarCotizacion")
             {
                 ClientScript.RegisterStartupScript(Page.GetType(), "alertaRechazado", "alertaRechazado('');", true);
-                cot.EC_idEstadoCotizacion = 4;
+                cot.EC_idEstadoCotizacion = 2;
                 ctr_cotizacion.CTR_ActualizarEstadoCotizacion(cot);//de recibida a rechazada
 
             }

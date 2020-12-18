@@ -143,10 +143,10 @@ namespace ProyectoMesonURP
             var dt = ctr_cotizacion.CTR_Consultar_Cotizaciones();
             dto_cotizacion.C_numeroCotizacion = $"{ini}{dt.Rows.Count}{dtCot.Rows.Count}{DateTime.Today.Day}{DateTime.Today.Month}{DateTime.Today.Year}{DdlInsumo.SelectedValue}";
             dto_cotizacion.C_tiempoPlazo = DdlTiempoPlazo.SelectedValue;
-            dto_cotizacion.C_documento = txtDoc.Text;
+            //dto_cotizacion.C_documento = txtDoc.Text;
             dto_cotizacion.PR_idProveedor = Convert.ToInt32(DdlProveedor.SelectedValue);
             dto_cotizacion.C_fechaEmision = DateTime.Today;
-            dto_cotizacion.EC_idEstadoCotizacion = 1;
+            dto_cotizacion.EC_idEstadoCotizacion = 3;
 
             dto_cotizacion.U_idUsuario = dto_usuario.U_idUsuario;
             DataRow dr = dtCot.NewRow();
