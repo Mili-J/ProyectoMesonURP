@@ -31,36 +31,37 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+               
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
-                <div class="form-group row justify-content-center h-100">
+                         <div class="form-group row justify-content-center h-100">
                     <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
                     <div class="col-sm-12 col-md-4">
                         <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>
                     </div>
-                </div>
+                       </div>
                         </ContentTemplate>
                 </asp:UpdatePanel>
-                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                    <ContentTemplate>
-                        <div class="form-group row justify-content-center h-100">
-                            <label class="col-sm-12 col-md-2 col-form-label">Medida</label>
-                            <div class="col-sm-12 col-md-4">
-                                <asp:TextBox ID="txtMedida" CssClass="form-control" ReadOnly="true" runat="server" ></asp:TextBox>
-                            </div>
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <div class="row justify-content-center h-100">
                  <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                     <ContentTemplate>
-                <div class="form-group row justify-content-center h-100">
-                    <label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
-                    <div class="col-sm-12 col-md-4">
-                        <asp:TextBox ID="txtCantidad" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                     <div class="form-group row col-md-8">
+                        <label >Cantidad</label>
+                        <div class="col-sm-12 col-md-6">
+                            <asp:TextBox ID="txtCantidad" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                        </div>
                     </div>
-                </div>
-                         </ContentTemplate>
+                    </ContentTemplate>
                 </asp:UpdatePanel>
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                    <ContentTemplate>
+                            <div class="col-sm-12 col-md-4">
+                                <asp:TextBox ID="txtMedida" BackColor="Transparent" BorderColor="White" BorderStyle="None" ReadOnly="true" runat="server" ></asp:TextBox>
+                            </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                    </div>
+
                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                     <ContentTemplate>
                         <div class="form-group row justify-content-center h-100">
