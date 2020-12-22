@@ -55,7 +55,7 @@
 						<h3>Detalles de Insumo</h3>
 					</div>
                     <%-- ----- --%>
-<%--                    <div class="form-group">
+                 <%--   <div class="form-group">
                            <label for="selector1" class="col-sm-2 control-label">Documento</label>
                            <div class="col-sm-8">
                                <asp:TextBox ID="txtDoc" runat="server"></asp:TextBox>

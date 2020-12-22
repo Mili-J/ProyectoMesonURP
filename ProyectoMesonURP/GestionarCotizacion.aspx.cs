@@ -19,25 +19,47 @@ namespace ProyectoMesonURP
             ctr_cotizacion = new CTR_Cotizacion();
             if (!IsPostBack)
             {
+                CargarCotizacion();
+                ListItem ddl1 = new ListItem("5", "5");
+                ddlp.Items.Insert(0, ddl1);
+                ListItem ddl2 = new ListItem("10", "10");
+                ddlp.Items.Insert(1, ddl2);
+                ListItem ddl3 = new ListItem("20", "20");
+                ddlp.Items.Insert(2, ddl3);
                 CargarCots();
             }
         }
+        public void CargarCotizacion()
+        {
+            GridViewCotizacion.DataSource = ctr_cotizacion.CTR_Consultar_Cotizaciones();
+            GridViewCotizacion.DataBind();
 
+        }
         protected void GridViewCotizacion_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int idCot;
             idCot = Convert.ToInt32(GridViewCotizacion.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["C_idCotizacion"].ToString());
             Session.Add("idCot", idCot);
             DTO_Cotizacion cot = ctr_cotizacion.CTR_ConsultarCotizacion(idCot);
-            if (e.CommandName== "ConsultarCotizacion")
+            if (e.CommandName == "ConsultarCotizacion")
             {
                 Response.Redirect("ConsultarCotizacion.aspx");
             }
-            else if (e.CommandName== "EnviarEmailCotizacion")
+            else if (e.CommandName == "GenerarOc")
             {
-                
+                int idCotizacion = Convert.ToInt32(GridViewCotizacion.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["C_idCotizacion"].ToString());
+                Session["idcotizacion"] = idCotizacion;
+
+                string proveedor = GridViewCotizacion.Rows[Convert.ToInt32(e.CommandArgument)].Cells[5].Text;
+                Session["proveedor"] = proveedor;
+
+                Response.Redirect("GenerarOC");
+            }
+            else if (e.CommandName == "EnviarEmailCotizacion")
+            {
+
                 DataTable dt = new CTR_DetalleCotizacion().CTR_ConsultarDetallesCotizacionXCotizacion(idCot);
-                string htmlbody=Resource.MensajeCotizacion;
+                string htmlbody = Resource.MensajeCotizacion;
                 htmlbody = htmlbody.Replace("#IDOC#", cot.C_numeroCotizacion);
                 htmlbody = htmlbody.Replace("#PROVEEDOR#", new CTR_Proveedor().CTR_ConsultarProveedor(cot.PR_idProveedor).PR_razonSocial);
                 htmlbody = htmlbody.Replace("#FECHAEMISION#", cot.C_fechaEmision.ToShortDateString());
@@ -53,7 +75,7 @@ namespace ProyectoMesonURP
                 }
 
                 htmlbody = htmlbody.Replace("#GRID#", dta);
-               
+
 
                 if (ctr_cotizacion.EnviarCorreo(cot, htmlbody))
                 {
@@ -97,18 +119,18 @@ namespace ProyectoMesonURP
 
         protected void GridViewCotizacion_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType==DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Cells[2].Text = Convert.ToDateTime(e.Row.Cells[2].Text).ToShortDateString();
-
+                //string estadoColor = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "EC_nombreEstadoC").ToString());
                 string estado = e.Row.Cells[6].Text.ToString();
-                if (estado=="Creada")
+                if (estado == "Creada")
                 {
-                    e.Row.Cells[11].FindControl("btnAceptada").Visible=false;
+                    e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                 }
-                else if (estado=="Enviada")
+                else if (estado == "Enviada")
                 {
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
@@ -129,6 +151,7 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
                     e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    e.Row.Cells[6].Text = "<span class='badge badge-success'>" + e.Row.Cells[6].Text + "</span>";
                 }
                 else if (estado == "Rechazada")
                 {
@@ -137,14 +160,22 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
                     e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    e.Row.Cells[6].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[6].Text + "</span>";
                 }
             }
-            
+
         }
         public void CargarCots()
         {
             GridViewCotizacion.DataSource = ctr_cotizacion.CTR_Consultar_Cotizaciones();
             GridViewCotizacion.DataBind();
+        }
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void fNombreCotizacion_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ConsultarCotizacion.aspx.cs" Inherits="ProyectoMesonURP.ConsultarCotizacion" %>
+﻿<%@ Page Title="Gestionar Cotización | Consultar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ConsultarCotizacion.aspx.cs" Inherits="ProyectoMesonURP.ConsultarCotizacion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <%-- ----- --%>
-<%--                    <div class="form-group">
+                 <%--   <div class="form-group">
                         <label for="focusedinput" class="col-sm-2 control-label">Documento:</label>
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtDoc" runat="server"  CssClass="form-control1" ReadOnly="true"/>

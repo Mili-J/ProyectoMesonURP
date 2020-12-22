@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using DAO;
-using System.Data;
-using DAO;
 using DTO;
 
 namespace CTR
@@ -16,20 +14,23 @@ namespace CTR
         {
             dao_catIns = new DAO_CategoriaInsumo();
         }
-        public DataTable DAO_ConsultarCategoriasInsumo()
-        {
-            return dao_catIns.DAO_ConsultarCategoriasInsumo();
-        }
-
-
-        public DataSet CTR_SelectCategoriaI()
-        {
-            return dao_catIns.DAO_SelectCategoriaI();
-        }
+        //public DataTable DAO_ConsultarCategoriasInsumo()
+        //{
+        //    return dao_catIns.DAO_ConsultarCategoriasInsumo();
+        //}
 
         public DataSet CTR_SelectInsumoXCategoria(DTO_CategoriaInsumo objCategoriaIn)
         {
             return dao_catIns.DAO_SelectInsumoXCategoria(objCategoriaIn);
+        }
+
+        public DataTable DAO_ConsultarCategoriasInsumo()
+        {
+            return dao_catIns.DAO_ConsultarCategoriasInsumo();
+        }
+        public DataSet CTR_SelectCategoriaI()
+        {
+            return dao_catIns.DAO_SelectCategoriaI();
         }
 
     }

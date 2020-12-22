@@ -43,7 +43,7 @@ namespace ProyectoMesonURP
 
         protected void Application_End(object sender, EventArgs e)
         {
-
+             
         }
         private static void RegisterRoutes(RouteCollection routes)
         {
@@ -55,13 +55,19 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("RegistrarReceta", "RegistrarReceta", "~/RegistrarReceta.aspx", true);
             routes.MapPageRoute("ActualizarReceta", "ActualizarReceta", "~/ActualizarReceta.aspx", true);
             routes.MapPageRoute("TransformarInsumo", "TransformarInsumo", "~/Transformar_Insumo.aspx", true);
-            routes.MapPageRoute("CalendariaMenu", "CalendariaMenu", "~/CalendariaMenu.aspx", true);
+            routes.MapPageRoute("CalendarioMenu", "CalendarioMenu", "~/CalendariaMenu.aspx", true);
             routes.MapPageRoute("ElegirRecetaTransformar", "ElegirRecetaTransformar", "~/SeleccionarMenuTransformar.aspx", true);
             routes.MapPageRoute("SeleccionarMenu", "SeleccionarMenu", "~/SeleccionarMenuDia.aspx", true);
             routes.MapPageRoute("GenerarOC", "GenerarOC", "~/GenerarOC.aspx", true);
             routes.MapPageRoute("GestionarCotizacion", "GestionarCotizacion", "~/GestionarCotizacion.aspx", true);
             routes.MapPageRoute("GestionarEquivalencia", "GestionarEquivalencia", "~/GestionarEquivalencia.aspx", true);
             routes.MapPageRoute("AgregarEquivalencia", "AgregarEquivalencia", "~/AgregarEquivalencia.aspx", true);
+            routes.MapPageRoute("ActualizarEquivalencia", "ActualizarEquivalencia", "~/ActualizarEquivalencia.aspx", true);
+            routes.MapPageRoute("AgregarIngrediente", "AgregarIngrediente", "~/AgregarIngrediente.aspx", true);
+            routes.MapPageRoute("ActualizarIngrediente", "ActualizarIngrediente", "~/ActualizarIngrediente.aspx", true);
+            routes.MapPageRoute("GestionarIngrediente", "GestionarIngrediente", "~/Gestionar Ingrediente.aspx", true);
+            routes.MapPageRoute("ConsultarEquivalencia", "ConsultarEquivalencia", "~/ConsultarEquivalencia.aspx", true);
+            routes.MapPageRoute("ActualizarDíaMenú", "ActualizarDíaMenú", "~/ActualizarMenuDia.aspx", true);
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using DAO;
 using DTO;
+using DTO2;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
-using DAO;
 using System.Data;
 
 namespace CTR
@@ -12,6 +11,7 @@ namespace CTR
     public class CTR_OC
     {
         DAO_OC dao_oc;
+
         public CTR_OC()
         {
             dao_oc = new DAO_OC();
@@ -24,6 +24,10 @@ namespace CTR
         {
             return dao_oc.ListarOC(OC_numeroOC);
         }
+        //public DataTable ListarOC(string numOC)
+        //{
+        //    return dao_oc.ListarOC(numOC);
+        //}
         public DataTable BuscarOC(int idOC)
         {
             return dao_oc.BuscarOC(idOC);
@@ -47,6 +51,10 @@ namespace CTR
         public int IdOC()
         {
             return dao_oc.SelectIdOC();
+        }
+        public List<DTO_OC_SP> ListarOC_3(int idOC) //LISTA DE OBJETOS
+        {
+            return dao_oc.ListarOC_3(idOC);
         }
     }
 }

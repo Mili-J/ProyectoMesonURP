@@ -12,5 +12,9 @@ namespace DTO
         public decimal I_cantidad { get; set; }
         public int I_idInsumo { get; set; }
         public int E_idEquivalencia { get; set; }
+
+        //No borrar pls
+        public string equivalencia { get; set; }
+        public string I_nombreInsumo { get; set; }
     }
 }

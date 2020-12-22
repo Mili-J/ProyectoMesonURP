@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Gestionar Receta" Language="C#" AutoEventWireup="true" CodeBehind="GestionarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarReceta" %>
+﻿<%@ Page Title="Mesón URP | Gestionar Receta" Language="C#" AutoEventWireup="true" CodeBehind="GestionarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarReceta" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="vendors/styles/core.css" rel="stylesheet" />

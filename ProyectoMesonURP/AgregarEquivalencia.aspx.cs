@@ -17,6 +17,7 @@ namespace ProyectoMesonURP
         CTR_Ingrediente objIngrediente;
         DataSet dsCatInsumo;
         DataSet dsFCocina;
+        int idMFCO = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -74,6 +75,20 @@ namespace ProyectoMesonURP
             }
             return objMedida;
         }
+        public int ObtenerIDMedidaXFCocina(int idMedida, int idFCocina)
+        {
+            DataTable dtFCocina = new DataTable();
+            CTR_MedidaXFormatoCocina objMedidaFC = new CTR_MedidaXFormatoCocina();
+            dtFCocina = objMedidaFC.ListarIDMedidaXFCocina();
+
+            foreach (DataRow row in dtFCocina.Rows)
+            {
+               int idM = Convert.ToInt32(row["M_idMedida"]);
+               int  idFC = Convert.ToInt32(row["FCO_idFCocina"]);
+               if(idM==idMedida && idFC==idFCocina) idMFCO= Convert.ToInt32(row["MXFC_idMedidaFCocina"]);
+            }
+            return idMFCO;
+        }
 
         protected void ddlInsumo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -100,7 +115,15 @@ namespace ProyectoMesonURP
 
         protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
         {
-
+            CTR_Equivalencia CTREqui = new CTR_Equivalencia();
+            DTO_Equivalencia DTOEqui = new DTO_Equivalencia();
+            DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
+            DTOEqui.E_cantidad = int.Parse(txtCantidad.Text);
+            int id = int.Parse(ddlInsumo.SelectedValue);
+            int idMedida = ObtenerMedidaI(id).M_idMedida;
+            int idFCocina= int.Parse(ddlFormatoCocina.SelectedValue);
+            DTOEqui.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
+            CTREqui.AgregarEquivalencia(DTOEqui);
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

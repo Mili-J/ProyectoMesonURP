@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Text;
 using DTO;
 using System.Data.SqlClient;
@@ -40,23 +38,41 @@ namespace DAO
             conexion.Close();
             return dtDetCot;
         }
-        public int SelectIdDetalleCotizacion(int C_idCotizacion)
+        public int SelectIdDetalleCotizacion(int C_idCotizacion, string I_nombreInsumo)
         {
             int IdDetalleCotizacion = 0;
             SqlCommand unComando = new SqlCommand("SP_ID_DETALLECOTIZACION", conexion);
             unComando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+            unComando.Parameters.AddWithValue("@I_nombreInsumo", I_nombreInsumo);
             unComando.CommandType = CommandType.StoredProcedure;
             conexion.Open();
 
             SqlDataReader dReader = unComando.ExecuteReader();
             if (dReader.Read())
             {
-                IdDetalleCotizacion = Convert.ToInt32(dReader["C_idCotizacion"]);
+                IdDetalleCotizacion = Convert.ToInt32(dReader["DC_idDetalleCotizacion"]);
             }
             conexion.Close();
             return IdDetalleCotizacion;
 
         }
+        //public int SelectIdDetalleCotizacion(int C_idCotizacion)
+        //{
+        //    int IdDetalleCotizacion = 0;
+        //    SqlCommand unComando = new SqlCommand("SP_ID_DETALLECOTIZACION", conexion);
+        //    unComando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+        //    unComando.CommandType = CommandType.StoredProcedure;
+        //    conexion.Open();
+
+        //    SqlDataReader dReader = unComando.ExecuteReader();
+        //    if (dReader.Read())
+        //    {
+        //        IdDetalleCotizacion = Convert.ToInt32(dReader["C_idCotizacion"]);
+        //    }
+        //    conexion.Close();
+        //    return IdDetalleCotizacion;
+
+        //}
         public DataTable SelectDetalleCotizacion(int C_idCotizacion)
         {
             conexion.Open();

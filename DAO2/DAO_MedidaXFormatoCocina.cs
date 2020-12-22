@@ -20,22 +20,21 @@ namespace DAO
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
             dto_medidaxfc = new DTO_MedidaXFormatoCocina();
         }
-        public int DAO_Consultar_Medida_x_FCocina(DTO_MedidaXFormatoCocina objMedidaFC)
+        public DataTable ListarMedidaXFCocina()
         {
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand("SP_SELECT_MEDIDA_X_FORMATOC", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@M_idMedida", objMedidaFC.M_idMedida));
-            cmd.Parameters.Add(new SqlParameter("@FCO_idFCocina", objMedidaFC.FCO_idFCocina));
-            SqlDataReader reader = cmd.ExecuteReader();
-            bool hayRegistros = reader.Read();
-            if (hayRegistros)
+            try
             {
-                MXFC_idMedidaFCocina = (int)reader[0];
+                DataTable dtable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SP_Select_MedidaXFCocina", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtable);
+                return dtable;
             }
-            conexion.Close();
-            return MXFC_idMedidaFCocina;
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }

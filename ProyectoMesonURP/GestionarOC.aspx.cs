@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using DTO;
 using CTR;
 using System.Data;
+using DTO2;
 
 namespace ProyectoMesonURP
 {
@@ -29,12 +30,12 @@ namespace ProyectoMesonURP
                 dto_o = new DTO_OC();
                 CargarOC();
 
-                ListItem ddl1 = new ListItem("5", "5");
-                ddlp.Items.Insert(0, ddl1);
-                ListItem ddl2 = new ListItem("10", "10");
-                ddlp.Items.Insert(1, ddl2);
-                ListItem ddl3 = new ListItem("20", "20");
-                ddlp.Items.Insert(2, ddl3);
+                //ListItem ddl1 = new ListItem("5", "5");
+                //ddlp.Items.Insert(0, ddl1);
+                //ListItem ddl2 = new ListItem("10", "10");
+                //ddlp.Items.Insert(1, ddl2);
+                //ListItem ddl3 = new ListItem("20", "20");
+                //ddlp.Items.Insert(2, ddl3);
             }
 
         }
@@ -78,6 +79,7 @@ namespace ProyectoMesonURP
             {
                 int OC = Convert.ToInt32(gvOC.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["OC_idOC"].ToString());
                 CargarInsumosOC(OC);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "DownloadPDF", "javascript:createPDF();", true);
             }
             if (e.CommandName == "Recepcionar")
             {
@@ -92,11 +94,11 @@ namespace ProyectoMesonURP
             gvOC.PageIndex = e.NewPageIndex;
             CargarOC();
         }
-        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            gvOC.PageSize = Convert.ToInt32(ddlp.SelectedValue);
-            CargarOC();
-        }
+        //protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    gvOC.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+        //    CargarOC();
+        //}
         protected void gvOC_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -116,6 +118,25 @@ namespace ProyectoMesonURP
         protected void gvOC_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        [System.Web.Services.WebMethod]              // Marcamos el método como uno web
+        public static List<DTO_OC_SP> ListaDatos(int numero)    // el método debe ser de static
+        {
+            List<DTO_OC_SP> data = new List<DTO_OC_SP>();
+            CTR_OC app = new CTR_OC();
+            String a;
+            try
+            {
+                data = app.ListarOC_3(numero);
+
+            }
+            catch (Exception e)
+            {
+
+                data = null;
+            }
+
+            return data;
         }
     }
 }

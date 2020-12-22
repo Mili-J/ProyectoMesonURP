@@ -80,6 +80,7 @@
     <Content Include="ConsultarCotizacion.aspx" />
     <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="ConsultarEquivalencia.aspx" />
+    <Content Include="ActualizarIngrediente.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -2033,13 +2034,6 @@
     <Compile Include="CalendariaMenu.aspx.designer.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ConsultarCotizacion.aspx.cs">
-      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ConsultarCotizacion.aspx.designer.cs">
-      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AgregarEquivalencia.aspx.cs">
       <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2053,6 +2047,20 @@
     </Compile>
     <Compile Include="ConsultarEquivalencia.aspx.designer.cs">
       <DependentUpon>ConsultarEquivalencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarCotizacion.aspx.cs">
+      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarCotizacion.aspx.designer.cs">
+      <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarIngrediente.aspx.cs">
+      <DependentUpon>ActualizarIngrediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarIngrediente.aspx.designer.cs">
+      <DependentUpon>ActualizarIngrediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

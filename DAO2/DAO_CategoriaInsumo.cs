@@ -11,12 +11,21 @@ namespace DAO
     {
         SqlConnection conexion;
 
-
         public DAO_CategoriaInsumo()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
-
-
+        }
+        public DataTable DAO_ConsultarCategoriasInsumo()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasInsumo", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dtCat = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dtCat);
+            conexion.Close();
+            return dtCat;
         }
 
         public DataSet DAO_SelectCategoriaI()
@@ -45,17 +54,17 @@ namespace DAO
             return ds;
         }
 
-        public DataTable DAO_ConsultarCategoriasInsumo()
-        {
-            conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasInsumo", conexion);
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.ExecuteNonQuery();
-            DataTable dtCat = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-            da.Fill(dtCat);
-            conexion.Close();
-            return dtCat;
-        }
+        //public DataTable DAO_ConsultarCategoriasInsumo()
+        //{
+        //    conexion.Open();
+        //    SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasInsumo", conexion);
+        //    comando.CommandType = CommandType.StoredProcedure;
+        //    comando.ExecuteNonQuery();
+        //    DataTable dtCat = new DataTable();
+        //    SqlDataAdapter da = new SqlDataAdapter(comando);
+        //    da.Fill(dtCat);
+        //    conexion.Close();
+        //    return dtCat;
+        //}
     }
 }

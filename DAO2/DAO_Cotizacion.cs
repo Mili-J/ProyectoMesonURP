@@ -42,6 +42,20 @@ namespace DAO
             conexion.Close();
             return correoContacto;
         }
+        //public string SelectProveedorxCotizacion(int C_idCotizacion)
+        //{
+        //    string correoContacto = "";
+        //    SqlCommand unComando = new SqlCommand("SP_SELECT_PROVEEDOR_X_COTIZACION", conexion);
+        //    unComando.CommandType = CommandType.StoredProcedure;
+        //    unComando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+        //    conexion.Open();
+        //    SqlDataReader dReader = unComando.ExecuteReader();
+        //    if (dReader.Read())
+        //    {
+        //        //throw;
+        //        return false;
+        //    }
+        //}
         public void DAO_Registrar_Cotizacion(DTO_Cotizacion cot)
         {
             conexion.Open();
@@ -112,8 +126,8 @@ namespace DAO
             try
             {
                 dto_proveedor = dao_proveedor.DAO_ConsultarProveedor(dto_cot.PR_idProveedor);
-                
-                
+
+
                 MailMessage msg = new MailMessage();
                 msg.To.Add(dto_proveedor.PR_correoContacto);
                 msg.Subject = "Solicitudad de cotización " + dto_cot.C_numeroCotizacion;
