@@ -17,6 +17,8 @@ namespace ProyectoMesonURP
         DTO_Insumo dto_insumo;
         DTO_Ingrediente objIngrediente;
         DTO_Receta dto_receta;
+
+
         DTO_Medida dto_medida;
         DTO_Formato dto_formato;
         DTO_IngredienteXReceta dto_ir;
