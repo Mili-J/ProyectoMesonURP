@@ -17,8 +17,6 @@ namespace ProyectoMesonURP
         DTO_Insumo dto_insumo;
         DTO_Ingrediente objIngrediente;
         DTO_Receta dto_receta;
-
-
         DTO_Medida dto_medida;
         DTO_Formato dto_formato;
         DTO_IngredienteXReceta dto_ir;
@@ -62,8 +60,8 @@ namespace ProyectoMesonURP
             PorcionesReceta();
             lblPlato.Text = dto_receta.R_nombreReceta;
             objReceta.CTR_Consultar_RecetaD(dto_receta.R_idReceta);
-            string imageBase64 = Convert.ToBase64String(dto_receta.R_imagenReceta);           
-            Imagen_Receta.ImageUrl = "data:Image/png;base64," + imageBase64;
+            //string imageBase64 = Convert.ToBase64String(dto_receta.R_imagenReceta);           
+            //Imagen_Receta.ImageUrl = "data:Image/png;base64," + imageBase64;
 
             if (!this.IsPostBack)
             {                
