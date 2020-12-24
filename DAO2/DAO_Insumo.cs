@@ -189,6 +189,22 @@ namespace DAO
                 throw ex;
             }
         }
+        public DataTable SelectBarChartInsumoComprar()
+        {
+            try
+            {
+                DataTable dtable = new DataTable();
+                SqlCommand unComando = new SqlCommand("SP_BarChart_Insumos_Comprar", conexion);
+                unComando.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter data = new SqlDataAdapter(unComando);
+                data.Fill(dtable);
+                return dtable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

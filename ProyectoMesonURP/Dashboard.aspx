@@ -1,11 +1,15 @@
 ﻿<%@ Page Title="Mesón URP | Dashboard" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="ProyectoMesonURP.Dashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <style>
-#chartdiv {
+#chartPie {
   width: 100%;
   height: 500px;
 }
-#chartdiv1 {
+#chartBar {
+  width: 100%;
+  height: 500px;
+}
+#chartBarCompra {
   width: 100%;
   height: 500px;
 }
@@ -21,11 +25,18 @@
 <script src="https://cdn.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
+    <!-- Resources Bar Compra -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div id="chartPie"></div>  
     <div id="chartBar"></div> 
+    <div id="chartBarCompra"></div> 
 
     <!-- Chart code Pie -->
     <script>
@@ -114,6 +125,62 @@
             // Cursor
             chart.cursor = new am4charts.XYCursor();
 
+        }); // end am4core.ready()
+    </script>
+
+    <!-- Chart code Bar Compra -->
+    <script>
+        am4core.ready(function () {
+
+            // Themes begin
+            am4core.useTheme(am4themes_moonrisekingdom);
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+
+            // Create chart instance
+            var chart = am4core.create("chartBarCompra", am4charts.XYChart);
+
+            // Add percent sign to all numbers
+            chart.numberFormatter.numberFormat = "#.#";
+
+            // Add data
+            chart.data = <%=CargarInsumoComprar()%>;
+
+            // Create axes
+            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.dataFields.category = "Insumo";
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.minGridDistance = 30;
+
+            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.title.text = "Cantidad";
+            valueAxis.title.fontWeight = 800;
+
+            chart.cursor = new am4charts.XYCursor();
+            chart.cursor.lineX.disabled = true;
+            chart.cursor.lineY.disabled = true;
+            chart.colors.list = [
+                am4core.color("#9C746B"),
+                am4core.color("#DC7633"),
+                am4core.color("#FF6F91"),
+                am4core.color("#FF9671"),
+                am4core.color("#FFC75F"),
+                am4core.color("#F9F871"),
+            ];
+
+            // Create series
+            var series = chart.series.push(new am4charts.ColumnSeries());
+            series.dataFields.valueY = "Estado";
+            series.dataFields.categoryX = "Insumo";
+            series.clustered = false;
+            series.tooltipText = "Cantidad Recibida : [bold]{valueY}[/]{Formato}";
+
+            var series2 = chart.series.push(new am4charts.ColumnSeries());
+            series2.dataFields.valueY = "CantidadCotizada";
+            series2.dataFields.categoryX = "Insumo";
+            series2.clustered = false;
+            series2.columns.template.width = am4core.percent(50);
+            series2.tooltipText = "Cantidad Comprada : [bold]{valueY}[/]{Formato}";
         }); // end am4core.ready()
     </script>
 </asp:Content>
