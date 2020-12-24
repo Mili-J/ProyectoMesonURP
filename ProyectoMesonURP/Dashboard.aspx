@@ -33,11 +33,52 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div id="chartPie"></div>  
-    <div id="chartBar"></div> 
-    <div id="chartBarCompra"></div> 
-
+    <div class="women_main">
+        <!-- start content -->
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <h4 class="tittle-margin5">Dashboard</h4>
+                        </div>
+                    </div>
+               </div>
+        <div class="pd-20 card-box mb-30">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                    <div class="form-title color-white">
+                        <h5>Seguimiento de los insumos a recepcionar</h5>
+                    </div>
+                </div>
+            <div id="chartBarCompra" class="pt-30"></div> 
+        </div> 
+    
+    
+     <div class="row clearfix">
+        <div class="col-md-6 col-sm-12 mb-30">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h5>Insumos Disponibles</h5>
+                </div>
+            </div>
+            <div class="pd-20 card-box height-100-p">
+                <div id="chartPie"></div> 
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-30">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title color-white">
+                    <h5>Estado de las Órdenes de Compra</h5>
+                </div>
+            </div>
+            <div class="pd-20 card-box height-100-p">
+                <div id="chartBar"></div> 
+            </div>
+        </div>
+    </div>
+        </div>
+     </div>
+    </div>
     <!-- Chart code Pie -->
     <script>
         am4core.ready(function () {
