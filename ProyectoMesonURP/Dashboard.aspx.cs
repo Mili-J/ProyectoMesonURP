@@ -39,6 +39,7 @@ namespace ProyectoMesonURP
             {
                 CargarEstadoOc();
                 CargarInsumoD();
+                CargarInsumoComprar();
             }
             
         }
@@ -79,6 +80,29 @@ namespace ProyectoMesonURP
                 js.Append("\"Insumo\":" + "\"" + dr[0] + "\",");
                 js.Append("\"Medida\":" + "\"" + dr[1] + "\",");
                 js.Append("\"Total\":" + dr[2]);
+                js.Append("}");
+                strDatos = ",";
+            }
+            js.Append("]");
+            return js.ToString();
+        }
+        protected string CargarInsumoComprar()
+        {
+            DataTable datos = new DataTable();
+            datos = _Ci.CTRSelectBarChartInsumoComprar();
+
+            StringBuilder js = new StringBuilder();
+            string strDatos = "";
+
+            js.Append("[");
+
+            foreach (DataRow dr in datos.Rows)
+            {
+                js.Append(strDatos + "{");
+                js.Append("\"Insumo\":" + "\"" + dr[0] + "\",");
+                js.Append("\"Formato\":" + "\"" + dr[1] + "\",");
+                js.Append("\"CantidadCotizada\":" + "\"" + dr[2] + "\",");
+                js.Append("\"Estado\":" + "\"" + dr[3] + "\",");
                 js.Append("}");
                 strDatos = ",";
             }

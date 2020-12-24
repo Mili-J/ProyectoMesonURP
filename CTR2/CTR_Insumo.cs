@@ -61,6 +61,9 @@ namespace CTR
         {
             return dao_insumo.SelectBarChartInsumoD();
         }
-
+        public DataTable CTRSelectBarChartInsumoComprar()
+        {
+            return dao_insumo.SelectBarChartInsumoComprar();
+        }
     }
 }
