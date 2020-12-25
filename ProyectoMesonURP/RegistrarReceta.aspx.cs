@@ -49,7 +49,7 @@ namespace ProyectoMesonURP
         }
         public void ListarMedida()
         {
-           // ddlMedida.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            ddlMedida.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
             ddlMedida.DataTextField = "M_nombreMedida";
             ddlMedida.DataValueField = "M_nombreMedida";
             ddlMedida.DataBind();

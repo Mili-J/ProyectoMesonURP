@@ -93,7 +93,7 @@ namespace ProyectoMesonURP
         {
             DataTable dtFCocina = new DataTable();
             CTR_MedidaXFormatoCocina objMedidaFC = new CTR_MedidaXFormatoCocina();
-            dtFCocina = objMedidaFC.ListarIDMedidaXFCocina();
+            //dtFCocina = objMedidaFC.ListarIDMedidaXFCocina();
 
             foreach (DataRow row in dtFCocina.Rows)
             {

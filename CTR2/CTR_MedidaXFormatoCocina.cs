@@ -18,9 +18,10 @@ namespace CTR
             dao_MFCocina = new DAO_MedidaXFormatoCocina();
         }
 
-        public DataTable ListarIDMedidaXFCocina()
+        public DataSet ListarIDMedidaXFCocina(DTO_MedidaXFormatoCocina objFCocina)
         {
-            return dao_MFCocina.ListarMedidaXFCocina();      
+            return dao_MFCocina.ListarMedidaXFCocina(objFCocina);      
         }
+
     }
 }

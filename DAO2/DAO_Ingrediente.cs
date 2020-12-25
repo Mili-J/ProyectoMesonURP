@@ -192,5 +192,21 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+        public DataTable DAO_Consultar_Ingrediente(string @nombreIngrediente)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Consultar_Ingrediente", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@nombreIngrediente", nombreIngrediente);
+                DataSet dSet = new DataSet();
+                cmd.Fill(dSet);
+                return dSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

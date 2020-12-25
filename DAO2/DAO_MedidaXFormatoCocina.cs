@@ -20,22 +20,18 @@ namespace DAO
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
             dto_medidaxfc = new DTO_MedidaXFormatoCocina();
         }
-        public DataTable ListarMedidaXFCocina()
+        public DataSet ListarMedidaXFCocina(DTO_MedidaXFormatoCocina objFCocina)
         {
-            try
-            {
-                DataTable dtable = new DataTable();
-                SqlCommand cmd = new SqlCommand("SP_Select_MedidaXFCocina", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dtable);
-                return dtable;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_Select_Medida_X_FCocina", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@FCO_idFCocina", objFCocina.FCO_idFCocina));
+            cmd.ExecuteNonQuery();
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            conexion.Close();
+            return ds;
         }
-
     }
 }

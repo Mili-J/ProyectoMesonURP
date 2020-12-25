@@ -21,6 +21,30 @@
                 </div>
             </div>
             <div class="padding-top-30">
+                 <div class="form-group row col-md-8">
+                        <label >Insumo</label>
+                        <div class="col-sm-12 col-md-6">
+                            <asp:TextBox ID="txtInsumo" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                 <div class="form-group row col-md-8">
+                        <label >Ingrediente</label>
+                        <div class="col-sm-12 col-md-6">
+                            <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+               
+<%--                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                         <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
+                    <div class="col-sm-12 col-md-4">
+                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
+                    </div>
+                       </div>
+                        </ContentTemplate>
+                </asp:UpdatePanel>
+
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="form-group row justify-content-center h-100">
@@ -30,19 +54,31 @@
                             </div>
                         </div>
                     </ContentTemplate>
-                </asp:UpdatePanel>
-               
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                </asp:UpdatePanel>--%>
+                
+                 <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                     <ContentTemplate>
-                         <div class="form-group row justify-content-center h-100">
-                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
-                    <div class="col-sm-12 col-md-4">
-                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged"></asp:DropDownList>
-                    </div>
-                       </div>
-                        </ContentTemplate>
+                        <div class="form-group row justify-content-center h-100">
+                            <label class="col-sm-12 col-md-2 col-form-label">Ingrediente</label>
+                            <div class="col-sm-12 col-md-4">
+                                <asp:DropDownList ID="ddlIngrediente" AutoPostBack="true" class="custom-select2 form-control" runat="server"></asp:DropDownList>
+                            </div>
+                        </div>
+                    </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="row justify-content-center h-100">
+
+                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                    <ContentTemplate>
+                        <div class="form-group row justify-content-center h-100">
+                            <label class="col-sm-12 col-md-2 col-form-label">Formato Cocina</label>
+                            <div class="col-sm-12 col-md-4">
+                                <asp:DropDownList ID="ddlFormatoCocina" AutoPostBack="true" class="custom-select2 form-control" runat="server" OnSelectedIndexChanged="ddlFormatoCocina_SelectedIndexChanged"></asp:DropDownList>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
+                
                  <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                     <ContentTemplate>
                      <div class="form-group row col-md-8">
@@ -53,29 +89,52 @@
                     </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+               <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                     <ContentTemplate>
-                            <div class="col-sm-12 col-md-4">
-                                <asp:TextBox ID="txtMedida" BackColor="Transparent" BorderColor="White" BorderStyle="None" ReadOnly="true" runat="server" ></asp:TextBox>
-                            </div>
+                            <div class="form-group row col-md-8">
+                        <label >Medida</label>
+                        <div class="col-sm-12 col-md-6">
+                                <%--<asp:TextBox ID="txtMedida" BackColor="Transparent" BorderColor="White" BorderStyle="None" ReadOnly="true" runat="server" ></asp:TextBox>--%>
+                                <asp:DropDownList ID="ddlMedida" runat="server" CssClass="form-control"></asp:DropDownList>
+                           </div>
+                    </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                    </div>
-
-                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                    <ContentTemplate>
-                        <div class="form-group row justify-content-center h-100">
-                            <label class="col-sm-12 col-md-2 col-form-label">Formato Cocina</label>
-                            <div class="col-sm-12 col-md-4">
-                                <asp:DropDownList ID="ddlFormatoCocina" AutoPostBack="true" class="custom-select2 form-control" runat="server"></asp:DropDownList>
+                <div class="panel panel-widget forms-panel">
+                            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                                <div class="form-title color-white">
+                                    <h5>Ingredientes</h5>
+                                </div>
+                                <%--  <asp:UpdatePanel ID="panel" runat="server">
+                        <ContentTemplate>--%>
+                                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                    <asp:GridView ID="gvEquivalencia" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" OnRowDataBound="gvEquivalencia_OnRowDataBound"
+                                        DataKeyNames="Ingrediente,Formato Cocina,Cantidad,Medida"
+                                        CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvEquivalencia_SelectedIndexChanged">
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Ingrediente" DataField="Ingrediente" />
+                                            <asp:BoundField HeaderText="Formato Cocina" DataField="Formato Cocina" />
+                                            <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
+                                            <asp:BoundField HeaderText="Medida" DataField="Medida" />
+                                        </Columns>
+                                        <SelectedRowStyle BackColor="SteelBlue" />
+                                    </asp:GridView>
+                                </div>
+                                <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
+                                <hr />
+                                <p class="center-button">
+                                   <%-- <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnAgregar" onserverclick="btnEgresar_ServerClick">Egresar</button>
+                                    --%>  <asp:Button CssClass="btn btn-danger" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
+                                 </p>
+                                <%--   </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                             </div>
                         </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+               
               
                         <p class="center-button pt-3">
-                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />
-                            <asp:Button CssClass="btn btn-danger" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
+                          <%--  <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />--%>
+                         
                         </p>
                  
 

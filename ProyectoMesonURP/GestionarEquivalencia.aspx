@@ -11,30 +11,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
         <div class="page-header">
-            <div class="row">
-                <div class="col-md-10 col-sm-12">
-                    <div class="title">
-                        <h4>Gestionar Equivalencia</h4>
-                    </div>
-                </div>
-                <div class="col-md-10 col-xl-2" style="display:flex; flex-direction: row; margin-left: -3%">
-                    <asp:LinkButton class="btn btn-primary" runat="server" OnClick="btnAnadirEquivalencia_Click"><i class="fa fa-plus-circle"></i>&nbsp;Añadir Equivalencia</asp:LinkButton>
-                    <br />
-                    <asp:LinkButton class="btn btn-primary" runat="server" OnClick="btnVerIngredientes_Click"><i class="fa fa-plus-circle"></i>&nbsp;Ver Ingredientes</asp:LinkButton>
-                </div>
-            </div>
+	        <div class="row">
+		        <div class="col-md-6 col-sm-12">
+			        <div class="title">
+				        <h4>Gestionar Equivalencia</h4>
+			        </div>
+		        </div>
+	        </div>
         </div>
         <div class="pd-20 card-box">
             <div class="row pt-1">
                 <div class="col-sm-12 col-md-6">
                     <label class="control-label col-md-2">Paginación:</label>
-                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" Style="width: auto; height: 38px" runat="server" AutoPostBack="true">
+                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" Style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
                     </asp:DropDownList>
                 </div>
                 <div class="col-sm-12 col-md-3 pl-30"></div>
                 <div class="col-sm-12 col-md-3 pl-30">
                     <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
-                        <asp:TextBox ID="txtBuscarEquivalencia" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreEq1_TextChanged" placeholder="Buscar Equivalencia..." />
+                        <asp:TextBox ID="txtBuscarIngrediente" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreIng_TextChanged" placeholder="Buscar Ingrediente..." />
                         <i class="search_icon dw dw-search"></i>
                     </div>
                 </div>
@@ -42,15 +37,18 @@
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
-                        <h5>Equivalencia de los Insumos</h5>
+                        <h5>Equivalencia de los Ingredientes</h5>
                     </div>
                     <div class="w3-row-padding">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="E_idEquivalencia,E_cantidad,I_nombreInsumo,M_nombreMedida,FCO_nombreFormatoCocina" EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
+                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente" 
+                                EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
                                 <Columns>
-                                    <asp:BoundField DataField="E_idEquivalencia" HeaderText="E_idEquivalencia" Visible="false" />
+                                    <asp:BoundField DataField="I_idInsumo" HeaderText="I_idInsumo" Visible="false" />
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
-                                    <asp:TemplateField HeaderText="Medida">
+                                    <asp:BoundField DataField="I_idIngrediente" HeaderText="I_idIngrediente" Visible="false" />
+                                    <asp:BoundField DataField="I_nombreIngrediente" HeaderText="Ingrediente"/>
+                                   <%-- <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
                                             <%# "1" + " " + Eval("M_nombreMedida")%>
                                         </ItemTemplate>
@@ -59,9 +57,15 @@
                                         <ItemTemplate>
                                             <%# Eval("E_cantidad") + " " + Eval("FCO_nombreFormatoCocina")%>
                                         </ItemTemplate>
+                                    </asp:TemplateField>--%>
+
+                                    <asp:TemplateField HeaderText="Agregar Equivalencia">
+                                        <ItemTemplate>
+                                            <asp:Button CssClass="btn btn-primary" ID="btnAgregarEquivalencia" runat="server" CommandName="AgregarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Agregar Equivalencia" />
+                                        </ItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="Editar">
+                                    <asp:TemplateField HeaderText="Agregar Equivalencia">
                                         <ItemTemplate>
                                             <asp:Button CssClass="btn btn-primary" ID="btnEditarEquivalencia" runat="server" CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
                                         </ItemTemplate>

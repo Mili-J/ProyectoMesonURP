@@ -12,27 +12,25 @@ namespace ProyectoMesonURP
 {
     public partial class GestionarEquivalencia : System.Web.UI.Page
     {
+        CTR_Ingrediente _Ci = new CTR_Ingrediente();
         protected void Page_Load(object sender, EventArgs e)
-        {
-
+        {                     
             if (!IsPostBack)
             {
                 LlenarGVEquivalencias();
+
+                ListItem ddl1 = new ListItem("5", "5");
+                ddlp.Items.Insert(0, ddl1);
+                ListItem ddl2 = new ListItem("10", "10");
+                ddlp.Items.Insert(1, ddl2);
+                ListItem ddl3 = new ListItem("20", "20");
+                ddlp.Items.Insert(2, ddl3);
             }
         }
         public void LlenarGVEquivalencias()
         {
-            CTR_Equivalencia objEquivalencia = new CTR_Equivalencia();
-            DataTable dtEquivalencias = new DataTable();
-            dtEquivalencias = objEquivalencia.ListaEquivalencias();
-            gvEquivalencia.DataSource = dtEquivalencias;
+            gvEquivalencia.DataSource = _Ci.CTR_Consultar_Ingrediente(txtBuscarIngrediente.Text);
             gvEquivalencia.DataBind();
-            ListItem ddl1 = new ListItem("5", "5");
-            ddlp.Items.Insert(0, ddl1);
-            ListItem ddl2 = new ListItem("10", "10");
-            ddlp.Items.Insert(1, ddl2);
-            ListItem ddl3 = new ListItem("20", "20");
-            ddlp.Items.Insert(2, ddl3);
         }
 
         protected void btnAnadirEquivalencia_Click(object sender, EventArgs e)
@@ -54,7 +52,7 @@ namespace ProyectoMesonURP
                 Response.Redirect("ConsultarEquivalencia");
                
             }
-            if (e.CommandName == "EditarEquivalencia")
+            else if (e.CommandName == "EditarEquivalencia")
             {
 
                 string insumo = gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_nombreInsumo"].ToString();
@@ -69,6 +67,18 @@ namespace ProyectoMesonURP
                 Session.Add("idMedida", idM);
                 Session.Add("idEquivalencia", idEquival);
                 Response.Redirect("ActualizarEquivalencia");
+            }
+            else if (e.CommandName == "AgregarEquivalencia")
+            {
+                int idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
+                Session["idIngrediente"] = idIngrediente;
+
+                string insumo = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[1].Text;
+                Session["insumo"] = insumo;
+                string ingrediente = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[3].Text;
+                Session["ingrediente"] = ingrediente;
+
+                Response.Redirect("AgregarEquivalencia");
             }
 
         }
@@ -147,7 +157,7 @@ namespace ProyectoMesonURP
             return 0;
         }
 
-        protected void fnombreEq_TextChanged(object sender, EventArgs e)
+        protected void fnombreIng_TextChanged(object sender, EventArgs e)
         {
 
         }
