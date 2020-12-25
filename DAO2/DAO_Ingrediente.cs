@@ -39,7 +39,6 @@ namespace DAO
             cmd.Parameters.AddWithValue("@I_pesoUnitario", dto_ingrediente.I_pesoUnitario);
             cmd.Parameters.AddWithValue("@I_cantidad", dto_ingrediente.I_cantidad);
             cmd.Parameters.AddWithValue("@I_idInsumo", dto_ingrediente.I_idInsumo);
-            cmd.Parameters.AddWithValue("@E_idEquivalencia", dto_ingrediente.E_idEquivalencia);
 
             cmd.ExecuteNonQuery();
             conexion.Close();

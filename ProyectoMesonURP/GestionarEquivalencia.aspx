@@ -34,6 +34,29 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group row justify-content-center h-100">
+                <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
+                <div class="col-sm-12 col-md-4">
+                    <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
+                </div>
+            </div>
+                 <div class="form-group row justify-content-center h-100">
+                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
+                    <div class="col-sm-12 col-md-4">
+                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
+                    </div>
+                 </div>
+             <div class="form-group row col-md-8">
+                <label >Ingrediente</label>
+                <div class="col-sm-12 col-md-6">
+                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <asp:TextBox ID="txtPesoU" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
+            <asp:Button CssClass="btn btn-primary" runat="server" Text="Agregar" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
+
+             <%--<asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />--%>
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
