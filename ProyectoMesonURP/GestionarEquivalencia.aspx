@@ -11,13 +11,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
         <div class="page-header">
-	        <div class="row">
-		        <div class="col-md-6 col-sm-12">
-			        <div class="title">
-				        <h4>Gestionar Equivalencia</h4>
-			        </div>
-		        </div>
-	        </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Gestionar Equivalencia</h4>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="pd-20 card-box">
             <div class="row pt-1">
@@ -40,14 +40,14 @@
                     <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
                 </div>
             </div>
-                 <div class="form-group row justify-content-center h-100">
-                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
-                    <div class="col-sm-12 col-md-4">
-                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
-                    </div>
-                 </div>
-             <div class="form-group row col-md-8">
-                <label >Ingrediente</label>
+            <div class="form-group row justify-content-center h-100">
+                <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
+                <div class="col-sm-12 col-md-4">
+                    <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="form-group row col-md-8">
+                <label>Ingrediente</label>
                 <div class="col-sm-12 col-md-6">
                     <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
@@ -56,7 +56,7 @@
             <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
             <asp:Button CssClass="btn btn-primary" runat="server" Text="Agregar" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
 
-             <%--<asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />--%>
+            <%--<asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />--%>
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
@@ -64,14 +64,14 @@
                     </div>
                     <div class="w3-row-padding">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente" 
+                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente"
                                 EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
                                 <Columns>
                                     <asp:BoundField DataField="I_idInsumo" HeaderText="I_idInsumo" Visible="false" />
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                     <asp:BoundField DataField="I_idIngrediente" HeaderText="I_idIngrediente" Visible="false" />
-                                    <asp:BoundField DataField="I_nombreIngrediente" HeaderText="Ingrediente"/>
-                                   <%-- <asp:TemplateField HeaderText="Medida">
+                                    <asp:BoundField DataField="I_nombreIngrediente" HeaderText="Ingrediente" />
+                                    <%-- <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
                                             <%# "1" + " " + Eval("M_nombreMedida")%>
                                         </ItemTemplate>
@@ -114,4 +114,27 @@
             </div>
         </div>
     </div>
+    <script>
+        function myalert() {
+            var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'Ya existe un ingrediente con el nombre ' + ingrediente,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function myalertCorrecto() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'El ingrediente fue registrado correctamente.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = 'GestionarEquivalencia';
+                }
+            })
+        }
+    </script>
 </asp:Content>

@@ -117,12 +117,31 @@ namespace ProyectoMesonURP
 
         protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
         {
+            int a = 0;
             _Di.I_nombreIngrediente = txtIngrediente.Text;
             _Di.I_pesoUnitario = Convert.ToDecimal(txtPesoU.Text);
             _Di.I_cantidad = Convert.ToDecimal(txtCantidad.Text);
             _Di.I_idInsumo = Convert.ToInt16(ddlInsumo.SelectedValue);
-            _Ci.InsertarIngrediente(_Di);
-            ClientScript.RegisterStartupScript(Page.GetType(), "myalertCorrecto", "myalertCorrecto('La categoría fue registrado correctamente');", true);
+
+            bool vc = _Ci.CTR_ExisteIngrediente(_Di);
+            if (vc)
+            {
+                ClientScript.RegisterStartupScript(
+                this.GetType(), "myalert", "myalert('" + "Ya existe un ingrediente con el nombre" + "');", true);
+                a = 1;
+            }
+            if (a == 0)
+            {
+                if (txtIngrediente.Text != "" && ddlInsumo.SelectedValue != "")
+                {
+                    _Di.I_nombreIngrediente = txtIngrediente.Text;
+                    _Di.I_pesoUnitario = Convert.ToDecimal(txtPesoU.Text);
+                    _Di.I_cantidad = Convert.ToDecimal(txtCantidad.Text);
+                    _Di.I_idInsumo = Convert.ToInt16(ddlInsumo.SelectedValue);
+                    _Ci.InsertarIngrediente(_Di);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "myalertCorrecto", "myalertCorrecto('El ingrediente fue registrado correctamente');", true);
+                }
+            }
         }
     } 
 }

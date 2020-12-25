@@ -69,5 +69,9 @@ namespace CTR
         {
             return objDAO.DAO_Consultar_Ingrediente(nombreIngrediente);
         }
+        public bool CTR_ExisteIngrediente(DTO_Ingrediente objIng)
+        {
+            return objDAO.DAO_ExisteNombreIngrediente(objIng);
+        }
     }
 }

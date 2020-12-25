@@ -207,5 +207,33 @@ namespace DAO
                 throw ex;
             }
         }
+        public bool DAO_ExisteNombreIngrediente(DTO_Ingrediente objIng)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_ExisteIngrediente", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@I_nombreIngrediente", objIng.I_nombreIngrediente);
+                cmd.ExecuteNonQuery();
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count == 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    conexion.Close();
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
