@@ -88,16 +88,18 @@ namespace ProyectoMesonURP
             _De.I_idIngrediente = objIngrediente.CTR_IdIngrediente() + 1;
             _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
             int idFCocina = Convert.ToInt32(ddlFormatoCocina.SelectedValue);
-            //_Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(_Dmxfcoc.FCO_idFCocina);
+            _Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(idFCocina);
             int idMedida = Convert.ToInt32(ddlMedida.SelectedValue);
-            //_Dm = _Cm.CTR_ListarNombreMedida(_Dmxfcoc.M_idMedida);
+            _Dm = _Cm.CTR_ListarNombreMedida(idMedida);
             _De.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
             
             DataRow row = tin.NewRow();
             if (tin.Columns.Count == 0)
             {
-                tin.Columns.Add("Cantidad");
                 tin.Columns.Add("Formato Cocina");
+                tin.Columns.Add("Cantidad");
+                tin.Columns.Add("IDFormatoCocinaXMedida");
+                tin.Columns.Add("Medida");
             }
             if (tin.Rows.Count > 0)
             {
@@ -105,21 +107,24 @@ namespace ProyectoMesonURP
                 bool existe = false;
                 for (int i = 0; i < tin.Rows.Count; i++)
                 {
-                    if (Convert.ToString(gvEquivalencia.Rows[i].Cells[1].Text) == Convert.ToString(_Dfcoc.FCO_nombreFormatoCocina) &&
-                        Convert.ToString(gvEquivalencia.Rows[i].Cells[3].Text) == Convert.ToString(_Dm.M_nombreMedida))
-                    {
-                        existe = true;
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaDuplicado()", true);
-                        break;
-                    }
+                    //if (Convert.ToString(gvEquivalencia.Rows[i].Cells[1].Text) == Convert.ToString(_Dfcoc.FCO_nombreFormatoCocina) &&
+                    //    Convert.ToString(gvEquivalencia.Rows[i].Cells[3].Text) == Convert.ToString(_Dm.M_nombreMedida))
+                    //{
+                    //    existe = true;
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaDuplicado()", true);
+                    //    break;
+                    //}
                 }
                 // Luego, ya fuera del ciclo, solo si no existe, realizas la insercion:
                 if (existe == false)
                 {
                     pila.Add(_De);
 
-                    row[0] = _De.E_cantidad;
-                    row[1] = _De.MXFC_idMedidaFCocina;
+                    row[0] = _Dfcoc.FCO_nombreFormatoCocina;
+                    row[1] = _De.E_cantidad;
+                    row[2] = _De.MXFC_idMedidaFCocina;
+                    row[3] = _Dm.M_nombreMedida;
+
                     tin.Rows.Add(row);
 
                     gvEquivalencia.DataSource = tin;
@@ -130,8 +135,11 @@ namespace ProyectoMesonURP
             {
                 pila.Add(_De);
 
-                row[0] = _De.E_cantidad;
-                row[1] = _De.MXFC_idMedidaFCocina;
+                row[0] = _Dfcoc.FCO_nombreFormatoCocina;
+                row[1] = _De.E_cantidad;
+                row[2] = _De.MXFC_idMedidaFCocina;
+                row[3] = _Dm.M_nombreMedida;
+
                 tin.Rows.Add(row);
 
                 gvEquivalencia.DataSource = tin;

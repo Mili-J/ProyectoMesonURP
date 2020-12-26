@@ -75,12 +75,13 @@
                         <ContentTemplate>--%>
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="gvEquivalencia" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" OnRowDataBound="gvEquivalencia_OnRowDataBound"
-                                        DataKeyNames="Cantidad, Formato Cocina"
+                                        DataKeyNames="Formato Cocina, Cantidad, IDFormatoCocinaXMedida, Medida"
                                         CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvEquivalencia_SelectedIndexChanged">
                                         <Columns>
-                                            <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
                                             <asp:BoundField HeaderText="Formato Cocina" DataField="Formato Cocina" />
-                                            
+                                            <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
+                                            <asp:BoundField HeaderText="IDFormatoCocinaXMedida" DataField="IDFormatoCocinaXMedida" />
+                                            <asp:BoundField HeaderText="Medida" DataField="Medida" />
                                         </Columns>
                                         <SelectedRowStyle BackColor="SteelBlue" />
                                     </asp:GridView>
