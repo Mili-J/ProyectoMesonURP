@@ -73,7 +73,7 @@ namespace ProyectoMesonURP
         {
             DataTable dtFCocina = new DataTable();
             CTR_MedidaXFormatoCocina objMedidaFC = new CTR_MedidaXFormatoCocina();
-            dtFCocina = objMedidaFC.ListarIDMedidaXFCocina();
+            dtFCocina = objMedidaFC.ListarIDMedidaXFCocina2();
 
             foreach (DataRow row in dtFCocina.Rows)
             {
@@ -87,17 +87,12 @@ namespace ProyectoMesonURP
         {
             _De.I_idIngrediente = objIngrediente.CTR_IdIngrediente() + 1;
             _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
-            _Dmxfcoc.FCO_idFCocina = Convert.ToInt32(ddlFormatoCocina.SelectedValue);
-            _Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(_Dmxfcoc.FCO_idFCocina);
-            _Dmxfcoc.M_idMedida = Convert.ToInt32(ddlMedida.SelectedValue);
-            _Dm = _Cm.CTR_ListarNombreMedida(_Dmxfcoc.M_idMedida);
-
-            int id = int.Parse(ddlInsumo.SelectedValue);
-            int idMedida = ObtenerMedidaI(id).M_idMedida;
-            int idFCocina = int.Parse(ddlFormatoCocina.SelectedValue);
-            DTOEqui.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
-            CTREqui.AgregarEquivalencia(DTOEqui);
-
+            int idFCocina = Convert.ToInt32(ddlFormatoCocina.SelectedValue);
+            //_Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(_Dmxfcoc.FCO_idFCocina);
+            int idMedida = Convert.ToInt32(ddlMedida.SelectedValue);
+            //_Dm = _Cm.CTR_ListarNombreMedida(_Dmxfcoc.M_idMedida);
+            _De.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
+            
             DataRow row = tin.NewRow();
             if (tin.Columns.Count == 0)
             {

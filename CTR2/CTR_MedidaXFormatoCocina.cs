@@ -23,5 +23,9 @@ namespace CTR
             return dao_MFCocina.ListarMedidaXFCocina(objFCocina);      
         }
 
+        public DataTable ListarIDMedidaXFCocina2()
+        {
+            return dao_MFCocina.ListarMedidaXFCocina2();
+        }
     }
 }

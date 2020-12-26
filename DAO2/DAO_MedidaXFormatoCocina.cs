@@ -33,5 +33,22 @@ namespace DAO
             conexion.Close();
             return ds;
         }
+        public DataTable ListarMedidaXFCocina2()
+        {
+            try
+            {
+                DataTable dtable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SP_Select_MedidaXFCocina", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtable);
+                return dtable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
