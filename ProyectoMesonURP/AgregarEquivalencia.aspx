@@ -33,39 +33,6 @@
                             <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
-               
-<%--                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>
-                         <div class="form-group row justify-content-center h-100">
-                    <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
-                    <div class="col-sm-12 col-md-4">
-                        <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
-                    </div>
-                       </div>
-                        </ContentTemplate>
-                </asp:UpdatePanel>
-
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
-                        <div class="form-group row justify-content-center h-100">
-                            <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
-                            <div class="col-sm-12 col-md-4">
-                                <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
-                            </div>
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>--%>
-                
-                 <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                    <ContentTemplate>
-                        <div class="form-group row justify-content-center h-100">
-                            <label class="col-sm-12 col-md-2 col-form-label">Ingrediente</label>
-                            <div class="col-sm-12 col-md-4">
-                                <asp:DropDownList ID="ddlIngrediente" AutoPostBack="true" class="custom-select2 form-control" runat="server"></asp:DropDownList>
-                            </div>
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
 
                  <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                     <ContentTemplate>
@@ -78,7 +45,6 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
-                
                  <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                     <ContentTemplate>
                      <div class="form-group row col-md-8">

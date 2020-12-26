@@ -13,42 +13,17 @@ namespace ProyectoMesonURP
     public partial class AgregarEquivalencia : System.Web.UI.Page
     {
         CTR_MedidaXFormatoCocina objFormatoC = new CTR_MedidaXFormatoCocina();
-        CTR_CategoriaInsumo objCatInsumo;
         CTR_Ingrediente objIngrediente = new CTR_Ingrediente();
-        DataSet dsCatInsumo;
         static int id { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //LoadCategoriaI();
                 LoadFCocina();
                 LoadIngrediente();
             }
             
         }
-        //public void LoadCategoriaI()
-        //{
-        //    objCatInsumo = new CTR_CategoriaInsumo();
-        //    dsCatInsumo = new DataSet();
-        //    dsCatInsumo= objCatInsumo.CTR_SelectCategoriaI();
-        //    ddlCategoria.DataTextField = "CI_nombreCategoria";
-        //    ddlCategoria.DataValueField = "CI_idCategoriaInsumo";
-        //    ddlCategoria.DataSource = dsCatInsumo;
-        //    ddlCategoria.DataBind();
-        //    ddlCategoria.Items.Insert(0, "--seleccionar--");
-        //}
-        //public void LoadInsumo(DTO_CategoriaInsumo objCInsumo)
-        //{
-        //    DataSet dsInsumo = new DataSet();
-        //    CTR_CategoriaInsumo objCatInsumo = new CTR_CategoriaInsumo();
-        //    dsInsumo = objCatInsumo.CTR_SelectInsumoXCategoria(objCInsumo);
-        //    ddlInsumo.DataTextField = "I_nombreInsumo";
-        //    ddlInsumo.DataValueField = "I_idInsumo";
-        //    ddlInsumo.DataSource = dsInsumo;
-        //    ddlInsumo.DataBind();
-        //    ddlInsumo.Items.Insert(0, "--seleccionar--");
-        //}
         public void LoadIngrediente()
         {
             txtInsumo.Text = Convert.ToString(Session["insumo"]);
@@ -80,36 +55,12 @@ namespace ProyectoMesonURP
                 if (objFCocina.FCO_idFCocina != 0)
                 {
                     ListarMedidaXFormatoCocina(objFCocina);
-                }
+                } 
             }
         }
-        //protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (ddlCategoria.SelectedValue != "")
-        //    {
-        //        DTO_CategoriaInsumo objCatInsumo = new DTO_CategoriaInsumo();
-        //        objCatInsumo.CI_idCategoriaInsumo = int.Parse(ddlCategoria.SelectedValue);
-
-        //        if (objCatInsumo.CI_idCategoriaInsumo != 0)
-        //        {
-        //            LoadInsumo(objCatInsumo);
-        //        }
-        //    }
-        //}
-
         protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
         {
-            //CTR_Equivalencia CTREqui = new CTR_Equivalencia();
-            //DTO_Equivalencia DTOEqui = new DTO_Equivalencia();
-            //DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
-            //DTOEqui.E_cantidad = int.Parse(txtCantidad.Text);
-            //int id = int.Parse(ddlInsumo.SelectedValue);
-            //int idMedida = ObtenerMedidaI(id).M_idMedida;
-            //int idFCocina= int.Parse(ddlFormatoCocina.SelectedValue);
-            //DTOEqui.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
-            //CTREqui.AgregarEquivalencia(DTOEqui);
         }
-
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("GestionarEquivalencia.aspx");
