@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DTO_FormatoCocina.cs" />
     <Compile Include="DTO_CategoriaInsumo.cs" />
     <Compile Include="DTO_CategoriaPlato.cs" />
     <Compile Include="DTO_CategoriaReceta.cs" />

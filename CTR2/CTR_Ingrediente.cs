@@ -73,5 +73,9 @@ namespace CTR
         {
             return objDAO.DAO_ExisteNombreIngrediente(objIng);
         }
+        public int CTR_IdIngrediente()
+        {
+            return objDAO.DAO_SelectIdIngrediente();
+        }
     }
 }

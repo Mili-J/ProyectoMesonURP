@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO2
 {
-    public class Class1
+    public class DTO_FormatoCocina
     {
+        public int FCO_idFCocina { get; set; }
+        public string FCO_nombreFormatoCocina { get; set; }
     }
 }

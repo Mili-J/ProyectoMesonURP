@@ -137,19 +137,19 @@ namespace ProyectoMesonURP
             DTO_Equivalencia DTOEqui = new DTO_Equivalencia();
             idM = (int)Session["idMedida"];
             idI = (int)Session["idInsumo"];
-            idE=(int)Session["idEquivalencia"];
+            idE = (int)Session["idEquivalencia"];
             if (ddlInsumo.SelectedValue == "" || ddlInsumo.SelectedValue == "Seleccione")
             {
-                DTOEqui.I_idInsumo = idI; 
+                DTOEqui.I_idInsumo = idI;
                 idMedida = ObtenerMedidaI(idI).M_idMedida;
-            }                   
+            }
             else
             {
                 DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
                 idMedida = ObtenerMedidaI(DTOEqui.I_idInsumo).M_idMedida;
             }
-               
-            DTOEqui.E_cantidad = Convert.ToDecimal(txtCantidad.Text);                                
+
+            DTOEqui.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
             idFCocina = int.Parse(ddlFormatoCocina.SelectedValue);
             DTOEqui.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
             DTOEqui.E_idEquivalencia = idE;

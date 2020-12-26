@@ -235,5 +235,21 @@ namespace DAO
                 throw ex;
             }
         }
+        public int DAO_SelectIdIngrediente()
+        {
+            int idReceta = 0;
+            SqlCommand unComando = new SqlCommand("SP_SELECT_ID_INGREDIENTE", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            SqlDataReader dReader = unComando.ExecuteReader();
+            if (dReader.Read())
+            {
+                idReceta = Convert.ToInt32(dReader["I_idIngrediente"]);
+            }
+            conexion.Close();
+            return idReceta;
+
+        }
     }
 }

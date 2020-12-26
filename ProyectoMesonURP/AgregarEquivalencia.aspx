@@ -75,13 +75,12 @@
                         <ContentTemplate>--%>
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="gvEquivalencia" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" OnRowDataBound="gvEquivalencia_OnRowDataBound"
-                                        DataKeyNames="Ingrediente,Formato Cocina,Cantidad,Medida"
+                                        DataKeyNames="Cantidad, Formato Cocina"
                                         CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvEquivalencia_SelectedIndexChanged">
                                         <Columns>
-                                            <asp:BoundField HeaderText="Ingrediente" DataField="Ingrediente" />
-                                            <asp:BoundField HeaderText="Formato Cocina" DataField="Formato Cocina" />
                                             <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                                            <asp:BoundField HeaderText="Medida" DataField="Medida" />
+                                            <asp:BoundField HeaderText="Formato Cocina" DataField="Formato Cocina" />
+                                            
                                         </Columns>
                                         <SelectedRowStyle BackColor="SteelBlue" />
                                     </asp:GridView>
@@ -100,7 +99,7 @@
               
                         <p class="center-button pt-3">
                           <%--  <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />--%>
-                         
+                           <asp:Button CssClass="btn btn-outline-success" runat="server" Text="Añadir" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" UseSubmitBehavior="false" />
                         </p>
                  
 

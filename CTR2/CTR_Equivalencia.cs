@@ -19,13 +19,13 @@ namespace CTR
         {
             return objEquivalencia.ListarEquivalencias();
         }
-        public void AgregarEquivalencia(DTO_Equivalencia DTOEquival)
-        {
-            objEquivalencia.AgregarEquivalencia(DTOEquival);
-        }
-        public void ActualizarEquivalencia(DTO_Equivalencia DTOEquivalencia)
-        {
-            objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
-        }
+        //public void AgregarEquivalencia(DTO_Equivalencia DTOEquival)
+        //{
+        //    objEquivalencia.AgregarEquivalencia(DTOEquival);
+        //}
+        //public void ActualizarEquivalencia(DTO_Equivalencia DTOEquivalencia)
+        //{
+        //    objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
+        //}
     }
 }

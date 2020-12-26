@@ -1,10 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO;
+using DTO;
 
 namespace CTR
 {
-    class CTR_Medida
+    public class CTR_Medida
     {
+        DAO_Medida objDAO;
+        public CTR_Medida()
+        {
+            objDAO = new DAO_Medida();
+        }
+
+        public DTO_Medida CTR_ListarNombreMedida(int M_idMedida)
+        {
+            return objDAO.DAO_SelectNombreMedida(M_idMedida);
+        }
     }
 }

@@ -19,17 +19,17 @@ namespace DAO
             dto_eq = new DTO_Equivalencia();
         }
 
-        public void AgregarEquivalencia(DTO_Equivalencia objEquivalencia)
-        {
-            conexion.Open();
-            SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
-            unComando.CommandType = CommandType.StoredProcedure;
-            unComando.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
-            unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
-            unComando.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));           
-            unComando.ExecuteNonQuery();
-            conexion.Close();
-        }
+        //public void AgregarEquivalencia(DTO_Equivalencia objEquivalencia)
+        //{
+        //    conexion.Open();
+        //    SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
+        //    unComando.CommandType = CommandType.StoredProcedure;
+        //    unComando.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
+        //    unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
+        //    unComando.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));           
+        //    unComando.ExecuteNonQuery();
+        //    conexion.Close();
+        //}
         public DataTable ListarEquivalencias()
         {
             try
@@ -46,25 +46,25 @@ namespace DAO
                 throw ex;
             }
         }
-        public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
-        {
-            try
-            {
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Update_Equivalencia", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
-                cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
-                cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
-                cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
+        //public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
+        //{
+        //    try
+        //    {
+        //        conexion.Open();
+        //        SqlCommand cmd = new SqlCommand("SP_Update_Equivalencia", conexion);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
+        //        cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
+        //        cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
+        //        cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
            
-                cmd.ExecuteNonQuery();
-                conexion.Close();
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-        }
+        //        cmd.ExecuteNonQuery();
+        //        conexion.Close();
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }
