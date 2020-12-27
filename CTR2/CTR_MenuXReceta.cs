@@ -32,9 +32,9 @@ namespace CTR
         {
             dao_menuxreceta.DAO_ActualizarUnMenuXReceta(obj);
         }
-        public bool ExistenciaMenuxReceta(int R_idReceta)
+        public bool ExistenciaMenuxReceta(int R_idReceta, string Fecha)
         {
-            return dao_menuxreceta.SelectExistenciaMenuxReceta(R_idReceta);
+            return dao_menuxreceta.SelectExistenciaMenuxReceta(R_idReceta, Fecha);
         }
         public DataTable CTR_ConsultarRecetasXMenuYCategoria(int M_id, int Cat_id)
         {
