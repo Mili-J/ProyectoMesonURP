@@ -29,31 +29,34 @@
                 <div class="col-sm-12 col-md-3 pl-30"></div>
                 <div class="col-sm-12 col-md-3 pl-30">
                     <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
-                        <asp:TextBox ID="txtBuscarIngrediente" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreIng_TextChanged" placeholder="Buscar Ingrediente..." />
+                        <asp:TextBox ID="txtBuscarIngrediente" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreIng_TextChanged" onkeypress="return soloLetras(event);" placeholder="Buscar Ingrediente..." />
                         <i class="search_icon dw dw-search"></i>
                     </div>
                 </div>
             </div>
+            
             <div class="row">
-            <div class="col-md-3">
-                <label>Categoria</label>
-                <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
-            </div>
-            <div class="col-md-3">
-                <label>Insumo</label>
-                <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
-            </div>
-            <div class="col-md-3">
-                <label>Ingrediente</label>
-                <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox> 
-            </div>
-            <div class="header-right col-md-3">
-                 <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
-            </div>
+                <div class="col-md-3">
+                    <label>Categoria</label>
+                    <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
+                </div>
+                <div class="col-md-3">
+                    <label>Insumo</label>
+                    <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
+                </div>
+                <div class="col-md-3">
+                    <label>Ingrediente</label>
+                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox> 
+                </div>
+                <div class="col-md-3 pt-20">
+                    <div style="margin: 0px auto; width:120px">
+                          <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
+                    </div>
+                </div>
             </div>
             <asp:TextBox ID="txtPesoU" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
             <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
-            
+            <div class="padding-bottom-30"></div>
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
@@ -85,23 +88,11 @@
                                             <asp:Button CssClass="btn btn-primary" ID="btnAgregarEquivalencia" runat="server" CommandName="AgregarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Agregar Equivalencia" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Agregar Equivalencia">
-                                        <ItemTemplate>
-                                            <asp:Button CssClass="btn btn-primary" ID="btnEditarEquivalencia" runat="server" CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-
                                     <asp:TemplateField HeaderText="Ver">
                                         <ItemTemplate>
-                                            <%--<asp:LinkButton ID="btnVerEquivalencia" class="btn btn-outline-warning" runat="server" CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>--%>
-
                                             <asp:Button CssClass="btn btn-primary" ID="btnVer" runat="server" CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Ver" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
-
                                 </Columns>
                             </asp:GridView>
 
@@ -113,6 +104,24 @@
         </div>
     </div>
     <script>
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = [8, 37, 39, 46];
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial)
+                return false;
+        }
+
         function myalert() {
             var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;
             Swal.fire({
