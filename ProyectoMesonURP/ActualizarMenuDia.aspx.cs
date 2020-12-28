@@ -12,7 +12,6 @@ namespace ProyectoMesonURP
 {
     public partial class ActualizarMenuDia : System.Web.UI.Page
     {
-
         CTR_Receta ctr_receta;
         CTR_Menu ctr_menu;
         DTO_Menu dto_menu;
@@ -48,11 +47,12 @@ namespace ProyectoMesonURP
                 dto_menu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
                 int id_menu = dto_menu.ME_idMenu;
                 txtNumRacMenu.Text = dto_menu.ME_totalPorcion.ToString();
+
                 dtMenu.PrimaryKey = new DataColumn[] { dtMenu.Columns["R_idReceta"] };
-                repeaterMenu.DataSource = dtMenu = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu,1);
+                repeaterMenu.DataSource = dtMenu = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 1);
                 repeaterMenu.DataBind();
 
-                repeaterCartaSeleccionada.DataSource = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu,2);
+                repeaterCartaSeleccionada.DataSource = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 2);
                 repeaterCartaSeleccionada.DataBind();
                 //-----------------------------------
                 reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1, "Entradas");
@@ -64,81 +64,17 @@ namespace ProyectoMesonURP
                 repeaterBebida.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1, "Bebidas");
                 repeaterBebida.DataBind();
                 //-----------------------------------
-                repeaterCarta.DataSource = ctr_receta.CTR_Consultar_Recetas_X_Categoria(2);
+                 DataTable cartaf = ctr_receta.CTR_Consultar_Recetas_X_Categoria(2);
+                repeaterCarta.DataSource = cartaf;
                 repeaterCarta.DataBind();
+                decimal totalcarta = decimal.Zero;
+
+                txtNumRacCarta.Text = totalcarta.ToString();
+
                 //Ocultar comentarios
                 if (true)
                 {
-                    //if (hay)
-                    //{
-                    //    objMenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
-                    //    txtNumRaciones.Text = objMenu.ME_numRaciones.ToString();
-                    //    DataTable dtmenu = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(objMenu.ME_idMenu);
-                    //    if (dtmenu.Rows.Count == 0)
-                    //    {
-                    //        OcultarEntrada();
-                    //        OcultarFondo();
-                    //    }
-                    //    else
-                    //    {
-                    //        int i = 0;
-                    //        object[] recetas;
-                    //        DTO_Receta receta;
-
-                    //        while (i < dtmenu.Rows.Count)
-                    //        {
-                    //            recetas = dtmenu.Rows[i].ItemArray;
-                    //            receta = ctr_receta.CTR_Consultar_Receta(Convert.ToInt32(recetas[1]));
-                    //            if (receta.CR_idCategoriaReceta == 2)
-                    //            {
-
-                    //                try
-                    //                {
-                    //                    imgFondo.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
-                    //                }
-                    //                catch (Exception)
-                    //                {
-
-                    //                    imgFondo.AlternateText = "No se ha podido cargar la imagen";
-                    //                }
-
-                    //                lblIdFondo.Visible = false; lblIdFondo.Text = receta.R_idReceta.ToString();
-                    //                lblNombreFondo.Text = receta.R_nombreReceta;
-                    //                lblPorcionFondo.Text = receta.R_numeroPorcion.ToString();
-                    //                lblCatFondo.Text = new CTR_CategoriaReceta().CTR_Consultar_CategoriaXReceta(receta.CR_idCategoriaReceta).CR_nombreCategoria;
-                    //            }
-                    //            else
-                    //            {
-                    //                try
-                    //                {
-                    //                    imgEntrada.ImageUrl = "data:image;base64," + Convert.ToBase64String(receta.R_imagenReceta);
-                    //                }
-                    //                catch (Exception)
-                    //                {
-
-                    //                    imgEntrada.AlternateText = "No se ha podido cargar la imagen";
-                    //                }
-
-                    //                lblIdEntrada.Visible = false; lblIdEntrada.Text = receta.R_idReceta.ToString();
-                    //                lblNombreEntrada.Text = receta.R_nombreReceta;
-                    //                lblPorcionEntrada.Text = receta.R_numeroPorcion.ToString();
-                    //                lblCatEntrada.Text = new CTR_CategoriaReceta().CTR_Consultar_CategoriaXReceta(receta.CR_idCategoriaReceta).CR_nombreCategoria;
-                    //            }
-                    //            i++;
-                    //        }
-
-
-                    //        sEntrada = false;
-                    //        sSegundo = false;
-                    //        //---------------------}
-                    //        //---------------------
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //OcultarEntrada();
-                    //    OcultarFondo();
-                    //}
+                   
                 }
             }
         }
@@ -266,13 +202,24 @@ namespace ProyectoMesonURP
             DTO_CategoriaReceta cat_receta = ctr_cat_receta.CTR_Consultar_CategoriaXReceta(CR_id);
 
             CrearDt(dt);
-
-            dr[8] = receta.R_imagenReceta;
-            dr[1] = receta.R_idReceta;
-            dr[5] = receta.R_nombreReceta;
-            dr[6] = receta.R_numeroPorcion;
-            dr[12] = cat_receta.CR_nombreCategoria;
-            dr[9] = receta.R_subcategoria;
+            if (dr.ItemArray.Length == 6)
+            {
+                dr[0] = receta.R_imagenReceta;
+                dr[1] = receta.R_idReceta;
+                dr[2] = receta.R_nombreReceta;
+                dr[3] = receta.R_numeroPorcion;
+                dr[4] = cat_receta.CR_nombreCategoria;
+                dr[5] = receta.R_subcategoria;
+            }
+            else
+            {
+                dr[5] = receta.R_imagenReceta;
+                dr[1] = receta.R_idReceta;
+                dr[4] = receta.R_nombreReceta;
+                dr[7] = receta.R_numeroPorcion;
+                dr[8] = cat_receta.CR_nombreCategoria;
+                dr[6] = receta.R_subcategoria;
+            }
 
             //if (dt.Rows.Contains(dr["R_idReceta"]))//Si ya se seleccionó
             //{
@@ -280,95 +227,106 @@ namespace ProyectoMesonURP
             //}
             //else
             //{
-                dt.Rows.Add(dr);
-                rpFinal.DataSource = dt;
-                rpFinal.DataBind();
+            dt.Rows.Add(dr);
+            rpFinal.DataSource = dt;
+            rpFinal.DataBind();
             //}
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtNumRacMenu.Text == string.Empty)
+            try
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaEmpty()", true);
-                return;
-            }
-            if (Convert.ToInt32(txtNumRacMenu.Text) == 0)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaCero()", true);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaSimbolo()", true);
-            }
-            int porciones = int.Parse(txtNumRacMenu.Text);
-            int cantentrada = 0;
-            int cantbebidas = 0;
-            int cantpf = 0;
-            foreach (RepeaterItem item in repeaterMenu.Items)
-            {
-                if (((TextBox)item.FindControl("txtNumRaciones")).Text == string.Empty)
+                if (txtNumRacMenu.Text == string.Empty)
                 {
-                    //alguna cantidad esta vacia
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaEmpty()", true);
                     return;
                 }
-                switch (((Label)item.FindControl("lblCatRec")).Text)
+                if (Convert.ToInt32(txtNumRacMenu.Text) == 0)
                 {
-                    case "Entradas":
-                        cantentrada += int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
-                        break;
-                    case "Bebidas":
-                        cantbebidas += int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
-                        break;
-                    case "Segundos":
-                        cantpf += int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
-                        break;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaCero()", true);
                 }
-            }
-            if (porciones != cantentrada)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaEntradasMax()", true);
-                return;
-            }
-            if (porciones != cantbebidas)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaSegundosMax()", true);
-                return;
-            }
-            if (porciones != cantpf)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaBebidasMax()", true);
-                return;
-            }
-            if (hay == false)
-            {
-                if (sSegundo == false && sEntrada == false)
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaSimbolo()", true);
+                //}
+                int porciones = int.Parse(txtNumRacMenu.Text);
+                int cantentrada = 0;
+                int cantbebidas = 0;
+                int cantpf = 0;
+                foreach (RepeaterItem item in repeaterMenu.Items)
+                {
+                    if (((TextBox)item.FindControl("txtNumRaciones")).Text == string.Empty)
+                    {
+                        //alguna cantidad esta vacia
+                        return;
+                    }
+                    switch (((Label)item.FindControl("lblCatRec")).Text)
+                    {
+                        case "Entradas":
+                            cantentrada += int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
+                            break;
+                        case "Bebidas":
+                            cantbebidas += int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
+                            break;
+                        case "Segundos":
+                            cantpf += int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
+                            break;
+                    }
+                }
+                if (porciones != cantentrada)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaEntradasMax()", true);
+                    return;
+                }
+                if (porciones != cantbebidas)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaSegundosMax()", true);
+                    return;
+                }
+                if (porciones != cantpf)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaBebidasMax()", true);
+                    return;
+                }
+                int sumaCarta = SumarPorciones(repeaterCartaSeleccionada);
+                int sumaMenu = int.Parse(txtNumRacMenu.Text);
+                if (int.Parse(txtNumRacCarta.Text == string.Empty ? "0" : txtNumRacCarta.Text) == sumaCarta && int.Parse(txtNumRacMenu.Text) == sumaMenu)
                 {
                     dto_menu.ME_fechaMenu = txtFecha.Text;
                     dto_menu.EM_idEstadoMenu = 1;
                     dto_menu.ME_totalPorcion = Convert.ToInt32(txtNumRacMenu.Text);
-                    ctr_menu.CTR_RegistrarMenu(dto_menu);
                     int id = ctr_menu.CTR_IdMenuMayor();
-                    //--------------------------------------
-                    ActualizarMenuXReceta(repeaterMenu);
-                    //--------------------------------------
-                    //Response.Redirect("CalendariaMenu.aspx");
-
+                    new CTR_MenuXReceta().CTR_EliminarMenu(id);
+                    dto_menu.ME_fechaMenu = txtFecha.Text;
+                    dto_menu.EM_idEstadoMenu = 1;
+                    dto_menu.ME_totalPorcion = Convert.ToInt32(txtNumRacMenu.Text);
+                    ctr_menu.CTR_RegistrarMenu(dto_menu);
+                    RegistrarMenuXReceta(repeaterCartaSeleccionada);
+                    RegistrarMenuXReceta(repeaterMenu);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaExito()", true);
+                    //Response.Redirect("CalendarioMenu");
                 }
             }
-            int sumaCarta = SumarPorciones(repeaterCartaSeleccionada);
-            //int sumaMenu = SumarPorciones(repeaterMenu);
-            int sumaMenu = int.Parse(txtNumRacMenu.Text);
-            if (int.Parse(txtNumRacCarta.Text == string.Empty ? "0" : txtNumRacCarta.Text) == sumaCarta && int.Parse(txtNumRacMenu.Text) == sumaMenu)
+            catch (Exception ex)
             {
-                //dto_menu.ME_fechaMenu = txtFecha.Text;
-                //dto_menu.ME_totalPorcion = sumaCarta + sumaMenu;
-                //dto_menu.EM_idEstadoMenu = 1;
-                //ctr_menu.CTR_RegistrarMenu(dto_menu);
-                ActualizarMenuXReceta(repeaterCartaSeleccionada);
-                ActualizarMenuXReceta(repeaterMenu);
-                ScriptManager.RegisterStartupScript(this, GetType(), "mensaje", "alertaExito()", true);
-                Response.Redirect("CalendarioMenu");
+                throw ex;
+            }
+        }
 
+
+        public void RegistrarMenuXReceta(Repeater rp)
+        {
+            int R_id;
+            int M_id = ctr_menu.CTR_IdMenuMayor();
+
+            foreach (RepeaterItem item in rp.Items)
+            {
+                R_id = int.Parse(((Label)item.FindControl("lblIdReceta")).Text);
+                dto_menuxreceta.ME_idMenu = M_id;
+                dto_menuxreceta.R_idReceta = R_id;
+                dto_menuxreceta.MXR_numeroPorcion = int.Parse(((TextBox)item.FindControl("txtNumRaciones")).Text);
+                ctr_menuxreceta.CTR_RegistrarMenuXReceta(dto_menuxreceta);
+                //receta = ctr_receta.CTR_Consultar_Receta(R_id);
             }
         }
         public int SumarPorciones(Repeater rp)

@@ -14,7 +14,7 @@
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
                         <h4>Planificación del Día</h4>
-                    </div>
+                    </div>                   
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
                                     <label>N° total de raciones: </label>
                                 </div>
                                 <div class="col-md-2 pl-3">
-                                    <asp:TextBox ID="txtNumRacCarta" runat="server" class="form-control" TextMode="Number" />
+                                    <asp:TextBox ID="txtNumRacCarta" runat="server" class="form-control" TextMode="Number"/>
                                 </div>
                             </div>
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -149,7 +149,7 @@
                                                                             <label>Raciones: </label>
                                                                         </div>
                                                                         <div class="col-md-5 pl-4">
-                                                                            <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" />
+                                                                            <asp:TextBox ID="txtNumRaciones" runat="server" class="form-control" TextMode="Number" Text='<%#DataBinder.Eval(Container.DataItem, "MXR_numeroPorcion")%>'/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12 col-sm-12 pt-2 text-right">

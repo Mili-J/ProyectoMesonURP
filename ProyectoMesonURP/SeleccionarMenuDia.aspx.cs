@@ -426,13 +426,12 @@ namespace ProyectoMesonURP
             }
             else if (hay == true)
             {
-
                 //if (sSegundo == false && sEntrada == false)
                 //{
                 //    DTO_Menu objmenu = ctr_menu.CTR_ConsultarMenu(Convert.ToDateTime(fecha));
                 //    objmenu.ME_totalPorcion = Convert.ToInt32(txtNumRacMenu.Text);
                 //    DataTable dtMenuReceta = ctr_menuxreceta.CTR_ConsultarRecetasXMenu(objmenu.ME_idMenu);
-                //    ctr_menu.CTR_ActualizarMenu(objmenu);
+                //    ctr_menu.CTR_ActualizarMenu(objmenu)*+;
                 //    if (dtMenuReceta.Rows.Count == 2)
                 //    {
                 //        dtMenuReceta.Rows[0][1] = Convert.ToInt32(lblIdEntrada.Text);
@@ -478,8 +477,6 @@ namespace ProyectoMesonURP
                 ctr_menuxreceta.CTR_RegistrarMenuXReceta(dto_menuxreceta);
                 //receta = ctr_receta.CTR_Consultar_Receta(R_id);
             }
-
-
         }
 
         public int SumarPorciones(Repeater rp)

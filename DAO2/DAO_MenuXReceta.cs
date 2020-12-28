@@ -114,6 +114,15 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void DAO_EliminarMenu(int id)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_EliminarMenu", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@ME_idMenu", id);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public bool SelectExistenciaMenuxReceta(int R_idReceta)
         {
             try

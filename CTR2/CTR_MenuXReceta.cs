@@ -44,5 +44,9 @@ namespace CTR
         {
             dao_menuxreceta.DAO_EliminarMenusXReceta(id);
         }
+        public void CTR_EliminarMenu(int id)
+        {
+            dao_menuxreceta.DAO_EliminarMenu(id);
+        }
     }
 }
