@@ -31,5 +31,9 @@ namespace CTR
         //{
         //    objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
         //}
+        public bool CTRExistenciaIngredientexMxfc(int I_idIngrediente, int MXFC_idMedidaFCocina)
+        {
+            return objEquivalencia.SelectExistenciaIngredientexMxfc(I_idIngrediente, MXFC_idMedidaFCocina);
+        }
     }
 }

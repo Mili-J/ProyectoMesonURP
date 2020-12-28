@@ -96,25 +96,45 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
         {
-            _De = new DTO_Equivalencia();
-            try
-            {
-                _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
-                _De.I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
-                int idFCocina = Convert.ToInt32(ddlFormatoCocina.SelectedValue);
-                _Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(idFCocina);
-                int idMedida = Convert.ToInt32(ddlMedida.SelectedValue);
-                _Dm = _Cm.CTR_ListarNombreMedida(idMedida);
-                _De.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
-               
+            _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
+            _De.I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
+            int I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
+            int idFCocina = Convert.ToInt32(ddlFormatoCocina.SelectedValue);
+            _Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(idFCocina);
+            int idMedida = Convert.ToInt32(ddlMedida.SelectedValue);
+            _Dm = _Cm.CTR_ListarNombreMedida(idMedida);
+            _De.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
+            int MXFC_idMedidaFCocina = Convert.ToInt32(_De.MXFC_idMedidaFCocina);
 
-                _Ce.AgregarEquivalencia(_De);
-                CargargvEquivalencia();
-            }
-            catch (System.FormatException)
+            _De = new DTO_Equivalencia();
+
+            bool Eixmfc = _Ce.CTRExistenciaIngredientexMxfc(I_idIngrediente, MXFC_idMedidaFCocina);
+            int a = 0;
+
+            if (Eixmfc)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
+                a = 1;
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertaDuplicado", "alertaDuplicado()", true);
                 return;
+            }
+            else
+            {
+                try
+                {
+                    _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
+                    _De.I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
+                    _Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(idFCocina);
+                    _Dm = _Cm.CTR_ListarNombreMedida(idMedida);
+                    _De.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
+
+                    _Ce.AgregarEquivalencia(_De);
+                    CargargvEquivalencia();
+                }
+                catch (System.FormatException)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
+                    return;
+                }
             }
 
         }

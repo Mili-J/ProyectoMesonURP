@@ -126,5 +126,13 @@
                 }
             })
         }
+        function alertaDuplicado() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'No puedes añadir la misma equivalencia',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
     </script>
 </asp:Content>
