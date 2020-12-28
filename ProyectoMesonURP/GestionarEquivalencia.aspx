@@ -34,29 +34,26 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group row justify-content-center h-100">
-                <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
-                <div class="col-sm-12 col-md-4">
-                    <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
-                </div>
+            <div class="row">
+            <div class="col-md-3">
+                <label>Categoria</label>
+                <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
             </div>
-            <div class="form-group row justify-content-center h-100">
-                <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
-                <div class="col-sm-12 col-md-4">
-                    <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
-                </div>
+            <div class="col-md-3">
+                <label>Insumo</label>
+                <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
             </div>
-            <div class="form-group row col-md-8">
+            <div class="col-md-3">
                 <label>Ingrediente</label>
-                <div class="col-sm-12 col-md-6">
-                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox>
-                </div>
+                <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox> 
+            </div>
+            <div class="header-right col-md-3">
+                 <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
+            </div>
             </div>
             <asp:TextBox ID="txtPesoU" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
             <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
-            <asp:Button CssClass="btn btn-primary" runat="server" Text="Agregar" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
-
-            <%--<asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />--%>
+            
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
@@ -64,8 +61,9 @@
                     </div>
                     <div class="w3-row-padding">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente"
-                                EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
+                            <asp:GridView ID="gvEquivalencia" allowpaging="True" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente"
+                                EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnPageIndexChanging="gvEquivalencia_PageIndexChanging">
+                               <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
                                 <Columns>
                                     <asp:BoundField DataField="I_idInsumo" HeaderText="I_idInsumo" Visible="false" />
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />

@@ -25,8 +25,6 @@ namespace ProyectoMesonURP
         CTR_Medida _Cm = new CTR_Medida();
         DTO_Medida _Dm = new DTO_Medida();
         DataTable dt = new DataTable();
-        static DataTable tin = new DataTable();
-        static List<DTO_Equivalencia> pila = new List<DTO_Equivalencia>();
         static int id { get; set; }
         int idMFCO = 0;
         protected void Page_Load(object sender, EventArgs e)

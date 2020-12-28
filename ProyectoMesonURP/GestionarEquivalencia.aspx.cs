@@ -35,18 +35,21 @@ namespace ProyectoMesonURP
             gvEquivalencia.DataSource = _Ci.CTR_Consultar_Ingrediente(txtBuscarIngrediente.Text);
             gvEquivalencia.DataBind();
         }
-
-        
+        protected void fnombreIng_TextChanged(object sender, EventArgs e)
+        {
+            LlenarGVEquivalencias();
+        }
+        protected void gvEquivalencia_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEquivalencia.PageIndex = e.NewPageIndex;
+            LlenarGVEquivalencias();
+        }
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             
             if (e.CommandName == "VerEquivalencia" )
             {
                
-            }
-            else if (e.CommandName == "EditarEquivalencia")
-            {
-
             }
             else if (e.CommandName == "AgregarEquivalencia")
             {
@@ -60,24 +63,15 @@ namespace ProyectoMesonURP
 
                 Response.Redirect("AgregarEquivalencia");
             }
-
         }
-        protected void fnombreIng_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnVerIngredientes_Click(object sender, EventArgs e)
         {
             Response.Redirect("GestionarIngrediente");
         }
-        protected void fnombreEq1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            gvEquivalencia.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+            LlenarGVEquivalencias();
         }
         public void LoadCategoriaI()
         {
@@ -114,7 +108,6 @@ namespace ProyectoMesonURP
                 }
             }
         }
-
         protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
         {
             int a = 0;
