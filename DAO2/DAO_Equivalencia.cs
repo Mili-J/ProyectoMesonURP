@@ -19,17 +19,18 @@ namespace DAO
             dto_eq = new DTO_Equivalencia();
         }
 
-        //public void AgregarEquivalencia(DTO_Equivalencia objEquivalencia)
-        //{
-        //    conexion.Open();
-        //    SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
-        //    unComando.CommandType = CommandType.StoredProcedure;
-        //    unComando.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
-        //    unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
-        //    unComando.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));           
-        //    unComando.ExecuteNonQuery();
-        //    conexion.Close();
-        //}
+        public void AgregarEquivalencia(DTO_Equivalencia objEquivalencia)
+        {
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+
+            unComando.Parameters.AddWithValue("@E_cantidad", objEquivalencia.E_cantidad);
+            unComando.Parameters.AddWithValue("@I_idIngrediente", objEquivalencia.I_idIngrediente);
+            unComando.Parameters.AddWithValue("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina);
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public DataTable ListarEquivalencias()
         {
             try
@@ -46,6 +47,19 @@ namespace DAO
                 throw ex;
             }
         }
+        public DataTable DAOSelectEquivalencia(int I_idIngrediente)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_EQUIV_X_INGREDIENTE", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
         //public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
         //{
         //    try
@@ -57,7 +71,7 @@ namespace DAO
         //        cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
         //        cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
         //        cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
-           
+
         //        cmd.ExecuteNonQuery();
         //        conexion.Close();
         //    }

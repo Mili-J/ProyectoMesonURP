@@ -75,17 +75,22 @@
                         <ContentTemplate>--%>
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="gvEquivalencia" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false" OnRowDataBound="gvEquivalencia_OnRowDataBound"
-                                        DataKeyNames="Formato Cocina, Cantidad, IDFormatoCocinaXMedida, Medida"
+                                        DataKeyNames="E_cantidad, MXFC_idMedidaFCocina, M_nombreMedida, FCO_nombreFormatoCocina"
                                         CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None" OnSelectedIndexChanged="gvEquivalencia_SelectedIndexChanged">
                                         <Columns>
-                                            <asp:BoundField HeaderText="Formato Cocina" DataField="Formato Cocina" />
-                                            <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                                            <asp:BoundField HeaderText="IDFormatoCocinaXMedida" DataField="IDFormatoCocinaXMedida" />
-                                            <asp:BoundField HeaderText="Medida" DataField="Medida" />
+                                            
+                                            <asp:BoundField HeaderText="Cantidad" DataField="E_cantidad" />
+                                            <asp:BoundField HeaderText="IDFormatoCocinaXMedida" DataField="MXFC_idMedidaFCocina" />
+                                            <asp:BoundField HeaderText="Medida" DataField="M_nombreMedida" />
+                                            <asp:BoundField HeaderText="nombreFormatoCocina" DataField="FCO_nombreFormatoCocina" />
                                         </Columns>
                                         <SelectedRowStyle BackColor="SteelBlue" />
                                     </asp:GridView>
                                 </div>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="btnAñadirEquivalencia" />
+                                    <asp:PostBackTrigger ControlID="btnGuardar" />
+                                </Triggers>
                                 <asp:Label ID="lblIndex" runat="server" Visible="false"></asp:Label>
                                 <hr />
                                 <p class="center-button">
@@ -101,10 +106,25 @@
                         <p class="center-button pt-3">
                           <%--  <asp:Button CssClass="btn btn-primary" runat="server" Text="Guardar" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" />--%>
                            <asp:Button CssClass="btn btn-outline-success" runat="server" Text="Añadir" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" UseSubmitBehavior="false" />
-                        </p>
+                        <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
+                            </p>
                  
 
             </div>
         </div>
     </div>
+    <script>
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado registrar correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "GestionarEquivalencia";
+                }
+            })
+        }
+    </script>
 </asp:Content>

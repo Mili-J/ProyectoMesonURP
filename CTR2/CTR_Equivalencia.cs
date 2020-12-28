@@ -19,10 +19,14 @@ namespace CTR
         {
             return objEquivalencia.ListarEquivalencias();
         }
-        //public void AgregarEquivalencia(DTO_Equivalencia DTOEquival)
-        //{
-        //    objEquivalencia.AgregarEquivalencia(DTOEquival);
-        //}
+        public void AgregarEquivalencia(DTO_Equivalencia DTOEquival)
+        {
+            objEquivalencia.AgregarEquivalencia(DTOEquival);
+        }
+        public DataTable CTRListarEquivalencia(int I_idIngrediente)
+        {
+            return objEquivalencia.DAOSelectEquivalencia(I_idIngrediente);
+        }
         //public void ActualizarEquivalencia(DTO_Equivalencia DTOEquivalencia)
         //{
         //    objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
