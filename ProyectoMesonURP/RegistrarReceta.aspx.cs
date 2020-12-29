@@ -47,11 +47,11 @@ namespace ProyectoMesonURP
             ddlIngredientes.DataBind();
             ddlIngredientes.Items.Insert(0, "--seleccionar--");
         }
-        public void ListarMedida()
+        public void ListarFCocina()
         {
             ddlMedida.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
-            ddlMedida.DataTextField = "M_nombreMedida";
-            ddlMedida.DataValueField = "M_nombreMedida";
+            ddlMedida.DataTextField = "FCO_nombreFormatoCocina";
+            ddlMedida.DataValueField = "FCO_nombreFormatoCocina";
             ddlMedida.DataBind();
             ddlMedida.Items.Insert(0, "--seleccionar--");
         }
@@ -59,7 +59,7 @@ namespace ProyectoMesonURP
         {
             if (ddlIngredientes.SelectedIndex != 0)
             {
-                ListarMedida();
+                ListarFCocina();
             }
             else
             {
