@@ -72,7 +72,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li id="menuDashboard" runat="server" class="nav-item active">
-                <a class="nav-link" href="Empty.aspx">
+                <a class="nav-link" href="Dashboard.aspx">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>

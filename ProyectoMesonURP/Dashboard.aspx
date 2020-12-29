@@ -58,7 +58,7 @@
         <div class="col-md-6 col-sm-12 mb-30">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
-                    <h5>Insumos Disponibles</h5>
+                    <h5>Estado de las Órdenes de Compra</h5>
                 </div>
             </div>
             <div class="pd-20 card-box height-100-p">
@@ -68,7 +68,7 @@
         <div class="col-md-6 col-sm-12 mb-30">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
-                    <h5>Estado de las Órdenes de Compra</h5>
+                    <h5>Insumos Disponibles</h5>
                 </div>
             </div>
             <div class="pd-20 card-box height-100-p">
