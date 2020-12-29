@@ -65,27 +65,17 @@
                                         <asp:LinkButton ID="btnEnviarEmailCotizacion" class="btn btn-info" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-paper-plane-o"></i>&nbsp;Enviar</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="GenerarOc">
+                                <asp:TemplateField HeaderText="Detalles">
                                     <ItemTemplate>
-                                         <asp:LinkButton ID="btnGenerarOC" class="btn btn-success" runat="server" CommandName="GenerarOc" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-arrow-circle-o-right"></i>&nbsp;Generar</asp:LinkButton>
-                                     </ItemTemplate>
+                                         <asp:LinkButton ID="btnVerDetallesCotizacion" runat="server" CommandName="DetallesCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  class="dropdown-item"><i class="dw dw-eye"></i>&nbsp;Ver</asp:LinkButton>
+												</ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Acciones">
+                                <asp:TemplateField HeaderText="Editar">
                                     <ItemTemplate>
-                                        <div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <asp:LinkButton ID="btnVerDetallesCotizacion" runat="server" CommandName="ConsultarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  class="dropdown-item"><i class="dw dw-eye"></i>&nbsp;Ver</asp:LinkButton>
-												<asp:LinkButton ID="btnEditarCotizacion" runat="server" CommandName="ActualizarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" class="dropdown-item"><i class="dw dw-edit2"></i>&nbsp;Editar</asp:LinkButton>
-											</div>
-										</div>
-                                        <%--<asp:Button ID="btnEnviarEmailOC" class="btn btn-primary" runat="server" CommandName="EnviarEmailOC" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Enviar" OnClick="btnEnviarEmailOC_Click" />--%>
-                                       <%-- <asp:ImageButton ID="btnEnviarEmailCotizacion" ImageUrl="img/enviar_1.png" onmouseover="this.src='img/enviar-b.png'" onmouseout="this.src='img/enviar_1.png'" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
-                                    </ItemTemplate>
+                                               <asp:LinkButton ID="btnEditarCotizacion" runat="server" CommandName="ActualizarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" class="dropdown-item"><i class="dw dw-edit2"></i>&nbsp;Editar</asp:LinkButton>
+										</ItemTemplate>
                                 </asp:TemplateField>      
-                                 <asp:TemplateField HeaderText="Acciones 2">
+                                 <asp:TemplateField HeaderText="Acciones">
                                         <ItemTemplate>
                                             <div style="text-align: center">
                                                 <asp:ImageButton ID="btnAceptada" ImageUrl="img/correcto.png" onmouseover="this.src='img/correcto-b.png'" onmouseout="this.src='img/correcto.png'" runat="server" CommandName="AceptarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" TabIndex="1" />

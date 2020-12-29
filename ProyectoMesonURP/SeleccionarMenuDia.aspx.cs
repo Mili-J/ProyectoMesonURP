@@ -25,7 +25,7 @@ namespace ProyectoMesonURP
         CTR_CategoriaReceta ctr_cat_receta;
         static bool sEntrada, sSegundo;
         static bool hay;
-        static string fecha;
+        static DateTime fecha;
         DTO_Menu objMenu;
         static DataTable dtCarta = new DataTable();
         static DataTable dtMenu = new DataTable();
@@ -45,8 +45,8 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
 
-                fecha = Session["fecha"].ToString();
-                txtFecha.Text = fecha;
+                fecha = Convert.ToDateTime(Session["fecha"].ToString());
+                txtFecha.Text = fecha.ToString("MM/dd/yyyy");
                 hay = (bool)Session["hay"];
                 btnAceptar.Visible = !hay;
                 //-----------------------------------

@@ -83,6 +83,14 @@ namespace ProyectoMesonURP
             ddlEstadoReceta.DataBind();
             ddlEstadoReceta.Items.Insert(0, "--seleccionar--");
         }
+        public void ListarMedida()
+        {
+            ddlIngredientes.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            ddlIngredientes.DataTextField = "I_idIngrediente";
+            ddlIngredientes.DataValueField = "I_idIngrediente";
+            ddlIngredientes.DataBind();
+            ddlIngredientes.Items.Insert(0, "--seleccionar--");
+        }
         protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -92,12 +100,25 @@ namespace ProyectoMesonURP
                 id = e.Row.RowIndex;
             }
         }
+        protected void ddlIngredientes_SelectionChange(Object sender, EventArgs e)
+        {
+            if (ddlIngredientes.SelectedIndex != 0)
+            {
+                ListarMedida();
+            }
+            else
+            {
+                ddlMedida.Items.FindByValue("--seleccionar--");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertaSeleccionar", "alertaSeleccionar();", true);
+                return;
+            }
+        }
         protected void btnAñadirIngredientes_Click(object sender, EventArgs e)
         {
             int R_idReceta = Convert.ToInt32(Session["IdReceta"]);
             int idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
             _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
-            _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
+            _Dixr.IR_formatoMedida = ddlMedida.SelectedValue;
 
             _Dixr = new DTO_IngredienteXReceta();
 
@@ -109,7 +130,7 @@ namespace ProyectoMesonURP
                 return;
 
             }
-            else if (ddlIngredientes.SelectedValue == "" || txtCantidad.Text == "" || txtMedidaFormato.Text == "")
+            else if (ddlIngredientes.SelectedValue == "" || txtCantidad.Text == "" || ddlMedida.SelectedIndex == 0)
             {
                 a = 1;
                 ScriptManager.RegisterStartupScript(this, GetType(), "randomtext", "alertaError()", true);
@@ -120,7 +141,7 @@ namespace ProyectoMesonURP
                 try
                 {
                     _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
-                    _Dixr.IR_formatoMedida = txtMedidaFormato.Text;
+                    _Dixr.IR_formatoMedida = ddlMedida.SelectedValue;
                     _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
                     _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
                     _Dixr.IR_cantidad = Convert.ToInt32(txtCantidad.Text);

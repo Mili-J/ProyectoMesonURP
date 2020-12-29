@@ -114,6 +114,7 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        
         public void DAO_EliminarMenu(int id)
         {
             conexion.Open();
@@ -123,7 +124,7 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
-        public bool SelectExistenciaMenuxReceta(int R_idReceta)
+        public bool SelectExistenciaMenuxReceta(int R_idReceta, string Fecha)
         {
             try
             {
@@ -131,6 +132,7 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand("SP_SELECT_EXISTENCIA_MENU_X_RECETA", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@R_idReceta", R_idReceta);
+                cmd.Parameters.AddWithValue("@Fecha", Fecha);
                 cmd.ExecuteNonQuery();
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());

@@ -121,7 +121,7 @@
                     <div class="form-group" style="width: 1887px; margin-top: 30px;">
                         <label for="focusedinput" class="col-sm-2 control-label">Ingredientes</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList Style="width: 25%;" ID="ddlIngredientes" runat="server" CssClass="form-control1">
+                            <asp:DropDownList Style="width: 25%;" ID="ddlIngredientes" runat="server" CssClass="form-control1"  OnSelectedIndexChanged="ddlIngredientes_SelectionChange">
                                 <asp:ListItem Text="" Value="">Seleccione una Ingrediente</asp:ListItem>
                             </asp:DropDownList>
                         </div>
@@ -131,13 +131,17 @@
                         <div class="col-sm-8">
                             <asp:TextBox ID="txtCantidad" Style="width: 25%;" runat="server" CssClass="form-control1" onkeypress="return SoloNumeroIntDouble(event);" MaxLength="5"/>
                         </div>
-                    </div>
-                    <div class="form-group" style="width: 1887px;">
-                        <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
-                        <div class="col-sm-8">
-                            <asp:TextBox ID="txtMedidaFormato" Style="width: 25%;" runat="server" CssClass="form-control1" onkeypress="return soloLetras(event);" />
-                        </div>
-                    </div>
+                    </div><div class="form-group pt-3 pl-5">
+                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                         <ContentTemplate>
+                                            <label>Medida</label>
+                                            <div class="col-sm-6">
+                                                <asp:DropDownList ID="ddlMedida" runat="server" class="custom-select2 form-control">
+                                                </asp:DropDownList>
+                                            </div>
+                                         </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
                     <p class="center-button">
                         <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngredientes" OnClick="btnAñadirIngredientes_Click" />
                         <asp:Button CssClass="btn btn-danger" runat="server" Text="Quitar" ID="btnQuitarIngredientes" OnClick="btnQuitarIngredientes_Click" />

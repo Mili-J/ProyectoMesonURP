@@ -255,14 +255,6 @@ namespace ProyectoMesonURP
             else
                 return null;
         }
-        protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
-        {
-            id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
-            tin.Rows[id].Delete();
-            pila.RemoveAt(id);
-            gvIngredientes.DataSource = tin;
-            gvIngredientes.DataBind();
-        }
         protected void btnQuitarIngrediente_Click(object sender, EventArgs e)
         {
             id = Convert.ToInt32(gvIngredientes.SelectedRow.RowIndex);
@@ -270,7 +262,6 @@ namespace ProyectoMesonURP
             pila.RemoveAt(id);
             gvIngredientes.DataSource = tin;
             gvIngredientes.DataBind();
-
         }
     }
 }
