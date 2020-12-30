@@ -129,12 +129,16 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
+
+                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                 }
                 else if (estado == "Enviada")
                 {
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = true;
+
+                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                 }
                 else if (estado == "Recibida")
                 {
@@ -143,6 +147,8 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = true;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = true;
+
+                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                 }
                 else if (estado == "Aceptada")
                 {
@@ -151,6 +157,8 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
                     e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    
+                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = true;
                     e.Row.Cells[6].Text = "<span class='badge badge-success'>" + e.Row.Cells[6].Text + "</span>";
                 }
                 else if (estado == "Rechazada")
@@ -160,6 +168,8 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
                     e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false;
+
+                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                     e.Row.Cells[6].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[6].Text + "</span>";
                 }
             }

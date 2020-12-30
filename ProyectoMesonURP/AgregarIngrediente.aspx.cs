@@ -64,7 +64,7 @@ namespace ProyectoMesonURP
             objIngrediente.I_pesoUnitario = Convert.ToDecimal(txtPesoUnitario.Text);
             objIngrediente.I_cantidad = Convert.ToDecimal(txtCantidad.Text);
             objIngrediente.I_idInsumo = int.Parse(ddlInsumo.SelectedValue);
-            objIngrediente.E_idEquivalencia = int.Parse(ddlEquivalencia.SelectedValue);
+            //objIngrediente.E_idEquivalencia = int.Parse(ddlEquivalencia.SelectedValue);
             CTR_Ingrediente CTRIngrediente = new CTR_Ingrediente();
             CTRIngrediente.InsertarIngrediente(objIngrediente);
 

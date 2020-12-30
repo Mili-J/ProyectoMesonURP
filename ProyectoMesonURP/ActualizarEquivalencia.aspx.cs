@@ -140,13 +140,13 @@ namespace ProyectoMesonURP
             idE=(int)Session["idEquivalencia"];
             if (ddlInsumo.SelectedValue == "" || ddlInsumo.SelectedValue == "Seleccione")
             {
-                DTOEqui.I_idInsumo = idI; 
+                //DTOEqui.I_idInsumo = idI; 
                 idMedida = ObtenerMedidaI(idI).M_idMedida;
             }                   
             else
             {
-                DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
-                idMedida = ObtenerMedidaI(DTOEqui.I_idInsumo).M_idMedida;
+                //DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
+                //idMedida = ObtenerMedidaI(DTOEqui.I_idInsumo).M_idMedida;
             }
                
             DTOEqui.E_cantidad = Convert.ToDecimal(txtCantidad.Text);                                

@@ -39,7 +39,7 @@ namespace DAO
             cmd.Parameters.AddWithValue("@I_pesoUnitario", dto_ingrediente.I_pesoUnitario);
             cmd.Parameters.AddWithValue("@I_cantidad", dto_ingrediente.I_cantidad);
             cmd.Parameters.AddWithValue("@I_idInsumo", dto_ingrediente.I_idInsumo);
-            cmd.Parameters.AddWithValue("@E_idEquivalencia", dto_ingrediente.E_idEquivalencia);
+            //cmd.Parameters.AddWithValue("@E_idEquivalencia", dto_ingrediente.E_idEquivalencia);
 
             cmd.ExecuteNonQuery();
             conexion.Close();
@@ -74,7 +74,7 @@ namespace DAO
                 dto_ingrediente.I_pesoUnitario = Convert.ToDecimal(reader[2]);
                 dto_ingrediente.I_cantidad = Convert.ToDecimal(reader[3]);
                 dto_ingrediente.I_idInsumo = Convert.ToInt32(reader[4]);
-                dto_ingrediente.E_idEquivalencia = Convert.ToInt32(reader[5]);
+                //dto_ingrediente.E_idEquivalencia = Convert.ToInt32(reader[5]);
             }
             conexion.Close();
             return dto_ingrediente;
@@ -169,7 +169,7 @@ namespace DAO
                 cmd.Parameters.Add(new SqlParameter("@I_pesoUnitario", objIngre.I_pesoUnitario));
                 cmd.Parameters.Add(new SqlParameter("@I_cantidad", objIngre.I_cantidad));
                 cmd.Parameters.Add(new SqlParameter("@I_idnsumo", objIngre.I_idInsumo));
-                cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objIngre.E_idEquivalencia));
+               // cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objIngre.E_idEquivalencia));
                
 
                 cmd.ExecuteNonQuery();

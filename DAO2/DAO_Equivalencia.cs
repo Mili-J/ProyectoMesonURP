@@ -25,7 +25,7 @@ namespace DAO
             SqlCommand unComando = new SqlCommand("SP_Insert_Equivalencia", conexion);
             unComando.CommandType = CommandType.StoredProcedure;
             unComando.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
-            unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
+            //unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
             unComando.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));           
             unComando.ExecuteNonQuery();
             conexion.Close();
@@ -55,7 +55,7 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
                 cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
-                cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
+                //cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
                 cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
            
                 cmd.ExecuteNonQuery();

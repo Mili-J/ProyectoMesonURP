@@ -56,8 +56,8 @@ namespace ProyectoMesonURP
                 repeaterCartaSeleccionada.DataBind();
                 CrearDt(dtMenu);
                 CrearDt(dtCarta);
-                dtMenu.Merge(dtMenuSeleccionado);
-                dtCarta.Merge(dtCartaSeleccionada);
+                //dtMenu.Merge(dtMenuSeleccionado);
+                //dtCarta.Merge(dtCartaSeleccionada);
                 //----------
                 //dtCarta = dtCartaSeleccionada;
                 //dtMenu = dtMenuSeleccionado;

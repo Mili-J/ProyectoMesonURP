@@ -48,7 +48,7 @@ namespace ProyectoMesonURP
                 objIngrediente.equivalencia += gvIngrediente.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FCO_nombreFormatoCocina"].ToString();
                 objIngrediente.I_idIngrediente=ObternIDIngrediente(objIngrediente.I_nombreIngrediente);
                 objIngrediente.I_idInsumo = ObternIDInsumo(objIngrediente.I_nombreIngrediente);
-                objIngrediente.E_idEquivalencia = ObternIDEquival(objIngrediente.I_nombreIngrediente);
+                //objIngrediente.E_idEquivalencia = ObternIDEquival(objIngrediente.I_nombreIngrediente);
                 Session.Add("Ingrediente", objIngrediente);
                 Response.Redirect("ActualizarIngrediente.aspx");
             }

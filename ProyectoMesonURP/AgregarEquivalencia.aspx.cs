@@ -117,7 +117,7 @@ namespace ProyectoMesonURP
         {
             CTR_Equivalencia CTREqui = new CTR_Equivalencia();
             DTO_Equivalencia DTOEqui = new DTO_Equivalencia();
-            DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
+            //DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
             DTOEqui.E_cantidad = int.Parse(txtCantidad.Text);
             int id = int.Parse(ddlInsumo.SelectedValue);
             int idMedida = ObtenerMedidaI(id).M_idMedida;
