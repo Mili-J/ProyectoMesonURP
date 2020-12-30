@@ -93,7 +93,6 @@
     <Content Include="css\fabochart.css" />
     <Content Include="css\flexslider.css" />
     <Content Include="css\font-awesome.css" />
-    <Content Include="css\fv.css" />
     <Content Include="css\GestionarReceta\bootstrap.min.css" />
     <Content Include="css\GestionarReceta\font-awesome.min.css" />
     <Content Include="css\GestionarReceta\nouislider.min.css" />
@@ -187,6 +186,7 @@
     <Content Include="img\house-4.jpeg" />
     <Content Include="img\house-5.jpeg" />
     <Content Include="img\house-6.jpeg" />
+    <Content Include="img\icon.blanco.png" />
     <Content Include="img\icono_prueba.png" />
     <Content Include="img\icons8-eye-30.png" />
     <Content Include="img\logo-bbc.png" />
@@ -215,6 +215,8 @@
     <Content Include="img\MesonURP_logofinal2.png" />
     <Content Include="img\ojo-b.png" />
     <Content Include="img\ojo.png" />
+    <Content Include="img\plato.blanco.png" />
+    <Content Include="img\plato.icon.png" />
     <Content Include="img\realtor-1.jpeg" />
     <Content Include="img\realtor-2.jpeg" />
     <Content Include="img\realtor-3.jpeg" />

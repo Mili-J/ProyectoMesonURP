@@ -25,7 +25,6 @@ namespace ProyectoMesonURP
                 //        menuInsumo.Visible = true;
                 //        menuInsumosOC.Visible = true;
                 //        menuStock.Visible = true;
-                //        menuSepararIngredientes.Visible = true;
                 //        menuMenu.Visible = true;
                 //        menuTransformar.Visible = true;
 
@@ -40,7 +39,6 @@ namespace ProyectoMesonURP
                 //        menuInsumo.Visible = true;
                 //        menuInsumosOC.Visible = true;
                 //        menuStock.Visible = true;
-                //        menuSepararIngredientes.Visible = false;
 
                 //        break;
                 //    case 3:
@@ -52,7 +50,6 @@ namespace ProyectoMesonURP
                 //        menuInsumo.Visible = false;
                 //        menuInsumosOC.Visible = false;
                 //        menuStock.Visible = false;
-                //        menuSepararIngredientes.Visible = true;
 
                 //        break;
                 //    default:
