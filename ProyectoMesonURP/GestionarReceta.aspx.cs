@@ -37,7 +37,7 @@ namespace ProyectoMesonURP
                 if (Emxr)
                 {
                     a = 1;
-                     ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaError1()", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alertaError1()", true);
                     return;
 
                 }
