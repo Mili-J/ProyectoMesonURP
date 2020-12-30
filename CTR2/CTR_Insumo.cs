@@ -57,6 +57,13 @@ namespace CTR
         {
             dao_insumo.UPDATE_cantidadInsumo(cantidad, idInsumo);
         }
-
+        public DataTable CTRSelectBarChartInsumoD()
+        {
+            return dao_insumo.SelectBarChartInsumoD();
+        }
+        public DataTable CTRSelectBarChartInsumoComprar()
+        {
+            return dao_insumo.SelectBarChartInsumoComprar();
+        }
     }
 }

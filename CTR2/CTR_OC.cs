@@ -56,5 +56,10 @@ namespace CTR
         {
             return dao_oc.ListarOC_3(idOC);
         }
+        public DataTable CTRPieEstadoOC()
+        {
+            return dao_oc.SelectPieEstadoOC();
+        }
+
     }
 }

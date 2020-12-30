@@ -141,5 +141,20 @@ namespace DAO
             conexion.Close();
             return dtMenu;
         }
+        public DataTable DAO_SelectMenuXFecha(string fecha)
+        {
+            DataTable dtMenu = new DataTable();
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SelectMenu_x_Fecha", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@fecha", fecha);
+            comando.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dtMenu);
+            conexion.Close();
+            return dtMenu;
+        }
+
+
     }
 }
