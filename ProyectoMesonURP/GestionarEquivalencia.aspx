@@ -37,20 +37,33 @@
             
             <div class="row">
                 <div class="col-md-3">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
                     <label>Categoria</label>
                     <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
+                     <asp:RequiredFieldValidator ID="rfvddlCategoria" runat="server" ControlToValidate="ddlCategoria" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="CategoriaRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
+           
                 <div class="col-md-3">
+                   <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                      <ContentTemplate>
                     <label>Insumo</label>
                     <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvddlInsumo" runat="server" ControlToValidate="ddlInsumo" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="InsumoRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
+                     </ContentTemplate>
+                  </asp:UpdatePanel>
                 </div>
+                
                 <div class="col-md-3">
                     <label>Ingrediente</label>
                     <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox> 
+                    <asp:RequiredFieldValidator ID="rfvtxtIngrediente" runat="server" ControlToValidate="txtIngrediente" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="equivalencia1"></asp:RequiredFieldValidator>          
                 </div>
                 <div class="col-md-3 pt-20">
                     <div style="margin: 0px auto; width:120px">
-                          <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
+                          <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary" ValidationGroup="equivalencia1"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
                     </div>
                 </div>
             </div>
