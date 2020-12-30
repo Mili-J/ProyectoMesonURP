@@ -184,5 +184,19 @@ namespace DAO
             conexion.Close();
             return dt;
         }
+        public DataTable DAO_SelectIngredientexR(int R_id)
+        {
+            DataTable dtIRxM = new DataTable();
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SelectIngrediente_x_Receta", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@R_idReceta", R_id);
+            //comando.Parameters.AddWithValue("@CP_idCategoriaReceta", Cat_id);
+            comando.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dtIRxM);
+            conexion.Close();
+            return dtIRxM;
+        }
     }
 }

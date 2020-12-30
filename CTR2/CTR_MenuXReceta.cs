@@ -44,5 +44,6 @@ namespace CTR
         {
             dao_menuxreceta.DAO_EliminarMenusXReceta(id);
         }
+        
     }
 }

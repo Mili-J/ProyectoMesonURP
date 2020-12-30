@@ -1,112 +1,110 @@
 ﻿<%@ Page Title="Mesón URP | Transformación" Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   
+   
+   
     <div class="women_main">
-        <div class="grids">
-            <div class="progressbar-heading grids-heading title-flex">
-                <h2 class="tittle-margin5">Transformar Insumo</h2>
-            </div>
-        </div>
-        <div class="forms">
-            <div class="panel panel-widget forms-panel" style="width: 36%">
-                <div class="form-title color-white" >
-                         <asp:Label ID="lblPlato" runat="server"></asp:Label>
-                    </div>
-                <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                    <div class="form-title color-white">
-                        <h4>Plato a Transformar</h4>
-                    </div> 
-                    <div>
-                        <asp:Image ID="Imagen_Receta" runat="server" />
-                    </div> 
-                </div>
-            </div>
-            <asp:UpdatePanel ID="panel1" runat="server">
-                <ContentTemplate>
-                    <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvIngredienteReceta" runat="server" DataKeyNames="I_nombreIngrediente,I_nombreInsumo,IR_cantidad,IR_formatoMedida,I_idIngrediente" AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
-                                <Columns>
-                                    <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" />
-                                    <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
-                                    <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />
-                                    <asp:BoundField HeaderText="Formato Medida" DataField="IR_formatoMedida" />
-                                   
-
-                                </Columns>
-                            </asp:GridView>
-                        </div>
-                    </div>
-                    <div class="form-horizontal" runat="server" style="background-color:#f5f6f7; border-radius:1%">
-                        <div class="form-grids widget-shadow" data-example-id="basic-forms" style="margin-top: 34px;">
-                            <div class="form-title color-white">
-                                <h4>Transformación</h4>
-                            </div>
-                        </div>
-
-                         <h4 class="tittle-margin5 input-info" style="color:#A77F5D; margin-top: 18px; margin-left: 34px;">Ingrediente Destino</h4>
-
-                        <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Ingrediente</label>
-                            <div class="col-sm-8">
-                               
-                                <asp:DropDownList ID="ddlIngrediente" runat="server" AutoPostBack="true" CssClass="form-control form-color-letter" Style="width:25%" OnSelectedIndexChanged="ddlIngrediente_SelectedIndexChanged"></asp:DropDownList>
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="selector1" class="col-sm-2 control-label">Formato Cocina</label>
-                            <div class="col-sm-8">
-                                <asp:TextBox ID="txtFormatoC" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" runat="server"></asp:TextBox>
-                            </div>
-                        </div>
-
-
-                        <h4 class="tittle-margin5 input-info" style="color:#A77F5D; margin-top: 18px; margin-left: 34px;">Insumo Origen</h4>
-                        <div class="form-group">
-                            <label for="selector1" class="col-sm-2 control-label">Insumo</label>
-                            <asp:TextBox ID="txtInsumo" runat="server" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" ></asp:TextBox>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Cantidad</label>
-                            <div class="col-sm-8">
-                                <asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%" />
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="focusedinput" class="col-sm-2 control-label">Medida</label>
-                            <div class="col-sm-8">
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Obligatorio" ValidationGroup="registrarEgreso" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                                <asp:TextBox ID="txtMedida" runat="server" CssClass="form-control form-color-letter" ReadOnly="true" Style="width:25%"></asp:TextBox>
-
-                            </div>
-                        </div>
-
-                        <asp:UpdatePanel ID="PanelAñadir" runat="server">
-                            <ContentTemplate>
-                                <p class="center-button">
-                                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
-                                    <%--                            <input type="reset" name="res-1"  value="Limpiar" runat="server" onserverclick="btnLimpiar_ServerClick" class="btn btn-danger" />--%>
-                                </p>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        
-                        <asp:GridView ID="GridViewTransformacion" runat="server" AutoGenerateColumns="true" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0"></asp:GridView>
-                    </div>
-
+           <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <h4 class="tittle-margin5">Transformar Insumo</h4>
                     </div>
                 </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+            </div>
+        <div class="pd-20 card-box">
+            <div class="row clearfix">
+            <div class="col-md-5 col-sm-12 mb-30 pt-20" >
+                <div class="form-title color-white">
+                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                     <h5>Menú del día: <asp:Label ID="lblFecha" runat="server" ></asp:Label></h5>
+                </div>
+            </div>               
+                <asp:Calendar ID="cldMenu" runat="server" style="width:40%" OnSelectionChanged="cldMenu_SelectionChanged"></asp:Calendar>                
+            </div>
+            <div class="col-md-5">
+            <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
+               <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
+                    <asp:GridView ID="gvRecetaMenu" runat="server" EmptyDataText="No hay informacion disponible." AutoGenerateColumns="False" DataKeyNames="R_nombreReceta,MxR_numeroPorcion,R_numeroPorcion" Style="text-align:center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnRowCommand="gvRecetaMenu_RowCommand">
+                        <Columns>
+                            <asp:BoundField HeaderText="Nombre" DataField="R_nombreReceta" />  
+                            <asp:BoundField HeaderText="Raciones Solicitadas" DataField="MxR_numeroPorcion" />                             
+                            <asp:BoundField HeaderText="Porcion" DataField="R_numeroPorcion" />   
+                            <asp:TemplateField HeaderText="Seleccionar">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="imgbtnSeleccionarReceta" ImageUrl="img/correcto.png" CommandName="SeleccionarReceta" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>                        
+                    </asp:GridView>
+               </div>
+           </div>
+            <div style="text-align:center">
+                            <label class="col-sm-12 col-md-5 col-form-label">Total Porciones</label>
+                            <div class="col-sm-12 col-md-5">
+                                <asp:TextBox ID="txtTotalPorciones" runat="server" class="form-control" ></asp:TextBox>
+                            </div>
         </div>
+        </div>
+            <div >
+                <div class="form-title color-white">
+                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                     <h5>Transformar: 
+                     <asp:Label ID="lblMenu" runat="server" ></asp:Label></h5>
+                </div>
+            </div>
+                <br />
+           <div class="col-md-5 col-sm-12 mb-30 pt-20">
+            <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
+               <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
+                    <asp:GridView ID="gvIngrediente" runat="server" EmptyDataText="No hay informacion disponible." AutoGenerateColumns="false" DataKeyNames="I_nombreIngrediente,IR_cantidad,IR_formatoMedida,I_nombreInsumo" Style="text-align:center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
+                        <Columns>
+                            <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" />  
+                            <asp:BoundField HeaderText="Cantidad" DataField="IR_cantidad" />    
+                            <asp:BoundField HeaderText="Medida" DataField="IR_formatoMedida" />    
+                            <asp:BoundField HeaderText="Insumo Origen" DataField="I_nombreInsumo" />                                  
+                        </Columns>                        
+                    </asp:GridView>
+               </div>
+           </div>
+        </div>
+       <div class="col-md-5 col-sm-12 mb-30 pt-20">
+            <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
+               <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
+                    <asp:GridView ID="GridView1" runat="server" EmptyDataText="No hay informacion disponible." AutoGenerateColumns="False" DataKeyNames="I_nombreInsumo,IR_formatoMedida" Style="text-align:center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnRowCommand="gvRecetaMenu_RowCommand">
+                        <Columns>
+                            <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" /> 
+                            <asp:BoundField HeaderText="Cantidad" />                             
+                            <asp:BoundField HeaderText="Medida" DataField="IR_formatoMedida" />                                                         
+                        </Columns>                        
+                    </asp:GridView>
+               </div>
+           </div>
+       
+        </div>
+        <div style="text-align:center">
+                
+                       <div class="col-sm-12 col-md-5">
+                           <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" />
+                       </div>
+        </div>
+               
+            </div>
+        
+
+        
+    
+
+        </div>
+        
+           
+        
     </div>
        <!-- Alertas -->
+        </div>
     <script src="js/sweetalert.js">
     </script>
     <script>
@@ -123,6 +121,10 @@
             })
         }
     </script>
+    
+
+    
+    </>
 </asp:Content>
 
 
