@@ -37,23 +37,23 @@
             
             <div class="row">
                 <div class="col-md-3">
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
+         <%--           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>--%>
                     <label>Categoria</label>
                     <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
                      <asp:RequiredFieldValidator ID="rfvddlCategoria" runat="server" ControlToValidate="ddlCategoria" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="CategoriaRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                      <%--  </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
            
                 <div class="col-md-3">
-                   <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                      <ContentTemplate>
+                   <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                      <ContentTemplate>--%>
                     <label>Insumo</label>
                     <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="rfvddlInsumo" runat="server" ControlToValidate="ddlInsumo" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="InsumoRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
-                     </ContentTemplate>
-                  </asp:UpdatePanel>
+<%--                     </ContentTemplate>
+                  </asp:UpdatePanel>--%>
                 </div>
                 
                 <div class="col-md-3">
@@ -77,7 +77,7 @@
                     </div>
                     <div class="w3-row-padding">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" allowpaging="True" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente"
+                            <asp:GridView ID="gvEquivalencia" allowpaging="True" runat="server" OnRowCommand="GVEquivalencia_RowCommand" OnRowDataBound="gvEquivalencia_RowDataBound" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente, cantidad"
                                 EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnPageIndexChanging="gvEquivalencia_PageIndexChanging">
                                <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
                                 <Columns>
@@ -85,6 +85,11 @@
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                     <asp:BoundField DataField="I_idIngrediente" HeaderText="I_idIngrediente" Visible="false" />
                                     <asp:BoundField DataField="I_nombreIngrediente" HeaderText="Ingrediente" />
+                                    <asp:TemplateField HeaderText="Total" Visible="false">
+                                      <ItemTemplate>
+                                          <asp:Literal ID="cantidad" runat="server" Text='<%# Eval("cantidad") %>' Visible="false" />
+                                      </ItemTemplate>
+                                    </asp:TemplateField>
                                     <%-- <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
                                             <%# "1" + " " + Eval("M_nombreMedida")%>
@@ -116,6 +121,47 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                       <%-- <div class="form-group" style="display:flex; justify-content:space-between">
+                            <label for="lblnombreInsumo">Nombre de Ingredeinte</label>
+                            <div class="col-sm-8">
+                                <asp:TextBox runat="server" type="text" class="form-control1" style="width:100%" ID="txtnIngrediente"></asp:TextBox>
+                            </div>
+                        </div>--%>
+                    <div class="table-wrapper-scroll-y">
+                    <asp:GridView ID="GridView1" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false"
+                        CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_nombreIngrediente, E_cantidad, MXFC_idMedidaFCocina, M_nombreMedida, FCO_nombreFormatoCocina" 
+                            Style="text-align: center" CellPadding="4" GridLines="None">
+                        <Columns>
+                            <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" Visible="false" />
+                            <asp:BoundField HeaderText="Formato Cocina" DataField="FCO_nombreFormatoCocina" />
+                            <asp:BoundField HeaderText="Cantidad" DataField="E_cantidad" />
+                            <asp:BoundField HeaderText="IDFormatoCocinaXMedida" DataField="MXFC_idMedidaFCocina" Visible="false"/>
+                            <asp:BoundField HeaderText="Medida" DataField="M_nombreMedida" />
+                        </Columns>
+                    </asp:GridView>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">OK</button>
+                    </div>
+                </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+</div>
     <script>
         function soloLetras(e) {
             key = e.keyCode || e.which;
@@ -136,10 +182,10 @@
         }
 
         function myalert() {
-            var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;
+           <%-- var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;--%>
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'Ya existe un ingrediente con el nombre ' + ingrediente,
+                text: 'Ya existe un ingrediente con el nombre ',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })

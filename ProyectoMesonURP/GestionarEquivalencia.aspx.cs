@@ -7,12 +7,14 @@ using System.Data;
 using System.Web.UI.WebControls;
 using CTR;
 using DTO;
+using System.Drawing;
 
 namespace ProyectoMesonURP
 {
     public partial class GestionarEquivalencia : System.Web.UI.Page
     {
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
+        CTR_Equivalencia _Ce = new CTR_Equivalencia();
         DTO_Ingrediente _Di = new DTO_Ingrediente();
         CTR_CategoriaInsumo objCatInsumo;
         DataSet dsCatInsumo;
@@ -47,11 +49,7 @@ namespace ProyectoMesonURP
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             
-            if (e.CommandName == "VerEquivalencia" )
-            {
-               
-            }
-            else if (e.CommandName == "AgregarEquivalencia")
+            if (e.CommandName == "AgregarEquivalencia")
             {
                 int idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
                 Session["idIngrediente"] = idIngrediente;
@@ -63,10 +61,20 @@ namespace ProyectoMesonURP
 
                 Response.Redirect("AgregarEquivalencia");
             }
-        }
-        protected void btnVerIngredientes_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("GestionarIngrediente");
+            else if (e.CommandName == "VerEquivalencia")
+            {
+                int I_idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal('show');", true);
+                upModal.Update();
+                var modal = _Ce.CTRconsultarDetalleExI(I_idIngrediente);
+                lblModalTitle.Text = "Detalle de la Equivalencia del Ingrediente";
+
+                //txtnIngrediente.Text = modal.Rows[0]["I_nombreIngrediente"].ToString();
+                //txtnIngrediente.Enabled = false;
+
+                GridView1.DataSource = modal;
+                GridView1.DataBind();
+            }
         }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -105,6 +113,24 @@ namespace ProyectoMesonURP
                 if (objCatInsumo.CI_idCategoriaInsumo != 0)
                 {
                     LoadInsumo(objCatInsumo);
+                }
+            }
+        }
+        protected void gvEquivalencia_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Literal tot = (Literal)e.Row.FindControl("cantidad");
+                string total = tot.Text;
+
+                if(total == DBNull.Value.ToString())
+                { 
+                    e.Row.ForeColor = System.Drawing.Color.DarkRed;
+                }
+                else
+                {
+                    //e.Row.BackColor = Color.FromName("#ffeb9c");
+                    e.Row.ForeColor = System.Drawing.Color.Black;
                 }
             }
         }

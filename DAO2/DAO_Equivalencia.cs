@@ -108,5 +108,22 @@ namespace DAO
                 throw;
             }
         }
+        public DataTable DAOconsultarDetalleExI(int I_idIngrediente)
+        {
+            try
+            {
+                conexion.Open();
+                SqlDataAdapter _Data = new SqlDataAdapter("SP_Consultar_Detalle_ExI", conexion);
+                _Data.SelectCommand.CommandType = CommandType.StoredProcedure;
+                _Data.SelectCommand.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                DataSet _Ds = new DataSet();
+                _Data.Fill(_Ds);
+                return _Ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

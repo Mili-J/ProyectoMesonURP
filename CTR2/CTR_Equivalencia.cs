@@ -35,5 +35,9 @@ namespace CTR
         {
             return objEquivalencia.SelectExistenciaIngredientexMxfc(I_idIngrediente, MXFC_idMedidaFCocina);
         }
+        public DataTable CTRconsultarDetalleExI(int I_idIngrediente)
+        {
+            return objEquivalencia.DAOconsultarDetalleExI(I_idIngrediente);
+        }
     }
 }
