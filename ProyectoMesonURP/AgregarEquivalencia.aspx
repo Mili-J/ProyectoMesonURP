@@ -40,6 +40,7 @@
                             <label class="col-sm-12 col-md-5 col-form-label">Formato Cocina</label>
                             <div class="col-sm-12 col-md-6">
                                 <asp:DropDownList ID="ddlFormatoCocina" AutoPostBack="true" class="custom-select2 form-control" runat="server" OnSelectedIndexChanged="ddlFormatoCocina_SelectedIndexChanged"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvddlFormatoCocina" runat="server" ControlToValidate="ddlFormatoCocina" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="formatoCRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -50,6 +51,7 @@
                         <label class="col-sm-12 col-md-5 col-form-label">Cantidad</label>
                         <div class="col-sm-12 col-md-6">
                             <asp:TextBox ID="txtCantidad" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="rfvtxtCantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="equivalencia1"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     </ContentTemplate>
@@ -60,13 +62,14 @@
                         <label class="col-sm-12 col-md-5 col-form-label">Medida</label>
                         <div class="col-sm-12 col-md-6">
                                 <%--<asp:TextBox ID="txtMedida" BackColor="Transparent" BorderColor="White" BorderStyle="None" ReadOnly="true" runat="server" ></asp:TextBox>--%>
-                            <asp:DropDownList ID="ddlMedida" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlMedida" runat="server" class="custom-select2 form-control"></asp:DropDownList>
+                             <asp:RequiredFieldValidator ID="rfvddlMedida" runat="server" ControlToValidate="ddlMedida" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="MedidaRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
                 <p class="center-button">
-                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" UseSubmitBehavior="false" />
+                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Añadir" ID="btnAñadirEquivalencia" OnClick="btnAñadirEquivalencia_Click" UseSubmitBehavior="false" ValidationGroup="equivalencia1"/>
                 </p>
             </div>
                 

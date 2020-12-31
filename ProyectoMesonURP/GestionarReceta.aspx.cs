@@ -11,7 +11,7 @@ namespace ProyectoMesonURP
         CTR_Receta _Cr = new CTR_Receta();
         CTR_MenuXReceta _Cmxr = new CTR_MenuXReceta();
         public int a = 0;
-        string FechaActual = DateTime.Now.ToString("MM/dd/yyyy");
+        string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
         protected void Page_Load(object sender, EventArgs e)
         {

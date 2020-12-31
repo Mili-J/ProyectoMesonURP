@@ -46,7 +46,8 @@ namespace ProyectoMesonURP
             {
 
                 fecha = Convert.ToDateTime(Session["fecha"].ToString());
-                txtFecha.Text = fecha.ToString("MM/dd/yyyy");
+                //txtFecha.Text = fecha.ToString("MM/dd/yyyy");
+                txtFecha.Text = fecha.ToString("dd/MM/yyyy");
                 hay = (bool)Session["hay"];
                 btnAceptar.Visible = !hay;
                 //-----------------------------------
