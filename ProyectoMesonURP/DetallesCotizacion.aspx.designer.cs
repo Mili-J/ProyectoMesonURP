@@ -9,6 +9,8 @@
 
 namespace ProyectoMesonURP
 {
+
+
     public partial class DetallesCotizacion
     {
 
@@ -85,12 +87,30 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.GridView gvInsumos;
 
         /// <summary>
-        /// Control btnEnviar.
+        /// Control gvDetalles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnEnviar;
+        protected global::System.Web.UI.WebControls.GridView gvDetalles;
+
+        /// <summary>
+        /// Control btnGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGuardar;
+
+        /// <summary>
+        /// Control btnGenerarOC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGenerarOC;
     }
 }

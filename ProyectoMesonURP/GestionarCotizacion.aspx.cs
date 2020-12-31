@@ -53,7 +53,7 @@ namespace ProyectoMesonURP
                 string proveedor = GridViewCotizacion.Rows[Convert.ToInt32(e.CommandArgument)].Cells[5].Text;
                 Session["proveedor"] = proveedor;
 
-                Response.Redirect("GenerarOC");
+                Response.Redirect("DetallesCotizacion");
             }
             else if (e.CommandName == "EnviarEmailCotizacion")
             {
