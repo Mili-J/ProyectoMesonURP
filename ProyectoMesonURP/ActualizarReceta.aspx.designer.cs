@@ -42,15 +42,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtPorciones;
 
         /// <summary>
-        /// Control rfvporciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvporciones;
-
-        /// <summary>
         /// Control txtCategoriaReceta.
         /// </summary>
         /// <remarks>
@@ -60,15 +51,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtCategoriaReceta;
 
         /// <summary>
-        /// Control ddlCategoriaReceta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaReceta;
-
-        /// <summary>
         /// Control btnEditar.
         /// </summary>
         /// <remarks>
@@ -76,6 +58,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnEditar;
+
+        /// <summary>
+        /// Control ddlCategoriaReceta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaReceta;
 
         /// <summary>
         /// Control rfvcategoriaR.
@@ -96,15 +87,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtSubcategoria;
 
         /// <summary>
-        /// Control ddlSubCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubCategoria;
-
-        /// <summary>
         /// Control ImageButton1.
         /// </summary>
         /// <remarks>
@@ -114,22 +96,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
 
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control ddlSubCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubCategoria;
 
         /// <summary>
-        /// Control txtDescripcion.
+        /// Control rfvsubCategoriaR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvsubCategoriaR;
 
         /// <summary>
         /// Control txtEstadoReceta.
@@ -141,15 +123,6 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtEstadoReceta;
 
         /// <summary>
-        /// Control ddlEstadoReceta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoReceta;
-
-        /// <summary>
         /// Control ImageButton2.
         /// </summary>
         /// <remarks>
@@ -159,13 +132,40 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
 
         /// <summary>
-        /// Control RequiredFieldValidator2.
+        /// Control ddlEstadoReceta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoReceta;
+
+        /// <summary>
+        /// Control rfvddlEstadoReceta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlEstadoReceta;
+
+        /// <summary>
+        /// Control txtDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+
+        /// <summary>
+        /// Control rfvtxtDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtDescripcion;
 
         /// <summary>
         /// Control ImagenPreview.
@@ -186,6 +186,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.FileUpload fuImagen;
 
         /// <summary>
+        /// Control UpdatePanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// Control ddlIngredientes.
         /// </summary>
         /// <remarks>
@@ -195,6 +204,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList ddlIngredientes;
 
         /// <summary>
+        /// Control rfvddlIngrediente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIngrediente;
+
+        /// <summary>
         /// Control txtCantidad.
         /// </summary>
         /// <remarks>
@@ -202,6 +220,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
+
+        /// <summary>
+        /// Control rfvtxtCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCantidad;
 
         /// <summary>
         /// Control UpdatePanel2.
@@ -222,6 +249,24 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList ddlMedida;
 
         /// <summary>
+        /// Control rfvddlMedida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlMedida;
+
+        /// <summary>
+        /// Control UpdateButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateButton;
+
+        /// <summary>
         /// Control btnAñadirIngredientes.
         /// </summary>
         /// <remarks>
@@ -231,13 +276,13 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.Button btnAñadirIngredientes;
 
         /// <summary>
-        /// Control btnQuitarIngredientes.
+        /// Control PanelAñadir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnQuitarIngredientes;
+        protected global::System.Web.UI.UpdatePanel PanelAñadir;
 
         /// <summary>
         /// Control gvIngredientes.

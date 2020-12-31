@@ -85,11 +85,11 @@ namespace ProyectoMesonURP
         }
         public void ListarMedida()
         {
-            ddlIngredientes.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
-            ddlIngredientes.DataTextField = "I_idIngrediente";
-            ddlIngredientes.DataValueField = "I_idIngrediente";
-            ddlIngredientes.DataBind();
-            ddlIngredientes.Items.Insert(0, "--seleccionar--");
+            ddlMedida.DataSource = _Ci.CargarMedidaxIdIngrediente(Convert.ToInt32(ddlIngredientes.SelectedValue));
+            ddlMedida.DataTextField = "FCO_nombreFormatoCocina";
+            ddlMedida.DataValueField = "FCO_nombreFormatoCocina";
+            ddlMedida.DataBind();
+            ddlMedida.Items.Insert(0, "--seleccionar--");
         }
         protected void gvIngredientes_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
@@ -230,16 +230,19 @@ namespace ProyectoMesonURP
         {
             ddlCategoriaReceta.Visible = true;
             txtCategoriaReceta.Visible = false;
+            btnEditar.Visible = false;
         }
         protected void btnEditarEstadoReceta_Click(object sender, ImageClickEventArgs e)
         {
             ddlEstadoReceta.Visible = true;
             txtEstadoReceta.Visible = false;
+            ImageButton2.Visible = false;
         }
         protected void btnEditarSubCategoria_Click(object sender, ImageClickEventArgs e)
         {
             ddlSubCategoria.Visible = true;
             txtSubcategoria.Visible = false;
+            ImageButton1.Visible = false;
         }
         protected void btnQuitarIngredientes_Click(object sender, EventArgs e)
         {

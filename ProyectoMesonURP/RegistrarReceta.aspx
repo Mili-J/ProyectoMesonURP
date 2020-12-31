@@ -80,6 +80,7 @@
                                     <div class="form-group">
                                         <label>Descripción</label>
                                         <asp:TextBox ID="txtDescripcion" runat="server" placeholder="Descripcion" TextMode="MultiLine" class="form-control" onkeypress="return soloLetras(event);" />
+                                        <asp:RequiredFieldValidator ID="rfvtxtDescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="receta1"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <%-- </div>--%>
