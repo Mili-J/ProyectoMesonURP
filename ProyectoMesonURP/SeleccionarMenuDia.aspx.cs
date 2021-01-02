@@ -38,10 +38,10 @@ namespace ProyectoMesonURP
             objMenu = new DTO_Menu();
             ctr_cat_receta = new CTR_CategoriaReceta();
             dto_menuxreceta = new DTO_MenuXReceta();
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Home.aspx?x=1");
-            }
+            //if (Session["Usuario"] == null)
+            //{
+            //    Response.Redirect("Home.aspx?x=1");
+            //}
             if (!IsPostBack)
             {
 

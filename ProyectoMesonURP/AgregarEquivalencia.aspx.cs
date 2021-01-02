@@ -36,7 +36,7 @@ namespace ProyectoMesonURP
                 CargargvEquivalencia();
                 lblIndex.Text = id.ToString();
             }
-            
+
         }
         public void LoadIngrediente()
         {
@@ -77,7 +77,7 @@ namespace ProyectoMesonURP
                 if (objFCocina.FCO_idFCocina != 0)
                 {
                     ListarMedidaXFormatoCocina(objFCocina);
-                } 
+                }
             }
         }
         public int ObtenerIDMedidaXFCocina(int idMedida, int idFCocina)
@@ -137,34 +137,7 @@ namespace ProyectoMesonURP
                 }
             }
 
-        protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
-        {
-            CTR_Equivalencia CTREqui = new CTR_Equivalencia();
-            DTO_Equivalencia DTOEqui = new DTO_Equivalencia();
-            DTOEqui.I_idInsumo = Convert.ToInt32(ddlInsumo.SelectedValue);
-            DTOEqui.E_cantidad = int.Parse(txtCantidad.Text);
-            int id = int.Parse(ddlInsumo.SelectedValue);
-            int idMedida = ObtenerMedidaI(id).M_idMedida;
-            int idFCocina= int.Parse(ddlFormatoCocina.SelectedValue);
-            DTOEqui.MXFC_idMedidaFCocina = ObtenerIDMedidaXFCocina(idMedida, idFCocina);
-            CTREqui.AgregarEquivalencia(DTOEqui);
-        }
-        protected void btnVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("GestionarEquivalencia.aspx");
-        }
-        protected void gvEquivalencia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            id = Convert.ToInt32(gvEquivalencia.SelectedRow.RowIndex);
-            lblIndex.Text = id.ToString();
-        }
-        protected void gvEquivalencia_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
-        {
-        }
-        protected void btnGuardar_ServerClick(object sender, EventArgs e)
-        {
         }
 
     }
-   
-}   
+}

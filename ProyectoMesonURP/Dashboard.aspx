@@ -57,9 +57,11 @@
                 </div>
                 </div>
             
-            <div class="content"> <asp:Label ID="Label1" runat="server" Text=""></asp:Label> </div>
-            <div id="chartBarCompra" class="pt-30"></div> 
-            <div class="content"> <asp:Label ID="lblMensajeAyuda" runat="server" Text="No hay información disponible" ></asp:Label> </div>
+            <div class="content"> <asp:Label ID="Label1" runat="server" Text="" Visible="false"></asp:Label> </div>
+                 <div id="prueba1" runat="server" Visible="false">
+                     <div id="chartBarCompra" class="pt-30" ></div> 
+                 </div> 
+            <div class="content"> <asp:Label ID="lblMensajeAyuda" runat="server" Text="No hay información disponible" Visible="false" ></asp:Label> </div>
         </div> 
     
     
