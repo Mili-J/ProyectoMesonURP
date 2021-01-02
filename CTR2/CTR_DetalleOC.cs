@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace CTR
@@ -21,5 +22,15 @@ namespace CTR
         {
             dao_detalleOC.UPDATE_cantidadEntregada(cantidad, idDetalleOC);
         }
+        public bool ExistenciaDetalleOC(int C_idCotizacion)
+        {
+            return dao_detalleOC.SelectExistenciaDetalleOC(C_idCotizacion);
+        }
+        public DataTable CargarDetalleOC(int C_idCotizacion)
+        {
+            return dao_detalleOC.SelectDetalleOC(C_idCotizacion);
+            
+            }
+        }
     }
-}
+

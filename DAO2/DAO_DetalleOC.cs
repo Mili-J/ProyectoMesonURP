@@ -40,5 +40,45 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public bool SelectExistenciaDetalleOC(int C_idCotizacion)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_SELECT_EXISTENCIA_DETALLEOC", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+                cmd.ExecuteNonQuery();
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count == 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    conexion.Close();
+                    return true;
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+        public DataTable SelectDetalleOC(int C_idCotizacion)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_DETALLEOC", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion", C_idCotizacion);
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

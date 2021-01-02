@@ -43,22 +43,18 @@
                         <div class="form-group row justify-content-center">
                             <label class="col-sm-12 col-md-5 col-form-label">Fecha de Entrega</label>
                             <div class="col-sm-12 col-md-6">
-                                <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group row justify-content-center">
                             <label class="col-sm-12 col-md-5 col-form-label">Forma de pago</label>
                             <div class="col-sm-12 col-md-6">
-                                <asp:DropDownList ID="ddlFormaPago" runat="server" Class="custom-select2 form-control">
-                                    <asp:ListItem Value="">-- Seleccione --</asp:ListItem>
-                                    <asp:ListItem Value="Factura">Efectivo</asp:ListItem>
-                                    <asp:ListItem Value="Boleta">Crédito</asp:ListItem>
-                                </asp:DropDownList>
+                                 <asp:TextBox ID="txtFormaPago" runat="server" class="form-control"></asp:TextBox>
+                            
                             </div>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="col-md-8 col-sm-12 mb-30">
                     <div class="form-grids widget-shadow" data-example-id="basic-forms">
@@ -74,7 +70,7 @@
                                 <div class="panel panel-widget forms-panel">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                         <asp:GridView ID="gvInsumos" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="False"
-                                            DataKeyNames="I_nombreInsumo,DC_cantidadCotizacion, Representacion de compra" ShowFooter="True"
+                                            DataKeyNames="I_nombreInsumo,DC_cantidadCotizacion, Representacion de compra,DOC_precioUnitario,DOC_totalPrecio" ShowFooter="True"
                                             CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" GridLines="None">
                                             <Columns>
                                                 <asp:BoundField HeaderText="Nombre" DataField="I_nombreInsumo" />
@@ -84,29 +80,8 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
-                                                <asp:TemplateField HeaderText="Precio Unitario">
-                                                    <ItemTemplate>
-                                                        <asp:UpdatePanel runat="server">
-                                                            <ContentTemplate>
-                                                                <asp:TextBox ID="txtPrecioUnitario" runat="server" class="precio" CssClass="form-control1" AutoPostBack="true" OnTextChanged="txtPrecioUnitario_TextChanged"></asp:TextBox>
-                                                            </ContentTemplate>
-                                                            <Triggers>
-                                                                <asp:AsyncPostBackTrigger ControlID="txtPrecioUnitario" />
-                                                            </Triggers>
-                                                        </asp:UpdatePanel>
-                                                    </ItemTemplate>
-                                                    <FooterTemplate>
-                                                        <asp:Label runat="server">TOTAL:</asp:Label>
-                                                    </FooterTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Precio Total">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lblPrecioTotal" runat="server"></asp:Label>
-                                                    </ItemTemplate>
-                                                    <FooterTemplate>
-                                                        <asp:Label runat="server" ID="lblTotal" Text="0.00"></asp:Label>
-                                                    </FooterTemplate>
-                                                </asp:TemplateField>
+                                                <asp:BoundField HeaderText="PrecioUnitario" DataField="DOC_precioUnitario"/>
+                                                <asp:BoundField HeaderText="Total" DataField="DOC_totalPrecio"/>
                                             </Columns>
                                         </asp:GridView>
                                     </div>

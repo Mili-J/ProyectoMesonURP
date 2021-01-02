@@ -18,7 +18,6 @@ namespace ProyectoMesonURP
             CTR_Cotizacion ctr_cot;
             CTR_Proveedor ctr_pro;
             DTO_Proveedor dto_pro;
-            //private decimal _Total = 0;
             string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
             protected void Page_Load(object sender, EventArgs e)
@@ -26,12 +25,23 @@ namespace ProyectoMesonURP
                 if (!Page.IsPostBack)
                 {
 
-                    CargarCotizacion();
-                    CargargvInsumos();
+                    CargarDetalle();
                 }
                 txtFechaEmision.Text = FechaActual;
                 txtFechaEntrega.Text = FechaActual;
+        }
+        public void CargarDetalle() {
+            bool _Edc = _Cdoc.ExistenciaDetalleOC((int)Session["idCot"]);
+            if (_Edc) {
+                CargarOC();
             }
+            else
+            {
+                btnGuardar.Visible = true;
+                btnGenerarOC.Visible = false;
+                CargarCotizacion();
+            }
+        }
         public void CargarCotizacion()
         {
             int idCot = (int)Session["idCot"];
@@ -40,71 +50,46 @@ namespace ProyectoMesonURP
             //--------
             txtNCotizacion.Text = dto_cot.C_numeroCotizacion;
             txtFechaEmision.Text = dto_cot.C_fechaEmision.ToShortDateString();
-            txtTiempoPlazo.Text = dto_cot.C_tiempoPlazo;
-            //txtDoc.Text = dto_cot.C_documento;
-            //--------Proveedor
-            ctr_pro = new CTR_Proveedor();
-            dto_pro = ctr_pro.CTR_ConsultarProveedor(dto_cot.PR_idProveedor);
-            txtProveedor.Text = dto_pro.PR_razonSocial;
+            txtProveedor.Text = Convert.ToString(Session["proveedor"]);
+
+            gvDetalles.Visible = false;
+            gvInsumos.DataSource = _Cdc.CargarDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
+            gvInsumos.DataBind();
+        }
+            public void CargarOC() {
+
+                gvInsumos.Visible = false;
+            int idCot = (int)Session["idCot"];
+            ctr_cot = new CTR_Cotizacion();
+            dto_cot = ctr_cot.CTR_ConsultarCotizacion(idCot);
+            //--------
+            txtNCotizacion.Text = dto_cot.C_numeroCotizacion;
+            txtFechaEmision.Text = dto_cot.C_fechaEmision.ToShortDateString();
             string nOC = _Coc.ListarNumeroOC();
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
-            }
-            public void CargargvInsumos()
+            txtFechaEntrega.Visible = false;
+            btnGuardar.Visible = false;
+            btnGenerarOC.Visible = true;
+
+            gvDetalles.DataSource = _Cdoc.CargarDetalleOC(Convert.ToInt32(Session["idcotizacion"]));
+            gvDetalles.DataBind();
+        }
+            protected void btnGuardar_ServerClick(object sender, EventArgs e)
             {
-                gvInsumos.DataSource = _Cdc.CargarDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
-                gvInsumos.DataBind();
-            }
-            public void CorreoOC()
+            if (ddlFormaPago.SelectedIndex != 0)
             {
-                _Doc.OC_numeroOc = txtNCotizacion.Text;
-                string proveedor = txtProveedor.Text;
+                _Doc.OC_numeroOc = _Coc.ListarNumeroOC();
+                Session["nOC"] = _Doc.OC_numeroOc;
                 _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
                 _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
                 _Doc.OC_tipoPago = ddlFormaPago.SelectedValue;
-                int idCotizacion = Convert.ToInt32(Session["idcotizacion"]);
+                _Doc.OC_totalCompra = Convert.ToDecimal(Session["Totaldecompra"]);
+                _Doc.EOC_idEstadoOC = 2;
+                _Doc.U_idUsuario = Convert.ToInt32(Session["idUsuario"]);
 
-                string htmlBody = Resource.MensajeOC;
-                htmlBody = htmlBody.Replace("#IDOC#", _Doc.OC_numeroOc.ToString());
-                htmlBody = htmlBody.Replace("#TIPODEPAGO#", _Doc.OC_tipoPago);
-                htmlBody = htmlBody.Replace("#PROVEEDOR#", proveedor);
-                htmlBody = htmlBody.Replace("#FECHAEMISION#", _Doc.OC_fechaEmision.ToString());
-                htmlBody = htmlBody.Replace("#FECHAENTREGA#", _Doc.OC_fechaEntrega.ToString());
-                htmlBody = htmlBody.Replace("#GRID#", gridviewHTML());
+                _Coc.RegistrarOC(_Doc);
 
-                _Coc.EnviarOC(_Doc, idCotizacion, htmlBody);
-            }
-            public string gridviewHTML()
-            {
-                using (StringWriter sw = new StringWriter())
-                {
-                    using (HtmlTextWriter hw = new HtmlTextWriter(sw))
-                    {
-                        gvInsumos.RenderControl(hw);
-                        StringReader sr = new StringReader(sw.ToString());
-
-                        return sw.ToString();
-                    }
-                }
-            }
-            public override void VerifyRenderingInServerForm(Control control)
-            {
-                /* Verifies that the control is rendered */
-            }
-            protected void btnEnviar_ServerClick(object sender, EventArgs e)
-            {
-                if (ddlFormaPago.SelectedIndex != 0)
-                {
-                    _Doc.OC_numeroOc = _Coc.ListarNumeroOC();
-                    _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
-                    _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
-                    _Doc.OC_tipoPago = ddlFormaPago.SelectedValue;
-                    _Doc.OC_totalCompra = Convert.ToDecimal(Session["Totaldecompra"]);
-                    _Doc.EOC_idEstadoOC = 1;
-                    _Doc.U_idUsuario = Convert.ToInt32(Session["idUsuario"]);
-
-                    _Coc.RegistrarOC(_Doc);
-
-                    for (int i = 0; i < gvInsumos.Rows.Count; i++)
+                for (int i = 0; i < gvInsumos.Rows.Count; i++)
                     {
                         _Ddc.DOC_totalPrecio = Convert.ToDecimal(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
                         _Ddc.DOC_precioUnitario = Convert.ToDecimal(((TextBox)gvInsumos.Rows[i].FindControl("txtPrecioUnitario")).Text);
@@ -115,10 +100,18 @@ namespace ProyectoMesonURP
                         _Ddc.DC_idDetalleCotizacion = _Cdc.IdDetalleCotizacion(idCotizacion, nombre);
                         _Cdoc.RegistrarDetalleOC(_Ddc);
                     }
-                    CorreoOC();
                     ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaExito('');", true);
-                }
+                    btnGuardar.Visible = false; 
+                    btnGenerarOC.Visible = true;
             }
+        }
+        protected void btnGenerarOC_ServerClick(object sender, EventArgs e)
+        {
+            Session["FEmision"] = Convert.ToDateTime(txtFechaEmision.Text);
+            Session["FEntrega"] = Convert.ToDateTime(txtFechaEntrega.Text);
+            Session["FPago"] = ddlFormaPago.SelectedValue;
+            Response.Redirect("GenerarOC");
+        }
             protected void txtPrecioUnitario_TextChanged(object sender, EventArgs e)
             {
                 try
