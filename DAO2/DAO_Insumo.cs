@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using DTO;
+using System.Globalization;
 
 namespace DAO
 {
@@ -205,6 +206,20 @@ namespace DAO
                 throw ex;
             }
         }
-
+        public void InsertInsumo(object[] parir)
+        {
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand("SP_InsertarInsumo", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.Add(new SqlParameter("@NInsumo",parir[0]));
+            unComando.Parameters.Add(new SqlParameter("@idCategoriaI", Convert.ToInt32(parir[1])));
+            unComando.Parameters.Add(new SqlParameter("@idFCompra", Convert.ToInt32(parir[2])));
+            unComando.Parameters.Add(new SqlParameter("@idMedida", Convert.ToInt32(parir[3])));
+            unComando.Parameters.Add(new SqlParameter("@cantidadCont", Convert.ToDecimal(parir[4], CultureInfo.InvariantCulture)));
+            unComando.Parameters.Add(new SqlParameter("@cantidadUn", Convert.ToInt32(parir[5])));
+            unComando.Parameters.Add(new SqlParameter("@cantidadmin", Convert.ToInt32(parir[6])));
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }

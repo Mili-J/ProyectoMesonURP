@@ -39,9 +39,9 @@ namespace CTR
         {
             return dao_insumo.DAO_Consultar_Equivalencia_x_Insumo(dto_insumo);
         }
-        public DTO_Medida CTR_Consultar_Medida_x_Insumo(DTO_Insumo objInsumo )
+        public DTO_Medida CTR_Consultar_Medida_x_Insumo(DTO_Insumo objInsumo)
         {
-            return dao_insumo.DAO_Consultar_Medida_x_Insumo(objInsumo);    
+            return dao_insumo.DAO_Consultar_Medida_x_Insumo(objInsumo);
         }
         public DataTable BuscarInsumoP(int idInsumo)
         {
@@ -64,6 +64,10 @@ namespace CTR
         public DataTable CTRSelectBarChartInsumoComprar()
         {
             return dao_insumo.SelectBarChartInsumoComprar();
+        }
+        public void InsertInsumo(object[]parir)
+        {
+            dao_insumo.InsertInsumo(parir);
         }
     }
 }

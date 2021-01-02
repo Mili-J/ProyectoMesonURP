@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using DAO;
 using DTO;
@@ -17,6 +18,10 @@ namespace CTR
         public DTO_Medida CTR_ListarNombreMedida(int M_idMedida)
         {
             return objDAO.DAO_SelectNombreMedida(M_idMedida);
+        }
+        public DataSet SelectMedida_GI()
+        {
+            return objDAO.SelectMedida_GI();
         }
     }
 }

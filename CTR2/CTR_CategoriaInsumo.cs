@@ -32,6 +32,9 @@ namespace CTR
         {
             return dao_catIns.DAO_SelectCategoriaI();
         }
-
+        public DataSet SelectCategoria_GI ()
+        {
+            return dao_catIns.SelectCategoria_GI();
+        }
     }
 }

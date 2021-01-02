@@ -53,6 +53,15 @@ namespace DAO
             conexion.Close();
             return ds;
         }
+        public DataSet SelectCategoria_GI()
+        {
+            conexion = new SqlConnection(ConexionDB.CadenaConexion);
+            string com = "select*from T_Categoria_Insumo";
+            SqlDataAdapter adpt = new SqlDataAdapter(com, conexion);
+            DataSet dt = new DataSet();
+            adpt.Fill(dt);
+            return dt;
+        }
 
         //public DataTable DAO_ConsultarCategoriasInsumo()
         //{
