@@ -98,17 +98,17 @@ namespace ProyectoMesonURP
 
             if (datos.Rows.Count == 0)
             {
-                lblMensajeAyuda.Visible = true;
+                contenedor2.Visible = true;
                 Label1.Visible = false;
-                prueba1.Visible = false;
-                return lblMensajeAyuda.Text = "No hay información disponible";
+                contenedor1.Visible = false;
+                return lblMensajeAyuda.Text;
             }
             else
             {
                 StringBuilder js = new StringBuilder();
                 string strDatos = "";
                 js.Append("[");
-                Label1.Text = "Seguimiento de insumos del día" + fecha;
+                Label1.Text = "Seguimiento de insumos del día " + fecha;
                 Label1.Visible = true;
                 foreach (DataRow dr in datos.Rows)
                 {
@@ -121,8 +121,8 @@ namespace ProyectoMesonURP
                     strDatos = ",";
                 }
                 js.Append("]");
-                prueba1.Visible = true;
-                lblMensajeAyuda.Visible = false;
+                contenedor1.Visible = true;
+                contenedor2.Visible = false;
                 return js.ToString();
             }
         }
