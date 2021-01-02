@@ -54,6 +54,13 @@ namespace ProyectoMesonURP
 
                 repeaterCartaSeleccionada.DataSource = ctr_receta.CTR_ConsultarMenuXRecetaYCategoria(id_menu, 2);
                 repeaterCartaSeleccionada.DataBind();
+                CrearDt(dtMenu);
+                CrearDt(dtCarta);
+                //dtMenu.Merge(dtMenuSeleccionado);
+                //dtCarta.Merge(dtCartaSeleccionada);
+                //----------
+                //dtCarta = dtCartaSeleccionada;
+                //dtMenu = dtMenuSeleccionado;
                 //-----------------------------------
                 reapeterEntradas.DataSource = ctr_receta.CTR_Consultar_Recetas_X_SubCategoriaYCategoria(1, "Entradas");
                 reapeterEntradas.DataBind();

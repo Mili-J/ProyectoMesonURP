@@ -117,7 +117,7 @@
         }
         function alertaRecibido() {
             Swal.fire({
-                title: 'Recibid',
+                title: 'Recibida',
                 text: 'La solicitdad de cotización ha sido recibida',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'

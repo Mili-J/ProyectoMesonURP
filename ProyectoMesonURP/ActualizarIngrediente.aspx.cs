@@ -95,8 +95,8 @@ namespace ProyectoMesonURP
             objIngrediente.I_cantidad= Convert.ToDecimal(txtCantidad.Text);
             if(ddlInsumo.SelectedValue!="") objIngrediente.I_idInsumo = int.Parse(ddlInsumo.SelectedValue);
             else objIngrediente.I_idInsumo = DTOIngrediente.I_idInsumo;
-            if ( ddlEquivalencia.SelectedValue=="Seleccione") objIngrediente.E_idEquivalencia = DTOIngrediente.E_idEquivalencia;
-            else objIngrediente.E_idEquivalencia = int.Parse(ddlEquivalencia.SelectedValue);            
+            //if ( ddlEquivalencia.SelectedValue=="Seleccione") objIngrediente.E_idEquivalencia = DTOIngrediente.E_idEquivalencia;
+            //else objIngrediente.E_idEquivalencia = int.Parse(ddlEquivalencia.SelectedValue);            
             objIngrediente.I_idIngrediente = DTOIngrediente.I_idIngrediente;
             CTR_Ingrediente CTRIngre = new CTR_Ingrediente();
             CTRIngre.ActualizarIngrediente(objIngrediente);

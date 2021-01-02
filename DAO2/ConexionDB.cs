@@ -16,7 +16,8 @@ namespace DAO
                 //return "Data Source=DESKTOP-GJ83E50\\MSSQLSERVER01; Initial Catalog = BD_MesonURP; Integrated Security = True";
                 //KATYA
                 //return "Data Source=(Local); Initial Catalog = BD_MesonURP; Integrated Security = True";
-
+                //CARLOS
+                //return "Data Source=CARLOS; Initial Catalog = BD_MesonURP; Integrated Security = True";
 
 
 
