@@ -186,7 +186,7 @@
 
              <!-- Nav Item - Charts -->
             <li id="menuTransformar"  runat="server" class="nav-item">
-                <a class="nav-link" href="ElegirRecetaTransformar">
+                <a class="nav-link" href="Transformar_Insumo.aspx">
                     <i class="fas fa-sync"></i>
                     <span>Transformar Insumo</span></a>
             </li>

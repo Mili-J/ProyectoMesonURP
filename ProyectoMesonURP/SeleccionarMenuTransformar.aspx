@@ -13,8 +13,8 @@
         <div class="form-group" style="margin-bottom: 75px;">
             <div class="col-sm-8">
                 <label for="focusedinput" class="col-sm-2 control-label">N° porciones: </label>
-                <asp:TextBox ID="txtPorciones" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" runat="server" onkeypress="return SoloNumeroInt(event);" MaxLength="3" />
-                <asp:RequiredFieldValidator ID="rfvporciones" runat="server" ControlToValidate="txtPorciones" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>
+              <%--  <asp:TextBox ID="txtPorciones" Style="width: 25%;" placeholder="Ingrese una cantidad" CssClass="form-control1" runat="server" onkeypress="return SoloNumeroInt(event);" MaxLength="3" />
+                <asp:RequiredFieldValidator ID="rfvporciones" runat="server" ControlToValidate="txtPorciones" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="DarkRed"></asp:RequiredFieldValidator>--%>
             </div>
         </div>
 
