@@ -49,8 +49,17 @@
                     <div class="form-title color-white">
                         <h5>Seguimiento de los insumos a recepcionar</h5>
                     </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-12 col-md-5 col-form-label">Fecha a filtrar</label>
+                    <div class="col-sm-12 col-md-6">
+                        <asp:TextBox ID="txtFechaEmision" runat="server" class="form-control" TextMode="Date"  AutoPostBack="True"  OnTextChanged="fFecha_TextChanged"/>
+                    </div>
                 </div>
+                </div>
+            
+            <div class="content"> <asp:Label ID="Label1" runat="server" Text=""></asp:Label> </div>
             <div id="chartBarCompra" class="pt-30"></div> 
+            <div class="content"> <asp:Label ID="lblMensajeAyuda" runat="server" Text="No hay información disponible" ></asp:Label> </div>
         </div> 
     
     
