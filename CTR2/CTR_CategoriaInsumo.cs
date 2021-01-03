@@ -48,5 +48,9 @@ namespace CTR
         {
             dao_catIns.DAO_ActualizarCategoriaInsumo(objCategoriaIn);
         }
+        public DataSet SelectCategoria_GI ()
+        {
+            return dao_catIns.SelectCategoria_GI();
+        }
     }
 }

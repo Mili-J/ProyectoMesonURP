@@ -34,5 +34,14 @@ namespace DAO
             conexion.Close();
             return dto_medida;
         }
+        public DataSet SelectMedida_GI()
+        {
+            conexion = new SqlConnection(ConexionDB.CadenaConexion);
+            string com = "select*from T_Medida";
+            SqlDataAdapter adpt = new SqlDataAdapter(com, conexion);
+            DataSet dt = new DataSet();
+            adpt.Fill(dt);
+            return dt;
+        }
     }
 }

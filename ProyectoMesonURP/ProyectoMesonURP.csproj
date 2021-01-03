@@ -75,6 +75,7 @@
     <Content Include="ActualizarProveedor.aspx" />
     <Content Include="AgregarIngrediente.aspx" />
     <Content Include="ActualizarMenuDia.aspx" />
+    <Content Include="AgregarInsumo.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarEquivalencia.aspx" />
     <Content Include="ActualizarReceta.aspx" />
@@ -142,6 +143,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Gestionar Ingrediente.aspx" />
     <Content Include="GestionarCategoriaInsumo.aspx" />
+    <Content Include="GestionarInsumo.aspx" />
     <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarCotizacion.aspx" />
@@ -2041,6 +2043,13 @@
     <Compile Include="AgregarIngrediente.aspx.designer.cs">
       <DependentUpon>AgregarIngrediente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgregarInsumo.aspx.cs">
+      <DependentUpon>AgregarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarInsumo.aspx.designer.cs">
+      <DependentUpon>AgregarInsumo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CalendariaMenu.aspx.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2110,6 +2119,13 @@
     </Compile>
     <Compile Include="GestionarCategoriaInsumo.aspx.designer.cs">
       <DependentUpon>GestionarCategoriaInsumo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarInsumo.aspx.cs">
+      <DependentUpon>GestionarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarInsumo.aspx.designer.cs">
+      <DependentUpon>GestionarInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarOC.aspx.cs">
       <DependentUpon>GestionarOC.aspx</DependentUpon>

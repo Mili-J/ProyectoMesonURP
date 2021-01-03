@@ -129,5 +129,27 @@ namespace DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataSet SelectCategoria_GI()
+        {
+            conexion = new SqlConnection(ConexionDB.CadenaConexion);
+            string com = "select*from T_Categoria_Insumo";
+            SqlDataAdapter adpt = new SqlDataAdapter(com, conexion);
+            DataSet dt = new DataSet();
+            adpt.Fill(dt);
+            return dt;
+        }
+
+        //public DataTable DAO_ConsultarCategoriasInsumo()
+        //{
+        //    conexion.Open();
+        //    SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasInsumo", conexion);
+        //    comando.CommandType = CommandType.StoredProcedure;
+        //    comando.ExecuteNonQuery();
+        //    DataTable dtCat = new DataTable();
+        //    SqlDataAdapter da = new SqlDataAdapter(comando);
+        //    da.Fill(dtCat);
+        //    conexion.Close();
+        //    return dtCat;
+        //}
     }
 }
