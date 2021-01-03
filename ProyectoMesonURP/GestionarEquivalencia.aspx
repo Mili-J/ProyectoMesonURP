@@ -36,23 +36,23 @@
             
             <div class="row">
                 <div class="col-md-3">
-         <%--           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>--%>
+                   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
                     <label>Categoria</label>
                     <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
                      <asp:RequiredFieldValidator ID="rfvddlCategoria" runat="server" ControlToValidate="ddlCategoria" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="CategoriaRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
-                      <%--  </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
            
                 <div class="col-md-3">
-                   <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                      <ContentTemplate>--%>
+                  <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                      <ContentTemplate>
                     <label>Insumo</label>
                     <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="rfvddlInsumo" runat="server" ControlToValidate="ddlInsumo" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="InsumoRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
-<%--                     </ContentTemplate>
-                  </asp:UpdatePanel>--%>
+                      </ContentTemplate>
+                  </asp:UpdatePanel>
                 </div>
                 
                 <div class="col-md-3">
@@ -89,17 +89,6 @@
                                           <asp:Literal ID="cantidad" runat="server" Text='<%# Eval("cantidad") %>' Visible="false" />
                                       </ItemTemplate>
                                     </asp:TemplateField>
-                                    <%-- <asp:TemplateField HeaderText="Medida">
-                                        <ItemTemplate>
-                                            <%# "1" + " " + Eval("M_nombreMedida")%>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Equivalencia">
-                                        <ItemTemplate>
-                                            <%# Eval("E_cantidad") + " " + Eval("FCO_nombreFormatoCocina")%>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>--%>
-
                                     <asp:TemplateField HeaderText="Agregar Equivalencia">
                                         <ItemTemplate>
                                             <asp:Button CssClass="btn btn-primary" ID="btnAgregarEquivalencia" runat="server" CommandName="AgregarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Agregar Equivalencia" />
@@ -140,7 +129,7 @@
         }
 
         function myalert() {
-           <%-- var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;--%>
+            var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;
             Swal.fire({
                 title: 'Oh, no!',
                 text: 'Ya existe un ingrediente con el nombre ',

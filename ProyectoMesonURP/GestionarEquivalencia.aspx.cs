@@ -14,7 +14,6 @@ namespace ProyectoMesonURP
     public partial class GestionarEquivalencia : System.Web.UI.Page
     {
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
-        CTR_Equivalencia _Ce = new CTR_Equivalencia();
         DTO_Ingrediente _Di = new DTO_Ingrediente();
         CTR_CategoriaInsumo objCatInsumo;
         DataSet dsCatInsumo;
@@ -63,7 +62,11 @@ namespace ProyectoMesonURP
             }
             else if (e.CommandName == "VerEquivalencia")
             {
-                //int I_idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
+                int I_idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
+                Session["idIngrediente"] = I_idIngrediente;
+                string ingrediente = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[3].Text;
+                Session["ingrediente"] = ingrediente;
+                Response.Redirect("ConsultarEquivalencia");
                 //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal('show');", true);
                 //upModal.Update();
                 //var modal = _Ce.CTRconsultarDetalleExI(I_idIngrediente);

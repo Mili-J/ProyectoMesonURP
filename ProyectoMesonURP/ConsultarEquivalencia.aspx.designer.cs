@@ -24,40 +24,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.UpdatePanel panelInsumo;
 
         /// <summary>
-        /// Control txtInsumo.
+        /// Control txtIngrediente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsumo;
+        protected global::System.Web.UI.WebControls.TextBox txtIngrediente;
 
         /// <summary>
-        /// Control txtMedida.
+        /// Control gvEquivalencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedida;
-
-        /// <summary>
-        /// Control txtCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
-
-        /// <summary>
-        /// Control txtFormatoC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFormatoC;
+        protected global::System.Web.UI.WebControls.GridView gvEquivalencia;
 
         /// <summary>
         /// Control btnVolver.
