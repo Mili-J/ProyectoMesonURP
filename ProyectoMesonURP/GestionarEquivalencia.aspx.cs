@@ -7,12 +7,14 @@ using System.Data;
 using System.Web.UI.WebControls;
 using CTR;
 using DTO;
+using System.Drawing;
 
 namespace ProyectoMesonURP
 {
     public partial class GestionarEquivalencia : System.Web.UI.Page
     {
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
+        CTR_Equivalencia _Ce = new CTR_Equivalencia();
         DTO_Ingrediente _Di = new DTO_Ingrediente();
         CTR_CategoriaInsumo objCatInsumo;
         DataSet dsCatInsumo;
@@ -35,20 +37,19 @@ namespace ProyectoMesonURP
             gvEquivalencia.DataSource = _Ci.CTR_Consultar_Ingrediente(txtBuscarIngrediente.Text);
             gvEquivalencia.DataBind();
         }
-
-        
+        protected void fnombreIng_TextChanged(object sender, EventArgs e)
+        {
+            LlenarGVEquivalencias();
+        }
+        protected void gvEquivalencia_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEquivalencia.PageIndex = e.NewPageIndex;
+            LlenarGVEquivalencias();
+        }
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             
-            if (e.CommandName == "VerEquivalencia" )
-            {
-               
-            }
-            else if (e.CommandName == "EditarEquivalencia")
-            {
-
-            }
-            else if (e.CommandName == "AgregarEquivalencia")
+            if (e.CommandName == "AgregarEquivalencia")
             {
                 int idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
                 Session["idIngrediente"] = idIngrediente;
@@ -60,24 +61,25 @@ namespace ProyectoMesonURP
 
                 Response.Redirect("AgregarEquivalencia");
             }
+            else if (e.CommandName == "VerEquivalencia")
+            {
+                int I_idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal('show');", true);
+                upModal.Update();
+                var modal = _Ce.CTRconsultarDetalleExI(I_idIngrediente);
+                lblModalTitle.Text = "Detalle de la Equivalencia del Ingrediente";
 
-        }
-        protected void fnombreIng_TextChanged(object sender, EventArgs e)
-        {
+                //txtnIngrediente.Text = modal.Rows[0]["I_nombreIngrediente"].ToString();
+                //txtnIngrediente.Enabled = false;
 
-        }
-
-        protected void btnVerIngredientes_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("GestionarIngrediente");
-        }
-        protected void fnombreEq1_TextChanged(object sender, EventArgs e)
-        {
-            
+                GridView1.DataSource = modal;
+                GridView1.DataBind();
+            }
         }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            gvEquivalencia.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+            LlenarGVEquivalencias();
         }
         public void LoadCategoriaI()
         {
@@ -114,7 +116,24 @@ namespace ProyectoMesonURP
                 }
             }
         }
+        protected void gvEquivalencia_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Literal tot = (Literal)e.Row.FindControl("cantidad");
+                string total = tot.Text;
 
+                if(total == DBNull.Value.ToString())
+                { 
+                    e.Row.ForeColor = System.Drawing.Color.DarkRed;
+                }
+                else
+                {
+                    //e.Row.BackColor = Color.FromName("#ffeb9c");
+                    e.Row.ForeColor = System.Drawing.Color.Black;
+                }
+            }
+        }
         protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
         {
             int a = 0;

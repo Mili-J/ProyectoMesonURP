@@ -11,6 +11,7 @@ namespace ProyectoMesonURP
         CTR_Receta _Cr = new CTR_Receta();
         CTR_MenuXReceta _Cmxr = new CTR_MenuXReceta();
         public int a = 0;
+        string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,19 +22,18 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
                 CargarReceta();
-                CargarRecetaTab1();
+                //CargarRecetaTab1();
             }
         }
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-         
                 if (e.CommandName == "ActualizarReceta")
                 {
                 Label lblidRecet = e.Item.FindControl("lblIdReceta") as Label;
                 int IdRecet = Convert.ToInt32(lblidRecet.Text);
                 Session["IdRecet"] = IdRecet;
 
-                bool Emxr = _Cmxr.ExistenciaMenuxReceta(IdRecet);
+                bool Emxr = _Cmxr.ExistenciaMenuxReceta(IdRecet, FechaActual);
                 if (Emxr)
                 {
                     a = 1;
@@ -73,7 +73,7 @@ namespace ProyectoMesonURP
                 int IdReceta = Convert.ToInt32(lblidReceta.Text);
                 Session["IdReceta"] = IdReceta;
                 
-                bool Emxr = _Cmxr.ExistenciaMenuxReceta(IdReceta);
+                bool Emxr = _Cmxr.ExistenciaMenuxReceta(IdReceta, FechaActual);
                 if (Emxr) 
                 {
                     a = 1;
@@ -92,8 +92,8 @@ namespace ProyectoMesonURP
         }
         protected void fNombreReceta_TextChanged(object sender, EventArgs e)
         {
-            CargarReceta();
-            CargarRecetaTab1();
+            //CargarReceta();
+            //CargarRecetaTab1();
         }
         
         public void CargarReceta()

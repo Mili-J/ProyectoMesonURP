@@ -189,16 +189,16 @@ namespace DAO
                 throw ex;
             }
         }
-        public DataTable SelectBarChartInsumoComprar()
+        public DataTable SelectBarChartInsumoComprar(string OC_fechaEntrega)
         {
             try
             {
-                DataTable dtable = new DataTable();
-                SqlCommand unComando = new SqlCommand("SP_BarChart_Insumos_Comprar", conexion);
-                unComando.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter data = new SqlDataAdapter(unComando);
-                data.Fill(dtable);
-                return dtable;
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_BarChart_Insumos_Comprar", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@OC_fechaEntrega", OC_fechaEntrega);
+                DataSet dSet = new DataSet();
+                cmd.Fill(dSet);
+                return dSet.Tables[0];
             }
             catch (Exception ex)
             {

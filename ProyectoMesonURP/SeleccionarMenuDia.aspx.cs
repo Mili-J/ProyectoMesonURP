@@ -25,7 +25,7 @@ namespace ProyectoMesonURP
         CTR_CategoriaReceta ctr_cat_receta;
         static bool sEntrada, sSegundo;
         static bool hay;
-        static string fecha;
+        static DateTime fecha;
         DTO_Menu objMenu;
         static DataTable dtCarta = new DataTable();
         static DataTable dtMenu = new DataTable();
@@ -38,15 +38,16 @@ namespace ProyectoMesonURP
             objMenu = new DTO_Menu();
             ctr_cat_receta = new CTR_CategoriaReceta();
             dto_menuxreceta = new DTO_MenuXReceta();
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Home.aspx?x=1");
-            }
+            //if (Session["Usuario"] == null)
+            //{
+            //    Response.Redirect("Home.aspx?x=1");
+            //}
             if (!IsPostBack)
             {
 
-                fecha = Session["fecha"].ToString();
-                txtFecha.Text = fecha;
+                fecha = Convert.ToDateTime(Session["fecha"].ToString());
+                //txtFecha.Text = fecha.ToString("MM/dd/yyyy");
+                txtFecha.Text = fecha.ToString("dd/MM/yyyy");
                 hay = (bool)Session["hay"];
                 btnAceptar.Visible = !hay;
                 //-----------------------------------
@@ -335,7 +336,15 @@ namespace ProyectoMesonURP
 
             CrearDt(dt);
 
-            dr[0] = receta.R_imagenReceta;
+            try
+            {
+                dr[0] = receta.R_imagenReceta;
+            }
+            catch (Exception)
+            {
+
+                dr[0] = null;
+            }
             dr[1] = receta.R_idReceta;
             dr[2] = receta.R_nombreReceta;
             dr[3] = receta.R_numeroPorcion;

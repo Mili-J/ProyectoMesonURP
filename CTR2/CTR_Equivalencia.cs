@@ -19,13 +19,25 @@ namespace CTR
         {
             return objEquivalencia.ListarEquivalencias();
         }
-        //public void AgregarEquivalencia(DTO_Equivalencia DTOEquival)
-        //{
-        //    objEquivalencia.AgregarEquivalencia(DTOEquival);
-        //}
+        public void AgregarEquivalencia(DTO_Equivalencia DTOEquival)
+        {
+            objEquivalencia.AgregarEquivalencia(DTOEquival);
+        }
+        public DataTable CTRListarEquivalencia(int I_idIngrediente)
+        {
+            return objEquivalencia.DAOSelectEquivalencia(I_idIngrediente);
+        }
         //public void ActualizarEquivalencia(DTO_Equivalencia DTOEquivalencia)
         //{
         //    objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
         //}
+        public bool CTRExistenciaIngredientexMxfc(int I_idIngrediente, int MXFC_idMedidaFCocina)
+        {
+            return objEquivalencia.SelectExistenciaIngredientexMxfc(I_idIngrediente, MXFC_idMedidaFCocina);
+        }
+        public DataTable CTRconsultarDetalleExI(int I_idIngrediente)
+        {
+            return objEquivalencia.DAOconsultarDetalleExI(I_idIngrediente);
+        }
     }
 }

@@ -60,5 +60,9 @@ namespace CTR
         {
             return objDAO.DAO_ConsultarIngredientesXReceta(R_idReceta,cat,porcion);
         }
+        public DataTable CTR_SelectIngredientexR(int R_id)
+        {
+            return objDAO.DAO_SelectIngredientexR(R_id);
+        }
     }
 }

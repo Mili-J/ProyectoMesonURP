@@ -15,6 +15,7 @@ namespace ProyectoMesonURP
     {
         CTR_OC _Coc = new CTR_OC();
         CTR_Insumo _Ci = new CTR_Insumo();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["Usuario"] == null)
@@ -40,8 +41,11 @@ namespace ProyectoMesonURP
                 CargarEstadoOc();
                 CargarInsumoD();
                 CargarInsumoComprar();
+                string FechaActual = DateTime.Now.ToString("yyyy-MM-dd");
+                txtFechaEmision.Text = FechaActual;
+                //Label1.Text = "Seguimiento de insumos del día" + FechaActual;
             }
-            
+
         }
         protected string CargarEstadoOc()
         {
@@ -88,26 +92,44 @@ namespace ProyectoMesonURP
         }
         protected string CargarInsumoComprar()
         {
+            string fecha = Convert.ToString(txtFechaEmision.Text);
             DataTable datos = new DataTable();
-            datos = _Ci.CTRSelectBarChartInsumoComprar();
+            datos = _Ci.CTRSelectBarChartInsumoComprar(fecha);
 
-            StringBuilder js = new StringBuilder();
-            string strDatos = "";
-
-            js.Append("[");
-
-            foreach (DataRow dr in datos.Rows)
+            if (datos.Rows.Count == 0)
             {
-                js.Append(strDatos + "{");
-                js.Append("\"Insumo\":" + "\"" + dr[0] + "\",");
-                js.Append("\"Formato\":" + "\"" + dr[1] + "\",");
-                js.Append("\"CantidadCotizada\":" + "\"" + dr[2] + "\",");
-                js.Append("\"Estado\":" + "\"" + dr[3] + "\",");
-                js.Append("}");
-                strDatos = ",";
+                contenedor2.Visible = true;
+                Label1.Visible = false;
+                contenedor1.Visible = false;
+                return lblMensajeAyuda.Text;
             }
-            js.Append("]");
-            return js.ToString();
+            else
+            {
+                StringBuilder js = new StringBuilder();
+                string strDatos = "";
+                js.Append("[");
+                Label1.Text = "Seguimiento de insumos del día " + fecha;
+                Label1.Visible = true;
+                foreach (DataRow dr in datos.Rows)
+                {
+                    js.Append(strDatos + "{");
+                    js.Append("\"Insumo\":" + "\"" + dr[0] + "\",");
+                    js.Append("\"Formato\":" + "\"" + dr[1] + "\",");
+                    js.Append("\"CantidadCotizada\":" + "\"" + dr[2] + "\",");
+                    js.Append("\"Estado\":" + "\"" + dr[3] + "\",");
+                    js.Append("}");
+                    strDatos = ",";
+                }
+                js.Append("]");
+                contenedor1.Visible = true;
+                contenedor2.Visible = false;
+                return js.ToString();
+            }
+        }
+        protected void fFecha_TextChanged(object sender, EventArgs e)
+        {
+            CargarInsumoComprar();
+            //CargarRecetaTab1();
         }
     }
 }

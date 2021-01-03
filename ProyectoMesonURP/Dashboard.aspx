@@ -49,8 +49,19 @@
                     <div class="form-title color-white">
                         <h5>Seguimiento de los insumos a recepcionar</h5>
                     </div>
+                <div class="form-group row justify-content-end pt-3">
+                    <label class="col-sm-12 col-md-3 col-form-label">Seleccione una fecha a filtrar</label>
+                    <div class="col-sm-12 col-md-3">
+                        <asp:TextBox ID="txtFechaEmision" runat="server" class="form-control" TextMode="Date"  AutoPostBack="True"  OnTextChanged="fFecha_TextChanged"/>
+                    </div>
                 </div>
-            <div id="chartBarCompra" class="pt-30"></div> 
+                </div>
+            
+            <div class="content"> <asp:Label ID="Label1" runat="server" Text="" Visible="false"></asp:Label> </div>
+                 <div id="contenedor1" runat="server" Visible="false">
+                     <div id="chartBarCompra" class="pt-30" ></div> 
+                 </div> 
+            <div id="contenedor2" class="content" runat="server" style="background-color:lavender; height: 100px; text-align:center;  font-weight: bold; display: flex; justify-content: center; align-items: center;" visible="false"> <asp:Label ID="lblMensajeAyuda" runat="server" Text="No hay información disponible"></asp:Label> </div>
         </div> 
     
     
@@ -58,7 +69,7 @@
         <div class="col-md-6 col-sm-12 mb-30">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
-                    <h5>Insumos Disponibles</h5>
+                    <h5>Estado de las Órdenes de Compra</h5>
                 </div>
             </div>
             <div class="pd-20 card-box height-100-p">
@@ -68,7 +79,7 @@
         <div class="col-md-6 col-sm-12 mb-30">
             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                 <div class="form-title color-white">
-                    <h5>Estado de las Órdenes de Compra</h5>
+                    <h5>Insumos Disponibles</h5>
                 </div>
             </div>
             <div class="pd-20 card-box height-100-p">

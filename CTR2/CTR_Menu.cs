@@ -53,5 +53,9 @@ namespace CTR
         {
             return dao_menu.DAO_ConsultarMenusXYFecha(fecha);
         }
+        public DataTable CTR_SelectMenuXFecha(string fecha)
+        {
+            return dao_menu.DAO_SelectMenuXFecha(fecha);
+        }
     }
 }

@@ -63,7 +63,7 @@
            
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard">
-                    <i><img src="img/icono_prueba.png" class="img-responsive2" alt="" /></i>
+                    <i><img src="img/plato.blanco.png" class="img-responsive2" alt="" /></i>
                 <div class="sidebar-brand-text mx-3">Mesón URP</div>
             </a>
 
@@ -72,7 +72,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li id="menuDashboard" runat="server" class="nav-item active">
-                <a class="nav-link" href="Empty.aspx">
+                <a class="nav-link" href="Dashboard.aspx">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -95,8 +95,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cotización Personalizado:</h6>
-                        <a class="collapse-item" href="GestionarCotizacion.aspx">Solicitar Cotización</a>
-                        <a class="collapse-item" href="Empty.aspx">Generar OC</a>
+                        <a class="collapse-item" href="GestionarCotizacion.aspx">Gestionar Cotización</a>
                     </div>
                 </div>
             </li>
@@ -120,7 +119,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">OC Personalizado:</h6>
                         <a class="collapse-item" href="GestionarOC.aspx">Gestionar OC</a>
-                        <a class="collapse-item" href="Empty.aspx">Recepcionar Insumo</a>
                     </div>
                 </div>
             </li>
@@ -136,17 +134,17 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Receta Personalizado:</h6>
                         <a class="collapse-item" href="GestionarReceta">Gestionar Receta</a>
-                        <a class="collapse-item" href="Empty.aspx">Gestionar Categoría</a>
+                        <%--<a class="collapse-item" href="Empty.aspx">Gestionar Categoría</a>--%>
                     </div>
                 </div>
             </li>
 
              <!-- Nav Item - Charts -->
-            <li id="menuSepararIngredientes"  runat="server" class="nav-item">
+          <%--  <li id="menuSepararIngredientes"  runat="server" class="nav-item">
                 <a class="nav-link" href="Empty.aspx">
                     <i class="fas fa-table"></i>
                     <span>Separar Ingredientes</span></a>
-            </li>
+            </li>--%>
 
              <!-- Nav Item - Charts -->
             <li id="menuProveedor"  runat="server" class="nav-item">
@@ -188,7 +186,7 @@
 
              <!-- Nav Item - Charts -->
             <li id="menuTransformar"  runat="server" class="nav-item">
-                <a class="nav-link" href="ElegirRecetaTransformar">
+                <a class="nav-link" href="Transformar_Insumo.aspx">
                     <i class="fas fa-sync"></i>
                     <span>Transformar Insumo</span></a>
             </li>

@@ -31,7 +31,7 @@ namespace ProyectoMesonURP
 			{
 				int idReceta = Convert.ToInt32(GridView1.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_idReceta"].ToString());
 				Session.Add("idReceta", idReceta);
-				porciones = int.Parse(txtPorciones.Text);
+				//porciones = int.Parse(txtPorciones.Text);
 				Session.Add("Porciones", porciones);
 				Response.Redirect("TransformarInsumo");
 			}

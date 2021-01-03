@@ -29,34 +29,47 @@
                 <div class="col-sm-12 col-md-3 pl-30"></div>
                 <div class="col-sm-12 col-md-3 pl-30">
                     <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
-                        <asp:TextBox ID="txtBuscarIngrediente" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreIng_TextChanged" placeholder="Buscar Ingrediente..." />
+                        <asp:TextBox ID="txtBuscarIngrediente" runat="server" class="form-control" AutoPostBack="True" OnTextChanged="fnombreIng_TextChanged" onkeypress="return soloLetras(event);" placeholder="Buscar Ingrediente..." />
                         <i class="search_icon dw dw-search"></i>
                     </div>
                 </div>
             </div>
-            <div class="form-group row justify-content-center h-100">
-                <label class="col-sm-12 col-md-2 col-form-label">Categoria</label>
-                <div class="col-sm-12 col-md-4">
-                    <asp:DropDownList ID="ddlCategoria" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
+            
+            <div class="row">
+                <div class="col-md-3">
+         <%--           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>--%>
+                    <label>Categoria</label>
+                    <asp:DropDownList ID="ddlCategoria" class="custom-select2 form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
+                     <asp:RequiredFieldValidator ID="rfvddlCategoria" runat="server" ControlToValidate="ddlCategoria" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="CategoriaRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
+                      <%--  </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
-            </div>
-            <div class="form-group row justify-content-center h-100">
-                <label class="col-sm-12 col-md-2 col-form-label">Insumo</label>
-                <div class="col-sm-12 col-md-4">
-                    <asp:DropDownList ID="ddlInsumo" runat="server" CssClass="form-control"></asp:DropDownList>
+           
+                <div class="col-md-3">
+                   <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                      <ContentTemplate>--%>
+                    <label>Insumo</label>
+                    <asp:DropDownList ID="ddlInsumo" runat="server" class="custom-select2 form-control"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvddlInsumo" runat="server" ControlToValidate="ddlInsumo" Display="Static" ForeColor="DarkRed" InitialValue="--seleccionar--" ValidationGroup="equivalencia1"><span id="InsumoRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
+<%--                     </ContentTemplate>
+                  </asp:UpdatePanel>--%>
                 </div>
-            </div>
-            <div class="form-group row col-md-8">
-                <label>Ingrediente</label>
-                <div class="col-sm-12 col-md-6">
-                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox>
+                
+                <div class="col-md-3">
+                    <label>Ingrediente</label>
+                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox> 
+                    <asp:RequiredFieldValidator ID="rfvtxtIngrediente" runat="server" ControlToValidate="txtIngrediente" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="equivalencia1"></asp:RequiredFieldValidator>          
+                </div>
+                <div class="col-md-3 pt-20">
+                    <div style="margin: 0px auto; width:120px">
+                          <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary" ValidationGroup="equivalencia1"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
+                    </div>
                 </div>
             </div>
             <asp:TextBox ID="txtPesoU" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
             <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
-            <asp:Button CssClass="btn btn-primary" runat="server" Text="Agregar" ID="btnAñadirIngrediente" OnClick="btnAñadirIngrediente_Click" />
-
-            <%--<asp:Button CssClass="btn btn-primary" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />--%>
+            <div class="padding-bottom-30"></div>
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
@@ -64,13 +77,19 @@
                     </div>
                     <div class="w3-row-padding">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                            <asp:GridView ID="gvEquivalencia" runat="server" OnRowCommand="GVEquivalencia_RowCommand" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente"
-                                EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0">
+                            <asp:GridView ID="gvEquivalencia" allowpaging="True" runat="server" OnRowCommand="GVEquivalencia_RowCommand" OnRowDataBound="gvEquivalencia_RowDataBound" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente, cantidad"
+                                EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnPageIndexChanging="gvEquivalencia_PageIndexChanging">
+                               <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
                                 <Columns>
                                     <asp:BoundField DataField="I_idInsumo" HeaderText="I_idInsumo" Visible="false" />
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
                                     <asp:BoundField DataField="I_idIngrediente" HeaderText="I_idIngrediente" Visible="false" />
                                     <asp:BoundField DataField="I_nombreIngrediente" HeaderText="Ingrediente" />
+                                    <asp:TemplateField HeaderText="Total" Visible="false">
+                                      <ItemTemplate>
+                                          <asp:Literal ID="cantidad" runat="server" Text='<%# Eval("cantidad") %>' Visible="false" />
+                                      </ItemTemplate>
+                                    </asp:TemplateField>
                                     <%-- <asp:TemplateField HeaderText="Medida">
                                         <ItemTemplate>
                                             <%# "1" + " " + Eval("M_nombreMedida")%>
@@ -87,23 +106,11 @@
                                             <asp:Button CssClass="btn btn-primary" ID="btnAgregarEquivalencia" runat="server" CommandName="AgregarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Agregar Equivalencia" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Agregar Equivalencia">
-                                        <ItemTemplate>
-                                            <asp:Button CssClass="btn btn-primary" ID="btnEditarEquivalencia" runat="server" CommandName="EditarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Editar" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-
                                     <asp:TemplateField HeaderText="Ver">
                                         <ItemTemplate>
-                                            <%--<asp:LinkButton ID="btnVerEquivalencia" class="btn btn-outline-warning" runat="server" CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>--%>
-
                                             <asp:Button CssClass="btn btn-primary" ID="btnVer" runat="server" CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Ver" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
-
                                 </Columns>
                             </asp:GridView>
 
@@ -114,12 +121,71 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">
+                            <asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                       <%-- <div class="form-group" style="display:flex; justify-content:space-between">
+                            <label for="lblnombreInsumo">Nombre de Ingredeinte</label>
+                            <div class="col-sm-8">
+                                <asp:TextBox runat="server" type="text" class="form-control1" style="width:100%" ID="txtnIngrediente"></asp:TextBox>
+                            </div>
+                        </div>--%>
+                    <div class="table-wrapper-scroll-y">
+                    <asp:GridView ID="GridView1" AllowPaging="True" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false"
+                        CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_nombreIngrediente, E_cantidad, MXFC_idMedidaFCocina, M_nombreMedida, FCO_nombreFormatoCocina" 
+                            Style="text-align: center" CellPadding="4" GridLines="None">
+                        <Columns>
+                            <asp:BoundField HeaderText="Ingrediente" DataField="I_nombreIngrediente" Visible="false" />
+                            <asp:BoundField HeaderText="Formato Cocina" DataField="FCO_nombreFormatoCocina" />
+                            <asp:BoundField HeaderText="Cantidad" DataField="E_cantidad" />
+                            <asp:BoundField HeaderText="IDFormatoCocinaXMedida" DataField="MXFC_idMedidaFCocina" Visible="false"/>
+                            <asp:BoundField HeaderText="Medida" DataField="M_nombreMedida" />
+                        </Columns>
+                    </asp:GridView>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">OK</button>
+                    </div>
+                </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+</div>
     <script>
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = [8, 37, 39, 46];
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial)
+                return false;
+        }
+
         function myalert() {
-            var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;
+           <%-- var ingrediente = document.getElementById('<%= txtIngrediente.ClientID %>').value;--%>
             Swal.fire({
                 title: 'Oh, no!',
-                text: 'Ya existe un ingrediente con el nombre ' + ingrediente,
+                text: 'Ya existe un ingrediente con el nombre ',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             })

@@ -24,6 +24,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtnombre;
 
         /// <summary>
+        /// Control rfvnombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvnombre;
+
+        /// <summary>
         /// Control txtPorciones.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList ddlSubCategoriaReceta;
 
         /// <summary>
+        /// Control rfvsubCategoriaR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvsubCategoriaR;
+
+        /// <summary>
         /// Control txtDescripcion.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+
+        /// <summary>
+        /// Control rfvtxtDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtDescripcion;
 
         /// <summary>
         /// Control ImagenPreview.
@@ -105,13 +132,13 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList ddlIngredientes;
 
         /// <summary>
-        /// Control rfvingredientes.
+        /// Control rfvddlIngrediente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvingredientes;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlIngrediente;
 
         /// <summary>
         /// Control txtCantidad.
@@ -121,6 +148,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
+
+        /// <summary>
+        /// Control rfvtxtCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCantidad;
 
         /// <summary>
         /// Control UpdatePanel2.
@@ -139,6 +175,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMedida;
+
+        /// <summary>
+        /// Control rfvddlMedida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlMedida;
 
         /// <summary>
         /// Control UpdateButton.

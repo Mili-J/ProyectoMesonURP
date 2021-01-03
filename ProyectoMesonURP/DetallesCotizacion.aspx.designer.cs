@@ -11,142 +11,106 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class GestionarEquivalencia
+    public partial class DetallesCotizacion
     {
 
         /// <summary>
-        /// Control ddlp.
+        /// Control txtNCotizacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlp;
+        protected global::System.Web.UI.WebControls.TextBox txtNCotizacion;
 
         /// <summary>
-        /// Control txtBuscarIngrediente.
+        /// Control txtProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarIngrediente;
+        protected global::System.Web.UI.WebControls.TextBox txtProveedor;
 
         /// <summary>
-        /// Control ddlCategoria.
+        /// Control txtFechaEmision.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaEmision;
 
         /// <summary>
-        /// Control rfvddlCategoria.
+        /// Control txtTiempoPlazo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlCategoria;
+        protected global::System.Web.UI.WebControls.TextBox txtTiempoPlazo;
 
         /// <summary>
-        /// Control ddlInsumo.
+        /// Control txtFechaEntrega.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInsumo;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaEntrega;
 
         /// <summary>
-        /// Control rfvddlInsumo.
+        /// Control ddlFormaPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlInsumo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFormaPago;
 
         /// <summary>
-        /// Control txtIngrediente.
+        /// Control PanelAñadir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIngrediente;
+        protected global::System.Web.UI.UpdatePanel PanelAñadir;
 
         /// <summary>
-        /// Control rfvtxtIngrediente.
+        /// Control gvInsumos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtIngrediente;
+        protected global::System.Web.UI.WebControls.GridView gvInsumos;
 
         /// <summary>
-        /// Control txtPesoU.
+        /// Control gvDetalles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPesoU;
+        protected global::System.Web.UI.WebControls.GridView gvDetalles;
 
         /// <summary>
-        /// Control txtCantidad.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGuardar;
 
         /// <summary>
-        /// Control gvEquivalencia.
+        /// Control btnGenerarOC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEquivalencia;
-
-        /// <summary>
-        /// Control upModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upModal;
-
-        /// <summary>
-        /// Control lblModalTitle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblModalTitle;
-
-        /// <summary>
-        /// Control lblModalBody.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblModalBody;
-
-        /// <summary>
-        /// Control GridView1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnGenerarOC;
     }
 }
