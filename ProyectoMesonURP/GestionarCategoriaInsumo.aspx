@@ -106,11 +106,24 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="ModalLabelConsu">Consultar Insumos</h5>
-
-
-
-
-
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                    <asp:GridView ID="GridView1" AllowPaging="False" runat="server" EmptyDataText="No hay información disponible."
+                                        AutoGenerateColumns="False" OnRowCommand="GridViewCategoria_RowCommand"
+                                        CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None">
+                                        <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"></PagerStyle>
+                                        <Columns>
+                                            <asp:TemplateField Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:Label runat="server" ID="lblIDInsumo" Text='<%# Eval("I_idInsumo") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField HeaderText="Nombre Insumo" DataField="I_nombreInsumo" />
+                                            <asp:BoundField HeaderText="Cantidad" DataField="I_cantidad" />
+                                            <asp:BoundField HeaderText="Estado" DataField="EI_idEstadoInsumo" />
+                                        </Columns>
+                                    </asp:GridView>
+                                    <asp:HiddenField ID="HiddenField1" runat="server" />
+                                </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
