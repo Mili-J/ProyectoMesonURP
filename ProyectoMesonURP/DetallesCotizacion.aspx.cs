@@ -1,7 +1,6 @@
 ﻿using CTR;
 using DTO;
 using System;
-using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,19 +15,16 @@ namespace ProyectoMesonURP
             CTR_OC _Coc = new CTR_OC();
             DTO_Cotizacion dto_cot;
             CTR_Cotizacion ctr_cot;
-            CTR_Proveedor ctr_pro;
-            DTO_Proveedor dto_pro;
             string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
             protected void Page_Load(object sender, EventArgs e)
             {
                 if (!Page.IsPostBack)
                 {
-
                     CargarDetalle();
-                }
-                txtFechaEmision.Text = FechaActual;
-                txtFechaEntrega.Text = FechaActual;
+                    txtFechaEmision.Text = FechaActual;
+                    txtFechaEntrega.Text = FechaActual;
+            }     
         }
         public void CargarDetalle() {
             bool _Edc = _Cdoc.ExistenciaDetalleOC((int)Session["idCot"]);
@@ -51,6 +47,7 @@ namespace ProyectoMesonURP
             txtNCotizacion.Text = dto_cot.C_numeroCotizacion;
             txtFechaEmision.Text = dto_cot.C_fechaEmision.ToShortDateString();
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
+            txtTiempoPlazo.Text = dto_cot.C_tiempoPlazo;
 
             gvDetalles.Visible = false;
             gvInsumos.DataSource = _Cdc.CargarDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
@@ -58,29 +55,41 @@ namespace ProyectoMesonURP
         }
             public void CargarOC() {
 
-                gvInsumos.Visible = false;
+            gvInsumos.Visible = false;
             int idCot = (int)Session["idCot"];
             ctr_cot = new CTR_Cotizacion();
             dto_cot = ctr_cot.CTR_ConsultarCotizacion(idCot);
+            _Doc = _Coc.Consultar_OC(idCot);
             //--------
             txtNCotizacion.Text = dto_cot.C_numeroCotizacion;
             txtFechaEmision.Text = dto_cot.C_fechaEmision.ToShortDateString();
-            string nOC = _Coc.ListarNumeroOC();
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
+            txtTiempoPlazo.Text = dto_cot.C_tiempoPlazo;
+            txtFechaEntrega1.Text = _Doc.OC_fechaEntrega.ToShortDateString();
+            txtFormaPago.Text = _Doc.OC_tipoPago;
             txtFechaEntrega.Visible = false;
             btnGuardar.Visible = false;
+            ddlFormaPago.Visible = false;
             btnGenerarOC.Visible = true;
 
             gvDetalles.DataSource = _Cdoc.CargarDetalleOC(Convert.ToInt32(Session["idcotizacion"]));
             gvDetalles.DataBind();
-        }
+
+            decimal sum = decimal.Zero;
+            for (int i = 0; i < gvDetalles.Rows.Count; i++)
+            {
+                sum += decimal.Parse(((Label)gvDetalles.Rows[i].FindControl("lblTotalPrecio")).Text == string.Empty ? "0" : ((Label)gvDetalles.Rows[i].FindControl("lblTotalPrecio")).Text);
+            }
+                   ((Label)gvDetalles.FooterRow.FindControl("lblTotal")).Text = sum.ToString();
+            Session["Totaldecompra"] = ((Label)gvDetalles.FooterRow.FindControl("lblTotal")).Text;
+            }
             protected void btnGuardar_ServerClick(object sender, EventArgs e)
             {
             if (ddlFormaPago.SelectedIndex != 0)
             {
                 _Doc.OC_numeroOc = _Coc.ListarNumeroOC();
                 Session["nOC"] = _Doc.OC_numeroOc;
-                _Doc.OC_fechaEmision = Convert.ToDateTime(txtFechaEmision.Text);
+                _Doc.OC_fechaEmision = Convert.ToDateTime(DateTime.Now.ToString());
                 _Doc.OC_fechaEntrega = Convert.ToDateTime(txtFechaEntrega.Text);
                 _Doc.OC_tipoPago = ddlFormaPago.SelectedValue;
                 _Doc.OC_totalCompra = Convert.ToDecimal(Session["Totaldecompra"]);
@@ -107,9 +116,6 @@ namespace ProyectoMesonURP
         }
         protected void btnGenerarOC_ServerClick(object sender, EventArgs e)
         {
-            Session["FEmision"] = Convert.ToDateTime(txtFechaEmision.Text);
-            Session["FEntrega"] = Convert.ToDateTime(txtFechaEntrega.Text);
-            Session["FPago"] = ddlFormaPago.SelectedValue;
             Response.Redirect("GenerarOC");
         }
             protected void txtPrecioUnitario_TextChanged(object sender, EventArgs e)

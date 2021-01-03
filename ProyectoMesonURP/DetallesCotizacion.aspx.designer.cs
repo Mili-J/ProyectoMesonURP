@@ -60,6 +60,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtFechaEntrega;
 
         /// <summary>
+        /// Control txtFechaEntrega1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaEntrega1;
+
+        /// <summary>
         /// Control ddlFormaPago.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFormaPago;
+
+        /// <summary>
+        /// Control txtFormaPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFormaPago;
 
         /// <summary>
         /// Control PanelAñadir.

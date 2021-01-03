@@ -43,13 +43,13 @@
                         <div class="form-group row justify-content-center">
                             <label class="col-sm-12 col-md-5 col-form-label">Fecha de Entrega</label>
                             <div class="col-sm-12 col-md-6">
-                                <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group row justify-content-center">
                             <label class="col-sm-12 col-md-5 col-form-label">Forma de pago</label>
                             <div class="col-sm-12 col-md-6">
-                                 <asp:TextBox ID="txtFormaPago" runat="server" class="form-control"></asp:TextBox>
+                                 <asp:TextBox ID="txtFormaPago" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                             
                             </div>
                         </div>
@@ -80,8 +80,22 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
-                                                <asp:BoundField HeaderText="PrecioUnitario" DataField="DOC_precioUnitario"/>
-                                                <asp:BoundField HeaderText="Total" DataField="DOC_totalPrecio"/>
+                                                <asp:TemplateField HeaderText="Precio Unitario">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblPrecioUnitario" runat="server" Text='<%# Bind("DOC_precioUnitario")%>'></asp:Label>
+                                                 </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:Label runat="server">TOTAL:</asp:Label>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Precio Total">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblTotalPrecio" runat="server" Text='<%# Bind("DOC_totalPrecio")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:Label runat="server" ID="lblTotal" Text="0.00"></asp:Label>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -117,26 +131,14 @@
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = "GestionarCotizacion";
+                    window.location.href = "DetallesCotizacion";
                 }
             })
         }
     </script>
     <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
 
-    <script language="javascript" type="text/javascript">
-
-        $(document).ready(function () {
-
-            $('#<%=gvInsumos.ClientID%>.precio').change(function () {
-
-                var tr = $(this).parent().parent();
-                var precio = $("td:eq(2)", tr).html();
-
-                $("td:eq(5) span", tr).html($(this).val() * precio);
-            });
-        });
-    </script>
+    
 </asp:Content>
 
 

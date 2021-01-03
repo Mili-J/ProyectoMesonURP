@@ -80,6 +80,8 @@
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="ConsultarCotizacion.aspx" />
     <Content Include="ConsultarEquivalencia.aspx" />
+    <Content Include="ActualizarIngrediente.aspx" />
+    <Content Include="ConsultarMovimientos.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -2060,6 +2062,14 @@
     </Compile>
     <Compile Include="ConsultarCotizacion.aspx.designer.cs">
       <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
+    </Compile>
+
+    <Compile Include="ConsultarMovimientos.aspx.cs">
+      <DependentUpon>ConsultarMovimientos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarMovimientos.aspx.designer.cs">
+      <DependentUpon>ConsultarMovimientos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
