@@ -73,6 +73,7 @@
     <Compile Include="DTO_OC_SP.cs" />
     <Compile Include="DTO_Persona.cs" />
     <Compile Include="DTO_Proveedor.cs" />
+    <Compile Include="DTO_ProveedorXCategoria.cs" />
     <Compile Include="DTO_Receta.cs" />
     <Compile Include="DTO_TipoMovimiento.cs" />
     <Compile Include="DTO_TipoUsuario.cs" />

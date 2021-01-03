@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="404.html" />
     <Content Include="ActualizarCotizacion.aspx" />
+    <Content Include="ActualizarProveedor.aspx" />
     <Content Include="AgregarIngrediente.aspx" />
     <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="CalendariaMenu.aspx" />
@@ -140,10 +141,12 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Gestionar Ingrediente.aspx" />
+    <Content Include="GestionarCategoriaInsumo.aspx" />
     <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarCotizacion.aspx" />
     <Content Include="GenerarOC.aspx" />
+    <Content Include="GestionarProveedor.aspx" />
     <Content Include="GestionarReceta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -306,6 +309,7 @@
     <Content Include="Recepción_Insumos.aspx" />
     <Content Include="multifield.js" />
     <Content Include="RegistrarCotizacion.aspx" />
+    <Content Include="RegistrarProveedor.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
     <Content Include="SeleccionarMenuTransformar.aspx" />
@@ -2013,6 +2017,13 @@
     <Compile Include="ActualizarMenuDia.aspx.designer.cs">
       <DependentUpon>ActualizarMenuDia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ActualizarProveedor.aspx.cs">
+      <DependentUpon>ActualizarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarProveedor.aspx.designer.cs">
+      <DependentUpon>ActualizarProveedor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarReceta.aspx.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2083,6 +2094,13 @@
     <Compile Include="Gestionar Ingrediente.aspx.designer.cs">
       <DependentUpon>Gestionar Ingrediente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionarCategoriaInsumo.aspx.cs">
+      <DependentUpon>GestionarCategoriaInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarCategoriaInsumo.aspx.designer.cs">
+      <DependentUpon>GestionarCategoriaInsumo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionarOC.aspx.cs">
       <DependentUpon>GestionarOC.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2110,6 +2128,13 @@
     </Compile>
     <Compile Include="GenerarOC.aspx.designer.cs">
       <DependentUpon>GenerarOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarProveedor.aspx.cs">
+      <DependentUpon>GestionarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarProveedor.aspx.designer.cs">
+      <DependentUpon>GestionarProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarReceta.aspx.cs">
       <DependentUpon>GestionarReceta.aspx</DependentUpon>
@@ -2177,6 +2202,13 @@
     </Compile>
     <Compile Include="Recepción_Insumos.aspx.designer.cs">
       <DependentUpon>Recepción_Insumos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProveedor.aspx.cs">
+      <DependentUpon>RegistrarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarProveedor.aspx.designer.cs">
+      <DependentUpon>RegistrarProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarReceta.aspx.cs">
       <DependentUpon>RegistrarReceta.aspx</DependentUpon>

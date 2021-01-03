@@ -18,6 +18,10 @@ namespace CTR
         //{
         //    return dao_catIns.DAO_ConsultarCategoriasInsumo();
         //}
+        public List<DTO_CategoriaInsumo> ListarCategorias()
+        {
+            return dao_catIns.ListarCategoria();
+        }
 
         public DataSet CTR_SelectInsumoXCategoria(DTO_CategoriaInsumo objCategoriaIn)
         {
@@ -32,6 +36,17 @@ namespace CTR
         {
             return dao_catIns.DAO_SelectCategoriaI();
         }
-
+        public List<DTO_CategoriaInsumo> CTR_ConsultarCategoriasInsumo2()
+        {
+            return dao_catIns.DAO_ConsultarCategoriasInsumo2();
+        }
+        public void DAO_InsertCategoriaInsumo(DTO_CategoriaInsumo objCategoriaIn)
+        {
+            dao_catIns.DAO_InsertCategoriaInsumo(objCategoriaIn);
+        }
+        public void DAO_UpdateCategoriaInsumo(DTO_CategoriaInsumo objCategoriaIn)
+        {
+            dao_catIns.DAO_ActualizarCategoriaInsumo(objCategoriaIn);
+        }
     }
 }

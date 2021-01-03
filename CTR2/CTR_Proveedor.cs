@@ -8,18 +8,53 @@ namespace CTR
 {
     public class CTR_Proveedor
     {
-        DAO_Proveedor dao_proveedor;
+        DAO_Proveedor dao_pro;
         public CTR_Proveedor()
         {
-            dao_proveedor = new DAO_Proveedor();
+            dao_pro = new DAO_Proveedor();
         }
         public DataTable CTR_ConsultarProveedores()
         {
-            return dao_proveedor.DAO_ConsultarProveedores();
+            return dao_pro.DAO_ConsultarProveedores();
         }
         public DTO_Proveedor CTR_ConsultarProveedor(int id)
         {
-            return dao_proveedor.DAO_ConsultarProveedor(id);
+            return dao_pro.DAO_ConsultarProveedor(id);
+        }
+        public DataTable ListarProveedores()
+        {
+            return dao_pro.ListarProveedores();
+        }
+        public void CambiarEstadoProveedor(int id, int estado)
+        {
+            dao_pro.CambiarEstadoProveedor(id, estado);
+        }
+        public int RegistrarProveedor(DTO_Proveedor obj)
+        {
+
+            return dao_pro.RegistrarProveedor(obj);
+        }
+        public void RegistrarProveedorxCategoria(int PR_idProveedor, int CI_idCategoriaInsumo)
+        {
+            dao_pro.RegistrarProveedorxCategoria(PR_idProveedor, CI_idCategoriaInsumo);
+        }
+        public List<int> TraerCategorias(int PR_idProveedor)
+        {
+            return dao_pro.TraerCategorias(PR_idProveedor);
+        }
+
+        public DTO_Proveedor traerProveedor(int PR_idProveedor)
+        {
+            return dao_pro.traerProveedor(PR_idProveedor);
+        }
+
+        public DTO_Proveedor actualizarProveedor(DTO_Proveedor obj)
+        {
+            return dao_pro.actualizarProveedor(obj);
+        }
+        public void EliminarProveedorxCategoria(int PR_idProveedor, int CI_idCategoriaInsumo)
+        {
+            dao_pro.EliminarProveedorxCategoria(PR_idProveedor, CI_idCategoriaInsumo);
         }
     }
 }

@@ -205,6 +205,37 @@ namespace DAO
                 throw ex;
             }
         }
+        public List<DTO_Insumo> DAO_ConsultarInsumoXCategoria(int CI_idCategoriaInsumo)
+        {
+            List<DTO_Insumo> list = new List<DTO_Insumo>();
+            try
+            {
+                conexion.Open();
+                SqlCommand comando = new SqlCommand("SP_ConsultarInsumosxCat", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                comando.Parameters.AddWithValue("@CI_idCategoriaInsumo", CI_idCategoriaInsumo);
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    DTO_Insumo dto = new DTO_Insumo()
+                    {
+                        I_idInsumo = int.Parse(reader[0].ToString()),
+                        I_nombreInsumo = reader[1].ToString(),
+                        I_cantidad = decimal.Parse(reader[2].ToString()),
+                        EI_idEstadoInsumo = int.Parse(reader[6].ToString()),
+                    };
+                    list.Add(dto);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            conexion.Close();
+            return list;
+        }
 
     }
 }

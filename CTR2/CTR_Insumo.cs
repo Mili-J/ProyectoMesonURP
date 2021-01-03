@@ -65,5 +65,9 @@ namespace CTR
         {
             return dao_insumo.SelectBarChartInsumoComprar();
         }
+        public List<DTO_Insumo> CTR_ConsultarInsumoXCategoria(int CI_idCategoriaInsumo)
+        {
+            return dao_insumo.DAO_ConsultarInsumoXCategoria(CI_idCategoriaInsumo);
+        }
     }
 }

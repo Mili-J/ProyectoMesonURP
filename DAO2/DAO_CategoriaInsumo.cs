@@ -15,6 +15,32 @@ namespace DAO
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
         }
+        public List<DTO_CategoriaInsumo> ListarCategoria()
+        {
+            List<DTO_CategoriaInsumo> app = new List<DTO_CategoriaInsumo>();
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Listar_Categoria", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                DataSet ds = new DataSet();
+                cmd.Fill(ds);
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+
+                    app.Add(new DTO_CategoriaInsumo
+                    {
+                        CI_idCategoriaInsumo = Convert.ToInt32(dr["CI_idCategoriaInsumo"]),
+                        CI_nombreCategoria = Convert.ToString(dr["CI_nombreCategoria"])
+                    });
+
+                }
+                return app;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable DAO_ConsultarCategoriasInsumo()
         {
             conexion.Open();
@@ -53,18 +79,55 @@ namespace DAO
             conexion.Close();
             return ds;
         }
-
-        //public DataTable DAO_ConsultarCategoriasInsumo()
-        //{
-        //    conexion.Open();
-        //    SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasInsumo", conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    comando.ExecuteNonQuery();
-        //    DataTable dtCat = new DataTable();
-        //    SqlDataAdapter da = new SqlDataAdapter(comando);
-        //    da.Fill(dtCat);
-        //    conexion.Close();
-        //    return dtCat;
-        //}
+        //EJEMLO DE COMO DEBERIA USARSE LAS CONSULTAS CON LISTA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        public List<DTO_CategoriaInsumo> DAO_ConsultarCategoriasInsumo2()
+        {
+            List<DTO_CategoriaInsumo> list = new List<DTO_CategoriaInsumo>();
+            try
+            {
+                conexion.Open();
+                SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasInsumo", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    DTO_CategoriaInsumo dto = new DTO_CategoriaInsumo()
+                    {
+                        CI_idCategoriaInsumo = int.Parse(reader[0].ToString()),
+                        CI_nombreCategoria = reader[1].ToString()
+                    };
+                    list.Add(dto);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            conexion.Close();
+            return list;
+        }
+     
+        //para usar ahora
+        public void DAO_InsertCategoriaInsumo(DTO_CategoriaInsumo cat)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_INSERT_CATEGORIA_INSUMO", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@CI_nombreCategoria", cat.CI_nombreCategoria);   
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void DAO_ActualizarCategoriaInsumo(DTO_CategoriaInsumo cat)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_UPDATE_CATEGORIA_INSUMO", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@CI_idCategoriaInsumo", cat.CI_idCategoriaInsumo);
+            comando.Parameters.AddWithValue("@CI_nombreCategoria", cat.CI_nombreCategoria);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }
