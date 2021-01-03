@@ -73,16 +73,13 @@
     <Content Include="404.html" />
     <Content Include="ActualizarCotizacion.aspx" />
     <Content Include="ActualizarProveedor.aspx" />
-    <Content Include="AgregarIngrediente.aspx" />
     <Content Include="ActualizarMenuDia.aspx" />
     <Content Include="AgregarInsumo.aspx" />
     <Content Include="CalendariaMenu.aspx" />
     <Content Include="ActualizarEquivalencia.aspx" />
     <Content Include="ActualizarReceta.aspx" />
     <Content Include="ConsultarCotizacion.aspx" />
-    <Content Include="AgregarEquivalencia.aspx" />
     <Content Include="ConsultarEquivalencia.aspx" />
-    <Content Include="ActualizarIngrediente.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -141,11 +138,9 @@
     <Content Include="css\sweetalert2.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Gestionar Ingrediente.aspx" />
     <Content Include="GestionarCategoriaInsumo.aspx" />
     <Content Include="GestionarInsumo.aspx" />
     <Content Include="GestionarOC.aspx" />
-    <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarCotizacion.aspx" />
     <Content Include="GenerarOC.aspx" />
     <Content Include="GestionarProveedor.aspx" />
@@ -2036,13 +2031,6 @@
     <Compile Include="ActualizarReceta.aspx.designer.cs">
       <DependentUpon>ActualizarReceta.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarIngrediente.aspx.cs">
-      <DependentUpon>AgregarIngrediente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgregarIngrediente.aspx.designer.cs">
-      <DependentUpon>AgregarIngrediente.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AgregarInsumo.aspx.cs">
       <DependentUpon>AgregarInsumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2057,13 +2045,6 @@
     <Compile Include="CalendariaMenu.aspx.designer.cs">
       <DependentUpon>CalendariaMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarEquivalencia.aspx.cs">
-      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgregarEquivalencia.aspx.designer.cs">
-      <DependentUpon>AgregarEquivalencia.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ConsultarEquivalencia.aspx.cs">
       <DependentUpon>ConsultarEquivalencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2077,13 +2058,6 @@
     </Compile>
     <Compile Include="ConsultarCotizacion.aspx.designer.cs">
       <DependentUpon>ConsultarCotizacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ActualizarIngrediente.aspx.cs">
-      <DependentUpon>ActualizarIngrediente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ActualizarIngrediente.aspx.designer.cs">
-      <DependentUpon>ActualizarIngrediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
@@ -2106,13 +2080,6 @@
     <Compile Include="Empty.aspx.designer.cs">
       <DependentUpon>Empty.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Gestionar Ingrediente.aspx.cs">
-      <DependentUpon>Gestionar Ingrediente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Gestionar Ingrediente.aspx.designer.cs">
-      <DependentUpon>Gestionar Ingrediente.aspx</DependentUpon>
-    </Compile>
     <Compile Include="GestionarCategoriaInsumo.aspx.cs">
       <DependentUpon>GestionarCategoriaInsumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2133,13 +2100,6 @@
     </Compile>
     <Compile Include="GestionarOC.aspx.designer.cs">
       <DependentUpon>GestionarOC.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionarEquivalencia.aspx.cs">
-      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionarEquivalencia.aspx.designer.cs">
-      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarCotizacion.aspx.cs">
       <DependentUpon>GestionarCotizacion.aspx</DependentUpon>
