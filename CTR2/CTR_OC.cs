@@ -60,6 +60,9 @@ namespace CTR
         {
             return dao_oc.SelectPieEstadoOC();
         }
-
+        public DTO_OC Consultar_OC(int C_idCotizacion)
+        {
+            return dao_oc.SELECT_OC(C_idCotizacion);
+        }
     }
 }
