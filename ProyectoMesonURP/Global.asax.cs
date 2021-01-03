@@ -61,11 +61,8 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("GenerarOC", "GenerarOC", "~/GenerarOC.aspx", true);
             routes.MapPageRoute("GestionarCotizacion", "GestionarCotizacion", "~/GestionarCotizacion.aspx", true);
             routes.MapPageRoute("GestionarEquivalencia", "GestionarEquivalencia", "~/GestionarEquivalencia.aspx", true);
-            routes.MapPageRoute("AgregarEquivalencia", "AgregarEquivalencia", "~/AgregarEquivalencia.aspx", true);
+            routes.MapPageRoute("RegistrarEquivalencia", "RegistrarEquivalencia", "~/RegistrarEquivalencia.aspx", true);
             routes.MapPageRoute("ActualizarEquivalencia", "ActualizarEquivalencia", "~/ActualizarEquivalencia.aspx", true);
-            routes.MapPageRoute("AgregarIngrediente", "AgregarIngrediente", "~/AgregarIngrediente.aspx", true);
-            routes.MapPageRoute("ActualizarIngrediente", "ActualizarIngrediente", "~/ActualizarIngrediente.aspx", true);
-            routes.MapPageRoute("GestionarIngrediente", "GestionarIngrediente", "~/Gestionar Ingrediente.aspx", true);
             routes.MapPageRoute("ConsultarEquivalencia", "ConsultarEquivalencia", "~/ConsultarEquivalencia.aspx", true);
             routes.MapPageRoute("ActualizarDíaMenú", "ActualizarDíaMenú", "~/ActualizarMenuDia.aspx", true);
             routes.MapPageRoute("DetallesCotizacion", "DetallesCotizacion", "~/DetallesCotizacion.aspx", true);

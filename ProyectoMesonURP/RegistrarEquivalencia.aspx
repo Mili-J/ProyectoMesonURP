@@ -1,10 +1,8 @@
-﻿<%@ Page Title="Agregar Equivalencia" Language="C#" AutoEventWireup="true" CodeBehind="AgregarEquivalencia.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.AgregarEquivalencia" %>
-
+﻿<%@ Page Title="Equivalencia | Agregar Equivalencia" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistrarEquivalencia.aspx.cs" Inherits="ProyectoMesonURP.RegistrarEquivalencia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="women_main">
+ <div class="women_main">
         <!-- start content -->
         <div class="pd-ltr-20 xs-pd-20-10">
             <div class="page-header">

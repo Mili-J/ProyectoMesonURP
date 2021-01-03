@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
-using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CTR;
@@ -12,7 +12,7 @@ using DTO2;
 
 namespace ProyectoMesonURP
 {
-    public partial class AgregarEquivalencia : System.Web.UI.Page
+    public partial class RegistrarEquivalencia : System.Web.UI.Page
     {
         CTR_MedidaXFormatoCocina objFormatoC = new CTR_MedidaXFormatoCocina();
         DTO_MedidaXFormatoCocina _Dmxfcoc = new DTO_MedidaXFormatoCocina();
@@ -138,6 +138,20 @@ namespace ProyectoMesonURP
             }
 
         }
-
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionarEquivalencia.aspx");
+        }
+        protected void gvEquivalencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            id = Convert.ToInt32(gvEquivalencia.SelectedRow.RowIndex);
+            lblIndex.Text = id.ToString();
+        }
+        protected void gvEquivalencia_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+        }
+        protected void btnGuardar_ServerClick(object sender, EventArgs e)
+        {
+        }
     }
 }

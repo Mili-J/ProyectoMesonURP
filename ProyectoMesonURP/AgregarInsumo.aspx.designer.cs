@@ -11,7 +11,7 @@ namespace ProyectoMesonURP
 {
 
 
-    public partial class AgregarEquivalencia
+    public partial class AgregarInsumo
     {
 
         /// <summary>
@@ -24,129 +24,156 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtInsumo;
 
         /// <summary>
-        /// Control txtIngrediente.
+        /// Control DDLCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIngrediente;
+        protected global::System.Web.UI.WebControls.DropDownList DDLCategoria;
 
         /// <summary>
-        /// Control UpdatePanel4.
+        /// Control DDLFC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+        protected global::System.Web.UI.WebControls.DropDownList DDLFC;
 
         /// <summary>
-        /// Control ddlFormatoCocina.
+        /// Control PanelMedida1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFormatoCocina;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PanelMedida1;
 
         /// <summary>
-        /// Control rfvddlFormatoCocina.
+        /// Control DDLMedida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlFormatoCocina;
+        protected global::System.Web.UI.WebControls.DropDownList DDLMedida;
 
         /// <summary>
-        /// Control UpdatePanel5.
+        /// Control PanelMedida2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PanelMedida2;
 
         /// <summary>
-        /// Control txtCantidad.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
 
         /// <summary>
-        /// Control rfvtxtCantidad.
+        /// Control txtCantidadCo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCantidad;
+        protected global::System.Web.UI.WebControls.TextBox txtCantidadCo;
 
         /// <summary>
-        /// Control UpdatePanel3.
+        /// Control DDLMedida2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        protected global::System.Web.UI.WebControls.DropDownList DDLMedida2;
 
         /// <summary>
-        /// Control ddlMedida.
+        /// Control PanelMedida3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMedida;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PanelMedida3;
 
         /// <summary>
-        /// Control rfvddlMedida.
+        /// Control CheckBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvddlMedida;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
 
         /// <summary>
-        /// Control btnAñadirEquivalencia.
+        /// Control Label2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAñadirEquivalencia;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
 
         /// <summary>
-        /// Control gvEquivalencia.
+        /// Control TxtCantUn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEquivalencia;
+        protected global::System.Web.UI.WebControls.TextBox TxtCantUn;
 
         /// <summary>
-        /// Control lblIndex.
+        /// Control Label3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIndex;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
 
         /// <summary>
-        /// Control btnVolver.
+        /// Control Cantmin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Cantmin;
+
+        /// <summary>
+        /// Control TxtCantmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCantmin;
+
+        /// <summary>
+        /// Control Label5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label5;
+
+        /// <summary>
+        /// Control btnRegistrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnRegistrar;
     }
 }
