@@ -104,7 +104,27 @@ namespace DAO
                 throw ex;
             }
         }
-
+        public DTO_OC SELECT_OC(int C_idCotizacion)
+        {
+            conexion.Open();
+            DTO_OC oc = new DTO_OC();
+            SqlCommand comando = new SqlCommand("SP_SELECT_OC", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@C_idCotizacion", @C_idCotizacion);
+            comando.ExecuteNonQuery();
+            SqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                oc.OC_idOC = Convert.ToInt32(reader[0]);
+                oc.OC_numeroOc = Convert.ToString(reader[1]);
+                oc.OC_fechaEmision = Convert.ToDateTime(reader[2]);
+                oc.OC_fechaEntrega = Convert.ToDateTime(reader[3]);
+                oc.OC_tipoPago = Convert.ToString(reader[4]);
+                oc.OC_totalCompra = Convert.ToInt32(reader[5]);
+            }
+            conexion.Close();
+            return oc;
+        }
         public void UPDATE_EstadoOC(int idOC)
         {
             conexion.Open();

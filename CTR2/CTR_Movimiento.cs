@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace CTR
@@ -16,6 +17,10 @@ namespace CTR
         public void InsertMovGO(DTO_Movimiento objDto)
         {
             dao_movimiento.InsertMovimientoGO(objDto);
+        }
+        public DataTable ListarMovimiento(string FechaInicial, string FechaFinal)
+        {
+            return dao_movimiento.SelectMovimiento(FechaInicial, FechaFinal);
         }
     }
 }

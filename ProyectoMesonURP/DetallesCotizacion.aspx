@@ -50,7 +50,8 @@
                             <label class="col-sm-12 col-md-5 col-form-label">Fecha de Entrega</label>
                             <div class="col-sm-12 col-md-6">
                                 <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control" TextMode="Date"></asp:TextBox>
-                            </div>
+                                 <asp:TextBox ID="txtFechaEntrega1" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+                           </div>
                         </div>
                         <div class="form-group row justify-content-center">
                             <label class="col-sm-12 col-md-5 col-form-label">Forma de pago</label>
@@ -60,7 +61,8 @@
                                     <asp:ListItem Value="Efectivo">Efectivo</asp:ListItem>
                                     <asp:ListItem Value="Crédito">Crédito</asp:ListItem>
                                 </asp:DropDownList>
-                            </div>
+                                 <asp:TextBox ID="txtFormaPago" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -127,8 +129,22 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
-                                                <asp:BoundField HeaderText="PrecioUnitario" DataField="DOC_precioUnitario"/>
-                                                <asp:BoundField HeaderText="Total" DataField="DOC_totalPrecio"/>
+                                                <asp:TemplateField HeaderText="Precio Unitario">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblPrecioUnitario" runat="server" Text='<%# Bind("DOC_precioUnitario")%>'></asp:Label>
+                                                 </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:Label runat="server">TOTAL:</asp:Label>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Precio Total">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblTotalPrecio" runat="server" Text='<%# Bind("DOC_totalPrecio")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:Label runat="server" ID="lblTotal" Text="0.00"></asp:Label>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
                                     </div>
@@ -160,7 +176,7 @@
         function alertaExito() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha logrado enviar el correo correctamente',
+                text: 'Se registro correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })

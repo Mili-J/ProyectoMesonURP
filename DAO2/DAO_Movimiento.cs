@@ -29,5 +29,19 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataTable SelectMovimiento(string FechaInicial, string FechaFinal)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_MOVIMIENTOS_X_FECHA", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@FechaInicial", FechaInicial);
+            comando.Parameters.AddWithValue("@FechaFinal", FechaFinal);
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

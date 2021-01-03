@@ -25,19 +25,32 @@ namespace ProyectoMesonURP
             {
                 CargarOc();
                 CargargvInsumos();
+                txtFechaEmision.Text = FechaActual;
+                txtFechaEntrega.Text = FechaActual;
             }
-            txtFechaEmision.Text = FechaActual;
-            txtFechaEntrega.Text = FechaActual;
         }
         public void CargarOc()
         {
-            txtNdeCompra.Text = _Coc.ListarNumeroOC();
+            int idCot = (int)Session["idCot"];
+            _Doc = _Coc.Consultar_OC(idCot);
+            txtNdeCompra.Text = _Doc.OC_numeroOc;
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
+            txtFechaEmision.Text = Convert.ToString(_Doc.OC_fechaEmision);
+            txtFechaEntrega.Text = Convert.ToString(_Doc.OC_fechaEntrega);
+            txtFormaPago.Text = Convert.ToString(_Doc.OC_tipoPago);
         }
         public void CargargvInsumos()
         {
             gvInsumos.DataSource = _Cdoc.CargarDetalleOC(Convert.ToInt32(Session["idcotizacion"])); //CREAR OTRO PROCEDIMIENTO
             gvInsumos.DataBind();
+
+            decimal sum = decimal.Zero;
+            for (int i = 0; i < gvInsumos.Rows.Count; i++)
+            {
+                sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblTotalPrecio")).Text == string.Empty ? "0" : ((Label)gvInsumos.Rows[i].FindControl("lblTotalPrecio")).Text);
+            }
+                   ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text = sum.ToString();
+            Session["Totaldecompra"] = ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text;
         }
         public void CorreoOC()
         {
