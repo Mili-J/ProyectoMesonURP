@@ -122,8 +122,10 @@
                                         <asp:BoundField HeaderText="E_cantidad" DataField="E_cantidad" />
                                         <asp:BoundField HeaderText="MXF_cantidadContenida" DataField="MXF_cantidadContenida" />--%>
 
-                                        <asp:BoundField HeaderText="Cantidad" Datafield="numTotal"/>
+                                        <asp:BoundField HeaderText="Número total" Datafield="numTotal"/>
                                         <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
+                                        <asp:BoundField HeaderText="Cantidad" Datafield="Cantidad"/>
+                                        <asp:BoundField HeaderText="Unidad" Datafield="Medida"/>
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>
@@ -164,7 +166,8 @@
                         <hr />
                         <p class="center-button">
                             <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Agregar"/>
-                            <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />
+                            <%--<input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />--%>
+                            <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" OnClick="btnRegresar_Click" Text="Regresar"/>
                             <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
                             <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />
                         </p>

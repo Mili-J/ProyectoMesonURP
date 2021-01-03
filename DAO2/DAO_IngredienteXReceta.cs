@@ -172,7 +172,7 @@ namespace DAO
         public DataTable DAO_ConsultarIngredientesXReceta(int R_idReceta,int cat,int porcion)
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarIngredientesXReceta", conexion);
+            SqlCommand comando = new SqlCommand("SP_ConsultarIngredientesXReceta2", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@R_idReceta", R_idReceta);
             comando.Parameters.AddWithValue("@CI_idCategoriaInsumo", cat);
