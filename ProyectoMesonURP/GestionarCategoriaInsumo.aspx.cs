@@ -53,8 +53,10 @@ namespace ProyectoMesonURP
                 index = int.Parse(e.CommandArgument.ToString());
                 hidden.Value = ((Label)GridViewCategoria.Rows[index].FindControl("lblIdCategoria")).Text;
                 ScriptManager.RegisterStartupScript(this, GetType(), "modal", "$('#modalConsultar').modal('show');", true);
-                string id = ((Label)GridViewCategoria.Rows[index].FindControl("lblIDInsumo")).Text;
+                string id = ((Label)GridViewCategoria.Rows[index].FindControl("lblIdCategoria")).Text;
                 List<DTO_Insumo> lista = new CTR_Insumo().CTR_ConsultarInsumoXCategoria(int.Parse(id));
+                GridViewConsulta.DataSource = lista;
+                GridViewConsulta.DataBind();
             }
 
         }
