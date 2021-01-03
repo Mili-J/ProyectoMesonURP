@@ -139,6 +139,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionarCategoriaInsumo.aspx" />
+    <Content Include="GestionarEquivalencia.aspx" />
     <Content Include="GestionarInsumo.aspx" />
     <Content Include="GestionarOC.aspx" />
     <Content Include="GestionarCotizacion.aspx" />
@@ -309,6 +310,7 @@
     <Content Include="Recepción_Insumos.aspx" />
     <Content Include="multifield.js" />
     <Content Include="RegistrarCotizacion.aspx" />
+    <Content Include="RegistrarEquivalencia.aspx" />
     <Content Include="RegistrarProveedor.aspx" />
     <Content Include="RegistrarReceta.aspx" />
     <Content Include="SeleccionarMenuDia.aspx" />
@@ -2087,6 +2089,13 @@
     <Compile Include="GestionarCategoriaInsumo.aspx.designer.cs">
       <DependentUpon>GestionarCategoriaInsumo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionarEquivalencia.aspx.cs">
+      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarEquivalencia.aspx.designer.cs">
+      <DependentUpon>GestionarEquivalencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionarInsumo.aspx.cs">
       <DependentUpon>GestionarInsumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2188,6 +2197,13 @@
     </Compile>
     <Compile Include="Recepción_Insumos.aspx.designer.cs">
       <DependentUpon>Recepción_Insumos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarEquivalencia.aspx.cs">
+      <DependentUpon>RegistrarEquivalencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarEquivalencia.aspx.designer.cs">
+      <DependentUpon>RegistrarEquivalencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarProveedor.aspx.cs">
       <DependentUpon>RegistrarProveedor.aspx</DependentUpon>
