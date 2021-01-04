@@ -71,21 +71,6 @@ namespace ProyectoMesonURP
                 List<DTO_Equivalencia_SP> lista = new CTR_Equivalencia().CTRconsultarDetalleExI(int.Parse(id));
                 GridView1.DataSource = lista;
                 GridView1.DataBind();
-                //int I_idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
-                //Session["idIngrediente"] = I_idIngrediente;
-                //string ingrediente = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[3].Text;
-                //Session["ingrediente"] = ingrediente;
-                //Response.Redirect("ConsultarEquivalencia");
-                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal('show');", true);
-                //upModal.Update();
-                //var modal = _Ce.CTRconsultarDetalleExI(I_idIngrediente);
-                //lblModalTitle.Text = "Detalle de la Equivalencia del Ingrediente";
-
-                ////txtnIngrediente.Text = modal.Rows[0]["I_nombreIngrediente"].ToString();
-                ////txtnIngrediente.Enabled = false;
-
-                //GridView1.DataSource = modal;
-                //GridView1.DataBind();
             }
         }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
