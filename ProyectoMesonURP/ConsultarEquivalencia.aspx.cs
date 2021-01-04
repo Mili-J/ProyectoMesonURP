@@ -24,9 +24,9 @@ namespace ProyectoMesonURP
         }
         public void LLenarDatosE()
         {
-            dt = _Ce.CTRconsultarDetalleExI((Convert.ToInt32(Session["idIngrediente"])));
-            gvEquivalencia.DataSource = dt;
-            gvEquivalencia.DataBind();
+            //dt = _Ce.CTRconsultarDetalleExI((Convert.ToInt32(Session["idIngrediente"])));
+            //gvEquivalencia.DataSource = dt;
+            //gvEquivalencia.DataBind();
         }
         protected void gvEquivalencia_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

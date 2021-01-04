@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CTR;
 using DTO;
+using DTO2;
 using System.Drawing;
 using System.Data;
 
@@ -15,6 +16,7 @@ namespace ProyectoMesonURP
     {
         CTR_Ingrediente _Ci = new CTR_Ingrediente();
         DTO_Ingrediente _Di = new DTO_Ingrediente();
+        DTO_Equivalencia_SP _Desp = new DTO_Equivalencia_SP();
         CTR_CategoriaInsumo objCatInsumo;
         DataSet dsCatInsumo;
         protected void Page_Load(object sender, EventArgs e)
@@ -47,13 +49,13 @@ namespace ProyectoMesonURP
         }
         protected void GVEquivalencia_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            int index = 0;
             if (e.CommandName == "AgregarEquivalencia")
             {
                 int idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
                 Session["idIngrediente"] = idIngrediente;
 
-                string insumo = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[1].Text;
+                string insumo = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[2].Text;
                 Session["insumo"] = insumo;
                 string ingrediente = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[3].Text;
                 Session["ingrediente"] = ingrediente;
@@ -62,21 +64,13 @@ namespace ProyectoMesonURP
             }
             else if (e.CommandName == "VerEquivalencia")
             {
-                int I_idIngrediente = Convert.ToInt32(gvEquivalencia.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idIngrediente"].ToString());
-                Session["idIngrediente"] = I_idIngrediente;
-                string ingrediente = gvEquivalencia.Rows[Convert.ToInt32(e.CommandArgument)].Cells[3].Text;
-                Session["ingrediente"] = ingrediente;
-                Response.Redirect("ConsultarEquivalencia");
-                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal('show');", true);
-                //upModal.Update();
-                //var modal = _Ce.CTRconsultarDetalleExI(I_idIngrediente);
-                //lblModalTitle.Text = "Detalle de la Equivalencia del Ingrediente";
-
-                ////txtnIngrediente.Text = modal.Rows[0]["I_nombreIngrediente"].ToString();
-                ////txtnIngrediente.Enabled = false;
-
-                //GridView1.DataSource = modal;
-                //GridView1.DataBind();
+                index = int.Parse(e.CommandArgument.ToString());
+                hidden.Value = ((Label)gvEquivalencia.Rows[index].FindControl("lblIdIngrediente")).Text;
+                ScriptManager.RegisterStartupScript(this, GetType(), "modal", "$('#myModal').modal('show');", true);
+                string id = ((Label)gvEquivalencia.Rows[index].FindControl("lblIdIngrediente")).Text;
+                List<DTO_Equivalencia_SP> lista = new CTR_Equivalencia().CTRconsultarDetalleExI(int.Parse(id));
+                GridView1.DataSource = lista;
+                GridView1.DataBind();
             }
         }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)

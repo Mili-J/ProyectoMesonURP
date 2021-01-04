@@ -18,7 +18,8 @@
                 </div>
             </div>
         </div>
-        <div class="pd-20 card-box">
+        <div class="pd-20 card-box"  runat="server" id="PanelIngrediente">
+            
             <div class="row pt-1">
                 <div class="col-sm-12 col-md-6">
                     <label class="control-label col-md-2">Paginación:</label>
@@ -57,7 +58,7 @@
                 
                 <div class="col-md-3">
                     <label>Ingrediente</label>
-                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"></asp:TextBox> 
+                    <asp:TextBox ID="txtIngrediente" CssClass="form-control" runat="server"  onkeypress="return soloLetras(event);" placeholder="Ingrese un nombre"></asp:TextBox> 
                     <asp:RequiredFieldValidator ID="rfvtxtIngrediente" runat="server" ControlToValidate="txtIngrediente" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="equivalencia1"></asp:RequiredFieldValidator>          
                 </div>
                 <div class="col-md-3 pt-20">
@@ -70,19 +71,26 @@
             <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" Text="0" Visible="false"></asp:TextBox>
             <div class="padding-bottom-30"></div>
             <div class="panel panel-widget forms-panel">
-                <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
                         <h5>Equivalencia de los Ingredientes</h5>
                     </div>
                     <div class="w3-row-padding">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                             <asp:GridView ID="gvEquivalencia" allowpaging="True" runat="server" OnRowCommand="GVEquivalencia_RowCommand" OnRowDataBound="gvEquivalencia_RowDataBound" DataKeyNames="I_idInsumo,I_nombreInsumo,I_idIngrediente,I_nombreIngrediente, cantidad"
                                 EmptyDataText="No hay información disponible." AutoGenerateColumns="False" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnPageIndexChanging="gvEquivalencia_PageIndexChanging">
                                <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
                                 <Columns>
+                                    <asp:TemplateField Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" ID="lblIdIngrediente" Text='<%# Eval("I_idIngrediente") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="I_idInsumo" HeaderText="I_idInsumo" Visible="false" />
                                     <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" />
-                                    <asp:BoundField DataField="I_idIngrediente" HeaderText="I_idIngrediente" Visible="false" />
+                                   <%-- <asp:BoundField DataField="I_idIngrediente" HeaderText="I_idIngrediente" Visible="false" />--%>
                                     <asp:BoundField DataField="I_nombreIngrediente" HeaderText="Ingrediente" />
                                     <asp:TemplateField HeaderText="Total" Visible="false">
                                       <ItemTemplate>
@@ -101,11 +109,56 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-
+                                    <asp:HiddenField ID="hidden" runat="server" />
                         </div>
+                     </ContentTemplate>
+            </asp:UpdatePanel>
                     </div>
                 </div>
 
+            </div>
+                
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabelConsu">Detalle del ingrediente</h5>
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="GridView1" AllowPaging="False" runat="server" EmptyDataText="No hay información disponible."
+                                            AutoGenerateColumns="False" 
+                                            CssClass="table table-bordered table-striped mb-0" Style="text-align: center" CellPadding="4" PageSize="5" GridLines="None">
+                                            <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"></PagerStyle>
+                                            <Columns>
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label runat="server" ID="lblIDIngrediente" Text='<%# Eval("I_idIngrediente") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField HeaderText="Nombre Ingrediente" DataField="I_nombreIngrediente" Visible="false"/>
+                                                <asp:BoundField HeaderText="Formato Cocina" DataField="FCO_nombreFormatoCocina" />
+                                                <asp:BoundField HeaderText="Cantidad" DataField="E_cantidad" />
+                                                <asp:BoundField HeaderText="MXFC_idMedidaFCocina" DataField="MXFC_idMedidaFCocina" Visible="false"/>
+                                                <asp:BoundField HeaderText="Medida" DataField="M_nombreMedida" />
+                                            </Columns>
+                                        </asp:GridView>
+                                        <asp:HiddenField ID="HiddenField1" runat="server" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

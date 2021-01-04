@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using DTO;
+using DTO2;
 
 namespace DAO
 {
@@ -12,7 +13,6 @@ namespace DAO
         SqlConnection conexion;
         DTO_Equivalencia dto_eq;
         
-
         public DAO_Equivalencia()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
@@ -108,22 +108,55 @@ namespace DAO
                 throw;
             }
         }
-        public DataTable DAOconsultarDetalleExI(int I_idIngrediente)
+        //public DataTable DAOconsultarDetalleExI(int I_idIngrediente)
+        //{
+        //    try
+        //    {
+        //        conexion.Open();
+        //        SqlDataAdapter _Data = new SqlDataAdapter("SP_Consultar_Detalle_ExI", conexion);
+        //        _Data.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //        _Data.SelectCommand.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+        //        DataSet _Ds = new DataSet();
+        //        _Data.Fill(_Ds);
+        //        return _Ds.Tables[0];
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+        public List<DTO_Equivalencia_SP> DAOconsultarDetalleExI(int I_idIngrediente)
         {
+            List<DTO_Equivalencia_SP> list = new List<DTO_Equivalencia_SP>();
             try
             {
                 conexion.Open();
-                SqlDataAdapter _Data = new SqlDataAdapter("SP_Consultar_Detalle_ExI", conexion);
-                _Data.SelectCommand.CommandType = CommandType.StoredProcedure;
-                _Data.SelectCommand.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
-                DataSet _Ds = new DataSet();
-                _Data.Fill(_Ds);
-                return _Ds.Tables[0];
+                SqlCommand comando = new SqlCommand("SP_Consultar_Detalle_ExI", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                comando.Parameters.AddWithValue("@I_idIngrediente", I_idIngrediente);
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    DTO_Equivalencia_SP dto = new DTO_Equivalencia_SP()
+                    {
+                        I_idIngrediente = int.Parse(reader[0].ToString()),
+                        I_nombreIngrediente = reader[1].ToString(),
+                        E_cantidad = decimal.Parse(reader[2].ToString()),
+                        MXFC_idMedidaFCocina = int.Parse(reader[3].ToString()),
+                        M_nombreMedida = reader[4].ToString(),
+                        FCO_nombreFormatoCocina = reader[5].ToString(),
+                    };
+                    list.Add(dto);
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
+            conexion.Close();
+            return list;
         }
     }
 }

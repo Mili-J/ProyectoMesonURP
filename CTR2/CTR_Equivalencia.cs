@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using DTO;
 using DAO;
+using DTO2;
 
 namespace CTR
 {
@@ -35,7 +36,11 @@ namespace CTR
         {
             return objEquivalencia.SelectExistenciaIngredientexMxfc(I_idIngrediente, MXFC_idMedidaFCocina);
         }
-        public DataTable CTRconsultarDetalleExI(int I_idIngrediente)
+        //public DataTable CTRconsultarDetalleExI(int I_idIngrediente)
+        //{
+        //    return objEquivalencia.DAOconsultarDetalleExI(I_idIngrediente);
+        //}
+        public List<DTO_Equivalencia_SP> CTRconsultarDetalleExI(int I_idIngrediente)
         {
             return objEquivalencia.DAOconsultarDetalleExI(I_idIngrediente);
         }
