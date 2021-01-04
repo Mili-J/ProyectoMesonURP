@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO_Equivalencia_SP.cs" />
     <Compile Include="DTO_FormatoCocina.cs" />
     <Compile Include="DTO_CategoriaInsumo.cs" />
     <Compile Include="DTO_CategoriaPlato.cs" />
