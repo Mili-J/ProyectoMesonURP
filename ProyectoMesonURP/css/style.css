@@ -28,8 +28,8 @@ p {
 input,
 button,
 select,
-textarea {
-    font-family: 'Open Sans';
+textarea btn-secondary
+font-family: 'Open Sans';
 }
 
 .dropdown .dropdown-menu {

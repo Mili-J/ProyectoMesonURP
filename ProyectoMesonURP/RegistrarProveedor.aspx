@@ -145,6 +145,130 @@
                 }
             });
         }
+        var validacion;
+        var mensaje = "";
+        var cont = 0;
+        function numericValidation() {
+            validacion = true;
+            mensaje = "";
+            //var numbers = /^[0-9]+$/; //only for numbers
+            cont = 0;
+            var letters = /^[A-Za-z]+$/;
+
+            //[0-9]+ matches 1 or more digits [,-] matches a , or a -
+            /// /^[A-Za-z]+$/  para las letras
+            //(...)? is an optional match
+            /// /^[0-9]+([,-][0-9]+)?$/
+
+            //^ anchors the start and $ anchors the end of the string
+            var PR_razonSocial = document.getElementById('<%=PR_razonSocial.ClientID%>').value;
+            var PR_numeroDocumento = document.getElementById('<%=PR_numeroDocumento.ClientID%>').value;
+            var PR_direccion = document.getElementById('<%=PR_direccion.ClientID%>').value;
+            var PR_nombreContacto = document.getElementById('<%=PR_nombreContacto.ClientID%>').value;
+            var PR_telefonoContacto = document.getElementById('<%=PR_telefonoContacto.ClientID%>').value;
+            var PR_correoContacto = document.getElementById('<%=PR_correoContacto.ClientID%>').value;
+
+
+            /*if (vacio(PR_nombreContacto, "Nombre del Proveedor") || vacio(PR_numeroDocumento, "Nro de Documento") ||vacio(PR_razonSocial, "Razon Social") || vacio(PR_direccion, "Direccion") || vacio(PR_telefonoContacto, "Telefono Contacto") || vacio(PR_correoContacto, "Correo") ) {
+                cont++;
+            }
+            else if (numeros(PR_numeroDocumento, "Nro de Documento")) {
+                cont++;
+            }
+            if (cont > 0) {
+                alert(cont);
+                swal("Valor del campo Incorrecto!", mensaje, "error");
+                validacion = false;
+             }*/
+
+            vacio(PR_nombreContacto, "Nombre del Proveedor");
+            //vacio(PR_numeroDocumento, "Nro de Documento");
+            documento(PR_numeroDocumento, "Nro de Documento");
+            vacio(PR_razonSocial, "Razon Social");
+            vacio(PR_direccion, "Direccion");
+            telefonos(PR_telefonoContacto, "Telefono ");
+            correos(PR_correoContacto, "Correo");
+            validarChecks();
+            if (cont > 0) {
+                swal("Valor(es) de campo(s) Incorrecto(s)!", mensaje, "error");
+                validacion = false;
+            }
+            // alert(cont);
+            return validacion;
+        }
+
+        function vacio(valor, nombreCampo) {
+            if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+                cont++;
+                mensaje += "Ingrese un valor en el campo " + nombreCampo + "\n\n";
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function numeros(valor, nombreCampo) {
+            if (isNaN(valor)) {
+                cont++;
+                mensaje += "Ingrese solo numeros en el campo " + nombreCampo + "\n\n";
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function correos(valor, nombreCampo) {
+            if (!(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(valor))) {
+                cont++;
+                mensaje += "Ingrese un correo valido en el campo " + nombreCampo + "\n\n";
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function documento(valor, nombreCampo) {
+            if (!(/^\d{8}(?:[-\s]\d{4})?$/.test(valor))) {
+                cont++;
+                mensaje += "Ingrese un numero de documento valido en el campo " + nombreCampo + "\n\n";
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function telefonos(valor, nombreCampo) {
+            if (!(/^\d{9}$/.test(valor))) {
+                cont++;
+                mensaje += "Ingrese el un telefono que contenga 9 caracteres numericos en el campo " + nombreCampo + "\n\n";
+
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function validarChecks() {
+            var checkbox = document.getElementsByName('checks');
+            var contador = 0;
+            for (var i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].checked)
+                    contador++
+
+            }
+
+            //Con JQuery contador=$('[name="groupCheckbox[]"]:checked').length
+            if (contador == 0) {
+                mensaje += "Seleccione por lo menos una categoria para el proveedor \n\n";
+                cont++;
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
 
         function pedirChecks(idProveedor) {
@@ -153,8 +277,15 @@
                 console.log("Id: " + $(this).attr("id") + " Value: " + $(this).val());
                 registrarCategoria(idProveedor, $(this).attr("id"));
             });
-            alert("Registro Exitoso");
-            location.href = "GestionarProveedor.aspx"
+
+            swal({
+                title: "Se Registro",
+                text: "correctamente",
+                type: "success"
+            }).then(function () {
+                location.href = "GestionarProveedor.aspx"
+            });
+
 
         }
 
@@ -165,29 +296,27 @@
             var PR_nombreContacto = document.getElementById('<%=PR_nombreContacto.ClientID%>').value;
             var PR_telefonoContacto = document.getElementById('<%=PR_telefonoContacto.ClientID%>').value;
             var PR_correoContacto = document.getElementById('<%=PR_correoContacto.ClientID%>').value;
-            $.ajax({
-                type: "POST",
-                url: 'RegistrarProveedor.aspx/registrarProveedor',
-                data: "{ PR_razonSocial : '" + PR_razonSocial + "',PR_numeroDocumento:'" + PR_numeroDocumento + "',PR_direccion:'" + PR_direccion + "', PR_nombreContacto: '" + PR_nombreContacto + "',PR_telefonoContacto:'" + PR_telefonoContacto + "', PR_correoContacto:'" + PR_correoContacto + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",                                          // formato de transmición de datos
-                async: true,                                                // si es asincrónico o no
-                success: function (resultado) {
-                    //alert(JSON.stringify(resultado));
-                    //alert("asdfsdf" + Object.values(resultado));
 
-                    pedirChecks(Object.values(Object.values(resultado)));
-                    //alert("s:" + resultado.id);
-                    //pedirChecks();
-                    // función que va a ejecutar si el pedido fue exitoso
-                    // alert(JSON.stringify(resultado));
-                    //location.href = "GestionarProveedor.aspx"
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
-                    var error = eval("(" + XMLHttpRequest.responseText + ")");
-                    //alert(error.Message);
-                }
-            });
+            if (numericValidation()) {
+                $.ajax({
+                    type: "POST",
+                    url: 'RegistrarProveedor.aspx/registrarProveedor',
+                    data: "{ PR_razonSocial : '" + PR_razonSocial + "',PR_numeroDocumento:'" + PR_numeroDocumento + "',PR_direccion:'" + PR_direccion + "', PR_nombreContacto: '" + PR_nombreContacto + "',PR_telefonoContacto:'" + PR_telefonoContacto + "', PR_correoContacto:'" + PR_correoContacto + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",                                          // formato de transmición de datos
+                    async: true,                                                // si es asincrónico o no
+                    success: function (resultado) {
+                        //alert(JSON.stringify(resultado));
+                        //alert("asdfsdf" + Object.values(resultado));
+                        pedirChecks(Object.values(Object.values(resultado)));
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+                        var error = eval("(" + XMLHttpRequest.responseText + ")");
+                    }
+                });
+            }
+
+
             return false;
         }
 
@@ -201,15 +330,11 @@
                 dataType: "json",                                          // formato de transmición de datos
                 async: true,                                                // si es asincrónico o no
                 success: function (resultado) {
-                    // alert(JSON.stringify(resultado));
-                    //pedirChecks();
-                    // función que va a ejecutar si el pedido fue exitoso
-                    // alert(JSON.stringify(resultado));
-                    //location.href = "GestionarProveedor.aspx"
+                    //alert(JSON.stringify(resultado));
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
                     var error = eval("(" + XMLHttpRequest.responseText + ")");
-                    //alert(error.Message);
+                    alert(error.Message);
                 }
             });
             return false;
