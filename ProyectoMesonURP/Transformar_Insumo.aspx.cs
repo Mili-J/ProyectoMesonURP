@@ -181,7 +181,7 @@ namespace ProyectoMesonURP
            // DateTime week = DateTime.Today.DayOfWeek;
             if (e.Day.Date.DayOfWeek == DayOfWeek.Monday)
             {
-                e.Day.IsSelectable = false;
+                e.Day.IsSelectable = false; 
             }
         }
 
