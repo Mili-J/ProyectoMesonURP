@@ -349,7 +349,7 @@ template {
 }
 
 .h5, h5 {
-    font-size: 1.25rem;
+    font-size: 1.10rem;
 }
 
 .h6, h6 {
@@ -2041,6 +2041,7 @@ pre {
 
     .table-bordered td, .table-bordered th {
         border: 1px solid #dee2e6;
+        width: 15%
     }
 
     .table-bordered thead td, .table-bordered thead th {

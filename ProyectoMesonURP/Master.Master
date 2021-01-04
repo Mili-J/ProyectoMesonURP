@@ -164,7 +164,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Insumo Personalizado:</h6>
                         <a class="collapse-item" href="GestionarInsumo.aspx">Gestionar Insumo</a>
-                        <a class="collapse-item" href="Empty.aspx">Gestionar Categoría</a>
+                        <a class="collapse-item" href="GestionarCategoriaInsumo.aspx">Gestionar Categoría</a>
                         <a class="collapse-item" href="GestionarEquivalencia">Gestionar Equivalencia</a>
                     </div>
                 </div>
@@ -479,9 +479,14 @@
     <!-- Page level custom scripts -->
    <%-- <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>--%>
-         
+     <script> 
+            $(document).ready(function () {
+                addEventListener("load", function () { setTimeout(hideURLbar, 0); }, false);
+                function hideURLbar() { window.scrollTo(0, 1); }
+            });
+     </script>
         <script src="../js/jquery.nicescroll.js"></script>
-           
+    <script src="js/scripts.js"></script>
     </body>
 </html>
 
