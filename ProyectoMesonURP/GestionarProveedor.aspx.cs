@@ -66,6 +66,21 @@ namespace ProyectoMesonURP
         {
 
         }
+        protected void gvPro_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int estado = Convert.ToInt16(DataBinder.Eval(e.Row.DataItem, "EP_idEstadoProveedor").ToString());
 
+                if (estado == 1)
+                {
+                    e.Row.Cells[7].Text = "<span class='badge badge-secondary'>" + "Activo" + "</span>";
+                }
+                else if (estado == 2)
+                {
+                    e.Row.Cells[7].Text = "<span class='badge badge-success'>" + "Inactivo" + "</span>";
+                }
+            }
+        }
     }
 }

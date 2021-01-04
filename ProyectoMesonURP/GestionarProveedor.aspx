@@ -1,55 +1,72 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="GestionarProveedor.aspx.cs" Inherits="ProyectoMesonURP.GestionarProveedor" EnableEventValidation="false"%>
-
+﻿<%@ Page Title="MesónURP | Gestionar Proveedor" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="GestionarProveedor.aspx.cs" Inherits="ProyectoMesonURP.GestionarProveedor" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .mb-0 {
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
         <!-- start content -->
-        <div class="grids">
-            <div class="progressbar-heading grids-heading title-flex">
-                <h2 class="tittle-margin5">Gestionar Proveedor</h2>
-            </div>
-            <div class="search-buttons">
-                <div class="search">
-                    <asp:TextBox ID="txtBuscarInsumo" runat="server" CssClass="form-control1" onkeypress="return lettersOnly(event);" placeholder="Buscar Proveedor" />
-                    <button type="button" id="btnBuscar" runat="server">
-                        <span class="material-icons">search
-                        </span>
+         <div class="page-header">
+             <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Gestionar Proveedor</h4>
+                        </div>
+                    </div>
+                 <div class="header-right pt-2 pr-4">
+                    <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;" onclick="registrar()">     
+                        <span class="material-icons margin-5">add_circle_outline</span>
+                        Añadir Proveedor
                     </button>
                 </div>
+               </div>
+           </div>
+           <div class="pd-20 card-box">
+             <div class="row pt-1">
+                <div class="col-sm-12 col-md-6">
+                    <label class="control-label col-md-2">Paginación:</label>
+                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" Style="width: auto; height: 38px" runat="server" AutoPostBack="true">
+                    </asp:DropDownList>
+                </div>
+                <div class="col-sm-12 col-md-3 pl-30"></div>
+                <div class="col-sm-12 col-md-3 pl-30">
+                    <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
+                        <asp:TextBox ID="txtBuscarProveedor" runat="server" class="form-control" AutoPostBack="True" onkeypress="return soloLetras(event);" placeholder="Buscar Proveedor..." />
+                        <i class="search_icon dw dw-search"></i>
+                    </div>
+                </div>
             </div>
-            <button type="button" onclick="registrar()" class="btn btn-warning">Registrar</button>
+
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
-                        <h4>Proveedores</h4>
+                        <h5>Proveedores</h5>
                     </div>
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                        <asp:GridView ID="gvPro" AllowPaging="True" AutoGenerateColumns="False" runat="server" EmptyDataText="No hay información disponible." OnRowCommand="gvPro_RowCommand"
+                        <asp:GridView ID="gvPro" AllowPaging="True" AutoGenerateColumns="False" runat="server" EmptyDataText="No hay información disponible." OnRowCommand="gvPro_RowCommand" OnRowDataBound="gvPro_RowDataBound"
                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="PR_idProveedor,PR_razonSocial,PR_numeroDocumento,PR_direccion,PR_nombreContacto,PR_telefonoContacto,PR_correoContacto,EP_idEstadoProveedor"
-                            Style="text-align: center" OnPageIndexChanging="gvPro_PageIndexChanging" CellPadding="4" PageSize="6" OnSelectedIndexChanged="gvPro_SelectedIndexChanged" GridLines="None">
+                            Style="text-align: center" OnPageIndexChanging="gvPro_PageIndexChanging" CellPadding="4" PageSize="5" OnSelectedIndexChanged="gvPro_SelectedIndexChanged" GridLines="None">
+                            <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle>
                             <columns>
-                                <asp:BoundField DataField="PR_idProveedor" HeaderText="PR_idProveedor" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField DataField="PR_razonSocial" HeaderText="Razon Social" />
-                                <asp:BoundField DataField="PR_numeroDocumento" HeaderText="Numero de Documento" />
-                                <asp:BoundField DataField="PR_direccion" HeaderText="Direccion" />
+                                <asp:BoundField DataField="PR_idProveedor" HeaderText="Id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" Visible="false"/>
+                                <asp:BoundField DataField="PR_numeroDocumento" HeaderText="N° Documento"/>
+                                <asp:BoundField DataField="PR_razonSocial" HeaderText="Razón Social" />
+                                <asp:BoundField DataField="PR_direccion" HeaderText="Dirección" />
                                 <asp:BoundField DataField="PR_nombreContacto" HeaderText="Nombre Contacto" />
-                                <asp:BoundField DataField="PR_telefonoContacto" HeaderText="Telefono Contacto" />
-                                <asp:BoundField DataField="PR_correoContacto" HeaderText="Correo Contacto" />
-                                <asp:BoundField DataField="EP_idEstadoProveedor" HeaderText="Estado del Proveedor"/>
-                                <asp:TemplateField HeaderText="Actualizar">
+                                <asp:BoundField DataField="PR_telefonoContacto" HeaderText="Teléfono" />
+                                <asp:BoundField DataField="PR_correoContacto" HeaderText="Correo" Visible="false" />
+                                <asp:BoundField DataField="EP_idEstadoProveedor" HeaderText="Estado"/>
+                                <asp:TemplateField HeaderText="Editar">
                                     <ItemTemplate>
                                         <asp:ImageButton ID="btnActualizar" ImageUrl="img/editar-b.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar-b.png'" OnClientClick="javascript:return actualizar(this)"  runat="server" CommandName="Actualizar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>" /><!--OnClientClick="javascript:createPDF()  OnClientClick="javascript:return getDatos(this)" "-->
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Opciones">
-                                    <ItemTemplate>
-                                        <asp:ImageButton ID="btnRecepcionar" ImageUrl="img/recepcionar.png" onmouseover="this.src='img/recepcionar-b.png'" onmouseout="this.src='img/recepcionar.png'" runat="server" CommandName="Ver detalle" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                     
                                     <button type="button" OnClick="return asignar(this)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Cambiar estado</button>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -94,11 +111,11 @@
             for (k = 1; k < oRows.length; k++) {
                 var currentRow = myGrid.rows[k];
                 //now you can see the 1st,2nd and 3trd column value
-                if (currentRow.cells[7].innerHTML == 1) {
-                    currentRow.cells[7].innerHTML = 'activo';
+                if (currentRow.cells[5].innerHTML == 1) {
+                    currentRow.cells[5].innerHTML = 'activo';
                 }
-                if (currentRow.cells[7].innerHTML == 2) {
-                    currentRow.cells[7].innerHTML = 'inactivo';
+                if (currentRow.cells[5].innerHTML == 2) {
+                    currentRow.cells[5].innerHTML = 'inactivo';
                 }
             }
         }

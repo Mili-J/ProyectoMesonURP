@@ -1380,7 +1380,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         .header-left .header-search .search-icon {
             position: absolute;
             left: 17px;
-            top: 12px;
+            top: 10px;
             font-size: 20px;
             color: #777
         }
