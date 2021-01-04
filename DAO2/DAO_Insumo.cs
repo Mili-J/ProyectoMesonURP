@@ -21,6 +21,7 @@ namespace DAO
         {
             try
             {
+
                 DataTable dtable = new DataTable();
                 SqlCommand cmd = new SqlCommand("SP_Listar_Insumo_MS", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -134,9 +135,10 @@ namespace DAO
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("SP_UPDATE_CANTIDAD_INSUMO", conexion);
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Update_Stock_Insumo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@I_cantidad", objInsumo.I_cantidad);
+                cmd.Parameters.AddWithValue("@cantidad", objInsumo.I_cantidad);
                 cmd.Parameters.AddWithValue("@I_idInsumo", objInsumo.I_idInsumo);
                 cmd.ExecuteNonQuery();
                 conexion.Close();

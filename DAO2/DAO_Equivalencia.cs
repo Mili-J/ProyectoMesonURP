@@ -34,11 +34,13 @@ namespace DAO
         {
             try
             {
+                conexion.Open();
                 DataTable dtable = new DataTable();
                 SqlCommand cmd = new SqlCommand("SP_Select_Equivalencias", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtable);
+                conexion.Close();
                 return dtable;
             }
             catch (Exception ex)
@@ -46,6 +48,28 @@ namespace DAO
                 throw ex;
             }
         }
+
+        public DataTable DAO_ConsultarEquivalenciaXIngrediente(int idReceta)
+        {
+            try
+            {
+                conexion.Open();
+                DataTable dtable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SP_Equivalencia_x_Ingrediente", conexion);
+                cmd.Parameters.Add(new SqlParameter("@R_idReceta", idReceta));
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtable);
+                conexion.Close();
+                return dtable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
         public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
         {
             try

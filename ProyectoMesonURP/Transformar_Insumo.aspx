@@ -23,7 +23,7 @@
                      <h5>Menú del día: <asp:Label ID="lblFecha" runat="server" ></asp:Label></h5>
                 </div>
             </div>               
-                <asp:Calendar ID="cldMenu" runat="server" style="width:40%" OnSelectionChanged="cldMenu_SelectionChanged"></asp:Calendar>                
+                <asp:Calendar ID="cldMenu" runat="server" style="width:40%" OnSelectionChanged="cldMenu_SelectionChanged" ondayrender="clMenu_OnDayRender" ></asp:Calendar>                
             </div>
             <div class="col-md-5">
             <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
@@ -74,34 +74,28 @@
        <div class="col-md-5 col-sm-12 mb-30 pt-20">
             <div class="widget-shadow" style="width: 36%; margin-top: 14px;">
                <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
-                    <asp:GridView ID="GridView1" runat="server" EmptyDataText="No hay informacion disponible." AutoGenerateColumns="False" DataKeyNames="I_nombreInsumo,IR_formatoMedida" Style="text-align:center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnRowCommand="gvRecetaMenu_RowCommand">
+                    <asp:GridView ID="gvInsumosTransformados" runat="server" EmptyDataText="No hay informacion disponible." AutoGenerateColumns="False" DataKeyNames="I_nombreInsumo,M_nombreMedida,E_cantidad" Style="text-align:center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnRowCommand="gvRecetaMenu_RowCommand">
                         <Columns>
                             <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo" /> 
-                            <asp:BoundField HeaderText="Cantidad" />                             
-                            <asp:BoundField HeaderText="Medida" DataField="IR_formatoMedida" />                                                         
+                            <asp:BoundField HeaderText="Cantidad" DataField="E_cantidad" />                             
+                            <asp:BoundField HeaderText="Medida" DataField="M_nombreMedida" />                                                         
                         </Columns>                        
                     </asp:GridView>
                </div>
            </div>
        
         </div>
+                <asp:TextBox ID="txtprueba" runat="server"></asp:TextBox>
         <div style="text-align:center">
                 
                        <div class="col-sm-12 col-md-5">
-                           <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" />
+                           <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
                        </div>
         </div>
                
-            </div>
-        
+            </div>                   
 
-        
-    
-
-        </div>
-        
-           
-        
+        </div>                          
     </div>
        <!-- Alertas -->
         </div>

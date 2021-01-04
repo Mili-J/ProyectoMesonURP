@@ -27,5 +27,9 @@ namespace CTR
         {
             objEquivalencia.ActualizarEquivalencia(DTOEquivalencia);
         }
+        public DataTable CTR_ConsultarEquivalenciaXIngrediente(int idReceta)
+        {
+            return objEquivalencia.DAO_ConsultarEquivalenciaXIngrediente(idReceta);
+        }
     }
 }
