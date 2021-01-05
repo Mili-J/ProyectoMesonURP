@@ -1,38 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.IO;
-using System.Text;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using DAO;
+
+using DTO;
 using CTR;
+using System.Data;
 using System.Globalization;
 
 namespace ProyectoMesonURP
 {
-    public partial class AgregarInsumo : System.Web.UI.Page
+    public partial class EditarInsumo : System.Web.UI.Page
     {
         CTR_Insumo _I = new CTR_Insumo();
         CTR_Medida _M = new CTR_Medida();
         CTR_MedidaXFormato _MXF = new CTR_MedidaXFormato();
         CTR_CategoriaInsumo _C = new CTR_CategoriaInsumo();
         DataSet dt = new DataSet();
+        DataTable DT = new DataTable();
+        private int idInsumo;
         protected void Page_Load(object sender, EventArgs e)
         {
+            idInsumo = (int)Session["InsumoSeleccionado"];
             if (!Page.IsPostBack)
             {
                 CargarDDLs();
+                CargarDatos();
+
 
             }
+            
 
         }
+        private void CargarDatos()
+        {            
+            DT = _I.ConsultarInsumo_GI(idInsumo);
+            txtInsumo.Text = DT.Rows[0]["I_nombreInsumo"].ToString();
+            string cat= DT.Rows[0]["CI_idCategoriaInsumo"].ToString();
+            DDLCategoria.Items.FindByValue(cat).Selected = true;
+            string fc = DT.Rows[0]["FC_idFCompra"].ToString();
+            DDLFC.Items.FindByValue(fc).Selected = true;
+            FC_SelectedIndexChanged(DDLFC, EventArgs.Empty);
+            string md = DT.Rows[0]["M_idMedida"].ToString();
+            int idmd = Convert.ToInt32(md);
+            if (idmd ==1) 
+            { 
+                DDLMedida.Items.FindByValue(md).Selected = true; 
+            }
+            else if (idmd > 1)
+            { 
+                DDLMedida2.Items.FindByValue(md).Selected = true;
+                int cantun = Convert.ToInt32(DT.Rows[0]["MXF_cantidadUnidad"].ToString());
+                txtCantidadCo.Text = DT.Rows[0]["MXF_cantidadContenida"].ToString().Replace(",", ".");
+                TxtCantUn.Text = ""+cantun;
+                if (cantun > 1) 
+                { 
+                    CheckBox1.Checked = true;
+                    ChckedChanged(CheckBox1, EventArgs.Empty);
+                }
+            }
+            TxtCantmin.Text = DT.Rows[0]["I_cantidadMinima"].ToString().Replace(",", ".");
 
-        private void CargarDDLs()
+
+        }
+            private void CargarDDLs()
         {
-            
+
             dt = _C.SelectCategoria_GI();
             DDLCategoria.DataSource = dt;
             DDLCategoria.DataBind();
@@ -61,8 +96,8 @@ namespace ProyectoMesonURP
         }
         protected void FC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(DDLFC.SelectedValue) != 0) 
-            { 
+            if (Convert.ToInt32(DDLFC.SelectedValue) != 0)
+            {
                 if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
                 {
                     CargarDDLMedida(DDLMedida);
@@ -83,24 +118,25 @@ namespace ProyectoMesonURP
             }
 
         }
-        protected void btnRegistrar_ServerClick(object sender, EventArgs e)
+        protected void btnEditar_ServerClick(object sender, EventArgs e)
         {
-            object[] NuevoInsumo = new object[7];
-            NuevoInsumo[0]=  txtInsumo.Text;
-            NuevoInsumo[1] = DDLCategoria.SelectedValue;
-            NuevoInsumo[2] = DDLFC.SelectedValue;
+            object[] NuevoInsumo = new object[8];
+            NuevoInsumo[0] = idInsumo;
+            NuevoInsumo[1] = txtInsumo.Text;
+            NuevoInsumo[2] = DDLCategoria.SelectedValue;
+            NuevoInsumo[3] = DDLFC.SelectedValue;
             if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
             {
-                NuevoInsumo[3] = DDLMedida.SelectedValue;
+                NuevoInsumo[4] = DDLMedida.SelectedValue;
             }
-            else 
-            { 
-                NuevoInsumo[3] = DDLMedida2.SelectedValue; 
+            else
+            {
+                NuevoInsumo[4] = DDLMedida2.SelectedValue;
             }
-            NuevoInsumo[4] = Convert.ToDecimal(txtCantidadCo.Text, CultureInfo.InvariantCulture);
-            NuevoInsumo[5] = TxtCantUn.Text;
-            NuevoInsumo[6] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
-            _I.InsertInsumo(NuevoInsumo);
+            NuevoInsumo[5] = Convert.ToDecimal(txtCantidadCo.Text, CultureInfo.InvariantCulture); 
+            NuevoInsumo[6] = TxtCantUn.Text;
+            NuevoInsumo[7] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
+            _I.EditarInsumo_GI(NuevoInsumo);
             Response.Redirect(Request.RawUrl);
 
         }
@@ -110,11 +146,13 @@ namespace ProyectoMesonURP
             {
                 Label2.InnerText = "Pack de  ";
                 TxtCantUn.Visible = true;
-                Label3.InnerText = DDLFC.SelectedItem.ToString()+"s";
+                Label3.InnerText = DDLFC.SelectedItem.ToString() + "s";
             }
-            else {
+            else
+            {
                 Label2.InnerText = "Pack  ";
                 TxtCantUn.Visible = false;
+                TxtCantUn.Text = "1";
                 Label3.InnerText = "";
             }
         }

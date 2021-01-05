@@ -206,19 +206,63 @@ namespace DAO
                 throw ex;
             }
         }
-        public void InsertInsumo(object[] parir)
+        public Boolean ValEditarInsumo(int idInsumo)
+        {
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_Validar_Editar_Insumo", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", idInsumo);
+                DataTable dt = new DataTable();
+                cmd.Fill(dt);
+                int VAL = Convert.ToInt32(dt.Rows[0]["Valedit"]);
+                if (VAL == 1) { return true; }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public void InsertInsumo_GI(object[] NuevoInsumo)
         {
             conexion.Open();
-            SqlCommand unComando = new SqlCommand("SP_InsertarInsumo", conexion);
-            unComando.CommandType = CommandType.StoredProcedure;
-            unComando.Parameters.Add(new SqlParameter("@NInsumo",parir[0]));
-            unComando.Parameters.Add(new SqlParameter("@idCategoriaI", Convert.ToInt32(parir[1])));
-            unComando.Parameters.Add(new SqlParameter("@idFCompra", Convert.ToInt32(parir[2])));
-            unComando.Parameters.Add(new SqlParameter("@idMedida", Convert.ToInt32(parir[3])));
-            unComando.Parameters.Add(new SqlParameter("@cantidadCont", Convert.ToDecimal(parir[4], CultureInfo.InvariantCulture)));
-            unComando.Parameters.Add(new SqlParameter("@cantidadUn", Convert.ToInt32(parir[5])));
-            unComando.Parameters.Add(new SqlParameter("@cantidadmin", Convert.ToInt32(parir[6])));
-            unComando.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand("SP_InsertarInsumo", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@NInsumo", NuevoInsumo[0]));
+            cmd.Parameters.Add(new SqlParameter("@idCategoriaI", Convert.ToInt32(NuevoInsumo[1])));
+            cmd.Parameters.Add(new SqlParameter("@idFCompra", Convert.ToInt32(NuevoInsumo[2])));
+            cmd.Parameters.Add(new SqlParameter("@idMedida", Convert.ToInt32(NuevoInsumo[3])));
+            cmd.Parameters.Add(new SqlParameter("@cantidadCont", Convert.ToDecimal(NuevoInsumo[4], CultureInfo.InvariantCulture)));
+            cmd.Parameters.Add(new SqlParameter("@cantidadUn", Convert.ToInt32(NuevoInsumo[5])));
+            cmd.Parameters.Add(new SqlParameter("@cantidadmin", Convert.ToInt32(NuevoInsumo[6])));
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public DataTable ConsultarInsumo_GI(int idInsumo)
+        {
+            SqlDataAdapter cmd = new SqlDataAdapter("SP_ConsultarInsumo_GI", conexion);
+            cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+            cmd.SelectCommand.Parameters.AddWithValue("@I_idInsumo", idInsumo);
+            DataTable dt = new DataTable();
+            cmd.Fill(dt);
+            return dt;
+        }
+        public void EditarInsumo_GI(object[] NuevoInsumo)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_EditarInsumo_GI", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@IdInsumo", Convert.ToInt32(NuevoInsumo[0])));
+            cmd.Parameters.Add(new SqlParameter("@NInsumo", NuevoInsumo[1]));
+            cmd.Parameters.Add(new SqlParameter("@idCategoriaI", Convert.ToInt32(NuevoInsumo[2])));
+            cmd.Parameters.Add(new SqlParameter("@idFCompra", Convert.ToInt32(NuevoInsumo[3])));
+            cmd.Parameters.Add(new SqlParameter("@idMedida", Convert.ToInt32(NuevoInsumo[4])));
+            cmd.Parameters.Add(new SqlParameter("@cantidadCont", Convert.ToDecimal(NuevoInsumo[5], CultureInfo.InvariantCulture)));
+            cmd.Parameters.Add(new SqlParameter("@cantidadUn", Convert.ToInt32(NuevoInsumo[6])));
+            cmd.Parameters.Add(new SqlParameter("@cantidadmin", Convert.ToDecimal(NuevoInsumo[7], CultureInfo.InvariantCulture)));
+            cmd.ExecuteNonQuery();
             conexion.Close();
         }
     }

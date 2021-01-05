@@ -122,6 +122,7 @@
     <Content Include="css\sb-admin-2.css" />
     <Content Include="css\sb-admin-2.min.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="EditarInsumo.aspx" />
     <Content Include="Empty.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -2077,6 +2078,13 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarInsumo.aspx.cs">
+      <DependentUpon>EditarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarInsumo.aspx.designer.cs">
+      <DependentUpon>EditarInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Empty.aspx.cs">
       <DependentUpon>Empty.aspx</DependentUpon>

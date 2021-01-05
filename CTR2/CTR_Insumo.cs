@@ -65,9 +65,21 @@ namespace CTR
         {
             return dao_insumo.SelectBarChartInsumoComprar();
         }
-        public void InsertInsumo(object[]parir)
+        public Boolean ValInsumo_GI(int idInsumo)
         {
-            dao_insumo.InsertInsumo(parir);
+            return dao_insumo.ValEditarInsumo(idInsumo);
+        }
+        public void InsertInsumo(object[]NuevoInsumo)
+        {
+            dao_insumo.InsertInsumo_GI(NuevoInsumo);
+        }
+        public void EditarInsumo_GI(object[] NuevoInsumo)
+        {
+            dao_insumo.EditarInsumo_GI(NuevoInsumo);
+        }
+        public DataTable ConsultarInsumo_GI(int idInsumo)
+        {
+            return dao_insumo.ConsultarInsumo_GI(idInsumo);
         }
     }
 }
