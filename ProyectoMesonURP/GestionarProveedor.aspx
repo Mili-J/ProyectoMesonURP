@@ -5,11 +5,9 @@
             display: none;
         }
 
-        table, td, tr {
+        /*table, td, tr {
             border: 1px solid black;
-        }
-         </style>
-    <style type="text/css">
+        }*/
         .mb-0 {
         }
     </style>
@@ -59,25 +57,26 @@
                         <asp:GridView ID="gvPro" AllowPaging="True" AutoGenerateColumns="False" runat="server" EmptyDataText="No hay información disponible." OnRowCommand="gvPro_RowCommand" OnRowDataBound="gvPro_RowDataBound"
                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="PR_idProveedor,PR_razonSocial,PR_numeroDocumento,PR_direccion,PR_nombreContacto,PR_telefonoContacto,PR_correoContacto,EP_idEstadoProveedor"
                             Style="text-align: center" OnPageIndexChanging="gvPro_PageIndexChanging" CellPadding="4" PageSize="6" OnSelectedIndexChanged="gvPro_SelectedIndexChanged" GridLines="None">
+                            <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle>
                             <Columns>
                                 <asp:BoundField DataField="PR_idProveedor" HeaderText="PR_idProveedor" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField DataField="PR_razonSocial" HeaderText="Razon Social" />
-                                <asp:BoundField DataField="PR_numeroDocumento" HeaderText="Numero de Documento" />
-                                <asp:BoundField DataField="PR_direccion" HeaderText="Direccion" />
+                                <asp:BoundField DataField="PR_razonSocial" HeaderText="Razón Social" />
+                                <asp:BoundField DataField="PR_numeroDocumento" HeaderText="N° de Documento" />
+                                <asp:BoundField DataField="PR_direccion" HeaderText="Dirección" />
                                 <asp:BoundField DataField="PR_nombreContacto" HeaderText="Nombre Contacto" />
-                                <asp:BoundField DataField="PR_telefonoContacto" HeaderText="Telefono Contacto" />
-                                <asp:BoundField DataField="PR_correoContacto" HeaderText="Correo Contacto" />
-                                <asp:BoundField DataField="EP_idEstadoProveedor" HeaderText="Estado del Proveedor" />
-                                <asp:TemplateField HeaderText="Actualizar">
+                                <asp:BoundField DataField="PR_telefonoContacto" HeaderText="Teléfono" />
+                                <asp:BoundField DataField="PR_correoContacto" HeaderText="Correo"/>
+                                <asp:BoundField DataField="EP_idEstadoProveedor" HeaderText="Estado" />
+                                <asp:TemplateField HeaderText="Editar">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="btnActualizar" ImageUrl="img/editar-b.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar-b.png'" OnClientClick="javascript:return actualizar(this)" runat="server" CommandName="Actualizar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>" /><!--OnClientClick="javascript:createPDF()  OnClientClick="javascript:return getDatos(this)" "-->
+                                        <asp:LinkButton ID="btnActualizar" class="btn btn-warning btn-sm" OnClientClick="javascript:return actualizar(this)" runat="server" CommandName="Actualizar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>       
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
-                                <asp:TemplateField HeaderText="">
+                                <asp:TemplateField HeaderText="Cambiar Estado">
                                     <ItemTemplate>
-
-                                        <button type="button" onclick="return asignar(this)" class="btn btn-info btn-sm">Cambiar estado</button>
+                                         <asp:LinkButton onclick="return asignar(this)" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i>&nbsp;Cambiar</asp:LinkButton>       
+                                  
+                                       <%-- <button type="button" onclick="return asignar(this)" class="btn btn-info btn-sm">Cambiar</button>--%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -119,11 +118,11 @@
             for (k = 1; k < oRows.length; k++) {
                 var currentRow = myGrid.rows[k];
                 //now you can see the 1st,2nd and 3trd column value
-                if (currentRow.cells[5].innerHTML == 1) {
-                    currentRow.cells[5].innerHTML = 'activo';
+                if (currentRow.cells[7].innerHTML == 1) {
+                    currentRow.cells[7].innerHTML = 'activo';
                 }
-                if (currentRow.cells[5].innerHTML == 2) {
-                    currentRow.cells[5].innerHTML = 'inactivo';
+                if (currentRow.cells[7].innerHTML == 2) {
+                    currentRow.cells[7].innerHTML = 'inactivo';
                 }
             }
         }
@@ -147,7 +146,7 @@
             if (estado == "inactivo") {
                 texto = "activar";
             }
-            textonotifica = '¿Seguro que desea ' + texto + ' el estado de ' + row.cells[4].innerHTML + "?\nDATOS:\nRazon Social: " + row.cells[1].innerHTML + "<br>Direccion: " + row.cells[3].innerHTML + "<br>Correo: " + row.cells[6].innerHTML + "<br>Telefono: " + row.cells[5].innerHTML;
+            textonotifica = '¿Seguro que desea ' + texto + ' el estado de ' + row.cells[4].innerHTML + "?\nDATOS:\nRazón Social: " + row.cells[1].innerHTML + "<br>Dirección: " + row.cells[3].innerHTML + "<br>Correo: " + row.cells[6].innerHTML + "<br>Teléfono: " + row.cells[5].innerHTML;
             // alert("el estado es:" + estado);
             ayuda();
             return false;
