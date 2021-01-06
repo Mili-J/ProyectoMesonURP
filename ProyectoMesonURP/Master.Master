@@ -148,7 +148,7 @@
 
              <!-- Nav Item - Charts -->
             <li id="menuProveedor"  runat="server" class="nav-item">
-                <a class="nav-link" href="Empty.aspx">
+                <a class="nav-link" href="GestionarProveedor.aspx">
                     <i class="fas fa-user-friends"></i>
                     <span>Gestionar Proveedor</span></a>
             </li>

@@ -25,7 +25,7 @@ namespace CTR
         }
         public DTO_Medida CTR_ConsultarMedida(int id)
         {
-            return dao_medida.DAO_ConsultarMedida(id);
+            return objDAO.DAO_ConsultarMedida(id);
         }
     }
 }

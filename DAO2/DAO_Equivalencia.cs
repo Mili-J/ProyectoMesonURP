@@ -147,26 +147,27 @@ namespace DAO
         //        throw ex;
         //    }
         //}
-        public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
-        {
-            try
-            {
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand("SP_Update_Equivalencia", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
-                cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
-                cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
-                cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
+        //public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
+        //{
+        //    try
+        //    {
+        //        conexion.Open();
+        //        SqlCommand cmd = new SqlCommand("SP_Update_Equivalencia", conexion);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
+        //        cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
+        //        cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
+        //        cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
 
-                cmd.ExecuteNonQuery();
-                conexion.Close();
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            public List<DTO_Equivalencia_SP> DAOconsultarDetalleExI(int I_idIngrediente)
+        //        cmd.ExecuteNonQuery();
+        //        conexion.Close();
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        throw;
+        //    }
+        //}
+        public List<DTO_Equivalencia_SP> DAOconsultarDetalleExI(int I_idIngrediente)
         {
             List<DTO_Equivalencia_SP> list = new List<DTO_Equivalencia_SP>();
             try
