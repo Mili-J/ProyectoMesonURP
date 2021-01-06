@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Agregar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="AgregarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.AgregarInsumo"%>
+﻿<%@ Page Title="Editar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="EditarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.EditarInsumo"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -87,7 +87,7 @@
            
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnRegistrar" onserverclick="btnRegistrar_ServerClick">Registrar</button>
+                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEditar" onserverclick="btnEditar_ServerClick">Editar</button>
                 <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
             </p>
         </div>

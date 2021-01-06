@@ -51,6 +51,22 @@ namespace ProyectoMesonURP
         }
         protected void gvInsumos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int id = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "I_idInsumo"));
+
+                if (_CI.ValInsumo_GI(id))
+                {
+                    ImageButton btnEditar = (ImageButton)e.Row.FindControl("btnEditar");
+                    btnEditar.Enabled = true;
+                }
+                else
+                {
+                    ImageButton btnEditar = (ImageButton)e.Row.FindControl("btnEditar");
+                    btnEditar.Enabled = false;
+                    btnEditar.ImageUrl = "img/editar-b.png";
+                }
+            }
         }
         protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
