@@ -66,6 +66,7 @@
     <Compile Include="DTO_Medida.cs" />
     <Compile Include="DTO_MedidaXFormato.cs" />
     <Compile Include="DTO_MedidaXFormatoCocina.cs" />
+    <Compile Include="DTO_MedidaXFormatoCompra.cs" />
     <Compile Include="DTO_Menu.cs" />
     <Compile Include="DTO_MenuXReceta.cs" />
     <Compile Include="DTO_Merma.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="DTO_TipoMovimiento.cs" />
     <Compile Include="DTO_TipoUsuario.cs" />
     <Compile Include="DTO_Usuario.cs" />
+    <Compile Include="DTO_FormatoCompra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -66,6 +66,7 @@
     <Compile Include="DAO_Medida.cs" />
     <Compile Include="DAO_MedidaXFormato.cs" />
     <Compile Include="DAO_MedidaXFormatoCocina.cs" />
+    <Compile Include="DAO_MedidaXFormatoCompra.cs" />
     <Compile Include="DAO_Menu.cs" />
     <Compile Include="DAO_MenuXReceta.cs" />
     <Compile Include="DAO_Merma.cs" />

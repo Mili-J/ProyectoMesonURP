@@ -46,7 +46,7 @@
                                 <asp:ListItem Text="10 días" Value="10 días"></asp:ListItem>
                                 <asp:ListItem Text="20 días" Value="20 días"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirCot" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <%-- ----- --%>
@@ -66,7 +66,7 @@
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Proveedor</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="DdlProveedor" runat="server" CssClass="form-control1">
+                            <asp:DropDownList ID="DdlProveedor" runat="server" CssClass="form-control1" CausesValidation="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="validationProveedorOC" runat="server" ControlToValidate="DdlProveedor" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
@@ -94,7 +94,7 @@
                         <label for="selector1" class="col-sm-2 control-label">Menú</label>
                         <div class="col-sm-8">
                             <asp:Button ID="btnCal" runat="server" Text="Calendario" OnClick="btnCal_Click" CausesValidation="false"/>
-                            <asp:Calendar ID="CldFecha" runat="server" Visible="true" SelectionMode="None" OnSelectionChanged="CldFecha_SelectionChanged" OnDayRender="CldFecha_DayRender" Enabled="false"></asp:Calendar>
+                            <asp:Calendar ID="CldFecha" runat="server" Visible="true" SelectionMode="None" OnSelectionChanged="CldFecha_SelectionChanged" OnDayRender="CldFecha_DayRender" Enabled="true"></asp:Calendar>
                         </div>
                     </div>
                     <%-- ----- --%>
@@ -111,9 +111,12 @@
                                         </asp:TemplateField>
                                         <asp:BoundField HeaderText="Insumo" DataField="I_nombreInsumo"  />
                                         <asp:BoundField HeaderText="Cantidad" Datafield="DC_cantidadCotizacion"/>
+                                        
+
                                         <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
-                                        <%--<asp:BoundField HeaderText="Medida Formato compra" Datafield="IR_formatoMedida"/>--%>
-                                    </Columns>   
+
+                                        <asp:BoundField HeaderText="Cantidad por unidad" Datafield="CantidadUnidad"/>
+                                        <asp:BoundField HeaderText="Unidad" Datafield="Medida"/>                                    </Columns>   
                                     <SelectedRowStyle BackColor="LightGreen"/>
                                 </asp:GridView>
                             </div>
@@ -125,7 +128,7 @@
 
                         <hr />
                         <p class="center-button">
-                            <asp:Button ID="btnActualizarCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnActualizarCotizacion_Click" Text="Actualizar"/>
+                            <asp:Button ID="btnActualizarCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnActualizarCotizacion_Click" Text="Actualizar" ValidationGroup="añadirCot"/>
                             <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />
                         </p>
                     </div>

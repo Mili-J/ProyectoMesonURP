@@ -31,13 +31,13 @@
                     <div class="form-group">
                            <label for="selector1" class="col-sm-2 control-label">Tiempo plazo</label>
                            <div class="col-sm-8">
-                           <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlTiempoPlazo" >
+                           <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlTiempoPlazo" CausesValidation="True">
                                 <asp:ListItem  Value="">--seleccione--</asp:ListItem>
                                 <asp:ListItem Text="5 días" Value="5 días"></asp:ListItem>
                                 <asp:ListItem Text="10 días" Value="10 días"></asp:ListItem>
                                 <asp:ListItem Text="20 días" Value="20 días"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirCot" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -67,9 +67,10 @@
 
                         <label for="selector1" class="col-sm-2 control-label">Categorías:</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlInsumo"  AutoPostBack="true" CausesValidation="false" OnSelectedIndexChanged="DdlInsumo_SelectedIndexChanged">                        
+                            <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlInsumo"  AutoPostBack="true" CausesValidation="True" OnSelectedIndexChanged="DdlInsumo_SelectedIndexChanged">                        
+
                             </asp:DropDownList>
-                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red" ValidationGroup="añadirCot"></asp:RequiredFieldValidator>
                         </div>
 
                     </div>
@@ -99,7 +100,7 @@
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Menú</label>
                         <div class="col-sm-8">
-                            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CausesValidation="false"/>
+                            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CausesValidation="True" ValidationGroup="añadirCot"/>
                            
                         </div>
                     </div>
@@ -122,8 +123,10 @@
                                         <asp:BoundField HeaderText="E_cantidad" DataField="E_cantidad" />
                                         <asp:BoundField HeaderText="MXF_cantidadContenida" DataField="MXF_cantidadContenida" />--%>
 
-                                        <asp:BoundField HeaderText="Cantidad" Datafield="numTotal"/>
+                                        <asp:BoundField HeaderText="Número total" Datafield="numTotal"/>
                                         <asp:BoundField HeaderText="Formato compra" Datafield="FC_nombreFormatoCompra"/>
+                                        <asp:BoundField HeaderText="Cantidad" Datafield="Cantidad"/>
+                                        <asp:BoundField HeaderText="Unidad" Datafield="Medida"/>
                                     </Columns>   
                                     
                                     <SelectedRowStyle BackColor="LightGreen"/>
@@ -164,7 +167,8 @@
                         <hr />
                         <p class="center-button">
                             <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Agregar"/>
-                            <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />
+                            <%--<input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />--%>
+                            <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" OnClick="btnRegresar_Click" Text="Regresar"/>
                             <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
                             <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />
                         </p>

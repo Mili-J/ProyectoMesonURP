@@ -23,5 +23,9 @@ namespace CTR
         {
             return objDAO.SelectMedida_GI();
         }
+        public DTO_Medida CTR_ConsultarMedida(int id)
+        {
+            return dao_medida.DAO_ConsultarMedida(id);
+        }
     }
 }

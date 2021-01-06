@@ -22,7 +22,7 @@ namespace ProyectoMesonURP
         CTR_DetalleCotizacion ctr_detalleCot;
         CTR_CotizacionXMenu ctr_cotMen;
         CTR_CategoriaInsumo ctr_catIns;
-        
+        CTR_Medida ctr_medida;
         static DataTable dtCot;
         static List<DTO_Cotizacion> listCot = new List<DTO_Cotizacion>();
         static List<List<DTO_DetalleCotizacion>> listDetCotTotal = new List<List<DTO_DetalleCotizacion>>();
@@ -43,6 +43,7 @@ namespace ProyectoMesonURP
             dto_usuario = new DTO_Usuario();
             dto_usuario = (DTO_Usuario)Session["Usuario"];
             ctr_catIns = new CTR_CategoriaInsumo();
+            ctr_medida = new CTR_Medida();
             if (!IsPostBack)
             {
                 dtCot = new DataTable();
@@ -57,8 +58,8 @@ namespace ProyectoMesonURP
                 DdlInsumo.DataValueField = "CI_idCategoriaInsumo";
                 DdlInsumo.DataSource = ctr_catIns.DAO_ConsultarCategoriasInsumo();
                 DdlInsumo.DataBind();
-                DdlInsumo.Items.Insert(0, "--seleccione--");
-                DdlInsumo.Items[0].Value = "0";
+               //DdlInsumo.Items.Insert(0, "--seleccione--");
+               //DdlInsumo.Items[0].Value = "0";
             }
         }
 
@@ -283,6 +284,7 @@ namespace ProyectoMesonURP
 
             //}
             //dtIng.PrimaryKey = new DataColumn[] { dtIng.Columns["I_idInsumo"], dtIng.Columns["FC_nombreFormatoCompra"] };
+           
             DataTable dt = new DataTable();
             int z = 0;
             while (z < dtIng.Rows.Count)
@@ -293,7 +295,8 @@ namespace ProyectoMesonURP
                     dt.Columns.Add("I_nombreInsumo", typeof(string));
                     dt.Columns.Add("numTotal", typeof(decimal));
                     dt.Columns.Add("FC_nombreFormatoCompra", typeof(string));
-
+                    dt.Columns.Add("Cantidad", typeof(decimal));
+                    dt.Columns.Add("Medida", typeof(string));
                     //dt.Columns.Add("IR_cantidad", typeof(decimal));
                     //dt.Columns.Add("numPorcion", typeof(decimal));
                     //dt.Columns.Add("E_cantidad", typeof(decimal));
@@ -301,13 +304,19 @@ namespace ProyectoMesonURP
 
                     dt.PrimaryKey = new DataColumn[] { dt.Columns["I_idInsumo"], dt.Columns["FC_nombreFormatoCompra"] };
                 }
+
                 DataRow dr = dt.NewRow();
-                object[] ingAux = dtIng.Rows[z].ItemArray;
+               // object[] ingAux = dtIng.Rows[z].ItemArray;
                 decimal numTo = Convert.ToDecimal(dtIng.Rows[z]["numTotal"]);
                 dr[0] = Convert.ToInt32(dtIng.Rows[z]["I_idInsumo"]);
                 dr[1] = Convert.ToString(dtIng.Rows[z]["I_nombreInsumo"]);
                 dr[2] = numTo;
                 dr[3] = Convert.ToString(dtIng.Rows[z]["FC_nombreFormatoCompra"]);
+                dr[4] = Convert.ToDecimal(dtIng.Rows[z]["MXF_cantidadContenida"]);
+
+                int idMed = Convert.ToInt32(dtIng.Rows[z].ItemArray[35]);
+                DTO_Medida dto_medida = ctr_medida.CTR_ConsultarMedida(idMed);
+                dr[5] = dto_medida.M_nombreMedida;
 
                 //dr[4] = Convert.ToDecimal(dtIng.Rows[z]["IR_cantidad"]);
                 //dr[5] = Convert.ToDecimal(dtIng.Rows[z]["numPorcion"]);
@@ -321,7 +330,7 @@ namespace ProyectoMesonURP
                     a=dtIng.Select($"I_idInsumo={dr[0]} AND FC_nombreFormatoCompra='{dr[3]}'");
                     foreach (DataRow item in a)
                     {
-                        numTo += Convert.ToDecimal(item.ItemArray[21]);
+                        numTo += Convert.ToDecimal(item.ItemArray[39]);
                         
                     }
                     DataRow e= dt.Rows.Find(new object[] { dr["I_idInsumo"], dr["FC_nombreFormatoCompra"] });
@@ -339,14 +348,18 @@ namespace ProyectoMesonURP
             }
 
             GVVerdura.DataSource = dt;
+            //GVVerdura.DataSource = dtIng;
             GVVerdura.DataBind();
         }
 
-
-
-
-
-
-
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            dtCot= new DataTable();
+            listCot = new List<DTO_Cotizacion>();
+            listDetCotTotal = new List<List<DTO_DetalleCotizacion>>();
+            listFechaXCot = new List<List<DateTime>>();
+            
+            Response.Redirect("GestionarCotizacion.aspx");
+        }
     }
 }

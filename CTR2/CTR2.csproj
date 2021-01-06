@@ -65,6 +65,7 @@
     <Compile Include="CTR_Medida.cs" />
     <Compile Include="CTR_MedidaXFormato.cs" />
     <Compile Include="CTR_MedidaXFormatoCocina.cs" />
+    <Compile Include="CTR_MedidaXFormatoCompra.cs" />
     <Compile Include="CTR_Menu.cs" />
     <Compile Include="CTR_MenuXReceta.cs" />
     <Compile Include="CTR_Merma.cs" />
