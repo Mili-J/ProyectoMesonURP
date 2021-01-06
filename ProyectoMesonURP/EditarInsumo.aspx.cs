@@ -71,7 +71,7 @@ namespace ProyectoMesonURP
             DDLCategoria.DataTextField = "CI_nombreCategoria";
             DDLCategoria.DataValueField = "CI_idCategoriaInsumo";
             DDLCategoria.DataBind();
-            DDLCategoria.Items.Insert(0, new ListItem("-- Seleccione --", ""));
+            DDLCategoria.Items.Insert(0, "--seleccionar--");
 
             dt = _MXF.SelectFC_GI();
             DDLFC.DataSource = dt;
@@ -79,7 +79,7 @@ namespace ProyectoMesonURP
             DDLFC.DataTextField = "FC_nombreFormatoCompra";
             DDLFC.DataValueField = "FC_idFCompra";
             DDLFC.DataBind();
-            DDLFC.Items.Insert(0, new ListItem("-- Seleccione --", ""));
+            DDLFC.Items.Insert(0, "--seleccionar--");
 
             CargarDDLMedida(DDLMedida);
             CargarDDLMedida(DDLMedida2);
@@ -94,7 +94,7 @@ namespace ProyectoMesonURP
             DDLMedida.DataTextField = "M_nombreMedida";
             DDLMedida.DataValueField = "M_idMedida";
             DDLMedida.DataBind();
-            DDLMedida.Items.Insert(0, new ListItem("-- Seleccione --", ""));
+            DDLMedida.Items.Insert(0, "--seleccionar--");
         }
         protected void FC_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,7 +139,9 @@ namespace ProyectoMesonURP
             NuevoInsumo[6] = TxtCantUn.Text;
             NuevoInsumo[7] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
             _I.EditarInsumo_GI(NuevoInsumo);
-            Response.Redirect(Request.RawUrl);
+            //Response.Redirect(Request.RawUrl);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
+            return;
 
         }
         public void ChckedChanged(object sender, EventArgs e)
