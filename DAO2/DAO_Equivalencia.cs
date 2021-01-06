@@ -35,11 +35,33 @@ namespace DAO
         {
             try
             {
+                conexion.Open();
                 DataTable dtable = new DataTable();
                 SqlCommand cmd = new SqlCommand("SP_Select_Equivalencias", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtable);
+                conexion.Close();
+                return dtable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable DAO_ConsultarEquivalenciaXIngrediente(int idReceta)
+        {
+            try
+            {
+                conexion.Open();
+                DataTable dtable = new DataTable();
+                SqlCommand cmd = new SqlCommand("SP_Equivalencia_x_Ingrediente", conexion);
+                cmd.Parameters.Add(new SqlParameter("@R_idReceta", idReceta));
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtable);
+                conexion.Close();
                 return dtable;
             }
             catch (Exception ex)
@@ -125,7 +147,26 @@ namespace DAO
         //        throw ex;
         //    }
         //}
-        public List<DTO_Equivalencia_SP> DAOconsultarDetalleExI(int I_idIngrediente)
+        public void ActualizarEquivalencia(DTO_Equivalencia objEquivalencia)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("SP_Update_Equivalencia", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@E_idEquivalencia", objEquivalencia.E_idEquivalencia));
+                cmd.Parameters.Add(new SqlParameter("@E_cantidad", objEquivalencia.E_cantidad));
+                cmd.Parameters.Add(new SqlParameter("@I_idInsumo", objEquivalencia.I_idInsumo));
+                cmd.Parameters.Add(new SqlParameter("@MXFC_idMedidaFCocina", objEquivalencia.MXFC_idMedidaFCocina));
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            public List<DTO_Equivalencia_SP> DAOconsultarDetalleExI(int I_idIngrediente)
         {
             List<DTO_Equivalencia_SP> list = new List<DTO_Equivalencia_SP>();
             try

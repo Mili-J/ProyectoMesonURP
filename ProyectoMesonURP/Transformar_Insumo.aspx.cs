@@ -13,97 +13,105 @@ namespace ProyectoMesonURP
 {
     public partial class Transformar_Insumo : System.Web.UI.Page
     {
-        DTO_Menu DTOMenu;
-        DTO_Insumo dto_insumo;
-        DTO_Ingrediente objIngrediente;
-        DTO_Receta dto_receta;
-        DTO_Medida dto_medida;
-        DTO_Formato dto_formato;
-        DTO_IngredienteXReceta dto_ir;
-        DTO_MedidaXFormatoCocina dto_MFCocina;
-        CTR_Insumo ctr_insumo;
-        CTR_Equivalencia ctr_eq;
-        CTR_MedidaXFormatoCocina ctr_MFCocina;
+        DTO_Menu DTOMenu;  
         CTR_Menu CTRMenu;
-        CTR_IngredienteXReceta ctr_ing_x_receta;
-        DataTable dtMenu;
-        DataTable dt_ing_x_receta;
-        DataTable dt;
-        DataTable dt_transformacion;
-        //DataSet dtIngredienteR;
-        //string medidaC = "";  
-        //int porciones=0;
-        //decimal equivalencia=0;
-
+        DataTable dtMenu;  
         protected void Page_Load(object sender, EventArgs e)
-        {
-            ctr_eq = new CTR_Equivalencia();
-            CTRMenu = new CTR_Menu();
-            objIngrediente = new DTO_Ingrediente();
-            dto_ir = new DTO_IngredienteXReceta();
+        {           
+            CTRMenu = new CTR_Menu();                  
             DTOMenu = new DTO_Menu();
-            dto_formato = new DTO_Formato();
-            dto_medida = new DTO_Medida();
-            dto_receta = new DTO_Receta();
-            dto_MFCocina = new DTO_MedidaXFormatoCocina();
-            ctr_MFCocina = new CTR_MedidaXFormatoCocina();
-            dto_receta = new DTO_Receta();
-            //dto_receta.R_idReceta = (int)Session["idReceta"];
-            //porciones = (int)Session["Porciones"];
-            //dto_receta.R_nombreReceta = (string)Session["Receta"];
-            ctr_insumo = new CTR_Insumo();
-            CTR_Receta objReceta = new CTR_Receta();
-            dto_insumo = new DTO_Insumo();
-            ctr_ing_x_receta = new CTR_IngredienteXReceta();
-            dt_ing_x_receta = new DataTable();
-            dt = new DataTable();
+            CTR_Receta objReceta = new CTR_Receta();                       
             dtMenu = new DataTable();
-            dt_transformacion = new DataTable();
-            //dtMenu = CTRMenu.CTR_SelectMenuXFecha(cldMenu.SelectedDate.ToString());
-            //dt_ing_x_receta = ctr_ing_x_receta.CTR_CONSULTAR_INSUMO_X_RECETA(dto_receta);
-            //gvRecetaMenu.DataSource = dt_ing_x_receta;
-            //gvRecetaMenu .DataBind();
-            // PorcionesReceta();
          
             if (!this.IsPostBack)
             {
                 
-                //LlenarIngredienteR();               
             }
 
         }
-
-
-        protected void btnAñadirIngrediente_Click(object sender, EventArgs e)
+        public void TransformarInsumos(int idReceta, string nombreReceta)
         {
-            //objIngrediente.I_idIngrediente = int.Parse(ddlIngrediente.SelectedValue);
-           // dto_insumo.I_idInsumo = Get_Insumo(objIngrediente.I_idIngrediente).I_idInsumo;
-            int i = dto_insumo.I_idInsumo;
-            //txtCantidad.Text = Transformar(i).ToString();
-            //LlenarTransformados();
-            //DescontarStock(i);
+            int idI = 0;
+            int idI2 = 0;
+            decimal racionTotalI = 0;
+            decimal c = 0;
+            decimal e = 0;
+            string nomI = "";
+            string nomIgv = "";
+            CTR_Equivalencia CTREquivalencia = new CTR_Equivalencia();
+            DataTable dtTransformarI = new DataTable();
+            dtTransformarI = CTREquivalencia.CTR_ConsultarEquivalenciaXIngrediente(idReceta);
+            CTR_IngredienteXReceta CTRIxR = new CTR_IngredienteXReceta();
+            DataTable dtP = new DataTable();
+            dtP = CTRIxR.CTR_SelectIngredientexR(GetIDReceta(nombreReceta));
+
+            foreach(DataRow row in dtP.Rows)
+            {
+                idI = int.Parse(row["I_idIngrediente"].ToString());
+                
+
+                foreach (DataRow row2 in dtTransformarI.Rows)
+                {
+                    idI2 = int.Parse(row2["I_idIngrediente"].ToString());
+                    nomI = row2["I_nombreInsumo"].ToString();
+
+                    foreach (GridViewRow gvrow in gvIngrediente.Rows)
+                    {
+                        nomIgv = gvrow.Cells[3].Text;
+                        if (idI == idI2 && nomI==nomIgv )
+                        {
+                            racionTotalI = Convert.ToDecimal(gvrow.Cells[1].Text);
+                            e = Convert.ToDecimal(row2["E_cantidad"]);
+                            decimal t = (e* racionTotalI) / Convert.ToDecimal(row["IR_cantidad"]);
+                            row2["E_cantidad"] = t;
+                            c = Convert.ToDecimal(row["IR_cantidad"]);
+                            txtprueba.Text += racionTotalI + "E_cantidad:" + e + ";"+"cantidad receeta"+ c;
+
+                        }
+                       
+                    }
+                    
+                }
+            }
             
+            gvInsumosTransformados.DataSource = dtTransformarI;
+            gvInsumosTransformados.DataBind();
+            //(0.5*50000gr)/500gr
         }
-        protected void ddlIngrediente_SelectedIndexChanged(object sender, EventArgs e)
+        public void DescontarStock()
         {
-            //if (ddlIngrediente.SelectedValue != "")
-            //{
-            //    objIngrediente.I_idIngrediente = int.Parse(ddlIngrediente.SelectedValue);
-            //    //txtFormatoC.Text = Get_FormatoCocina(objIngrediente.I_idIngrediente);
-            //    //txtInsumo.Text = Get_Insumo(objIngrediente.I_idIngrediente).I_nombreInsumo;
-            //    dto_medida = new DTO_Medida();
-            //   // dto_insumo.I_idInsumo= Get_Insumo(objIngrediente.I_idIngrediente).I_idInsumo;
-            //    dto_medida = ctr_insumo.CTR_Consultar_Medida_x_Insumo(dto_insumo);
-            //    txtMedida.Text = dto_medida.M_nombreMedida;
-            //    txtCantidad.Text = "";
-            //}
-        }
+            string gvnombreInsumo = "";
+            string nombreInsumo = "";
+            decimal gvcantidad = 0;
+            decimal stockActual = 0;
+            CTR_Insumo CTRInsumo = new CTR_Insumo();
+            DTO_Insumo DTOInsumo = new DTO_Insumo();
+            DataTable dtInsumo = new DataTable();            
+            dtInsumo = CTRInsumo.ListarInsumo();
+            foreach (GridViewRow gvrow in gvInsumosTransformados.Rows)
+            {
+                gvnombreInsumo= gvrow.Cells[0].Text.ToString();
+                gvcantidad= Convert.ToDecimal(gvrow.Cells[1].Text);
 
-        protected void Unnamed_ServerClick(object sender, EventArgs e)
-        {
+                foreach (DataRow row in dtInsumo.Rows)
+                {                   
+                    nombreInsumo = row["I_nombreInsumo"].ToString();
+                    stockActual = Convert.ToDecimal(row["I_cantidad"]);
 
-        }
+                    if (gvnombreInsumo == nombreInsumo)
+                    {
+                        stockActual = stockActual- gvcantidad;
+                        DTOInsumo.I_cantidad = stockActual;
+                        DTOInsumo.I_idInsumo = int.Parse(row["I_idInsumo"].ToString());
+                        CTRInsumo.ActualizarCantidadI(DTOInsumo);
+                        return;
+                        //txtprueba.Text += nombreInsumo+"-"+stockActual+";";
+                    }
 
+                }
+            }
+            
+        }   
         protected void cldMenu_SelectionChanged(object sender, EventArgs e)
         {
             dtMenu = CTRMenu.CTR_SelectMenuXFecha(cldMenu.SelectedDate.ToShortDateString());
@@ -122,7 +130,6 @@ namespace ProyectoMesonURP
             }
             return DTOMenu;
         }
-
         public int GetIDReceta(string nomReceta)
         {
             int idReceta = 0;
@@ -136,34 +143,48 @@ namespace ProyectoMesonURP
             }
             return idReceta;
         }
-
-        public void CantidadTotalIngredientes(int racionSolicitada, int porcionesReceta)
+        public void CantidadTotalIngredientes(int racionSolicitada, int porcionesReceta, string nombreReceta)
         {
-            
-            foreach(GridViewRow row2 in gvIngrediente.Rows)
-            {
-                
-                 string s= Convert.ToString((int.Parse(row2.Cells[1].Text) * racionSolicitada)/porcionesReceta);
-                 row2.Cells[1].Text = s;
-            }            
-        }
+            string s= "";
+            CTR_IngredienteXReceta CTRIxR = new CTR_IngredienteXReceta();
+            DataTable dtP = new DataTable();
+            dtP = CTRIxR.CTR_SelectIngredientexR(GetIDReceta(nombreReceta));
+            gvIngrediente.DataSource = dtP;
+            gvIngrediente.DataBind();
 
+
+            foreach (GridViewRow row in gvIngrediente.Rows)
+            {
+                s = ((Convert.ToDecimal(row.Cells[1].Text) * racionSolicitada) / porcionesReceta).ToString();
+                row.Cells[1].Text = s;
+            }
+        }
         protected void gvRecetaMenu_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "SeleccionarReceta")
-            {
-                DataTable dtP = new DataTable();
+            {                
                 string nombreReceta= gvRecetaMenu.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
                 int racionSolicitada = Convert.ToInt32(gvRecetaMenu.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["MxR_numeroPorcion"].ToString());
-                int porcionesReceta = Convert.ToInt32(gvRecetaMenu.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_numeroPorcion"].ToString());
-                CTR_IngredienteXReceta CTRIxR = new CTR_IngredienteXReceta();
-                dtP= CTRIxR.CTR_SelectIngredientexR(GetIDReceta(nombreReceta));
-                gvIngrediente.DataSource = dtP;
-                gvIngrediente.DataBind();
-                CantidadTotalIngredientes(racionSolicitada,porcionesReceta);
+                int porcionesReceta = Convert.ToInt32(gvRecetaMenu.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_numeroPorcion"].ToString());                             
+                CantidadTotalIngredientes(racionSolicitada,porcionesReceta,nombreReceta);
+                TransformarInsumos(GetIDReceta(nombreReceta),nombreReceta);
                 lblMenu.Text = nombreReceta;
             }   
             
         }
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DescontarStock();
+        }
+        protected void clMenu_OnDayRender(object sender, DayRenderEventArgs e)
+        {
+           // DateTime week = DateTime.Today.DayOfWeek;
+            if (e.Day.Date.DayOfWeek == DayOfWeek.Monday)
+            {
+                e.Day.IsSelectable = false; 
+            }
+        }
+
+
     }
 }

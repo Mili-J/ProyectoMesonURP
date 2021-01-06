@@ -69,13 +69,22 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.GridView gvIngrediente;
 
         /// <summary>
-        /// GridView1 control.
+        /// gvInsumosTransformados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gvInsumosTransformados;
+
+        /// <summary>
+        /// txtprueba control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtprueba;
 
         /// <summary>
         /// btnGuardar control.

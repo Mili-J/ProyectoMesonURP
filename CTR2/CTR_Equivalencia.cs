@@ -44,5 +44,9 @@ namespace CTR
         {
             return objEquivalencia.DAOconsultarDetalleExI(I_idIngrediente);
         }
+        public DataTable CTR_ConsultarEquivalenciaXIngrediente(int idReceta)
+        {
+            return objEquivalencia.DAO_ConsultarEquivalenciaXIngrediente(idReceta);
+        }
     }
 }
