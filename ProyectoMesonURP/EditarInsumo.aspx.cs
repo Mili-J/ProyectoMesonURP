@@ -45,12 +45,9 @@ namespace ProyectoMesonURP
             DDLFC.Items.FindByValue(fc).Selected = true;
             FC_SelectedIndexChanged(DDLFC, EventArgs.Empty);
             string md = DT.Rows[0]["M_idMedida"].ToString();
-            if (idfc ==1) 
-            { 
-                DDLMedida.Items.FindByValue(md).Selected = true; 
-            }
-            else if (idfc > 1)
-            { 
+            DDLMedida.Items.FindByValue(md).Selected = true; 
+            if (idfc > 1)
+            {
                 DDLMedida2.Items.FindByValue(md).Selected = true;
                 int cantun = Convert.ToInt32(DT.Rows[0]["MXF_cantidadUnidad"].ToString());
                 txtCantidadCo.Text = DT.Rows[0]["MXF_cantidadContenida"].ToString().Replace(",", ".");
@@ -83,6 +80,11 @@ namespace ProyectoMesonURP
             DDLFC.DataValueField = "FC_idFCompra";
             DDLFC.DataBind();
             DDLFC.Items.Insert(0, new ListItem("-- Seleccione --", ""));
+
+            CargarDDLMedida(DDLMedida);
+            CargarDDLMedida(DDLMedida2);
+
+
         }
         private void CargarDDLMedida(DropDownList DDLMedida)
         {
@@ -96,15 +98,12 @@ namespace ProyectoMesonURP
         }
         protected void FC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DT = _I.ConsultarInsumo_GI(idInsumo);
-            string md = DT.Rows[0]["M_idMedida"].ToString();
 
             if (Convert.ToInt32(DDLFC.SelectedValue) != 0)
             {
                 if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
                 {
-                    CargarDDLMedida(DDLMedida);
-                    DDLMedida.Items.FindByValue(md).Selected = true;
+                    
                     PanelMedida1.Visible = true;
                     PanelMedida2.Visible = false;
                     PanelMedida3.Visible = false;
@@ -113,8 +112,6 @@ namespace ProyectoMesonURP
                 else
                 {
                     Label1.InnerText = DDLFC.SelectedItem.ToString() + " de:";
-                    CargarDDLMedida(DDLMedida2);
-                    DDLMedida2.Items.FindByValue(md).Selected = true;
                     PanelMedida1.Visible = false;
                     PanelMedida2.Visible = true;
                     PanelMedida3.Visible = true;
