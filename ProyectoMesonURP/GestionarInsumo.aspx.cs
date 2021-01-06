@@ -57,14 +57,14 @@ namespace ProyectoMesonURP
 
                 if (_CI.ValInsumo_GI(id))
                 {
-                    ImageButton btnEditar = (ImageButton)e.Row.FindControl("btnEditar");
+                    LinkButton btnEditar = (LinkButton)e.Row.FindControl("btnEditar");
                     btnEditar.Enabled = true;
                 }
                 else
                 {
-                    ImageButton btnEditar = (ImageButton)e.Row.FindControl("btnEditar");
+                    LinkButton btnEditar = (LinkButton)e.Row.FindControl("btnEditar");
                     btnEditar.Enabled = false;
-                    btnEditar.ImageUrl = "img/editar-b.png";
+                    btnEditar.ControlStyle.CssClass = "<class='btn btn-warb btn-sm'>";
                 }
             }
         }

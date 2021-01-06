@@ -57,7 +57,7 @@
                                 <asp:BoundField DataField="Representacion de compra" HeaderText="Representación de compra" />
                                 <asp:TemplateField HeaderText="Editar">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                        <asp:LinkButton ID="btnEditar" class="btn btn-warning btn-sm" runat="server" CommandName="Editar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>       
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

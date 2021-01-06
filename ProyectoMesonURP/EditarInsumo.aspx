@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Editar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="EditarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.EditarInsumo"%>
+﻿<%@ Page Title="Gestionar Insumo | Editar" Language="C#" AutoEventWireup="true" CodeBehind="EditarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.EditarInsumo"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,7 +10,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <h4 class="tittle-margin5">Agregar Insumo</h4>
+                        <h4 class="tittle-margin5">Actualizar Insumo</h4>
                     </div>
                 </div>
             </div>
@@ -87,8 +87,8 @@
            
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEditar" onserverclick="btnEditar_ServerClick">Editar</button>
-                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
+                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEditar" onserverclick="btnEditar_ServerClick">Actualizar</button>
+                <input type="button" name="sub-1" value="Volver" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
             </p>
         </div>
     </div>    

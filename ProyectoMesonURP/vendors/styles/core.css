@@ -3003,6 +3003,15 @@ a.btn.disabled, fieldset:disabled a.btn {
             box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
         }
 
+.btn-warb {
+    color: #fff;
+    background-color: #d39e00;
+    border-color: #c69500;
+    padding: .438rem 1rem;
+    border-radius: .2rem;
+    font-size: .875rem
+}
+
 .btn-warning {
     color: #fff;
     background-color: #ffc107;
