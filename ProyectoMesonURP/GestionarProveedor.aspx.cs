@@ -19,23 +19,33 @@ namespace ProyectoMesonURP
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarProveedores();
+            ListItem ddl1 = new ListItem("5", "5");
+            ddlp.Items.Insert(0, ddl1);
+            ListItem ddl2 = new ListItem("10", "10");
+            ddlp.Items.Insert(1, ddl2);
+            ListItem ddl3 = new ListItem("20", "20");
+            ddlp.Items.Insert(2, ddl3);
         }
         public void CargarProveedores()
         {
-            gvPro.DataSource = ctr_pro.ListarProveedores();
+            gvPro.DataSource = ctr_pro.ListarProveedores(txtBuscarProveedor.Text);
             gvPro.DataBind();
 
         }
+        protected void fNombreProveedor_TextChanged(object sender, EventArgs e)
+        {
+            CargarProveedores();
+        }
         protected void gvPro_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            gvPro.PageIndex = e.NewPageIndex;
+            CargarProveedores();
         }
-
-        protected void gvPro_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            gvPro.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+            CargarProveedores();
         }
-
         protected void gvPro_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 

@@ -86,10 +86,11 @@
                          <div id="txt" class="row p-5 justify-content-center h-100"></div>
                     </div>
                 </div>
-               </div>
+              </div>
                 <hr />
                 <p class="center-button pt-3">
                      <button type="button" id="demo" onclick="pruebaRegistro()" class="btn btn-primary" ValidationGroup="prov">Registrar</button>
+                     <asp:Button CssClass="btn btn-danger" ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
                 </p>
              </div>
       </div>

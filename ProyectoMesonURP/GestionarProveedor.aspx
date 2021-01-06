@@ -36,13 +36,13 @@
              <div class="row pt-1">
                 <div class="col-sm-12 col-md-6">
                     <label class="control-label col-md-2">Paginación:</label>
-                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" Style="width: auto; height: 38px" runat="server" AutoPostBack="true">
+                    <asp:DropDownList ID="ddlp" class="custom-select custom-select-sm form-control form-control-sm" Style="width: auto; height: 38px" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlp_SelectedIndexChanged">
                     </asp:DropDownList>
                 </div>
                 <div class="col-sm-12 col-md-3 pl-30"></div>
                 <div class="col-sm-12 col-md-3 pl-30">
                     <div class="search-icon-box bg-white box-shadow border-radius-10 mb-30">
-                        <asp:TextBox ID="txtBuscarProveedor" runat="server" class="form-control" AutoPostBack="True" onkeypress="return soloLetras(event);" placeholder="Buscar Proveedor..." />
+                        <asp:TextBox ID="txtBuscarProveedor" runat="server" class="form-control" AutoPostBack="True" onkeypress="return soloLetras(event);" OnTextChanged="fNombreProveedor_TextChanged" placeholder="Buscar Proveedor..." />
                         <i class="search_icon dw dw-search"></i>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <asp:GridView ID="gvPro" AllowPaging="True" AutoGenerateColumns="False" runat="server" EmptyDataText="No hay información disponible." OnRowCommand="gvPro_RowCommand" OnRowDataBound="gvPro_RowDataBound"
                             CssClass="table table-bordered table-striped mb-0" DataKeyNames="PR_idProveedor,PR_razonSocial,PR_numeroDocumento,PR_direccion,PR_nombreContacto,PR_telefonoContacto,PR_correoContacto,EP_idEstadoProveedor"
-                            Style="text-align: center" OnPageIndexChanging="gvPro_PageIndexChanging" CellPadding="4" PageSize="6" OnSelectedIndexChanged="gvPro_SelectedIndexChanged" GridLines="None">
+                            Style="text-align: center" OnPageIndexChanging="gvPro_PageIndexChanging" CellPadding="4" PageSize="6" GridLines="None">
                             <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle>
                             <Columns>
                                 <asp:BoundField DataField="PR_idProveedor" HeaderText="PR_idProveedor" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />

@@ -16,16 +16,16 @@ namespace DAO
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
         }
-        public DataTable ListarProveedores()
+        public DataTable ListarProveedores(string @razonSocial)
         {
             try
             {
-                DataTable dtable = new DataTable();
-                SqlCommand cmd = new SqlCommand("SP_ConsultarProveedores", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dtable);
-                return dtable;
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_ConsultarProveedores", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@razonSocial", razonSocial);
+                DataSet dSet = new DataSet();
+                cmd.Fill(dSet);
+                return dSet.Tables[0];
             }
             catch (Exception ex)
             {

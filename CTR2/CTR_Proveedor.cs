@@ -21,9 +21,9 @@ namespace CTR
         {
             return dao_pro.DAO_ConsultarProveedor(id);
         }
-        public DataTable ListarProveedores()
+        public DataTable ListarProveedores(string razonSocial)
         {
-            return dao_pro.ListarProveedores();
+            return dao_pro.ListarProveedores(razonSocial);
         }
         public void CambiarEstadoProveedor(int id, int estado)
         {
