@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Transformación" Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo" %>
+﻿<%@ Page Title="Mesón URP | Transformar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="Transformar_Insumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.Transformar_Insumo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

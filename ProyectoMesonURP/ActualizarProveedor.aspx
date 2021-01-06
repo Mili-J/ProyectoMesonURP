@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestionar Proveedor | Actualizar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ActualizarProveedor.aspx.cs" Inherits="ProyectoMesonURP.ActualizarProveedor" %>
+﻿<%@ Page Title="Gestionar Proveedor | Editar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ActualizarProveedor.aspx.cs" Inherits="ProyectoMesonURP.ActualizarProveedor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">

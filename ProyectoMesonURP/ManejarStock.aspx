@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Manejar Stock" Language="C#" AutoEventWireup="true" CodeBehind="ManejarStock.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ManejarStock" %>
+﻿<%@ Page Title="MesónURP | Manejar Stock" Language="C#" AutoEventWireup="true" CodeBehind="ManejarStock.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ManejarStock" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .mb-0 {}

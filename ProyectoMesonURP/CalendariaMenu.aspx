@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Calendario" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="CalendariaMenu.aspx.cs" Inherits="ProyectoMesonURP.CalendariaMenu" EnableEventValidation="false"%>
+﻿<%@ Page Title="Mesón URP | Planificar Menú" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="CalendariaMenu.aspx.cs" Inherits="ProyectoMesonURP.CalendariaMenu" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .calendarWrapper
