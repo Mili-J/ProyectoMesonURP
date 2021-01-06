@@ -14,9 +14,6 @@ namespace ProyectoMesonURP
     public partial class GestionarInsumo: System.Web.UI.Page
     {
         CTR_Insumo _CI = new CTR_Insumo();
-        DTO_Insumo dto_i;
-        DTO_Usuario dto_u;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             
