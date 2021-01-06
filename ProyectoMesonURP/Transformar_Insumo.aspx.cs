@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Drawing;
 using CTR;
 using DTO;
 
@@ -231,13 +232,35 @@ namespace ProyectoMesonURP
         }
         protected void clMenu_OnDayRender(object sender, DayRenderEventArgs e)
         {
-           // DateTime week = DateTime.Today.DayOfWeek;
-            if (e.Day.Date.DayOfWeek == DayOfWeek.Sunday || e.Day.Date.DayOfWeek == DayOfWeek.Saturday)
-            {
-                e.Day.IsSelectable = false; 
-            }
+                DateTime dayOfWeek = new DateTime();
+                CTR_Menu CTRMenu = new CTR_Menu();
+                DataTable dtMenu = new DataTable();
+
+                //for (int i = 0; i <= 6; i++)
+                //{
+                if ( dayOfWeek.DayOfWeek == DayOfWeek.Monday) dayOfWeek=dayOfWeek.Date;
+
+                //else dayOfWeek = DateTime.Today.AddDays(i);                   
+                //   dtMenu = CTRMenu.CTR_ConsultarMenusXEstadoYFecha(3, dayOfWeek);
+                  txtprueba.Text += dayOfWeek+";";
+                //   if (dtMenu.Rows.Count != 0)
+                //   {
+                //      System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#629e6c");
+                //      e.Cell.BackColor = col;
+                //   }
+                //   else
+                //   {
+                //    e.Day.IsSelectable = false;
+                //    e.Cell.BackColor = Color.Gray;
+
+                //   }
+                //}
+                //if (e.Day.IsOtherMonth)
+                //{
+                //    e.Day.IsSelectable = false;
+                //    e.Cell.BackColor = Color.Gray;
+                //}
+
         }
-
-
     }
 }
