@@ -46,7 +46,7 @@
                                 <asp:ListItem Text="10 días" Value="10 días"></asp:ListItem>
                                 <asp:ListItem Text="20 días" Value="20 días"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirCot" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <%-- ----- --%>
@@ -66,7 +66,7 @@
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Proveedor</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList ID="DdlProveedor" runat="server" CssClass="form-control1">
+                            <asp:DropDownList ID="DdlProveedor" runat="server" CssClass="form-control1" CausesValidation="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="validationProveedorOC" runat="server" ControlToValidate="DdlProveedor" ErrorMessage="Campo Obligatorio"  CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
@@ -128,7 +128,7 @@
 
                         <hr />
                         <p class="center-button">
-                            <asp:Button ID="btnActualizarCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnActualizarCotizacion_Click" Text="Actualizar"/>
+                            <asp:Button ID="btnActualizarCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnActualizarCotizacion_Click" Text="Actualizar" ValidationGroup="añadirCot"/>
                             <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />
                         </p>
                     </div>

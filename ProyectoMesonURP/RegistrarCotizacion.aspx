@@ -31,13 +31,13 @@
                     <div class="form-group">
                            <label for="selector1" class="col-sm-2 control-label">Tiempo plazo</label>
                            <div class="col-sm-8">
-                           <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlTiempoPlazo" >
+                           <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlTiempoPlazo" CausesValidation="True">
                                 <asp:ListItem  Value="">--seleccione--</asp:ListItem>
                                 <asp:ListItem Text="5 días" Value="5 días"></asp:ListItem>
                                 <asp:ListItem Text="10 días" Value="10 días"></asp:ListItem>
                                 <asp:ListItem Text="20 días" Value="20 días"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirOC" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DdlTiempoPlazo" ErrorMessage="Campo Obligatorio" ValidationGroup="añadirCot" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -67,9 +67,10 @@
 
                         <label for="selector1" class="col-sm-2 control-label">Categorías:</label>
                         <div class="col-sm-8">
-                            <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlInsumo"  AutoPostBack="true" CausesValidation="false" OnSelectedIndexChanged="DdlInsumo_SelectedIndexChanged">                        
+                            <asp:DropDownList runat="server" CssClass="form-control1" ID="DdlInsumo"  AutoPostBack="true" CausesValidation="True" OnSelectedIndexChanged="DdlInsumo_SelectedIndexChanged">                        
+
                             </asp:DropDownList>
-                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DdlInsumo" ErrorMessage="Campo Obligatorio" CssClass="required-item" Display="Dynamic" ForeColor="Red" ValidationGroup="añadirCot"></asp:RequiredFieldValidator>
                         </div>
 
                     </div>
@@ -99,7 +100,7 @@
                     <div class="form-group">
                         <label for="selector1" class="col-sm-2 control-label">Menú</label>
                         <div class="col-sm-8">
-                            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CausesValidation="false"/>
+                            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CausesValidation="True" ValidationGroup="añadirCot"/>
                            
                         </div>
                     </div>

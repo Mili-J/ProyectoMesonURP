@@ -58,8 +58,8 @@ namespace ProyectoMesonURP
                 DdlInsumo.DataValueField = "CI_idCategoriaInsumo";
                 DdlInsumo.DataSource = ctr_catIns.DAO_ConsultarCategoriasInsumo();
                 DdlInsumo.DataBind();
-                DdlInsumo.Items.Insert(0, "--seleccione--");
-                DdlInsumo.Items[0].Value = "0";
+               //DdlInsumo.Items.Insert(0, "--seleccione--");
+               //DdlInsumo.Items[0].Value = "0";
             }
         }
 
