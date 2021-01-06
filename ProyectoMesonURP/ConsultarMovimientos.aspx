@@ -3,62 +3,70 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <div class="women_main">
-                    <!-- start content -->
-                    <div class="grids">
-                        <div class="progressbar-heading grids-heading title-flex">
-                            <h2 class="tittle-margin5">Consultar Movimientos</h2>
-                            <div class="stock-options">
-                                    <div class="width-auto margin-5">
-                                        <button type="button" class="btn btn-primary btn-flex" runat="server" onserverclick="btnDescargarExcel_ServerClick">     
-                                            <span class="material-icons marginR-15">cloud_download</span>
-                                            <h>Descargar en Excel</h>
-                                        </button>
-                                    </div>                                
-                            </div>
+      <!-- start content -->
+       <div class="page-header">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="title">
+						<h4>Consultar Movimientos</h4>
+					</div>
+				</div>
+                <div class="header-right pt-2 pr-4">
+                  <button type="button" class="btn btn-primary btn-flex" runat="server" onserverclick="btnDescargarExcel_ServerClick">    
+                     <span class="material-icons marginR-15">cloud_download</span>
+                       <h>Descargar en Excel</h>
+                  </button>
+               </div>
+			</div>
+		</div>
+        <div class="pd-20 card-box"  runat="server">
+            <h5 class="pr-3">Seleccione entre fechas a filtrar o por tipo de movimiento</h5>
+                <div class="row justify-content-center" style="margin-top: 20px; margin-bottom:20px">
+                    <label class="col-md-2">Fecha: </label>
+                    <div class="col-md-2">
+                    <asp:TextBox  id="txtFechaInicial" runat="server" CssClass="form-control1" TextMode="Date">
+                    </asp:TextBox> 
                         </div>
-                        <div class="search-buttons">
-                                <div class="panel panel-widget forms-panel">
-                                <div class="form-grids widget-shadow" data-example-id="basic-forms">
-                                    <div class="form-title color-white">
-                                        <h4>Ingresos y Egresos</h4>
-                                    </div>
-                                    
-                                     <div class="div-movflex modal-header">
-                                        <label>Fecha: </label>
-                                        <asp:TextBox  id="txtFechaInicial" runat="server" CssClass="form-control1" TextMode="Date">
-                                        </asp:TextBox> 
-                                         <asp:TextBox  id="txtFechaFinal" runat="server" CssClass="form-control1" TextMode="Date">
-                                        </asp:TextBox>
-                                         <button type="button" id="btnQuitar" class="btn btn-primary btn-flex" runat="server" onserverclick="btnQuitarFiltro_ServerClick">     
-                                             <p>Quitar</p>
-                                        </button>
+                     <div class="col-md-2">
+                    <asp:TextBox  id="txtFechaFinal" runat="server" CssClass="form-control1" TextMode="Date">
+                    </asp:TextBox>
+                          </div>
+                    <div class="col-md-2">
+                         <button type="button" id="btnQuitar" class="btn btn-primary btn-flex" runat="server" onserverclick="btnQuitarFiltro_ServerClick"  style="display: flex; margin-left: 6px;"> 
+                                <span class="material-icons marginR-15">highlight_off</span>
+                        Quitar
+                        </button>
 
-                                         <button type="button" id="btnFiltrar" class="btn btn-primary btn-flex" runat="server" onserverclick="btnFiltrar_ServerClick">     
-                                             <p>Filtrar</p>
-                                        </button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                            <ContentTemplate>
-                                       <asp:GridView ID="gvMovimientos" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
-                                            CssClass="table table-bordered table-striped mb-0" DataKeyNames="I_nombreInsumo,M_cantidad,MT_nombreMovimiento,M_fechaMovimiento">
-                                            <Columns>
-                                                <asp:BoundField DataField="I_nombreInsumo" HeaderText="Insumo" />
-                                                <asp:BoundField DataField="M_cantidad" HeaderText="Cantidad" />
-                                                <asp:BoundField DataField="MT_nombreMovimiento" HeaderText="Tipo" />
-                                                <asp:BoundField DataField="M_fechaMovimiento" HeaderText="Fecha" />       
-                                            </Columns>
-                                        </asp:GridView>
-                                          </ContentTemplate>
-                                     </asp:UpdatePanel>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                     </div>
-                  </div>
+                        <button type="button" id="btnFiltrar" class="btn btn-primary btn-flex" runat="server" onserverclick="btnFiltrar_ServerClick"  style="display: flex; margin-left: 6px;">     
+                                <span class="material-icons marginR-15">search</span>
+                        Filtrar
+                        </button>
+                    </div>
+                </div>
+            <div class="panel panel-widget forms-panel">
+                <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                    <div class="form-title color-white">
+                        <h5>Ingresos y Egresos</h5>
+                    </div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                        <asp:GridView ID="gvMovimientos" AutoGenerateColumns="False" runat="server" emptydatatext="No hay información disponible."  
+                            CssClass="table table-bordered table-striped mb-0" Style="text-align: center" DataKeyNames="I_nombreInsumo,M_cantidad,MT_nombreMovimiento,M_fechaMovimiento">
+                            <Columns>
+                                <asp:BoundField DataField="I_nombreInsumo" HeaderText="Insumo" />
+                                <asp:BoundField DataField="M_cantidad" HeaderText="Cantidad" />
+                                <asp:BoundField DataField="MT_nombreMovimiento" HeaderText="Tipo" />
+                                <asp:BoundField DataField="M_fechaMovimiento" HeaderText="Fecha" />       
+                            </Columns>
+                        </asp:GridView>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+        </div>   
+   </div>
          <script>
              function soloLetras(e) {
                  key = e.keyCode || e.which;
