@@ -41,15 +41,15 @@ namespace ProyectoMesonURP
             string cat= DT.Rows[0]["CI_idCategoriaInsumo"].ToString();
             DDLCategoria.Items.FindByValue(cat).Selected = true;
             string fc = DT.Rows[0]["FC_idFCompra"].ToString();
+            int idfc = Convert.ToInt32(fc);
             DDLFC.Items.FindByValue(fc).Selected = true;
             FC_SelectedIndexChanged(DDLFC, EventArgs.Empty);
             string md = DT.Rows[0]["M_idMedida"].ToString();
-            int idmd = Convert.ToInt32(md);
-            if (idmd ==1) 
+            if (idfc ==1) 
             { 
                 DDLMedida.Items.FindByValue(md).Selected = true; 
             }
-            else if (idmd > 1)
+            else if (idfc > 1)
             { 
                 DDLMedida2.Items.FindByValue(md).Selected = true;
                 int cantun = Convert.ToInt32(DT.Rows[0]["MXF_cantidadUnidad"].ToString());
@@ -96,11 +96,15 @@ namespace ProyectoMesonURP
         }
         protected void FC_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DT = _I.ConsultarInsumo_GI(idInsumo);
+            string md = DT.Rows[0]["M_idMedida"].ToString();
+
             if (Convert.ToInt32(DDLFC.SelectedValue) != 0)
             {
                 if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
                 {
                     CargarDDLMedida(DDLMedida);
+                    DDLMedida.Items.FindByValue(md).Selected = true;
                     PanelMedida1.Visible = true;
                     PanelMedida2.Visible = false;
                     PanelMedida3.Visible = false;
@@ -110,6 +114,7 @@ namespace ProyectoMesonURP
                 {
                     Label1.InnerText = DDLFC.SelectedItem.ToString() + " de:";
                     CargarDDLMedida(DDLMedida2);
+                    DDLMedida2.Items.FindByValue(md).Selected = true;
                     PanelMedida1.Visible = false;
                     PanelMedida2.Visible = true;
                     PanelMedida3.Visible = true;
