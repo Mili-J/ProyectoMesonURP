@@ -69,7 +69,7 @@ namespace CTR
         {
             return dao_insumo.ValEditarInsumo(idInsumo);
         }
-        public void InsertInsumo(object[]NuevoInsumo)
+        public void InsertInsumo(object[] NuevoInsumo)
         {
             dao_insumo.InsertInsumo_GI(NuevoInsumo);
         }
@@ -80,6 +80,14 @@ namespace CTR
         public DataTable ConsultarInsumo_GI(int idInsumo)
         {
             return dao_insumo.ConsultarInsumo_GI(idInsumo);
+        }
+        public bool InsumoExAgr_GI(string nomInsumo)
+        {
+            return dao_insumo.InsumoExistenciaAgr_GI(nomInsumo);
+        }
+        public bool InsumoExEd_GI(string nomInsumo, int idInsumo)
+        {
+            return dao_insumo.InsumoExistenciaEd_GI(nomInsumo, idInsumo);
         }
     }
 }

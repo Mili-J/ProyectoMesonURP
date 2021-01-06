@@ -91,5 +91,34 @@
                 <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
             </p>
         </div>
-    </div>    
+    </div>
+    <script src="js/sweetalert.js">
+    </script>
+    <script>
+
+        function alertaInsumoDup() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'El insumo ya existe',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaError() {
+            Swal.fire({
+                title: 'Oh, no!',
+                text: 'LLene todos los campos',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+        function alertaExito() {
+            Swal.fire({
+                title: 'Enhorabuena!',
+                text: 'Se ha logrado registrar el insumo correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+        }
+    </script>
 </asp:Content>
