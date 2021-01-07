@@ -20,7 +20,7 @@
                         <div class="col-sm-12 col-md-6">
                             <label>Agregar Nueva Categoría :</label>
                             <div class="width-auto margin-5" style="display: flex">
-                                <asp:TextBox runat="server" ID="txtRegistrarC" CssClass="form-control" Width="44%"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtRegistrarC" CssClass="form-control" Width="44%" onkeypress="return lettersOnly(event);"></asp:TextBox>
                                 <asp:Button runat="server" class="btn btn-primary" Text="Agregar" ID="btnAgregarCInsumo" OnClick="btnAgregarCInsumo_Click" />
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="recipient-name" class="col-form-label">Ingrese nueva categoría:</label>
-                                        <asp:TextBox runat="server" type="text" class="form-control" ID="txtActualizar" />
+                                        <asp:TextBox runat="server" type="text" class="form-control" ID="txtActualizar" onkeypress="return lettersOnly(event);"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -145,7 +145,18 @@
 
         </div>
     </div>
-    <script>
+     <script>
+         function lettersOnly(evt) {
+             evt = (evt) ? evt : event;
+             var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                 ((evt.which) ? evt.which : 0));
+             if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+                 (charCode < 97 || charCode > 122)) {
+                 alert("Por favor, ingrese solo letras.");
+                 return false;
+             }
+             return true;
+         }
         function alertaInsertado() {
             Swal.fire({
                 title: 'Enhorabuena!',
@@ -179,5 +190,5 @@
             })
         }
 
-    </script>
+     </script>
 </asp:Content>
