@@ -92,8 +92,8 @@
             </div>
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnEditar" onserverclick="btnEditar_ServerClick" ValidationGroup="insumo">Actualizar</button>
-                <input type="button" name="sub-1" value="Volver" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-danger" />
+                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
+                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
             </p>
         </div>
     </div>   

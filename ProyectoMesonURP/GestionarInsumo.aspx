@@ -60,6 +60,11 @@
                                         <asp:LinkButton ID="btnEditar" class="btn btn-warning btn-sm" runat="server" CommandName="Editar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>       
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Ver Detalles">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnConsultar" ImageUrl="img/ojo.png" onmouseover="this.src='img/ojo-b.png'" onmouseout="this.src='img/ojo.png'" runat="server" CommandName="Consultar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                             </Columns>
                         </asp:GridView>
