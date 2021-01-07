@@ -1,4 +1,4 @@
-﻿<%@ Page Title="MesónURP | Gestionar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="GestionarInsumo.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarInsumo" %>
+﻿<%@ Page Title="MesónURP | Gestionar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="GestionarInsumo.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarInsumo"  EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .mb-0 {}

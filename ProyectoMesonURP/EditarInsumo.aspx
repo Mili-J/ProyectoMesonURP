@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestionar Insumo | Editar" Language="C#" AutoEventWireup="true" CodeBehind="EditarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.EditarInsumo"%>
+﻿<%@ Page Title="Gestionar Insumo | Editar" Language="C#" AutoEventWireup="true" CodeBehind="EditarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.EditarInsumo" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

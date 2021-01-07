@@ -31,31 +31,31 @@
                     <div class="form-group row col-md-8">
                         <label class="col-sm-12 col-md-2 col-form-label">Categoria:</label>
                         <div class="col-sm-12 col-md-6">
-                            <asp:DropDownList ID="DDLCategoria" runat="server" Class="custom-select2 form-control">
+                            <asp:DropDownList ID="DDLCategoria" runat="server" CssClass="form-control">
                             </asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-group row col-md-8">
                         <label class="col-sm-12 col-md-2 col-form-label">Formato de Compra:</label>
                         <div class="col-sm-12 col-md-6">
-                            <asp:DropDownList ID="DDLFC" runat="server" Class="custom-select2 form-control" AutoPostBack="true" OnSelectedIndexChanged="FC_SelectedIndexChanged">
+                            <asp:DropDownList ID="DDLFC" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="FC_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-group row col-md-8" runat="server" id="PanelMedida1" visible="false">
                         <label class="col-sm-12 col-md-2 col-form-label">Unidad de Medida:</label>
                         <div class="col-sm-12 col-md-6">
-                            <asp:DropDownList ID="DDLMedida" runat="server" Class="custom-select2 form-control">
+                            <asp:DropDownList ID="DDLMedida" runat="server" CssClass="form-control">
                             </asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-group row col-md-8" runat="server" id="PanelMedida2" visible="false">
                         <label class="col-sm-12 col-md-2 col-form-label" ID="Label1" runat="server"> -------- </label>
                         <div class="col-sm-4 col-md-2">
-                            <asp:TextBox ID="txtCantidadCo" runat="server" class="form-control" Text="1" Width="70px" />
+                            <asp:TextBox ID="txtCantidadCo" runat="server" CssClass="form-control" Text="1"/>
                         </div>
                         <div class="col-sm-12 col-md-6">
-                            <asp:DropDownList ID="DDLMedida2" runat="server" Class="custom-select2 form-control">
+                            <asp:DropDownList ID="DDLMedida2" runat="server" CssClass="form-control" Width="290px">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -65,14 +65,14 @@
                         </div>
                         <label class="col-sm-12 col-md-2 col-form-label" ID="Label2" runat="server">Pack  </label>
                         <div class="col-sm-4 col-md-2">
-                            <asp:TextBox ID="TxtCantUn" runat="server" class="form-control" Text="1" Width="70px" Visible="false"/>
+                            <asp:TextBox ID="TxtCantUn" runat="server" CssClass="form-control" Text="1" Visible="false"/>
                         </div>
                         <label class="col-sm-12 col-md-2 col-form-label" ID="Label3" runat="server"></label>
                     </div>
                     <div class="form-group row col-md-8" runat="server" id="Cantmin" visible="false">
                         <label class="col-sm-12 col-md-2 col-form-label">Cantidad Minima: </label>
                         <div class="col-sm-4 col-md-2">
-                            <asp:TextBox ID="TxtCantmin" runat="server" class="form-control" Text="0" Width="70px"/>
+                            <asp:TextBox ID="TxtCantmin" runat="server" CssClass="form-control" Text="0"/>
                         </div>
                         <label class="col-sm-12 col-md-2 col-form-label" ID="Label5" runat="server"></label>
                     </div>
