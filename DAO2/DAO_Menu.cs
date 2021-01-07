@@ -113,6 +113,7 @@ namespace DAO
 
             conexion.Close();
             return estado;
+
         }
         public DataTable DAO_ConsultarMenusXEstadoYFecha(int estado, DateTime fecha)
         {
