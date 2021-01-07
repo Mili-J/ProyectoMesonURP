@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using DTO;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace DAO
 {
@@ -29,19 +28,94 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
-        public DataTable SelectMovimiento(string FechaInicial, string FechaFinal)
+        public System.Data.DataTable SelectMovimiento(string FechaInicial, string FechaFinal, int Tipo)
         {
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_SELECT_MOVIMIENTOS_X_FECHA", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@FechaInicial", FechaInicial);
             comando.Parameters.AddWithValue("@FechaFinal", FechaFinal);
+            comando.Parameters.AddWithValue("@Tipo", Tipo);
             comando.ExecuteNonQuery();
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             SqlDataAdapter da = new SqlDataAdapter(comando);
             da.Fill(dt);
             conexion.Close();
             return dt;
         }
+        public void ExportarExcel(string FechaInicial, string FechaFinal, int Tipo) {
+            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            if (xlApp == null)
+            {
+                //MessageBox.Show("Excel is not properly installed!!");
+                return;
+            }
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            
+            if (FechaFinal == "" && FechaInicial == "" && Tipo == 0)
+            {
+                xlWorkSheet.Cells[1, 1] = "Movimientos del Mesón del estudiante de la URP";
+            }
+            else if (Tipo == 1)
+            {
+                xlWorkSheet.Cells[1, 1] = "Ingresos del Mesón del estudiante de la URP de  " + FechaInicial + "  a  " + FechaFinal;
+            }
+            else if (FechaFinal == "" && FechaInicial == "" && Tipo == 2)
+            {
+                xlWorkSheet.Cells[1, 1] = "Egresos del Mesón del estudiante de la URP";
+            }
+            else if (Tipo == 1) {
+                xlWorkSheet.Cells[1, 1] = "Ingresos del Mesón del estudiante de la URP";
+            }
+            else if (FechaFinal != "" && FechaInicial != "" && Tipo == 0) {
+                xlWorkSheet.Cells[1, 1] = "Movimientos del Mesón del estudiante de la URP de  " + FechaInicial + "  a  " + FechaFinal;
+            }
+            else if(Tipo == 2)
+            {
+                xlWorkSheet.Cells[1, 1] = "Egresos del Mesón del estudiante de la URP de  " + FechaInicial + "  a  " + FechaFinal;
+            }
+
+            xlWorkSheet.Cells[2, 1] = "Insumo";
+            xlWorkSheet.Cells[2, 2] = "Cantidad";
+            xlWorkSheet.Cells[2, 3] = "Tipo";
+            xlWorkSheet.Cells[2, 4] = "Fecha";
+            int indice = 3;
+            
+                conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_MOVIMIENTOS_X_FECHA", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@FechaInicial", FechaInicial);
+            comando.Parameters.AddWithValue("@FechaFinal", FechaFinal);
+            comando.Parameters.AddWithValue("@Tipo", Tipo);
+            comando.ExecuteNonQuery();
+            
+                    SqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                            //' Cargamos la información en el excel
+                            xlWorkSheet.Cells[indice, 1].Value = reader["I_nombreInsumo"];
+                            xlWorkSheet.Cells[indice, 2].Value = reader["M_cantidad"];
+                            xlWorkSheet.Cells[indice, 3].Value = reader["MT_nombreMovimiento"];
+                            xlWorkSheet.Cells[indice, 4].Value = reader["M_fechaMovimiento"];
+                            indice += 1;
+                    }
+                conexion.Close();
+            
+            xlWorkBook.SaveAs(@"..\Downloads\MesonURP_ConsultarMovimientos.xls", Excel.XlFileFormat.xlExcel8, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlApp.Workbooks.Close();
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+        }
     }
 }
+

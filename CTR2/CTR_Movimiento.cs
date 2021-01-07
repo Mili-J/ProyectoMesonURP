@@ -18,9 +18,12 @@ namespace CTR
         {
             dao_movimiento.InsertMovimientoGO(objDto);
         }
-        public DataTable ListarMovimiento(string FechaInicial, string FechaFinal)
+        public DataTable ListarMovimiento(string FechaInicial, string FechaFinal, int Tipo)
         {
-            return dao_movimiento.SelectMovimiento(FechaInicial, FechaFinal);
+            return dao_movimiento.SelectMovimiento(FechaInicial, FechaFinal, Tipo);
+        }
+        public void ExportarExcelMovimientos(string FechaInicial, string FechaFinal, int Tipo) {
+            dao_movimiento.ExportarExcel(FechaInicial,FechaFinal,Tipo);
         }
     }
 }

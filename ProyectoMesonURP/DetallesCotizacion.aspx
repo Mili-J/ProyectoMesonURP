@@ -181,6 +181,14 @@
                 confirmButtonText: 'Aceptar'
             })
         }
+        function alertaError() {
+            Swal.fire({
+                 title: 'Oh, no!',
+                 text: 'Por favor, ingrese todos los datos',
+                 icon: 'error',
+                 confirmButtonText: 'Aceptar'
+            })
+        }
     </script>
     <script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
 </asp:Content>
