@@ -461,5 +461,17 @@ namespace DAO
 
 
         }
+        public DataTable DAO_SelectRecetaTabCarta()
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SELECT_RECETA_TAB_CARTA", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

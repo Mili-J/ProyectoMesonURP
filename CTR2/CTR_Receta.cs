@@ -108,5 +108,17 @@ namespace CTR
         {
             return objDAO.DAO_ConsultarMenuXRecetaYCategoria(id_menu,id_cat);
         }
+        public DataTable CTR_Consultar_RecetaTabEntM()
+        {
+            return objDAO.DAO_SelectRecetaTabEntM();
+        }
+        public DataTable CTR_Consultar_RecetaTabBebM()
+        {
+            return objDAO.DAO_SelectRecetaTabBebM();
+        }
+        public DataTable CTR_Consultar_RecetaTabCarta()
+        {
+            return objDAO.DAO_SelectRecetaTabCarta();
+        }
     }
 }
