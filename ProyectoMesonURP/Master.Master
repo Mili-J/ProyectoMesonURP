@@ -172,7 +172,7 @@
 
              <!-- Nav Item - Charts -->
             <li id="menuMovimiento"  runat="server" class="nav-item">
-                <a class="nav-link" href="Empty.aspx">
+                <a class="nav-link" href="ConsultarMovimientos.aspx">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Consultar Movimiento</span></a>
             </li>

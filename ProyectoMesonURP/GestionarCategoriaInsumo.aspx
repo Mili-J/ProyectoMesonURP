@@ -23,7 +23,9 @@
                             <label>Nombre de Categoría :</label>
                             <div class="width-auto margin-5" style="display: flex">
                                  <asp:TextBox runat="server" ID="txtRegistrarC" placeholder="Ingrese un nombre" onkeypress="return lettersOnly(event);" CssClass="form-control" Width="44%"></asp:TextBox>
-                                <asp:LinkButton runat="server" class="btn btn-primary" ID="btnAgregarCInsumo" OnClick="btnAgregarCInsumo_Click"><i class="fa fa-plus-circle"></i>&nbsp; Añadir Categoría</asp:LinkButton>  
+                                <asp:RequiredFieldValidator ID="rfvnombre" runat="server" ControlToValidate="txtRegistrarC" ErrorMessage="Campo Obligatorio" SetFocusOnError="True" Display="Dynamic" ForeColor="DarkRed" ValidationGroup="categoria"></asp:RequiredFieldValidator>
+                                    
+                                <asp:LinkButton runat="server" class="btn btn-primary" ID="btnAgregarCInsumo" OnClick="btnAgregarCInsumo_Click" ValidationGroup="categoria"><i class="fa fa-plus-circle"></i>&nbsp; Añadir Categoría</asp:LinkButton>  
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-3 pl-30"></div>
