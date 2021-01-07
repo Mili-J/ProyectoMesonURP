@@ -298,5 +298,55 @@ namespace DAO
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+        public bool InsumoExistenciaAgr_GI(string nomInsumo)
+        {
+
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_Existencia_Insumo_GI", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@NInsumo", nomInsumo);
+            cmd.ExecuteNonQuery();
+            string Insumo = Convert.ToString(cmd.ExecuteScalar());
+            if (Insumo == "")
+            {
+                conexion.Close();
+                return false;
+            }
+            else
+            {
+                conexion.Close();
+                return true;
+            }
+        }
+        public bool InsumoExistenciaEd_GI(string nomInsumo,int idInsumo)
+        {
+
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_Existencia_Insumo_GI", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@NInsumo", nomInsumo);
+            cmd.ExecuteNonQuery();
+            string Insumo = Convert.ToString(cmd.ExecuteScalar());
+            if (Insumo == "")
+            {
+                conexion.Close();
+                return false;
+            }
+            
+            else
+            {
+                int Id = Convert.ToInt32(cmd.ExecuteScalar());
+                if (Id == idInsumo)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else 
+                { 
+                    conexion.Close();
+                    return true;
+                }
+            }
+        }
     }
 }

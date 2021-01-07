@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using DAO;
 using CTR;
 using System.Globalization;
+using System.Linq;
 
 namespace ProyectoMesonURP
 {
@@ -61,7 +62,7 @@ namespace ProyectoMesonURP
         }
         protected void FC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(DDLFC.SelectedValue) != 0) 
+            if (DDLFC.SelectedIndex !=0) 
             { 
                 if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
                 {
@@ -85,25 +86,73 @@ namespace ProyectoMesonURP
         }
         protected void btnRegistrar_ServerClick(object sender, EventArgs e)
         {
-            object[] NuevoInsumo = new object[7];
-            NuevoInsumo[0]=  txtInsumo.Text;
-            NuevoInsumo[1] = DDLCategoria.SelectedValue;
-            NuevoInsumo[2] = DDLFC.SelectedValue;
-            if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
+            if (Control_Val())
             {
-                NuevoInsumo[3] = DDLMedida.SelectedValue;
+                bool dup = _I.InsumoExAgr_GI(txtInsumo.Text);
+                if (dup == false)
+                {
+                    object[] NuevoInsumo = new object[7];
+                    NuevoInsumo[0] = txtInsumo.Text;
+                    NuevoInsumo[1] = DDLCategoria.SelectedValue;
+                    NuevoInsumo[2] = DDLFC.SelectedValue;
+                    if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
+                    {
+                        NuevoInsumo[3] = DDLMedida.SelectedValue;
+                    }
+                    else
+                    {
+                        NuevoInsumo[3] = DDLMedida2.SelectedValue;
+                    }
+                    NuevoInsumo[4] = Convert.ToDecimal(txtCantidadCo.Text, CultureInfo.InvariantCulture);
+                    NuevoInsumo[5] = TxtCantUn.Text;
+                    NuevoInsumo[6] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
+                    _I.InsertInsumo(NuevoInsumo);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaExito", "alertaExito()", true);
+                    Control_Clear();
+                }
+                else 
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaInsumoDup", "alertaInsumoDup()", true);
+                }
             }
             else 
-            { 
-                NuevoInsumo[3] = DDLMedida2.SelectedValue; 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaError", "alertaError()", true);
             }
-            NuevoInsumo[4] = Convert.ToDecimal(txtCantidadCo.Text, CultureInfo.InvariantCulture);
-            NuevoInsumo[5] = TxtCantUn.Text;
-            NuevoInsumo[6] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
-            _I.InsertInsumo(NuevoInsumo);
-            //Response.Redirect(Request.RawUrl);
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
-            return;
+        }
+        public Boolean Control_Val() 
+        {
+            bool val = true;
+            DropDownList medida;
+            if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
+            {
+                medida = DDLMedida; 
+            }
+            else
+            {
+                medida = DDLMedida2; 
+            }
+
+            if (DDLCategoria.SelectedIndex == 0 || DDLCategoria.SelectedIndex == 0 || DDLFC.SelectedIndex == 0 || medida.SelectedIndex== 0 || txtInsumo.Text == "") 
+            {
+                val = false;
+            }
+
+            return val;
+        }
+        public void Control_Clear() 
+        {
+            txtInsumo.Text = "";
+            DDLCategoria.SelectedIndex = 0;
+            if (Convert.ToInt32(DDLFC.SelectedValue) == 1) 
+            {
+                DDLMedida.SelectedIndex = 0;
+            }
+            else 
+            {
+                DDLMedida2.SelectedIndex = 0;
+            }
+            DDLFC.SelectedIndex = 0;
         }
         public void ChckedChanged(object sender, EventArgs e)
         {

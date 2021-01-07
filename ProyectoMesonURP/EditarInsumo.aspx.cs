@@ -122,27 +122,60 @@ namespace ProyectoMesonURP
         }
         protected void btnEditar_ServerClick(object sender, EventArgs e)
         {
-            object[] NuevoInsumo = new object[8];
-            NuevoInsumo[0] = idInsumo;
-            NuevoInsumo[1] = txtInsumo.Text;
-            NuevoInsumo[2] = DDLCategoria.SelectedValue;
-            NuevoInsumo[3] = DDLFC.SelectedValue;
+            if (Control_Val())
+            {
+                bool dup = _I.InsumoExEd_GI(txtInsumo.Text,idInsumo);
+                if (dup == false)
+                {
+                    object[] NuevoInsumo = new object[8];
+                    NuevoInsumo[0] = idInsumo;
+                    NuevoInsumo[1] = txtInsumo.Text;
+                    NuevoInsumo[2] = DDLCategoria.SelectedValue;
+                    NuevoInsumo[3] = DDLFC.SelectedValue;
+                    if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
+                    {
+                        NuevoInsumo[4] = DDLMedida.SelectedValue;
+                    }
+                    else
+                    {
+                        NuevoInsumo[4] = DDLMedida2.SelectedValue;
+                    }
+                    NuevoInsumo[5] = Convert.ToDecimal(txtCantidadCo.Text, CultureInfo.InvariantCulture); 
+                    NuevoInsumo[6] = TxtCantUn.Text;
+                    NuevoInsumo[7] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
+                    _I.EditarInsumo_GI(NuevoInsumo);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaExito", "alertaExito()", true);
+                }
+                else 
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaInsumoDup", "alertaInsumoDup()", true);
+                }
+            }
+            else 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaError", "alertaError()", true);
+            }
+
+        }
+        public Boolean Control_Val()
+        {
+            bool val = true;
+            DropDownList medida;
             if (Convert.ToInt32(DDLFC.SelectedValue) == 1)
             {
-                NuevoInsumo[4] = DDLMedida.SelectedValue;
+                medida = DDLMedida;
             }
             else
             {
-                NuevoInsumo[4] = DDLMedida2.SelectedValue;
+                medida = DDLMedida2;
             }
-            NuevoInsumo[5] = Convert.ToDecimal(txtCantidadCo.Text, CultureInfo.InvariantCulture); 
-            NuevoInsumo[6] = TxtCantUn.Text;
-            NuevoInsumo[7] = Convert.ToDecimal(TxtCantmin.Text, CultureInfo.InvariantCulture);
-            _I.EditarInsumo_GI(NuevoInsumo);
-            //Response.Redirect(Request.RawUrl);
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alertaExito()", true);
-            return;
 
+            if (DDLCategoria.SelectedIndex == 0 || DDLCategoria.SelectedIndex == 0 || DDLFC.SelectedIndex == 0 || medida.SelectedIndex == 0 || txtInsumo.Text == "")
+            {
+                val = false;
+            }
+
+            return val;
         }
         public void ChckedChanged(object sender, EventArgs e)
         {
