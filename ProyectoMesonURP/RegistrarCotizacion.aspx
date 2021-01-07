@@ -124,17 +124,17 @@
                             </div>
                         </div>
                     </div>
-                    <%--  --%>
-                    <hr />
-                    <p class="center-button">
-                        <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Agregar" />
-                        <%--<input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />--%>
-                        <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" OnClick="btnRegresar_Click" Text="Regresar" />
-                        <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
-                        <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />
-                    </p>
                 </div>
             </div>
+             <%--  --%>
+            <hr />
+            <p class="center-button">
+                <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Guardar" />
+                <%--<input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />--%>
+                <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" OnClick="btnRegresar_Click" Text="Volver" />
+                <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
+               <%-- <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />--%>
+            </p>
         </div>
     </div>
     <!-- Modal -->
