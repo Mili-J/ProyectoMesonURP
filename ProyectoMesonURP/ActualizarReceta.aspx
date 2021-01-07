@@ -67,8 +67,7 @@
                                     <asp:ListItem Value="0">--seleccionar sub-categoría--</asp:ListItem>
                                     <asp:ListItem Value="Entradas">Entradas</asp:ListItem>
                                     <asp:ListItem Value="Platos de fondo">Platos de fondo</asp:ListItem>
-                                    <asp:ListItem Value="Sopas">Bebidas</asp:ListItem>
-                                    <asp:ListItem Value="Postres">Postres</asp:ListItem>
+                                    <asp:ListItem Value="Bebidas">Bebidas</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvsubCategoriaR" runat="server" ControlToValidate="ddlSubCategoria" Display="Static" ForeColor="DarkRed" InitialValue="0" ValidationGroup="receta1"><span id="subcatRFV">Seleccione una opción</span></asp:RequiredFieldValidator>
                             </div>
