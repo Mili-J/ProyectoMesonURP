@@ -60,7 +60,7 @@
                                         <asp:LinkButton ID="btnEditar" class="btn btn-warning btn-sm" runat="server" CommandName="Editar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>       
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Ver Detalles">
+                                <asp:TemplateField HeaderText="Detalle">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnConsultar" class="btn btn-info btn-sm" runat="server" CommandName="Consultar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-eye"></i>&nbsp; Ver</asp:LinkButton>       
                                     </ItemTemplate>

@@ -142,7 +142,10 @@ namespace ProyectoMesonURP
                 else if (estado == "Recibida")
                 {
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
-                    e.Row.Cells[7].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    //e.Row.Cells[7].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    LinkButton btnEnviarEmailCotizacion = (LinkButton)e.Row.FindControl("btnEnviarEmailCotizacion");
+                    btnEnviarEmailCotizacion.Enabled = false;
+                    btnEnviarEmailCotizacion.ControlStyle.CssClass = "<class='btn btn-infor btn-sm'>";
                     e.Row.Cells[8].FindControl("btnVerDetallesCotizacion").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = true;
@@ -156,7 +159,10 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
-                    e.Row.Cells[7].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    //e.Row.Cells[7].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    LinkButton btnEnviarEmailCotizacion = (LinkButton)e.Row.FindControl("btnEnviarEmailCotizacion");
+                    btnEnviarEmailCotizacion.Enabled = false;
+                    btnEnviarEmailCotizacion.ControlStyle.CssClass = "<class='btn btn-infor btn-sm'>";
                     e.Row.Cells[8].FindControl("btnVerDetallesCotizacion").Visible = true;
                     //e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false; Lau
                     
@@ -169,10 +175,15 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
                     e.Row.Cells[9].FindControl("btnEditarCotizacion").Visible = false;
-                    e.Row.Cells[8].FindControl("btnVerDetallesCotizacion").Visible = false;
-                    e.Row.Cells[7].FindControl("btnEnviarEmailCotizacion").Visible = false;
+                    //e.Row.Cells[8].FindControl("btnVerDetallesCotizacion").Visible = false;
+                    ////e.Row.Cells[7].FindControl("btnEnviarEmailCotizacion").Visible = false;
                     //e.Row.Cells[8].FindControl("btnEnviarEmailCotizacion").Visible = false; Lau
-
+                    LinkButton btnEnviarEmailCotizacion = (LinkButton)e.Row.FindControl("btnEnviarEmailCotizacion");
+                    btnEnviarEmailCotizacion.Enabled = false;
+                    btnEnviarEmailCotizacion.ControlStyle.CssClass = "<class='btn btn-infor btn-sm'>";
+                    LinkButton btnVerDetallesCotizacion = (LinkButton)e.Row.FindControl("btnVerDetallesCotizacion");
+                    btnVerDetallesCotizacion.Enabled = false;
+                    btnVerDetallesCotizacion.ControlStyle.CssClass = "<class='btn btn-infor btn-sm'>";
                     //e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false; Lau
                     e.Row.Cells[6].Text = "<span class='badge badge-secondary'>" + e.Row.Cells[6].Text + "</span>";
                 }
