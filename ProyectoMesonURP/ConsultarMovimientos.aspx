@@ -22,7 +22,7 @@
         <div class="pd-20 card-box"  runat="server">
             <h5 class="pr-3">Seleccione entre fechas a filtrar o por tipo de movimiento</h5>
                 <div class="row justify-content-center" style="margin-top: 20px; margin-bottom:20px">
-                    <label class="col-md-2">Fecha: </label>
+                    <label>Fecha: </label>
                     <div class="col-md-2">
                     <asp:TextBox  id="txtFechaInicial" runat="server" CssClass="form-control1" TextMode="Date">
                     </asp:TextBox> 
@@ -30,13 +30,16 @@
                      <div class="col-md-2">
                     <asp:TextBox  id="txtFechaFinal" runat="server" CssClass="form-control1" TextMode="Date">
                     </asp:TextBox>
+                     </div>
+                    <label class="col-md-2" style="text-align:center">o </label>
                     <label>Tipo: </label>
-                    <asp:DropDownList ID="ddlTipoMovimiento" runat="server" class="custom-select2 form-control">
-                        <asp:ListItem Value="0">Todo</asp:ListItem>
-                        <asp:ListItem Value="1">Ingreso</asp:ListItem>
-                        <asp:ListItem Value="2">Egreso</asp:ListItem>
-                    </asp:DropDownList>
-                          </div>
+                    <div class="col-md-2">
+                        <asp:DropDownList ID="ddlTipoMovimiento" runat="server" class="custom-select2 form-control">
+                            <asp:ListItem Value="0">Todo</asp:ListItem>
+                            <asp:ListItem Value="1">Ingreso</asp:ListItem>
+                            <asp:ListItem Value="2">Egreso</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
                     <div class="col-md-2">
                          <button type="button" id="btnQuitar" class="btn btn-primary btn-flex" runat="server" onserverclick="btnQuitarFiltro_ServerClick"  style="display: flex; margin-left: 6px;"> 
                                 <span class="material-icons marginR-15">highlight_off</span>
@@ -49,6 +52,7 @@
                         </button>
                     </div>
                 </div>
+                
             <div class="panel panel-widget forms-panel">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
