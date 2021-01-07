@@ -130,7 +130,7 @@
         function alertaExito() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha logrado registrar correctamente',
+                text: 'Se ha logrado registrar el insumo correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
@@ -153,14 +153,6 @@
                 title: 'Oh, no!',
                 text: 'LLene todos los campos',
                 icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        function alertaExito() {
-            Swal.fire({
-                title: 'Enhorabuena!',
-                text: 'Se ha logrado registrar el insumo correctamente',
-                icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
         }

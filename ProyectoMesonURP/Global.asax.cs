@@ -69,6 +69,7 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("GestionarCategoriaInsumo", "GestionarCategoriaInsumo", "~/GestionarCategoriaInsumo.aspx", true);
             routes.MapPageRoute("GestionarInsumo", "GestionarInsumo", "~/GestionarInsumo.aspx", true);
             routes.MapPageRoute("AgregarInsumo", "AgregarInsumo", "~/AgregarInsumo.aspx", true);
+            routes.MapPageRoute("GestionarOC", "GestionarOC", "~/GestionarOC.aspx", true);
         }
     }
 }

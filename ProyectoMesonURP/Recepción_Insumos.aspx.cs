@@ -190,6 +190,7 @@ namespace ProyectoMesonURP
             gvIngresos.AllowPaging = true;
             CargarIngresosOC(dt);
             if (Completado()) { _OC.UPDATE_EstadoOC(oc); }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaExito", "alertaExito()", true);
         }
 
         public Boolean Añadir_Val()

@@ -124,19 +124,6 @@
                 return false;
         }
 
-        function alertaExito() {
-            Swal.fire({
-                title: 'Enhorabuena!',
-                text: 'Se ha logrado actualizar correctamente',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = "GestionarInsumo";
-                }
-            })
-        }
-
         function alertaInsumoDup() {
             Swal.fire({
                 title: 'Oh, no!',
@@ -156,9 +143,13 @@
         function alertaExito() {
             Swal.fire({
                 title: 'Enhorabuena!',
-                text: 'Se ha logrado editar el insumo correctamente',
+                text: 'Se ha logrado actualizar el insumo correctamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "GestionarInsumo";
+                }
             })
         }
     </script>
