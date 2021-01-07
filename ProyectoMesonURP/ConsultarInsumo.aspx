@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Consultar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="ConsultarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ConsultarInsumo"%>
+﻿<%@ Page Title="Gestionar Insumo | Detalle" Language="C#" AutoEventWireup="true" CodeBehind="ConsultarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ConsultarInsumo"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -18,7 +18,7 @@
             <div class="pd-20 card-box mb-30">
                 <div class="form-grids widget-shadow" data-example-id="basic-forms">
                     <div class="form-title color-white">
-                        <h5>Detalles de Insumo</h5>
+                        <h5>Detalles del Insumo</h5>
                     </div>
                 </div>
                 <div class="padding-top-30">
@@ -87,7 +87,7 @@
            
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
+                <input type="button" name="sub-1" value="Volver" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-danger" />
             </p>
         </div>
     </div>
