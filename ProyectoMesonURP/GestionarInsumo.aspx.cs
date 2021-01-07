@@ -78,6 +78,12 @@ namespace ProyectoMesonURP
                 Session.Add("InsumoSeleccionado", Insumo);
                 Response.Redirect("EditarInsumo.aspx");
             }
+            if (e.CommandName == "Consultar")
+            {
+                int Insumo = Convert.ToInt32(gvInsumos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["I_idInsumo"].ToString());
+                Session.Add("InsumoSeleccionado", Insumo);
+                Response.Redirect("ConsultarInsumo.aspx");
+            }
         }
     }
 }

@@ -152,6 +152,9 @@ namespace ProyectoMesonURP
             {
                 DDLMedida2.SelectedIndex = 0;
             }
+            txtCantidadCo.Text = "1";
+            TxtCantUn.Text = "1";
+            TxtCantmin.Text = "0";
             DDLFC.SelectedIndex = 0;
         }
         public void ChckedChanged(object sender, EventArgs e)
