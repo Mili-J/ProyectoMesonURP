@@ -30,6 +30,12 @@
                      <div class="col-md-2">
                     <asp:TextBox  id="txtFechaFinal" runat="server" CssClass="form-control1" TextMode="Date">
                     </asp:TextBox>
+                    <label>Tipo: </label>
+                    <asp:DropDownList ID="ddlTipoMovimiento" runat="server" class="custom-select2 form-control">
+                        <asp:ListItem Value="0">Todo</asp:ListItem>
+                        <asp:ListItem Value="1">Ingreso</asp:ListItem>
+                        <asp:ListItem Value="2">Egreso</asp:ListItem>
+                    </asp:DropDownList>
                           </div>
                     <div class="col-md-2">
                          <button type="button" id="btnQuitar" class="btn btn-primary btn-flex" runat="server" onserverclick="btnQuitarFiltro_ServerClick"  style="display: flex; margin-left: 6px;"> 
@@ -84,23 +90,15 @@
 
                  if (letras.indexOf(tecla) == -1 && !tecla_especial)
                      return false;
-             }
-             function alertaError() {
-                 Swal.fire({
-                     title: 'Oh, no!',
-                     text: 'Por favor, ingrese solo letras',
-                     icon: 'error',
-                     confirmButtonText: 'Aceptar'
-                 })
-             }
-             function alertad() {
-                 Swal.fire({
-                     title: 'Oh, no!',
-                     text: 'Por favor, ingrese solo letras',
-                     icon: 'error',
-                     confirmButtonText: 'Aceptar'
-                 })
-             }
+             } 
+                 function alertaExcel() {
+                     Swal.fire({
+                         title: 'Enhorabuena!',
+                         text: 'Se descargo correctamente el Reporte Movimientos',
+                         icon: 'success',
+                         confirmButtonText: 'Aceptar'
+                     })
+                 }
          </script>
       
 </asp:Content>
