@@ -79,9 +79,9 @@
                             </div>
                         </div>
                           <div class="form-title color-white">
-                                <h4>
+                                <h5>
                                     <asp:Label ID="lblCat" runat="server" Text=""></asp:Label>
-                                </h4>
+                                </h5>
                             </div>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <asp:GridView ID="GVVerdura" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false"
@@ -105,7 +105,7 @@
                         <div class="panel panel-widget forms-panel">
                             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                 <div class="form-title color-white">
-                                    <h4>Cotizaciones:</h4>
+                                    <h5>Cotizaciones:</h5>
                                 </div>
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="GVCot" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false"
@@ -124,17 +124,17 @@
                             </div>
                         </div>
                     </div>
-                    <%--  --%>
-                    <hr />
-                    <p class="center-button">
-                        <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Agregar" />
-                        <%--<input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />--%>
-                        <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" OnClick="btnRegresar_Click" Text="Regresar" />
-                        <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
-                        <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />
-                    </p>
                 </div>
             </div>
+             <%--  --%>
+            <hr />
+            <p class="center-button">
+                <asp:Button ID="btnCrearCotizacion" CssClass="btn btn-primary" runat="server" OnClick="btnCrearCotizacion_Click" Text="Guardar" />
+                <%--<input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion.aspx';" class="btn btn-primary" />--%>
+                <asp:Button ID="btnRegresar" CssClass="btn btn-primary" runat="server" OnClick="btnRegresar_Click" Text="Volver" />
+                <%--<asp:Button ID="btnLimpiarOC" CssClass="btn btn-primary" runat="server" OnClick="btnAñadirOC_Click" Text="Limpiar" />--%>
+               <%-- <input type="reset" name="res-1" id="res-1" value="Limpiar" class="btn btn-danger" />--%>
+            </p>
         </div>
     </div>
     <!-- Modal -->

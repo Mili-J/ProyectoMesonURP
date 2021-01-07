@@ -45,10 +45,16 @@
 					    <a class="nav-link active text-blue" data-toggle="tab" href="#tabTotal" role="tab" aria-selected="true">Todos</a>
 				    </li>
 				    <li class="nav-item">
-					    <a class="nav-link text-blue" data-toggle="tab" href="#tabSegundosM" role="tab" aria-selected="false">Segundos de Menú</a>
+					    <a class="nav-link text-blue" data-toggle="tab" href="#tabEntradasM" role="tab" aria-selected="false">Entradas - Menú</a>
 				    </li>
 				    <li class="nav-item">
-					    <a class="nav-link text-blue" data-toggle="tab" href="#" role="tab" aria-selected="false">Contact</a>
+					    <a class="nav-link text-blue" data-toggle="tab" href="#tabSegundosM" role="tab" aria-selected="false">Segundos - Menú</a>
+				    </li>
+                    <li class="nav-item">
+					    <a class="nav-link text-blue" data-toggle="tab" href="#tabBebidasM" role="tab" aria-selected="false">Bebidas - Menú</a>
+				    </li>
+                     <li class="nav-item">
+					    <a class="nav-link text-blue" data-toggle="tab" href="#tabCarta" role="tab" aria-selected="false">Platos a la Carta</a>
 				    </li>
 			    </ul>
                 <div class="tab-content pt-3">
@@ -100,13 +106,157 @@
                             </ContentTemplate>
                          </asp:UpdatePanel>
                      </div>
-                    <div class="tab-pane fade" id="tabSegundosM" role="tabpanel">
+                    <div class="tab-pane fade" id="tabEntradasM" role="tabpanel">
                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                             <ContentTemplate>
                                 <div class="product-wrap">
                                 <div class="product-list">
                                     <ul class="row">
                                         <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                            <ItemTemplate>
+                                                    <li class="col-lg-3 col-md-2 col-sm-12">
+                                                        <div class="product-box">
+                                                            <div class="producct-img">
+                                                                    <img ID="ImagenReceta" class="card-img-top" alt="Imagen de Referencia" 
+                                                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                                                </div>
+                                                        <div class="card-body">
+                                                                <asp:Label ID="lblIdReceta" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+
+                                                            <h5 class="card-title">
+                                                                <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                                            </h5>
+                                                                <p class="card-text">
+                                                                Porción:
+                                                                            <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                                                </p>
+                                                                <p class="card-text">
+                                                                Categoría: 
+                                                                                <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                                                </p>
+                                                            <p class="card-text">
+                                                                Descripción:
+                                                                <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
+                                                            </p>
+                                                            <div>
+                                                                <asp:LinkButton ID="btnActualizarReceta" class="btn btn-outline-warning" runat="server" CommandName="ActualizarReceta"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
+                                                                <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
+                                                                   
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                </ul>
+                            </div>
+                        </div>
+                            </ContentTemplate>
+                         </asp:UpdatePanel>
+                    </div>
+                     <div class="tab-pane fade" id="tabSegundosM" role="tabpanel">
+                        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                            <ContentTemplate>
+                                <div class="product-wrap">
+                                <div class="product-list">
+                                    <ul class="row">
+                                        <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                            <ItemTemplate>
+                                                    <li class="col-lg-3 col-md-2 col-sm-12">
+                                                        <div class="product-box">
+                                                            <div class="producct-img">
+                                                                    <img ID="ImagenReceta" class="card-img-top" alt="Imagen de Referencia" 
+                                                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                                                </div>
+                                                        <div class="card-body">
+                                                                <asp:Label ID="lblIdReceta" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+
+                                                            <h5 class="card-title">
+                                                                <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                                            </h5>
+                                                                <p class="card-text">
+                                                                Porción:
+                                                                            <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                                                </p>
+                                                                <p class="card-text">
+                                                                Categoría: 
+                                                                                <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                                                </p>
+                                                            <p class="card-text">
+                                                                Descripción:
+                                                                <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
+                                                            </p>
+                                                            <div>
+                                                                <asp:LinkButton ID="btnActualizarReceta" class="btn btn-outline-warning" runat="server" CommandName="ActualizarReceta"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
+                                                                <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
+                                                                   
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                </ul>
+                            </div>
+                        </div>
+                            </ContentTemplate>
+                         </asp:UpdatePanel>
+                    </div>
+                     <div class="tab-pane fade" id="tabBebidasM" role="tabpanel">
+                        <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                            <ContentTemplate>
+                                <div class="product-wrap">
+                                <div class="product-list">
+                                    <ul class="row">
+                                        <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                            <ItemTemplate>
+                                                    <li class="col-lg-3 col-md-2 col-sm-12">
+                                                        <div class="product-box">
+                                                            <div class="producct-img">
+                                                                    <img ID="ImagenReceta" class="card-img-top" alt="Imagen de Referencia" 
+                                                                    src="data:image/jpg;base64,<%#DataBinder.Eval(Container.DataItem,"R_imagenReceta") is System.DBNull ? string.Empty : Convert.ToBase64String((byte[]) DataBinder.Eval(Container.DataItem,"R_imagenReceta")) %>">
+                                                                </div>
+                                                        <div class="card-body">
+                                                                <asp:Label ID="lblIdReceta" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"R_idReceta") %>'></asp:Label>
+
+                                                            <h5 class="card-title">
+                                                                <asp:Label ID="lblNombreReceta" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_nombreReceta") %>'></asp:Label>
+                                                            </h5>
+                                                                <p class="card-text">
+                                                                Porción:
+                                                                            <asp:Label ID="lblPorciones" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_numeroPorcion") %>'></asp:Label>
+                                                                </p>
+                                                                <p class="card-text">
+                                                                Categoría: 
+                                                                                <asp:Label ID="lblCategoria" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CP_nombreCategoriaR") %>' />
+                                                                </p>
+                                                            <p class="card-text">
+                                                                Descripción:
+                                                                <asp:Label Visible="true" ID="lblDescripcion" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"R_descripcion") %>' />
+                                                            </p>
+                                                            <div>
+                                                                <asp:LinkButton ID="btnActualizarReceta" class="btn btn-outline-warning" runat="server" CommandName="ActualizarReceta"><i class="fa fa-pencil-square-o"></i>&nbsp;Editar</asp:LinkButton>
+                                                                <%-- <asp:Button ID="btnEliminarReceta" CssClass="btn btn-primary" runat="server" Text="Eliminar" CommandName="EliminarReceta" OnClientClick="return confirm('¿Estás seguro que queres borrar el registro ?');"/>--%>
+                                                                   
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                </ul>
+                            </div>
+                        </div>
+                            </ContentTemplate>
+                         </asp:UpdatePanel>
+                    </div>
+                    <div class="tab-pane fade" id="tabCarta" role="tabpanel">
+                        <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                            <ContentTemplate>
+                                <div class="product-wrap">
+                                <div class="product-list">
+                                    <ul class="row">
+                                        <asp:Repeater ID="Repeater5" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                             <ItemTemplate>
                                                     <li class="col-lg-3 col-md-2 col-sm-12">
                                                         <div class="product-box">

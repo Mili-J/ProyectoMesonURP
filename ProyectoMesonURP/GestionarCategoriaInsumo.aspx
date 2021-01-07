@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="MesónURP | Gestionar Categoría de Insumos" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="GestionarCategoriaInsumo.aspx.cs" Inherits="ProyectoMesonURP.GestionarCategoriaInsumo" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
@@ -20,8 +22,8 @@
                         <div class="col-sm-12 col-md-6">
                             <label>Nombre de Categoría :</label>
                             <div class="width-auto margin-5" style="display: flex">
-                                <asp:TextBox runat="server" ID="txtRegistrarC" CssClass="form-control" Width="44%" onkeypress="return lettersOnly(event);"></asp:TextBox>
-                                <asp:Button runat="server" class="btn btn-primary" Text="Agregar" ID="btnAgregarCInsumo" OnClick="btnAgregarCInsumo_Click" />
+                                 <asp:TextBox runat="server" ID="txtRegistrarC" placeholder="Ingrese un nombre" onkeypress="return lettersOnly(event);" CssClass="form-control" Width="44%"></asp:TextBox>
+                                <asp:LinkButton runat="server" class="btn btn-primary" ID="btnAgregarCInsumo" OnClick="btnAgregarCInsumo_Click"><i class="fa fa-plus-circle"></i>&nbsp; Añadir Categoría</asp:LinkButton>  
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-3 pl-30"></div>
@@ -52,7 +54,7 @@
                                             <asp:BoundField HeaderText="Categoría" DataField="CI_nombreCategoria" />
                                                <asp:TemplateField HeaderText="Editar">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnEditarCat" class="btn btn-warning btn-sm" runat="server" CommandName="Actualizar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>
+                                                        <asp:LinkButton ID="btnEditarCat"  class="btn btn-warning btn-sm" runat="server" CommandName="Actualizar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Ver Detalle">

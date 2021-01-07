@@ -22,7 +22,10 @@ namespace ProyectoMesonURP
             if (!IsPostBack)
             {
                 CargarReceta();
-                //CargarRecetaTab1();
+                CargarRecetaTab1();
+                CargarRecetaTab2();
+                CargarRecetaTab3();
+                CargarRecetaTab4();
             }
         }
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -92,8 +95,7 @@ namespace ProyectoMesonURP
         }
         protected void fNombreReceta_TextChanged(object sender, EventArgs e)
         {
-            //CargarReceta();
-            //CargarRecetaTab1();
+            CargarReceta();
         }
         
         public void CargarReceta()
@@ -107,8 +109,23 @@ namespace ProyectoMesonURP
         }
         public void CargarRecetaTab1()
         {
-            Repeater2.DataSource = _Cr.CTR_Consultar_RecetaTabSegM();
+            Repeater2.DataSource = _Cr.CTR_Consultar_RecetaTabEntM();
             Repeater2.DataBind();
+        }
+        public void CargarRecetaTab2()
+        {
+            Repeater3.DataSource = _Cr.CTR_Consultar_RecetaTabSegM();
+            Repeater3.DataBind();
+        }
+        public void CargarRecetaTab3()
+        {
+            Repeater4.DataSource = _Cr.CTR_Consultar_RecetaTabBebM();
+            Repeater4.DataBind();
+        }
+        public void CargarRecetaTab4()
+        {
+            Repeater5.DataSource = _Cr.CTR_Consultar_RecetaTabCarta();
+            Repeater5.DataBind();
         }
     }
 }

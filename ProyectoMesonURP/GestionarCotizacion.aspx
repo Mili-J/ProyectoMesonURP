@@ -10,15 +10,18 @@
     <div class="women_main">
     <!-- start content -->
      <div class="page-header">
-		<div class="row">
-			<div class="col-md-10 col-sm-12">
-				<div class="title">
+	    <div class="row">
+		    <div class="col-md-6 col-sm-12">
+			    <div class="title">
 					<h4>Gestionar Cotización</h4>
 				</div>
 			</div>
-            <div class="width-auto margin-5">
-                <input type="button" class="btn btn-primary" value="Agregar" onclick="window.location.href = 'RegistrarCotizacion.aspx';">
-             </div>
+             <div class="header-right pt-2 pr-4">
+                <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;"  onclick="window.location.href = 'RegistrarCotizacion.aspx';">    
+                    <span class="material-icons margin-5">add_circle_outline</span>
+                    Añadir Cotización
+                </button>
+            </div>
 		</div>
 	 </div>
     <div class="pd-20 card-box"  runat="server" id="PanelInsumos">
@@ -65,12 +68,12 @@
                                         <asp:LinkButton ID="btnEnviarEmailCotizacion" class="btn btn-info" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-paper-plane-o"></i>&nbsp;Enviar</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Detalles">
+                                <asp:TemplateField HeaderText="Detalle">
                                     <ItemTemplate>
-                                         <asp:LinkButton ID="btnVerDetallesCotizacion" runat="server" CommandName="DetallesCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  class="dropdown-item"><i class="dw dw-eye"></i>&nbsp;Ver</asp:LinkButton>
-												</ItemTemplate>
+                                         <asp:LinkButton ID="btnVerDetallesCotizacion" runat="server" CommandName="DetallesCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  class="btn btn-info btn-sm"><i class="fa fa-eye"></i>&nbsp; Ver</asp:LinkButton>
+								    </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Editar">
+                                <asp:TemplateField HeaderText="Editar" Visible="false">
                                     <ItemTemplate>
                                                <asp:LinkButton ID="btnEditarCotizacion" runat="server" CommandName="ActualizarCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" class="dropdown-item"><i class="dw dw-edit2"></i>&nbsp;Editar</asp:LinkButton>
 										</ItemTemplate>
