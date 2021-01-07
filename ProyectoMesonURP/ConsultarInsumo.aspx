@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Editar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="EditarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.EditarInsumo"%>
+﻿<%@ Page Title="Consultar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="ConsultarInsumo.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.ConsultarInsumo"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,7 +10,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <h4 class="tittle-margin5">Editar Insumo</h4>
+                        <h4 class="tittle-margin5">Consultar Insumo</h4>
                     </div>
                 </div>
             </div>
@@ -87,38 +87,9 @@
            
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
                 <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarInsumo.aspx';" class="btn btn-primary" />
             </p>
         </div>
     </div>
-    <script src="js/sweetalert.js">
-    </script>
-    <script>
-
-        function alertaInsumoDup() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'El insumo ya existe',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        function alertaError() {
-            Swal.fire({
-                title: 'Oh, no!',
-                text: 'LLene todos los campos',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-        function alertaExito() {
-            Swal.fire({
-                title: 'Enhorabuena!',
-                text: 'Se ha logrado modificar el insumo correctamente',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-    </script>
 </asp:Content>
+

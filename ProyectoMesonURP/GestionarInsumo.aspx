@@ -13,7 +13,7 @@
 	    <div class="row">
 		    <div class="col-md-6 col-sm-12">
 			    <div class="title">
-				    <h4>Manejar Stock</h4>
+				    <h4>Gestionar Insumo</h4>
 			    </div>
 		    </div>
 	    </div>
@@ -52,6 +52,11 @@
                                 <asp:TemplateField HeaderText="Editar">
                                     <ItemTemplate>
                                         <asp:ImageButton ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Ver Detalles">
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnConsultar" ImageUrl="img/ojo.png" onmouseover="this.src='img/ojo-b.png'" onmouseout="this.src='img/ojo.png'" runat="server" CommandName="Consultar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
