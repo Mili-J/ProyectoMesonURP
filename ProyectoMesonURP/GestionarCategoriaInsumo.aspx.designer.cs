@@ -33,6 +33,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtRegistrarC;
 
         /// <summary>
+        /// Control rfvnombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvnombre;
+
+        /// <summary>
         /// Control btnAgregarCInsumo.
         /// </summary>
         /// <remarks>

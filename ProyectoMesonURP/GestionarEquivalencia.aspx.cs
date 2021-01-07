@@ -25,7 +25,7 @@ namespace ProyectoMesonURP
             {
                 LlenarGVEquivalencias();
                 LoadCategoriaI();
-                ListItem ddl1 = new ListItem("3", "3");
+                ListItem ddl1 = new ListItem("5", "5");
                 ddlp.Items.Insert(0, ddl1);
                 ListItem ddl2 = new ListItem("10", "10");
                 ddlp.Items.Insert(1, ddl2);
