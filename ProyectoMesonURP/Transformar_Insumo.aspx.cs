@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Drawing;
 using CTR;
 using DTO;
 
@@ -231,13 +232,70 @@ namespace ProyectoMesonURP
         }
         protected void clMenu_OnDayRender(object sender, DayRenderEventArgs e)
         {
-           // DateTime week = DateTime.Today.DayOfWeek;
-            if (e.Day.Date.DayOfWeek == DayOfWeek.Sunday || e.Day.Date.DayOfWeek == DayOfWeek.Saturday)
+            CTR_Menu CTRMenu = new CTR_Menu();
+            DataTable dtMenu = new DataTable();
+            int day = (int)DateTime.Today.DayOfWeek;
+            DateTime dayOfWeek = new DateTime();
+
+            switch (day)
             {
-                e.Day.IsSelectable = false; 
+                //Lunes
+                case 1: dayOfWeek = DateTime.Today; break;
+                //Martes        
+                case 2: dayOfWeek = DateTime.Today.AddDays(-1); break;
+                //Miercoles        
+                case 3: dayOfWeek = DateTime.Today.AddDays(-2); break;
+                //Jueves        
+                case 4: dayOfWeek = DateTime.Today.AddDays(-3); break;
+                //Viernes        
+                case 5: dayOfWeek = DateTime.Today.AddDays(-4); break;
+                //Sabado        
+                case 6: dayOfWeek = DateTime.Today.AddDays(-5); break;
             }
-        }
+           
+        
+            if(e.Day.Date==dayOfWeek || (e.Day.Date <= dayOfWeek.AddDays(5) && e.Day.Date >= dayOfWeek))
+            {
+                ////for(int i=1;i<=6;i++)
+                ////{
+                ////    if (i != 1) dayOfWeek = dayOfWeek.AddDays(i-1);
+                //dtMenu = CTRMenu.CTR_ConsultarMenusXEstadoYFecha(3, dayOfWeek);
+                //if (dtMenu.Rows.Count >= 1)
+                //{
+                System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#629e6c");
+                e.Cell.BackColor = col;
+                //}
+                //else
+                //{
+                //    e.Cell.BackColor = Color.Red;
+                //}
 
 
+                ////}
+
+            }
+            else
+            {
+                e.Cell.BackColor = Color.Gray;
+                e.Day.IsSelectable = false;
+            }
+
+            //else
+            //{
+            //    e.Day.IsSelectable = false;
+            //    e.Cell.BackColor = Color.Gray;
+
+            //}
+
+            if (e.Day.IsOtherMonth)
+            {
+                e.Day.IsSelectable = false;
+                e.Cell.BackColor = Color.Gray;
+            }
+
+        }  
+               
+
+        
     }
 }
