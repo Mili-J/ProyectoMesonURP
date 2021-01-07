@@ -128,7 +128,7 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = false;
 
-                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
+                    //e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                 }
                 else if (estado == "Enviada")
                 {
@@ -137,7 +137,7 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRecibida").Visible = true;
 
-                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
+                    //e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                 }
                 else if (estado == "Recibida")
                 {
@@ -151,7 +151,7 @@ namespace ProyectoMesonURP
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = true;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = true;
 
-                    e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
+                    //e.Row.Cells[9].FindControl("btnGenerarOC").Visible = false;
                 }
                 else if (estado == "Aceptada")
                 {
