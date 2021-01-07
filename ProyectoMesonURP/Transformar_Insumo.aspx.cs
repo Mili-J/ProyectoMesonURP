@@ -213,6 +213,7 @@ namespace ProyectoMesonURP
         }
         protected void gvRecetaMenu_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int id = 0;
             if (e.CommandName == "SeleccionarReceta")
             {                
                 string nombreReceta= gvRecetaMenu.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
@@ -221,14 +222,17 @@ namespace ProyectoMesonURP
                 CantidadTotalIngredientes(racionSolicitada,porcionesReceta,nombreReceta);
                 TransformarInsumos(GetIDReceta(nombreReceta),nombreReceta);
                 lblMenu.Text = nombreReceta;
+                id = Convert.ToInt32(e.CommandArgument);
+                gvRecetaMenu.Rows[id].Visible = false;
             }   
             
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-           // DescontarStock();
+            DescontarStock();
             RegistrarMovimiento();
             ActualizarEstadoMenu();
+
         }
         protected void clMenu_OnDayRender(object sender, DayRenderEventArgs e)
         {
@@ -251,9 +255,7 @@ namespace ProyectoMesonURP
                 case 5: dayOfWeek = DateTime.Today.AddDays(-4); break;
                 //Sabado        
                 case 6: dayOfWeek = DateTime.Today.AddDays(-5); break;
-            }
-           
-        
+            }                   
             if(e.Day.Date==dayOfWeek || (e.Day.Date <= dayOfWeek.AddDays(5) && e.Day.Date >= dayOfWeek))
             {
                 ////for(int i=1;i<=6;i++)
@@ -279,13 +281,6 @@ namespace ProyectoMesonURP
                 e.Cell.BackColor = Color.Gray;
                 e.Day.IsSelectable = false;
             }
-
-            //else
-            //{
-            //    e.Day.IsSelectable = false;
-            //    e.Cell.BackColor = Color.Gray;
-
-            //}
 
             if (e.Day.IsOtherMonth)
             {

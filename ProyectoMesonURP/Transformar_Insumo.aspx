@@ -29,7 +29,7 @@
                     <div class="table-wrapper-scroll-y my-custom-scrollbar" runat="server">
                             <asp:GridView ID="gvRecetaMenu" runat="server" EmptyDataText="No hay informacion disponible." AutoGenerateColumns="False" DataKeyNames="R_nombreReceta,MxR_numeroPorcion,R_numeroPorcion" Style="text-align:center" CellPadding="4" GridLines="None" CssClass="table table-bordered table-striped mb-0" OnRowCommand="gvRecetaMenu_RowCommand">
                                 <Columns>
-                                    <asp:BoundField HeaderText="Nombre" DataField="R_nombreReceta" />  
+                                    <asp:BoundField HeaderText="Receta" DataField="R_nombreReceta" />  
                                     <asp:BoundField HeaderText="Raciones Solicitadas" DataField="MxR_numeroPorcion" />                             
                                     <asp:BoundField HeaderText="Porcion" DataField="R_numeroPorcion" />   
                                     <asp:TemplateField HeaderText="Seleccionar">
