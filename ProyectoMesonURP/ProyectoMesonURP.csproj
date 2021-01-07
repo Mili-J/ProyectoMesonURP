@@ -81,7 +81,6 @@
     <Content Include="ConsultarCotizacion.aspx" />
     <Content Include="ConsultarEquivalencia.aspx" />
     <Content Include="ConsultarMovimientos.aspx" />
-    <Content Include="ActualizarIngrediente.aspx" />
     <Content Include="ConsultarInsumo.aspx" />
     <Content Include="css\atlas.css" />
     <Content Include="css\bootstrap-grid.css" />
