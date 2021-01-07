@@ -24,6 +24,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox txtInsumo;
 
         /// <summary>
+        /// Control rfvnombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvnombre;
+
+        /// <summary>
         /// Control DDLCategoria.
         /// </summary>
         /// <remarks>
@@ -33,6 +42,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList DDLCategoria;
 
         /// <summary>
+        /// Control rfvcategoriaR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcategoriaR;
+
+        /// <summary>
         /// Control DDLFC.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLFC;
+
+        /// <summary>
+        /// Control rfvformatoC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvformatoC;
 
         /// <summary>
         /// Control PanelMedida1.
@@ -58,6 +85,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLMedida;
+
+        /// <summary>
+        /// Control rfvmedida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvmedida;
 
         /// <summary>
         /// Control PanelMedida2.
@@ -96,6 +132,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.DropDownList DDLMedida2;
 
         /// <summary>
+        /// Control rfvmedida2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvmedida2;
+
+        /// <summary>
         /// Control PanelMedida3.
         /// </summary>
         /// <remarks>
@@ -132,6 +177,15 @@ namespace ProyectoMesonURP
         protected global::System.Web.UI.WebControls.TextBox TxtCantUn;
 
         /// <summary>
+        /// Control rfvTxtCantUn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTxtCantUn;
+
+        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>
@@ -157,6 +211,15 @@ namespace ProyectoMesonURP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtCantmin;
+
+        /// <summary>
+        /// Control rfvtxtCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtCantidad;
 
         /// <summary>
         /// Control Label5.

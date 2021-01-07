@@ -67,6 +67,8 @@ namespace ProyectoMesonURP
             routes.MapPageRoute("ActualizarDíaMenú", "ActualizarDíaMenú", "~/ActualizarMenuDia.aspx", true);
             routes.MapPageRoute("DetallesCotizacion", "DetallesCotizacion", "~/DetallesCotizacion.aspx", true);
             routes.MapPageRoute("GestionarCategoriaInsumo", "GestionarCategoriaInsumo", "~/GestionarCategoriaInsumo.aspx", true);
+            routes.MapPageRoute("GestionarInsumo", "GestionarInsumo", "~/GestionarInsumo.aspx", true);
+            routes.MapPageRoute("AgregarInsumo", "AgregarInsumo", "~/AgregarInsumo.aspx", true);
         }
     }
 }

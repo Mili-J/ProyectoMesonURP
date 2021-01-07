@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestionar Proveedor | Agregar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistrarProveedor.aspx.cs" Inherits="ProyectoMesonURP.RegistrarProveedor" %>
+﻿<%@ Page Title="Gestionar Proveedor | Registrar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistrarProveedor.aspx.cs" Inherits="ProyectoMesonURP.RegistrarProveedor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">

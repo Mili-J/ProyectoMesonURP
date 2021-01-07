@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ActualizarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.ActualizarMenuDia" EnableEventValidation="false" %>
+﻿<%@ Page Title="Planificar Menú | Actualizar" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ActualizarMenuDia.aspx.cs" Inherits="ProyectoMesonURP.ActualizarMenuDia" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>

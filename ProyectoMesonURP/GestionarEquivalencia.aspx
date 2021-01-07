@@ -62,8 +62,8 @@
                     <asp:RequiredFieldValidator ID="rfvtxtIngrediente" runat="server" ControlToValidate="txtIngrediente" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="equivalencia1"></asp:RequiredFieldValidator>          
                 </div>
                 <div class="col-md-3 pt-20">
-                    <div style="margin: 0px auto; width:120px">
-                          <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary" ValidationGroup="equivalencia1"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</asp:LinkButton>
+                    <div style= "width:75%;  margin:0 auto;">
+                          <asp:LinkButton runat="server" OnClick="btnAñadirIngrediente_Click" CssClass="btn btn-primary" ValidationGroup="equivalencia1"><i class="fa fa-plus-circle"></i>&nbsp; Añadir Ingrediente</asp:LinkButton>
                     </div>
                 </div>
             </div>
@@ -99,12 +99,13 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Agregar Equivalencia">
                                         <ItemTemplate>
-                                            <asp:Button CssClass="btn btn-primary" ID="btnAgregarEquivalencia" runat="server" CommandName="AgregarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Agregar Equivalencia" />
+                                             <asp:LinkButton class="btn btn-primary btn-sm" ID="btnAgregarEquivalencia" runat="server" CommandName="AgregarEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-plus-circle"></i>&nbsp; Agregar</asp:LinkButton>       
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Ver">
+                                    <asp:TemplateField HeaderText="Ver Detalle">
                                         <ItemTemplate>
-                                            <asp:Button CssClass="btn btn-primary" ID="btnVer" runat="server" CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Ver" />
+                                            <asp:LinkButton class="btn btn-info btn-sm" ID="btnVer" runat="server" CommandName="VerEquivalencia" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"><i class="fa fa-eye"></i>&nbsp; Ver</asp:LinkButton>       
+           
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

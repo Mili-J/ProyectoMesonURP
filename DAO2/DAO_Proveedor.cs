@@ -201,7 +201,7 @@ namespace DAO
         {
             DataTable dt = new DataTable();
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_ConsultarProveedores", conexion);
+            SqlCommand comando = new SqlCommand("SP_Consultar_Proveedor", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(comando);

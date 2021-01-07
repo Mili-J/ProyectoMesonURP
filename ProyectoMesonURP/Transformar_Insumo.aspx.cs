@@ -111,7 +111,58 @@ namespace ProyectoMesonURP
                 }
             }
             
-        }   
+        }
+        public void RegistrarMovimiento()
+        {
+            string gvnombreInsumo = "";
+            string nombreInsumo = "";
+            CTR_Movimiento CTRMovimiento = new CTR_Movimiento();
+            CTR_Insumo CTRInsumo = new CTR_Insumo();
+            DTO_Insumo DTOInsumo = new DTO_Insumo();
+            DTO_Movimiento DTOMovimiento = new DTO_Movimiento();
+            DataTable dtInsumo = new DataTable();
+            dtInsumo = CTRInsumo.ListarInsumo();
+            foreach (GridViewRow gvrow in gvInsumosTransformados.Rows)
+            {
+                gvnombreInsumo = gvrow.Cells[0].Text.ToString();
+                
+
+                foreach (DataRow row in dtInsumo.Rows)
+                {
+                    nombreInsumo = row["I_nombreInsumo"].ToString();
+                    
+
+                    if (gvnombreInsumo == nombreInsumo)
+                    {
+                        
+                        DTOMovimiento.I_idInsumo = int.Parse(row["I_idInsumo"].ToString());
+                        DTOMovimiento.M_cantidad= Convert.ToDecimal(gvrow.Cells[1].Text);
+                        DTOMovimiento.M_fechaMovimiento = DateTime.Now.Date;
+                        DTOMovimiento.U_idUsuario = (int)Session["idUsuario"];
+                        CTRMovimiento.InsertMovGO(DTOMovimiento);
+                       
+                        
+                    }
+
+                }
+            }
+
+        }
+        public void ActualizarEstadoMenu()
+        {
+            int ME_idMenu = 0;
+            dtMenu = CTRMenu.CTR_SelectMenuXFecha(cldMenu.SelectedDate.ToShortDateString());
+            foreach(DataRow row in dtMenu.Rows)
+            {
+                if (Convert.ToInt32(row["ME_idMenu"].ToString()) != 0) ME_idMenu = Convert.ToInt32(row["ME_idMenu"].ToString());
+            }
+            DTO_Menu DTOMenu = new DTO_Menu();
+            CTR_EstadoMenu CTREMenu = new CTR_EstadoMenu();
+            DTOMenu.ME_idMenu = ME_idMenu;
+            DTOMenu.EM_idEstadoMenu = 3;
+            CTRMenu.CTR_ActualizaEstadoMenu(DTOMenu);
+
+        }
         protected void cldMenu_SelectionChanged(object sender, EventArgs e)
         {
             dtMenu = CTRMenu.CTR_SelectMenuXFecha(cldMenu.SelectedDate.ToShortDateString());
@@ -174,12 +225,14 @@ namespace ProyectoMesonURP
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            DescontarStock();
+           // DescontarStock();
+            RegistrarMovimiento();
+            ActualizarEstadoMenu();
         }
         protected void clMenu_OnDayRender(object sender, DayRenderEventArgs e)
         {
            // DateTime week = DateTime.Today.DayOfWeek;
-            if (e.Day.Date.DayOfWeek == DayOfWeek.Monday)
+            if (e.Day.Date.DayOfWeek == DayOfWeek.Sunday || e.Day.Date.DayOfWeek == DayOfWeek.Saturday)
             {
                 e.Day.IsSelectable = false; 
             }

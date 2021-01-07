@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestionar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="GestionarInsumo.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarInsumo" %>
+﻿<%@ Page Title="MesónURP | Gestionar Insumo" Language="C#" AutoEventWireup="true" CodeBehind="GestionarInsumo.aspx.cs"  MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarInsumo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .mb-0 {}
@@ -13,10 +13,16 @@
 	    <div class="row">
 		    <div class="col-md-6 col-sm-12">
 			    <div class="title">
-				    <h4>Manejar Stock</h4>
+				    <h4>Gestionar Insumo</h4>
 			    </div>
 		    </div>
-	    </div>
+	     <div class="header-right pt-2 pr-4">
+            <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;" onclick="location.href = 'AgregarInsumo.aspx';">     
+                <span class="material-icons margin-5">add_circle_outline</span>
+                Añadir Insumo
+            </button>
+        </div>
+        </div>
     </div>
     <div class="pd-20 card-box"  runat="server">
         <div class="row pt-1">    
@@ -45,13 +51,13 @@
                             Style="text-align: center" OnPageIndexChanging="gvInsumos_PageIndexChanging" OnRowCommand="gvInsumos_RowCommand" CellPadding="4" PageSize="5" GridLines="None">
                             <PagerStyle HorizontalAlign="Right" BackColor="#dee2e6"> </PagerStyle> 
                             <Columns>
-                                <asp:BoundField DataField="I_idInsumo" HeaderText="Id"/>
+                                <asp:BoundField DataField="I_idInsumo" HeaderText="Id" Visible="false"/>
                                 <asp:BoundField DataField="I_NombreInsumo" HeaderText="Insumo" />
                                 <asp:BoundField DataField="CI_nombreCategoria" HeaderText="Categoría" />
                                 <asp:BoundField DataField="Representacion de compra" HeaderText="Representación de compra" />
                                 <asp:TemplateField HeaderText="Editar">
                                     <ItemTemplate>
-                                        <asp:ImageButton ID="btnEditar" ImageUrl="img/editar.png" onmouseover="this.src='img/editar-b.png'" onmouseout="this.src='img/editar.png'" runat="server" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                        <asp:LinkButton ID="btnEditar" class="btn btn-warning btn-sm" runat="server" CommandName="Editar" CommandArgument="<%#((GridViewRow) Container).RowIndex %>"><i class="fa fa-pencil-square-o"></i>&nbsp; Editar</asp:LinkButton>       
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -60,9 +66,6 @@
                     </div>
                 </div>
             </div>
-                <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <input type="button" name="sub-1" value="Nuevo Insumo" onclick="location.href = 'AgregarInsumo.aspx';" class="btn btn-primary" />
-                </p>
         </div>
     </div>
 </div>

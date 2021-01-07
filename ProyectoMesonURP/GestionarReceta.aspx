@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesón URP | Gestionar Receta" Language="C#" AutoEventWireup="true" CodeBehind="GestionarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarReceta" EnableEventValidation="false"%>
+﻿<%@ Page Title="MesónURP | Gestionar Receta" Language="C#" AutoEventWireup="true" CodeBehind="GestionarReceta.aspx.cs" MasterPageFile="~/Master.Master" Inherits="ProyectoMesonURP.GestionarReceta" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="vendors/styles/core.css" rel="stylesheet" />
@@ -7,18 +7,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="women_main">
         <div class="page-header">
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="title">
+			 <div class="row">
+		          <div class="col-md-6 col-sm-12">
+			           <div class="title">
 						<h4>Gestionar Receta</h4>
 					</div>
-				</div>
+		       </div>
+          <div class="header-right pt-2 pr-4">
+            <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;" onserverclick="btnRegistrarReceta_Click">     
+                <span class="material-icons margin-5">add_circle_outline</span>
+                        Registrar Receta
+                    </button>
+                </div>
 			</div>
 		</div>
 
         <div class="pd-20 card-box">
             <div class="row p-3">
-                <div class="header-left pt-1 col-md-9">
+                <div class="header-left pt-1 col-md-12">
 			        <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
 			        <div class="header-search">
 					    <div class="form-group mb-0">
@@ -31,16 +37,9 @@
                          </div>
 			        </div> 
 		        </div>
-
-                <div class="header-right pr-4 col-md-3">
-                    <button type="button" class="btn btn-primary btn-flex" runat="server" style="display: flex; margin-left: 6px;" onserverclick="btnRegistrarReceta_Click">     
-                        <span class="material-icons margin-5">add_circle_outline</span>
-                        Registrar Receta
-                    </button>
-                </div>
             </div>
             <!-- container -->
-            <div class="tab">
+            <div class="tab pt-3">
 			    <ul class="nav nav-tabs" role="tablist">
 				    <li class="nav-item">
 					    <a class="nav-link active text-blue" data-toggle="tab" href="#tabTotal" role="tab" aria-selected="true">Todos</a>
