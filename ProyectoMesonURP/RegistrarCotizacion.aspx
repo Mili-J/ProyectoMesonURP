@@ -79,9 +79,9 @@
                             </div>
                         </div>
                           <div class="form-title color-white">
-                                <h4>
+                                <h5>
                                     <asp:Label ID="lblCat" runat="server" Text=""></asp:Label>
-                                </h4>
+                                </h5>
                             </div>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <asp:GridView ID="GVVerdura" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false"
@@ -105,7 +105,7 @@
                         <div class="panel panel-widget forms-panel">
                             <div class="form-grids widget-shadow" data-example-id="basic-forms">
                                 <div class="form-title color-white">
-                                    <h4>Cotizaciones:</h4>
+                                    <h5>Cotizaciones:</h5>
                                 </div>
                                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                     <asp:GridView ID="GVCot" runat="server" EmptyDataText="No hay información disponible." AutoGenerateColumns="false"
