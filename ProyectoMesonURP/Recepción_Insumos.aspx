@@ -95,6 +95,7 @@
                                     <hr />
                                     <p class="center-button">
                                         <asp:Button CssClass="btn btn-primary" runat="server" Text="Registrar" ID="btnAceptar" OnClick="btnAceptar_Click" />
+                                        <input type="button" name="sub-1" value="Volver" onclick="location.href = 'GestionarOC.aspx';" class="btn btn-danger" />
                                     </p>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
@@ -138,6 +139,17 @@
                     confirmButtonText: 'Aceptar'
                 })
             }
-
+            function alertaExito() {
+                Swal.fire({
+                    title: 'Enhorabuena!',
+                    text: 'Se ha logrado recepcionar los insumos correctamente',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = "GestionarOC";
+                    }
+                })
+            }
     </script>
 </asp:Content>

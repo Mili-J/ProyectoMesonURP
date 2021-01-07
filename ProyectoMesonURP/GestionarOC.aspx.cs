@@ -30,12 +30,12 @@ namespace ProyectoMesonURP
                 dto_o = new DTO_OC();
                 CargarOC();
 
-                //ListItem ddl1 = new ListItem("5", "5");
-                //ddlp.Items.Insert(0, ddl1);
-                //ListItem ddl2 = new ListItem("10", "10");
-                //ddlp.Items.Insert(1, ddl2);
-                //ListItem ddl3 = new ListItem("20", "20");
-                //ddlp.Items.Insert(2, ddl3);
+                ListItem ddl1 = new ListItem("5", "5");
+                ddlp.Items.Insert(0, ddl1);
+                ListItem ddl2 = new ListItem("10", "10");
+                ddlp.Items.Insert(1, ddl2);
+                ListItem ddl3 = new ListItem("20", "20");
+                ddlp.Items.Insert(2, ddl3);
             }
 
         }
@@ -55,24 +55,6 @@ namespace ProyectoMesonURP
         {
             CargarOC();
         }
-
-        //protected void btnBuscar_ServerClick(object sender, EventArgs e)
-        //{
-
-        //    try
-        //    {
-        //        if (txtBuscarInsumo.Text != "")
-        //        {
-        //            gvOC.DataSource = _CO.BuscarOC(Int32.Parse(txtBuscarInsumo.Text));
-        //            gvOC.DataBind();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ingrese un numero de OC para la busqueda');", true);
-
-        //    }
-        //}
         protected void gvOC_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Descargar")
@@ -94,11 +76,11 @@ namespace ProyectoMesonURP
             gvOC.PageIndex = e.NewPageIndex;
             CargarOC();
         }
-        //protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    gvOC.PageSize = Convert.ToInt32(ddlp.SelectedValue);
-        //    CargarOC();
-        //}
+        protected void ddlp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gvOC.PageSize = Convert.ToInt32(ddlp.SelectedValue);
+            CargarOC();
+        }
         protected void gvOC_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -107,17 +89,13 @@ namespace ProyectoMesonURP
 
                 if (estado == "Incompleto")
                 {
-                    e.Row.Cells[5].Text = "<span class='badge badge-warning'>" + e.Row.Cells[5].Text + "</span>";
+                    e.Row.Cells[5].Text = "<span class='badge badge-danger'>" + e.Row.Cells[5].Text + "</span>";
                 }
                 else
                 {
                     e.Row.Cells[5].Text = "<span class='badge badge-success'>" + e.Row.Cells[5].Text + "</span>";
                 }
             }
-        }
-        protected void gvOC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
         [System.Web.Services.WebMethod]              // Marcamos el método como uno web
         public static List<DTO_OC_SP> ListaDatos(int numero)    // el método debe ser de static
