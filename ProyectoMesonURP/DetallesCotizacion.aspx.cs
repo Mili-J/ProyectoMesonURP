@@ -48,7 +48,8 @@ namespace ProyectoMesonURP
             txtFechaEmision.Text = dto_cot.C_fechaEmision.ToShortDateString();
             txtProveedor.Text = Convert.ToString(Session["proveedor"]);
             txtTiempoPlazo.Text = dto_cot.C_tiempoPlazo;
-
+            txtFechaEntrega1.Visible = false;
+            txtFormaPago.Visible = false;
             gvDetalles.Visible = false;
             gvInsumos.DataSource = _Cdc.CargarDetalleCotizacion(Convert.ToInt32(Session["idcotizacion"]));
             gvInsumos.DataBind();
@@ -97,8 +98,9 @@ namespace ProyectoMesonURP
                 _Doc.U_idUsuario = Convert.ToInt32(Session["idUsuario"]);
 
                 _Coc.RegistrarOC(_Doc);
-
-                for (int i = 0; i < gvInsumos.Rows.Count; i++)
+                try
+                {
+                    for (int i = 0; i < gvInsumos.Rows.Count; i++)
                     {
                         _Ddc.DOC_totalPrecio = Convert.ToDecimal(((Label)gvInsumos.Rows[i].FindControl("lblPrecioTotal")).Text);
                         _Ddc.DOC_precioUnitario = Convert.ToDecimal(((TextBox)gvInsumos.Rows[i].FindControl("txtPrecioUnitario")).Text);
@@ -110,8 +112,13 @@ namespace ProyectoMesonURP
                         _Cdoc.RegistrarDetalleOC(_Ddc);
                     }
                     ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaExito('');", true);
-                    btnGuardar.Visible = false; 
+                    btnGuardar.Visible = false;
                     btnGenerarOC.Visible = true;
+                }
+                catch (System.FormatException) {
+
+                    ClientScript.RegisterStartupScript(Page.GetType(), "alertIns", "alertaError();", true);
+                }
             }
         }
         protected void btnGenerarOC_ServerClick(object sender, EventArgs e)
