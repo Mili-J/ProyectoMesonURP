@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Web.UI;
+using System.Globalization;
 using System.Web.UI.WebControls;
 
 namespace ProyectoMesonURP
@@ -88,7 +89,9 @@ namespace ProyectoMesonURP
             _Dixr.R_idReceta = _Cr.IdReceta()+1;
             _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
             _Di = _Ci.ListarNombreIngrediente(_Dixr.I_idIngrediente);
-            _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
+            //decimal d = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
+            //txtCantidad.Text = d.ToString("0000.00", CultureInfo.InvariantCulture);
+            _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
             _Dixr.IR_formatoMedida = ddlMedida.SelectedValue;
 
 

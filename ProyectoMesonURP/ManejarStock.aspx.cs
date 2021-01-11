@@ -30,7 +30,7 @@ namespace ProyectoMesonURP
                 switch (dto_u.TU_idTipoUsuario)
                 {
                     case 1: 
-                        PanelInsumos.Visible = false;
+                        PanelInsumos2.Visible = false;
                     break;
                     case 2:
                         PanelInsumos2.Visible = false;

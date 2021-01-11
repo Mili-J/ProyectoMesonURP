@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CTR;
 using DTO;
+using System.Globalization;
 using System.Text.RegularExpressions;
 namespace ProyectoMesonURP
 {
@@ -307,12 +308,12 @@ namespace ProyectoMesonURP
 
                 DataRow dr = dt.NewRow();
                // object[] ingAux = dtIng.Rows[z].ItemArray;
-                decimal numTo = Convert.ToDecimal(dtIng.Rows[z]["numTotal"]);
+                decimal numTo = Convert.ToDecimal(dtIng.Rows[z]["numTotal"], CultureInfo.InvariantCulture);
                 dr[0] = Convert.ToInt32(dtIng.Rows[z]["I_idInsumo"]);
                 dr[1] = Convert.ToString(dtIng.Rows[z]["I_nombreInsumo"]);
                 dr[2] = numTo;
                 dr[3] = Convert.ToString(dtIng.Rows[z]["FC_nombreFormatoCompra"]);
-                dr[4] = Convert.ToDecimal(dtIng.Rows[z]["MXF_cantidadContenida"]);
+                dr[4] = Convert.ToDecimal(dtIng.Rows[z]["MXF_cantidadContenida"], CultureInfo.InvariantCulture);
 
                 int idMed = Convert.ToInt32(dtIng.Rows[z].ItemArray[35]);
                 DTO_Medida dto_medida = ctr_medida.CTR_ConsultarMedida(idMed);
@@ -330,8 +331,8 @@ namespace ProyectoMesonURP
                     a=dtIng.Select($"I_idInsumo={dr[0]} AND FC_nombreFormatoCompra='{dr[3]}'");
                     foreach (DataRow item in a)
                     {
-                        numTo += Convert.ToDecimal(item.ItemArray[39]);
-                        
+                        numTo += Convert.ToDecimal(item.ItemArray[39], CultureInfo.InvariantCulture);
+
                     }
                     DataRow e= dt.Rows.Find(new object[] { dr["I_idInsumo"], dr["FC_nombreFormatoCompra"] });
                     dt.Rows[dt.Rows.IndexOf(e)]["numTotal"] = numTo;

@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Web.UI;
+using System.Globalization;
 using System.Web.UI.WebControls;
 
 namespace ProyectoMesonURP
@@ -117,7 +118,9 @@ namespace ProyectoMesonURP
         {
             int R_idReceta = Convert.ToInt32(Session["IdReceta"]);
             int idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
-            _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
+            //decimal d = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
+            //txtCantidad.Text = d.ToString("0000.00", CultureInfo.InvariantCulture);
+            _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
             _Dixr.IR_formatoMedida = ddlMedida.SelectedValue;
 
             _Dixr = new DTO_IngredienteXReceta();
@@ -140,11 +143,12 @@ namespace ProyectoMesonURP
             {
                 try
                 {
-                    _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text);
+                    //txtCantidad.Text = d.ToString("0000.00", CultureInfo.InvariantCulture);
+                    _Dixr.IR_cantidad = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
                     _Dixr.IR_formatoMedida = ddlMedida.SelectedValue;
                     _Dixr.R_idReceta = Convert.ToInt32(Session["IdReceta"]);
                     _Dixr.I_idIngrediente = Convert.ToInt32(ddlIngredientes.SelectedValue);
-                    _Dixr.IR_cantidad = Convert.ToInt32(txtCantidad.Text);
+                    //_Dixr.IR_cantidad = Convert.ToInt32(txtCantidad.Text);
 
                     _Cixr.RegistrarIngredienteXReceta(_Dixr);
                     CargargvIngredientes();

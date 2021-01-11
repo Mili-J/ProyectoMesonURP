@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using System.Globalization;
 using System.Web.UI.WebControls;
 
 namespace ProyectoMesonURP
@@ -47,7 +48,7 @@ namespace ProyectoMesonURP
             decimal sum = decimal.Zero;
             for (int i = 0; i < gvInsumos.Rows.Count; i++)
             {
-                sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblTotalPrecio")).Text == string.Empty ? "0" : ((Label)gvInsumos.Rows[i].FindControl("lblTotalPrecio")).Text);
+                sum += decimal.Parse(((Label)gvInsumos.Rows[i].FindControl("lblTotalPrecio")).Text == string.Empty ? "0" : ((Label)gvInsumos.Rows[i].FindControl("lblTotalPrecio")).Text, CultureInfo.InvariantCulture);
             }
                    ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text = sum.ToString();
             Session["Totaldecompra"] = ((Label)gvInsumos.FooterRow.FindControl("lblTotal")).Text;

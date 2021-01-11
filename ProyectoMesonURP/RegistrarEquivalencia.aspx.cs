@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
 using CTR;
 using CTR2;
 using DTO;
@@ -96,7 +97,7 @@ namespace ProyectoMesonURP
         }
         protected void btnAñadirEquivalencia_Click(object sender, EventArgs e)
         {
-            _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
+            _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
             _De.I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
             int I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
             int idFCocina = Convert.ToInt32(ddlFormatoCocina.SelectedValue);
@@ -121,7 +122,7 @@ namespace ProyectoMesonURP
             {
                 try
                 {
-                    _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text);
+                    _De.E_cantidad = Convert.ToDecimal(txtCantidad.Text, CultureInfo.InvariantCulture);
                     _De.I_idIngrediente = Convert.ToInt32(Session["idIngrediente"]);
                     _Dfcoc = _Cfcoc.CTR_ListarNombreFCocina(idFCocina);
                     _Dm = _Cm.CTR_ListarNombreMedida(idMedida);

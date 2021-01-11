@@ -194,19 +194,19 @@ namespace DAO
         }
         public DataTable SelectBarChartInsumoComprar(string OC_fechaEntrega)
         {
-            //try
-            //{
-            //    SqlDataAdapter cmd = new SqlDataAdapter("SP_BarChart_Insumos_Comprar", conexion);
-            //    cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
-            //    cmd.SelectCommand.Parameters.AddWithValue("@OC_fechaEntrega", OC_fechaEntrega);
-               DataSet dSet = new DataSet();
-            //    cmd.Fill(dSet);
-               return dSet.Tables[0];
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            try
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter("SP_BarChart_Insumos_Comprar", conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.AddWithValue("@OC_fechaEntrega", OC_fechaEntrega);
+                DataSet dSet = new DataSet();
+                cmd.Fill(dSet);
+                return dSet.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public List<DTO_Insumo> DAO_ConsultarInsumoXCategoria(int CI_idCategoriaInsumo)
         {

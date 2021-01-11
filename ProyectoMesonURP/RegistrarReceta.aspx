@@ -133,7 +133,7 @@
                                 <div class="form-group pt-3 pl-5">
                                     <label>Cantidad</label>
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtCantidad" runat="server" class="form-control" TextMode="Number" onkeypress="return SoloNumeroIntDouble(event);" min="1" MaxLength="5" />
+                                        <asp:TextBox ID="txtCantidad" runat="server" class="form-control" TextMode="Number"  min="1" MaxLength="5" />
                                          <asp:RequiredFieldValidator ID="rfvtxtCantidad" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Obligatorio" Display="Static" ForeColor="DarkRed" ValidationGroup="receta2"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using CTR;
 using DTO;
 
@@ -60,10 +61,11 @@ namespace ProyectoMesonURP
                     {
                         nomIgv = gvrow.Cells[3].Text;
                         if (idI == idI2 && nomI==nomIgv )
-                        {
+                        {  
                             racionTotalI = Convert.ToDecimal(gvrow.Cells[1].Text);
                             e = Convert.ToDecimal(row2["E_cantidad"]);
-                            decimal t = (e* racionTotalI) / Convert.ToDecimal(row["IR_cantidad"]);
+                            decimal t = (e* racionTotalI);
+                           /* decimal t = (e * racionTotalI) / Convert.ToDecimal(row["IR_cantidad"]);*///lo cambie, me ayuda en capturar decimal
                             row2["E_cantidad"] = t;
                             c = Convert.ToDecimal(row["IR_cantidad"]);
                             txtprueba.Text += racionTotalI + "E_cantidad:" + e + ";"+"cantidad receeta"+ c;
@@ -160,7 +162,7 @@ namespace ProyectoMesonURP
             DTO_Menu DTOMenu = new DTO_Menu();
             CTR_EstadoMenu CTREMenu = new CTR_EstadoMenu();
             DTOMenu.ME_idMenu = ME_idMenu;
-            DTOMenu.EM_idEstadoMenu = 3;
+            DTOMenu.EM_idEstadoMenu = 1003;
             CTRMenu.CTR_ActualizaEstadoMenu(DTOMenu);
 
         }
