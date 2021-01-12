@@ -132,6 +132,9 @@ namespace ProyectoMesonURP
                 }
                 else if (estado == "Enviada")
                 {
+                    LinkButton btnEnviarEmailCotizacion = (LinkButton)e.Row.FindControl("btnEnviarEmailCotizacion");
+                    btnEnviarEmailCotizacion.Enabled = false;
+                    btnEnviarEmailCotizacion.ControlStyle.CssClass = "<class='btn btn-infor btn-sm'>";
                     e.Row.Cells[8].FindControl("btnVerDetallesCotizacion").Visible = false;
                     e.Row.Cells[11].FindControl("btnAceptada").Visible = false;
                     e.Row.Cells[11].FindControl("btnRechazada").Visible = false;

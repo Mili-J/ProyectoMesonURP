@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
 using CTR;
 using System.Data;
 using System.Text;
@@ -115,7 +116,7 @@ namespace ProyectoMesonURP
                     js.Append(strDatos + "{");
                     js.Append("\"Insumo\":" + "\"" + dr[0] + "\",");
                     js.Append("\"Formato\":" + "\"" + dr[1] + "\",");
-                    js.Append("\"CantidadCotizada\":" + "\"" + dr[2] + "\",");
+                    js.Append("\"CantidadCotizada\":" + "\"" + dr[2]+ "\",");
                     js.Append("\"Estado\":" + "\"" + dr[3] + "\",");
                     js.Append("}");
                     strDatos = ",";

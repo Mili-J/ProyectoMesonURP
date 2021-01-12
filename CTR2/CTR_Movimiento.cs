@@ -18,6 +18,10 @@ namespace CTR
         {
             dao_movimiento.InsertMovimientoGO(objDto);
         }
+        public void InsertMovGOT(DTO_Movimiento objDto)
+        {
+            dao_movimiento.InsertMovimientoGOT(objDto);
+        }
         public DataTable ListarMovimiento(string FechaInicial, string FechaFinal, int Tipo)
         {
             return dao_movimiento.SelectMovimiento(FechaInicial, FechaFinal, Tipo);

@@ -142,7 +142,7 @@ namespace ProyectoMesonURP
                         DTOMovimiento.M_cantidad= Convert.ToDecimal(gvrow.Cells[1].Text);
                         DTOMovimiento.M_fechaMovimiento = DateTime.Now.Date;
                         DTOMovimiento.U_idUsuario = (int)Session["idUsuario"];
-                        CTRMovimiento.InsertMovGO(DTOMovimiento);
+                        CTRMovimiento.InsertMovGOT(DTOMovimiento);
                        
                         
                     }

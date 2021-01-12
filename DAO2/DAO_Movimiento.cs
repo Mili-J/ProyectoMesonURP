@@ -28,6 +28,19 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void InsertMovimientoGOT(DTO_Movimiento objDTO)
+        {
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand("SP_Insertar_Movimiento_GO", conexion);
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.Add(new SqlParameter("@M_cantidad", objDTO.M_cantidad));
+            unComando.Parameters.Add(new SqlParameter("@M_fechaMovimiento", objDTO.M_fechaMovimiento));
+            unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objDTO.I_idInsumo));
+            unComando.Parameters.Add(new SqlParameter("@U_idUsuario", objDTO.U_idUsuario));
+
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public System.Data.DataTable SelectMovimiento(string FechaInicial, string FechaFinal, int Tipo)
         {
             conexion.Open();
