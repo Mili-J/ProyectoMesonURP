@@ -213,7 +213,7 @@ namespace ProyectoMesonURP
         }
         protected void gvRecetaMenu_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = 0;
+            //int id = 0;
             if (e.CommandName == "SeleccionarReceta")
             {                
                 string nombreReceta= gvRecetaMenu.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["R_nombreReceta"].ToString();
@@ -222,8 +222,8 @@ namespace ProyectoMesonURP
                 CantidadTotalIngredientes(racionSolicitada,porcionesReceta,nombreReceta);
                 TransformarInsumos(GetIDReceta(nombreReceta),nombreReceta);
                 lblMenu.Text = nombreReceta;
-                id = Convert.ToInt32(e.CommandArgument);
-                gvRecetaMenu.Rows[id].Visible = false;
+                //id = Convert.ToInt32(e.CommandArgument);
+                //gvRecetaMenu.Rows[id].Visible = false;
             }   
             
         }
