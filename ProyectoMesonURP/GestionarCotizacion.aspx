@@ -65,7 +65,7 @@
 
                                  <asp:TemplateField HeaderText="Enviar">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnEnviarEmailCotizacion" class="btn btn-info" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-paper-plane-o"></i>&nbsp;Enviar</asp:LinkButton>
+                                        <asp:LinkButton ID="btnEnviarEmailCotizacion" class="btn btn-info btn-sm" runat="server" CommandName="EnviarEmailCotizacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><i class="fa fa-paper-plane-o"></i>&nbsp;Enviar</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Detalle">
@@ -105,7 +105,7 @@
         function alertaAceptado() {
             Swal.fire({
                 title: 'Aceptado',
-                text: 'La solicitdad de cotización ha sido aceptada satisfactoriamente',
+                text: 'La solicitud de cotización ha sido aceptada satisfactoriamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
@@ -113,7 +113,7 @@
         function alertaRechazado() {
             Swal.fire({
                 title: 'Rechazado',
-                text: 'La solicitdad de cotización ha sido rechazada satisfactoriamente',
+                text: 'La solicitud de cotización ha sido rechazada satisfactoriamente',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
@@ -121,7 +121,7 @@
         function alertaRecibido() {
             Swal.fire({
                 title: 'Recibida',
-                text: 'La solicitdad de cotización ha sido recibida',
+                text: 'La solicitud de cotización ha sido recibida',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })

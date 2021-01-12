@@ -158,6 +158,14 @@
                     width: 100%;
                     float: left;
                 }
+
+        /* basic positioning */
+        .legend {display:block }
+        .legend span { border: 1px solid #ccc; float: left; width: 15px; height: 15px; margin-right: 10px;}
+        /* your colors */
+        .legend .mp { background-color: darkgreen; }
+        .legend .mc { background-color: darkred; }
+        .legend .mt { background-color: darkorange; }
                      
     </style>
 </asp:Content>
@@ -169,7 +177,8 @@
 					<div class="title">
 						<h4>Planificar Menú</h4>
 					</div>
-				</div>
+                 </div>
+
 			</div>
 		</div>
         <div class="pd-20 card-box mb-30">
@@ -193,7 +202,11 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-               
+            <ul class="legend" style="margin-top: 49px; margin-bottom: 44px; margin: 0px 20px 0px 1450px;">
+                    <li><span class="mp"></span> Menú Planificado</li>
+                    <li><span class="mc"></span> Menú Cotizado</li>
+                    <li><span class="mt"></span> Menú Transformado</li>
+                </ul>			
         </div>
     </div>
 

@@ -109,14 +109,19 @@ namespace ProyectoMesonURP
                 //e.Cell.ForeColor = Color.White;
                 if (dto_menu.EM_idEstadoMenu==1)
                 {
-                    e.Cell.BackColor = Color.MidnightBlue;
+                    e.Cell.BackColor = Color.DarkGreen;
                 }
                 else if(dto_menu.EM_idEstadoMenu == 2)
                 {
-                    e.Cell.BackColor = Color.Red;
+                    e.Cell.BackColor = Color.DarkRed;
                     e.Day.IsSelectable = false;
                 }
-               
+                else if (dto_menu.EM_idEstadoMenu == 1003)
+                {
+                    e.Cell.BackColor = Color.DarkOrange;
+                    e.Day.IsSelectable = false;
+                }
+
                 //DataTable dt = ctr_menuxreceta.CTR_ConsultarRecetasXMenuYCategoria(dto_menu.ME_idMenu,1);
                 //int i = 0;
                 //object[] recetas;

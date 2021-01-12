@@ -44,6 +44,10 @@
                             <label class="col-sm-12 col-md-5 col-form-label">Fecha de Entrega</label>
                             <div class="col-sm-12 col-md-6">
                                 <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvStartDate" runat="server" ErrorMessage="Start Date is required" Text="*"
+                                    ControlToValidate="txtFechaEntrega" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
+                                 <asp:RangeValidator ID ="rvDateValidator" runat ="server" ControlToValidate="txtFechaEntrega" ErrorMessage="Por favor ingrese una fecha válida" Type="Date" SetFocusOnError="True" Display="Dynamic" ForeColor="#CC0000"></asp:RangeValidator>                            
+                            
                             </div>
                         </div>
                         <div class="form-group row justify-content-center">
@@ -80,15 +84,15 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
-                                                <asp:TemplateField HeaderText="Precio Unitario">
+                                                <asp:TemplateField HeaderText="Precio Unitario (S/.)">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblPrecioUnitario" runat="server" Text='<%# Bind("DOC_precioUnitario")%>'></asp:Label>
                                                  </ItemTemplate>
                                                     <FooterTemplate>
-                                                        <asp:Label runat="server">TOTAL:</asp:Label>
+                                                        <asp:Label runat="server">TOTAL (S/.):</asp:Label>
                                                     </FooterTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Precio Total">
+                                                <asp:TemplateField HeaderText="Precio Total (S/.)">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblTotalPrecio" runat="server" Text='<%# Bind("DOC_totalPrecio")%>'></asp:Label>
                                                     </ItemTemplate>

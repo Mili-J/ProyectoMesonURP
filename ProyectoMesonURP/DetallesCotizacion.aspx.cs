@@ -17,14 +17,16 @@ namespace ProyectoMesonURP
             CTR_Cotizacion ctr_cot;
             string FechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
-            protected void Page_Load(object sender, EventArgs e)
-            {
+        protected void Page_Load(object sender, EventArgs e)
+        {
                 if (!Page.IsPostBack)
                 {
                     CargarDetalle();
                     txtFechaEmision.Text = FechaActual;
                     txtFechaEntrega.Text = FechaActual;
-            }     
+                }
+            rvDateValidator.MinimumValue = DateTime.Now.Date.ToString("dd-MM-yyyy");
+            rvDateValidator.MaximumValue = DateTime.Now.Date.AddYears(90).ToString("dd-MM-yyyy");
         }
         public void CargarDetalle() {
             bool _Edc = _Cdoc.ExistenciaDetalleOC((int)Session["idCot"]);

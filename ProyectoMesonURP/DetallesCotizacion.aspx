@@ -51,16 +51,20 @@
                             <div class="col-sm-12 col-md-6">
                                 <asp:TextBox ID="txtFechaEntrega" runat="server" class="form-control" TextMode="Date"></asp:TextBox>
                                  <asp:TextBox ID="txtFechaEntrega1" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+                                  <asp:RequiredFieldValidator ID="rfvStartDate" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="txtFechaEntrega" SetFocusOnError="True" Display="Dynamic" ForeColor="DarkRed" ValidationGroup="detallesC"></asp:RequiredFieldValidator>
+                                 <asp:RangeValidator ID ="rvDateValidator" runat ="server" ControlToValidate="txtFechaEntrega" ErrorMessage="Por favor ingrese una fecha superior a la actual" Type="Date" SetFocusOnError="True" Display="Dynamic" ForeColor="DarkRed" ValidationGroup="detallesC"></asp:RangeValidator>                            
+                            
                            </div>
                         </div>
                         <div class="form-group row justify-content-center">
                             <label class="col-sm-12 col-md-5 col-form-label">Forma de pago</label>
                             <div class="col-sm-12 col-md-6">
                                 <asp:DropDownList ID="ddlFormaPago" runat="server" Class="custom-select2 form-control">
-                                    <asp:ListItem Value="">-- Seleccione --</asp:ListItem>
+                                    <asp:ListItem Value="0">-- seleccione --</asp:ListItem>
                                     <asp:ListItem Value="Efectivo">Efectivo</asp:ListItem>
                                     <asp:ListItem Value="Crédito">Crédito</asp:ListItem>
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvformatoP" runat="server" ControlToValidate="ddlFormaPago" SetFocusOnError="True" Display="Dynamic" ForeColor="DarkRed" InitialValue="0" ValidationGroup="detallesC"><span id="ddl2">Seleccione una opción</span></asp:RequiredFieldValidator>
                                  <asp:TextBox ID="txtFormaPago" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                              </div>
                         </div>
@@ -92,11 +96,12 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
-                                                <asp:TemplateField HeaderText="Precio Unitario">
+                                                <asp:TemplateField HeaderText="Precio Unitario (S/.)">
                                                     <ItemTemplate>
                                                         <asp:UpdatePanel runat="server">
                                                             <ContentTemplate>
                                                                 <asp:TextBox ID="txtPrecioUnitario" runat="server" class="precio" CssClass="form-control1" AutoPostBack="true" OnTextChanged="txtPrecioUnitario_TextChanged"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="rfvprecio" runat="server" ControlToValidate="txtPrecioUnitario" ErrorMessage="Obligatorio" SetFocusOnError="True" Display="Dynamic" ForeColor="DarkRed" ValidationGroup="detallesC"></asp:RequiredFieldValidator>    
                                                             </ContentTemplate>
                                                             <Triggers>
                                                                 <asp:AsyncPostBackTrigger ControlID="txtPrecioUnitario" />
@@ -104,10 +109,10 @@
                                                         </asp:UpdatePanel>
                                                     </ItemTemplate>
                                                     <FooterTemplate>
-                                                        <asp:Label runat="server">TOTAL:</asp:Label>
+                                                        <asp:Label runat="server">TOTAL (S/.):</asp:Label>
                                                     </FooterTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Precio Total">
+                                                <asp:TemplateField HeaderText="Precio Total (S/.)">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblPrecioTotal" runat="server"></asp:Label>
                                                     </ItemTemplate>
@@ -129,15 +134,15 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField HeaderText="Representación" DataField="Representacion de compra" />
-                                                <asp:TemplateField HeaderText="Precio Unitario">
+                                                <asp:TemplateField HeaderText="Precio Unitario (S/.)">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblPrecioUnitario" runat="server" Text='<%# Bind("DOC_precioUnitario")%>'></asp:Label>
                                                  </ItemTemplate>
                                                     <FooterTemplate>
-                                                        <asp:Label runat="server">TOTAL:</asp:Label>
+                                                        <asp:Label runat="server">TOTAL (S/.):</asp:Label>
                                                     </FooterTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Precio Total">
+                                                <asp:TemplateField HeaderText="Precio Total (S/.)">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblTotalPrecio" runat="server" Text='<%# Bind("DOC_totalPrecio")%>'></asp:Label>
                                                     </ItemTemplate>
@@ -159,7 +164,7 @@
             </div>
             <hr />
             <p class="center-button" style="margin-top: 49px; margin-bottom: 44px;">
-                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick">Guardar</button>
+                <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick" ValidationGroup="detallesC">Guardar</button>
                 <button type="button" name="sub-1" class="btn btn-primary" runat="server" id="btnGenerarOC" onserverclick="btnGenerarOC_ServerClick">Generar OC</button>
                 <input type="button" name="sub-1" value="Regresar" onclick="location.href = 'GestionarCotizacion';" class="btn btn-danger" />
             </p>

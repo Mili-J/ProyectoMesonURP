@@ -28,7 +28,10 @@ namespace ProyectoMesonURP
                 CargargvInsumos();
                 txtFechaEmision.Text = FechaActual;
                 txtFechaEntrega.Text = FechaActual;
+               
             }
+            rvDateValidator.MinimumValue = DateTime.Now.Date.ToString("dd-MM-yyyy");
+            rvDateValidator.MaximumValue = DateTime.Now.Date.AddYears(90).ToString("dd-MM-yyyy");
         }
         public void CargarOc()
         {
