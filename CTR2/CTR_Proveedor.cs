@@ -17,6 +17,10 @@ namespace CTR
         {
             return dao_pro.DAO_ConsultarProveedores();
         }
+        public DataTable ListarCategoriaProveedor(int PR_idProveedor)
+        {
+            return dao_pro.ListarCategoriaProveedor(PR_idProveedor);
+        }
         public DTO_Proveedor CTR_ConsultarProveedor(int id)
         {
             return dao_pro.DAO_ConsultarProveedor(id);

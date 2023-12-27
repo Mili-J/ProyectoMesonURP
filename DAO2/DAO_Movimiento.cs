@@ -23,6 +23,7 @@ namespace DAO
             unComando.Parameters.Add(new SqlParameter("@M_cantidad", objDTO.M_cantidad));
             unComando.Parameters.Add(new SqlParameter("@M_fechaMovimiento", objDTO.M_fechaMovimiento));
             unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objDTO.I_idInsumo));
+            unComando.Parameters.Add(new SqlParameter("@MT_idTMovimiento", objDTO.MT_idTMovimiento));
             unComando.Parameters.Add(new SqlParameter("@U_idUsuario", objDTO.U_idUsuario));
 
             unComando.ExecuteNonQuery();
@@ -36,19 +37,20 @@ namespace DAO
             unComando.Parameters.Add(new SqlParameter("@M_cantidad", objDTO.M_cantidad));
             unComando.Parameters.Add(new SqlParameter("@M_fechaMovimiento", objDTO.M_fechaMovimiento));
             unComando.Parameters.Add(new SqlParameter("@I_idInsumo", objDTO.I_idInsumo));
+            unComando.Parameters.Add(new SqlParameter("@MT_idTMovimiento", objDTO.MT_idTMovimiento));
             unComando.Parameters.Add(new SqlParameter("@U_idUsuario", objDTO.U_idUsuario));
 
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
-        public System.Data.DataTable SelectMovimiento(string FechaInicial, string FechaFinal, int Tipo)
+        public System.Data.DataTable SelectMovimiento(string FechaInicial, string FechaFinal, int tipo)
         {
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_SELECT_MOVIMIENTOS_X_FECHA", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@FechaInicial", FechaInicial);
             comando.Parameters.AddWithValue("@FechaFinal", FechaFinal);
-            comando.Parameters.AddWithValue("@Tipo", Tipo);
+            comando.Parameters.AddWithValue("@Tipo", tipo);
             comando.ExecuteNonQuery();
             System.Data.DataTable dt = new System.Data.DataTable();
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -122,7 +124,7 @@ namespace DAO
                     }
                 conexion.Close();
             
-            xlWorkBook.SaveAs("C:\\Users\\Milagros\\Downloads\\ MesónURP.............xls", Excel.XlFileFormat.xlExcel8, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.SaveAs();
             xlApp.Workbooks.Close();
             xlApp.Quit();
             Marshal.ReleaseComObject(xlWorkSheet);

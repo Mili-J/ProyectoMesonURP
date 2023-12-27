@@ -121,13 +121,10 @@ namespace DAO
         }
         public bool EnviarCorreo(DTO_Cotizacion dto_cot, string msj)
         {
-            DTO_Proveedor dto_proveedor = new DTO_Proveedor();
             DAO_Proveedor dao_proveedor = new DAO_Proveedor();
             try
             {
-                dto_proveedor = dao_proveedor.DAO_ConsultarProveedor(dto_cot.PR_idProveedor);
-
-
+                DTO_Proveedor dto_proveedor = dao_proveedor.DAO_ConsultarProveedor(dto_cot.PR_idProveedor);
                 MailMessage msg = new MailMessage();
                 msg.To.Add(dto_proveedor.PR_correoContacto);
                 msg.Subject = "Solicitudad de cotización " + dto_cot.C_numeroCotizacion;
@@ -138,7 +135,7 @@ namespace DAO
                 msg.From = new MailAddress("mesonurp@gmail.com");
                 SmtpClient cliente = new SmtpClient
                 {
-                    Credentials = new NetworkCredential("mesonurp@gmail.com", "meson123456"),
+                    Credentials = new NetworkCredential("mesonurp@gmail.com", "owhy wsik jkxk ntnf"),
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true

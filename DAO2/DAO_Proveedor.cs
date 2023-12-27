@@ -16,7 +16,7 @@ namespace DAO
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
         }
-        public DataTable ListarProveedores(string @razonSocial)
+        public DataTable ListarProveedores(string razonSocial)
         {
             try
             {
@@ -231,6 +231,26 @@ namespace DAO
             }
             conexion.Close();
             return pro;
+        }
+
+        public DataTable ListarCategoriaProveedor(int PR_idProveedor)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                conexion.Open();
+                SqlCommand comando = new SqlCommand("SP_ConsultarCategoriasProveedor2", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@PR_idProveedor", PR_idProveedor);
+                comando.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                da.Fill(dt);
+                conexion.Close();
+                return dt;
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

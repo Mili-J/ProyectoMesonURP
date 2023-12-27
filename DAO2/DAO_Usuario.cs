@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using DTO;
 
 namespace DAO
@@ -10,12 +8,10 @@ namespace DAO
     public class DAO_Usuario
     {
         SqlConnection conexion;
-       
         public DAO_Usuario()
         {
             conexion = new SqlConnection(ConexionDB.CadenaConexion);
         }
-
 
         public DTO_Usuario Login(DTO_Usuario objUsuario)
         {
@@ -48,6 +44,7 @@ namespace DAO
             conexion.Close();
             return objUsuario;
         }
+
         public void getPerfil(DTO_Usuario objUsuario, DTO_TipoUsuario objTipoU)
         {
             try
@@ -57,7 +54,6 @@ namespace DAO
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@codigo", objUsuario.U_codigo));
                 SqlDataReader reader = cmd.ExecuteReader();
-
                 if (reader.Read())
                 {
                     objTipoU.TU_nombreTipoUsuario = reader.GetString(0);

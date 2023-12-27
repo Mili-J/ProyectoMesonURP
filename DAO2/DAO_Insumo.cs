@@ -228,6 +228,7 @@ namespace DAO
                         I_nombreInsumo = reader[1].ToString(),
                         I_cantidad = decimal.Parse(reader[2].ToString()),
                         EI_idEstadoInsumo = int.Parse(reader[6].ToString()),
+                        El_nombreEstado = reader[12].ToString()
                     };
                     list.Add(dto);
                 }
@@ -305,47 +306,37 @@ namespace DAO
             SqlCommand cmd = new SqlCommand("SP_Existencia_Insumo_GI", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@NInsumo", nomInsumo);
+            cmd.Parameters.AddWithValue("@IdInsumo", 0);
             cmd.ExecuteNonQuery();
             string Insumo = Convert.ToString(cmd.ExecuteScalar());
-            if (Insumo == "")
+            conexion.Close();
+            if (Insumo == string.Empty)
             {
-                conexion.Close();
                 return false;
             }
             else
             {
-                conexion.Close();
-                return true;
+                return int.Parse(Insumo) != 0;
             }
         }
-        public bool InsumoExistenciaEd_GI(string nomInsumo,int idInsumo)
-        {
 
+        public bool InsumoExistenciaEd_GI(string nomInsumo, int idInsumo)
+        {
             conexion.Open();
             SqlCommand cmd = new SqlCommand("SP_Existencia_Insumo_GI", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@NInsumo", nomInsumo);
+            cmd.Parameters.AddWithValue("@IdInsumo", idInsumo);
             cmd.ExecuteNonQuery();
             string Insumo = Convert.ToString(cmd.ExecuteScalar());
-            if (Insumo == "")
+            conexion.Close();
+            if (Insumo == string.Empty)
             {
-                conexion.Close();
                 return false;
             }
-            
             else
             {
-                int Id = Convert.ToInt32(cmd.ExecuteScalar());
-                if (Id == idInsumo)
-                {
-                    conexion.Close();
-                    return false;
-                }
-                else 
-                { 
-                    conexion.Close();
-                    return true;
-                }
+                return int.Parse(Insumo) != 0;
             }
         }
     }
