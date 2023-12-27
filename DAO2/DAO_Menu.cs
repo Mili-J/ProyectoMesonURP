@@ -69,7 +69,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToShortDateString());
+            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToString("dd/MM/yyyy"));
             comando.ExecuteNonQuery();
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
@@ -106,7 +106,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToShortDateString());
+            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToString("dd/MM/yyyy"));
             SqlDataReader reader = comando.ExecuteReader();
             if (reader.Read()) estado = true;
             else estado = false;
@@ -136,7 +136,7 @@ namespace DAO
             conexion.Open();
             SqlCommand comando = new SqlCommand("SP_ConsultarMenu", conexion);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToShortDateString());
+            comando.Parameters.AddWithValue("@ME_fechaMenu", fecha.ToString("dd/MM/yyyy"));
             comando.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(comando);
             da.Fill(dtMenu);

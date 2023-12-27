@@ -139,7 +139,6 @@ namespace DAO
             try
             {
                 string correo = objCotizacion.SelectProveedorxCotizacion(idCotizacion);
-
                 MailMessage msg = new MailMessage();
                 msg.To.Add(correo);
                 msg.Subject = "Orden de Compra" + objDto.OC_idOC;
@@ -150,7 +149,7 @@ namespace DAO
                 msg.From = new MailAddress("mesonurp@gmail.com");
                 SmtpClient cliente = new SmtpClient
                 {
-                    Credentials = new NetworkCredential("mesonurp@gmail.com", "meson123456"),
+                    Credentials = new NetworkCredential("mesonurp@gmail.com", "owhy wsik jkxk ntnf"),
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true
@@ -195,7 +194,7 @@ namespace DAO
                     {
                         OC_idOC = Convert.ToInt32(dr["OC_idOC"]),
                         DOC_idDetalleOC = Convert.ToInt32(dr["DOC_idDetalleOC"]),
-                        OC_numeroOC = Convert.ToInt32(dr["OC_numeroOC"]),
+                        OC_numeroOC = Convert.ToString(dr["OC_numeroOC"]),
                         I_idInsumo = Convert.ToInt32(dr["I_idInsumo"]),
                         I_nombreInsumo = Convert.ToString(dr["I_nombreInsumo"]),
                         DC_cantidadCotizacion = Convert.ToDouble(dr["DC_cantidadCotizacion"]),
