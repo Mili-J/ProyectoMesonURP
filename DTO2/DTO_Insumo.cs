@@ -14,5 +14,6 @@ namespace DTO
         public int CI_idCategoriaInsumo { get; set; }
         public int EI_idEstadoInsumo { get; set; }
         public int MXF_idMedidaFCompra { get; set; }
+        public string El_nombreEstado { get; set; }
     }
 }

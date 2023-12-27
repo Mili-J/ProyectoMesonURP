@@ -10,7 +10,7 @@ namespace DTO2
     {
         public int OC_idOC { get; set; }
         public int DOC_idDetalleOC { get; set; }
-        public int OC_numeroOC { get; set; }
+        public string OC_numeroOC { get; set; }
         public int I_idInsumo { get; set; }
         public String I_nombreInsumo { get; set; }
         public double DC_cantidadCotizacion { get; set; }

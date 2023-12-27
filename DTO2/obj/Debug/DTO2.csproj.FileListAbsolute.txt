@@ -1,0 +1,12 @@
+C:\Users\nicol\Downloads\ProyectoMesonURP-milagros-stable\DTO2\bin\Debug\DTO2.dll
+C:\Users\nicol\Downloads\ProyectoMesonURP-milagros-stable\DTO2\bin\Debug\DTO2.pdb
+C:\Users\nicol\Downloads\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.csproj.AssemblyReference.cache
+C:\Users\nicol\Downloads\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Downloads\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.dll
+C:\Users\nicol\Downloads\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.pdb
+C:\Users\Milagros\Downloads\ProyectoMesonURP-milagros-stable (2)\ProyectoMesonURP-milagros-stable\DTO2\bin\Debug\DTO2.dll
+C:\Users\Milagros\Downloads\ProyectoMesonURP-milagros-stable (2)\ProyectoMesonURP-milagros-stable\DTO2\bin\Debug\DTO2.pdb
+C:\Users\Milagros\Downloads\ProyectoMesonURP-milagros-stable (2)\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.csproj.AssemblyReference.cache
+C:\Users\Milagros\Downloads\ProyectoMesonURP-milagros-stable (2)\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.csproj.CoreCompileInputs.cache
+C:\Users\Milagros\Downloads\ProyectoMesonURP-milagros-stable (2)\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.dll
+C:\Users\Milagros\Downloads\ProyectoMesonURP-milagros-stable (2)\ProyectoMesonURP-milagros-stable\DTO2\obj\Debug\DTO2.pdb
